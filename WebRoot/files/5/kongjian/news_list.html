@@ -1,0 +1,36 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link type="text/css" rel="stylesheet" href="_files/css/style.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="_files/css/blog.css" media="screen" />
+<!--[if lt IE 8]><link type="text/css" rel="stylesheet" href="_files/css/ie.css"/><![endif]-->
+<!--[if IE 8]><link type="text/css" rel="stylesheet" href="_files/css/ie8.css"/><![endif]-->
+</head>
+<body>
+[#include "inc_header_mini.html"/]
+<div class="body">
+   <div class="main">
+    <img src="_files/picture/banner.jpg" alt="" id="blog_banner" />
+    <ol class="blog_list">
+    	 [@InfoPage nodeId=node.id pageSize=20;pagedList]
+	  		 [#list pagedList.content as info]
+	  		 	<li>
+	  		 	<header>
+			       <span class="hp" style="background: #eae4e1"><img src="${info.customs['smallimage']}" alt="" /></span>
+			       <h1>[@A bean=info target="_blank"/]</h1>
+			       <span class="postdate">发表于： ${info.publishDate?string('yyyy-MM-dd')}</span>
+			    </header>
+			    </li>
+	  		 [/#list]
+ 	 	 [/@InfoPage]
+    </ol>
+   </div>
+  </div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

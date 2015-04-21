@@ -1,0 +1,39 @@
+<div id="top">
+  	<div class="header">
+  		<div class="logo">
+    		<img src="_files/picture/logo2.jpg" width="442" height="80" alt="上海青土景观设计有限公司" />
+    	</div>
+		<!--菜单开始-->
+		<div class="h_top_menu" style="overflow:hidden; margin-right:-27px; display:inline-block;">
+        	<ul class="menu" id="menu">
+          		<li style="width: 80px;"> <a title="HOME" txt="首页" href="/">HOME</a> </li>
+          		[@NodeList;list]
+					[#list list as node]
+			 		 	<li class="${node.number}" style="width: 100px;"><a title="${node.number}" txt="${node.name}" href="${node.url}">${node.number}</a></li>
+					[/#list]
+				 [/@NodeList]
+		  	</ul>
+        	<script type="text/javascript">
+                        $(function () {
+                            //$($("#menu li")[0]).width("122px");
+                            //$($("#menu li")[1]).width("160px");
+                            //$($("#menu li")[2]).width("120px");
+                            //$($("#menu li")[3]).width("146px");
+                            //$($("#menu li")[4]).width("141px");
+
+                            $("#menu li a").mouseover(function () {
+                                //var _index = $($("#menu li a")).index($(this));
+                                var _text = $(this).attr("txt");
+
+                                $(this).text(_text);
+                            })
+                            $("#menu li a").mouseout(function () {
+                                var _title = $(this).attr("title");
+                                $(this).text(_title);
+                            })
+                        })
+                
+              </script> 
+      </div>
+  </div>
+</div>

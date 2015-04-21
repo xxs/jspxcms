@@ -1,0 +1,46 @@
+  <footer class="main">
+   <div class="wrap">
+    <section class="brand">
+     <p><a href="http://www.zhanchen.cn/group/index.html">展辰涂料集团股份有限公司</a> 旗下品牌</p>
+    </section>
+    <section class="content">
+     <ul>
+      
+      [@FriendlinkTypeList;list]
+	  	[#list list as type]
+	  	[@FriendlinkList typeId=type.id;list]
+	     [#if type_index!=0]style="display:none;"[/#if]
+	      [#list list as link]
+	      	<li><a href='${link.url}' target='_blank'>${link.name}</a> </li>
+	      [/#list]
+	    [/@FriendlinkList]
+	    [/#list]
+	    [/@FriendlinkTypeList]
+      
+      <li class="hotline">服务热线：<em>400 820 5167</em></li>
+     </ul>
+    </section>
+    <section class="sns">
+     <ul>
+      <li class="weibo"><a href="http://e.weibo.com/jingdianqi" target="_blank">　</a></li>
+      <li class="tencent"><a href="http://t.qq.com/jady_paint" target="_blank">　</a></li>
+      <li class="weixin" id="weixin_link">　</li>
+     </ul>
+    </section>
+    <div id="wx_qr">
+     <img src="Picture/wx.gif" alt="" />
+    </div>
+    <section class="copyright">
+     <p>Copyright &copy; 2013 - 2014 All Rights Reserved. 经典漆 版权所有</p>
+     <p>网站所属单位：<a href="http://www.zhanchen.cn/group/index.html" rel="external" target="_blank">上海展辰涂料有限公司</a></p>
+     <p>Powered by <a href="http://www.ftmedia.cn/" rel="external" target="_blank">蜂叹</a></p>
+     <a href="http://www.miibeian.gov.cn/" rel="external" target="_blank">沪ICP备10026634号-1</a>
+    </section>
+    <section id="qr_code">
+     <h1>本页面地址二维码：</h1>
+     <div>
+      <img src="Picture/f97e89804d5543f1a55c55f9e4841177.gif" alt="" />
+     </div>
+    </section>
+   </div>
+  </footer>

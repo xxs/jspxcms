@@ -1,0 +1,17 @@
+	<div id="banner">
+		<div id="bannerQuery" class="bwrap">
+			[@AdSlotList number = 'banner' ;list]
+			  	[#list list as adSlot]
+				  	[@AdList slotId=adSlot.id;list]
+				    <ul class="bquery">
+				      [#list list as ad]
+				      	<li class="blist"><a href='${ad.url}' target='_blank'><img src="${ad.image}" title="${ad.name}" alt="${ad.name}" /></a> </li>
+				      [/#list]
+				    </ul>
+				    [/@AdList]
+			    [/#list]
+		    [/@AdSlotList]
+		</div>
+		<div class="bctrl"><div id="bannerCtrl" class="bctrli"></div></div>
+	</div>
+	<div class="clear"></div>

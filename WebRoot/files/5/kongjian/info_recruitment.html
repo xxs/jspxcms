@@ -1,0 +1,95 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="_files/ckplayer.js" charset="utf-8"></script>
+<style type="text/css">
+.recru-table{width:100%;margin:20px 0;border-collapse:collapse;}
+.recru-table td{padding:15px 5px; border:#ccc 1px solid;}
+</style>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+    	<div class="position">
+      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>>[/#list]正文
+        </div>
+    	<div class="textinfo">
+			<table class="recru-table" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="15%">公司名称：</td>
+          <td width="35%">${info.customs['company']}</td>
+          <td width="15%">部门名称：</td>
+          <td width="35%">${info.customs['dept']}</td>
+        </tr>
+        <tr>
+          <td>职位名称：</td>
+          <td>${info.title}</td>
+          <td>发布时间：</td>
+          <td>${info.publishDate?string('yyyy-MM-dd')}</td>
+        </tr>
+        <tr>
+          <td>招聘人数：</td>
+          <td>${info.customs['number']}</td>
+          <td>薪酬待遇：</td>
+          <td>${info.customs['salary']}</td>
+        </tr>
+        <tr>
+          <td>工作地点：</td>
+          <td colspan="3">${info.customs['location']}</td>
+        </tr>
+        <tr>
+          <td>岗位职责：</td>
+          <td colspan="3">[#noescape]${bbcode(info.customs['responsibilities'])}[/#noescape]</td>
+        </tr>
+        <tr>
+          <td>岗位要求：</td>
+          <td colspan="3">[#noescape]${bbcode(info.customs['qualifications'])}[/#noescape]</td>
+        </tr>
+			</table>
+		  <div style="padding-bottom:20px;font-size:14px;"><a href="${ctx}/resume.jspx?post=${info.title?url}">我要应聘</a></div>
+       </div>
+       <div class="othernews">
+       	<ul>
+      		 [@InfoPrev id=info.id;i]
+         	 [#if i??]
+        	 <li>
+         		<span class="spanleft">上一条：<a href="${i.url}">${i.title!}</a></span>
+         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
+      		 </li>
+         	[#else]
+         	<li><span class="spanleft">上一条：没有了</span></li>
+        	[/#if]
+		 	[/@InfoPrev]
+		 	[@InfoNext id=info.id;i]
+         	[#if i??]
+		 	<li>
+         		<span class="spanleft">下一条：<a href="${i.url}">${i.title!}</a></span>
+         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
+         	</li>
+         	[#else]
+        	<li><span class="clr">下一条：没有了</span></li>
+         	[/#if]
+		 	[/@InfoNext ]
+         </ul>
+       </div>
+	</div>
+	<div class="pright">
+		[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

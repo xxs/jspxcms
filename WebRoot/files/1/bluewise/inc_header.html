@@ -1,0 +1,62 @@
+<script type="text/javascript">
+	[#if node??]$("#node_views").load("${ctx}/node_views/${node.id}.jspx?d="+new Date()*1);[/#if]
+</script>
+<div class="scrolltop" id=goTopBtn><img src="_files/images/scrolltop.png"></div>
+<SCRIPT type=text/javascript>goTopEx();</SCRIPT>
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">JSPXCMS - 按您所需，力求完美！</span>
+     <div class="toplinks">
+   		<script type="text/javascript" src="${ctx}/login_ajax.jspx"></script>
+			<a href="${ctx}/sitemap.jspx">网站地图</a><a href="${ctx}/rss.jspx">RSS订阅</a><a href="${ctx}/tags.jspx">Tags</a></div>
+    </div> 
+</div>
+
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="${ctx}/">
+        <img src="_files/images/logo.png" height="90" width="240" alt="JSPXCMS演示站"/></a> </h1>
+      </div>
+      <div class="banner"><script type="text/javascript" src="${ctx}/dd_number/picture.jspx"></script></div>      
+	</div><!-- //top -->
+
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+        [@NodeList;list]
+        <li><a href='${ctx}/'><span>首页</span></a></li>  
+				[#list list as node]
+ 		 		<li><a href="${node.url}"><span>${node.name}</span></a></li>
+				[/#list]
+				[/@NodeList]    	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="${ctx}/search.jspx">
+        <div class="form">
+          <h4>搜索</h4>
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="${Param.q!'在这里搜索...'}"  onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          [@TagList sort='refers desc' limit=4;list]
+		  		[#list list as tag]
+          <li><a href="${ctx}/tag/${tag.id?url}.jspx" target="_blank">${tag.name}</a></li>
+					[/#list]
+					[/@TagList]
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+
+</div><!-- //header -->
+
+

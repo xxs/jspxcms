@@ -1,0 +1,86 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>用户注册_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#validForm").validate();
+	$("#username").focus().select();
+});
+
+[#if shiroLoginFailure??]
+	 [#if shiroLoginFailure=='com.jspxcms.common.security.IncorrectCaptchaException']
+	 	alert("[@s.message code='incorrectCaptchaError'/]");
+	 [#elseif shiroLoginFailure=='com.jspxcms.common.security.CaptchaRequiredException']
+	  //do nothing
+	 [#elseif shiroLoginFailure=='org.apache.shiro.authc.UnknownAccountException']
+	  alert("此用户不在或未激活！");
+	 [#else]
+	  alert("${shiroLoginFailure}");
+	 [/#if]
+[/#if]
+</script>
+<style type="text/css">
+.center{margin:0 auto;width:800px;}
+.clear{clear:both;}
+.div1{margin-top:150px;padding-top:5px;}
+.desc{float:left;height:180px;width:430px;padding-top:40px;text-align:center;color:#858585;font-size:28px;font-weight:bold;background:url('${ctx}/back/images/admin_logo.png') no-repeat center 8px;}
+.input_form{float:right;height:180px;width:370px;margin-top:20px;}
+.input_p{padding:8px 0;}
+.input_p_submit{text-align:left;padding:5px 0 5px 80px;}
+.label{display:block;float:left;width:70px;padding-right:10px;text-align:right;font-size:14px;font-weight:bold;color:#666666;}
+.input{display:block;float:left;width:180px;}
+.div2{text-align:center;color:#555555;}
+
+a:link,a:visited{text-decoration:none;color:#014c90;}
+a:hover,a:active{text-decoration:underline;color:#014c90;}
+
+</style>
+</head>
+<body>
+
+<div class="login">
+  <h2>登陆</h2>
+  <form id="validForm" action="${ctx}/login.jspx" method="post" class="input_form">
+		<p class="input_p">
+			<label for="username" class="label">用户名:</label>
+			<input type="text" id="username" name="username" value="${username!}" class="input required"/>
+			<div class="clear"></div>
+		</p>
+		<p class="input_p">
+			<label for="password" class="label">密码:</label>
+			<input type="password" id="password" name="password" class="input"/>
+			<div class="clear"></div>
+		</p>
+		[#if Session.shiroCaptchaRequired??]
+		<p class="input_p">
+			<label for="captcha" class="label">验证码:</label>
+			<input type="text" id="captcha" name="captcha" class="input required"/>
+			<div class="clear"></div>
+		</p>
+		<p class="input_p">
+			<label for="captcha" class="label">&nbsp;</label>
+			<img src="${ctx}/captcha.servlet" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" style="cursor:pointer;border:1px solid #ccc;" title="点击重新获取验证码"/>
+			<div class="clear"></div>
+		</p>		
+		[/#if]
+		<p class="input_p_submit">
+			<input type="submit" value="提交" style="height:25px;width:60px;margin-right:20px;"/><a href="${ctx}/forgot_password.jspx">忘记密码</a>
+		</p>
+	</form>
+  <div class="otherlink"><a href="${ctx}/">返回首页</a>如果您还没有账号，请先<a href="${ctx}/register.jspx">注册</a></div>
+</div>
+
+</body>
+</html>
+[/#escape]

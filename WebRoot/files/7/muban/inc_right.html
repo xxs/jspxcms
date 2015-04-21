@@ -1,0 +1,54 @@
+<div class="pright"> 
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1">
+     [@InfoList attr='recommend' limit=10;list]
+ 	  [#list list as info]
+      <li class='dotline' style="background:url(_files/images/icon/${info_index+1}.gif) 2px 9px no-repeat;">
+      <a href="${info.url}">${substring(info.title,17,'...')}</a>
+      </li>
+      [/#list]
+      [/@InfoList]
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  
+  
+  <div class="commend" style="margin-top:8px; border-bottom:1px #dadada solid;">
+   <dl class="tbox light" style="position:relative">
+    <dt class='light' ><strong>推荐图文</strong></dt>
+    <div class="pagediv">
+    <div id=pageShow class="page"><span><em>1</em> / <em>2</em></span></div>
+    <div class="page_fy"><a title="上一页" class="pre" href="javascript:rollText(-1);">上一页</a><a title="下一页" class="next" href="javascript:rollText(1);">下一页</a></div>
+    </div>
+  <dd id="ztlist1" class="ztlist" style="display:block">
+	<ul class="zt_ul">
+      [@InfoList attr='marquee' limit=6;list]
+ 	  [#list list as info]
+      <li>
+      <a target="_blank" href="${info.url}">
+      <img src="${info.attrImageUrl}">${substring(info.title,6,'...')}
+      </a>
+      </li>	
+      [/#list]
+      [/@InfoList]
+	</ul>
+   </dd>
+   <dd id="ztlist2" class="ztlist" style="display:none">
+    <ul class="zt_ul">
+  	  [@InfoList attr='marquee' offset=6 limit=6;list]
+ 	  [#list list as info]
+      <li>
+      <a target="_blank" href="${info.url}">
+      <img src="${info.attrImageUrl}">${substring(info.title,6,'...')}
+      </a>
+      </li>	
+      [/#list]
+      [/@InfoList]
+	</ul>
+    </dd>
+ </dl>
+</div>

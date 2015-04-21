@@ -1,0 +1,55 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<style type="text/css">
+.list-table{width:100%;}
+.list-table th{padding:10px 0;}
+.list-table td{padding:5px 0;}
+</style>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+         <div class="position">
+      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
+        </div>
+    <div class="textlist">
+  		[@InfoPage nodeId=node.id pageSize=20;pagedList]
+			<table class="list-table">
+				<tr>
+					<th>职位名称</th>
+					<th>公司名称</th>
+					<th>工作地点</th>
+					<th>发布日期</th>
+				</tr>
+				[#list pagedList.content as info]
+				<tr>
+          <td align="center"><a href="${info.url}">${info.title}</a></td>
+          <td align="center">${info.customs['company']}</td>
+          <td align="center">${info.customs['location']}</td>
+          <td align="center">${info.publishDate?string('yyyy-MM-dd')}</td>
+				</tr>
+				[/#list]
+			</table> 
+      [#include "inc_page.html"/]
+ 	 	 [/@InfoPage]
+     </div>
+	</div>
+	<div class="pright">
+	[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-lazy-init="true">
+	
+	<context:component-scan base-package="com.jspxcms.core.service.impl">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+<!-- 		<context:exclude-filter type="assignable" expression="com.jspxcms.core.service.impl.InfoServiceImpl"/>
+		<context:exclude-filter type="assignable" expression="com.jspxcms.core.service.impl.NodeServiceImpl"/> -->
+	</context:component-scan>
+	
+	<bean id="menuHolder" class="com.jspxcms.core.support.MenuHolder">
+	  <property name="menus" value="#{T(com.jspxcms.core.support.Menu).assemble(property.getMap('menu.'))}"/>
+	</bean>
+	<bean id="modelTypeHolder" class="com.jspxcms.core.support.ModelTypeHolder">
+	  <property name="types" value="#{property.getSortedList('modelType.')}"/>
+	  <property name="paths" value="#{property.getMap('modelTypePath.')}"/>
+	</bean>
+
+	<bean id="infoFulltextService" class="com.jspxcms.core.fulltext.InfoFulltextServiceImpl"/>
+	<bean id="infoFulltextGenerator" class="com.jspxcms.core.fulltext.InfoFulltextGeneratorImpl"/>
+	<bean id="infoFulltextListener" class="com.jspxcms.core.fulltext.InfoFulltextListener"/>
+	<bean id="htmlService" class="com.jspxcms.core.html.HtmlServiceImpl"/>
+	<bean id="htmlGenerator" class="com.jspxcms.core.html.HtmlGeneratorImpl"/>
+	<bean id="htmlInfoListener" class="com.jspxcms.core.html.HtmlInfoListener"/>
+	<bean id="htmlNodeListener" class="com.jspxcms.core.html.HtmlNodeListener"/>
+	<bean id="collector" class="com.jspxcms.ext.collect.CollectorImpl"/>
+	
+	<!-- <bean id="infoService" class="com.jspxcms.core.service.impl.InfoServiceImpl">
+		<property name="listeners" ref="infoListeners"/>
+	</bean>
+	<bean id="nodeService" class="com.jspxcms.core.service.impl.NodeServiceImpl">
+		<property name="listeners" ref="nodeListeners"/>
+	</bean>
+	<bean id="infoListeners"  class="org.springframework.beans.factory.config.ListFactoryBean">
+	  <property name="sourceList" value="#{property.getBeanList('infoListeners.',T(com.jspxcms.core.listener.InfoListener))}"/>
+	</bean>	
+	<bean id="nodeListeners" class="org.springframework.beans.factory.config.ListFactoryBean">
+	  <property name="sourceList" value="#{property.getBeanList('nodeListeners.',T(com.jspxcms.core.listener.NodeListener))}"/>
+	</bean>	 -->
+<!-- 	<util:list id="infoListeners" value-type="com.jspxcms.core.listener.InfoListener" list-class="java.util.ArrayList">
+		<ref bean="infoFulltextListener"/>
+	</util:list> -->
+	
+</beans>

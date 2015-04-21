@@ -1,0 +1,207 @@
+﻿@CHARSET "UTF-8";
+@keyframes ani {
+  0% {
+    transform: matrix(1.02,0,0,0.97,0,0);
+  }
+  100% {
+    transform: matrix(0.97,0,0,1.02,0,0);
+  }
+}
+@keyframes arrowdown {
+  0% {
+    background-position: 50% 250px;
+  }
+  100% {
+    background-position: 50% 270px;
+  }
+}
+#main_banners header {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+#main_banners section {
+  width: 360px;
+  height: 360px;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 999px;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin: -205px 0 0 0;
+}
+#main_banners section a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 500px;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#main_banners section .bg {
+  width: 100%;
+  height: 100%;
+  border-radius: 500px;
+  background-image: none;
+  animation-duration: 2s;
+  animation-name: ani;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#main_banners #banner_brand header {
+  background-image: url(../images/banner_brand_bg.jpg);
+  left: 0;
+}
+#main_banners #banner_brand section {
+  left: 50%;
+  margin-left: -180px;
+}
+#main_banners #banner_brand section a {
+  background-image: url(../images/banner_brand_arrow.png);
+  background-position: 50% 250px;
+  background-repeat: no-repeat;
+  animation-duration: 1s;
+  animation-name: arrowdown;
+  animation-iteration-count: 5;
+}
+#main_banners #banner_brand section .bg {
+  background-color: #a11700;
+  background-color: rgba(177,15,0,0.7);
+}
+#main_banners #banner_brand h1 {
+  font-size: 24px;
+  color: white;
+  margin-top: 120px;
+  position: relative;
+  top: 80px;
+}
+#main_banners #banner_brand p {
+  color: white;
+  font-size: 20px;
+}
+#main_banners #banner_color header { background-image: url(../images/banner_color_bg.jpg); }
+#main_banners #banner_color section .bg {
+  background: #5f7d89;
+  background: rgba(30,104,127,0.6);
+}
+#main_banners #banner_color h1 {
+  text-indent: -9999em;
+  width: 199px;
+  height: 160px;
+  background-image: url(../images/rc.png);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  margin: 50px auto 20px;
+}
+#main_banners #banner_color h2 {
+  color: #ffffff;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+#main_banners #banner_color p {
+  color: white;
+  font-size: 16px;
+}
+#main_banners #banner_eco header { background-image: url(../images/banner_eco_bg.jpg); }
+#main_banners #banner_eco section .bg {
+  background: #909f49;
+  background: rgba(157,168,81,0.7);
+}
+#main_banners #banner_eco h1 {
+  color: #ffffff;
+  font-size: 36px;
+  margin-bottom: 20px;
+  position: relative;
+  top: 180px;
+  text-shadow: 0 0 3px #333333;
+}
+#main_banners #banner_ibaby header { background-image: url(../images/banner_ibaby_bg.jpg); }
+#main_banners #banner_ibaby section .bg {
+  background: #70a340;
+  background: rgba(111,161,63,0.7);
+}
+#main_banners #banner_ibaby h1 {
+  color: #ffffff;
+  font-size: 30px;
+  margin-bottom: 20px;
+  position: relative;
+  top: 180px;
+}
+#main_banners #banner_ibaby h2 {
+  text-indent: -9999em;
+  width: 111px;
+  height: 93px;
+  background-image: url(../images/ibaby_icon.png);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  margin: 0 auto 90px;
+}
+#main_banners #banner_ibaby p {
+  color: white;
+  font-size: 18px;
+}
+#main_banners #banner_paint header { background-image: url(../images/banner_jw_bg.jpg); }
+#main_banners #banner_paint section {
+  width: 500px;
+  height: 400px;
+  margin: -275px 0 0 0;
+  border-radius: 0;
+  text-align: center;
+}
+#main_banners #banner_paint section .bg {
+  width: 400px;
+  height: 326px;
+  margin: auto;
+  background-image: url("../images/banner_jw_b.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 0;
+}
+#main_banners #banner_paint h1 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-top: 50px;
+  text-shadow: 0 0 3px #333333;
+}
+#main_banners #banner_paint h2 {
+  color: #ffffff;
+  font-size: 30px;
+  margin: 20px auto;
+  text-shadow: 0 0 3px #333333;
+}
+#main_banners #banner_paint p {
+  color: white;
+  font-size: 16px;
+  margin-top: 30px;
+  text-shadow: 0 0 3px #333333;
+}
+#main_banners #banner_paint .icon {
+  width: 150px;
+  height: 72px;
+  background-image: url(../images/banner_jw_i.png);
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  position: absolute;
+  left: 0px;
+  bottom: 20px;
+}
+#main_banners #banner_paint .product {
+  width: 150px;
+  height: 102px;
+  background-image: url(../images/banner_jw_p.png);
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}

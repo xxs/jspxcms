@@ -1,0 +1,44 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网站地图 -- ${site.fullNameOrName}</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+    <div class="position">
+     当前位置：<a href="${ctx}/">首页</a>&nbsp;»&nbsp;网站地图
+    </div>
+    <div class="textlist">
+			<ul class="normal">
+        [@NodeList isHidden='';parentList]
+        [#list parentList as parent]
+          <p style="background-color:#def5ef;clear:both; height:30px; line-height:30px;"><a href="${parent.url}">${parent.name}</a></p>
+          <ul style="margin-bottom:10px;list-style:none;">
+          [@NodeList parentId=parent.id;Childrenlist]
+          [#list Childrenlist as child]
+            <li style="float:left;margin-right:10px;"><a href="${child.url}">${child.name}</a></li>
+          [/#list]
+          [/@NodeList]
+          </ul>
+        [/#list]
+        [/@NodeList]
+      </ul>
+    </div>
+	</div>
+	<div class="pright">
+	[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

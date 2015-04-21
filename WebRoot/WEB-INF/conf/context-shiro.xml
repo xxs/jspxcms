@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-lazy-init="true">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jspx" />
+		<property name="filters">
+			<util:map>
+				<entry key="backSite" value-ref="backSiteFilter" />
+				<entry key="authc" value-ref="authcFilter" />
+				<entry key="user" value-ref="userFilter" />
+				<entry key="logout" value-ref="logoutFilter" />
+			</util:map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/ = anon
+				*.jspx = anon
+				*.jsp = anon
+				
+				/login.jspx = authc
+				/logout.jspx = logout
+				/my.jspx = user
+				/my/** = user
+				
+				/cmscp/ = backSite,anon
+				/cmscp/index.do = backSite,anon
+				/cmscp/login.do = backSite,authc
+				/cmscp/logout.do = backSite,logout
+				/cmscp/** = backSite,user
+			</value>
+		</property>
+	</bean>
+	<!-- Shiro Filter -->	
+	<bean id="backSiteFilter" class="com.jspxcms.core.support.BackSiteFilter" depends-on="siteDao">
+		<property name="siteShiroService" ref="siteShiroServiceImpl"/>
+		<property name="cacheManager" ref="shiroEhcacheManager"/>
+	</bean>
+	<bean id="authcFilter" class="com.jspxcms.core.security.CmsAuthenticationFilter"/>
+	<bean id="userFilter" class="com.jspxcms.core.security.CmsUserFilter"/>
+	<bean id="logoutFilter" class="com.jspxcms.core.security.CmsLogoutFilter"/>
+	
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- 项目自定义的Realm, 所有userRealmService依赖的dao都需要用depends-on声明 -->
+	<bean id="shiroDbRealm" class="com.jspxcms.core.security.ShiroDbRealm" depends-on="userDao">
+		<property name="userShiroService" ref="userShiroServiceImpl" />
+	</bean>
+
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
+	</bean>
+</beans>

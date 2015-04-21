@@ -1,0 +1,78 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="input type="text"/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>Jspxcms留言板_${Param.q!?html}_${site.fullNameOrName}</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<script>
+$(function() {
+	$("#validForm").validate();
+	$("#nextone").click(function(){
+			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+			$("#captcha").unbind("focusin");
+	});
+	$("#captcha").focusin(function(){
+		$(".autherimg").css("display","inline");
+		$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+	});
+});
+</script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">  
+	<div class="pleft">
+    <div class="position">
+      当前位置：<a href="#">首页</a>&nbsp;>&nbsp;在线留言
+    </div>
+    <div class="guestbook">
+      [@GuestbookPage pageSize=10;pagedList]
+        [#list pagedList.content as guest]
+        <div class="guestbookcon">
+          <p><span>${guest.creator.username!}</span>&nbsp;${guest.creationDate?string('yyyy-MM-dd HH:mm')}&nbsp;说:</p>
+          <p>[#noescape]${bbcode(guest.text!)}[/#noescape]</p>
+          [#if guest.replyer??]
+          <p style="margin-left:20px;"><span>${guest.replyer.username}</span>&nbsp;${guest.replyDate!?string('yyyy-MM-dd HH:mm')}&nbsp;回复说：</p>
+          <p style="margin-left:20px;">[#noescape]${bbcode(guest.replyText!)}[/#noescape]</p>
+          [/#if]
+        </div>
+        [/#list]
+				[#include 'inc_page.html'/]
+      [/@GuestbookPage]
+    </div>
+     <div class="guestbookform">	 
+      <p style="font-size:14px;">留言</p>
+      [#assign conf = site.getConf('com.jspxcms.ext.domain.SiteGuestbook')/]
+      <form id="comment" action="${ctx}/guestbook.jspx" method="post">
+        <input type="hidden" name="status" value="1"/>
+        <input type="hidden" name="nextUrl" value="${ctx}/guestbook.jspx"/>
+        <input type="hidden" name="status_0" value="留言成功！"/>
+        <p>类型：<select name="typeId" style="margin-left:27px;">
+          [@GuestbookTypeList;list]
+            [#list list as type]  
+            <option value="${type.id}">${type.name}</option>
+            [/#list]
+          [/@GuestbookTypeList]
+          </select>
+        </p>
+        <p style="vertical-align:top;height:100px;">留言内容:<textarea id="content" maxlength="${conf.maxLength}" name="text"></textarea></p>
+        <script type="text/javascript" src="${ctx}/app.jspx?template=guestbook_captcha"></script>
+        <p><input id="commit" type="submit" value="留言"/></p>
+      </form>
+     </div>     
+	</div>
+	<div class="pright">
+		[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

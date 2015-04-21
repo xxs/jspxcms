@@ -1,0 +1,27 @@
+﻿@CHARSET "UTF-8";
+#ie_warning {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+#ie_warning h1 {
+  width: 500px;
+  height: 80px;
+  margin: 100px auto;
+  background-image: url("../Images/l1.png");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  text-indent: -9999px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+#ie_warning p {
+  font-size: 16px;
+  line-height: 2;
+  width: 500px;
+  margin: 0 auto 1em;
+  text-align: left;
+}
+html, body { overflow: hidden; }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
+	default-lazy-init="true">
+
+	<context:annotation-config/>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="com.jspxcms.common.web.BindingInitializer" />
+		</property>
+		<property name="customArgumentResolvers">
+			<list>
+				<bean class="com.jspxcms.common.web.PageableArgumentResolver" />
+			</list>
+		</property>
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <!-- one of the properties available; the maximum file size in bytes -->
+	    <!-- <property name="maxUploadSize" value="100000"/> -->
+	</bean>
+	<mvc:annotation-driven />
+	<mvc:interceptors>
+		<bean class="com.jspxcms.core.support.BackInterceptor" />
+	</mvc:interceptors>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	<!-- <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="clientlanguage"/>
+		in seconds. If set to -1, the cookie is not persisted (deleted when browser shuts down)
+		<property name="cookieMaxAge" value="100000"/>
+	</bean> -->
+	
+	<!-- AOP式方法级权限检查  -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<!-- <property name="proxyTargetClass" value="true" /> -->
+	</bean>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    	<property name="securityManager" ref="securityManager"/>
+	</bean>
+	<!--
+	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.AuthorizationException">/errors/403</prop>
+				<prop key="javax.validation.ConstraintViolationException">/errors/400</prop>				
+				<prop key="org.springframework.dao.DataIntegrityViolationException">/errors/data_integrity_violation_exception</prop>
+				<prop key="com.jspxcms.core.support.DeleteException">/errors/delete_exception</prop>
+				<prop key="com.jspxcms.core.support.CmsException">/errors/cms_exception</prop>
+      </props>
+		</property>
+		<property name="statusCodes">
+			<props>
+				<prop key="/errors/403">403</prop>
+				<prop key="/errors/400">400</prop>
+				<prop key="/errors/data_integrity_violation_exception">200</prop>
+				<prop key="/errors/cms_exception">200</prop>
+			</props>
+		</property>
+		 <property name="order" value="0"/>
+  </bean>
+   -->
+</beans>

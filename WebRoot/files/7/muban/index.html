@@ -1,0 +1,222 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${site.fullNameOrName} -- Powerd by xxs</title>
+<!--[if IE 8]><script type="text/javascript" src="_files/js/html5shiv.js"> </script><![endif]-->
+<meta name="keywords" content="dedweek的关键字" />
+<meta name="description" content="关键描述" />
+<meta name="Copyright" content="版权文字" />
+<meta name="author" content="开发者">
+<meta name="generator" content=" 2.0" />
+
+<link rel="stylesheet" type="text/css" href="_files/css/layout.css" />
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="_files/js/tweenmax.min.js"></script>
+<script type="text/javascript" src="_files/js/page.js"></script>
+
+</head>
+
+<body> 
+	[#include "inc_header.html"/]
+	<div id="banner">
+		<div id="bannerQuery" class="bwrap">
+			[@AdSlotList number = 'banner' ;list]
+			  	[#list list as adSlot]
+				  	[@AdList slotId=adSlot.id;list]
+				    <ul class="bquery">
+				      [#list list as ad]
+				      	<li class="blist"><a href='${ad.url}' target='_blank'><img src="${ad.image}" title="${ad.name}" alt="${ad.name}" /></a> </li>
+				      [/#list]
+				    </ul>
+				    [/@AdList]
+			    [/#list]
+		    [/@AdSlotList]
+		</div>
+		<div class="bctrl"><div id="bannerCtrl" class="bctrli"></div></div>
+	</div>
+	<div class="clear"></div>
+	
+	
+	<div class="maincontent">
+  <div class="news_bg">
+    <div class="w1000">
+      <div class="h12"></div>
+      <div class="news_index">
+        <h3 class="news_t">新闻中心</h3>
+        <div  id="scrolltxt">
+        	[@InfoList nodeId=117 limit=5;list]
+			 	  [#list list as info]
+					<span class="time">— ${info.date}</span>
+			 	  	<div>
+						<a href="${info.url}" title="${info.title}" target="_blank">${info.title}</a>
+					</div>
+			      [/#list]
+		      [/@InfoList]
+        </div>
+      </div>
+      <div class="bshare-custom"> <a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="index_serve">
+      <h1 class="index_h1" title="一站式服务,专注企业网站建设、网站设计、微信开发、等高品质整合服务.">服务项目<span style="font-size:12px; font-weight:normal;"></span></h1>
+      <ul class="serve_ul">
+        <li class="li1"><a  href="website" >
+          <div class="pic_title">
+            <div class="pic"></div>
+            <h1>网站建设</h1>
+          </div>
+          </a> </li>
+        <li class="li2"><a href="wechat" >
+          <div class="pic_title">
+            <div class="pic"></div>
+            <h1>微信营销</h1>
+          </div>
+          </a> </li>
+        <li class="li3"><a  href="/" >
+          <div class="pic_title">
+            <div class="pic"></div>
+            <h1>400电话</h1>
+          </div>
+          </a> </li>
+        <li class="li4"><a href="ui" >
+          <div class="pic_title">
+            <div class="pic"></div>
+            <h1>UI设计</h1>
+          </div>
+          </a> </li>
+      </ul>
+    </div>
+    <div class="clear h10"></div>
+    <h1 class="index_h1"><span>最新案例</span></h1>
+    <section id="wrapper">
+      <div id="container">
+       [@InfoList nodeId=113 limit=6;list]
+         [#list list as info]
+	         <div class="grid"> 
+	         	<strong><a href="${info.url!}" title="${info.title!}" target="_blank">${info.title!}</a></strong>
+	          	<div class="imgholder">
+	          		<a href="${info.url!}" title="${info.title!}"  target="_blank">
+	          		<img src="${info.customs['smallimage']}" ></a>
+	          	</div>
+	          	<p>
+	          		<a href="${info.title!}" title="${info.title!}" target="_blank">${substring(info.metaDescription,80,'...')}</a>
+				</p>
+	          	<div class="meta"><span>设计理念：稳重、大气</span><a href="/case/pinpaiwangzhan/2014/1223/83.html" title="潍坊海瑞通机电设备有限" target="_blank"><b></b></a></div>
+	        </div>
+         [/#list]
+         [/@InfoList]
+        <div class="clear"></div>
+      </div>
+    </section>
+    <div class="clear h10"></div>
+  </div>
+</div>
+	
+	<script src="_files/js/3492.js" type="text/javascript" charset="gb2312"></script>
+	<script type="text/javascript" charset="utf-8" src="_files/js/buttonlite.js"></script>
+	<script type="text/javascript" charset="utf-8" src="_files/js/bsharec0.js"></script> 
+	<script>var c,_=Function;
+	with(o=document.getElementById("scrolltxt")){ innerHTML+=innerHTML; onmouseover=_("c=1"); onmouseout=_("c=0");}
+	(F=_("if(#%22||!c)#++,#%=o.scrollHeight>>1;setTimeout(F,#%22?10:2000);".replace(/#/g,"o.scrollTop")))();
+	</script> 
+	
+	
+<div class="hrey">
+  <div class="w1000">
+    <h2 class="partners">合作伙伴</h2>
+    <div class="rollBox"> <a class="LeftBotton png" onMouseDown="ISL_GoUp()" onMouseUp="ISL_StopUp()" onMouseOut="ISL_StopUp()"></a>
+      <div class="Cont" id="ISL_Cont">
+        <div class="ScrCont">
+          <div id="List1"> 
+            <!-- 图片大小：width="130" height="50"  begin -->
+            [@FriendlinkList type='friend';list]
+			      [#list list as link]
+			      	<p class="pl"> <img src="${link.logo}" title="${link.name}" ></p>
+			      [/#list]
+		    [/@FriendlinkList]
+            <!-- 图片列表 end --> 
+          </div>
+          <div id="List2"></div>
+        </div>
+      </div>
+      <a class="RightBotton png" onMouseDown="ISL_GoDown()" onMouseUp="ISL_StopDown()" onMouseOut="ISL_StopDown()"></a> </div>
+    <!--End rollBox--->
+    <div class="bottom_nav">
+      <dl class="link">
+        <dt><a  href="/website/" title="网站建设" >网站建设 </a></dt>
+        
+        <dd><a href="/website/shopsite/" title="商城网站" rel="nofollow">商城网站 </a></dd>
+        
+        <dd><a href="/website/companysite/" title="企业网站" rel="nofollow">企业网站 </a></dd>
+        
+        <dd><a href="/website/wmwz/" title="外贸网站" rel="nofollow">外贸网站 </a></dd>
+        
+      </dl>
+      <dl class="link">
+        <dt><a  href="/service/" title="售后服务" >售后服务 </a></dt>
+        
+        <dd><a href="/service/webpoint/" title="建站观点" rel="nofollow">建站观点 </a></dd>
+        
+        <dd><a href="/service/seoknowledge/" title="网站优化" rel="nofollow">网站优化 </a></dd>
+        
+        <dd><a href="/service/member/" title="会员服务" rel="nofollow">会员服务 </a></dd>
+        
+      </dl>
+      <dl class="link">
+        <dt><a  href="/case/" title="经典案例" >经典案例 </a></dt>
+        
+        <dd><a href="/case/shangchengwangzhan/" title="商城网站" rel="nofollow">商城网站 </a></dd>
+        
+        <dd><a href="/case/pinpaiwangzhan/" title="品牌网站" rel="nofollow">品牌网站 </a></dd>
+        
+        <dd><a href="/case/waimaowangzhan/" title="外贸网站" rel="nofollow">外贸网站 </a></dd>
+        
+      </dl>
+      <dl class="link">
+        <dt><a  href="/about/" title="关于我们" >关于我们 </a></dt>
+        
+        <dd><a href="/about/joinbochuang/" title="加入我们" rel="nofollow">加入我们 </a></dd>
+        
+        <dd><a href="/about/companynews/" title="公司新闻" rel="nofollow">公司新闻 </a></dd>
+        
+        <dd><a href="/about/wenti/" title="常见问题" rel="nofollow">常见问题 </a></dd>
+        
+      </dl>
+      <dl class="link">
+        <dt><a  href="/contact/" title="联系我们" >联系我们 </a></dt>
+        
+        <dd><a href="/contact/payway/" title="支付方式" rel="nofollow">支付方式 </a></dd>
+        
+        <dd><a href="/contact/feedback/" title="立即咨询" rel="nofollow">立即咨询 </a></dd>
+        
+      </dl>
+      <dl class="lx">
+        <dd>
+          <h1>联系我们</h1>
+        </dd>
+        <dd><a href="http://wpa.qq.com/msgrd?v=3&uin=1550960536&site=qq&menu=yes" title="qq" target="_blank"><i class="qq"></i>QQ：1550960536</a></dd>
+        <dd><a href="mailto:aqbcxx@163.com" target="_blank" title="邮件"><i class="miall"></i>邮件：aqbcxx@163.com</a></dd>
+        <dd><a title="nic微信"><i class="weixin"></i>微信：bochuang</a></dd>
+        <dd><a title="网站统计"><i class="skype"></i><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253002322'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/stat.php%3Fid%3D1253002322' type='text/javascript'%3E%3C/script%3E"));</script></a></dd>
+        <dd class="jiaotan"><a href="http://wpa.qq.com/msgrd?v=3&uin=1550960536&site=qq&menu=yes" target="_blank" title="qq">点击交谈</a></dd>
+      </dl>
+    </div>
+    <div class="clear"></div>
+    <div class="fd_link">  <a href='http://www.baidu.com' target='_blank'>百度搜索</a>   <a href='http://www.anqiunews.cn' target='_blank'>安丘新闻网</a>   <a href='http://www.ianqiu.com.cn' target='_blank'>潍坊网站制作</a>  </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="clear"></div>
+	
+	[#include "inc_footer.html"/]
+	
+	<script src="_files/js/rolling.js"></script> 
+	<script src="_files/js/jquery-webox.js"></script>
+</body>
+</html>
+[/#escape]

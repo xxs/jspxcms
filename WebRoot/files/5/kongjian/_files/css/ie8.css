@@ -1,0 +1,8 @@
+﻿@CHARSET "UTF-8";
+#banner_prev { background-image: url("../Images/a_prev.gif"); }
+#banner_next { background-image: url("../Images/a_next.gif"); }
+article header ul .tech_list img { border: 0; }
+#banner_brand section .bg { background: transparent url(../Images/c1.gif) no-repeat 50% 50% !important; }
+#banner_color section .bg { background: transparent url(../Images/c2.gif) no-repeat 50% 50% !important; }
+#banner_eco section .bg { background: transparent url(../Images/c3.gif) no-repeat 50% 50% !important; }
+#banner_ibaby section .bg { background: transparent url(../Images/c4.gif) no-repeat 50% 50% !important; }

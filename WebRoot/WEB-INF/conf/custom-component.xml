@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd"
+	default-lazy-init="true">
+	<!-- <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/jspxcms" /> -->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<property name="maxActive" value="${dbcp.maxActive}" />
+		<property name="maxIdle" value="${dbcp.maxIdle}" />
+		<property name="defaultAutoCommit" value="false" />
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	</bean>
+	
+	<bean id="captchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore"/>
+	<bean id="wordGen" class= "com.octo.captcha.component.word.wordgenerator.RandomWordGenerator">
+    <constructor-arg value="ABCDEGHJKLMNRSTUWXY235689"/>
+	</bean>
+	<bean id="fontGen" class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
+    <constructor-arg index="0" value="30"/>
+    <constructor-arg index="1" value="30"/>
+    <constructor-arg index="2">
+        <list>
+            <bean class="java.awt.Font" >
+						    <constructor-arg index="0" value="Bell MT"/>
+						    <constructor-arg index="1" type="int" value="0"/>
+						    <constructor-arg index="2" type="int" value="30"/>
+						</bean>
+            <bean class="java.awt.Font" >
+						    <constructor-arg index="0" value="nyala"/>
+						    <constructor-arg index="1" type="int" value="1"/>
+						    <constructor-arg index="2" type="int" value="30"/>
+						</bean>
+            <bean class="java.awt.Font" >
+						    <constructor-arg index="0" value="Credit valley"/>
+						    <constructor-arg index="1" type="int" value="1"/>
+						    <constructor-arg index="2" type="int" value="30"/>
+						</bean>
+        </list>
+    </constructor-arg>
+    <constructor-arg index="3" value="false"/>
+	</bean>
+	<bean id="colorGen" class="com.octo.captcha.component.image.color.RandomListColorGenerator">
+    <constructor-arg>
+    	<list>
+				<bean class="java.awt.Color" >
+					<constructor-arg index="0" type="int" value="23"/>
+					<constructor-arg index="1" type="int" value="170"/>
+					<constructor-arg index="2" type="int" value="27"/>
+				</bean>
+				<bean class="java.awt.Color" >
+					<constructor-arg index="0" type="int" value="220"/>
+					<constructor-arg index="1" type="int" value="34"/>
+					<constructor-arg index="2" type="int" value="11"/>
+				</bean>
+				<bean class="java.awt.Color" >
+					<constructor-arg index="0" type="int" value="23"/>
+					<constructor-arg index="1" type="int" value="67"/>
+					<constructor-arg index="2" type="int" value="172"/>
+				</bean>    		
+    	</list>
+    </constructor-arg>
+	</bean>
+	<bean id="backGen" class="com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator">
+    <constructor-arg index="0" value="100"/>
+    <constructor-arg index="1" value="30"/>
+    <constructor-arg index="2">
+			<bean class="java.awt.Color" >
+				<constructor-arg index="0" type="int" value="255"/>
+				<constructor-arg index="1" type="int" value="255"/>
+				<constructor-arg index="2" type="int" value="255"/>
+			</bean>
+    	<!-- <util:constant static-field="java.awt.Color.white"/> -->
+    </constructor-arg>
+	</bean>
+	<bean id="imageEngine" class="com.jspxcms.common.security.GmailEngine">
+    <constructor-arg index="0" ref="wordGen"/>
+    <constructor-arg index="1" ref="fontGen"/>
+    <constructor-arg index="2" ref="colorGen"/>
+    <constructor-arg index="3" ref="backGen"/>
+    <constructor-arg index="4" value="4"/>
+    <constructor-arg index="5" value="4"/>
+    <constructor-arg index="6" value="10"/>
+	</bean>	
+	<bean id="captchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+		<constructor-arg index="0" ref="captchaStore"/>
+		<constructor-arg index="1" ref="imageEngine"/>
+		<constructor-arg index="2" type="int" value="180"/>
+		<constructor-arg index="3" type="int" value="100000"/>
+		<constructor-arg index="4" type="int" value="75000"/>
+	</bean>
+
+	<bean id="fsDirectory" class="com.jspxcms.common.fulltext.FSDirectoryFactoryBean">
+		<property name="location" value="${fsDirectory.location}" />
+	</bean>
+	
+	<!-- 使用中文分词器可达到更好的分词效果，但对内存的要求也较高，需有180M以上的内存
+	<bean id="analyzer" class="org.wltea.analyzer.lucene.IKAnalyzer" destroy-method="close">
+		<constructor-arg type="boolean" value="true"/>
+	</bean>
+	 -->
+	<bean id="analyzer" class="org.apache.lucene.analysis.cjk.CJKAnalyzer" destroy-method="close">
+		<constructor-arg><util:constant static-field="org.apache.lucene.util.Version.LUCENE_36"/></constructor-arg>
+	</bean>
+	
+	<bean id="indexWriterConfig" class="org.apache.lucene.index.IndexWriterConfig">
+		<constructor-arg><util:constant static-field="org.apache.lucene.util.Version.LUCENE_36"/></constructor-arg>
+		<constructor-arg ref="analyzer"/>
+	</bean>
+	<bean id="indexWriter" class="com.jspxcms.common.fulltext.IndexWriterFactoryBean">
+		<property name="directory" ref="fsDirectory"/>
+		<property name="indexWriterConfig" ref="indexWriterConfig"/>
+	</bean>
+	<bean id="searcherManager" class="com.jspxcms.common.fulltext.SearcherManagerFactoryBean">
+		<property name="indexWriter" ref="indexWriter" />
+	</bean>
+	<bean id="luceneIndexTemplate" class="com.jspxcms.common.fulltext.DefaultLuceneIndexTemplate">
+		<property name="indexWriter" ref="indexWriter"/>
+		<property name="searcherManager" ref="searcherManager"/>
+		<property name="autoCommit" value="${luceneIndexTemplate.autoCommit}"/>
+	</bean>
+	<!-- 
+	<bean id="trackingIndexWriter" class="org.apache.lucene.search.NRTManager.TrackingIndexWriter">
+		<constructor-arg ref="indexWriter"/>
+	</bean>
+	<bean id="nrtManager" class="com.jspxcms.common.fulltext.NRTManagerFactoryBean">
+		<property name="trackingIndexWriter" ref="trackingIndexWriter" />
+	</bean>
+	<bean id="luceneIndexTemplate" class="com.jspxcms.common.fulltext.NRTLuceneIndexTemplate">
+		<property name="trackingIndexWriter" ref="trackingIndexWriter"/>
+		<property name="nrtManager" ref="nrtManager"/>
+	</bean>
+	 -->
+</beans>

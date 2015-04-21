@@ -1,0 +1,228 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="_files/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#nextone").click(function(){
+			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+			$("#captcha").unbind("focusin");
+		});
+		$("#captcha").focusin(function(){
+			$(".autherimg").css("display","inline");
+			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+		});
+		//$("#captcha").captcha("${ctx}/captcha.servlet",{title:"点击重新获取验证码"});
+	});
+</script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+    	<div class="position">
+      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>>[/#list]正文
+        </div>
+    	<div class="textinfo">
+      	 <h2 class="title mt2">${info.fullTitleOrTitle}</h2>
+         <p class="infoattr">
+         	<span>${info.publishDate?string('yyyy-MM-dd')}</span>
+                <span>浏览次数：<span id="info_views"></span>
+        		[#if info.getSource()??]<span>来源：${info.getSource()!} </span>[/#if]
+         		[#if info.getAuthor()??]<span>作者：${info.getAuthor()!}</span>[/#if]
+				<script type="text/javascript">
+					$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
+				</script></span>
+         </p>
+       [#if info.video??]
+       <div style="text-align:center; margin-bottom:20px;">
+        <div id="a1"></div>
+				<script type="text/javascript">
+           var flashvars={
+            f:'${info.video}',
+            c:0
+            };
+          CKobject.embedSWF('_files/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars);      
+        </script>
+       </div>
+       
+       [/#if]
+ 	   	 <div class="text">[#noescape]${text}[/#noescape]</div>
+       	[#if pagedList.totalPages>1]
+         [#include 'inc_page.html'/]
+        [/#if]
+          <div class="mood">
+            <script type="text/javascript">
+							function infoScoring(id,itemId) {
+								$.post('${ctx}/info_scoring.jspx',
+									{id:id,itemId:itemId},
+									function(data) {
+										if(data!="0"){
+											$("#score-item-"+itemId).text(data);
+										}else{
+											alert("你已经表达过心情了！");	
+										}
+									}
+								);
+							}
+						</script>
+            [@ScoreGroup number='mood';group]
+            <ul>
+              [#list group.items as item]
+              <li onclick="infoScoring(${info.id},${item.id});">
+                <p> <span id="score-item-${item.id}">0</span>票</p>
+                <p><img src="${item.iconUrl}"/></p>
+                <p>${item.name}</p>
+              </li>
+              [/#list]
+            </ul>
+            [/@ScoreGroup]
+            <script type="text/javascript">
+              $.get("${ctx}/info_score/${info.id}.jspx?d="+new Date()*1,function(data) {
+                for(id in data) {
+                  $("#score-item-"+id).text(data[id]);
+                }
+              },"json");
+            </script>
+          </div>
+        
+        
+       		<div class="digg clr">
+						<script type="text/javascript">
+              function digg() {
+                $.post('${ctx}/info_digg.jspx',
+                  {id:${info.id}},
+                  function(data){
+                    if(data!="0") {
+                      $('#diggs').text(data);
+                    }else{
+                      alert("你已经顶过一次！")
+                    }
+                  }
+                );
+              }
+              function bury() {
+                $.post('${ctx}/info_bury.jspx',
+                  {id:${info.id}},
+                  function(data){
+                    if(data!="0") {
+                      $('#burys').text(data);
+                    }else{
+                      alert("你已经踩过一次！")
+                    }
+                  }
+                );
+              }
+            </script>
+            <a onclick="digg();" class="supports FlLeft" href="javascript:return false;"><span id="diggs"></span></a>
+            <a onclick="bury();" class="againsts FlRight" href="javascript:return false;"><span id="burys"></span></a>
+            <script type="text/javascript">
+              $.get("${ctx}/info_diggs/${info.id}.jspx?d="+new Date()*1,function(data) {
+                $("#diggs").text(data[0]);
+                $("#burys").text(data[1]);
+              },"json");
+            </script>
+         </div>
+         
+          <!-- Baidu Button BEGIN -->
+            <div class="share-btn" style="margin:10px 8px; height:30px;">
+            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                <span class="bds_more">分享到：</span>
+                <a class="bds_qzone"></a>
+                <a class="bds_tsina"></a>
+                <a class="bds_tqq"></a>
+                <a class="bds_renren"></a>
+                <a class="shareCount"></a>
+            </div>
+        	<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+      		<script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+        	</script>
+           </div>
+        <!-- Baidu Button END -->
+       </div>
+       <div class="othernews">
+       	<ul>
+      		 [@InfoPrev id=info.id;i]
+         	 [#if i??]
+        	 <li>
+         		<span class="spanleft">上一条：<a href="${i.url}">${i.title!}</a></span>
+         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
+      		 </li>
+         	[#else]
+         	<li><span class="spanleft">上一条：没有了</span></li>
+        	[/#if]
+		 	[/@InfoPrev]
+		 	[@InfoNext id=info.id;i]
+         	[#if i??]
+		 	<li>
+         		<span class="spanleft">下一条：<a href="${i.url}">${i.title!}</a></span>
+         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
+         	</li>
+         	[#else]
+        	<li><span class="clr">下一条：没有了</span></li>
+         	[/#if]
+		 	[/@InfoNext ]
+         </ul>
+       </div>
+       <div class="comment">	 
+    		  <p style="font-size:14px;">评论</p>
+        [#assign conf = site.getConf('com.jspxcms.core.domain.SiteComment')/]
+			  <form id="comment" action="${ctx}/comment_submit.jspx" method="post">
+			  	<input type="hidden" name="ftype" value="Info"/>
+			  	<input type="hidden" name="fid" value="${info.id}"/>
+          <input type="hidden" name="status_0" value="评论成功！"/>
+          <input type="hidden" name="status_1" value="评论成功，请等待管理员审核！"/>
+			  	<input type="hidden" name="nextUrl" value="${url}"/>
+			  	<p><textarea id="content" name="text" maxlength="${conf.maxLength}"></textarea></p>
+					<script type="text/javascript" src="${ctx}/app.jspx?template=comment_captcha"></script>
+			  	<p><input id="commit" type="submit" value=" "/></p>
+			  </form>
+        <h2 style="margin:20px 0px;">网友评论:</h2>
+			  <div id="comment_div"></div>
+          <script type="text/javascript">
+         		$("#comment_div").load("${ctx}/comment_list.jspx?fid=${info.id}&d="+new Date()*1);
+          </script>
+          <p>
+              <a href="${ctx}/comment.jspx?fid=${info.id}">
+              共<span id="info_comments"></span>评论。点击查看
+              </a>
+					<script type="text/javascript">
+             $("#info_comments").load("${ctx}/info_comments/${info.id}.jspx?d="+new Date()*1);
+					</script>
+         </p>
+		   </div>     
+       <div class="reletednews">
+       		<p>相关新闻：</p>
+       		[@InfoFulltextList q=info.title excludeId=info.id limit=4;list]
+            </ul>
+							[#list list as fulltextInfo]
+							<li>
+              	<span class="spanleft">[@A bean=fulltextInfo target="_blank"/]</span>
+            		<span class="spanright">${fulltextInfo.publishDate?string('yyyy-MM-dd')}</span>
+              </li>
+							[/#list]
+       	 		</ul>
+ 	 				[/@InfoFulltextList]
+       </div>
+	</div>
+	<div class="pright">
+		[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

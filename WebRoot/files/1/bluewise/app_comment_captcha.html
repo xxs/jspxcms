@@ -1,0 +1,13 @@
+        [#assign conf = site.getConf('com.jspxcms.core.domain.SiteComment')/]
+      	[#assign script]
+        [#if conf.isNeedCaptcha(user)]
+			  	<p class="authcode">验证码<input type="text" id="captcha" name="captcha"/>
+                <span class="autherimg">
+                <img id="auther"  src="javascript:false;"  width="120" height="30" 
+                onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
+                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
+                </span>
+               </p>
+          [/#if]
+          [/#assign]
+					document.write("${script?js_string}");

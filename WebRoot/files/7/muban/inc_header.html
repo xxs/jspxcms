@@ -1,0 +1,77 @@
+<div class="top_msg">
+  <div class="w1000">
+    <div style="float:left;"><strong>8年潍坊网站设计，我们用案例说话！</strong></div>
+    <a href="http://www.ianqiu.com.cn" target="_blank" rel="nofollow">潍坊网站制作</a>&nbsp;&nbsp;
+    <img src="_files/picture/tagqq.png" align="absmiddle" alt="潍坊网站设计" height="18"> 
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=704442497&site=qq&menu=yes" title="qq" target="_blank"> QQ：704442497</a>&nbsp;&nbsp;
+    <img src="_files/picture/top_tel.png" align="absmiddle" height="18"> 咨询热线：2365-4562365</span>
+  </div>
+</div>
+<div class="logo_menu">
+  <div class="w1000">
+    <div class="logo"><a href=""><img src="_files/picture/logo.jpg" / alt="潍坊网站建设"></a></div>
+    <div class="menu">
+      <ul class="navigation">
+        <li ><a href="/" title="潍坊做网站首页" class="m1">网站首页</a></li>
+         [@NodeList;list]
+			[#list list as node]
+	 		 	<li><a href="${node.url}" title="${node.name}">${node.name}</a></li>
+			[/#list]
+		 [/@NodeList]
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="bottom_shadow"></div>
+
+<!--[if lt IE 9]>
+<script src="_files/js/html5.js"></script>
+<![endif]--> 
+<script src="_files/js/blocksit.min.js"></script> 
+<script>
+jQuery(document).ready(function() {
+	//blocksit define
+	jQuery(window).load( function() {
+		jQuery('#container').BlocksIt({
+			numOfCol: 3,
+			offsetX: 12,
+			offsetY: 12,
+			blockElement: '.grid'
+		});
+	});
+	
+	//window resize
+	var currentWidth = 1100;
+	jQuery(window).resize(function() {
+		var winWidth = jQuery(window).width();
+		var conWidth;
+		if(winWidth < 660) {
+			conWidth = 440;
+			col = 2
+		} else if(winWidth < 880) {
+			conWidth = 660;
+			col = 3
+		} else if(winWidth < 1100) {
+			conWidth = 880;
+			col = 4;
+		} else {
+			conWidth = 1100;
+			col = 5;
+		}
+		
+		if(conWidth != currentWidth) {
+			currentWidth = conWidth;
+			jQuery('#container').width(conWidth);
+			jQuery('#container').BlocksIt({
+				numOfCol: col,
+				offsetX: 8,
+				offsetY: 8
+			});
+		}
+	});
+});
+</script>
+<style>
+.logo_menu .menu ul.navigation li a.m1 { background:#da251d; z-index:999; position:relative; color:#fff; }
+</style>

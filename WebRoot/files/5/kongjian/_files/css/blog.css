@@ -1,0 +1,106 @@
+﻿@CHARSET "UTF-8";
+.body {
+  width: 960px;
+  margin: 0 auto;
+}
+.body:before, .body:after {
+  content: "";
+  display: table;
+}
+.body:after { clear: both; }
+.body .cf { *zoom: 1; }
+.body #blog_banner { margin: 30px 10px 10px; }
+.body .main { width: 960px; }
+.body .main:before, .body .main:after {
+  content: "";
+  display: table;
+}
+.body .main:after { clear: both; }
+.body .main .cf { *zoom: 1; }
+.body .main header h1 {
+  font-size: 16px;
+  color: #4c7dbc;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+.body .main header .postdate { color: #999999; }
+.body .main .intro, .body .main .content {
+  padding: 1em 0 0.5em;
+  color: #666666;
+  line-height: 2;
+}
+.body .main .content img {
+  max-width: 100%;
+  margin: 0.5em 0;
+}
+.body .main .content h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 1em 0;
+}
+.body .main footer { color: #999999; }
+.body .main footer a {
+  color: #999999;
+  margin-right: 1em;
+}
+.body .main footer .more { margin-bottom: 1.5em; }
+.body .article {
+  width: 720px;
+  float: left;
+  padding: 2em 0;
+}
+.body aside {
+  width: 240px;
+  float: right;
+}
+.body .blog_list:before, .body .blog_list:after {
+  content: "";
+  display: table;
+}
+.body .blog_list:after { clear: both; }
+.body .blog_list .cf { *zoom: 1; }
+.body .blog_list li {
+  border: 1px solid #eeeeee;
+  width: 180px;
+  height: 300px;
+  float: left;
+  margin: 15px 9px;
+  padding: 20px;
+}
+.body .blog_list li span.hp {
+  display: block;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 18px;
+}
+.body .blog_list li span.hp img {
+  width: 180px;
+  height: 180px;
+}
+.body aside {
+  width: 220px;
+  float: right;
+  margin: 30px 0;
+}
+.body aside section {
+  border: 1px solid #eeeeee;
+  padding: 10px;
+  margin-bottom: 1em;
+}
+.body aside section h1 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #4c7dbc;
+  padding: 0.5em 0;
+  border-bottom: 1px solid #eeeeee;
+}
+.body aside section div { padding: 1em 0; }
+.body aside section a { color: #999999; }
+.body aside section .tags a {
+  margin-right: 1em;
+  white-space: nowrap;
+}
+.body aside section li {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #f8f8f8;
+}

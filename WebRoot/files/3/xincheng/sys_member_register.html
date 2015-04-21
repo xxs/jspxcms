@@ -1,0 +1,63 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>用户注册_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#agree").click(function(){
+			$("#register").attr("disabled",!this.checked);
+	});
+	$("#nextone").click(function(){
+		$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+		$("#captcha").unbind("focusin");
+	});
+	$("#captcha").focusin(function(){
+		$(".autherimg").css("display","inline");
+		$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+	});
+	$.validator.addMethod("username", function(value) {
+		if(value.length==0) {return true;}
+		var p = /${global.register.validCharacter}/;
+		return p.exec(value) ? true : false;
+	}, "用户名必须是字母、数字和汉字");
+	$("#validForm").validate();
+});
+</script>
+</head>
+<body>
+[#include 'inc_header.html'/]
+<div class="w960 center mt1">
+  <div class="register">
+   <form id="validForm" action="${ctx}/register.jspx" method="post">
+   <input type="hidden" name="redirectUrl" value="${ctx}/register_message.jspx?username={username}&email={email}&verifyMode={verifyMode}"/>
+  	<table border="0" cellpadding="0" cellspacing="0">
+    <tr><td><em style="color:red;margin-right:5px;">*</em>用户名：</td><td><input type="text" name="username" class="{required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" maxlength="${global.register.maxLength}"/></td></tr>
+    <tr><td><em style="color:red;margin-right:5px;">*</em>密码：</td><td><input type="password" id="password" name="password" class="required" maxlength="100"/></td></tr>
+    <tr><td><em style="color:red;margin-right:5px;">*</em>确认密码：</td><td><input type="password"  class="required" equalTo="#password"/></td></tr>
+    <tr><td><em style="color:red;margin-right:5px;">*</em>邮箱：</td><td><input type="text" name="email" class="email required" maxlength="100"/></td></tr>
+    <tr><td><em style="color:red;margin-right:5px;">*</em>验证码：</td><td><input id="captcha" type="text" name="captcha" class="required" maxlength="20"/><span class="autherimg">
+                <img id="auther"  src="javascript:false;" width="120" height="30" 
+                onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
+                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
+                </span></td></tr>
+    <tr><td>用户注册协议：</td><td><textarea style="width:500px;height:80px;">${global.register.userAgreement!}</textarea></td></tr>
+    <tr><td colspan="2"><label><em style="color:red;margin-right:5px;">*</em><input type="checkbox" id="agree" name="agree" value="true" class="required"/>&nbsp;同意协议</label></td></tr>
+   	<tr><td colspan="2"><input type="submit" id="register"  disabled="disabled" value="提交" style="width:50px; height:25px;"/></td></tr>
+   </table>
+  </form>
+ </div>
+</div>
+[#include 'inc_footer.html'/]
+</body>
+</html>
+[/#escape]

@@ -1,0 +1,52 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link type="text/css" rel="stylesheet" href="_files/css/style.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="_files/css/kb.css" media="screen" />
+<!--[if lt IE 8]><link type="text/css" rel="stylesheet" href="_files/css/ie.css"/><![endif]-->
+<!--[if IE 8]><link type="text/css" rel="stylesheet" href="_files/css/ie8.css"/><![endif]-->
+</head>
+<body>
+[#include "inc_header_mini.html"/]
+<div class="body">
+   <div class="crumb_nav">
+   	[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>>[/#list]正文
+   </div>
+   <div class="main">
+    <header>
+     <h1><a href="#">${info.fullTitleOrTitle}</a></h1>
+    </header>
+    <section>
+     <div class="content">
+      [#noescape]${text}[/#noescape]
+     </div>
+     [#if pagedList.totalPages>1]
+         [#include 'inc_page.html'/]
+        [/#if]
+    </section>
+   </div>
+   <aside>
+    <section>
+     <h1>更多知识库文章</h1>
+     <div>
+      <ul>
+	      [@InfoList limit=10;list]
+		 	  [#list list as info]
+		      <li>
+		      	<a href="${info.url}">${substring(info.title,17,'...')}</a>
+		      </li>
+		      [/#list]
+	      [/@InfoList]
+      </ul>
+     </div>
+    </section>
+   </aside>
+  </div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

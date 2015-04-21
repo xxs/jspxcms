@@ -1,0 +1,100 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="_files/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<script type="text/javascript" src="${ctx}/vendor/My97DatePicker/cn_WdatePicker.js"></script>
+<style type="text/css">
+label.error {color:red;font-style:italic;}
+em.required {color:red;font-style:normal;}
+.recru-table{width:100%;margin:20px 0;border-collapse:collapse;}
+.recru-table td{padding:15px 5px; border:#ccc 1px solid;}
+</style>
+<script type="text/javascript">
+$(function() {
+	$("#validForm").validate();
+});
+</script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+    	<div class="textinfo">
+			<form id="validForm" method="post" action="${ctx}/resume.jspx">
+			<table class="recru-table" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="25%"><em class="required">*</em>职位：</td>
+          <td width="75%">						
+					 <select name="post">
+						 <option[#if Param.post! =='Java开发工程师'] selected[/#if]>Java开发工程师</option>
+						 <option[#if Param.post! =='网页设计师'] selected[/#if]>网页设计师</option>
+					 </select>
+					</td>
+        </tr>
+        <tr>
+          <td><em class="required">*</em>姓名：</td>
+          <td><input type="text" name="name" class="required" maxlength="100"/></td>
+        </tr>
+        <tr>
+          <td><em class="required">*</em>性别：</td>
+          <td><input type="radio" name="gender" value="M" checked="checked"/>男</label><input type="radio" name="gender" value="F"/>女</label></td>
+        </tr>
+        <tr>
+          <td>出生年月：</td>
+          <td><input type="text" name="birthDate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"/></td>
+        </tr>
+        <tr>
+          <td>手机：</td>
+          <td><input type="text" name="mobile" maxlength="100"/></td>
+        </tr>
+        <tr>
+          <td>邮箱：</td>
+          <td><input type="text" name="email" class="email" maxlength="100"/></td>
+        </tr>
+        <tr>
+          <td>期望薪水：</td>
+          <td><input type="text" name="expectedSalary" class="digits" maxlength="9"/></td>
+        </tr>
+        <tr>
+          <td>教育经历：</td>
+          <td><textarea name="educationExperience" style="width:90%;height:100px;"></textarea></td>
+        </tr>
+        <tr>
+          <td>工作经历：</td>
+          <td><textarea name="workExperience" style="width:90%;height:100px;"></textarea></td>
+        </tr>
+        <tr>
+          <td>备注：</td>
+          <td><textarea name="remark" style="width:90%;height:100px;"></textarea></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="2">						
+						<input type="hidden" name="nextUrl" value="${url}"/>
+						<input type="hidden" name="status_0" value="投递简历成功"/>
+						<button type="submit" style="padding:5px;">提交</button>
+					</td>
+        </tr>
+			</table>
+			</form>
+			</div>
+	</div>
+	<div class="pright">
+		[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

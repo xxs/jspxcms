@@ -1,0 +1,257 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="_files/starrating.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#nextone").click(function(){
+			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+			$("#captcha").unbind("focusin");
+		});
+		$("#captcha").focusin(function(){
+			$(".autherimg").css("display","inline");
+			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+		});
+		//$("#captcha").captcha("${ctx}/captcha.servlet",{title:"点击重新获取验证码"});
+	});
+</script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+    	<div class="position">
+      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>>[/#list]正文
+        </div>
+    	<div class="downinfo">
+      	 <h2 class="title mt2">${info.fullTitleOrTitle}</h2>
+         <div class="downattr">
+          	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+          		<tr>
+                <td rowspan="3" width="40%"><img src="${info.smallImageUrl}"/></td>
+                <td>网友评分:</td><td>
+              		<div class="star_wrap" style="width:120px">
+                    <ul class="ulStars" id="showStar">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                 	</div>
+                 	<div id="score-item" style="color:red; font-weight:bold;">0分</div>
+                	</div>
+              	</td>
+              </tr>
+              <tr>
+              	<td width="55">请您评分:</td><td>
+                  [@ScoreGroup number='start';group]
+                  <div id="starBox" class="starBox" style="width:200px">
+                   <div id="star_wrap" class="star_wrap">
+                    <ul id="ulStars" class="ulStars">
+                      [#list group.items as item]
+                      <li star="${item_index+1}" onclick="infoScoring(${info.id},${item.id});"></li>
+                      <input type="hidden" value="${item.score!}" id="item-score-${item.id}"/>
+                      [/#list]
+                    </ul>
+                   </div>
+                   <div id="rate_1_result" class="rate_1_result">点星星打分</div>
+                   <input type="text" id="txtStar" class="txtStar" style="width: 30px" value="" />
+                   <div id="tip" class="tip" style="position: absolute; display: none"></div>
+                 </div>
+                 [/@ScoreGroup]
+              	</td>
+              </tr>
+              <tr>
+                <td colspan="2"><a class="downlink" href="${ctx}/info_download.jspx?id=${info.id}"><h1>立即下载</h1></a></td>
+              </tr>
+          	</table>
+          <div class="downargs">
+          	<table border="0" cellspacing="0" cellpadding="0">
+             <tr>
+             	<td>软件类型:</td><td>${info.customs['softType']}</td>
+            	<td>授权方式:</td><td>${info.customs['authorization']}</td>
+              <td>界面语言:</td><td>${info.customs['langue']}</td>
+             </tr>
+             <tr>
+             	<td>文件大小：</td><td>${info.fileSize}</td>
+              <td>发布时间：</td><td>${info.publishDate?string('yyyy-MM-dd')}</td>
+              <td>下载次数：</td><td><span id="info_downloads" style="color:red;"></span> 次</td>
+								<script type="text/javascript">
+                  $("#info_downloads").load("${ctx}/info_downloads/${info.id}.jspx?d="+new Date()*1);
+                </script>
+             </tr>
+             <tr>
+             	<td>适合系统:</td><td colspan="5">：${info.customs['system']}</td>
+             </tr>
+             <tr>
+             	<td>运行环境：</td><td colspan="5">：${info.customs['runEnviorment']}</td>
+             </tr>
+          	</table>
+          </div>
+       	</div>
+ 	   	 <div class="text" style="margin:20px 0px;">
+       <p style="font-size:14px; font-weight:bold;">软件介绍:</p>
+       	[#noescape]${text}[/#noescape]
+       </div>
+       
+        <script type="text/javascript">
+							function infoScoring(id,itemId) {
+								$.post('${ctx}/info_scoring.jspx',
+									{id:id,itemId:itemId},
+									function(data) {
+										if(data!="0"){
+											$("#score-item").text(data);
+											getScore();
+										}else{
+											alert("你已经打过分了！");	
+											$("#rate_1_result").text("点星星打分");
+										}
+									}
+								);
+							}
+
+							$(function(){
+									getScore();
+							});
+              function getScore(){
+								$.get("${ctx}/info_score/${info.id}.jspx?d="+new Date()*1,function(data) {
+									var tickets=0,score=0,totalScore=0;
+									for(id in data) {
+										tickets+=data[id];
+										totalScore += parseInt($("#item-score-"+id).val())*data[id];
+									}
+									if(tickets!=0){
+										score=totalScore/tickets;
+									}
+									var $starNum=$("#showStar > li");
+									if(score>0 && score<=2){
+										for(var i=0;i<2;i++){
+											$starNum.eq(i).addClass("bad");
+										}
+									}
+									if(score>2 && score<=3){
+										for(var i=0;i<3;i++){
+											$starNum.eq(i).addClass("good");
+										}
+									}
+									if(score>3 && score<4.5){
+										for(var i=0;i<4;i++){
+											$starNum.eq(i).addClass("good");
+										}
+									}
+									if(score>=4.5){
+										for(var i=0;i<5;i++){
+											$starNum.eq(i).addClass("good");
+										}
+									}
+									$("#score-item").text(score+"分")
+              	},"json");
+							}
+            </script>
+       
+       
+          <!-- Baidu Button BEGIN -->
+             <div class="share-btn" style="margin-bottom:8px; height:30px;">
+            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                <span class="bds_more">分享到：</span>
+                <a class="bds_qzone"></a>
+                <a class="bds_tsina"></a>
+                <a class="bds_tqq"></a>
+                <a class="bds_renren"></a>
+                <a class="shareCount"></a>
+            </div>
+        	<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+      		<script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+        	</script>
+           </div>
+        <!-- Baidu Button END -->
+       </div>
+       <div class="othernews">
+       	<ul>
+      		 [@InfoPrev id=info.id;i]
+         	 [#if i??]
+        	 <li>
+         		<span class="spanleft">上一条：<a href="${i.url}">${i.title!}</a></span>
+         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
+      		 </li>
+         	[#else]
+         	<li><span class="spanleft">上一条：没有了</span></li>
+        	[/#if]
+		 	[/@InfoPrev]
+		 	[@InfoNext id=info.id;i]
+         	[#if i??]
+		 	<li>
+         		<span class="spanleft">下一条：<a href="${i.url}">${i.title!}</a></span>
+         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
+         	</li>
+         	[#else]
+        	<li><span class="clr">下一条：没有了</span></li>
+         	[/#if]
+		 	[/@InfoNext ]
+         </ul>
+       </div>
+               <div class="comment">	 
+    		  <p style="font-size:14px;">评论</p>
+			  <form id="comment" action="${ctx}/comment_submit.jspx" method="post">
+			  	<input type="hidden" name="ftype" value="Info"/>
+			  	<input type="hidden" name="fid" value="${info.id}"/>
+			  	<input type="hidden" name="nextUrl" value="${url}"/>
+			  	<p><textarea id="content" name="text"></textarea></p>
+			  	<p class="authcode">验证码<input type="text" id="captcha" name="captcha"/>
+                <span class="autherimg">
+                <img id="auther"  src="javascript:false;"  width="120" height="30" 
+                onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
+                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
+                </span>
+               </p>
+			  	<p><input id="commit" type="submit" value=" "/></p>
+			  </form>
+              <h2 style="margin:20px 0px;">网友评论:</h2>
+			  <div id="comment_div"></div>
+              <script type="text/javascript">
+              		$("#comment_div").load("${ctx}/comment_list.jspx?fid=${info.id}&d="+new Date()*1);
+             </script>
+            <p>
+              		<a href="${ctx}/comment.jspx?fid=${info.id}">
+              		共<span id="info_comments"></span>评论。点击查看
+                    </a>
+					<script type="text/javascript">
+              		$("#info_comments").load("${ctx}/info_comments/${info.id}.jspx?d="+new Date()*1);
+					</script>
+              </p>
+		</div>     
+       <div class="reletednews">
+       		<p>相关新闻：</p>
+       		[@InfoFulltextList q=info.title excludeId=info.id limit=4;list]
+            </ul>
+			[#list list as fulltextInfo]
+			<li><span class="spanleft">[@A bean=fulltextInfo target="_blank"/]</span>
+            	<span class="spanright">${fulltextInfo.publishDate?string('yyyy-MM-dd')}</span>
+             </li>
+			[/#list]
+       	 </ul>
+ 	 	[/@InfoFulltextList]
+       </div>
+	</div>
+	<div class="pright">
+		[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

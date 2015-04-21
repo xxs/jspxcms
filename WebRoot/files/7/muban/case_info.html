@@ -1,0 +1,66 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link rel="stylesheet" type="text/css" href="_files/css/layout.css" />
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+
+</head>
+<body>
+	[#include "inc_header.html"/]
+		[@InfoPrev id=info.id;i]
+         	 [#if i??]
+	         	<a href='${i.url}'><div class='project-slider-prev' title='上一个'></div></a> 
+        	[/#if]
+		[/@InfoPrev]
+		<div class="wall">
+		  <div class="pics_word">
+		    <div class="close_window"><a href="javascript:self.close()" >关闭窗口</a></div>
+		    <div class="pic_main">
+		      <div class="pro-switch">
+		        <div class="slider">
+		          <div class="flexslider">
+		            <ul class="slides">
+		            <li>
+		                <div class="img"><a href='javascript:void(0);'><img src="${info.customs['smallimage']}" alt="" width="700"></a></div>
+		              </li>
+		            </ul>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="right_word">
+		      <h3 class="pic_title">${info.fullTitleOrTitle}</h3>
+		      <h4 class="pic_class"></h4>
+		      <div class="description">${info.customs['smallimage']}${info.metaDescription}</div>
+		      <div class="websit">浏览站点：<a href="http://www.kuaizhisong.com.cn/" target="_blank">http://www.kuaizhisong.com.cn/</a></div>
+		    </div>
+		  </div>
+		 </div>
+ 		[@InfoNext id=info.id;i]
+         	[#if i??]
+         		<a href='${i.url}'><div class='project-slider-next' title='下一个'></div></a>  
+         	[/#if]
+		 [/@InfoNext ]
+		 
+	<script defer src="_files/js/pic_slider.js"></script> 
+	<script type="text/javascript">
+	    $(function(){
+	      $('.flexslider').flexslider({
+	        animation: "slide",
+	        start: function(slider){
+	          $('body').removeClass('loading');
+	        }
+	      });
+	    });
+	</script> 
+
+	[#include "inc_footer.html"/]
+	<script src="_files/js/rolling.js"></script> 
+	<script src="_files/js/jquery-webox.js"></script>
+</body>
+</html>
+[/#escape]
