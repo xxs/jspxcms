@@ -1,0 +1,16 @@
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="com.jspxcms.common.web.TimerFilter" level="DEBUG"/>
+  <logger name="com.jspxcms.core" level="DEBUG"/>
+  <logger name="com.jspxcms.common" level="INFO"/>
+  <logger name="org.hibernate" level="INFO"/>
+  <logger name="org.springframework" level="INFO"/>
+  <logger name="jdbc" level="WARN"/>
+  <logger name="jdbc.sqltiming" level="WARN"/>
+  <logger name="jdbc.sqlonly" level="WARN"/>
+  <root level="INFO"><appender-ref ref="STDOUT"/></root>
+</configuration>
