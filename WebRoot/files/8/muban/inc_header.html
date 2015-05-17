@@ -1,0 +1,205 @@
+  <!-- top 开始 -->
+<div class="yunTopBg">
+	<div class="yunTopCon">
+   
+	<script class="b2cController" type="text/html">
+		<% if (isAnonymous) { %>
+			
+			<span>
+			  <a class="cor_bs" href="/center/login.html?returnUrl=http://www.ssmoban.com/" rel="nofollow">登录</a>
+			  &nbsp;&nbsp;|&nbsp;&nbsp;
+			  <a class="cor_bs" href="/center/register.html?returnUrl=http://www.ssmoban.com/" rel="nofollow">注册</a>
+			  &nbsp;&nbsp;|&nbsp;&nbsp;
+			</span>
+		  
+		<% }else{ %>
+			
+			<span>
+			  您好，<%=user.displayName%>！
+			  &nbsp;&nbsp;|&nbsp;&nbsp;
+				<a class="cor_bs" href="/center/logout.html?returnUrl=http://www.ssmoban.com/" rel="nofollow">退出</a>
+			  <!--   &nbsp;&nbsp;|&nbsp;&nbsp;
+			   <a class="cor_bs" href="/utils/cart.html" rel="nofollow">我的订单</a>
+				&nbsp;&nbsp;|&nbsp;&nbsp; -->
+			</span>
+		  
+		<% } %>
+	</script>
+
+    <a style="margin-left:15px;" class="cor_bs" href="http://www.ssmoban.com/channels/1405.html" target="_blank">了解ssmoban</a>
+    <a style="margin-left:15px;" class="cor_bs" href="http://www.ssmoban.com/channels/1404.html" target="_blank">常见问题</a>
+    <a style="margin-left:15px;" class="cor_bs" href="http://www.ssmoban.com/channels/1406.html" target="_blank">版权声明</a>
+    <a style="margin-left:15px;" class="cor_bs" href="http://stl.siteserver.cn" target="_blank">帮助中心</a>
+  </div>
+</div>
+<div class="yunHeadBg">
+ <div class="yunHead">
+ <a href="/" class="yun_logo2"><img src="_files/picture/logo.png" /></a>
+ <a href="/channels/1427.html" target="_blank"><img class="yun_headImg" src="_files/picture/head.png" width="384" height="47" /></a>
+ <div class="yunHeadR"><!--
+  <div class="yunserBox">
+  <input class="yun_serInt" id="keywords" type="text" />
+  <input value="" class="yun_serSubmit" id="searchBtn" type="button" />
+  </div>
+  <div class="yun_keyword">热门搜索：<a href="/web/index.html">传统网站</a> <a href="/mobile/index.html">手机网站</a> <a href="/web/index.html?filters=1402%3D1075">企业展示</a></div>-->
+ </div>
+ </div>
+</div>
+
+<!-- breadcrumb 开始 -->
+<div class="breadcrumb_outside">
+  <div class="breadcrumb_inside">
+    <ul class="breadcrumb">
+    		<!--<li><a href="/">商城首页</a><span class="divider">/</span></li>
+          	<li><a href="/">首页</a></li>-->
+          	<li><p><a href="http://www.ssmoban.com">SSmoban模板商城</a>中所有模板均为成品网站，均基于国内知名软件领导品牌<a href="http://www.siteserver.cn">SiteServe</a>软件进行搭建。</p></li>
+            <li style="float: right;color:red;">QQ交流群：424137943 <!--<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=ad2e938e904ddce4ff729dd6a775fdc674c38de7fd8577deb8e16e4c11b66467"><img border="0" src="picture/group.png" alt="SiteServer模板交流" title="SiteServer模板交流"></a>-->&nbsp;&nbsp;<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=edbfbc18679884a1d30b4543511eb2d34f63742818d44762"><img border="0" src="_files/picture/zxzx.gif" alt="点击这里给我发消息" title="点击这里给我发消息"></a><!--<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=ssmoban&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="picture/realonline.aw" alt="点击这里给我发消息" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=edbfbc18679884a1d30b4543511eb2d34f63742818d44762"><img width="77" height="18" border="0" src="picture/f4ed264cffd44ffbb32b307822f97902.gif" alt="点击这里给我发消息" title="点击这里给我发消息"></a>--></li>
+    </ul>
+  </div>
+  <div style="clear:both;"></div>
+</div>
+<!-- breadcrumb 结束 -->  
+
+<!-- navigation 开始 -->
+<div class="navigation_outside">
+  <div class="navigation_inside">
+    <div class="msc_nav1">
+      <div class="msc_menu1">行业分类
+      
+      <div class="msc_menu4">
+          <ul>
+          	  [@SpecialList limit=13;list]
+				[#list list as special]
+					<li><a href="${ctx}/special/${special.id}.jspx" target="_blank">${special.title}</a></li>
+				[/#list]
+			  [/@SpecialList]
+          </ul>
+        </div>
+        
+      </div>
+      <div class="msc_menu2" id="nav">
+        <ul>
+             <li><a href="/" class="msc_1a msc_1cuta">商城首页</a></li>
+           	 [@NodeList;list]
+				[#list list as node]
+		 		 	<li><a href="${node.url}" class="msc_1a">${node.name}</a></li>
+				[/#list]
+			 [/@NodeList]
+           <li><a class="msc_1a">建站服务</a>
+            <ul>
+    		
+    		<li><a href="/contents/1401/299.html" target="_blank">网站搭建</a></li>
+    	        <li><a href="http://shang.qq.com/wpa/qunwpa?idkey=ad2e938e904ddce4ff729dd6a775fdc674c38de7fd8577deb8e16e4c11b66467" target="_blank">技术支持</a></li>
+
+   			</ul>
+           </li>
+        </ul>
+      </div>
+      
+      <!-- <div class="msc_lay1">
+  <a href="/center" target="_blank">我的商城</a><img class="msc_sq1" src="picture/sc_squer3.jpg" width="10" height="5" />
+  <div class="msc_lay1Btn"><a href="/center" target="_blank">我的商城</a><img class="msc_sq1" src="picture/sc_squer7.jpg" width="10" height="5" /></div>
+  <div class="msc_lay1Box">
+    <div class="msc_perNmae">
+      
+<script class="b2cController" type="text/html">
+    <% if (isAnonymous) { %>
+        
+          <span class="fl">您好，请<a href="/center/login.html?returnUrl=http://www.ssmoban.com/" class="msc_blue">登录</a></span>
+        
+    <% }else{ %>
+        
+          <span class="fl"><%=user.userName%></span><a href="/center" class="fr msc_blue" target="_blank">去我的首页</a>
+        
+    <% } %>
+</script>
+
+    </div>
+    
+<script class="b2cController" type="text/html">
+    <% if (!isAnonymous) { %>
+        
+      <div class="msc_lay1List">
+        <ul class="msc_lay1u">
+          <li><a class="msc_blue" href="#">未付款订单</a><span class="msc_999" style="display:none">（0）</span></li>
+          <li><a class="msc_blue" href="#">交易订单</a><span class="msc_red" style="display:none">（1）</span></li>
+          <li><a class="msc_blue" href="#">已关闭订单</a><span class="msc_red" style="display:none">（1）</span></li>
+        </ul>
+        <ul class="msc_lay2u">
+          <li><a class="msc_blue" href="/center/order" target="_blank">我的订单></a></li>
+          <li><a class="msc_blue" href="/center/community/follow.html" target="_blank">我的收藏></a></li>
+          <li><a class="msc_blue" href="/center/request" target="_blank">我的工单></a></li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    
+    <% } %>
+</script>
+
+
+    <div class="clear"></div>
+  </div>
+</div> -->
+
+<!--<div class="msc_lay2" style="float:right">
+  
+<script class="b2cController" type="text/html">
+    <% if (carts && carts.length > 0) { %>
+        
+    <span class="msc_1s">
+     <span><%=getAllPurchaseNum()%></span>
+    </span>
+  
+    <% } %>
+</script>
+
+  <a href="/utils/cart.html">购物车</a><img class="msc_sq2" src="picture/sc_squer5.jpg" width="5" height="10" />
+  <div class="msc_lay2hover">
+  <a href="/utils/cart.html">购物车</a><img class="msc_sq2" src="picture/sc_squer5a.jpg" width="5" height="10" />
+  </div>
+
+  
+<script class="b2cController" type="text/html">
+    <% if (carts && carts.length > 0) { %>
+        
+    <div class="msc_lay2box">
+       <ul>
+
+       
+<%for(i = 0; i < carts.length; i ++) {
+    cart = carts[i]; %>
+    
+          <li>
+            <a class="fl" href="<%=cart.navigationUrl%>" target="_blank"><img src="<%=cart.thumbUrl%>" width="50" height="50" /></a>
+            <div class="msc_lay2txt">
+            <%=cart.summary ? cart.summary.substr(0, 36) : cart.title%>
+            </div>
+            <div class="msc_layprice">
+            <strong class="msc_red">¥<%=cart.price%>.00</strong><span class="msc_999"> x<%=cart.purchaseNum%></span><br />
+            <a class="msc_blue" href="javascript:;" onclick="b2cController.deleteCart(<%=i%>)">删除</a> </div>
+          </li>
+       
+<%}%>
+
+
+       </ul>
+       <div class="clear"></div>
+       <div class="msc_lay2bom">
+       共<strong class="msc_red"> <%=getAllPurchaseNum()%> </strong>件商品 共计<span class="msc_red">¥<%=amount.priceActual%>.00</span><br />
+       <a href="/utils/cart.html"><img src="picture/sc_btn02.jpg" width="120" height="30" /></a>
+       </div>
+       <div class="clear"></div>
+      </div>
+  
+    <% } %>
+</script>
+
+  
+</div>-->
+    </div>
+  </div>
+</div>
+<!-- navigation 结束 -->
+<script src="_files/js/jquery.min.js"></script>
+<script src="_files/js/suspension.js"></script>
+<!-- top 结束 -->

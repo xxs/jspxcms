@@ -140,6 +140,10 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	 */
 	public static String PATH_INFO_ID = "{info_id}";
 	/**
+	 * 替换标识:站点编码
+	 */
+	public static String PATH_SITE_NUMBER = "{site_number}";
+	/**
 	 * 替换标识:年
 	 */
 	public static String PATH_YEAR = "{year}";
@@ -559,6 +563,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 
 	@Transient
 	public String getUrlStatic(Integer page, boolean isFull, boolean forRealPath) {
+		//Site site = getSite();
 		if (isLinked()) {
 			return getLinkUrl();
 		}
@@ -583,6 +588,8 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 			nodeNumber = node.getId().toString();
 		}
 		path = StringUtils.replace(path, PATH_NODE_NUMBER, nodeNumber);
+		//替换站点编码
+		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
 		path = StringUtils.replace(path, PATH_INFO_ID, getId().toString());
 		path = StringUtils.replace(path, PATH_YEAR, year);
 		path = StringUtils.replace(path, PATH_MONTH, month);

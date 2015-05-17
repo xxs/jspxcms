@@ -32,7 +32,7 @@ import freemarker.template.TemplateException;
 public class HtmlDaoImpl implements HtmlDao {
 	public int makeNode(Integer siteId, Integer nodeId, String treeNumber,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
+			TaskService taskService, Integer taskId,Boolean isAllSite) throws IOException,
 			TemplateException {
 		Session session = em.unwrap(Session.class);
 		// Session session = (Session) em.getDelegate();
@@ -56,7 +56,7 @@ public class HtmlDaoImpl implements HtmlDao {
 		while (nodes.next() && taskService.isRunning(taskId)) {
 			node = (Node) nodes.get(0);
 			PNode.makeHtml(node, Integer.MAX_VALUE, config, resolver,
-					taskService, taskId);
+					taskService, taskId,isAllSite);
 			// 一个节点可能有很多翻页，这里稍微设置小一点
 			if (++count % 5 == 0) {
 				session.flush();
@@ -68,7 +68,7 @@ public class HtmlDaoImpl implements HtmlDao {
 
 	public int makeInfo(Integer siteId, Integer nodeId, String treeNumber,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
+			TaskService taskService, Integer taskId,Boolean isAllSite) throws IOException,
 			TemplateException {
 		Session session = (Session) em.getDelegate();
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -91,7 +91,7 @@ public class HtmlDaoImpl implements HtmlDao {
 		int count = 0;
 		while (infos.next() && taskService.isRunning(taskId)) {
 			info = (Info) infos.get(0);
-			PInfo.makeHtml(info, config, resolver, taskService, taskId);
+			PInfo.makeHtml(info, config, resolver, taskService, taskId,isAllSite);
 			if (++count % 20 == 0) {
 				session.flush();
 				session.clear();

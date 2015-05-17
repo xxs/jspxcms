@@ -17,20 +17,20 @@ import freemarker.template.TemplateException;
  */
 public interface HtmlService {
 	public void makeInfo(Integer infoId, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
+			PathResolver resolver, TaskService taskService, Integer taskId,Boolean isAllSite)
 			throws IOException, TemplateException;
 
 	public void makeNode(Integer nodeId, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
+			PathResolver resolver, TaskService taskService, Integer taskId,Boolean isAllSite)
 			throws IOException, TemplateException;
 
 	public int makeNode(Integer siteId, Node node, boolean includeChildren,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
+			TaskService taskService, Integer taskId,Boolean isAllSite) throws IOException,
 			TemplateException;
 
 	public int makeInfo(Integer siteId, Node node, boolean includeChildren,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
+			TaskService taskService, Integer taskId,Boolean isAllSite) throws IOException,
 			TemplateException;
 }

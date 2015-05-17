@@ -1,0 +1,61 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>会员中心_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
+<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+
+</head>
+<body>
+[#include 'inc_header.html'/]
+<div class="w960 center mt2">
+   <dl class="tbox setting FlLeft">
+    <dt class='light style="border:none;"'><strong>账号管理</strong></dt>
+    <dd class='light'>
+     <ul>
+     	[#include 'inc_my_left.html'/]
+     </ul>
+    </dd>
+   </dl>
+   <dl class="tbox FlRight showinfo">
+    <dt class='light'><strong>个人信息</strong></dt>
+    <dd class='light'>
+    		<dl style="height:50px;margin:10px 10px;border:1px #dadada solid;padding:10px 20px;">
+        	<h2 style="color:#1d7abd;">${user.username}</h2>
+        	<p style="margin-top:10px;font-size:12px;color:#1d7abd">会员组：普通会员</p>
+        </dl>
+        <dl class="tbox memberinfo">
+          <dt class='light' ><strong>详细信息</strong></dt>
+          <dd class='light'>
+            <table width="100%" cellpadding="0" cellspacing="0" background="0">
+            	<tr><td><span>用户名</span></td><td>${user.username}</td></tr>
+              <tr><td><span>性别</span></td><td>[#if user.gender??][#if user.gender=='M']男[#else]女[/#if][#else]保密[/#if]</td></tr>
+              <tr><td><span>生日</span></td><td>${(user.birthDate?string('yyyy-MM-dd'))!}</td></tr>
+              <tr><td><span>邮箱</span></td><td>${user.email!}</td></tr>
+              <tr><td><span>自我介绍</span></td><td>${user.bio!}</td></tr>
+              <tr><td><span>来自哪里</span></td><td>${user.comeFrom!}</td></tr>
+              <tr><td><span>QQ</span></td><td>${user.qq!}</td></tr>
+              <tr><td><span>注册时间</span></td><td>${user.creationDate?string("yyyy-MM-dd hh:mm:ss")}</td></tr>
+              <tr><td><span>最后登录</span></td><td>${user.lastLoginDate?string("yyyy-MM-dd hh:mm:ss")}</td></tr>
+              <tr><td><span>注册ip</span></td><td>${user.creationIp}</td></tr>
+              <tr><td><span>上次登录ip</span></td><td>${user.prevLoginIp}</td></tr>
+              <tr><td><span>登录次数</span></td><td>${user.logins}</li>
+            </table>
+          </dd>
+   			</dl>
+    </dd>
+   </dl>
+</div>
+<div  style="height:190px;"></div>
+[#include 'inc_footer.html'/]
+</body>
+</html>
+[/#escape]

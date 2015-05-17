@@ -44,6 +44,15 @@ public class GenerationController {
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
 		return "redirect:html_index.do";
 	}
+	@RequiresPermissions("core:generation:html_submit")
+	@RequestMapping("make_all_site.do")
+	public String makeAllSite(HttpServletRequest request, RedirectAttributes ra) {
+		Site site = Context.getCurrentSite(request);
+		Integer userId = Context.getCurrentUserId(request);
+		htmlGenerator.makeAllSite(site, userId);
+		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
+		return "redirect:html_index.do";
+	}
 
 	@RequiresPermissions("core:generation:html_submit")
 	@RequestMapping("make_home_html.do")

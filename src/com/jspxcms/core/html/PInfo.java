@@ -38,7 +38,8 @@ import freemarker.template.TemplateException;
  */
 public abstract class PInfo {
 	public static void makeHtml(Info info, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
+			PathResolver resolver, TaskService taskService, Integer taskId,
+			boolean isAllSite)
 			throws IOException, TemplateException {
 		if (info == null) {
 			return;
@@ -77,8 +78,7 @@ public abstract class PInfo {
 			pa = new PageRequest(page, 1);
 			Page<String> pagedList = new PageImpl<String>(items, pa, total);
 			String url = info.getUrlStatic(page);
-			ForeContext.setData(rootMap, site, null, null, null, null, null,
-					url);
+			ForeContext.setData(rootMap, site, null, null, null, null, null,url,isAllSite);
 			ForeContext.setPage(rootMap, page, info, pagedList);
 			FileOutputStream fos = null;
 			Writer out = null;

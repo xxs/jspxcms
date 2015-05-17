@@ -29,8 +29,8 @@ import freemarker.template.TemplateException;
  */
 public abstract class PNode {
 	public static void makeHtml(Node node, int max, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
-			throws IOException, TemplateException {
+			PathResolver resolver, TaskService taskService, Integer taskId,
+			boolean isAllSite) throws IOException, TemplateException {
 		if (node == null || !node.getGenerate()) {
 			return;
 		}
@@ -48,14 +48,21 @@ public abstract class PNode {
 		for (int page = 1; page <= max && page <= total && page <= staticPage
 				&& taskService.isRunning(taskId); page++) {
 			String path = node.getUrlStatic(page, false, true);
+
+			System.out.println("3333333:" + path + "ttttttttttttt");
+
 			String filename = resolver.getPath(path);
+
+			System.out.println("55555555555:" + filename + "ttttttttttttt"
+					+ site.getFilesPath());
 			File file = new File(filename);
 			file.getParentFile().mkdirs();
 			// TODO like info:InfoText,title,text.
 			rootMap.put("text", node.getText());
 			String url = node.getUrlStatic(page);
+			System.out.println("44444444:" + url);
 			ForeContext.setData(rootMap, site, null, null, null, null, null,
-					url);
+					url, isAllSite);
 			ForeContext.setPage(rootMap, page, node);
 			FileOutputStream fos = null;
 			Writer out = null;
@@ -63,6 +70,8 @@ public abstract class PNode {
 				fos = new FileOutputStream(file);
 				out = new OutputStreamWriter(fos, "UTF-8");
 				ForeContext.resetTotalPages();
+				System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+						+ template.getName());
 				template.process(rootMap, out);
 				taskService.add(taskId, 1);
 				total = ForeContext.getTotalPages();

@@ -11,7 +11,9 @@ public interface HtmlGenerator {
 	public void makeNode(Node node);
 
 	public void makeAll(final Site site, final Integer userId);
-
+	
+	public void makeAllSite(final Site site, final Integer userId);
+	
 	public void makeInfo(Integer siteId, Node node, boolean includeChildren,
 			Integer userId);
 

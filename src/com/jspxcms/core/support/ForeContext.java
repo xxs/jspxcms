@@ -79,10 +79,15 @@ public abstract class ForeContext {
 
 	public static void setData(Map<String, Object> data, Site site, User user,
 			MemberGroup group, Collection<MemberGroup> groups, Org org,
-			Collection<Org> orgs, String url) {
+			Collection<Org> orgs, String url, Boolean isAllSite) {
 		String ctx = site.getContextPath();
 		data.put(Constants.CTX, ctx != null ? ctx : "");
-		data.put(FILES, site.getFilesPath());
+		// 两种情景，一种是原生静态化，一种是整站静态化导出功能需要用到的
+		if (isAllSite) {
+			data.put(FILES, "./_files");
+		} else {
+			data.put(FILES, site.getFilesPath());
+		}
 		data.put(FORE, ctx != null ? ctx + FORE_PATH : FORE_PATH);
 		data.put(USER, user);
 		data.put(GROUP, group);
@@ -103,7 +108,7 @@ public abstract class ForeContext {
 		Collection<MemberGroup> groups = Context.getCurrentGroups(request);
 		Org org = Context.getCurrentOrg(request);
 		Collection<Org> orgs = Context.getCurrentOrgs(request);
-		setData(data, site, user, group, groups, org, orgs, url);
+		setData(data, site, user, group, groups, org, orgs, url, false);
 	}
 
 	public static void setPage(Map<String, Object> data, Integer page,

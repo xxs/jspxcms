@@ -77,17 +77,6 @@
 								);
 							}
 						</script>
-            [@ScoreGroup number='mood';group]
-            <ul>
-              [#list group.items as item]
-              <li onclick="infoScoring(${info.id},${item.id});">
-                <p> <span id="score-item-${item.id}">0</span>票</p>
-                <p><img src="${item.iconUrl}"/></p>
-                <p>${item.name}</p>
-              </li>
-              [/#list]
-            </ul>
-            [/@ScoreGroup]
             <script type="text/javascript">
               $.get("${ctx}/info_score/${info.id}.jspx?d="+new Date()*1,function(data) {
                 for(id in data) {

@@ -4,6 +4,9 @@ import static com.jspxcms.core.domain.Node.STATIC_INFO;
 import static com.jspxcms.core.domain.Node.STATIC_MANUAL;
 
 import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -39,7 +42,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeInfo(infoId, getConfig(), resolver,
-							taskService, null);
+							taskService, null,false);
 				} catch (Exception e) {
 					logger.error("make html error!", e);
 				}
@@ -60,7 +63,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(nodeId, getConfig(), resolver,
-							taskService, null);
+							taskService, null,false);
 				} catch (Exception e) {
 					logger.error("make html error!", e);
 				}
@@ -78,10 +81,10 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(siteId, null, true, getConfig(),
-							resolver, taskService, taskId);
+							resolver, taskService, taskId,false);
 					if (taskService.isRunning(taskId)) {
 						htmlService.makeInfo(siteId, null, true, getConfig(),
-								resolver, taskService, taskId);
+								resolver, taskService, taskId,false);
 					}
 					taskService.finish(taskId);
 				} catch (Exception e) {
@@ -91,7 +94,44 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			}
 		}.start();
 	}
-
+	
+	public void makeAllSite(final Site site, final Integer userId) {
+		final Integer siteId = site.getId();
+		String name = site.getName();
+		
+		String realurl = servletContext.getRealPath("");
+		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+realurl+site.getFilesPath()+"pppppppppppppppppppppppp"+site.getBase());
+		System.out.println("dddddddddddddddddddddddddddddddddddddddddddddddd"+realurl+"\\"+site.getNumber()+"\\_files");
+		File srcDir = new File(realurl+site.getFilesPath());
+		File destDir = new File(realurl+"\\"+site.getNumber()+"\\_files");
+		try {
+			FileUtils.copyDirectory(srcDir,destDir);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+		}
+		
+		
+		Task task = taskService.save("Site: " + name, null, Task.NODE_HTML,
+				userId, siteId);
+		final Integer taskId = task.getId();
+		new Thread() {
+			public void run() {
+				try {
+					htmlService.makeNode(siteId, null, true, getConfig(),
+							resolver, taskService, taskId,true);
+					if (taskService.isRunning(taskId)) {
+						htmlService.makeInfo(siteId, null, true, getConfig(),
+								resolver, taskService, taskId,true);
+					}
+					taskService.finish(taskId);
+				} catch (Exception e) {
+					taskService.abort(taskId);
+					logger.error("make html error!", e);
+				}
+			}
+		}.start();
+	}
 	public void makeInfo(final Integer siteId, final Node node,
 			final boolean includeChildren, Integer userId) {
 		String name = "ALL";
@@ -105,7 +145,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeInfo(siteId, node, includeChildren,
-							getConfig(), resolver, taskService, taskId);
+							getConfig(), resolver, taskService, taskId,false);
 					taskService.finish(taskId);
 				} catch (Exception e) {
 					taskService.abort(taskId);
@@ -128,7 +168,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(siteId, node, includeChildren,
-							getConfig(), resolver, taskService, taskId);
+							getConfig(), resolver, taskService, taskId,false);
 					taskService.finish(taskId);
 				} catch (Exception e) {
 					taskService.abort(taskId);
@@ -158,7 +198,13 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 	private TaskService taskService;
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 	private PathResolver resolver;
-
+	private ServletContext servletContext;
+	
+	@Autowired
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
+	
 	@Autowired
 	public void setHtmlService(HtmlService htmlService) {
 		this.htmlService = htmlService;

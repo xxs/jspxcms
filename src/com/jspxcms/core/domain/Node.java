@@ -107,6 +107,10 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	 * 替换标识:节点编码
 	 */
 	public static String PATH_NODE_NUMBER = "{node_number}";
+	/**
+	 * 替换标识:站点编码
+	 */
+	public static String PATH_SITE_NUMBER = "{site_number}";
 
 	/**
 	 * 节点正文KEY
@@ -312,6 +316,7 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 
 	@Transient
 	public String getUrlStatic(Integer page, boolean isFull, boolean forRealPath) {
+		Site site = getSite();
 		if (isLinked()) {
 			return getLinkUrl();
 		}
@@ -326,6 +331,8 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 			number = getId().toString();
 		}
 		path = StringUtils.replace(path, PATH_NODE_NUMBER, number);
+		//替换站点编码
+		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
 		String extension = getNodeExtensionOrDef();
 		if (page != null && page > 1) {
 			if (StringUtils.isNotBlank(extension)) {
@@ -342,7 +349,6 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		}
 
 		StringBuilder sb = new StringBuilder();
-		Site site = getSite();
 		if (isFull && !forRealPath) {
 			sb.append("//");
 			String domain = getDomainByNode();

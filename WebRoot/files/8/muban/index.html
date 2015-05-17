@@ -1,0 +1,119 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${site.fullNameOrName} -- Powerd by xxs</title>
+<!--[if IE 8]><script type="text/javascript" src="_files/js/html5shiv.js"> </script><![endif]-->
+<meta name="description" content="这是JSPXCMS的演示站点，包含了新闻、图集、视频、下载、在线留言等模块，能够轻松方便构件您的站点。" />
+<meta name="keywords" content="演示站 JSPX 站长 资讯 创业 小说程序 运营 管理 " />
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<link href="_files/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="_files/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="_files/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+[#include "inc_header.html"/]
+
+ <!--main 开始-->
+  <div class="mscBox mt13">
+    
+    <div class="msc_putCon mt18">
+      
+      <div class="msc_c1l" style="z-index:1">
+        
+		<style type="text/css">
+		.fv1_adnum{ position:absolute; z-index:1005; width:956px; height:24px; padding:5px 3px 0 0; left:21px; top:366px; }
+		.fv1_bigon{ background:#E59948; font-family:Arial; color:#fff; font-size:12px; text-align:center; cursor:pointer}
+		.fv1_bigoff{ background:#7DCABD; font-family:Arial; color:#fff; font-size:12px; text-align:center; cursor:pointer}
+		</style>
+		<div style="position:relative; left:0; top:0; width:980px; height:395px; background:#000">
+			<div id="fv1_filbox" style="position:absolute; z-index:999; left:0; top:0; width:980px; height:395px; filter:progid:DXImageTransform.Microsoft.Fade( duration=0.5,overlap=1.0 );">
+				<div style="display:block">
+					<a href="http://www.ssmoban.com/web/index.html" target="_blank">
+						<img src="_files/picture/17112636112.jpg" width="980" height="395" border="0" onMouseOver="fv1_clearAuto();" onMouseOut="fv1_setAuto()" />
+					</a>
+				</div>
+				<div style="display:none">
+					<a href="http://www.ssmoban.com/web/index.html" target="_blank">
+						<img src="_files/picture/17112658676.jpg" width="980" height="395" border="0" onMouseOver="fv1_clearAuto();" onMouseOut="fv1_setAuto()" />
+					</a>
+				</div>
+		    </div>
+		    <div class="fv1_adnum" style="background:url(images/focusviewerbg.png) no-repeat !important; background:none ;filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src='/images/focusviewerbg.png')"></div>
+		    <div class="fv1_adnum">
+		        <table border="0" cellspacing="1" cellpadding="0" align="right" id="fv1_num">
+		          <tr>
+		            
+		<td width="18" height="16" class="fv1_bigon" onmouseover="fv1_clearAuto();fv1_Mea(0);" onmouseout="fv1_setAuto()">1</td>
+		
+		<td width="18" class="fv1_bigoff" onmouseover="fv1_clearAuto();fv1_Mea(1);" onmouseout="fv1_setAuto()">2</td>
+		
+		          </tr>
+		        </table>
+		    </div>
+		</div>
+		<script language="javascript"> 
+		    var fv1_n=0;
+		    var fv1_nums=2;
+		    var fv1_showNum = document.getElementById("fv1_num");
+		    var is_IE=(navigator.appName=="Microsoft Internet Explorer");
+		    function fv1_Mea(value){
+		        fv1_n=value;
+		        for(var i=0;i<fv1_nums;i++)
+		            if(value==i){
+		                fv1_showNum.getElementsByTagName("td")[i].setAttribute('className', 'fv1_bigon');
+		                fv1_showNum.getElementsByTagName("td")[i].setAttribute('class', 'fv1_bigon');
+		            }
+		            else{	
+		                fv1_showNum.getElementsByTagName("td")[i].setAttribute('className', 'fv1_bigoff');
+		                fv1_showNum.getElementsByTagName("td")[i].setAttribute('class', 'fv1_bigoff');
+		            }
+		        var divs = document.getElementById("fv1_filbox").getElementsByTagName("div"); 
+				if (is_IE){
+		        	document.getElementById("fv1_filbox").filters[0].Apply();
+				}
+				for(i=0;i<fv1_nums;i++)i==value?divs[i].style.display="block":divs[i].style.display="none";
+				if (is_IE){
+					document.getElementById("fv1_filbox").filters[0].play();
+				}
+		    }
+		    function fv1_clearAuto(){clearInterval(autoStart)}
+		    function fv1_setAuto(){autoStart=setInterval("auto(fv1_n)", 5000)}
+		    function auto(){
+		        fv1_n++;
+		        if(fv1_n>(fv1_nums-1))fv1_n=0;
+		        fv1_Mea(fv1_n);
+		    }
+		    fv1_setAuto(); 
+		</script>
+
+      </div>
+
+      <!--<div class="msc_c1r">
+        <div class="msc_c1rbox2 msc_bor">
+          <div class="msc_putT1">全国统一客服电话</div>
+          <div class="msc_svrTel">
+            <div class="msc_telnum">010-82608497</div>
+            <p>工作日 9：00-17：30</p>
+          </div>
+        </div>
+        <div class="msc_c1rbox3 msc_bor mt13">
+          <div class="msc_putT1">活动公告</div>
+          <div class="msc_u1">
+            <ul>
+              
+                <li><a href="/contents/1425/2292.html" target="_blank"><span style="color:#red">云建站模板合作伙伴火热招募中！</span></a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>-->
+      <div class="clear"></div>
+    </div>
+
+</body>
+</html>
+[/#escape]

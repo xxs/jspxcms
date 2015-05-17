@@ -17,11 +17,11 @@ import freemarker.template.TemplateException;
 public interface HtmlDao {
 	public int makeNode(Integer siteId, Integer nodeId, String treeNumber,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
-			TemplateException;
+			TaskService taskService, Integer taskId, Boolean isAllSite)
+			throws IOException, TemplateException;
 
 	public int makeInfo(Integer siteId, Integer nodeId, String treeNumber,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
-			TemplateException;
+			TaskService taskService, Integer taskId, Boolean isAllSite)
+			throws IOException, TemplateException;
 }

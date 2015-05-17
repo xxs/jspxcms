@@ -31,8 +31,8 @@ import freemarker.template.TemplateException;
 @Transactional
 public class HtmlServiceImpl implements HtmlService {
 	public void makeInfo(Integer infoId, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
-			throws IOException, TemplateException {
+			PathResolver resolver, TaskService taskService, Integer taskId,
+			Boolean isAllSite) throws IOException, TemplateException {
 		Info info = infoQuery.get(infoId);
 		if (info == null) {
 			return;
@@ -40,24 +40,25 @@ public class HtmlServiceImpl implements HtmlService {
 		Node node = info.getNode();
 		int method = node.getStaticMethodOrDef();
 		if (STATIC_MANUAL != method) {
-			PInfo.makeHtml(info, config, resolver, taskService, taskId);
-			makeNode(node, config, resolver, taskService, taskId);
+			PInfo.makeHtml(info, config, resolver, taskService, taskId,
+					isAllSite);
+			makeNode(node, config, resolver, taskService, taskId, isAllSite);
 		}
 	}
 
 	public void makeNode(Integer nodeId, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
-			throws IOException, TemplateException {
+			PathResolver resolver, TaskService taskService, Integer taskId,
+			Boolean isAllSite) throws IOException, TemplateException {
 		Node node = nodeQuery.get(nodeId);
 		if (node == null) {
 			return;
 		}
-		makeNode(node, config, resolver, taskService, taskId);
+		makeNode(node, config, resolver, taskService, taskId, isAllSite);
 	}
 
 	private void makeNode(Node node, Configuration config,
-			PathResolver resolver, TaskService taskService, Integer taskId)
-			throws IOException, TemplateException {
+			PathResolver resolver, TaskService taskService, Integer taskId,
+			Boolean isAllSite) throws IOException, TemplateException {
 		int method = node.getStaticMethodOrDef();
 		int max = 1;
 		if (STATIC_INFO_NODE_PARENT_LIST == method) {
@@ -66,11 +67,13 @@ public class HtmlServiceImpl implements HtmlService {
 		if (STATIC_INFO_NODE_PARENT == method
 				|| STATIC_INFO_NODE_PARENT_LIST == method) {
 			while (node != null) {
-				PNode.makeHtml(node, max, config, resolver, taskService, taskId);
+				PNode.makeHtml(node, max, config, resolver, taskService,
+						taskId, isAllSite);
 				node = node.getParent();
 			}
 		} else if (STATIC_INFO_NODE == method) {
-			PNode.makeHtml(node, max, config, resolver, taskService, taskId);
+			PNode.makeHtml(node, max, config, resolver, taskService, taskId,
+					isAllSite);
 		} else {
 			// do nothing
 		}
@@ -78,8 +81,8 @@ public class HtmlServiceImpl implements HtmlService {
 
 	public int makeNode(Integer siteId, Node node, boolean includeChildren,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
-			TemplateException {
+			TaskService taskService, Integer taskId, Boolean isAllSite)
+			throws IOException, TemplateException {
 		Integer nodeId = null;
 		String treeNumber = null;
 		if (node != null) {
@@ -90,13 +93,13 @@ public class HtmlServiceImpl implements HtmlService {
 			}
 		}
 		return dao.makeNode(siteId, nodeId, treeNumber, config, resolver,
-				taskService, taskId);
+				taskService, taskId, isAllSite);
 	}
 
 	public int makeInfo(Integer siteId, Node node, boolean includeChildren,
 			Configuration config, PathResolver resolver,
-			TaskService taskService, Integer taskId) throws IOException,
-			TemplateException {
+			TaskService taskService, Integer taskId, Boolean isAllSite)
+			throws IOException, TemplateException {
 		Integer nodeId = null;
 		String treeNumber = null;
 		if (node != null) {
@@ -107,7 +110,7 @@ public class HtmlServiceImpl implements HtmlService {
 			}
 		}
 		return dao.makeInfo(siteId, nodeId, treeNumber, config, resolver,
-				taskService, taskId);
+				taskService, taskId, isAllSite);
 	}
 
 	private InfoQueryService infoQuery;
