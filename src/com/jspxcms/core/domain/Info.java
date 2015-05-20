@@ -512,7 +512,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		StringBuilder sb = new StringBuilder();
 		String domainByNode = getNode().getDomainByNode();
 		if (isFull) {
-			sb.append("//");
+			sb.append("http://");
 			if (StringUtils.isNotBlank(domainByNode)) {
 				sb.append(domainByNode);
 			} else {
@@ -583,6 +583,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 			day = "0" + day;
 		}
 		path = StringUtils.replace(path, PATH_NODE_ID, node.getId().toString());
+		System.out.println("111111111111111111111111111111111111"+path);
 		String nodeNumber = node.getNumber();
 		if (StringUtils.isBlank(nodeNumber)) {
 			nodeNumber = node.getId().toString();
@@ -604,8 +605,9 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 
 		StringBuilder sb = new StringBuilder();
 		Site site = getSite();
+		System.out.println("site.........................."+site.getName());
 		if (isFull && !forRealPath) {
-			sb.append("//");
+			sb.append("http://");
 			String domain = getNode().getDomainByNode();
 			if (StringUtils.isBlank(domain)) {
 				domain = site.getDomain();
@@ -629,6 +631,10 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		if (!forRealPath && StringUtils.isNotBlank(ctx)) {
 			sb.append(ctx);
 		}
+		System.out.println("777777777777777777"+sb);
+		System.out.println("777777777777777777"+ctx);
+		System.out.println("777777777777777777"+htmlPath);
+		
 		sb.append(path);
 		return sb.toString();
 	}

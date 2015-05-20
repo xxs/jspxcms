@@ -70,9 +70,8 @@ public abstract class PNode {
 				fos = new FileOutputStream(file);
 				out = new OutputStreamWriter(fos, "UTF-8");
 				ForeContext.resetTotalPages();
-				System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
-						+ template.getName());
 				template.process(rootMap, out);
+				System.out.println("10101010101010101010101010101010"+rootMap.get("uri"));
 				taskService.add(taskId, 1);
 				total = ForeContext.getTotalPages();
 				if (total == null || total < 1) {

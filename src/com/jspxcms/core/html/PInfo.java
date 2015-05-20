@@ -78,6 +78,8 @@ public abstract class PInfo {
 			pa = new PageRequest(page, 1);
 			Page<String> pagedList = new PageImpl<String>(items, pa, total);
 			String url = info.getUrlStatic(page);
+			
+			
 			ForeContext.setData(rootMap, site, null, null, null, null, null,url,isAllSite);
 			ForeContext.setPage(rootMap, page, info, pagedList);
 			FileOutputStream fos = null;
@@ -86,6 +88,7 @@ public abstract class PInfo {
 				fos = new FileOutputStream(file);
 				out = new OutputStreamWriter(fos, "UTF-8");
 				template.process(rootMap, out);
+				System.out.println("99999999999999999999999999999999"+rootMap.get("url"));
 				taskService.add(taskId, 1);
 			} finally {
 				if (out != null) {

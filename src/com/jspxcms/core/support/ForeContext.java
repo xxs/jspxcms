@@ -84,9 +84,13 @@ public abstract class ForeContext {
 		data.put(Constants.CTX, ctx != null ? ctx : "");
 		// 两种情景，一种是原生静态化，一种是整站静态化导出功能需要用到的
 		if (isAllSite) {
-			data.put(FILES, "./_files");
+			data.put(FILES, "_files");
+			data.put(Freemarkers.URL, "./");
+			System.out.println("执行了。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。"+url);
 		} else {
 			data.put(FILES, site.getFilesPath());
+			data.put(Freemarkers.URL, url);
+			System.out.println("未执行。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。");
 		}
 		data.put(FORE, ctx != null ? ctx + FORE_PATH : FORE_PATH);
 		data.put(USER, user);
@@ -96,7 +100,6 @@ public abstract class ForeContext {
 		data.put(ORGS, orgs);
 		data.put(SITE, site);
 		data.put(GLOBAL, site.getGlobal());
-		data.put(Freemarkers.URL, url);
 	}
 
 	public static void setData(Map<String, Object> data,
