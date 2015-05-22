@@ -1,4 +1,4 @@
-package com.jspxcms.plug.dbbackup;
+package com.jspxcms.plug.repository;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

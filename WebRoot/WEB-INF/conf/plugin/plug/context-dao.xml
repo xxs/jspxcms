@@ -10,4 +10,5 @@
 	
 	<jpa:repositories base-package="com.jspxcms.plug.repository" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory" factory-class="com.jspxcms.common.orm.MyJpaRepositoryFactoryBean" repository-impl-postfix="Impl">
 	</jpa:repositories>
+	<bean id="dbBackupDao" class="com.jspxcms.plug.repository.impl.DbBackupDaoMySQLImpl"/>
 </beans>

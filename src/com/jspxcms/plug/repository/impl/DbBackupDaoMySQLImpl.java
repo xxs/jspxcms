@@ -1,4 +1,4 @@
-package com.jspxcms.plug.dbbackup;
+package com.jspxcms.plug.repository.impl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,6 +18,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
+
+import com.jspxcms.plug.repository.DbBackupDao;
 
 /**
  * 数据库备份DaoImpl

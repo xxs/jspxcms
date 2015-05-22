@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jspxcms.common.web.PathResolver;
 import com.jspxcms.core.support.WebFile;
-import com.jspxcms.plug.dbbackup.DbBackupExcutor;
+import com.jspxcms.plug.service.DbBackupExcutor;
 
 @Controller
 @RequestMapping("/plug/db_backup")

@@ -13,5 +13,5 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 
-	
+    <bean id="dbBackupExcutor" class="com.jspxcms.plug.service.impl.DbBackupExcutorImpl"/>
 </beans>
