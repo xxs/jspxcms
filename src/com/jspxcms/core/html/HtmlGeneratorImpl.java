@@ -20,6 +20,7 @@ import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.Task;
 import com.jspxcms.core.service.TaskService;
+import com.jspxcms.core.support.Constants;
 
 import freemarker.template.Configuration;
 
@@ -103,12 +104,12 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+realurl+site.getFilesPath()+"pppppppppppppppppppppppp"+site.getBase());
 		System.out.println("dddddddddddddddddddddddddddddddddddddddddddddddd"+realurl+"\\"+site.getNumber()+"\\_files");
 		File srcDir = new File(realurl+site.getFilesPath());
-		File destDir = new File(realurl+"\\"+site.getNumber()+"\\_files");
+		File destDir = new File(realurl+"\\"+Constants.SHE_BACKUP_PATH+"\\"+site.getNumber()+"\\_files");
 		try {
 			FileUtils.copyDirectory(srcDir,destDir);
 		} catch (IOException e1) {
 			e1.printStackTrace();
-			System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+			System.out.println("静态资源拷贝异常");
 		}
 		
 		

@@ -14,6 +14,7 @@ import com.jspxcms.common.web.PathResolver;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.service.TaskService;
+import com.jspxcms.core.support.Constants;
 import com.jspxcms.core.support.ForeContext;
 
 import freemarker.ext.servlet.FreemarkerServlet;
@@ -48,10 +49,13 @@ public abstract class PNode {
 		for (int page = 1; page <= max && page <= total && page <= staticPage
 				&& taskService.isRunning(taskId); page++) {
 			String path = node.getUrlStatic(page, false, true);
-
+			String filename = "";
+			if(isAllSite){
+				filename = resolver.getPath(Constants.SHE_BACKUP_PATH+"//"+path);
+			}else{
+				filename = resolver.getPath(path);
+			}
 			System.out.println("3333333:" + path + "ttttttttttttt");
-
-			String filename = resolver.getPath(path);
 
 			System.out.println("55555555555:" + filename + "ttttttttttttt"
 					+ site.getFilesPath());
@@ -60,7 +64,6 @@ public abstract class PNode {
 			// TODO like info:InfoText,title,text.
 			rootMap.put("text", node.getText());
 			String url = node.getUrlStatic(page);
-			System.out.println("44444444:" + url);
 			ForeContext.setData(rootMap, site, null, null, null, null, null,
 					url, isAllSite);
 			ForeContext.setPage(rootMap, page, node);
@@ -71,7 +74,6 @@ public abstract class PNode {
 				out = new OutputStreamWriter(fos, "UTF-8");
 				ForeContext.resetTotalPages();
 				template.process(rootMap, out);
-				System.out.println("10101010101010101010101010101010"+rootMap.get("uri"));
 				taskService.add(taskId, 1);
 				total = ForeContext.getTotalPages();
 				if (total == null || total < 1) {

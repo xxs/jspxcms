@@ -22,6 +22,7 @@ import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.service.TaskService;
+import com.jspxcms.core.support.Constants;
 import com.jspxcms.core.support.ForeContext;
 import com.jspxcms.core.support.TitleText;
 
@@ -69,7 +70,12 @@ public abstract class PInfo {
 		for (int page = 1; page <= total && taskService.isRunning(taskId); page++) {
 			titleText = textList.get(page - 1);
 			String path = info.getUrlStatic(page, false, true);
-			String filename = resolver.getPath(path);
+			String filename = "";
+			if(isAllSite){
+				filename = resolver.getPath(Constants.SHE_BACKUP_PATH+"//"+path);
+			}else{
+				filename = resolver.getPath(path);
+			}
 			File file = new File(filename);
 			file.getParentFile().mkdirs();
 			rootMap.put("title", titleText.getTitle());
@@ -88,7 +94,7 @@ public abstract class PInfo {
 				fos = new FileOutputStream(file);
 				out = new OutputStreamWriter(fos, "UTF-8");
 				template.process(rootMap, out);
-				System.out.println("99999999999999999999999999999999"+rootMap.get("url"));
+//				System.out.println("99999999999999999999999999999999"+rootMap.get("url"));
 				taskService.add(taskId, 1);
 			} finally {
 				if (out != null) {

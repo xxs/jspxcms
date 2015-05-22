@@ -42,7 +42,7 @@ function confirmDelete() {
     <td class="in-lab" width="15%"><s:message code="site.fullName"/>:</td>
     <td class="in-ctt" width="35%">${bean.fullName}</td>
   </tr>
-    <tr>
+  <tr>
     <td class="in-lab" width="15%"><s:message code="site.domain"/>:</td>
     <td class="in-ctt" width="35%">
     	${bean.domain}
@@ -51,12 +51,6 @@ function confirmDelete() {
     <td class="in-ctt" width="35%">${bean.number}</td>
   </tr>
   <tr>
-    <td class="in-lab" width="15%"><s:message code="site.htmlPath"/>:</td>
-    <td class="in-ctt" width="35%">
-    	 
-    	<label for="allPerm"><f:checkbox name="isrealpath" default="false" onclick="$('#realpath').toggle(this.checked);$('#realpath input').prop('disabled',this.checked);"/>启用绝对路径 &nbsp;</label>
-    	<f:text id="realpath" name="realpath" value="${bean.htmlPath}" class="" maxlength="100" style="width:150px;"/>
-    </td>
     <td class="in-lab" width="15%"><s:message code="site.templateTheme"/>:</td>
     <td class="in-ctt" width="35%">
 	    	<select name="templateTheme">
@@ -65,40 +59,14 @@ function confirmDelete() {
     </td>
   </tr>
   <tr>
-    <td colspan="4" class="in-opt">
-      <div class="in-btn"><input type="button" value="生成整站html+css" onclick="this.form.action='make_all_site.do';this.form.submit();""/></div>
+    <td class="in-lab" ></td>
+    <td colspan="3" class="in-opt">
+      <div class="in-btn"><input type="button" value="生成整站html+js+css" onclick="this.form.action='make_all_site.do?id=${bean.id}';this.form.submit();""/></div>
       <div class="in-btn"><input type="button" value="<s:message code="return"/>" onclick="location.href='list.do?${searchstring}';"/></div>
       <div style="clear:both;"></div>
     </td>
   </tr>
 </table>
 </form>
-<table id="pagedTable" border="0" cellpadding="0" cellspacing="0" class="ls-tb margin-top5">
-  <thead id="sortHead" pagesort="<c:out value='${page_sort[0]}' />" pagedir="${page_sort_dir[0]}" pageurl="list.do?page_sort={0}&page_sort_dir={1}&${searchstringnosort}">
-  <tr class="ls_table_th">
-    <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
-    <th width="110"><s:message code="operate"/></th>
-    <th class="ls-th-sort"><span class="ls-sort" pagesort="name"><s:message code="webFile.name"/></span></th>
-    <th class="ls-th-sort"><span class="ls-sort" pagesort="lastModified"><s:message code="webFile.lastModified"/></span></th>
-    <th class="ls-th-sort"><span class="ls-sort" pagesort="length"><s:message code="webFile.length"/></span></th>
-  </tr>
-  </thead>
-  <tbody>
-  <c:forEach var="bean" varStatus="status" items="${list}">
-  <tr>
-    <td><input type="checkbox" name="ids" value="${bean.id}"/></td>
-    <td align="center">
-      <a href="restore.do?id=${bean.id}&${searchstring}" onclick="return confirmRestore();" class="ls-opt">打包下载</a>
-      <a href="delete.do?ids=${bean.id}&${searchstring}" onclick="return confirmDelete();" class="ls-opt"><s:message code="delete"/></a>
-    </td>
-    <td>
-      <c:out value="${bean.name}"/>
-    </td>
-    <td><fmt:formatDate value="${bean.lastModified}" pattern="yyyy-MM-dd HH:mm"/></td>
-    <td align="right"><c:if test="${bean.file}"><fmt:formatNumber value="${bean.lengthKB}" pattern="#,##0"/> KB</c:if></td>
-  </tr>
-  </c:forEach>
-  </tbody>
-</table>
 </body>
 </html>

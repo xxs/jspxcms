@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jspxcms.common.web.PathResolver;
+import com.jspxcms.core.support.Constants;
 import com.jspxcms.core.support.WebFile;
 import com.jspxcms.plug.service.DbBackupExcutor;
 
@@ -27,13 +28,13 @@ import com.jspxcms.plug.service.DbBackupExcutor;
 public class DbBackupController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(DbBackupController.class);
-	public static final String BACKUP_PATH = "/WEB-INF/db_backup";
+	
 
 	@RequiresPermissions("plug:db_backup:list")
 	@RequestMapping("list.do")
 	public String list(HttpServletRequest request,
 			org.springframework.ui.Model modelMap) {
-		String realPath = pathResolver.getPath(BACKUP_PATH);
+		String realPath = pathResolver.getPath(Constants.DB_BACKUP_PATH);
 		File parent = new File(realPath);
 		WebFile parentWebFile = new WebFile(parent, parent.getAbsolutePath(),
 				request.getContextPath());
@@ -45,7 +46,7 @@ public class DbBackupController {
 	@RequiresPermissions("plug:db_backup:backup")
 	@RequestMapping("backup.do")
 	public String backup(HttpServletRequest request, RedirectAttributes ra) {
-		File dir = new File(pathResolver.getPath(BACKUP_PATH));
+		File dir = new File(pathResolver.getPath(Constants.DB_BACKUP_PATH));
 		excutor.backup(dir, false);
 		logger.info("database backup");
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
@@ -56,7 +57,7 @@ public class DbBackupController {
 	@RequestMapping("restore.do")
 	public String restore(String id, HttpServletRequest request,
 			RedirectAttributes ra) {
-		File file = new File(pathResolver.getPath(BACKUP_PATH), id);
+		File file = new File(pathResolver.getPath(Constants.DB_BACKUP_PATH), id);
 		excutor.restore(file);
 		logger.info("database restore");
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
@@ -75,7 +76,7 @@ public class DbBackupController {
 	public String delete(String[] ids, Integer querySlotId,
 			RedirectAttributes ra) {
 		for (String id : ids) {
-			File file = new File(pathResolver.getPath(BACKUP_PATH), id);
+			File file = new File(pathResolver.getPath(Constants.DB_BACKUP_PATH), id);
 			FileUtils.deleteQuietly(file);
 		}
 		ra.addFlashAttribute(MESSAGE, DELETE_SUCCESS);

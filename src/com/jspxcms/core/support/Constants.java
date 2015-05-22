@@ -16,6 +16,9 @@ public class Constants {
 	public static final String RETRIEVE_PASSWORD_TYPE = "retrieve_password";
 	public static final String RETRIEVE_PASSWORD_URL = "/retrieve_password.jspx?key=";
 	public static final String LOGIN_URL = "/login.jspx";
+	
+	public static final String DB_BACKUP_PATH = "/backup/db";
+	public static final String SHE_BACKUP_PATH = "/backup/she";
 	/**
 	 * 内容访问路径
 	 */
