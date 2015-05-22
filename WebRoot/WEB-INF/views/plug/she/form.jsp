@@ -36,61 +36,6 @@ function confirmDelete() {
 <input type="hidden" id="redirect" name="redirect" value="edit"/>
 <table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5">
   <tr>
-    <td colspan="4" class="in-opt">
-			<shiro:hasPermission name="core:site:create">
-			<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
-			<div class="in-btn"></div>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="core:site:copy">
-			<div class="in-btn"><input type="button" value="<s:message code="copy"/>" onclick="location.href='create.do?id=${bean.id}&${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
-			</shiro:hasPermission>
-			<shiro:hasPermission name="core:site:delete">
-			<div class="in-btn"><input type="button" value="<s:message code="delete"/>" onclick="if(confirmDelete()){location.href='delete.do?ids=${bean.id}&${searchstring}';}"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
-			</shiro:hasPermission>
-			<div class="in-btn"></div>
-			<div class="in-btn"><input type="button" value="<s:message code="prev"/>" onclick="location.href='edit.do?id=${side.prev.id}&position=${position-1}&${searchstring}';"<c:if test="${empty side.prev}"> disabled="disabled"</c:if>/></div>
-			<div class="in-btn"><input type="button" value="<s:message code="next"/>" onclick="location.href='edit.do?id=${side.next.id}&position=${position+1}&${searchstring}';"<c:if test="${empty side.next}"> disabled="disabled"</c:if>/></div>
-			<div class="in-btn"></div>
-			<div class="in-btn"><input type="button" value="<s:message code="return"/>" onclick="location.href='list.do?${searchstring}';"/></div>
-      <div style="clear:both;"></div>
-    </td>
-  </tr>
-  <tr>
-    <td class="in-lab" width="15%"><s:message code="site.parent"/>:</td>
-    <td class="in-ctt" width="35%">
-      <c:set var="parentName"><c:choose><c:when test="${empty parent}"><s:message code="site.root"/></c:when><c:otherwise><c:out value="${parent.displayName}"/></c:otherwise></c:choose></c:set>
-     	<f:hidden id="parentId" name="parentId" value="${parent.id}"/>
-	    <f:hidden id="parentIdNumber" value="${parent.id}"/>
-	    <f:hidden id="parentIdName" value="${parentName}"/>
-	    <f:text id="parentIdNameDisplay" value="${parentName}" readonly="readonly" style="width:180px;"/><input id="parentIdButton" type="button" value="<s:message code='choose'/>"/>
-	    <script type="text/javascript">
-	    $(function(){
-	    	Cms.f7.site("${ctx}","parentId",{
-	    		"settings": {"title": "<s:message code='site.f7.selectSite'/>"},
-	    		"params": {
-	    			"excludeChildrenId":"${oprt=='edit' ? bean.id : ''}"
-	    		}
-	    	});
-	    });
-	    </script>
-    </td>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.org"/>:</td>
-    <td class="in-ctt" width="35%">
-    	<f:hidden id="orgId" name="orgId" value="${org.id}"/>
-	    <f:hidden id="orgIdNumber" value="${org.id}"/>
-	    <f:hidden id="orgIdName" value="${org.displayName}"/>
-	    <f:text id="orgIdNameDisplay" value="${org.displayName}" class="required" readonly="readonly" style="width:180px;"/><input id="orgIdButton" type="button" value="<s:message code='choose'/>"/>
-	    <script type="text/javascript">
-	    $(function(){
-	    	Cms.f7.org("${ctx}","orgId",{
-	    		params:{"allowRoot":"false"},
-	    		settings: {"title": "<s:message code='org.f7.selectOrg'/>"}
-	    	});
-	    });
-	    </script>
-    </td>
-  </tr>
-  <tr>
     <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.name"/>:</td>
     <td class="in-ctt" width="35%"><f:text name="name" value="${oprt=='edit' ? (bean.name) : ''}" class="required" maxlength="100" style="width:180px;"/></td>
     <td class="in-lab" width="15%"><s:message code="site.fullName"/>:</td>
@@ -113,41 +58,15 @@ function confirmDelete() {
     </td>
     <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.templateTheme"/>:</td>
     <td class="in-ctt" width="35%">
-    	<c:choose>
-    	<c:when test="${oprt=='create'}">
-    		<f:text name="templateTheme" value="${bean.templateTheme}" default="default"/>
-    	</c:when>
-    	<c:otherwise>    	
 	    	<select name="templateTheme">
 	    		<f:options items="${themeList}" selected="${bean.templateTheme}"/>
 	    	</select>
-    	</c:otherwise>
-    	</c:choose>
     </td>
   </tr>
   <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.noPicture"/>:</td>
-    <td class="in-ctt" width="35%"><f:text name="noPicture" value="${bean.noPicture}" default="/img/no_picture.jpg" class="required" maxlength="255" style="width:180px;"/></td>
-    <td class="in-lab" width="15%"><s:message code="site.def"/>:</td>
-    <td class="in-ctt" width="35%">
-    	<f:checkbox name="def" value="${bean.def}" default="false"/>
-		</td>
-  </tr>
-  <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.status"/>:</td>
-    <td class="in-ctt" width="85%" colspan="3">
-    	<label><f:radio name="status" value="0" checked="${bean.status}" default="0" class="required" /><s:message code="site.status.0"/></label>
-    	<label><f:radio name="status" value="1" checked="${bean.status}" class="required" /><s:message code="site.status.1"/></label>
-  	</td>
-  </tr>
-  
-  <tr>
     <td colspan="4" class="in-opt">
-      <div class="in-btn"><input type="submit" value="<s:message code="save"/>"/></div>
-      <div class="in-btn"><input type="submit" value="<s:message code="saveAndReturn"/>" onclick="$('#redirect').val('list');"/></div>
-      <c:if test="${oprt=='create'}">
-      <div class="in-btn"><input type="submit" value="<s:message code="saveAndCreate"/>" onclick="$('#redirect').val('create');"/></div>
-      </c:if>
+      <div class="in-btn"><input type="button" value="生成整站html+css" onclick="this.form.action='make_all_site.do';this.form.submit();""/></div>
+      <div class="in-btn"><input type="button" value="<s:message code="return"/>" onclick="location.href='list.do?${searchstring}';"/></div>
       <div style="clear:both;"></div>
     </td>
   </tr>
