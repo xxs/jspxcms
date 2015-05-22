@@ -25,6 +25,7 @@ import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.html.HtmlGenerator;
 import com.jspxcms.core.service.SiteService;
 import com.jspxcms.core.support.Context;
+import com.jspxcms.core.support.WebFile;
 /**
  * 静态资源导出
  * @author Administrator
@@ -34,6 +35,7 @@ import com.jspxcms.core.support.Context;
 @RequestMapping("/plug/she/")
 public class StaticHtmlExportController {
 
+	public static final String SHE_BACKUP_PATH = "/WEB-INF/she_backup";
 	@RequestMapping("list.do")
 	public String list(Model modelMap) {
 		List<Site> list = service.findList();
@@ -62,6 +64,14 @@ public class StaticHtmlExportController {
 		}
 		modelMap.addAttribute("themeList", themeList);
 		modelMap.addAttribute("bean", bean);
+		//显示之前备份列表
+		String realPath = pathResolver.getPath(SHE_BACKUP_PATH);
+		File parent = new File(realPath);
+		WebFile parentWebFile = new WebFile(parent, parent.getAbsolutePath(),
+				request.getContextPath());
+		List<WebFile> list = parentWebFile.listFiles();
+		modelMap.addAttribute("list", list);
+		
 		return "plug/she/form";
 	}
 
@@ -71,7 +81,7 @@ public class StaticHtmlExportController {
 		Integer userId = Context.getCurrentUserId(request);
 		htmlGenerator.makeAllSite(site, userId);
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
-		return "redirect:html_index.do";
+		return "redirect:edit.do";
 	}
 	
 	@Autowired

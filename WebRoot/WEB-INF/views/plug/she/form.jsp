@@ -16,6 +16,7 @@
 <script type="text/javascript">
 $(function() {
 	$("#validForm").validate();
+	$("#realpath").hide();
 	$("input[name='name']").focus();
 });
 function confirmDelete() {
@@ -29,34 +30,34 @@ function confirmDelete() {
 <div class="c-bar margin-top5">
   <span class="c-position"><s:message code="site.management"/> - <s:message code="${oprt=='edit' ? 'edit' : 'create'}"/></span>
 </div>
-<form id="validForm" action="${oprt=='edit' ? 'update' : 'save'}.do" method="post">
+<form id="validForm" method="post">
 <tags:search_params/>
 <f:hidden name="oid" value="${bean.id}"/>
 <f:hidden name="position" value="${position}"/>
 <input type="hidden" id="redirect" name="redirect" value="edit"/>
 <table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5">
   <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.name"/>:</td>
-    <td class="in-ctt" width="35%"><f:text name="name" value="${oprt=='edit' ? (bean.name) : ''}" class="required" maxlength="100" style="width:180px;"/></td>
+    <td class="in-lab" width="15%"><s:message code="site.name"/>:</td>
+    <td class="in-ctt" width="35%">${bean.name}</td>
     <td class="in-lab" width="15%"><s:message code="site.fullName"/>:</td>
-    <td class="in-ctt" width="35%"><f:text name="fullName" value="${oprt=='edit' ? (bean.fullName) : ''}" maxlength="100" style="width:180px;"/></td>
+    <td class="in-ctt" width="35%">${bean.fullName}</td>
   </tr>
     <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.domain"/>:</td>
+    <td class="in-lab" width="15%"><s:message code="site.domain"/>:</td>
     <td class="in-ctt" width="35%">
-    	<f:text name="domain" value="${bean.domain}" class="required" maxlength="100" style="width:150px;"/> &nbsp;
-    	<label><f:checkbox name="identifyDomain" value="${bean.identifyDomain}" default="false"/><s:message code="site.identifyDomain"/></label>
+    	${bean.domain}
     </td>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.number"/>:</td>
-    <td class="in-ctt" width="35%"><f:text name="number" value="${oprt=='edit' ? (bean.number) : ''}" class="{required:true,remote:{url:'check_number.do',type:'post',data:{original:'${oprt=='edit' ? (bean.number) : ''}'}},messages:{remote:'${numberExist}'}}" maxlength="100" style="width:180px;"/></td>
+    <td class="in-lab" width="15%"><s:message code="site.number"/>:</td>
+    <td class="in-ctt" width="35%">${bean.number}</td>
   </tr>
   <tr>
     <td class="in-lab" width="15%"><s:message code="site.htmlPath"/>:</td>
     <td class="in-ctt" width="35%">
-    	<f:text name="htmlPath" value="${bean.htmlPath}" class="" maxlength="100" style="width:150px;"/> &nbsp;
-    	<label><f:checkbox name="urlRewrite" value="${bean.urlRewrite}" default="false"/><s:message code="site.urlRewrite"/></label>
+    	 
+    	<label for="allPerm"><f:checkbox name="isrealpath" default="false" onclick="$('#realpath').toggle(this.checked);$('#realpath input').prop('disabled',this.checked);"/>启用绝对路径 &nbsp;</label>
+    	<f:text id="realpath" name="realpath" value="${bean.htmlPath}" class="" maxlength="100" style="width:150px;"/>
     </td>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.templateTheme"/>:</td>
+    <td class="in-lab" width="15%"><s:message code="site.templateTheme"/>:</td>
     <td class="in-ctt" width="35%">
 	    	<select name="templateTheme">
 	    		<f:options items="${themeList}" selected="${bean.templateTheme}"/>
@@ -72,5 +73,32 @@ function confirmDelete() {
   </tr>
 </table>
 </form>
+<table id="pagedTable" border="0" cellpadding="0" cellspacing="0" class="ls-tb margin-top5">
+  <thead id="sortHead" pagesort="<c:out value='${page_sort[0]}' />" pagedir="${page_sort_dir[0]}" pageurl="list.do?page_sort={0}&page_sort_dir={1}&${searchstringnosort}">
+  <tr class="ls_table_th">
+    <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
+    <th width="110"><s:message code="operate"/></th>
+    <th class="ls-th-sort"><span class="ls-sort" pagesort="name"><s:message code="webFile.name"/></span></th>
+    <th class="ls-th-sort"><span class="ls-sort" pagesort="lastModified"><s:message code="webFile.lastModified"/></span></th>
+    <th class="ls-th-sort"><span class="ls-sort" pagesort="length"><s:message code="webFile.length"/></span></th>
+  </tr>
+  </thead>
+  <tbody>
+  <c:forEach var="bean" varStatus="status" items="${list}">
+  <tr>
+    <td><input type="checkbox" name="ids" value="${bean.id}"/></td>
+    <td align="center">
+      <a href="restore.do?id=${bean.id}&${searchstring}" onclick="return confirmRestore();" class="ls-opt">打包下载</a>
+      <a href="delete.do?ids=${bean.id}&${searchstring}" onclick="return confirmDelete();" class="ls-opt"><s:message code="delete"/></a>
+    </td>
+    <td>
+      <c:out value="${bean.name}"/>
+    </td>
+    <td><fmt:formatDate value="${bean.lastModified}" pattern="yyyy-MM-dd HH:mm"/></td>
+    <td align="right"><c:if test="${bean.file}"><fmt:formatNumber value="${bean.lengthKB}" pattern="#,##0"/> KB</c:if></td>
+  </tr>
+  </c:forEach>
+  </tbody>
+</table>
 </body>
 </html>
