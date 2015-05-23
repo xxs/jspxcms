@@ -301,7 +301,8 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	@Transient
 	public String getUrlStatic(Integer page) {
 		boolean isFull = getSite().getWithDomain();
-		return getUrlStatic(page, isFull, false);
+		boolean isAllStatic = getSite().getAllStatic();
+		return getUrlStatic(page, isFull, isAllStatic, false);
 	}
 
 	@Transient
@@ -311,11 +312,12 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 
 	@Transient
 	public String getUrlStaticFull(Integer page) {
-		return getUrlStatic(page, true, false);
+		return getUrlStatic(page, true, false, false);
 	}
 
 	@Transient
-	public String getUrlStatic(Integer page, boolean isFull, boolean forRealPath) {
+	public String getUrlStatic(Integer page, boolean isFull,
+			boolean isAllStatic, boolean forRealPath) {
 		Site site = getSite();
 		if (isLinked()) {
 			return getLinkUrl();
@@ -331,7 +333,7 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 			number = getId().toString();
 		}
 		path = StringUtils.replace(path, PATH_NODE_NUMBER, number);
-		//替换站点编码
+		// 替换站点编码
 		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
 		String extension = getNodeExtensionOrDef();
 		if (page != null && page > 1) {
@@ -347,6 +349,9 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 				path += extension;
 			}
 		}
+		if (isAllStatic) {
+			return path;
+		}
 		StringBuilder sb = new StringBuilder();
 		if (isFull && !forRealPath) {
 			sb.append("http://");
@@ -361,9 +366,6 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		}
 		String ctx = site.getContextPath();
 		String htmlPath = getDomainPathOrParent();
-		System.out.println("888888888888888888888888"+sb);
-		System.out.println("888888888888888888888888"+ctx);
-		System.out.println("888888888888888888888888"+htmlPath);
 		boolean isPathInUrl = false;
 		if (StringUtils.isBlank(htmlPath)) {
 			htmlPath = site.getHtmlPath();
@@ -376,7 +378,7 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		if (!forRealPath && StringUtils.isNotBlank(ctx)) {
 			sb.append(ctx);
 		}
-		
+
 		sb.append(path);
 		return sb.toString();
 	}

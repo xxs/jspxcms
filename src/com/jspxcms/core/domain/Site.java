@@ -303,6 +303,11 @@ public class Site implements java.io.Serializable {
 	public Boolean getWithDomain() {
 		return getGlobal() != null ? getGlobal().getWithDomain() : null;
 	}
+	
+	@Transient
+	public Boolean getAllStatic() {
+		return getGlobal() != null ? getGlobal().getAllStatic() : null;
+	}
 
 	@Transient
 	public String getNoPictureUrl() {

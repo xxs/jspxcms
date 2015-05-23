@@ -105,6 +105,7 @@ public class Global implements java.io.Serializable {
 	private Integer port;
 	private String contextPath;
 	private Boolean withDomain;
+	private Boolean allStatic;
 	private String dataVersion;
 
 	@Id
@@ -186,9 +187,18 @@ public class Global implements java.io.Serializable {
 	public Boolean getWithDomain() {
 		return this.withDomain;
 	}
-
+	
 	public void setWithDomain(Boolean withDomain) {
 		this.withDomain = withDomain;
+	}
+	
+	@Column(name = "f_is_all_static", nullable = false, length = 1)
+	public Boolean getAllStatic() {
+		return this.allStatic;
+	}
+
+	public void setAllStatic(Boolean allStatic) {
+		this.allStatic = allStatic;
 	}
 
 	@Length(max = 50)

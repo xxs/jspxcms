@@ -43,7 +43,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeInfo(infoId, getConfig(), resolver,
-							taskService, null,false);
+							taskService, null, false);
 				} catch (Exception e) {
 					logger.error("make html error!", e);
 				}
@@ -64,7 +64,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(nodeId, getConfig(), resolver,
-							taskService, null,false);
+							taskService, null, false);
 				} catch (Exception e) {
 					logger.error("make html error!", e);
 				}
@@ -82,10 +82,10 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(siteId, null, true, getConfig(),
-							resolver, taskService, taskId,false);
+							resolver, taskService, taskId, false);
 					if (taskService.isRunning(taskId)) {
 						htmlService.makeInfo(siteId, null, true, getConfig(),
-								resolver, taskService, taskId,false);
+								resolver, taskService, taskId, false);
 					}
 					taskService.finish(taskId);
 				} catch (Exception e) {
@@ -95,24 +95,22 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			}
 		}.start();
 	}
-	
+
 	public void makeAllSite(final Site site, final Integer userId) {
 		final Integer siteId = site.getId();
 		String name = site.getName();
-		
+
 		String realurl = servletContext.getRealPath("");
-		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+realurl+site.getFilesPath()+"pppppppppppppppppppppppp"+site.getBase());
-		System.out.println("dddddddddddddddddddddddddddddddddddddddddddddddd"+realurl+"\\"+site.getNumber()+"\\_files");
-		File srcDir = new File(realurl+site.getFilesPath());
-		File destDir = new File(realurl+"\\"+Constants.SHE_BACKUP_PATH+"\\"+site.getNumber()+"\\_files");
+		File srcDir = new File(realurl + site.getFilesPath());
+		File destDir = new File(realurl + "\\" + Constants.SHE_BACKUP_PATH
+				+ "\\" + site.getNumber() + "\\_files");
 		try {
-			FileUtils.copyDirectory(srcDir,destDir);
+			FileUtils.copyDirectory(srcDir, destDir);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			System.out.println("静态资源拷贝异常");
 		}
-		
-		
+
 		Task task = taskService.save("Site: " + name, null, Task.NODE_HTML,
 				userId, siteId);
 		final Integer taskId = task.getId();
@@ -120,19 +118,20 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(siteId, null, true, getConfig(),
-							resolver, taskService, taskId,true);
+							resolver, taskService, taskId, true);
 					if (taskService.isRunning(taskId)) {
 						htmlService.makeInfo(siteId, null, true, getConfig(),
-								resolver, taskService, taskId,true);
+								resolver, taskService, taskId, true);
 					}
 					taskService.finish(taskId);
 				} catch (Exception e) {
 					taskService.abort(taskId);
-					logger.error("make html error!", e);
+					logger.error("make html error000000000000000000!", e);
 				}
 			}
 		}.start();
 	}
+
 	public void makeInfo(final Integer siteId, final Node node,
 			final boolean includeChildren, Integer userId) {
 		String name = "ALL";
@@ -146,7 +145,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeInfo(siteId, node, includeChildren,
-							getConfig(), resolver, taskService, taskId,false);
+							getConfig(), resolver, taskService, taskId, false);
 					taskService.finish(taskId);
 				} catch (Exception e) {
 					taskService.abort(taskId);
@@ -169,7 +168,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(siteId, node, includeChildren,
-							getConfig(), resolver, taskService, taskId,false);
+							getConfig(), resolver, taskService, taskId, false);
 					taskService.finish(taskId);
 				} catch (Exception e) {
 					taskService.abort(taskId);
@@ -183,7 +182,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 		if (node == null) {
 			return;
 		}
-		String path = node.getUrlStatic(1, false, true);
+		String path = node.getUrlStatic(1, false, false, true);
 		String filename = resolver.getPath(path);
 		File file = new File(filename);
 		if (file.exists()) {
@@ -200,12 +199,12 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 	private PathResolver resolver;
 	private ServletContext servletContext;
-	
+
 	@Autowired
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
-	
+
 	@Autowired
 	public void setHtmlService(HtmlService htmlService) {
 		this.htmlService = htmlService;

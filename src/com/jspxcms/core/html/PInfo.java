@@ -69,7 +69,7 @@ public abstract class PInfo {
 		int total = textList.size();
 		for (int page = 1; page <= total && taskService.isRunning(taskId); page++) {
 			titleText = textList.get(page - 1);
-			String path = info.getUrlStatic(page, false, true);
+			String path = info.getUrlStatic(page, false,false, true);
 			String filename = "";
 			if(isAllSite){
 				filename = resolver.getPath(Constants.SHE_BACKUP_PATH+"//"+path);
@@ -94,7 +94,6 @@ public abstract class PInfo {
 				fos = new FileOutputStream(file);
 				out = new OutputStreamWriter(fos, "UTF-8");
 				template.process(rootMap, out);
-//				System.out.println("99999999999999999999999999999999"+rootMap.get("url"));
 				taskService.add(taskId, 1);
 			} finally {
 				if (out != null) {

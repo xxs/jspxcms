@@ -548,7 +548,8 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	@Transient
 	public String getUrlStatic(Integer page) {
 		boolean isFull = getSite().getWithDomain();
-		return getUrlStatic(page, isFull, false);
+		boolean isAllStatic = getSite().getAllStatic();
+		return getUrlStatic(page, isFull, isAllStatic, false);
 	}
 
 	@Transient
@@ -558,12 +559,13 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 
 	@Transient
 	public String getUrlStaticFull(Integer page) {
-		return getUrlStatic(page, true, false);
+		return getUrlStatic(page, true, false, false);
 	}
 
 	@Transient
-	public String getUrlStatic(Integer page, boolean isFull, boolean forRealPath) {
-		//Site site = getSite();
+	public String getUrlStatic(Integer page, boolean isFull,
+			boolean isAllStatic, boolean forRealPath) {
+		// Site site = getSite();
 		if (isLinked()) {
 			return getLinkUrl();
 		}
@@ -583,13 +585,12 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 			day = "0" + day;
 		}
 		path = StringUtils.replace(path, PATH_NODE_ID, node.getId().toString());
-//		System.out.println("111111111111111111111111111111111111"+path);
 		String nodeNumber = node.getNumber();
 		if (StringUtils.isBlank(nodeNumber)) {
 			nodeNumber = node.getId().toString();
 		}
 		path = StringUtils.replace(path, PATH_NODE_NUMBER, nodeNumber);
-		//替换站点编码
+		// 替换站点编码
 		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
 		path = StringUtils.replace(path, PATH_INFO_ID, getId().toString());
 		path = StringUtils.replace(path, PATH_YEAR, year);
@@ -603,9 +604,12 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 			path += extension;
 		}
 
+		if (isAllStatic) {
+			return path;
+		}
 		StringBuilder sb = new StringBuilder();
 		Site site = getSite();
-//		System.out.println("site.........................."+site.getName());
+		
 		if (isFull && !forRealPath) {
 			sb.append("http://");
 			String domain = getNode().getDomainByNode();
@@ -631,10 +635,6 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		if (!forRealPath && StringUtils.isNotBlank(ctx)) {
 			sb.append(ctx);
 		}
-//		System.out.println("777777777777777777"+sb);
-//		System.out.println("777777777777777777"+ctx);
-//		System.out.println("777777777777777777"+htmlPath);
-		
 		sb.append(path);
 		return sb.toString();
 	}
