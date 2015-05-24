@@ -351,6 +351,32 @@ function checkControl(name,checked) {
     <td align="center"><f:checkbox name="dblColumn" value="false"/></td>
   </tr>
   </c:if>
+  
+  <c:if test="${!fnx:contains_co(names,'parameters')}">
+  <tr>
+    <td><input type="checkbox" name="control" checked="checked"/></td>
+    <td align="center">parameters
+      <input type="hidden" name="name" value="parameters"/>
+      <input type='hidden' name='property' value='{"type":1,"innerType":2,"required":false}'/>
+      <input type='hidden' name='custom' value='{}'/>
+    </td>
+    <td align="center"><input type="text" name="label" value="高级参数"/></td>
+    <td align="center"><f:checkbox name="dblColumn" value="false"/></td>
+  </tr>
+  </c:if>
+  <c:if test="${!fnx:contains_co(names,'attrs')}">
+  <tr>
+    <td><input type="checkbox" name="control" checked="checked"/></td>
+    <td align="center">attrs
+      <input type="hidden" name="name" value="attrs"/>
+      <input type='hidden' name='property' value='{"type":1,"innerType":2,"required":false}'/>
+      <input type='hidden' name='custom' value='{}'/>
+    </td>
+    <td align="center"><input type="text" name="label" value="高级属性"/></td>
+    <td align="center"><f:checkbox name="dblColumn" value="false"/></td>
+  </tr>
+  </c:if>
+  
   </tbody>
 </table>
 </form>

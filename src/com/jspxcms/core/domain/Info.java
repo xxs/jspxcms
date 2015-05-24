@@ -1391,6 +1391,9 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	private List<InfoTag> infoTags = new ArrayList<InfoTag>(0);
 	private List<InfoSpecial> infoSpecials = new ArrayList<InfoSpecial>(0);
 	private List<InfoAttribute> infoAttrs = new ArrayList<InfoAttribute>(0);
+	
+	private List<InfoAttr> infoAttrss = new ArrayList<InfoAttr>(0);
+	
 	private List<InfoImage> images = new ArrayList<InfoImage>(0);
 	private List<InfoFile> files = new ArrayList<InfoFile>(0);
 	private Map<String, String> customs = new HashMap<String, String>(0);
@@ -1482,9 +1485,19 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	public List<InfoAttribute> getInfoAttrs() {
 		return infoAttrs;
 	}
-
+	
 	public void setInfoAttrs(List<InfoAttribute> infoAttrs) {
 		this.infoAttrs = infoAttrs;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE }, mappedBy = "info")
+	@OrderBy("attr asc")
+	public List<InfoAttr> getInfoAttrss() {
+		return infoAttrss;
+	}
+
+	public void setInfoAttrss(List<InfoAttr> infoAttrss) {
+		this.infoAttrss = infoAttrss;
 	}
 
 	@ElementCollection

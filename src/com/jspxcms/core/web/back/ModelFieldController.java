@@ -66,6 +66,9 @@ public class ModelFieldController {
 		Model model = modelService.get(modelId);
 		modelMap.addAttribute("model", model);
 		String path = modelTypeHolder.getPaths().get(model.getType());
+		
+		System.out.println("00000000000"+path);
+		
 		return path + "model_predefined_list";
 	}
 

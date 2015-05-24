@@ -450,6 +450,16 @@ function confirmDelete() {
 			});
     </script>
   </c:when>
+  <c:when test="${field.name eq 'parameters'}">
+  	<div>
+  		parameters   显示内容
+    </div>
+  </c:when>
+  <c:when test="${field.name eq 'attrs'}">
+  	<div>
+  		attrs   显示内容
+    </div>
+  </c:when>
   <c:otherwise>
     System field not found: '${field.name}'
   </c:otherwise>
