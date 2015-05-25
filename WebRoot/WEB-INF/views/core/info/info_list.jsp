@@ -230,18 +230,23 @@ function optDelete(form) {
     </td>
     <td align="right"><c:out value="${bean.priority}"/></td>
     <td align="right"><c:out value="${bean.views}"/></td>
-    <td align="center">    	
-    	<c:choose>
-    	<c:when test="${bean.status eq '1'}">
-    		${bean.stepName}
-    	</c:when>    	
-    	<c:when test="${bean.status eq 'A'}">
-    		<a href="${bean.url}" target="_blank"><s:message code="info.status.${bean.status}"/></a>
-    	</c:when>
-    	<c:otherwise>
-    		<s:message code="info.status.${bean.status}"/>
-    	</c:otherwise>
-    	</c:choose>	
+    <td align="center">
+      <div>
+	    	<c:choose>
+	    	<c:when test="${bean.status eq '1'}">
+	    		${bean.stepName}
+	    	</c:when>    	
+	    	<c:when test="${bean.status eq 'A'}">
+	    		<a href="${bean.url}" target="_blank"><s:message code="info.status.${bean.status}"/></a>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<s:message code="info.status.${bean.status}"/>
+	    	</c:otherwise>
+	    	</c:choose>
+    	</div>
+    	<div>
+        html:
+    	</div>
     </td>
   </tr>
   </c:forEach>
