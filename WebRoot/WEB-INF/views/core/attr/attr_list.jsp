@@ -76,10 +76,12 @@ function optDelete(form) {
   <thead>
   <tr class="ls_table_th">
     <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
-    <th width="50"><s:message code="operate"/></th>
+    <th width="80"><s:message code="operate"/></th>
     <th width="30">ID</th>
+    <th>文档模型分类</th>
     <th><s:message code="attribute.name"/></th>
     <th><s:message code="attribute.number"/></th>
+    <th>可选项</th>
   </tr>
   </thead>
   <tbody>
@@ -87,13 +89,14 @@ function optDelete(form) {
   <tr>
     <td><input type="checkbox" name="ids" value="${bean.id}"/></td>
     <td align="center">
-			<shiro:hasPermission name="core:attribute:delete">
+      <a href="edit.do?id=${bean.id}" class="ls-opt"><s:message code="edit"/></a>
       <a href="delete.do?ids=${bean.id}" onclick="return confirmDelete();" class="ls-opt"><s:message code="delete"/></a>
-      </shiro:hasPermission>
      </td>
     <td>${bean.id}<f:hidden name="id" value="${bean.id}"/></td>
+    <td align="center">想嘻嘻嘻嘻嘻嘻</td>
     <td align="center"><f:text name="name" value="${bean.name}" class="required" maxlength="20" style="width:120px;"/></td>
     <td align="center"><f:text name="number" value="${bean.number}" class="required" maxlength="20" style="width:120px;"/></td>
+    <td align="center"></td>
   </tr>
   </c:forEach>
   </tbody>

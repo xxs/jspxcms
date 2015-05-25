@@ -14,7 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -67,6 +69,17 @@ public class AttrController {
 		return "redirect:list.do";
 	}
 
+	/**
+	 * 编辑
+	 */
+	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
+	public String edit(Integer id, ModelMap model) {
+//		model.addAttribute("productCategoryTree", productCategoryService.findTree());
+//		model.addAttribute("attributeValuePropertyCount", Product.ATTRIBUTE_VALUE_PROPERTY_COUNT);
+		model.addAttribute("attr", service.get(id));
+		return "core/attr/attr_form";
+	}
+	
 	@RequestMapping("delete.do")
 	public String delete(Integer[] ids, RedirectAttributes ra) {
 		Attr[] beans = service.delete(ids);
