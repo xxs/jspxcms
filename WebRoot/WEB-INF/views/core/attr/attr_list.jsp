@@ -56,6 +56,8 @@ function optDelete(form) {
 </shiro:hasPermission>
 <form action="batch_update.do" method="post">
 <div class="ls-bc-opt">
+	<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
+	<div class="in-btn"></div>
 	<shiro:hasPermission name="core:attribute:batch_update">
 	<div class="ls-btn"><input type="submit" value="<s:message code="save"/>"/></div>
 	<div class="ls-btn"></div>
@@ -78,9 +80,10 @@ function optDelete(form) {
     <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
     <th width="80"><s:message code="operate"/></th>
     <th width="30">ID</th>
-    <th>文档模型分类</th>
     <th><s:message code="attribute.name"/></th>
     <th><s:message code="attribute.number"/></th>
+    <th>栏目绑定</th>
+    <th>文档绑定</th>
     <th>可选项</th>
   </tr>
   </thead>
@@ -93,9 +96,18 @@ function optDelete(form) {
       <a href="delete.do?ids=${bean.id}" onclick="return confirmDelete();" class="ls-opt"><s:message code="delete"/></a>
      </td>
     <td>${bean.id}<f:hidden name="id" value="${bean.id}"/></td>
-    <td align="center">想嘻嘻嘻嘻嘻嘻</td>
     <td align="center"><f:text name="name" value="${bean.name}" class="required" maxlength="20" style="width:120px;"/></td>
     <td align="center"><f:text name="number" value="${bean.number}" class="required" maxlength="20" style="width:120px;"/></td>
+    <td align="left">
+    	<c:forEach var="n" items="${bean.nodePerms}">
+	  		${n.displayName}</br>
+	  	</c:forEach>
+	</td>
+    <td align="left">
+    	<c:forEach var="n" items="${bean.infoPerms}">
+	  		${n.displayName}</br>
+	  	</c:forEach>
+	</td>
     <td align="center"></td>
   </tr>
   </c:forEach>

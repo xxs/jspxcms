@@ -32,10 +32,13 @@ function confirmDelete() {
 <tags:search_params/>
 <f:hidden name="oid" value="${bean.id}"/>
 <f:hidden name="position" value="${position}"/>
+<f:hidden name="bean.site.id" value="${bean.site.id}"/>
 <input type="hidden" id="redirect" name="redirect" value="edit"/>
 <table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5">
   <tr>
     <td colspan="4" class="in-opt">
+    		<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
+			<div class="in-btn"></div>
 			<shiro:hasPermission name="core:comment:create">
 			<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
 			<div class="in-btn"></div>
@@ -55,38 +58,140 @@ function confirmDelete() {
     </td>
   </tr>
   <tr>
-    <td class="in-lab" width="15%"><s:message code="comment.info"/>:</td>
-    <td class="in-ctt" width="85%" colspan="3"><f:text value="${bean.anchor.title}" readonly="readonly" style="width:500px;"/></td>
+    <td class="in-lab" width="15%"><em class="required">*</em>绑定栏目:</td>
+    <td class="in-ctt" width="85%" colspan="3">
+    	<span id="nodePermsContainer">
+    	<span id="nodePermIds">
+	  	<c:forEach var="n" items="${nodePerms}">
+	  		<f:hidden name="nodePermIds" value="${n.id}"/>
+	  	</c:forEach>
+	  	</span>
+	  	<span id="nodePermIdsNumber">
+	  	<c:forEach var="n" items="${nodePerms}">
+	  		<f:hidden name="nodePermIdsNumber" value="${n.id}"/>
+	  	</c:forEach>
+	  	</span>
+	  	<span id="nodePermIdsName">
+	  	<c:forEach var="n" items="${nodePerms}">
+	  		<f:hidden name="nodePermIdsName" value="${n.displayName}"/>
+	  	</c:forEach>
+	  	</span>
+	    <f:text id="nodePermIdsNameDisplay" readonly="readonly" style="width:220px;"/><input id="nodePermIdsButton" type="button" value="<s:message code='choose'/>"/>
+	    </span>
+			<script type="text/javascript">
+			$(function(){
+	    	Cms.f7.nodePerms("${ctx}","nodePermIds",{
+	    		settings: {"title": "<s:message code='role.nodePerms.select'/>"}
+	    	});
+	    });
+			</script>
+    </td>
   </tr>
   <tr>
-    <td class="in-lab" width="15%"><s:message code="comment.creator"/>:</td>
-    <td class="in-ctt" width="35%"><f:text value="${bean.creator.username}" readonly="readonly" style="width:180px;"/></td>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="comment.creationDate"/>:</td>
-    <td class="in-ctt" width="35%"><input type="text" name="creationDate" value="<fmt:formatDate value="${bean.creationDate}" pattern="yyyy-MM-dd'T'HH:mm:ss"/>" onclick="WdatePicker({dateFmt:'yyyy-MM-ddTHH:mm:ss'});" class="required" style="width:180px;"/></td>
+    <td class="in-lab" width="15%"><em class="required">*</em>绑定文档:</td>
+    <td class="in-ctt" width="85%" colspan="3">
+    	<span id="infoPermsContainer">
+    	<span id="infoPermIds">
+	  	<c:forEach var="n" items="${infoPerms}">
+	  		<f:hidden name="infoPermIds" value="${n.id}"/>
+	  	</c:forEach>
+	  	</span>
+	  	<span id="infoPermIdsNumber">
+	  	<c:forEach var="n" items="${infoPerms}">
+	  		<f:hidden name="infoPermIdsNumber" value="${n.id}"/>
+	  	</c:forEach>
+	  	</span>
+	  	<span id="infoPermIdsName">
+	  	<c:forEach var="n" items="${infoPerms}">
+	  		<f:hidden name="infoPermIdsName" value="${n.displayName}"/>
+	  	</c:forEach>
+	  	</span>
+	    <f:text id="infoPermIdsNameDisplay" readonly="readonly" style="width:220px;"/><input id="infoPermIdsButton" type="button" value="<s:message code='choose'/>"/>
+	    </span>
+			<script type="text/javascript">
+			$(function(){
+	    	Cms.f7.nodePerms("${ctx}","infoPermIds",{
+	    		settings: {"title": "<s:message code='role.infoPerms.select'/>"},
+	    		params: {"isRealNode": true}
+	    	});
+	    });
+			</script>
+    </td>
   </tr>
   <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="comment.status"/>:</td>
-    <td class="in-ctt" width="35%">
-			<select name="status" disabled="disabled">
-				<f:option value="0" selected="${bean.status}"><s:message code="comment.status.0"/></f:option>
-				<f:option value="1" selected="${bean.status}"><s:message code="comment.status.1"/></f:option>
-				<f:option value="2" selected="${bean.status}"><s:message code="comment.status.2"/></f:option>
-				<f:option value="3" selected="${bean.status}"><s:message code="comment.status.3"/></f:option>
-			</select>
-		</td>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="comment.ip"/>:</td>
-    <td class="in-ctt" width="35%"><f:text name="ip" value="${bean.ip}" readonly="readonly" class="required" style="width:180px;"/></td>
+    <td class="in-lab" width="15%">参数名称:</td>
+    <td class="in-ctt" width="85%" colspan="3"><f:text name="name" value="${oprt=='edit' ? bean.name : ''}" class="required" maxlength="255" style="width:180px;"/></td>
   </tr>
+  </table>
+  
+  
+  
+  <div class="inls-opt margin-top5">
+  <b><s:message code="scoreGroup.items"/></b> &nbsp;
+  <a href="javascript:void(0);" onclick="addRow();" class="ls-opt"><s:message code='addRow'/></a> &nbsp;
+  <a href="javascript:void(0);" onclick="Cms.moveTop('itemIds');" class="ls-opt"><s:message code='moveTop'/></a>
+  <a href="javascript:void(0);" onclick="Cms.moveUp('itemIds');" class="ls-opt"><s:message code='moveUp'/></a>
+  <a href="javascript:void(0);" onclick="Cms.moveDown('itemIds');" class="ls-opt"><s:message code='moveDown'/></a>
+  <a href="javascript:void(0);" onclick="Cms.moveBottom('itemIds');" class="ls-opt"><s:message code='moveBottom'/></a>     
+</div>
+<textarea id="templateArea" style="display:none">
+	<tr>
+    <td align="center">
+    	<input type="checkbox" name="itemIds" value=""/>
+    	<input type="hidden" name="dy-itemId-${0}" value=""/>
+    </td>
+    <td align="center">
+      <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
+    </td>
+    <td align="center"><f:text name="dy-itemName-{0}" value="" class="required" maxlength="100" style="width:150px;"/></td>
+    <td align="center"><f:text name="dy-itemSort-{0}" value="{0}" class="required digits" maxlength="9" style="width:150px;"/></td>
+  </tr>
+</textarea>
+  <script type="text/javascript">
+var rowIndex = 0;
+<c:if test="${!empty bean && fn:length(bean.items) gt 0}">
+rowIndex = ${fn:length(bean.items)};
+</c:if>
+var rowTemplate = $.format($("#templateArea").val());
+function addRow() {
+	$(rowTemplate(rowIndex++)).appendTo("#pagedTable tbody");
+	$("#pagedTable").tableHighlight();
+}
+$(function() {
+	if(rowIndex==0) {
+		<c:if test="${oprt=='create'}">
+		addRow();
+		</c:if>
+	}
+});
+</script>
+<table id="pagedTable" border="0" cellpadding="0" cellspacing="0" class="inls-tb">
+  <thead>
   <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="comment.score"/>:</td>
-    <td class="in-ctt" width="35%"><f:text name="score" value="${bean.score}" class="required digits" style="width:180px;"/></td>
-    <td class="in-lab" width="15%"><s:message code="comment.auditDate"/>:</td>
-    <td class="in-ctt" width="35%"><input type="text" name="auditDate" value="<fmt:formatDate value="${bean.auditDate}" pattern="yyyy-MM-dd'T'HH:mm:ss"/>" onclick="WdatePicker({dateFmt:'yyyy-MM-ddTHH:mm:ss'});" style="width:180px;"/></td>
+    <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
+    <th width="80"><s:message code="operate"/></th>
+    <th><s:message code="scoreItem.name"/></th>
+    <th><s:message code="scoreItem.score"/></th>
+    <th><s:message code="scoreItem.icon"/></th>
   </tr>
+  </thead>
+  <tbody>
+  <c:forEach var="item" varStatus="status" items="${bean.items}">
   <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em><s:message code="comment.text"/>:</td>
-    <td class="in-ctt" width="85%" colspan="3"><f:textarea name="text" value="${bean.text}" style="width:500px;height:120px;"/></td>
+    <td align="center">
+    	<input type="checkbox" name="itemIds" value="${bean.id}"/>
+    	<input type="hidden" name="dy-itemId-${status.index}" value="${item.id}"/>
+    </td>
+    <td align="center">
+      <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
+    </td>
+    <td align="center"><f:text name="dy-itemName-${status.index}" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+    <td align="center"><f:text name="dy-itemSort-${status.index}" value="${status.index}" maxlength="255" style="width:180px;"/></td>
   </tr>
+  </c:forEach>
+  </tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5">
   <tr>
     <td colspan="4" class="in-opt">
       <div class="in-btn"><input type="submit" value="<s:message code="save"/>"/></div>

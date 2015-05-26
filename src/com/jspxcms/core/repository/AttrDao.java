@@ -6,10 +6,12 @@ import java.util.List;
 import javax.persistence.QueryHint;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.Repository;
 
+import com.jspxcms.common.orm.Limitable;
 import com.jspxcms.core.domain.Attr;
 
 /**
@@ -23,6 +25,8 @@ public interface AttrDao extends Repository<Attr, Integer>,
 
 	public Attr findOne(Integer id);
 
+	public List<Attr> findAll(Specification<Attr> spec, Limitable limit);
+	
 	public Attr save(Attr bean);
 
 	public void delete(Attr bean);

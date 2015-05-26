@@ -1,13 +1,17 @@
 package com.jspxcms.core.service;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.data.domain.Sort;
+
+import com.jspxcms.common.util.RowSide;
 import com.jspxcms.core.domain.Attr;
 
 /**
  * AttrService
  * 
- * @author liufang
+ * @author xxs
  * 
  */
 public interface AttrService {
@@ -22,7 +26,15 @@ public interface AttrService {
 	public Attr save(Attr bean, Integer siteId);
 
 	public Attr update(Attr bean);
+	
+	public Attr save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,
+			Integer siteId);
 
+	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds);
+
+	public RowSide<Attr> findSide(Integer siteId, Map<String, String[]> params,
+			Attr bean, Integer position, Sort sort);
+	
 	public Attr[] batchUpdate(Integer[] id, String[] name,
 			String[] number, Integer[] imageWidth, Integer[] imageHeight);
 

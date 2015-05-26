@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-05-25 12:52:24
+Date: 2015-05-27 01:50:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS `cms_attr`;
 CREATE TABLE `cms_attr` (
   `f_attr_id` int(11) NOT NULL,
   `f_site_id` int(11) NOT NULL COMMENT '站点',
-  `f_number` varchar(20) NOT NULL COMMENT '编码',
+  `f_number` varchar(20) DEFAULT NULL COMMENT '编码',
   `f_name` varchar(50) NOT NULL COMMENT '名称',
   `f_seq` int(11) NOT NULL DEFAULT '2147483647' COMMENT '排序',
   PRIMARY KEY (`f_attr_id`),
@@ -97,6 +97,8 @@ INSERT INTO `cms_attr` VALUES ('2', '1', 'bignews', '裙长', '1');
 INSERT INTO `cms_attr` VALUES ('3', '1', 'marquee', '领型', '2');
 INSERT INTO `cms_attr` VALUES ('4', '1', 'recommend', '袖长', '3');
 INSERT INTO `cms_attr` VALUES ('5', '7', 'c1', '分类1', '2147483647');
+INSERT INTO `cms_attr` VALUES ('8', '1', '444', 'uuu', '4');
+INSERT INTO `cms_attr` VALUES ('12', '1', '444', 'vvvvv', '5');
 
 -- ----------------------------
 -- Table structure for cms_attribute
@@ -126,358 +128,25 @@ INSERT INTO `cms_attribute` VALUES ('4', '1', 'recommend', '推荐', '3', '0', n
 INSERT INTO `cms_attribute` VALUES ('5', '7', 'c1', '分类1', '2147483647', '0', null, null);
 
 -- ----------------------------
--- Table structure for cms_attr_option
+-- Table structure for cms_attr_item
 -- ----------------------------
-DROP TABLE IF EXISTS `cms_attr_option`;
-CREATE TABLE `cms_attr_option` (
-  `attr` bigint(20) NOT NULL,
-  `options` varchar(255) DEFAULT NULL,
-  KEY `FK96E026D75E1B95F4` (`attr`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `cms_attr_item`;
+CREATE TABLE `cms_attr_item` (
+  `f_attritem_id` int(11) NOT NULL,
+  `f_scoregroup_id` int(11) NOT NULL COMMENT '计分组',
+  `f_site_id` int(11) NOT NULL COMMENT '站点',
+  `f_name` varchar(100) NOT NULL COMMENT '名称',
+  `f_seq` int(11) NOT NULL DEFAULT '2147483647' COMMENT '排序',
+  PRIMARY KEY (`f_attritem_id`),
+  KEY `fk_cms_scoreitem_scoregroup` (`f_scoregroup_id`),
+  KEY `fk_cms_scoreitem_site` (`f_site_id`),
+  CONSTRAINT `cms_attr_item_ibfk_1` FOREIGN KEY (`f_scoregroup_id`) REFERENCES `cms_score_group` (`f_scoregroup_id`),
+  CONSTRAINT `cms_attr_item_ibfk_2` FOREIGN KEY (`f_site_id`) REFERENCES `cms_site` (`f_site_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='计分项表';
 
 -- ----------------------------
--- Records of cms_attr_option
+-- Records of cms_attr_item
 -- ----------------------------
-INSERT INTO `cms_attr_option` VALUES ('1', '雪纺');
-INSERT INTO `cms_attr_option` VALUES ('1', '蕾丝');
-INSERT INTO `cms_attr_option` VALUES ('1', '织锦');
-INSERT INTO `cms_attr_option` VALUES ('1', '牛仔');
-INSERT INTO `cms_attr_option` VALUES ('1', '绸缎');
-INSERT INTO `cms_attr_option` VALUES ('1', '乔其纱');
-INSERT INTO `cms_attr_option` VALUES ('1', '双绉');
-INSERT INTO `cms_attr_option` VALUES ('1', '府绸');
-INSERT INTO `cms_attr_option` VALUES ('1', '其他');
-INSERT INTO `cms_attr_option` VALUES ('2', '超短裙');
-INSERT INTO `cms_attr_option` VALUES ('2', '短裙');
-INSERT INTO `cms_attr_option` VALUES ('2', '中裙');
-INSERT INTO `cms_attr_option` VALUES ('2', '中长裙');
-INSERT INTO `cms_attr_option` VALUES ('2', '长裙');
-INSERT INTO `cms_attr_option` VALUES ('3', '圆领');
-INSERT INTO `cms_attr_option` VALUES ('3', 'V领');
-INSERT INTO `cms_attr_option` VALUES ('3', '一字领');
-INSERT INTO `cms_attr_option` VALUES ('3', '翻领');
-INSERT INTO `cms_attr_option` VALUES ('3', '荷叶领');
-INSERT INTO `cms_attr_option` VALUES ('3', '双层领');
-INSERT INTO `cms_attr_option` VALUES ('3', '立领');
-INSERT INTO `cms_attr_option` VALUES ('3', '方领');
-INSERT INTO `cms_attr_option` VALUES ('3', '堆堆领');
-INSERT INTO `cms_attr_option` VALUES ('3', '连帽');
-INSERT INTO `cms_attr_option` VALUES ('3', '娃娃领');
-INSERT INTO `cms_attr_option` VALUES ('3', '西装领');
-INSERT INTO `cms_attr_option` VALUES ('4', '中腰');
-INSERT INTO `cms_attr_option` VALUES ('4', '高腰');
-INSERT INTO `cms_attr_option` VALUES ('4', '宽松腰');
-INSERT INTO `cms_attr_option` VALUES ('4', '松紧腰');
-INSERT INTO `cms_attr_option` VALUES ('4', '低腰');
-INSERT INTO `cms_attr_option` VALUES ('5', '常规袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '蝙蝠袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '泡泡袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '插肩袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '包袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '灯笼袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '荷叶袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '喇叭袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '公主袖');
-INSERT INTO `cms_attr_option` VALUES ('5', '衬衫袖');
-INSERT INTO `cms_attr_option` VALUES ('6', '单件套');
-INSERT INTO `cms_attr_option` VALUES ('6', '假两件套');
-INSERT INTO `cms_attr_option` VALUES ('6', '两件套');
-INSERT INTO `cms_attr_option` VALUES ('7', '单排扣');
-INSERT INTO `cms_attr_option` VALUES ('7', '一粒扣');
-INSERT INTO `cms_attr_option` VALUES ('7', '拉链');
-INSERT INTO `cms_attr_option` VALUES ('7', '双排扣');
-INSERT INTO `cms_attr_option` VALUES ('8', '超薄');
-INSERT INTO `cms_attr_option` VALUES ('8', '薄');
-INSERT INTO `cms_attr_option` VALUES ('8', '适中');
-INSERT INTO `cms_attr_option` VALUES ('8', '厚');
-INSERT INTO `cms_attr_option` VALUES ('8', '加厚');
-INSERT INTO `cms_attr_option` VALUES ('9', '短袖');
-INSERT INTO `cms_attr_option` VALUES ('9', '五分袖');
-INSERT INTO `cms_attr_option` VALUES ('9', '七分袖');
-INSERT INTO `cms_attr_option` VALUES ('9', '九分袖');
-INSERT INTO `cms_attr_option` VALUES ('9', '无袖');
-INSERT INTO `cms_attr_option` VALUES ('10', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('10', '直筒型');
-INSERT INTO `cms_attr_option` VALUES ('10', '高腰型');
-INSERT INTO `cms_attr_option` VALUES ('10', '斗篷型');
-INSERT INTO `cms_attr_option` VALUES ('10', '蝙蝠型');
-INSERT INTO `cms_attr_option` VALUES ('10', '披肩型');
-INSERT INTO `cms_attr_option` VALUES ('11', '超短款');
-INSERT INTO `cms_attr_option` VALUES ('11', '短款');
-INSERT INTO `cms_attr_option` VALUES ('11', '常规款');
-INSERT INTO `cms_attr_option` VALUES ('11', '中长款');
-INSERT INTO `cms_attr_option` VALUES ('12', '薄款');
-INSERT INTO `cms_attr_option` VALUES ('12', '普通');
-INSERT INTO `cms_attr_option` VALUES ('12', '加厚');
-INSERT INTO `cms_attr_option` VALUES ('12', '抓绒');
-INSERT INTO `cms_attr_option` VALUES ('13', '短款');
-INSERT INTO `cms_attr_option` VALUES ('13', '常规款');
-INSERT INTO `cms_attr_option` VALUES ('13', '中长款');
-INSERT INTO `cms_attr_option` VALUES ('14', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('14', '直筒型');
-INSERT INTO `cms_attr_option` VALUES ('14', '宽松型');
-INSERT INTO `cms_attr_option` VALUES ('15', '一粒扣');
-INSERT INTO `cms_attr_option` VALUES ('15', '单排扣');
-INSERT INTO `cms_attr_option` VALUES ('15', '双排扣');
-INSERT INTO `cms_attr_option` VALUES ('15', '暗扣');
-INSERT INTO `cms_attr_option` VALUES ('15', '拉链');
-INSERT INTO `cms_attr_option` VALUES ('15', '系带');
-INSERT INTO `cms_attr_option` VALUES ('17', '长裤');
-INSERT INTO `cms_attr_option` VALUES ('17', '中裤');
-INSERT INTO `cms_attr_option` VALUES ('17', '七分裤');
-INSERT INTO `cms_attr_option` VALUES ('17', '九分裤');
-INSERT INTO `cms_attr_option` VALUES ('17', '短裤');
-INSERT INTO `cms_attr_option` VALUES ('16', '直筒裤');
-INSERT INTO `cms_attr_option` VALUES ('16', '微喇裤');
-INSERT INTO `cms_attr_option` VALUES ('16', '垮裤');
-INSERT INTO `cms_attr_option` VALUES ('16', '背带裤');
-INSERT INTO `cms_attr_option` VALUES ('18', '低腰');
-INSERT INTO `cms_attr_option` VALUES ('18', '中腰');
-INSERT INTO `cms_attr_option` VALUES ('18', '高腰');
-INSERT INTO `cms_attr_option` VALUES ('19', '全棉牛仔布');
-INSERT INTO `cms_attr_option` VALUES ('19', '棉弹牛仔布');
-INSERT INTO `cms_attr_option` VALUES ('19', '加厚牛仔布');
-INSERT INTO `cms_attr_option` VALUES ('19', '薄牛仔布');
-INSERT INTO `cms_attr_option` VALUES ('20', '短袖');
-INSERT INTO `cms_attr_option` VALUES ('20', '长袖');
-INSERT INTO `cms_attr_option` VALUES ('20', '无袖');
-INSERT INTO `cms_attr_option` VALUES ('20', '中袖');
-INSERT INTO `cms_attr_option` VALUES ('20', '五分袖');
-INSERT INTO `cms_attr_option` VALUES ('20', '七分袖');
-INSERT INTO `cms_attr_option` VALUES ('21', '棉');
-INSERT INTO `cms_attr_option` VALUES ('21', '涤纶');
-INSERT INTO `cms_attr_option` VALUES ('21', '聚酯纤维');
-INSERT INTO `cms_attr_option` VALUES ('21', '粘胶');
-INSERT INTO `cms_attr_option` VALUES ('21', '氨纶');
-INSERT INTO `cms_attr_option` VALUES ('21', '锦纶');
-INSERT INTO `cms_attr_option` VALUES ('21', '莫代尔');
-INSERT INTO `cms_attr_option` VALUES ('21', '蚕丝');
-INSERT INTO `cms_attr_option` VALUES ('21', '腈纶');
-INSERT INTO `cms_attr_option` VALUES ('21', '麻');
-INSERT INTO `cms_attr_option` VALUES ('22', '圆领');
-INSERT INTO `cms_attr_option` VALUES ('22', 'V领');
-INSERT INTO `cms_attr_option` VALUES ('22', '立领');
-INSERT INTO `cms_attr_option` VALUES ('22', '方领');
-INSERT INTO `cms_attr_option` VALUES ('22', '高领');
-INSERT INTO `cms_attr_option` VALUES ('22', '翻领');
-INSERT INTO `cms_attr_option` VALUES ('22', '一字领');
-INSERT INTO `cms_attr_option` VALUES ('23', '短款');
-INSERT INTO `cms_attr_option` VALUES ('23', '常规款');
-INSERT INTO `cms_attr_option` VALUES ('23', '中长款');
-INSERT INTO `cms_attr_option` VALUES ('24', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('24', '高腰型');
-INSERT INTO `cms_attr_option` VALUES ('24', '直筒型');
-INSERT INTO `cms_attr_option` VALUES ('25', '羊毛');
-INSERT INTO `cms_attr_option` VALUES ('25', '涤纶');
-INSERT INTO `cms_attr_option` VALUES ('25', '棉');
-INSERT INTO `cms_attr_option` VALUES ('25', '麻');
-INSERT INTO `cms_attr_option` VALUES ('25', '氨纶');
-INSERT INTO `cms_attr_option` VALUES ('26', '原创');
-INSERT INTO `cms_attr_option` VALUES ('26', '百搭');
-INSERT INTO `cms_attr_option` VALUES ('26', '通勤');
-INSERT INTO `cms_attr_option` VALUES ('26', '街头');
-INSERT INTO `cms_attr_option` VALUES ('26', '甜美');
-INSERT INTO `cms_attr_option` VALUES ('27', '短款');
-INSERT INTO `cms_attr_option` VALUES ('27', '中长款');
-INSERT INTO `cms_attr_option` VALUES ('27', '长款');
-INSERT INTO `cms_attr_option` VALUES ('29', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('29', '高腰型');
-INSERT INTO `cms_attr_option` VALUES ('29', '蝙蝠型');
-INSERT INTO `cms_attr_option` VALUES ('29', '裙摆型');
-INSERT INTO `cms_attr_option` VALUES ('29', '直筒型');
-INSERT INTO `cms_attr_option` VALUES ('28', '中长款');
-INSERT INTO `cms_attr_option` VALUES ('28', '长款');
-INSERT INTO `cms_attr_option` VALUES ('28', '加长款');
-INSERT INTO `cms_attr_option` VALUES ('30', '长袖');
-INSERT INTO `cms_attr_option` VALUES ('30', '五分袖');
-INSERT INTO `cms_attr_option` VALUES ('30', '七分袖');
-INSERT INTO `cms_attr_option` VALUES ('30', '九分袖');
-INSERT INTO `cms_attr_option` VALUES ('30', '短袖');
-INSERT INTO `cms_attr_option` VALUES ('30', '无袖');
-INSERT INTO `cms_attr_option` VALUES ('31', '通勤');
-INSERT INTO `cms_attr_option` VALUES ('31', '街头');
-INSERT INTO `cms_attr_option` VALUES ('31', '甜美');
-INSERT INTO `cms_attr_option` VALUES ('33', '短袖');
-INSERT INTO `cms_attr_option` VALUES ('33', '长袖');
-INSERT INTO `cms_attr_option` VALUES ('33', '七分袖');
-INSERT INTO `cms_attr_option` VALUES ('33', '九分袖');
-INSERT INTO `cms_attr_option` VALUES ('33', '中袖');
-INSERT INTO `cms_attr_option` VALUES ('33', '无袖');
-INSERT INTO `cms_attr_option` VALUES ('32', '套头');
-INSERT INTO `cms_attr_option` VALUES ('32', '开衫');
-INSERT INTO `cms_attr_option` VALUES ('34', '单件套');
-INSERT INTO `cms_attr_option` VALUES ('34', '上下套');
-INSERT INTO `cms_attr_option` VALUES ('34', '假两件套');
-INSERT INTO `cms_attr_option` VALUES ('35', '普通');
-INSERT INTO `cms_attr_option` VALUES ('35', '薄款');
-INSERT INTO `cms_attr_option` VALUES ('35', '抓绒');
-INSERT INTO `cms_attr_option` VALUES ('35', '加厚');
-INSERT INTO `cms_attr_option` VALUES ('35', '棉内胆');
-INSERT INTO `cms_attr_option` VALUES ('35', '毛内胆');
-INSERT INTO `cms_attr_option` VALUES ('36', '铅笔裤');
-INSERT INTO `cms_attr_option` VALUES ('36', '直筒裤');
-INSERT INTO `cms_attr_option` VALUES ('36', '微喇裤');
-INSERT INTO `cms_attr_option` VALUES ('36', '阔腿裤');
-INSERT INTO `cms_attr_option` VALUES ('36', '哈伦裤');
-INSERT INTO `cms_attr_option` VALUES ('37', '低腰');
-INSERT INTO `cms_attr_option` VALUES ('37', '中腰');
-INSERT INTO `cms_attr_option` VALUES ('37', '高腰');
-INSERT INTO `cms_attr_option` VALUES ('38', '超薄');
-INSERT INTO `cms_attr_option` VALUES ('38', '薄款');
-INSERT INTO `cms_attr_option` VALUES ('38', '普通');
-INSERT INTO `cms_attr_option` VALUES ('38', '加厚');
-INSERT INTO `cms_attr_option` VALUES ('39', '普通');
-INSERT INTO `cms_attr_option` VALUES ('39', '薄款');
-INSERT INTO `cms_attr_option` VALUES ('39', '加厚');
-INSERT INTO `cms_attr_option` VALUES ('40', '套头');
-INSERT INTO `cms_attr_option` VALUES ('40', '开衫');
-INSERT INTO `cms_attr_option` VALUES ('41', 'V领');
-INSERT INTO `cms_attr_option` VALUES ('41', '圆领');
-INSERT INTO `cms_attr_option` VALUES ('41', '翻领');
-INSERT INTO `cms_attr_option` VALUES ('41', '半高领');
-INSERT INTO `cms_attr_option` VALUES ('41', '高翻领');
-INSERT INTO `cms_attr_option` VALUES ('41', '连帽');
-INSERT INTO `cms_attr_option` VALUES ('41', '门筒领');
-INSERT INTO `cms_attr_option` VALUES ('41', '蹲领/堆堆领');
-INSERT INTO `cms_attr_option` VALUES ('41', '不可翻高领');
-INSERT INTO `cms_attr_option` VALUES ('42', '纯棉');
-INSERT INTO `cms_attr_option` VALUES ('42', '棉质混纺');
-INSERT INTO `cms_attr_option` VALUES ('42', '人造纤维');
-INSERT INTO `cms_attr_option` VALUES ('42', '丝');
-INSERT INTO `cms_attr_option` VALUES ('43', '短袖');
-INSERT INTO `cms_attr_option` VALUES ('43', '长袖 ');
-INSERT INTO `cms_attr_option` VALUES ('44', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('44', '嘻哈风格');
-INSERT INTO `cms_attr_option` VALUES ('44', '英伦风格');
-INSERT INTO `cms_attr_option` VALUES ('44', '运动风格');
-INSERT INTO `cms_attr_option` VALUES ('45', '时尚休闲');
-INSERT INTO `cms_attr_option` VALUES ('45', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('45', '青春休闲');
-INSERT INTO `cms_attr_option` VALUES ('45', '日韩个性');
-INSERT INTO `cms_attr_option` VALUES ('45', '英伦风格');
-INSERT INTO `cms_attr_option` VALUES ('45', '运动风格');
-INSERT INTO `cms_attr_option` VALUES ('45', '学院风格');
-INSERT INTO `cms_attr_option` VALUES ('45', '嘻哈风格');
-INSERT INTO `cms_attr_option` VALUES ('45', '欧美风格');
-INSERT INTO `cms_attr_option` VALUES ('45', '原创设计');
-INSERT INTO `cms_attr_option` VALUES ('46', '修身裤');
-INSERT INTO `cms_attr_option` VALUES ('46', '直筒裤');
-INSERT INTO `cms_attr_option` VALUES ('46', '宽松裤');
-INSERT INTO `cms_attr_option` VALUES ('46', '工装裤');
-INSERT INTO `cms_attr_option` VALUES ('46', '锥形裤 ');
-INSERT INTO `cms_attr_option` VALUES ('46', '低裆跨裤');
-INSERT INTO `cms_attr_option` VALUES ('46', '运动裤/卫裤 ');
-INSERT INTO `cms_attr_option` VALUES ('46', '哈伦裤');
-INSERT INTO `cms_attr_option` VALUES ('47', '长裤');
-INSERT INTO `cms_attr_option` VALUES ('47', '九分裤');
-INSERT INTO `cms_attr_option` VALUES ('47', '七分裤');
-INSERT INTO `cms_attr_option` VALUES ('47', '短裤');
-INSERT INTO `cms_attr_option` VALUES ('48', '长裤');
-INSERT INTO `cms_attr_option` VALUES ('48', '九分裤');
-INSERT INTO `cms_attr_option` VALUES ('49', '直筒型');
-INSERT INTO `cms_attr_option` VALUES ('49', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('49', '宽松型 ');
-INSERT INTO `cms_attr_option` VALUES ('49', '锥形裤');
-INSERT INTO `cms_attr_option` VALUES ('49', '低裆跨裤');
-INSERT INTO `cms_attr_option` VALUES ('49', '立体剪裁 ');
-INSERT INTO `cms_attr_option` VALUES ('49', '哈伦裤');
-INSERT INTO `cms_attr_option` VALUES ('50', '时尚休闲');
-INSERT INTO `cms_attr_option` VALUES ('50', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('50', '青春休闲');
-INSERT INTO `cms_attr_option` VALUES ('50', '日韩个性');
-INSERT INTO `cms_attr_option` VALUES ('50', '英伦风格');
-INSERT INTO `cms_attr_option` VALUES ('50', '街头潮流');
-INSERT INTO `cms_attr_option` VALUES ('50', '欧美风格');
-INSERT INTO `cms_attr_option` VALUES ('50', '运动风格 ');
-INSERT INTO `cms_attr_option` VALUES ('50', '工装牛仔 ');
-INSERT INTO `cms_attr_option` VALUES ('50', '学院风格 ');
-INSERT INTO `cms_attr_option` VALUES ('50', '商务正装');
-INSERT INTO `cms_attr_option` VALUES ('50', '嘻哈风格');
-INSERT INTO `cms_attr_option` VALUES ('50', '原创设计');
-INSERT INTO `cms_attr_option` VALUES ('50', '复古经典');
-INSERT INTO `cms_attr_option` VALUES ('51', '圆领 ');
-INSERT INTO `cms_attr_option` VALUES ('51', 'V领');
-INSERT INTO `cms_attr_option` VALUES ('51', '连帽');
-INSERT INTO `cms_attr_option` VALUES ('51', '翻领 ');
-INSERT INTO `cms_attr_option` VALUES ('51', '衬衫领 ');
-INSERT INTO `cms_attr_option` VALUES ('51', '门筒领');
-INSERT INTO `cms_attr_option` VALUES ('51', '半高领');
-INSERT INTO `cms_attr_option` VALUES ('51', '其它');
-INSERT INTO `cms_attr_option` VALUES ('52', '时尚休闲');
-INSERT INTO `cms_attr_option` VALUES ('52', '商务休闲 ');
-INSERT INTO `cms_attr_option` VALUES ('52', '英伦风格');
-INSERT INTO `cms_attr_option` VALUES ('52', '欧美风格');
-INSERT INTO `cms_attr_option` VALUES ('52', '日韩个性 ');
-INSERT INTO `cms_attr_option` VALUES ('52', '青春休闲 ');
-INSERT INTO `cms_attr_option` VALUES ('52', '原创设计');
-INSERT INTO `cms_attr_option` VALUES ('52', '运动风格');
-INSERT INTO `cms_attr_option` VALUES ('52', '学院风格');
-INSERT INTO `cms_attr_option` VALUES ('52', '商务正装 ');
-INSERT INTO `cms_attr_option` VALUES ('53', '长袖');
-INSERT INTO `cms_attr_option` VALUES ('53', '短袖');
-INSERT INTO `cms_attr_option` VALUES ('53', '七分袖 ');
-INSERT INTO `cms_attr_option` VALUES ('54', '长袖');
-INSERT INTO `cms_attr_option` VALUES ('54', '短袖 ');
-INSERT INTO `cms_attr_option` VALUES ('55', '时尚休闲');
-INSERT INTO `cms_attr_option` VALUES ('55', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('55', '商务正装');
-INSERT INTO `cms_attr_option` VALUES ('55', '英伦风格 ');
-INSERT INTO `cms_attr_option` VALUES ('55', '日韩个性 ');
-INSERT INTO `cms_attr_option` VALUES ('55', '欧美风格 ');
-INSERT INTO `cms_attr_option` VALUES ('55', '原创设计 ');
-INSERT INTO `cms_attr_option` VALUES ('56', '宽松型');
-INSERT INTO `cms_attr_option` VALUES ('56', '修身型 ');
-INSERT INTO `cms_attr_option` VALUES ('57', '时尚休闲');
-INSERT INTO `cms_attr_option` VALUES ('57', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('57', '商务正装 ');
-INSERT INTO `cms_attr_option` VALUES ('57', '英伦风格 ');
-INSERT INTO `cms_attr_option` VALUES ('57', '日韩个性');
-INSERT INTO `cms_attr_option` VALUES ('57', '原创设计 ');
-INSERT INTO `cms_attr_option` VALUES ('57', '欧美风格 ');
-INSERT INTO `cms_attr_option` VALUES ('57', '青春休闲 ');
-INSERT INTO `cms_attr_option` VALUES ('58', '宽松型');
-INSERT INTO `cms_attr_option` VALUES ('58', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('59', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('59', '商务正装 ');
-INSERT INTO `cms_attr_option` VALUES ('60', '长裤');
-INSERT INTO `cms_attr_option` VALUES ('60', '短裤 ');
-INSERT INTO `cms_attr_option` VALUES ('61', '中长款 ');
-INSERT INTO `cms_attr_option` VALUES ('61', '短款');
-INSERT INTO `cms_attr_option` VALUES ('61', '长款');
-INSERT INTO `cms_attr_option` VALUES ('62', '时尚休闲 ');
-INSERT INTO `cms_attr_option` VALUES ('62', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('62', '英伦风格');
-INSERT INTO `cms_attr_option` VALUES ('62', '日韩个性 ');
-INSERT INTO `cms_attr_option` VALUES ('62', '商务正装');
-INSERT INTO `cms_attr_option` VALUES ('62', '运动风格 ');
-INSERT INTO `cms_attr_option` VALUES ('62', '欧美风格 ');
-INSERT INTO `cms_attr_option` VALUES ('62', '青春休闲 ');
-INSERT INTO `cms_attr_option` VALUES ('62', '原创设计 ');
-INSERT INTO `cms_attr_option` VALUES ('63', '修身型');
-INSERT INTO `cms_attr_option` VALUES ('63', '直筒型 ');
-INSERT INTO `cms_attr_option` VALUES ('63', '宽松型');
-INSERT INTO `cms_attr_option` VALUES ('64', '翻领 ');
-INSERT INTO `cms_attr_option` VALUES ('64', '连帽 ');
-INSERT INTO `cms_attr_option` VALUES ('64', '西装领 ');
-INSERT INTO `cms_attr_option` VALUES ('64', '可脱卸帽 ');
-INSERT INTO `cms_attr_option` VALUES ('64', '双层领');
-INSERT INTO `cms_attr_option` VALUES ('64', '半高领 ');
-INSERT INTO `cms_attr_option` VALUES ('64', '针织领 ');
-INSERT INTO `cms_attr_option` VALUES ('64', '其它 ');
-INSERT INTO `cms_attr_option` VALUES ('65', '套头');
-INSERT INTO `cms_attr_option` VALUES ('65', '开衫 ');
-INSERT INTO `cms_attr_option` VALUES ('66', '连帽 ');
-INSERT INTO `cms_attr_option` VALUES ('66', '立领');
-INSERT INTO `cms_attr_option` VALUES ('66', '圆领 ');
-INSERT INTO `cms_attr_option` VALUES ('66', '翻领 ');
-INSERT INTO `cms_attr_option` VALUES ('66', 'V领');
-INSERT INTO `cms_attr_option` VALUES ('66', '其它 ');
-INSERT INTO `cms_attr_option` VALUES ('66', '高圆领 ');
-INSERT INTO `cms_attr_option` VALUES ('67', '商务休闲');
-INSERT INTO `cms_attr_option` VALUES ('67', '时尚休闲');
-INSERT INTO `cms_attr_option` VALUES ('67', '嘻哈风格 ');
-INSERT INTO `cms_attr_option` VALUES ('67', '英伦风格');
-INSERT INTO `cms_attr_option` VALUES ('67', '运动风格 ');
 
 -- ----------------------------
 -- Table structure for cms_collect
@@ -1024,6 +693,7 @@ CREATE TABLE `cms_info_buffer` (
 INSERT INTO `cms_info_buffer` VALUES ('24', '3', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('26', '6', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('28', '9', '0', '0', '0', '0', '0', '2');
+INSERT INTO `cms_info_buffer` VALUES ('33', '1', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('35', '2', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('36', '4', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('37', '2', '0', '0', '0', '0', '0', '0');
@@ -1102,7 +772,7 @@ INSERT INTO `cms_info_buffer` VALUES ('166', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('167', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('168', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('169', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_info_buffer` VALUES ('170', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('170', '1', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_info_clob
@@ -3103,33 +2773,143 @@ INSERT INTO `cms_node` VALUES ('120', '8', '118', '1', '44', null, null, null, '
 INSERT INTO `cms_node` VALUES ('121', '8', '118', '1', '44', null, null, null, '45', 'phones', '手机网站', '0000-0002', '1', '0000', '2015-04-24 12:20:59', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('122', '8', '118', '1', '44', null, null, null, '45', 'server', '建站服务', '0000-0003', '1', '0000', '2015-04-24 12:21:20', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('123', '1', '1', '1', '46', null, null, null, '47', 'mall', '网上商城', '0000-000d', '1', '0005', '2015-05-25 10:44:06', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('124', '1', '123', '1', '46', null, null, null, '2', 'dq', '电器', '0000-000d-0000', '2', '0005', '2015-05-25 11:05:47', '1', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('125', '1', '124', '1', '46', null, null, null, '2', 'dsj', '电视机', '0000-000d-0000-0000', '3', '0000', '2015-05-25 11:06:20', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('126', '1', '124', '1', '46', null, null, null, '2', 'kt', '空调', '0000-000d-0000-0001', '3', '0000', '2015-05-25 11:06:34', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('127', '1', '124', '1', '46', null, null, null, '2', 'bx', '冰箱', '0000-000d-0000-0002', '3', '0000', '2015-05-25 11:06:47', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('128', '1', '124', '1', '46', null, null, null, '2', 'xyj', '洗衣机', '0000-000d-0000-0003', '3', '0000', '2015-05-25 11:06:55', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('129', '1', '124', '1', '46', null, null, null, '2', 'yz', '烟灶', '0000-000d-0000-0004', '3', '0000', '2015-05-25 11:07:06', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('130', '1', '123', '1', '46', null, null, null, '2', 'dnbg', '电脑', '0000-000d-0001', '2', '0004', '2015-05-25 11:07:52', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('131', '1', '123', '1', '46', null, null, null, '2', 'smyy', '数码', '0000-000d-0002', '2', '0004', '2015-05-25 11:08:06', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('132', '1', '123', '1', '46', null, null, null, '2', 'sjzb', '手机', '0000-000d-0003', '2', '0005', '2015-05-25 11:08:18', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('133', '1', '123', '1', '46', null, null, null, '2', 'qcyp', '汽车', '0000-000d-0004', '2', '0004', '2015-05-25 11:08:32', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('134', '1', '130', '1', '46', null, null, null, '2', 'pgdn', '苹果电脑', '0000-000d-0001-0000', '3', '0000', '2015-05-25 11:08:58', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('135', '1', '130', '1', '46', null, null, null, '2', 'yxb', '游戏本', '0000-000d-0001-0001', '3', '0000', '2015-05-25 11:09:12', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('136', '1', '130', '1', '46', null, null, null, '2', 'thpb', '通话平板', '0000-000d-0001-0002', '3', '0000', '2015-05-25 11:09:26', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('137', '1', '130', '1', '46', null, null, null, '2', 'wt', '微投', '0000-000d-0001-0003', '3', '0000', '2015-05-25 11:09:39', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('138', '1', '131', '1', '46', null, null, null, '2', 'znwl', '智能网络', '0000-000d-0002-0000', '3', '0000', '2015-05-25 11:10:01', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('139', '1', '131', '1', '46', null, null, null, '2', 'sh', '手环', '0000-000d-0002-0001', '3', '0000', '2015-05-25 11:10:10', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('140', '1', '131', '1', '46', null, null, null, '2', 'ydej', '运动耳机', '0000-000d-0002-0002', '3', '0000', '2015-05-25 11:10:23', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('141', '1', '131', '1', '46', null, null, null, '2', 'jt', '镜头', '0000-000d-0002-0003', '3', '0000', '2015-05-25 11:10:33', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('142', '1', '132', '1', '46', null, null, null, '2', 'pg', '苹果', '0000-000d-0003-0000', '3', '0000', '2015-05-25 11:10:50', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('143', '1', '132', '1', '46', null, null, null, '2', 'sx', '三星', '0000-000d-0003-0001', '3', '0000', '2015-05-25 11:11:02', '1', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('144', '1', '132', '1', '46', null, null, null, '2', 'xm', '小米', '0000-000d-0003-0002', '3', '0000', '2015-05-25 11:11:14', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('145', '1', '132', '1', '46', null, null, null, '2', 'mz', '魅族', '0000-000d-0003-0003', '3', '0000', '2015-05-25 11:11:23', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('146', '1', '132', '1', '46', null, null, null, '2', 'yy', '荣耀', '0000-000d-0003-0004', '3', '0000', '2015-05-25 11:11:35', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('147', '1', '133', '1', '46', null, null, null, '2', 'czdz', '车载电子', '0000-000d-0004-0000', '3', '0000', '2015-05-25 11:11:51', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('148', '1', '133', '1', '46', null, null, null, '2', 'jy', '机油', '0000-000d-0004-0001', '3', '0000', '2015-05-25 11:12:03', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('149', '1', '133', '1', '46', null, null, null, '2', 'lt', '轮胎', '0000-000d-0004-0002', '3', '0000', '2015-05-25 11:12:13', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('150', '1', '133', '1', '46', null, null, null, '2', 'cns', '车内饰', '0000-000d-0004-0003', '3', '0000', '2015-05-25 11:12:23', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('124', '1', '123', '1', '46', null, null, null, '47', 'dq', '电器', '0000-000d-0000', '2', '0005', '2015-05-25 11:05:47', '1', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('125', '1', '124', '1', '46', null, null, null, '47', 'dsj', '电视机', '0000-000d-0000-0000', '3', '0000', '2015-05-25 11:06:20', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('126', '1', '124', '1', '46', null, null, null, '47', 'kt', '空调', '0000-000d-0000-0001', '3', '0000', '2015-05-25 11:06:34', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('127', '1', '124', '1', '46', null, null, null, '47', 'bx', '冰箱', '0000-000d-0000-0002', '3', '0000', '2015-05-25 11:06:47', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('128', '1', '124', '1', '46', null, null, null, '47', 'xyj', '洗衣机', '0000-000d-0000-0003', '3', '0000', '2015-05-25 11:06:55', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('129', '1', '124', '1', '46', null, null, null, '47', 'yz', '烟灶', '0000-000d-0000-0004', '3', '0000', '2015-05-25 11:07:06', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('130', '1', '123', '1', '46', null, null, null, '47', 'dnbg', '电脑', '0000-000d-0001', '2', '0004', '2015-05-25 11:07:52', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('131', '1', '123', '1', '46', null, null, null, '47', 'smyy', '数码', '0000-000d-0002', '2', '0004', '2015-05-25 11:08:06', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('132', '1', '123', '1', '46', null, null, null, '47', 'sjzb', '手机', '0000-000d-0003', '2', '0005', '2015-05-25 11:08:18', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('133', '1', '123', '1', '46', null, null, null, '47', 'qcyp', '汽车', '0000-000d-0004', '2', '0004', '2015-05-25 11:08:32', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('134', '1', '130', '1', '46', null, null, null, '47', 'pgdn', '苹果电脑', '0000-000d-0001-0000', '3', '0000', '2015-05-25 11:08:58', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('135', '1', '130', '1', '46', null, null, null, '47', 'yxb', '游戏本', '0000-000d-0001-0001', '3', '0000', '2015-05-25 11:09:12', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('136', '1', '130', '1', '46', null, null, null, '47', 'thpb', '通话平板', '0000-000d-0001-0002', '3', '0000', '2015-05-25 11:09:26', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('137', '1', '130', '1', '46', null, null, null, '47', 'wt', '微投', '0000-000d-0001-0003', '3', '0000', '2015-05-25 11:09:39', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('138', '1', '131', '1', '46', null, null, null, '47', 'znwl', '智能网络', '0000-000d-0002-0000', '3', '0000', '2015-05-25 11:10:01', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('139', '1', '131', '1', '46', null, null, null, '47', 'sh', '手环', '0000-000d-0002-0001', '3', '0000', '2015-05-25 11:10:10', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('140', '1', '131', '1', '46', null, null, null, '47', 'ydej', '运动耳机', '0000-000d-0002-0002', '3', '0000', '2015-05-25 11:10:23', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('141', '1', '131', '1', '46', null, null, null, '47', 'jt', '镜头', '0000-000d-0002-0003', '3', '0000', '2015-05-25 11:10:33', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('142', '1', '132', '1', '46', null, null, null, '47', 'pg', '苹果', '0000-000d-0003-0000', '3', '0000', '2015-05-25 11:10:50', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('143', '1', '132', '1', '46', null, null, null, '47', 'sx', '三星', '0000-000d-0003-0001', '3', '0000', '2015-05-25 11:11:02', '1', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('144', '1', '132', '1', '46', null, null, null, '47', 'xm', '小米', '0000-000d-0003-0002', '3', '0000', '2015-05-25 11:11:14', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('145', '1', '132', '1', '46', null, null, null, '47', 'mz', '魅族', '0000-000d-0003-0003', '3', '0000', '2015-05-25 11:11:23', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('146', '1', '132', '1', '46', null, null, null, '47', 'yy', '荣耀', '0000-000d-0003-0004', '3', '0000', '2015-05-25 11:11:35', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('147', '1', '133', '1', '46', null, null, null, '47', 'czdz', '车载电子', '0000-000d-0004-0000', '3', '0000', '2015-05-25 11:11:51', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('148', '1', '133', '1', '46', null, null, null, '47', 'jy', '机油', '0000-000d-0004-0001', '3', '0000', '2015-05-25 11:12:03', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('149', '1', '133', '1', '46', null, null, null, '47', 'lt', '轮胎', '0000-000d-0004-0002', '3', '0000', '2015-05-25 11:12:13', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('150', '1', '133', '1', '46', null, null, null, '47', 'cns', '车内饰', '0000-000d-0004-0003', '3', '0000', '2015-05-25 11:12:23', '0', '0', '1', '0', null, null, null, null, null, null);
+
+-- ----------------------------
+-- Table structure for cms_node_attr
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_node_attr`;
+CREATE TABLE `cms_node_attr` (
+  `f_nodeattr_id` int(11) NOT NULL,
+  `f_node_id` int(11) NOT NULL,
+  `f_attr_id` int(11) NOT NULL,
+  `f_is_node_perm` char(1) NOT NULL DEFAULT '1' COMMENT '节点权限',
+  `f_is_info_perm` char(1) NOT NULL DEFAULT '1' COMMENT '信息权限',
+  PRIMARY KEY (`f_nodeattr_id`),
+  KEY `fk_cms_nodeattr_node` (`f_node_id`) USING BTREE,
+  KEY `fk_cms_nodeattr_attr` (`f_attr_id`) USING BTREE,
+  CONSTRAINT `cms_node_attr_ibfk_1` FOREIGN KEY (`f_node_id`) REFERENCES `cms_node` (`f_node_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='节点与角色权限表';
+
+-- ----------------------------
+-- Records of cms_node_attr
+-- ----------------------------
+INSERT INTO `cms_node_attr` VALUES ('136', '1', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('137', '36', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('138', '42', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('139', '44', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('140', '43', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('141', '48', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('142', '51', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('143', '41', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('144', '38', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('145', '40', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('146', '39', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('147', '52', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('148', '49', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('149', '45', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('150', '69', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('151', '67', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('152', '68', '8', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('153', '123', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('154', '124', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('155', '125', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('156', '126', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('157', '127', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('158', '128', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('159', '129', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('160', '130', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('161', '134', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('162', '135', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('163', '136', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('164', '137', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('165', '131', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('166', '138', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('167', '139', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('168', '140', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('169', '141', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('170', '132', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('171', '142', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('172', '143', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('173', '144', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('174', '145', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('175', '146', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('176', '133', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('177', '147', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('178', '148', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('179', '149', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('180', '150', '8', '1', '1');
+INSERT INTO `cms_node_attr` VALUES ('181', '1', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('182', '36', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('183', '42', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('184', '44', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('185', '43', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('186', '48', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('187', '51', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('188', '41', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('189', '38', '12', '1', '0');
+INSERT INTO `cms_node_attr` VALUES ('190', '40', '12', '0', '1');
+INSERT INTO `cms_node_attr` VALUES ('191', '39', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('192', '52', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('193', '49', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('194', '45', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('195', '69', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('196', '67', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('197', '68', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('198', '123', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('199', '124', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('200', '125', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('201', '126', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('202', '127', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('203', '128', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('204', '129', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('205', '130', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('206', '134', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('207', '135', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('208', '136', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('209', '137', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('210', '131', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('211', '138', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('212', '139', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('213', '140', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('214', '141', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('215', '132', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('216', '142', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('217', '143', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('218', '144', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('219', '145', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('220', '146', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('221', '133', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('222', '147', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('223', '148', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('224', '149', '12', '0', '0');
+INSERT INTO `cms_node_attr` VALUES ('225', '150', '12', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_node_buffer
@@ -3796,34 +3576,34 @@ INSERT INTO `cms_node_role` VALUES ('68', '119', '8', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('69', '120', '8', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('70', '121', '8', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('71', '122', '8', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('72', '123', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('73', '124', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('74', '125', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('75', '126', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('76', '127', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('77', '128', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('78', '129', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('79', '130', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('80', '131', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('81', '132', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('82', '133', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('83', '134', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('84', '135', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('85', '136', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('86', '137', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('87', '138', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('88', '139', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('89', '140', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('90', '141', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('91', '142', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('92', '143', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('93', '144', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('94', '145', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('95', '146', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('96', '147', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('97', '148', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('98', '149', '1', '0', '0');
-INSERT INTO `cms_node_role` VALUES ('99', '150', '1', '0', '0');
+INSERT INTO `cms_node_role` VALUES ('72', '123', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('73', '124', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('74', '125', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('75', '126', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('76', '127', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('77', '128', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('78', '129', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('79', '130', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('80', '131', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('81', '132', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('82', '133', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('83', '134', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('84', '135', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('85', '136', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('86', '137', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('87', '138', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('88', '139', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('89', '140', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('90', '141', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('91', '142', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('92', '143', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('93', '144', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('94', '145', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('95', '146', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('96', '147', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('97', '148', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('98', '149', '1', '1', '0');
+INSERT INTO `cms_node_role` VALUES ('99', '150', '1', '1', '0');
 
 -- ----------------------------
 -- Table structure for cms_org
@@ -4190,7 +3970,7 @@ CREATE TABLE `cms_role` (
 -- ----------------------------
 -- Records of cms_role
 -- ----------------------------
-INSERT INTO `cms_role` VALUES ('1', '1', '管理员', null, '2147483647', null, '1', '1', '1', '1', '1');
+INSERT INTO `cms_role` VALUES ('1', '1', '管理员', null, '2147483647', null, '1', '1', '0', '1', '1');
 INSERT INTO `cms_role` VALUES ('3', '3', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
 INSERT INTO `cms_role` VALUES ('4', '4', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
 INSERT INTO `cms_role` VALUES ('5', '5', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
@@ -4837,7 +4617,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, null, null, '2013-03-09 22:18:56', '127.0.0.1', '0', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-05-25 00:44:02', '127.0.0.1', '2015-05-25 09:32:35', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '324', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-05-27 00:55:36', '127.0.0.1', '2015-05-27 01:28:44', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '334', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup
@@ -5538,7 +5318,7 @@ CREATE TABLE `t_id_table` (
 -- ----------------------------
 INSERT INTO `t_id_table` VALUES ('cms_ad', '7');
 INSERT INTO `t_id_table` VALUES ('cms_ad_slot', '4');
-INSERT INTO `t_id_table` VALUES ('cms_attr', '4');
+INSERT INTO `t_id_table` VALUES ('cms_attr', '16');
 INSERT INTO `t_id_table` VALUES ('cms_attribute', '6');
 INSERT INTO `t_id_table` VALUES ('cms_collect', '2');
 INSERT INTO `t_id_table` VALUES ('cms_comment', '17');
@@ -5557,6 +5337,7 @@ INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
 INSERT INTO `t_id_table` VALUES ('cms_model', '48');
 INSERT INTO `t_id_table` VALUES ('cms_model_field', '758');
 INSERT INTO `t_id_table` VALUES ('cms_node', '151');
+INSERT INTO `t_id_table` VALUES ('cms_node_attr', '226');
 INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '199');
 INSERT INTO `t_id_table` VALUES ('cms_node_org', '93');
 INSERT INTO `t_id_table` VALUES ('cms_node_role', '100');
