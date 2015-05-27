@@ -456,9 +456,17 @@ function confirmDelete() {
     </div>
   </c:when>
   <c:when test="${field.name eq 'attrs'}">
-  	<div>
-  		attrs   显示内容
-    </div>
+  	<c:forEach var="attr" items="${attrssrrrrrrList}">
+  		<label><c:out value="${attr.name}"/></label> &nbsp;
+  		
+  		<select name="priority" >
+  			<c:forEach var="item" items="${attr.items}" >
+  			<option >${item.name}</option>
+  		</c:forEach>
+  		</select>
+  		
+  	</c:forEach>
+    
   </c:when>
   <c:otherwise>
     System field not found: '${field.name}'

@@ -23,7 +23,6 @@ import org.springframework.data.web.PageableDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -52,6 +51,7 @@ public class AttrController {
 		Integer siteId = Context.getCurrentSiteId(request);
 		List<Attr> list = service.findList(siteId);
 		modelMap.addAttribute("list", list);
+		System.out.println("000000000000000000000000000000000000:"+list.get(0).geAttrStr());
 		return "core/attr/attr_list";
 	}
 
@@ -66,10 +66,10 @@ public class AttrController {
 	}
 	
 	@RequestMapping("save.do")
-	public String save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,
+	public String save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,String[] itemName,
 			String redirect, HttpServletRequest request, RedirectAttributes ra) {
 		Integer siteId = Context.getCurrentSiteId(request);
-		service.save(bean, infoPermIds, nodePermIds, siteId);
+		service.save(bean, infoPermIds, nodePermIds,itemName, siteId);
 		logger.info("save Attr, name={}.", bean.getName());
 		ra.addFlashAttribute(MESSAGE, SAVE_SUCCESS);
 		if (Constants.REDIRECT_LIST.equals(redirect)) {
@@ -96,7 +96,7 @@ public class AttrController {
 		return "redirect:list.do";
 	}
 
-	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
+	@RequestMapping("edit.do")
 	public String edit(Integer id, Integer position, @PageableDefaults(sort = {
 			"seq", "id" }, sortDir = Direction.ASC) Pageable pageable,
 			HttpServletRequest request, org.springframework.ui.Model modelMap) {
@@ -119,7 +119,7 @@ public class AttrController {
 	
 	@RequestMapping("update.do")
 	public String update(@ModelAttribute("bean") Attr bean,
-			Integer[] infoPermIds, Integer[] nodePermIds, Integer position,
+			Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName, Integer position,
 			String redirect, RedirectAttributes ra) {
 		// 如果拥有所有权限，则清空权限字符串。
 		if (infoPermIds == null) {
@@ -128,7 +128,7 @@ public class AttrController {
 		if (nodePermIds == null) {
 			nodePermIds = new Integer[0];
 		}
-		service.update(bean, infoPermIds, nodePermIds);
+		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
 		logger.info("update Attr, name={}.", bean.getName());
 		ra.addFlashAttribute(MESSAGE, SAVE_SUCCESS);
 		if (Constants.REDIRECT_LIST.equals(redirect)) {

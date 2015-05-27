@@ -120,7 +120,13 @@ function confirmDelete() {
   </tr>
   <tr>
     <td class="in-lab" width="15%">参数名称:</td>
-    <td class="in-ctt" width="85%" colspan="3"><f:text name="name" value="${oprt=='edit' ? bean.name : ''}" class="required" maxlength="255" style="width:180px;"/></td>
+    <td class="in-ctt" width="85%" colspan="3">
+    	<f:text name="name" value="${oprt=='edit' ? bean.name : ''}" class="required" maxlength="255" style="width:180px;"/>
+    	<c:if test="${oprt=='edit'}">
+      		<f:text name="id" value="${oprt=='edit' ? bean.id : ''}" class="required" maxlength="255" style="width:180px;"/>
+	    	<f:text name="site.id" value="${oprt=='edit' ? bean.site.id : ''}" class="required" maxlength="255" style="width:180px;"/>
+      	</c:if>
+    </td>
   </tr>
   </table>
   
@@ -138,13 +144,12 @@ function confirmDelete() {
 	<tr>
     <td align="center">
     	<input type="checkbox" name="itemIds" value=""/>
-    	<input type="hidden" name="dy-itemId-${0}" value=""/>
+    	<input type="hidden" name="itemId" value=""/>
     </td>
     <td align="center">
       <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
     </td>
-    <td align="center"><f:text name="dy-itemName-{0}" value="" class="required" maxlength="100" style="width:150px;"/></td>
-    <td align="center"><f:text name="dy-itemSort-{0}" value="{0}" class="required digits" maxlength="9" style="width:150px;"/></td>
+    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
   </tr>
 </textarea>
   <script type="text/javascript">
@@ -171,8 +176,6 @@ $(function() {
     <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
     <th width="80"><s:message code="operate"/></th>
     <th><s:message code="scoreItem.name"/></th>
-    <th><s:message code="scoreItem.score"/></th>
-    <th><s:message code="scoreItem.icon"/></th>
   </tr>
   </thead>
   <tbody>
@@ -180,13 +183,12 @@ $(function() {
   <tr>
     <td align="center">
     	<input type="checkbox" name="itemIds" value="${bean.id}"/>
-    	<input type="hidden" name="dy-itemId-${status.index}" value="${item.id}"/>
+    	<input type="hidden" name="itemId" value="${item.id}"/>
     </td>
     <td align="center">
       <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
     </td>
-    <td align="center"><f:text name="dy-itemName-${status.index}" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
-    <td align="center"><f:text name="dy-itemSort-${status.index}" value="${status.index}" maxlength="255" style="width:180px;"/></td>
+    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
   </tr>
   </c:forEach>
   </tbody>

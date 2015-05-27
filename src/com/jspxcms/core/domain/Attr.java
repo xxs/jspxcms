@@ -60,6 +60,16 @@ public class Attr implements java.io.Serializable {
 		}
 		return nodes;
 	}
+	
+	@Transient
+	public String geAttrStr() {
+		StringBuffer str = new StringBuffer();
+		for (AttrItem item : items) {
+			str.append(item.getName()+" ");
+		}
+		return str.toString();
+	}
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "attr")
 	public Set<NodeAttr> getNodeAttrs() {
 		return nodeAttrs;
@@ -131,7 +141,7 @@ public class Attr implements java.io.Serializable {
 		this.seq = seq;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "attr")
 	@OrderBy("seq asc")
 	public List<AttrItem> getItems() {
 		return this.items;

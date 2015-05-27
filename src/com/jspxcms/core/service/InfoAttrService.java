@@ -9,7 +9,7 @@ import com.jspxcms.core.domain.InfoAttr;
 /**
  * InfoAttrService
  * 
- * @author liufang
+ * @author xxs
  * 
  */
 public interface InfoAttrService {
@@ -19,6 +19,8 @@ public interface InfoAttrService {
 	public List<InfoAttr> update(Info info, Integer[] attrIds,
 			Map<String, String> attrImages);
 
+	public List<InfoAttr> getByInfoId(Integer infoId);
+	
 	public int deleteByInfoId(Integer infoId);
 
 	public int deleteByAttrId(Integer attrId);

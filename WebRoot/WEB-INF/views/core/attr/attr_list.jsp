@@ -43,17 +43,6 @@ function optDelete(form) {
   <span class="c-position"><s:message code="attribute.management"/> - <s:message code="list"/></span>
 	<span class="c-total">(<s:message code="totalElements" arguments="${fn:length(list)}"/>)</span>
 </div>
-<shiro:hasPermission name="core:attribute:save">
-<form id="validForm" action="save.do" method="post">
-	<fieldset class="c-fieldset">
-    <legend><s:message code="create"/></legend>
-	  <label class="c-lab"><em class="required">*</em><s:message code="attribute.name"/>: <f:text name="name" class="required" maxlength="50" style="width:120px;"/></label>
-	  <label class="c-lab"><em class="required">*</em><s:message code="attribute.number"/>: <f:text name="number" class="{required:true,remote:'check_number.do',messages:{remote:'${numberExist}'}}" maxlength="20" style="width:120px;"/></label>
-	  <label class="c-lab"><input type="submit" value="<s:message code="submit"/>"/></label>
-	  <div style="clear:both"></div>
-  </fieldset>
-</form>
-</shiro:hasPermission>
 <form action="batch_update.do" method="post">
 <div class="ls-bc-opt">
 	<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
@@ -81,7 +70,6 @@ function optDelete(form) {
     <th width="80"><s:message code="operate"/></th>
     <th width="30">ID</th>
     <th><s:message code="attribute.name"/></th>
-    <th><s:message code="attribute.number"/></th>
     <th>栏目绑定</th>
     <th>文档绑定</th>
     <th>可选项</th>
@@ -97,7 +85,6 @@ function optDelete(form) {
      </td>
     <td>${bean.id}<f:hidden name="id" value="${bean.id}"/></td>
     <td align="center"><f:text name="name" value="${bean.name}" class="required" maxlength="20" style="width:120px;"/></td>
-    <td align="center"><f:text name="number" value="${bean.number}" class="required" maxlength="20" style="width:120px;"/></td>
     <td align="left">
     	<c:forEach var="n" items="${bean.nodePerms}">
 	  		${n.displayName}</br>
@@ -108,7 +95,11 @@ function optDelete(form) {
 	  		${n.displayName}</br>
 	  	</c:forEach>
 	</td>
-    <td align="center"></td>
+    <td align="left">
+    	<c:forEach var="n" items="${bean.items}">
+	  		${n.name}   
+	  	</c:forEach>
+    </td>
   </tr>
   </c:forEach>
   </tbody>

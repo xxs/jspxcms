@@ -872,6 +872,19 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		}
 		return attrs;
 	}
+	
+	@Transient
+	public List<Attr> getAttrss() {
+		List<InfoAttr> infoAttrss = getInfoAttrss();
+		if (infoAttrss == null) {
+			return null;
+		}
+		List<Attr> attrss = new ArrayList<Attr>(infoAttrss.size());
+		for (InfoAttr infoAttr : infoAttrss) {
+			attrss.add(infoAttr.getAttr());
+		}
+		return attrss;
+	}
 
 	@Transient
 	public InfoAttribute getInfoAttr(Attribute attr) {

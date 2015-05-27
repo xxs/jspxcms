@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.NodeAttr;
-import com.jspxcms.core.domain.Attr;
-import com.jspxcms.core.listener.NodeDeleteListener;
 import com.jspxcms.core.listener.AttrDeleteListener;
+import com.jspxcms.core.listener.NodeDeleteListener;
 import com.jspxcms.core.repository.NodeAttrDao;
-import com.jspxcms.core.service.NodeQueryService;
-import com.jspxcms.core.service.NodeAttrService;
 import com.jspxcms.core.service.AttrService;
+import com.jspxcms.core.service.NodeAttrService;
+import com.jspxcms.core.service.NodeQueryService;
 
 @Service
 @Transactional(readOnly = true)
@@ -113,7 +113,7 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 
 	private NodeQueryService nodeQueryService;
 	private AttrService attrService;
-
+	
 	@Autowired
 	public void setNodeQueryService(NodeQueryService nodeQueryService) {
 		this.nodeQueryService = nodeQueryService;

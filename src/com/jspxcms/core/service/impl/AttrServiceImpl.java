@@ -24,6 +24,7 @@ import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.AttrDao;
+import com.jspxcms.core.service.AttrItemService;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.InfoAttrService;
 import com.jspxcms.core.service.NodeAttrService;
@@ -70,21 +71,23 @@ public class AttrServiceImpl implements AttrService,
 	}
 	
 	@Transactional
-	public Attr save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,
+	public Attr save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,String[] itemName,
 			Integer siteId) {
 		Site site = siteService.get(siteId);
 		bean.setSite(site);
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
 		nodeAttrService.update(bean, infoPermIds, nodePermIds);
+		attrItemService.save(itemName,bean);
 		return bean;
 	}
 
 	@Transactional
-	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds) {
+	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
 		nodeAttrService.update(bean, infoPermIds, nodePermIds);
+		attrItemService.update(itemId,itemName,bean);
 		return bean;
 	}
 	
@@ -176,7 +179,13 @@ public class AttrServiceImpl implements AttrService,
 	}
 	
 	private NodeAttrService nodeAttrService;
+	private AttrItemService attrItemService;
 
+	@Autowired
+	public void setAttrItemService(AttrItemService attrItemService) {
+		this.attrItemService = attrItemService;
+	}
+	
 	@Autowired
 	public void setNodeAttrService(NodeAttrService nodeAttrService) {
 		this.nodeAttrService = nodeAttrService;

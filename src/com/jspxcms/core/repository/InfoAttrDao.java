@@ -14,10 +14,10 @@ import com.jspxcms.core.domain.InfoAttr;
 /**
  * InfoAttrDao
  * 
- * @author liufang
+ * @author xxs
  * 
  */
-public interface InfoAttrDao extends Repository<InfoAttr, Integer> {
+public interface InfoAttrDao extends Repository<InfoAttr, Integer>,InfoAttrDaoPlus {
 	public List<InfoAttr> findAll(Specification<InfoAttr> spec,
 			Sort sort);
 
@@ -29,8 +29,6 @@ public interface InfoAttrDao extends Repository<InfoAttr, Integer> {
 	public InfoAttr save(InfoAttr bean);
 
 	public void delete(InfoAttr bean);
-
-	// --------------------
 
 	@Modifying
 	@Query("delete from InfoAttr t where t.info.id=?1")

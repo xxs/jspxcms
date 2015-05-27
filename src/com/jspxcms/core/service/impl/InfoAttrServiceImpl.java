@@ -61,7 +61,11 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 	public int deleteByAttrId(Integer attrId) {
 		return dao.deleteByAttrId(attrId);
 	}
-
+	
+	public List<InfoAttr> getByInfoId(Integer infoId) {
+		return dao.getByInfoId(infoId);
+	}
+	
 	private AttrService attrService;
 
 	@Autowired
@@ -75,4 +79,5 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 	public void setDao(InfoAttrDao dao) {
 		this.dao = dao;
 	}
+
 }

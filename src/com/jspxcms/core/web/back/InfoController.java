@@ -3,11 +3,11 @@ package com.jspxcms.core.web.back;
 import static com.jspxcms.core.support.Constants.CREATE;
 import static com.jspxcms.core.support.Constants.DELETE_SUCCESS;
 import static com.jspxcms.core.support.Constants.EDIT;
-import static com.jspxcms.core.support.Constants.VIEW;
 import static com.jspxcms.core.support.Constants.MESSAGE;
 import static com.jspxcms.core.support.Constants.OPERATION_SUCCESS;
 import static com.jspxcms.core.support.Constants.OPRT;
 import static com.jspxcms.core.support.Constants.SAVE_SUCCESS;
+import static com.jspxcms.core.support.Constants.VIEW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +35,10 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.Servlets;
+import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Attribute;
 import com.jspxcms.core.domain.Info;
+import com.jspxcms.core.domain.InfoAttr;
 import com.jspxcms.core.domain.InfoDetail;
 import com.jspxcms.core.domain.InfoImage;
 import com.jspxcms.core.domain.MemberGroup;
@@ -44,7 +46,9 @@ import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
+import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.AttributeService;
+import com.jspxcms.core.service.InfoAttrService;
 import com.jspxcms.core.service.InfoQueryService;
 import com.jspxcms.core.service.InfoService;
 import com.jspxcms.core.service.MemberGroupService;
@@ -151,11 +155,14 @@ public class InfoController {
 		}
 		Model model = node.getInfoModel();
 		List<Attribute> attrList = attributeService.findList(site.getId());
+		List<Attr> attrssList = attrService.findList(site.getId());
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
+		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
+		modelMap.addAttribute("attrssList", attrssList);
 		modelMap.addAttribute("groupList", groupList);
 		modelMap.addAttribute("orgTreeNumber", orgTreeNumber);
 		modelMap.addAttribute("queryNodeId", queryNodeId);
@@ -216,9 +223,22 @@ public class InfoController {
 		Node node = bean.getNode();
 		Model model = bean.getModel();
 		List<Attribute> attrList = attributeService.findList(site.getId());
+		
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 
+		System.out.println("iddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd:"+bean.getNode().getId());
+		
+		List<InfoAttr> iaList = infoAttrService.getByInfoId(bean.getNode().getId());
+		List<Attr> aList = new ArrayList<Attr>();
+		if(iaList != null && iaList.size()>0){
+			for (int i = 0; i < iaList.size(); i++) {
+				aList.add(iaList.get(i).getAttr());
+			}
+		}
+		modelMap.addAttribute("attrssrrrrrrList", aList);
+		
+		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
@@ -558,6 +578,10 @@ public class InfoController {
 	private MessageSource messageSource;
 	@Autowired
 	private AttributeService attributeService;
+	@Autowired
+	private AttrService attrService;
+	@Autowired
+	private InfoAttrService infoAttrService;
 	@Autowired
 	private MemberGroupService memberGroupService;
 	@Autowired

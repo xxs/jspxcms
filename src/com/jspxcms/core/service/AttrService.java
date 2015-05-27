@@ -27,10 +27,10 @@ public interface AttrService {
 
 	public Attr update(Attr bean);
 	
-	public Attr save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,
+	public Attr save(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,String[] itemName,
 			Integer siteId);
 
-	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds);
+	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName);
 
 	public RowSide<Attr> findSide(Integer siteId, Map<String, String[]> params,
 			Attr bean, Integer position, Sort sort);
