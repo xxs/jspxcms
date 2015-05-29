@@ -12,4 +12,6 @@ import com.jspxcms.core.domain.InfoAttr;
  */
 public interface InfoAttrDaoPlus {
 	public List<InfoAttr> getByInfoId(Integer infoId);
+	
+	public List<InfoAttr> getByAttrId(Integer attrId);
 }

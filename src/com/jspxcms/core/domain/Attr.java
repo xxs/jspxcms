@@ -42,9 +42,7 @@ public class Attr implements java.io.Serializable {
 		Set<NodeAttr> nodeAttrs = getNodeAttrs();
 		Set<Node> nodes = new HashSet<Node>();
 		for (NodeAttr nr : nodeAttrs) {
-			if (nr.getInfoPerm()) {
-				nodes.add(nr.getNode());
-			}
+			nodes.add(nr.getNode());
 		}
 		return nodes;
 	}
@@ -54,9 +52,7 @@ public class Attr implements java.io.Serializable {
 		Set<NodeAttr> nodeAttrs = getNodeAttrs();
 		Set<Node> nodes = new HashSet<Node>();
 		for (NodeAttr nr : nodeAttrs) {
-			if (nr.getNodePerm()) {
-				nodes.add(nr.getNode());
-			}
+			nodes.add(nr.getNode());
 		}
 		return nodes;
 	}

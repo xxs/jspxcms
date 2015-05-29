@@ -24,6 +24,16 @@ public class InfoAttrDaoImpl implements InfoAttrDaoPlus {
 		}
 		return jqpl.list(em);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<InfoAttr> getByAttrId(Integer attrId) {
+		JpqlBuilder jqpl = new JpqlBuilder("from InfoAttr bean where 1=1");
+		if (attrId!=null) {
+			jqpl.append(" and bean.attr.id = (:attrId)");
+			jqpl.setParameter("attrId", attrId);
+		}
+		return jqpl.list(em);
+	}
 
 	private EntityManager em;
 

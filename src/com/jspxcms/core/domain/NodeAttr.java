@@ -19,19 +19,12 @@ public class NodeAttr implements java.io.Serializable {
 
 	@Transient
 	public void applyDefaultValue() {
-		if (getNodePerm() == null) {
-			setNodePerm(true);
-		}
-		if (getInfoPerm() == null) {
-			setInfoPerm(true);
-		}
+		
 	}
 
 	private Integer id;
 	private Node node;
 	private Attr attr;
-	private Boolean nodePerm;
-	private Boolean infoPerm;
 
 	@Id
 	@Column(name = "f_nodeattr_id", unique = true, nullable = false)
@@ -63,24 +56,6 @@ public class NodeAttr implements java.io.Serializable {
 
 	public void setAttr(Attr attr) {
 		this.attr = attr;
-	}
-
-	@Column(name = "f_is_node_perm", nullable = false, length = 1)
-	public Boolean getNodePerm() {
-		return this.nodePerm;
-	}
-
-	public void setNodePerm(Boolean nodePerm) {
-		this.nodePerm = nodePerm;
-	}
-
-	@Column(name = "f_is_info_perm", nullable = false, length = 1)
-	public Boolean getInfoPerm() {
-		return this.infoPerm;
-	}
-
-	public void setInfoPerm(Boolean infoPerm) {
-		this.infoPerm = infoPerm;
 	}
 
 }

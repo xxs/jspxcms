@@ -77,8 +77,10 @@ public class AttrServiceImpl implements AttrService,
 		bean.setSite(site);
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
-		nodeAttrService.update(bean, infoPermIds, nodePermIds);
+		nodeAttrService.update(bean, nodePermIds);
+		infoAttrService.update(bean, infoPermIds);
 		attrItemService.save(itemName,bean);
+		
 		return bean;
 	}
 
@@ -86,7 +88,8 @@ public class AttrServiceImpl implements AttrService,
 	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
-		nodeAttrService.update(bean, infoPermIds, nodePermIds);
+		nodeAttrService.update(bean, nodePermIds);
+		infoAttrService.update(bean, infoPermIds);
 		attrItemService.update(itemId,itemName,bean);
 		return bean;
 	}

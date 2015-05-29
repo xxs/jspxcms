@@ -230,10 +230,12 @@ public class InfoController {
 		System.out.println("iddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd:"+bean.getNode().getId());
 		
 		List<InfoAttr> iaList = infoAttrService.getByInfoId(bean.getNode().getId());
+		System.out.println("node ID："+bean.getNode().getId());
 		List<Attr> aList = new ArrayList<Attr>();
 		if(iaList != null && iaList.size()>0){
 			for (int i = 0; i < iaList.size(); i++) {
 				aList.add(iaList.get(i).getAttr());
+				System.out.println(iaList.get(i).getAttr().getName());
 			}
 		}
 		modelMap.addAttribute("attrssrrrrrrList", aList);

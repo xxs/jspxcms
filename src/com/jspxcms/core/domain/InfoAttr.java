@@ -14,7 +14,7 @@ import javax.persistence.TableGenerator;
 /**
  * InfoAttr 高级属性
  * 
- * @author xiaoshi
+ * @author xxs
  * 
  */
 @Entity
@@ -30,7 +30,7 @@ public class InfoAttr implements java.io.Serializable {
 	public InfoAttr() {
 	}
 
-	public InfoAttr(Info info, Attr attr, String image) {
+	public InfoAttr(Info info, Attr attr) {
 		this.info = info;
 		this.attr = attr;
 	}

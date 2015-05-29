@@ -51,7 +51,6 @@ public class AttrController {
 		Integer siteId = Context.getCurrentSiteId(request);
 		List<Attr> list = service.findList(siteId);
 		modelMap.addAttribute("list", list);
-		System.out.println("000000000000000000000000000000000000:"+list.get(0).geAttrStr());
 		return "core/attr/attr_list";
 	}
 
