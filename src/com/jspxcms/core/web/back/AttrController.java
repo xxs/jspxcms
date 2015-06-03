@@ -105,7 +105,6 @@ public class AttrController {
 				Constants.SEARCH_PREFIX);
 		RowSide<Attr> side = service.findSide(siteId, params, bean, position,
 				pageable.getSort());
-		modelMap.addAttribute("infoPerms", bean.getInfoPerms());
 		modelMap.addAttribute("nodePerms", bean.getNodePerms());
 		modelMap.addAttribute("bean", bean);
 		modelMap.addAttribute("side", side);

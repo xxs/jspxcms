@@ -14,7 +14,6 @@ import com.jspxcms.core.domain.InfoAttr;
 import com.jspxcms.core.repository.InfoAttrDao;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.InfoAttrService;
-import com.jspxcms.core.service.InfoQueryService;
 
 /**
  * InfoAttrServiceImpl
@@ -53,23 +52,7 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 
 	@Transactional
 	public void update(Attr attr, Integer[] infoIds) {
-		Integer attrId = attr.getId();
-		List<InfoAttr> irs = dao.getByAttrId(attrId);
-		boolean contains;
-		Info info = new Info();
-		for (Integer infoId : infoIds) {
-			contains = false;
-			for (InfoAttr ir : irs) {
-				info = ir.getInfo();
-				if (!info.getId().equals(infoId)) {
-					contains = true;
-					break;
-				}
-			}
-			if (!contains) {
-				save(info, attr);
-			}	
-		}
+		System.out.println("暂未实现此功能");
 	}
 	
 	@Transactional
@@ -90,13 +73,8 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 		return dao.getByInfoId(infoId);
 	}
 	
-	private InfoQueryService infoQueryService;
 	private AttrService attrService;
 
-	@Autowired
-	public void setInfoQueryService(InfoQueryService infoQueryService) {
-		this.infoQueryService = infoQueryService;
-	}
 	@Autowired
 	public void setAttrService(AttrService attrService) {
 		this.attrService = attrService;

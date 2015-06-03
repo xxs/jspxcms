@@ -87,6 +87,7 @@ function confirmDelete() {
 			</script>
     </td>
   </tr>
+  <!-- 
   <tr>
     <td class="in-lab" width="15%"><em class="required">*</em>绑定文档:</td>
     <td class="in-ctt" width="85%" colspan="3">
@@ -118,6 +119,7 @@ function confirmDelete() {
 			</script>
     </td>
   </tr>
+   -->
   <tr>
     <td class="in-lab" width="15%">参数名称:</td>
     <td class="in-ctt" width="85%" colspan="3">

@@ -33,6 +33,9 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 	@Transactional
 	public void update(Attr attr, Integer[] nodeIds) {
 		Integer attrId = attr.getId();
+		//更新前先删除之前已经绑定的栏目ID
+		dao.deleteByNodeId(attrId);
+		System.out.println("已经执行了删除操作");
 		List<NodeAttr> nrs = dao.findByAttrId(attrId);
 		Node node = null;
 		boolean contains;

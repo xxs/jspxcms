@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : xxs
 Source Server Version : 50154
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : jspxcms411
 
 Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-06-03 17:35:49
+Date: 2015-06-03 19:44:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -103,6 +103,7 @@ INSERT INTO `cms_attr` VALUES ('16', '1', null, '衣长', '2147483647');
 INSERT INTO `cms_attr` VALUES ('17', '1', null, '衣门襟', '2147483647');
 INSERT INTO `cms_attr` VALUES ('18', '1', null, '袖型', '2147483647');
 INSERT INTO `cms_attr` VALUES ('21', '1', null, '领型', '2147483647');
+INSERT INTO `cms_attr` VALUES ('25', '1', null, '网络', '2147483647');
 
 -- ----------------------------
 -- Table structure for cms_attribute
@@ -204,6 +205,13 @@ INSERT INTO `cms_attr_item` VALUES ('57', '3', '1', '高腰型', '2');
 INSERT INTO `cms_attr_item` VALUES ('58', '3', '1', '斗篷型', '3');
 INSERT INTO `cms_attr_item` VALUES ('59', '3', '1', '蝙蝠型', '4');
 INSERT INTO `cms_attr_item` VALUES ('60', '3', '1', '披肩型', '5');
+INSERT INTO `cms_attr_item` VALUES ('61', '25', '1', '移动4G', '0');
+INSERT INTO `cms_attr_item` VALUES ('62', '25', '1', '联通4G', '1');
+INSERT INTO `cms_attr_item` VALUES ('63', '25', '1', '电信4G', '2');
+INSERT INTO `cms_attr_item` VALUES ('64', '25', '1', '移动3G', '3');
+INSERT INTO `cms_attr_item` VALUES ('65', '25', '1', '联通3G', '4');
+INSERT INTO `cms_attr_item` VALUES ('66', '25', '1', '电信3G', '5');
+INSERT INTO `cms_attr_item` VALUES ('67', '25', '1', '双卡', '6');
 
 -- ----------------------------
 -- Table structure for cms_collect
@@ -2842,6 +2850,19 @@ CREATE TABLE `cms_node_attr` (
 -- ----------------------------
 INSERT INTO `cms_node_attr` VALUES ('770', '52', '1');
 INSERT INTO `cms_node_attr` VALUES ('771', '52', '2');
+INSERT INTO `cms_node_attr` VALUES ('773', '143', '3');
+INSERT INTO `cms_node_attr` VALUES ('774', '143', '4');
+INSERT INTO `cms_node_attr` VALUES ('775', '49', '1');
+INSERT INTO `cms_node_attr` VALUES ('776', '52', '1');
+INSERT INTO `cms_node_attr` VALUES ('777', '143', '1');
+INSERT INTO `cms_node_attr` VALUES ('778', '52', '25');
+INSERT INTO `cms_node_attr` VALUES ('779', '143', '25');
+INSERT INTO `cms_node_attr` VALUES ('780', '143', '25');
+INSERT INTO `cms_node_attr` VALUES ('781', '52', '25');
+INSERT INTO `cms_node_attr` VALUES ('782', '143', '25');
+INSERT INTO `cms_node_attr` VALUES ('783', '52', '25');
+INSERT INTO `cms_node_attr` VALUES ('784', '143', '25');
+INSERT INTO `cms_node_attr` VALUES ('785', '143', '25');
 
 -- ----------------------------
 -- Table structure for cms_node_buffer
@@ -4549,7 +4570,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, null, null, '2013-03-09 22:18:56', '127.0.0.1', '0', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-06-03 16:05:05', '127.0.0.1', '2015-06-03 17:09:51', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '347', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-06-03 18:51:45', '127.0.0.1', '2015-06-03 19:38:16', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '349', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup
@@ -5250,9 +5271,9 @@ CREATE TABLE `t_id_table` (
 -- ----------------------------
 INSERT INTO `t_id_table` VALUES ('cms_ad', '7');
 INSERT INTO `t_id_table` VALUES ('cms_ad_slot', '4');
-INSERT INTO `t_id_table` VALUES ('cms_attr', '22');
+INSERT INTO `t_id_table` VALUES ('cms_attr', '26');
 INSERT INTO `t_id_table` VALUES ('cms_attribute', '6');
-INSERT INTO `t_id_table` VALUES ('cms_attritem', '61');
+INSERT INTO `t_id_table` VALUES ('cms_attritem', '68');
 INSERT INTO `t_id_table` VALUES ('cms_collect', '2');
 INSERT INTO `t_id_table` VALUES ('cms_comment', '17');
 INSERT INTO `t_id_table` VALUES ('cms_friendlink', '22');
@@ -5260,7 +5281,7 @@ INSERT INTO `t_id_table` VALUES ('cms_friendlinktype', '6');
 INSERT INTO `t_id_table` VALUES ('cms_guestbook', '29');
 INSERT INTO `t_id_table` VALUES ('cms_guestbooktype', '5');
 INSERT INTO `t_id_table` VALUES ('cms_info', '171');
-INSERT INTO `t_id_table` VALUES ('cms_info_attr', '3');
+INSERT INTO `t_id_table` VALUES ('cms_info_attr', '4');
 INSERT INTO `t_id_table` VALUES ('cms_info_attribute', '410');
 INSERT INTO `t_id_table` VALUES ('cms_info_membergroup', '147');
 INSERT INTO `t_id_table` VALUES ('cms_info_node', '303');
@@ -5271,7 +5292,7 @@ INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
 INSERT INTO `t_id_table` VALUES ('cms_model', '48');
 INSERT INTO `t_id_table` VALUES ('cms_model_field', '758');
 INSERT INTO `t_id_table` VALUES ('cms_node', '151');
-INSERT INTO `t_id_table` VALUES ('cms_node_attr', '772');
+INSERT INTO `t_id_table` VALUES ('cms_node_attr', '786');
 INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '199');
 INSERT INTO `t_id_table` VALUES ('cms_node_org', '93');
 INSERT INTO `t_id_table` VALUES ('cms_node_role', '100');

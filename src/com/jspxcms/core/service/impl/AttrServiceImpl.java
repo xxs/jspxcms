@@ -88,8 +88,9 @@ public class AttrServiceImpl implements AttrService,
 	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
+		
 		nodeAttrService.update(bean, nodePermIds);
-		infoAttrService.update(bean, infoPermIds);
+		//infoAttrService.update(bean, infoPermIds);
 		attrItemService.update(itemId,itemName,bean);
 		return bean;
 	}

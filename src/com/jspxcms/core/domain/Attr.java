@@ -38,16 +38,6 @@ public class Attr implements java.io.Serializable {
 	}
 
 	@Transient
-	public Set<Node> getInfoPerms() {
-		Set<NodeAttr> nodeAttrs = getNodeAttrs();
-		Set<Node> nodes = new HashSet<Node>();
-		for (NodeAttr nr : nodeAttrs) {
-			nodes.add(nr.getNode());
-		}
-		return nodes;
-	}
-
-	@Transient
 	public Set<Node> getNodePerms() {
 		Set<NodeAttr> nodeAttrs = getNodeAttrs();
 		Set<Node> nodes = new HashSet<Node>();
