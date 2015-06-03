@@ -15,9 +15,17 @@
 [#include "inc_header.html"/]
 <div class="w960 center clear mt1">
 	<div class="pleft">
-    <div class="position">
-      当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
-    </div>
+      	[@NodeAttr id=node.id;list]
+      		[#list list as nodeAttr]
+   			 <div class="position">
+      			${nodeAttr.attr.name}:
+      					[#list nodeAttr.attr.items as item]
+      						${item.name }
+      						
+			      		[/#list]
+   			 </div>
+      		[/#list]
+      	[/@NodeAttr]
     <div class="productlist">
   		 [@InfoList nodeId=node.id;list]
  		   <ul>

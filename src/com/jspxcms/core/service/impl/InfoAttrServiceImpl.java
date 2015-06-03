@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.InfoAttr;
-import com.jspxcms.core.domain.Node;
-import com.jspxcms.core.domain.NodeAttr;
 import com.jspxcms.core.repository.InfoAttrDao;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.InfoAttrService;
@@ -43,22 +41,34 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 		info.setInfoAttrss(infoAttrs);
 		return infoAttrs;
 	}
+	
+	@Transactional
+	public InfoAttr save(Info info, Attr attr) {
+		InfoAttr bean = new InfoAttr();
+		bean.setInfo(info);
+		bean.setAttr(attr);
+		bean = dao.save(bean);
+		return bean;
+	}
 
 	@Transactional
-	public void update(Attr attr, Integer[] infoPermIds) {
-		Integer siteId = attr.getSite().getId();
+	public void update(Attr attr, Integer[] infoIds) {
 		Integer attrId = attr.getId();
-		List<Info> infos = infoQueryService.findList(siteId, null);
 		List<InfoAttr> irs = dao.getByAttrId(attrId);
-		Integer infoId;
-		for (Info info : infos) {
-			infoId = info.getId();
+		boolean contains;
+		Info info = new Info();
+		for (Integer infoId : infoIds) {
+			contains = false;
 			for (InfoAttr ir : irs) {
-				if (ir.getInfo().getId().equals(infoId)) {
+				info = ir.getInfo();
+				if (!info.getId().equals(infoId)) {
+					contains = true;
 					break;
 				}
 			}
-			save(node, attr);
+			if (!contains) {
+				save(info, attr);
+			}	
 		}
 	}
 	

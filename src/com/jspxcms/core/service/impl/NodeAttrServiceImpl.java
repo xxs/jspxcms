@@ -12,9 +12,9 @@ import com.jspxcms.core.domain.NodeAttr;
 import com.jspxcms.core.listener.AttrDeleteListener;
 import com.jspxcms.core.listener.NodeDeleteListener;
 import com.jspxcms.core.repository.NodeAttrDao;
+import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.NodeAttrService;
-import com.jspxcms.core.service.NodeQueryService;
 
 @Service
 @Transactional(readOnly = true)
@@ -31,23 +31,26 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 	}
 
 	@Transactional
-	public void update(Attr attr, Integer[] nodePermIds) {
-		Integer siteId = attr.getSite().getId();
+	public void update(Attr attr, Integer[] nodeIds) {
 		Integer attrId = attr.getId();
-		List<Node> nodes = nodeQueryService.findList(siteId, null);
 		List<NodeAttr> nrs = dao.findByAttrId(attrId);
-		Integer nodeId;
+		Node node = null;
 		boolean contains;
-		for (Node node : nodes) {
+		for (Integer nodeId : nodeIds) {
 			contains = false;
-			nodeId = node.getId();
-			for (NodeAttr nr : nrs) {
-				if (!nr.getNode().getId().equals(nodeId)) {
-					contains = true;
-					break;
+			if (nrs != null && nrs.size() > 0) {
+				for (NodeAttr nr : nrs) {
+					if (!nr.getNode().getId().equals(nodeId)) {
+						node = nodeDao.findOne(nodeId);
+						contains = true;
+						break;
+					}
 				}
+			} else {
+				node = nodeDao.findOne(nodeId);
+				contains = true;
 			}
-			if (!contains) {
+			if (contains) {
 				save(node, attr);
 			}
 		}
@@ -91,17 +94,22 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 		}
 	}
 
-	private NodeQueryService nodeQueryService;
-	private AttrService attrService;
-	
-	@Autowired
-	public void setNodeQueryService(NodeQueryService nodeQueryService) {
-		this.nodeQueryService = nodeQueryService;
+	public List<NodeAttr> getByNodeId(Integer nodeId) {
+		return dao.findByNodeId(nodeId);
 	}
+
+	private AttrService attrService;
 
 	@Autowired
 	public void setAttrService(AttrService attrService) {
 		this.attrService = attrService;
+	}
+
+	private NodeDao nodeDao;
+
+	@Autowired
+	public void setNodeDao(NodeDao nodeDao) {
+		this.nodeDao = nodeDao;
 	}
 
 	private NodeAttrDao dao;

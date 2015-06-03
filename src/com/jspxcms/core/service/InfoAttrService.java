@@ -15,6 +15,8 @@ import com.jspxcms.core.domain.InfoAttr;
 public interface InfoAttrService {
 	public List<InfoAttr> save(Info info, Integer[] attrIds);
 
+	public InfoAttr save(Info info, Attr attr);
+	
 	public List<InfoAttr> update(Info info, Integer[] attrIds);
 	
 	public void update(Attr attr, Integer[] infoPermIds);

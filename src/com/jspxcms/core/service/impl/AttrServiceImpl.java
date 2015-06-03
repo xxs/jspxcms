@@ -77,8 +77,8 @@ public class AttrServiceImpl implements AttrService,
 		bean.setSite(site);
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
-		nodeAttrService.update(bean, nodePermIds);
 		infoAttrService.update(bean, infoPermIds);
+		nodeAttrService.update(bean, nodePermIds);
 		attrItemService.save(itemName,bean);
 		
 		return bean;

@@ -38,12 +38,12 @@ import com.jspxcms.common.web.Servlets;
 import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Attribute;
 import com.jspxcms.core.domain.Info;
-import com.jspxcms.core.domain.InfoAttr;
 import com.jspxcms.core.domain.InfoDetail;
 import com.jspxcms.core.domain.InfoImage;
 import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
+import com.jspxcms.core.domain.NodeAttr;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
 import com.jspxcms.core.service.AttrService;
@@ -52,6 +52,7 @@ import com.jspxcms.core.service.InfoAttrService;
 import com.jspxcms.core.service.InfoQueryService;
 import com.jspxcms.core.service.InfoService;
 import com.jspxcms.core.service.MemberGroupService;
+import com.jspxcms.core.service.NodeAttrService;
 import com.jspxcms.core.service.NodeQueryService;
 import com.jspxcms.core.support.CmsException;
 import com.jspxcms.core.support.Constants;
@@ -229,13 +230,13 @@ public class InfoController {
 
 		System.out.println("iddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd:"+bean.getNode().getId());
 		
-		List<InfoAttr> iaList = infoAttrService.getByInfoId(bean.getNode().getId());
+		List<NodeAttr> naList = nodeAttrService.getByNodeId(bean.getNode().getId());
 		System.out.println("node ID："+bean.getNode().getId());
 		List<Attr> aList = new ArrayList<Attr>();
-		if(iaList != null && iaList.size()>0){
-			for (int i = 0; i < iaList.size(); i++) {
-				aList.add(iaList.get(i).getAttr());
-				System.out.println(iaList.get(i).getAttr().getName());
+		if(naList != null && naList.size()>0){
+			for (int i = 0; i < naList.size(); i++) {
+				aList.add(naList.get(i).getAttr());
+				System.out.println(naList.get(i).getAttr().getName());
 			}
 		}
 		modelMap.addAttribute("attrssrrrrrrList", aList);
@@ -584,6 +585,8 @@ public class InfoController {
 	private AttrService attrService;
 	@Autowired
 	private InfoAttrService infoAttrService;
+	@Autowired
+	private NodeAttrService nodeAttrService;
 	@Autowired
 	private MemberGroupService memberGroupService;
 	@Autowired

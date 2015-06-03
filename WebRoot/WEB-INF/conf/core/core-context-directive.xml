@@ -21,6 +21,8 @@
 	<!-- <bean id="SQLUpdate" class="com.jspxcms.core.web.directive.SQLUpdateDirective" /> -->
 		
 	<bean id="CmsNode" class="com.jspxcms.core.web.directive.NodeDirective" />
+	<bean id="CmsAttr" class="com.jspxcms.core.web.directive.AttrDirective" />
+	<bean id="CmsNodeAttr" class="com.jspxcms.core.web.directive.NodeAttrDirective" />
 	<bean id="CmsNodeList" class="com.jspxcms.core.web.directive.NodeListDirective" />
 	<bean id="CmsNodePage" class="com.jspxcms.core.web.directive.NodePageDirective" />
 	<bean id="CmsInfo" class="com.jspxcms.core.web.directive.InfoDirective" />
@@ -41,6 +43,8 @@
 	
 	<bean id="cmsGetNode" class="com.jspxcms.core.web.method.GetNodeMethod" />
 	<bean id="cmsGetInfo" class="com.jspxcms.core.web.method.GetInfoMethod" />
+	<bean id="cmsGetInfoAttr" class="com.jspxcms.core.web.method.GetInfoAttrMethod" />
+	<bean id="cmsGetNodeAttr" class="com.jspxcms.core.web.method.GetNodeAttrMethod" />
 	
 	<!-- <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"> -->
 	<bean id="freemarkerConfig" class="com.jspxcms.common.freemarker.AdapterFreeMarkerConfigurer">
