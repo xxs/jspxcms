@@ -26,7 +26,7 @@ function confirmDelete() {
 <body class="c-body">
 <jsp:include page="/WEB-INF/views/commons/show_message.jsp"/>
 <div class="c-bar margin-top5">
-  <span class="c-position">高级属性管理 - <s:message code="${oprt=='edit' ? 'edit' : 'create'}"/></span>
+  <span class="c-position">高级参数管理 - <s:message code="${oprt=='edit' ? 'edit' : 'create'}"/></span>
 </div>
 <form id="validForm" action="${oprt=='edit' ? 'update' : 'save'}.do" method="post">
 <tags:search_params/>
@@ -121,7 +121,7 @@ function confirmDelete() {
   </tr>
    -->
   <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em>属性名称:</td>
+    <td class="in-lab" width="15%"><em class="required">*</em>参数名称:</td>
     <td class="in-ctt" width="85%" colspan="3">
     	<f:text name="name" value="${oprt=='edit' ? bean.name : ''}" class="required" maxlength="255" style="width:180px;"/>
     	<c:if test="${oprt=='edit'}">
@@ -156,8 +156,8 @@ function confirmDelete() {
 </textarea>
   <script type="text/javascript">
 var rowIndex = 0;
-<c:if test="${!empty bean && fn:length(bean.items) gt 0}">
-rowIndex = ${fn:length(bean.items)};
+<c:if test="${!empty bean && fn:length(bean.parameters) gt 0}">
+rowIndex = ${fn:length(bean.parameters)};
 </c:if>
 var rowTemplate = $.format($("#templateArea").val());
 function addRow() {
@@ -181,7 +181,7 @@ $(function() {
   </tr>
   </thead>
   <tbody>
-  <c:forEach var="item" varStatus="status" items="${bean.items}">
+  <c:forEach var="item" varStatus="status" items="${bean.parameters}">
   <tr>
     <td align="center">
     	<input type="checkbox" name="itemIds" value="${bean.id}"/>

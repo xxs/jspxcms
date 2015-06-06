@@ -40,7 +40,7 @@ function optDelete(form) {
 <jsp:include page="/WEB-INF/views/commons/show_message.jsp"/>
 <c:set var="numberExist"><s:message code="attribute.number.exist"/></c:set>
 <div class="c-bar margin-top5">
-  <span class="c-position">高级属性管理 - <s:message code="list"/></span>
+  <span class="c-position">高级参数管理 - <s:message code="list"/></span>
 	<span class="c-total">(<s:message code="totalElements" arguments="${fn:length(list)}"/>)</span>
 </div>
 <form action="batch_update.do" method="post">
@@ -85,12 +85,12 @@ function optDelete(form) {
     <td>${bean.id}<f:hidden name="id" value="${bean.id}"/></td>
     <td align="center"><f:text name="name" value="${bean.name}" class="required" maxlength="20" style="width:120px;"/></td>
     <td align="left">
-    	<c:forEach var="n" items="${bean.nodePerms}">
+	  	<c:forEach var="n" items="${bean.nodePerms}">
 	  		${n.displayName}</br>
 	  	</c:forEach>
 	</td>
     <td align="left">
-    	<c:forEach var="n" items="${bean.items}">
+    	<c:forEach var="n" items="${bean.parameters}">
 	  		${n.name}   
 	  	</c:forEach>
     </td>

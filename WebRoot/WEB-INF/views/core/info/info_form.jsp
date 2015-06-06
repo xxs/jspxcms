@@ -452,11 +452,16 @@ function confirmDelete() {
   </c:when>
   <c:when test="${field.name eq 'parameters'}">
   	<div>
-  		parameters   显示内容
+  		<c:forEach var="parameterGroup" items="${parameterGroupList}">
+	  		<label><c:out value="${parameterGroup.name}"/></label> 
+	  			<c:forEach var="parameter" items="${parameterGroup.parameters}" >
+	  				&nbsp;&nbsp;&nbsp;&nbsp;${parameter.name}：<input name="" /> </br>
+	  			</c:forEach>
+	  	</c:forEach>
     </div>
   </c:when>
   <c:when test="${field.name eq 'attrs'}">
-  	<c:forEach var="attr" items="${attrssrrrrrrList}">
+  	<c:forEach var="attr" items="${attrssList}">
   		<label><c:out value="${attr.name}"/></label> &nbsp;
   		
   		<select name="priority" >

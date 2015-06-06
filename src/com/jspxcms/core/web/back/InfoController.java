@@ -44,6 +44,7 @@ import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.NodeAttr;
+import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
 import com.jspxcms.core.service.AttrService;
@@ -54,6 +55,7 @@ import com.jspxcms.core.service.InfoService;
 import com.jspxcms.core.service.MemberGroupService;
 import com.jspxcms.core.service.NodeAttrService;
 import com.jspxcms.core.service.NodeQueryService;
+import com.jspxcms.core.service.ParameterGroupService;
 import com.jspxcms.core.support.CmsException;
 import com.jspxcms.core.support.Constants;
 import com.jspxcms.core.support.Context;
@@ -157,6 +159,7 @@ public class InfoController {
 		Model model = node.getInfoModel();
 		List<Attribute> attrList = attributeService.findList(site.getId());
 		List<Attr> attrssList = attrService.findList(site.getId());
+		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 		
@@ -164,6 +167,7 @@ public class InfoController {
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
 		modelMap.addAttribute("attrssList", attrssList);
+		modelMap.addAttribute("parameterGroupList", parameterGroupList);
 		modelMap.addAttribute("groupList", groupList);
 		modelMap.addAttribute("orgTreeNumber", orgTreeNumber);
 		modelMap.addAttribute("queryNodeId", queryNodeId);
@@ -239,9 +243,9 @@ public class InfoController {
 				System.out.println(naList.get(i).getAttr().getName());
 			}
 		}
-		modelMap.addAttribute("attrssrrrrrrList", aList);
-		
-		
+		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
+		modelMap.addAttribute("attrssList", aList);
+		modelMap.addAttribute("parameterGroupList", parameterGroupList);
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
@@ -583,6 +587,8 @@ public class InfoController {
 	private AttributeService attributeService;
 	@Autowired
 	private AttrService attrService;
+	@Autowired
+	private ParameterGroupService parameterGroupService;
 	@Autowired
 	private InfoAttrService infoAttrService;
 	@Autowired
