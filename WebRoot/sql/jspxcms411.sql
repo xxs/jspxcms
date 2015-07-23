@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-07-19 10:13:57
+Date: 2015-07-23 20:50:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -4337,6 +4337,10 @@ INSERT INTO `cms_model` VALUES ('48', '9', 'site', '站点模型', '2147483647')
 INSERT INTO `cms_model` VALUES ('49', '9', 'node_home', '首页', '0');
 INSERT INTO `cms_model` VALUES ('50', '9', 'node', '新闻', '0');
 INSERT INTO `cms_model` VALUES ('51', '9', 'info', '新闻', '0');
+INSERT INTO `cms_model` VALUES ('52', '10', 'site', '站点模型', '2147483647');
+INSERT INTO `cms_model` VALUES ('53', '10', 'node_home', '首页', '0');
+INSERT INTO `cms_model` VALUES ('54', '10', 'node', '新闻', '0');
+INSERT INTO `cms_model` VALUES ('55', '10', 'info', '新闻', '0');
 
 -- ----------------------------
 -- Table structure for cms_model_custom
@@ -4672,6 +4676,33 @@ INSERT INTO `cms_model_custom` VALUES ('51', 'generateNode', 'true');
 INSERT INTO `cms_model_custom` VALUES ('51', 'generateInfo', 'true');
 INSERT INTO `cms_model_custom` VALUES ('51', 'nodeExtension', '.html');
 INSERT INTO `cms_model_custom` VALUES ('51', 'infoExtension', '.html');
+INSERT INTO `cms_model_custom` VALUES ('53', 'template', '/index.html');
+INSERT INTO `cms_model_custom` VALUES ('53', 'staticMethod', '3');
+INSERT INTO `cms_model_custom` VALUES ('53', 'generateNode', 'false');
+INSERT INTO `cms_model_custom` VALUES ('53', 'generateInfo', 'false');
+INSERT INTO `cms_model_custom` VALUES ('53', 'nodePath', '');
+INSERT INTO `cms_model_custom` VALUES ('53', 'defPage', 'false');
+INSERT INTO `cms_model_custom` VALUES ('53', 'nodeExtension', '.html');
+INSERT INTO `cms_model_custom` VALUES ('53', 'infoExtension', '.html');
+INSERT INTO `cms_model_custom` VALUES ('53', 'infoPath', '');
+INSERT INTO `cms_model_custom` VALUES ('53', 'staticPage', '1');
+INSERT INTO `cms_model_custom` VALUES ('54', 'staticMethod', '3');
+INSERT INTO `cms_model_custom` VALUES ('54', 'generateNode', 'false');
+INSERT INTO `cms_model_custom` VALUES ('54', 'generateInfo', 'false');
+INSERT INTO `cms_model_custom` VALUES ('54', 'coverTemplate', '/cover.html');
+INSERT INTO `cms_model_custom` VALUES ('54', 'nodePath', '');
+INSERT INTO `cms_model_custom` VALUES ('54', 'defPage', 'true');
+INSERT INTO `cms_model_custom` VALUES ('54', 'listTemplate', '/list.html');
+INSERT INTO `cms_model_custom` VALUES ('54', 'nodeExtension', '.html');
+INSERT INTO `cms_model_custom` VALUES ('54', 'infoExtension', '.html');
+INSERT INTO `cms_model_custom` VALUES ('54', 'infoPath', '');
+INSERT INTO `cms_model_custom` VALUES ('54', 'staticPage', '1');
+INSERT INTO `cms_model_custom` VALUES ('55', 'template', '/info.html');
+INSERT INTO `cms_model_custom` VALUES ('55', 'staticMethod', '3');
+INSERT INTO `cms_model_custom` VALUES ('55', 'generateNode', 'true');
+INSERT INTO `cms_model_custom` VALUES ('55', 'generateInfo', 'true');
+INSERT INTO `cms_model_custom` VALUES ('55', 'nodeExtension', '.html');
+INSERT INTO `cms_model_custom` VALUES ('55', 'infoExtension', '.html');
 
 -- ----------------------------
 -- Table structure for cms_model_field
@@ -5255,6 +5286,50 @@ INSERT INTO `cms_model_field` VALUES ('798', '51', '1', '2', '作者', 'author',
 INSERT INTO `cms_model_field` VALUES ('799', '51', '1', '2', '属性', 'attributes', null, null, '0', '10', '0', '0');
 INSERT INTO `cms_model_field` VALUES ('800', '51', '50', '2', '正文', 'text', null, null, '0', '13', '0', '0');
 INSERT INTO `cms_model_field` VALUES ('801', '51', '7', '0', '标题图', 'smallimage', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('802', '52', '1', '0', '公司名称', 'company', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('803', '52', '1', '0', '备案号', 'icp', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('804', '53', '1', '2', '名称', 'name', null, null, '0', '0', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('805', '53', '1', '2', '编码', 'number', null, null, '0', '1', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('806', '53', '5', '2', '栏目模型', 'nodeModel', null, null, '0', '2', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('807', '53', '5', '2', '文档模型', 'infoModel', null, null, '0', '3', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('808', '53', '1', '2', '栏目页模板', 'nodeTemplate', null, null, '0', '4', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('809', '53', '1', '2', '文档页模板', 'infoTemplate', null, null, '0', '5', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('810', '53', '1', '2', '栏目页静态化', 'generateNode', null, null, '0', '6', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('811', '53', '1', '2', '文档页静态化', 'generateInfo', null, null, '0', '7', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('812', '53', '5', '2', '静态化方式', 'staticMethod', null, null, '0', '8', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('813', '53', '1', '2', '静态化页数', 'staticPage', null, '1', '1', '9', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('814', '53', '1', '2', '关键词', 'metaKeywords', null, null, '0', '10', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('815', '53', '1', '2', '描述', 'metaDescription', null, null, '0', '11', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('816', '53', '3', '2', '浏览权限', 'viewGroups', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('817', '54', '1', '2', '所属栏目', 'parent', null, null, '0', '0', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('818', '54', '1', '2', '名称', 'name', null, null, '0', '1', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('819', '54', '1', '2', '编码', 'number', null, null, '0', '2', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('820', '54', '1', '2', '链接地址', 'link', null, null, '0', '3', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('821', '54', '5', '2', '新窗口打开', 'newWindow', null, null, '0', '4', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('822', '54', '1', '2', '关键词', 'metaKeywords', null, null, '0', '5', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('823', '54', '1', '2', '描述', 'metaDescription', null, null, '0', '6', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('824', '54', '5', '2', '审核流程', 'workflow', null, null, '0', '7', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('825', '54', '5', '2', '栏目模型', 'nodeModel', null, null, '0', '8', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('826', '54', '5', '2', '文档模型', 'infoModel', null, null, '0', '9', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('827', '54', '1', '2', '栏目页模板', 'nodeTemplate', null, null, '0', '10', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('828', '54', '1', '2', '文档页模板', 'infoTemplate', null, null, '0', '11', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('829', '54', '1', '2', '栏目页静态化', 'generateNode', null, null, '0', '12', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('830', '54', '1', '2', '文档页静态化', 'generateInfo', null, null, '0', '13', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('831', '54', '5', '2', '静态化方式', 'staticMethod', null, null, '0', '14', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('832', '54', '1', '2', '静态化页数', 'staticPage', null, '1', '0', '15', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('833', '55', '1', '2', '栏目', 'node', null, null, '0', '0', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('834', '55', '1', '2', '专题', 'specials', null, null, '0', '1', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('835', '55', '1', '2', '标题', 'title', null, null, '0', '2', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('836', '55', '1', '2', '颜色', 'color', null, null, '0', '3', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('837', '55', '1', '2', '关键词', 'tagKeywords', null, null, '0', '4', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('838', '55', '6', '2', '描述', 'metaDescription', null, null, '0', '5', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('839', '55', '1', '2', '优先级', 'priority', null, null, '0', '6', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('840', '55', '2', '2', '发布时间', 'publishDate', null, null, '0', '7', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('841', '55', '1', '2', '来源', 'source', null, null, '0', '8', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('842', '55', '1', '2', '作者', 'author', null, null, '0', '9', '1', '0');
+INSERT INTO `cms_model_field` VALUES ('843', '55', '1', '2', '属性', 'attributes', null, null, '0', '10', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('844', '55', '50', '2', '正文', 'text', null, null, '0', '13', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('845', '55', '7', '0', '标题图', 'smallimage', null, null, '0', '2147483647', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_model_field_custom
@@ -5451,6 +5526,16 @@ INSERT INTO `cms_model_field_custom` VALUES ('801', 'imageHeight', '');
 INSERT INTO `cms_model_field_custom` VALUES ('801', 'imageScale', 'false');
 INSERT INTO `cms_model_field_custom` VALUES ('801', 'imageWidth', '');
 INSERT INTO `cms_model_field_custom` VALUES ('801', 'imageWatermark', 'false');
+INSERT INTO `cms_model_field_custom` VALUES ('802', 'maxLength', '');
+INSERT INTO `cms_model_field_custom` VALUES ('802', 'validation', '');
+INSERT INTO `cms_model_field_custom` VALUES ('802', 'width', '180');
+INSERT INTO `cms_model_field_custom` VALUES ('803', 'maxLength', '');
+INSERT INTO `cms_model_field_custom` VALUES ('803', 'validation', '');
+INSERT INTO `cms_model_field_custom` VALUES ('803', 'width', '180');
+INSERT INTO `cms_model_field_custom` VALUES ('845', 'imageHeight', '');
+INSERT INTO `cms_model_field_custom` VALUES ('845', 'imageScale', 'false');
+INSERT INTO `cms_model_field_custom` VALUES ('845', 'imageWidth', '');
+INSERT INTO `cms_model_field_custom` VALUES ('845', 'imageWatermark', 'false');
 
 -- ----------------------------
 -- Table structure for cms_node
@@ -5595,6 +5680,7 @@ INSERT INTO `cms_node` VALUES ('148', '1', '133', '1', '46', null, null, null, '
 INSERT INTO `cms_node` VALUES ('149', '1', '133', '1', '46', null, null, null, '47', 'lt', '轮胎', '0000-000d-0004-0002', '3', '0000', '2015-05-25 11:12:13', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('150', '1', '133', '1', '46', null, null, null, '47', 'cns', '车内饰', '0000-000d-0004-0003', '3', '0000', '2015-05-25 11:12:23', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('151', '9', null, '1', '49', null, null, null, '51', 'home', '首页', '0000', '0', '0000', '2015-07-19 09:28:29', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('152', '10', null, '1', '53', null, null, null, '55', 'home', '首页', '0000', '0', '0000', '2015-07-23 14:08:10', '0', '0', '1', '0', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_node_attr
@@ -5720,6 +5806,7 @@ INSERT INTO `cms_node_buffer` VALUES ('148', '0');
 INSERT INTO `cms_node_buffer` VALUES ('149', '0');
 INSERT INTO `cms_node_buffer` VALUES ('150', '0');
 INSERT INTO `cms_node_buffer` VALUES ('151', '0');
+INSERT INTO `cms_node_buffer` VALUES ('152', '0');
 
 -- ----------------------------
 -- Table structure for cms_node_clob
@@ -5879,6 +5966,7 @@ INSERT INTO `cms_node_detail` VALUES ('148', null, null, null, null, null, null,
 INSERT INTO `cms_node_detail` VALUES ('149', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_node_detail` VALUES ('150', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_node_detail` VALUES ('151', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_node_detail` VALUES ('152', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_node_membergroup
@@ -6091,6 +6179,8 @@ INSERT INTO `cms_node_membergroup` VALUES ('197', '150', '0', '1', '1', '1');
 INSERT INTO `cms_node_membergroup` VALUES ('198', '150', '1', '1', '1', '1');
 INSERT INTO `cms_node_membergroup` VALUES ('199', '151', '0', '1', '1', '1');
 INSERT INTO `cms_node_membergroup` VALUES ('200', '151', '1', '1', '1', '1');
+INSERT INTO `cms_node_membergroup` VALUES ('201', '152', '0', '1', '1', '1');
+INSERT INTO `cms_node_membergroup` VALUES ('202', '152', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for cms_node_org
@@ -6200,6 +6290,7 @@ INSERT INTO `cms_node_org` VALUES ('90', '1', '148', '0');
 INSERT INTO `cms_node_org` VALUES ('91', '1', '149', '0');
 INSERT INTO `cms_node_org` VALUES ('92', '1', '150', '0');
 INSERT INTO `cms_node_org` VALUES ('93', '1', '151', '0');
+INSERT INTO `cms_node_org` VALUES ('94', '1', '152', '0');
 
 -- ----------------------------
 -- Table structure for cms_node_role
@@ -6316,6 +6407,7 @@ INSERT INTO `cms_node_role` VALUES ('97', '148', '1', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('98', '149', '1', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('99', '150', '1', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('100', '151', '9', '0', '0');
+INSERT INTO `cms_node_role` VALUES ('101', '152', '10', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_org
@@ -6551,6 +6643,7 @@ INSERT INTO `cms_role` VALUES ('6', '6', 'administrators', null, '2147483647', n
 INSERT INTO `cms_role` VALUES ('7', '7', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
 INSERT INTO `cms_role` VALUES ('8', '8', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
 INSERT INTO `cms_role` VALUES ('9', '9', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
+INSERT INTO `cms_role` VALUES ('10', '10', 'administrators', null, '2147483647', null, '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for cms_score_board
@@ -6697,10 +6790,11 @@ INSERT INTO `cms_site` VALUES ('1', '1', '1', null, 'Jspxcms演示站', '1', 'Js
 INSERT INTO `cms_site` VALUES ('3', '1', '1', null, '信诚松木', '3', null, '/img/no_picture.jpg', 'xincheng', null, '127.0.0.1', '0', '1', '0', '0', '0001', '0', '0000');
 INSERT INTO `cms_site` VALUES ('4', '1', '1', null, '青土景观', '4', null, '/img/no_picture.jpg', 'qingtu', null, 'qingtu', '0', '1', '0', '0', '0002', '0', '0000');
 INSERT INTO `cms_site` VALUES ('5', '1', '1', null, '设计空间', '5', null, '/img/no_picture.jpg', 'kongjian', null, 'kongjian', '0', '1', '0', '0', '0003', '0', '0000');
-INSERT INTO `cms_site` VALUES ('6', '1', '1', null, '企业模板', '6', null, '/img/no_picture.jpg', 'qiye', null, 'qiye', '0', '0', '0', '0', '0004', '0', '0000');
+INSERT INTO `cms_site` VALUES ('6', '1', '1', null, 'fffffff', '6', null, '/img/no_picture.jpg', 'qiye', null, 'qiye', '0', '0', '0', '0', '0004', '0', '0000');
 INSERT INTO `cms_site` VALUES ('7', '1', '1', null, '模版大全', '7', '模板大全', '/img/no_picture.jpg', 'muban', null, 'muban', '0', '1', '1', '0', '0005', '0', '0000');
 INSERT INTO `cms_site` VALUES ('8', '1', '1', null, '模板商城', '8', '模板商城', '/img/no_picture.jpg', 'muban', null, 'mshop', '0', '1', '1', '0', '0006', '0', '0000');
 INSERT INTO `cms_site` VALUES ('9', '1', '1', null, '小米官网2015版', '9', '小米官网2015版', '/img/no_picture.jpg', '2015', null, 'xiaomi', '0', '0', '0', '0', '0007', '0', '0000');
+INSERT INTO `cms_site` VALUES ('10', '1', '1', null, '魅族官网2015版', '11', '魅族官网2015版', '/img/no_picture.jpg', 'meizu', null, 'meizu', '0', '1', '0', '0', '0008', '0', '0000');
 
 -- ----------------------------
 -- Table structure for cms_site_clob
@@ -7158,7 +7252,7 @@ CREATE TABLE `cms_user` (
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES ('0', '1', '1', 'anonymous', null, null, 'atarm@163.com', null, null, 'M', null, null, null, '1', '1', '1');
+INSERT INTO `cms_user` VALUES ('0', '1', '1', '123123', '4632b725d063e24697cf875cde26102a72c109fd', '3fb6d0ceaa5eaab2', 'atarm@163.com', null, '123123', 'M', null, null, null, '1', '1', '0');
 INSERT INTO `cms_user` VALUES ('1', '1', '1', 'admin', '2d8e591a5b9c7d2fcda30db6e33b52adc60dca43', '94047fb78c658cbc', null, null, null, null, null, null, null, '0', '1', '0');
 
 -- ----------------------------
@@ -7191,8 +7285,8 @@ CREATE TABLE `cms_user_detail` (
 -- ----------------------------
 -- Records of cms_user_detail
 -- ----------------------------
-INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, null, null, '2013-03-09 22:18:56', '127.0.0.1', '0', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-06-06 22:55:17', '127.0.0.1', '2015-07-19 08:36:27', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '366', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, '2015-07-23 15:12:01', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '1', null, null, null, '22807465', null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-07-23 13:55:11', '127.0.0.1', '2015-07-23 15:15:08', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '368', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup
@@ -7214,7 +7308,7 @@ CREATE TABLE `cms_user_membergroup` (
 -- Records of cms_user_membergroup
 -- ----------------------------
 INSERT INTO `cms_user_membergroup` VALUES ('2', '1', '1', '0');
-INSERT INTO `cms_user_membergroup` VALUES ('6', '0', '1', '0');
+INSERT INTO `cms_user_membergroup` VALUES ('8', '0', '1', '0');
 
 -- ----------------------------
 -- Table structure for cms_user_org
@@ -7236,7 +7330,7 @@ CREATE TABLE `cms_user_org` (
 -- Records of cms_user_org
 -- ----------------------------
 INSERT INTO `cms_user_org` VALUES ('2', '1', '1', '0');
-INSERT INTO `cms_user_org` VALUES ('6', '0', '1', '0');
+INSERT INTO `cms_user_org` VALUES ('8', '0', '1', '0');
 
 -- ----------------------------
 -- Table structure for cms_user_role
@@ -7265,6 +7359,8 @@ INSERT INTO `cms_user_role` VALUES ('5', '1', '6', '0');
 INSERT INTO `cms_user_role` VALUES ('6', '1', '7', '0');
 INSERT INTO `cms_user_role` VALUES ('7', '1', '8', '0');
 INSERT INTO `cms_user_role` VALUES ('8', '1', '9', '0');
+INSERT INTO `cms_user_role` VALUES ('9', '1', '10', '0');
+INSERT INTO `cms_user_role` VALUES ('10', '0', '3', '0');
 
 -- ----------------------------
 -- Table structure for cms_visit_log
@@ -7912,32 +8008,32 @@ INSERT INTO `t_id_table` VALUES ('cms_info_org', '74');
 INSERT INTO `t_id_table` VALUES ('cms_info_special', '8');
 INSERT INTO `t_id_table` VALUES ('cms_info_tag', '40');
 INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
-INSERT INTO `t_id_table` VALUES ('cms_model', '52');
-INSERT INTO `t_id_table` VALUES ('cms_model_field', '802');
-INSERT INTO `t_id_table` VALUES ('cms_node', '152');
+INSERT INTO `t_id_table` VALUES ('cms_model', '56');
+INSERT INTO `t_id_table` VALUES ('cms_model_field', '846');
+INSERT INTO `t_id_table` VALUES ('cms_node', '153');
 INSERT INTO `t_id_table` VALUES ('cms_node_attr', '791');
-INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '201');
-INSERT INTO `t_id_table` VALUES ('cms_node_org', '94');
-INSERT INTO `t_id_table` VALUES ('cms_node_role', '101');
+INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '203');
+INSERT INTO `t_id_table` VALUES ('cms_node_org', '95');
+INSERT INTO `t_id_table` VALUES ('cms_node_role', '102');
 INSERT INTO `t_id_table` VALUES ('cms_org', '3');
 INSERT INTO `t_id_table` VALUES ('cms_parameter', '20');
 INSERT INTO `t_id_table` VALUES ('cms_parametergroup', '6');
-INSERT INTO `t_id_table` VALUES ('cms_role', '10');
+INSERT INTO `t_id_table` VALUES ('cms_role', '11');
 INSERT INTO `t_id_table` VALUES ('cms_rolenode_info', '1');
 INSERT INTO `t_id_table` VALUES ('cms_rolenode_node', '1');
 INSERT INTO `t_id_table` VALUES ('cms_role_site', '2');
 INSERT INTO `t_id_table` VALUES ('cms_scoreboard', '13');
 INSERT INTO `t_id_table` VALUES ('cms_scoregroup', '3');
 INSERT INTO `t_id_table` VALUES ('cms_scoreitem', '14');
-INSERT INTO `t_id_table` VALUES ('cms_site', '10');
+INSERT INTO `t_id_table` VALUES ('cms_site', '11');
 INSERT INTO `t_id_table` VALUES ('cms_special', '28');
 INSERT INTO `t_id_table` VALUES ('cms_special_category', '7');
 INSERT INTO `t_id_table` VALUES ('cms_tag', '77');
 INSERT INTO `t_id_table` VALUES ('cms_task', '226');
 INSERT INTO `t_id_table` VALUES ('cms_user', '10');
-INSERT INTO `t_id_table` VALUES ('cms_user_membergroup', '8');
-INSERT INTO `t_id_table` VALUES ('cms_user_org', '8');
-INSERT INTO `t_id_table` VALUES ('cms_user_role', '9');
+INSERT INTO `t_id_table` VALUES ('cms_user_membergroup', '9');
+INSERT INTO `t_id_table` VALUES ('cms_user_org', '9');
+INSERT INTO `t_id_table` VALUES ('cms_user_role', '11');
 INSERT INTO `t_id_table` VALUES ('cms_visit_log', '335');
 INSERT INTO `t_id_table` VALUES ('cms_vote', '2');
 INSERT INTO `t_id_table` VALUES ('cms_vote_mark', '31');
