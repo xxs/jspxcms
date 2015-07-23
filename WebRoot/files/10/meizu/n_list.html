@@ -1,0 +1,40 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<link type="text/css" rel="stylesheet" href="_files/css/style.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="_files/css/index_banner.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="_files/css/index.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="_files/css/kb_index.css" media="screen" />
+<!--[if lt IE 8]><link type="text/css" rel="stylesheet" href="_files/css/ie.css"/><![endif]-->
+<!--[if IE 8]><link type="text/css" rel="stylesheet" href="_files/css/ie8.css"/><![endif]-->
+</head>
+<body>
+[#include "inc_header_mini.html"/]
+<div class="body">
+   	<header>
+	    <h1>经典漆知识库</h1>
+	    <p>在这里，您可以了解到与油漆涂料相关的方方面面知识，明明白白装修、明明白白消费！</p>
+   	</header>
+  	[@NodeList parentId=node.id;nodeList]
+  	 	  	[#list nodeList as node]
+ 	 			<section>
+        		<h1>[@A bean=node target="_blank"/]</h1>
+		     	  [@InfoList nodeId=node.id limit=6;list] 
+		     		<ul>
+			     	  [#list list as info]
+			        	<li>[@A bean=info target="_blank"/]</li>
+			          [/#list]
+		        	</ul>
+		          [/@InfoList]
+  	 			</section>
+  		  	[/#list]
+ 	 [/@NodeList]
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

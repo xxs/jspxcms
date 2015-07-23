@@ -1,0 +1,76 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>会员中心_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${ctx}/vendor/My97DatePicker/cn_WdatePicker.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<style type="text/css">
+.list-table{width:95%;border-collapse:collapse;margin:10px;}
+.list-table th{padding:10px 0; border:#ccc 1px solid;}
+.list-table td{padding:5px; border:#ccc 1px solid;}
+</style>
+</head>
+<body>
+[#include 'inc_header.html'/]
+<div class="w960 center mt2">
+   <dl class="tbox setting FlLeft">
+    <dt class='light style="border:none;"'><strong>账号管理</strong></dt>
+    <dd class='light'>
+     <ul>
+     	[#include 'inc_my_left.html'/]
+     </ul>
+    </dd>
+   </dl>
+   <div class="FlRight" style="width:760px;">
+   <dl class="tbox  memberinfo" style="margin-top:0px;">
+    <dt class='light'><strong>稿件列表</strong></dt>
+    <dd class='light'>
+    	[@InfoPage userId=user.id pageSize='10' status='1,A,B,C,D' sort='publishDate desc';pagedList]
+			<table class="list-table" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<th width="40">ID</th>
+					<th>标题</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+				[#list pagedList.content as info]
+				<tr>
+					<td align="center">${info.id}</td>
+					<td>
+						[#if info.status=='A']
+							<a href="${info.url}" target="_blank">${substring(info.title,20,'...')}</a>
+						[#else]
+							${substring(info.title,20,'...')}
+						[/#if]
+					</td>
+					<td align="center">[@s.message code='info.status.${info.status}'/]</td>
+					<td align="center">
+						[#if info.status == 'B' || info.status == 'C' || info.status == 'D']
+						<a href="${ctx}/my/contribution/update/${info.id}.jspx">修改</a>
+						<a href="${ctx}/my/contribution/delete.jspx?ids=${info.id}&nextUrl=${ctx}/my/contribution.jspx">删除</a>
+						[#else]
+						<a style="color:#ccc">修改</a>
+						<a style="color:#ccc">删除</a>
+						[/#if]
+					</td>
+				</tr>
+				[/#list]
+			</table>
+			[#include "inc_page.html"/]
+			[/@InfoPage]
+    </dd>
+   </dl>
+   </div>
+</div>
+<div  style="height:190px;"></div>
+[#include 'inc_footer.html'/]
+</body>
+</html>
+[/#escape]
