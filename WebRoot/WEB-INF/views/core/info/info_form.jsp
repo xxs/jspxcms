@@ -450,16 +450,34 @@ function confirmDelete() {
 			});
     </script>
   </c:when>
+  
+  
+  
+  
   <c:when test="${field.name eq 'parameters'}">
   	<div>
   		<c:forEach var="parameterGroup" items="${parameterGroupList}">
 	  		<label><c:out value="${parameterGroup.name}"/></label> 
-	  			<c:forEach var="parameter" items="${parameterGroup.parameters}" >
-	  				&nbsp;&nbsp;&nbsp;&nbsp;${parameter.name}：<input name="" /> </br>
-	  			</c:forEach>
+	  		
+	  		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
+		  		<c:forEach var="parameter" items="${parameterGroup.parameters}" >
+		  			<tbody>
+						<tr>
+							<td colspan="3">
+					      		${parameter.name}
+					  		</td>
+							<td width="45%">
+								<input name="" />
+							</td>
+					  </tr>
+		  		</c:forEach>
+		  	</table>	
 	  	</c:forEach>
     </div>
   </c:when>
+  
+  
+  
   <c:when test="${field.name eq 'attrs'}">
   	<c:forEach var="attr" items="${attrssList}">
   		<label><c:out value="${attr.name}"/></label> &nbsp;
