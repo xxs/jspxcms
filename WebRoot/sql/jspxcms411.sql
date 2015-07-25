@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-07-24 07:23:19
+Date: 2015-07-25 08:01:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -226,6 +226,45 @@ INSERT INTO `cms_attr_item` VALUES ('76', '27', '1', '安卓（Android）', '0')
 INSERT INTO `cms_attr_item` VALUES ('77', '27', '1', '微软（windowsphone）', '1');
 INSERT INTO `cms_attr_item` VALUES ('78', '27', '1', '苹果（ios）', '2');
 INSERT INTO `cms_attr_item` VALUES ('79', '27', '1', '其他', '3');
+
+-- ----------------------------
+-- Table structure for cms_brand
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_brand`;
+CREATE TABLE `cms_brand` (
+  `f_brand_id` int(11) NOT NULL,
+  `f_site_id` int(11) NOT NULL,
+  `f_name` varchar(100) NOT NULL COMMENT '网站名称',
+  `f_url` varchar(255) NOT NULL COMMENT '网站地址',
+  `f_seq` int(11) NOT NULL DEFAULT '2147483647' COMMENT '排序',
+  `f_logo` varchar(255) DEFAULT NULL COMMENT '网站Logo',
+  `f_description` varchar(255) DEFAULT NULL COMMENT '网站描述',
+  `f_is_with_logo` char(1) NOT NULL DEFAULT '0' COMMENT '是否带Logo',
+  `f_is_recommend` char(1) NOT NULL DEFAULT '0' COMMENT '是否推荐',
+  `f_status` int(11) NOT NULL DEFAULT '0' COMMENT '状态(0:已审核,1:未审核)',
+  PRIMARY KEY (`f_brand_id`),
+  KEY `fk_cms_brand_site` (`f_site_id`) USING BTREE,
+  CONSTRAINT `cms_brand_ibfk_2` FOREIGN KEY (`f_site_id`) REFERENCES `cms_site` (`f_site_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='友情链接表';
+
+-- ----------------------------
+-- Records of cms_brand
+-- ----------------------------
+INSERT INTO `cms_brand` VALUES ('7', '1', '苹果', 'http://www.apple.com ', '2147483647', '', null, '0', '0', '0');
+INSERT INTO `cms_brand` VALUES ('8', '1', '三星', 'http://www.samsung.com ', '2147483647', null, null, '0', '0', '0');
+INSERT INTO `cms_brand` VALUES ('9', '1', '索尼', 'http://www.sony.com.cn ', '2147483647', null, null, '0', '0', '0');
+INSERT INTO `cms_brand` VALUES ('10', '1', '华为', 'http://www.huawei.com ', '2147483647', null, null, '0', '0', '0');
+INSERT INTO `cms_brand` VALUES ('11', '3', '魅族', 'http://www.meizu.com ', '2147483647', null, null, '0', '1', '0');
+INSERT INTO `cms_brand` VALUES ('12', '7', '光大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('13', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('14', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('15', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('16', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('17', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('18', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('19', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('20', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
+INSERT INTO `cms_brand` VALUES ('21', '7', '广大银行', 'http://', '2147483647', '/uploads/7/image/public/201504/20150418232935_edj51i.gif', null, '1', '1', '0');
 
 -- ----------------------------
 -- Table structure for cms_collect
@@ -6450,6 +6489,10 @@ INSERT INTO `cms_model_field` VALUES ('842', '55', '1', '2', '作者', 'author',
 INSERT INTO `cms_model_field` VALUES ('843', '55', '1', '2', '属性', 'attributes', null, null, '0', '10', '0', '0');
 INSERT INTO `cms_model_field` VALUES ('844', '55', '50', '2', '正文', 'text', null, null, '0', '13', '0', '0');
 INSERT INTO `cms_model_field` VALUES ('845', '55', '7', '0', '标题图', 'smallimage', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('846', '47', '1', '2', '商品品牌', 'brand', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('847', '46', '1', '2', '高级参数', 'parameters', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('848', '46', '1', '2', '高级属性', 'attrs', null, null, '0', '2147483647', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('849', '46', '1', '2', '商品品牌', 'brand', null, null, '0', '2147483647', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_model_field_custom
@@ -8524,7 +8567,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, '2015-07-23 15:12:01', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '1', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-07-23 13:55:11', '127.0.0.1', '2015-07-23 15:15:08', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '368', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-07-24 17:27:59', '127.0.0.1', '2015-07-24 17:33:29', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '375', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup
@@ -9247,7 +9290,7 @@ INSERT INTO `t_id_table` VALUES ('cms_info_special', '8');
 INSERT INTO `t_id_table` VALUES ('cms_info_tag', '40');
 INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
 INSERT INTO `t_id_table` VALUES ('cms_model', '56');
-INSERT INTO `t_id_table` VALUES ('cms_model_field', '846');
+INSERT INTO `t_id_table` VALUES ('cms_model_field', '850');
 INSERT INTO `t_id_table` VALUES ('cms_node', '153');
 INSERT INTO `t_id_table` VALUES ('cms_node_attr', '791');
 INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '203');

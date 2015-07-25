@@ -31,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.Servlets;
+import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Model;
@@ -40,6 +41,7 @@ import com.jspxcms.core.domain.Role;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
 import com.jspxcms.core.domain.Workflow;
+import com.jspxcms.core.service.BrandService;
 import com.jspxcms.core.service.MemberGroupService;
 import com.jspxcms.core.service.ModelService;
 import com.jspxcms.core.service.NodeQueryService;
@@ -179,12 +181,15 @@ public class NodeController {
 		}
 		List<Workflow> workflowList = workflowService.findList(siteId);
 
+		List<Brand> brandList = brandService.findList(siteId, null);
+		
 		modelMap.addAttribute("workflowList", workflowList);
 		modelMap.addAttribute("cid", cid);
 		modelMap.addAttribute("bean", bean);
 		modelMap.addAttribute("parent", parent);
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("roleList", roleList);
+		modelMap.addAttribute("brandList", brandList);
 		modelMap.addAttribute("groupList", groupList);
 		modelMap.addAttribute("orgTreeNumber", orgTreeNumber);
 		modelMap.addAttribute("nodeModelList", nodeModelList);
@@ -251,11 +256,14 @@ public class NodeController {
 		List<Workflow> workflowList = workflowService.findList(siteId);
 		modelMap.addAttribute("workflowList", workflowList);
 
+		List<Brand> brandList = brandService.findList(siteId, null);
+		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("parent", parent);
 		modelMap.addAttribute("bean", bean);
 		modelMap.addAttribute("modelList", modelList);
 		modelMap.addAttribute("roleList", roleList);
+		modelMap.addAttribute("brandList", brandList);
 		modelMap.addAttribute("groupList", groupList);
 		modelMap.addAttribute("orgTreeNumber", orgTreeNumber);
 		modelMap.addAttribute("nodeModelList", nodeModelList);
@@ -537,4 +545,6 @@ public class NodeController {
 	private NodeService service;
 	@Autowired
 	private NodeQueryService query;
+	@Autowired
+	private BrandService brandService;
 }

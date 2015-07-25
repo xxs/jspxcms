@@ -376,6 +376,18 @@ function checkControl(name,checked) {
     <td align="center"><f:checkbox name="dblColumn" value="false"/></td>
   </tr>
   </c:if>
+  <c:if test="${!fnx:contains_co(names,'brand')}">
+  <tr>
+    <td><input type="checkbox" name="control" checked="checked"/></td>
+    <td align="center">brand
+      <input type="hidden" name="name" value="brand"/>
+      <input type='hidden' name='property' value='{"type":1,"innerType":2,"required":false}'/>
+      <input type='hidden' name='custom' value='{}'/>
+    </td>
+    <td align="center"><input type="text" name="label" value="商品品牌"/></td>
+    <td align="center"><f:checkbox name="dblColumn" value="false"/></td>
+  </tr>
+  </c:if>
   
   </tbody>
 </table>

@@ -451,9 +451,6 @@ function confirmDelete() {
     </script>
   </c:when>
   
-  
-  
-  
   <c:when test="${field.name eq 'parameters'}">
   	<div>
   		<c:forEach var="parameterGroup" items="${parameterGroupList}">
@@ -475,9 +472,6 @@ function confirmDelete() {
 	  	</c:forEach>
     </div>
   </c:when>
-  
-  
-  
   <c:when test="${field.name eq 'attrs'}">
   	<c:forEach var="attr" items="${attrssList}">
   		<label><c:out value="${attr.name}"/></label> &nbsp;
@@ -490,6 +484,9 @@ function confirmDelete() {
   		
   	</c:forEach>
     
+  </c:when>
+  <c:when test="${field.name eq 'brand'}">
+  	品牌关联
   </c:when>
   <c:otherwise>
     System field not found: '${field.name}'

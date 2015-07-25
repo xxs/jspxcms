@@ -286,6 +286,45 @@ parent.frames['left'].location.href="left.do";
 			});
     </script>
   </c:when>
+  <c:when test="${field.name eq 'parameters'}">
+  	<div>
+  		<c:forEach var="parameterGroup" items="${parameterGroupList}">
+	  		<label><c:out value="${parameterGroup.name}"/></label> 
+	  		
+	  		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
+		  		<c:forEach var="parameter" items="${parameterGroup.parameters}" >
+		  			<tbody>
+						<tr>
+							<td colspan="3">
+					      		${parameter.name}
+					  		</td>
+							<td width="45%">
+								<input name="" />
+							</td>
+					  </tr>
+		  		</c:forEach>
+		  	</table>	
+	  	</c:forEach>
+    </div>
+  </c:when>
+  <c:when test="${field.name eq 'attrs'}">
+  	<c:forEach var="attr" items="${attrssList}">
+  		<label><c:out value="${attr.name}"/></label> &nbsp;
+  		
+  		<select name="priority" >
+  			<c:forEach var="item" items="${attr.items}" >
+  			<option >${item.name}</option>
+  		</c:forEach>
+  		</select>
+  		
+  	</c:forEach>
+    
+  </c:when>
+  <c:when test="${field.name eq 'brand'}">
+  	<c:forEach var="brand" items="${brandList}">
+  		<label><input type="checkbox" name="" value="${brand.id}"/>${brand.name}</label>
+  	</c:forEach>
+  </c:when>
   <c:otherwise>
     System field not found: '${field.name}'
   </c:otherwise>
