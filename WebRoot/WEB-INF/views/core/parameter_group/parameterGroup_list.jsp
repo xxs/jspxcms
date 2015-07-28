@@ -70,7 +70,7 @@ function optDelete(form) {
     <th width="80"><s:message code="operate"/></th>
     <th width="30">ID</th>
     <th><s:message code="attribute.name"/></th>
-    <th>栏目绑定</th>
+    <th>绑定分类</th>
     <th>可选项</th>
   </tr>
   </thead>

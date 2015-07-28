@@ -15,67 +15,71 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Entity - 规格
- * 
-
-
  */
 @Entity
-@Table(name = "cms_specification")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "cms_specification_sequence")
-public class Specification implements java.io.Serializable {
+@Table(name = "cms_spec")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "cms_spec_sequence")
+public class Spec implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	
-	/**
-	 * 类型
-	 */
-	public enum Type {
-
-		/** 文本 */
-		text,
-
-		/** 图片 */
-		image
-	};
-
 	/** 名称 */
 	private String name;
-
-	/** 类型 */
-	private Type type;
+	
+	private Site site;
+	
+	private Integer seq;
 
 	/** 备注 */
 	private String memo;
 
 	/** 规格值 */
-	private List<SpecificationValue> specificationValues = new ArrayList<SpecificationValue>();
+	private List<SpecValue> specValues = new ArrayList<SpecValue>();
 
 //	/** 文档 */
 //	private Set<Info> infos = new HashSet<Info>();
 
 	@Id
-	@Column(name = "f_specification_id", unique = true, nullable = false)
-	@TableGenerator(name = "tg_cms_specification", pkColumnValue = "cms_specification", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tg_cms_specification")
+	@Column(name = "f_spec_id", unique = true, nullable = false)
+	@TableGenerator(name = "tg_cms_spec", pkColumnValue = "cms_spec", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tg_cms_spec")
 	public Integer getId() {
 		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	@Column(name = "f_seq", nullable = false)
+	public Integer getSeq() {
+		return this.seq;
+	}
+
+	public void setSeq(Integer seq) {
+		this.seq = seq;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "f_site_id", nullable = false)
+	public Site getSite() {
+		return this.site;
+	}
+
+	public void setSite(Site site) {
+		this.site = site;
 	}
 	
 	/**
@@ -96,27 +100,6 @@ public class Specification implements java.io.Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * 获取类型
-	 * 
-	 * @return 类型
-	 */
-	@NotNull
-	@Column(nullable = false)
-	public Type getType() {
-		return type;
-	}
-
-	/**
-	 * 设置类型
-	 * 
-	 * @param type
-	 *            类型
-	 */
-	public void setType(Type type) {
-		this.type = type;
 	}
 
 	/**
@@ -145,11 +128,10 @@ public class Specification implements java.io.Serializable {
 	 * @return 规格值
 	 */
 	@Valid
-	@NotEmpty
 	@OneToMany(mappedBy = "specification", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	//@OrderBy("order asc")
-	public List<SpecificationValue> getSpecificationValues() {
-		return specificationValues;
+	public List<SpecValue> getSpecValues() {
+		return specValues;
 	}
 
 	/**
@@ -158,8 +140,8 @@ public class Specification implements java.io.Serializable {
 	 * @param specificationValues
 	 *            规格值
 	 */
-	public void setSpecificationValues(List<SpecificationValue> specificationValues) {
-		this.specificationValues = specificationValues;
+	public void setSpecValues(List<SpecValue> specValues) {
+		this.specValues = specValues;
 	}
 
 //	/**

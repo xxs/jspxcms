@@ -16,9 +16,9 @@ import javax.persistence.TableGenerator;
  * Entity - 规格值
  */
 @Entity
-@Table(name = "cms_specification_value")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "cms_specification_val_sequence")
-public class SpecificationValue implements java.io.Serializable {
+@Table(name = "cms_spec_value")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "cms_spec_val_sequence")
+public class SpecValue implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,15 +34,15 @@ public class SpecificationValue implements java.io.Serializable {
 	private String description;
 
 	/** 规格 */
-	private Specification specification;
+	private Spec specification;
 
 //	/** 文档 */
 //	private Set<Info> infos = new HashSet<Info>();
 	
 	@Id
-	@Column(name = "f_attr_id", unique = true, nullable = false)
-	@TableGenerator(name = "tg_cms_attr", pkColumnValue = "cms_attr", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tg_cms_attr")
+	@Column(name = "f_spec_value_id", unique = true, nullable = false)
+	@TableGenerator(name = "tg_cms_spec_value", pkColumnValue = "cms_spec_value", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tg_cms_spec_value")
 	public Integer getId() {
 		return this.id;
 	}
@@ -117,7 +117,7 @@ public class SpecificationValue implements java.io.Serializable {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = false)
-	public Specification getSpecification() {
+	public Spec getSpecification() {
 		return specification;
 	}
 
@@ -127,7 +127,7 @@ public class SpecificationValue implements java.io.Serializable {
 	 * @param specification
 	 *            规格
 	 */
-	public void setSpecification(Specification specification) {
+	public void setSpecification(Spec specification) {
 		this.specification = specification;
 	}
 
