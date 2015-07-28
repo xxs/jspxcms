@@ -106,6 +106,7 @@ public class SpecController {
 				pageable.getSort());
 		//modelMap.addAttribute("nodePerms", bean.getNodePerms());
 		modelMap.addAttribute("bean", bean);
+		System.out.println("size()................."+bean.getSpecValues().size());
 		modelMap.addAttribute("side", side);
 		modelMap.addAttribute("position", position);
 		modelMap.addAttribute(OPRT, EDIT);

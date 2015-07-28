@@ -156,8 +156,8 @@ function confirmDelete() {
 </textarea>
   <script type="text/javascript">
 var rowIndex = 0;
-<c:if test="${!empty bean && fn:length(bean.items) gt 0}">
-rowIndex = ${fn:length(bean.items)};
+<c:if test="${!empty bean && fn:length(bean.specValues) gt 0}">
+rowIndex = ${fn:length(bean.specValues)};
 </c:if>
 var rowTemplate = $.format($("#templateArea").val());
 function addRow() {
@@ -181,7 +181,7 @@ $(function() {
   </tr>
   </thead>
   <tbody>
-  <c:forEach var="item" varStatus="status" items="${bean.items}">
+  <c:forEach var="item" varStatus="status" items="${bean.specValues}">
   <tr>
     <td align="center">
     	<input type="checkbox" name="itemIds" value="${bean.id}"/>

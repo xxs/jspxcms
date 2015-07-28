@@ -6,7 +6,9 @@
 package com.jspxcms.core.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,10 +20,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.validation.Valid;
+import javax.persistence.Transient;
 
 /**
  * Entity - 规格
@@ -33,12 +36,29 @@ public class Spec implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Transient
+	public void applyDefaultValue() {
+		if (getSeq() == null) {
+			setSeq(Integer.MAX_VALUE);
+		}
+	}
+	
+	@Transient
+	public Set<Node> getNodePerms() {
+		Set<Node> nodes = new HashSet<Node>();
+		nodes.add(this.node);
+		return nodes;
+	}
+	
 	private Integer id;
 	
 	/** 名称 */
 	private String name;
 	
 	private Site site;
+	
+	/** 绑定分类 */
+	private Node node;
 	
 	private Integer seq;
 
@@ -80,6 +100,27 @@ public class Spec implements java.io.Serializable {
 
 	public void setSite(Site site) {
 		this.site = site;
+	}
+	
+	/**
+	 * 获取绑定node
+	 * 
+	 * @return 绑定node
+	 */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "f_node_id", nullable = false)
+	public Node getNode() {
+		return node;
+	}
+
+	/**
+	 * 设置绑定node
+	 * 
+	 * @param node
+	 *            绑定node
+	 */
+	public void setNode(Node node) {
+		this.node = node;
 	}
 	
 	/**
@@ -127,9 +168,8 @@ public class Spec implements java.io.Serializable {
 	 * 
 	 * @return 规格值
 	 */
-	@Valid
-	@OneToMany(mappedBy = "specification", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	//@OrderBy("order asc")
+	@OneToMany(mappedBy = "spec", fetch = FetchType.LAZY)
+	@OrderBy("seq asc")
 	public List<SpecValue> getSpecValues() {
 		return specValues;
 	}
@@ -137,7 +177,7 @@ public class Spec implements java.io.Serializable {
 	/**
 	 * 设置规格值
 	 * 
-	 * @param specificationValues
+	 * @param specValues
 	 *            规格值
 	 */
 	public void setSpecValues(List<SpecValue> specValues) {

@@ -30,11 +30,13 @@ public class SpecValue implements java.io.Serializable {
 	/** 图片 */
 	private String image;
 	
+	private Integer seq;
+	
 	/** 描述 */
 	private String description;
 
 	/** 规格 */
-	private Spec specification;
+	private Spec spec;
 
 //	/** 文档 */
 //	private Set<Info> infos = new HashSet<Info>();
@@ -68,6 +70,15 @@ public class SpecValue implements java.io.Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Column(name = "f_seq", nullable = false)
+	public Integer getSeq() {
+		return this.seq;
+	}
+
+	public void setSeq(Integer seq) {
+		this.seq = seq;
 	}
 	
 	/**
@@ -117,8 +128,8 @@ public class SpecValue implements java.io.Serializable {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = false)
-	public Spec getSpecification() {
-		return specification;
+	public Spec getSpec() {
+		return spec;
 	}
 
 	/**
@@ -127,8 +138,8 @@ public class SpecValue implements java.io.Serializable {
 	 * @param specification
 	 *            规格
 	 */
-	public void setSpecification(Spec specification) {
-		this.specification = specification;
+	public void setSpec(Spec spec) {
+		this.spec = spec;
 	}
 
 //	/**

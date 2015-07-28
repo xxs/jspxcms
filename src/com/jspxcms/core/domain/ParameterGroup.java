@@ -53,6 +53,9 @@ public class ParameterGroup implements java.io.Serializable {
 	
 	private Integer seq;
 	
+	/** 参数 */
+	private List<Parameter> parameters = new ArrayList<Parameter>();
+	
 	@Id
 	@Column(name = "f_parametergroup_id", unique = true, nullable = false)
 	@TableGenerator(name = "tg_cms_parametergroup", pkColumnValue = "cms_parametergroup", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
@@ -73,9 +76,6 @@ public class ParameterGroup implements java.io.Serializable {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
-
-	/** 参数 */
-	private List<Parameter> parameters = new ArrayList<Parameter>();
 
 	/**
 	 * 获取名称

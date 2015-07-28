@@ -89,11 +89,7 @@ function optDelete(form) {
 	  		${n.displayName}</br>
 	  	</c:forEach>
 	</td>
-    <td align="left">
-    	<c:forEach var="n" items="${bean.items}">
-	  		${n.name}   
-	  	</c:forEach>
-    </td>
+    
   </tr>
   </c:forEach>
   </tbody>
