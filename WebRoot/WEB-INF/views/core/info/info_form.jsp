@@ -15,8 +15,36 @@
 <jsp:include page="/WEB-INF/views/commons/head.jsp"></jsp:include>
 <style type="text/css">
 * html{overflow-y: scroll;}
+.tabs{}
+.tabs li{float:left;background-color:#F1F1F1;border-left:1px solid #e2e2e2;border-top:1px solid #e2e2e2;border-right:1px solid #e2e2e2;margin-right:5px;}
+.tabs li a{color:#555555;float:left;text-decoration:none;padding:5px 12px;}
+.tabs li a:link,.tabs li a:visited,.tabs li a:hover,.tabs li a:active{text-decoration:none;}
+.tabs li.active{background-color:#FFFFFF;border-left:1px solid #C5C5C5;border-top:1px solid #C5C5C5;border-right:1px solid #C5C5C5;}
+.tabs li.active a{color:#000;}
+.tabs li.hover{background-color:#e5e5e5;border-left:1px solid #C5C5C5;border-top:1px solid #C5C5C5;border-right:1px solid #C5C5C5;}
+.tabs li.hover a{color:#000;}
 </style>
 <script type="text/javascript">
+//选项卡js代码
+$(document).ready(function() {
+    jQuery.jqtab = function(tabtit,tabcon) {
+        $(tabcon).hide();
+        $(tabtit+" li:first").addClass("active").show();
+        $(tabcon+":first").show();
+    
+        $(tabtit+" li").click(function() {
+            $(tabtit+" li").removeClass("active");
+            $(this).addClass("active");
+            $(tabcon).hide();
+            var activeTab = $(this).find("a").attr("tab");
+            $("#"+activeTab).fadeIn();
+            return false;
+        });
+        
+    };
+    $.jqtab("#tabs",".tab-con");
+});
+
 $(function() {
 	$("#validForm").validate();
 	$("input[name='title']").focus();
@@ -56,10 +84,8 @@ function confirmDelete() {
 <f:hidden name="oid" value="${bean.id}"/>
 <f:hidden name="position" value="${position}"/>
 <input type="hidden" id="redirect" name="redirect" value="edit"/>
-<table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5">
-  <tr>
-    <td colspan="4" class="in-opt">
-			<shiro:hasPermission name="core:info:create">
+<div class="ls-bc-opt">
+		<shiro:hasPermission name="core:info:create">
 			<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?queryNodeId=${queryNodeId}&queryNodeType=${queryNodeType}&queryInfoPermType=${queryInfoPermType}&queryStatus=${queryStatus}&${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
 			<div class="in-btn"></div>
 			</shiro:hasPermission>
@@ -85,11 +111,31 @@ function confirmDelete() {
 			<div class="in-btn"><input type="button" value="<s:message code="next"/>" onclick="location.href='edit.do?id=${side.next.id}&queryNodeId=${queryNodeId}&queryNodeType=${queryNodeType}&queryInfoPermType=${queryInfoPermType}&queryStatus=${queryStatus}&position=${position+1}&${searchstring}';"<c:if test="${empty side.next}"> disabled="disabled"</c:if>/></div>
 			<div class="in-btn"></div>
 			<div class="in-btn"><input type="button" value="<s:message code="return"/>" onclick="location.href='list.do?queryNodeId=${queryNodeId}&queryNodeType=${queryNodeType}&queryInfoPermType=${queryInfoPermType}&queryStatus=${queryStatus}&${searchstring}';"/></div>
-      <div style="clear:both;"></div>
-    </td>
-  </tr>
-	<c:set var="colCount" value="${0}"/>
+	<div style="clear:both"></div>
+</div>
+<ul id="tabs" class="tabs margin-top5">
+	<li<c:if test="${empty queryStatus}"> class="active"</c:if>><a href="javascript:void(0);" tab="home">基本参数</a></li>
+	<c:forEach var="field" items="${model.enabledFields}">
+		<c:if test="${field.tab}">
+			<c:choose>
+				<c:when test="${field.name eq 'parameters'}">
+					<li><a href="javascript:void(0);" tab="parameters"><c:out value="${field.label}"/></a></li>
+			  	</c:when>
+				<c:when test="${field.name eq 'attrs'}">
+					<li><a href="javascript:void(0);" tab="attrs"><c:out value="${field.label}"/></a></li>
+			  	</c:when>
+				<c:when test="${field.name eq 'brand'}">
+					<li><a href="javascript:void(0);" tab="brand"><c:out value="${field.label}"/></a></li>
+			  	</c:when>
+		  	</c:choose>
+	  	</c:if>
+  	</c:forEach>
+</ul>
+
+<table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="home">
+  <c:set var="colCount" value="${0}"/>
   <c:forEach var="field" items="${model.enabledFields}">
+  <c:if test="${!field.tab}">
   <c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
   <td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
   <td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
@@ -450,44 +496,6 @@ function confirmDelete() {
 			});
     </script>
   </c:when>
-  
-  <c:when test="${field.name eq 'parameters'}">
-  	<div>
-  		<c:forEach var="parameterGroup" items="${parameterGroupList}">
-	  		<label><c:out value="${parameterGroup.name}"/></label> 
-	  		
-	  		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
-		  		<c:forEach var="parameter" items="${parameterGroup.parameters}" >
-		  			<tbody>
-						<tr>
-							<td colspan="3">
-					      		${parameter.name}
-					  		</td>
-							<td width="45%">
-								<input name="" />
-							</td>
-					  </tr>
-		  		</c:forEach>
-		  	</table>	
-	  	</c:forEach>
-    </div>
-  </c:when>
-  <c:when test="${field.name eq 'attrs'}">
-  	<c:forEach var="attr" items="${attrssList}">
-  		<label><c:out value="${attr.name}"/></label> &nbsp;
-  		
-  		<select name="priority" >
-  			<c:forEach var="item" items="${attr.items}" >
-  			<option >${item.name}</option>
-  		</c:forEach>
-  		</select>
-  		
-  	</c:forEach>
-    
-  </c:when>
-  <c:when test="${field.name eq 'brand'}">
-  	品牌关联
-  </c:when>
   <c:otherwise>
     System field not found: '${field.name}'
   </c:otherwise>
@@ -496,26 +504,99 @@ function confirmDelete() {
   </c:choose>
   </td><c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
   <c:if test="${field.dblColumn}"><c:set var="colCount" value="${colCount+1}"/></c:if>
+  </c:if>
   </c:forEach>
-  <tr>
-    <td colspan="4" class="in-opt">
-      <div class="in-btn"><input type="submit" value="<s:message code="save"/>"<c:if test="${oprt=='edit' && !bean.auditPerm}"> disabled="disabled"</c:if>/></div>
-    	<c:if test="${oprt=='create'}">
-    	<input type="hidden" id="draft" name="draft" value="false"/>
-      <div class="in-btn"><input type="submit" value="<s:message code="info.saveAsDraft"/>" onclick="$('#draft').val('true');"/></div>
-    	</c:if>
-    	<c:if test="${oprt=='edit'}">
-    	<input type="hidden" id="pass" name="pass" value="false"/>
-      <div class="in-btn"><input type="submit" value="<s:message code="info.saveAndPass"/>" onclick="$('#pass').val('true');"<c:if test="${oprt=='edit' && !bean.auditPerm}"> disabled="disabled"</c:if>/></div>
-    	</c:if>
-      <div class="in-btn"><input type="submit" value="<s:message code="saveAndReturn"/>" onclick="$('#redirect').val('list');"<c:if test="${oprt=='edit' && !bean.auditPerm}"> disabled="disabled"</c:if>/></div>
-      <c:if test="${oprt=='create'}">
-      <div class="in-btn"><input type="submit" value="<s:message code="saveAndCreate"/>" onclick="$('#redirect').val('create');"/></div>
-      </c:if>
-      <div style="clear:both;"></div>
-    </td>
-  </tr>
 </table>
+	<c:forEach var="field" items="${model.enabledFields}">
+	<c:if test="${field.tab}">
+		<c:choose>
+			<c:when test="${field.name eq 'parameters'}">
+				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
+					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
+						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+							<div>
+						  		<c:forEach var="parameterGroup" items="${parameterGroupList}">
+							  		<label><c:out value="${parameterGroup.name}"/></label> 
+							  		
+							  		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
+								  		<c:forEach var="parameter" items="${parameterGroup.parameters}" >
+								  			<tbody>
+												<tr>
+													<td colspan="3">
+											      		${parameter.name}
+											  		</td>
+													<td width="45%">
+														<input name="" />
+													</td>
+											  </tr>
+											 </tbody>
+								  		</c:forEach>
+								  	</table>	
+							  	</c:forEach>
+						    </div>
+						</td>
+					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
+				</table>
+		  	</c:when>
+		  	
+		  	
+			<c:when test="${field.name eq 'attrs'}">
+				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
+					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
+						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+		  				
+		  					<c:forEach var="attr" items="${attrssList}">
+								<label><c:out value="${attr.name}"/></label> &nbsp;
+						  		<select name="attr.id" >
+						  			<c:forEach var="item" items="${attr.items}" >
+							  			<option >${item.name}</option>
+							  		</c:forEach>
+						  		</select>
+						  	</c:forEach>	
+						  	
+						</td>
+					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
+				</table>
+		  	</c:when>
+		  	
+			<c:when test="${field.name eq 'brand'}">
+				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
+					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
+						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+							<c:forEach var="item" items="${brandList}" >
+							  		${item.name}
+							</c:forEach>
+						</td>
+					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
+				</table>
+		  	</c:when>
+	  	</c:choose>
+	  	</c:if>
+  	</c:forEach>
+  	<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5">
+  		<tr>
+		    <td colspan="4" class="in-opt">
+		      <div class="in-btn"><input type="submit" value="<s:message code="save"/>"<c:if test="${oprt=='edit' && !bean.auditPerm}"> disabled="disabled"</c:if>/></div>
+		    	<c:if test="${oprt=='create'}">
+		    	<input type="hidden" id="draft" name="draft" value="false"/>
+		      <div class="in-btn"><input type="submit" value="<s:message code="info.saveAsDraft"/>" onclick="$('#draft').val('true');"/></div>
+		    	</c:if>
+		    	<c:if test="${oprt=='edit'}">
+		    	<input type="hidden" id="pass" name="pass" value="false"/>
+		      <div class="in-btn"><input type="submit" value="<s:message code="info.saveAndPass"/>" onclick="$('#pass').val('true');"<c:if test="${oprt=='edit' && !bean.auditPerm}"> disabled="disabled"</c:if>/></div>
+		    	</c:if>
+		      <div class="in-btn"><input type="submit" value="<s:message code="saveAndReturn"/>" onclick="$('#redirect').val('list');"<c:if test="${oprt=='edit' && !bean.auditPerm}"> disabled="disabled"</c:if>/></div>
+		      <c:if test="${oprt=='create'}">
+		      <div class="in-btn"><input type="submit" value="<s:message code="saveAndCreate"/>" onclick="$('#redirect').val('create');"/></div>
+		      </c:if>
+		      <div style="clear:both;"></div>
+		    </td>
+		 </tr>
+  	</table>
+  	
 </form>
 </body>
 </html>

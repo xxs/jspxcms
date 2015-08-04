@@ -113,6 +113,13 @@ $(function() {
     </td>
   </tr>
   <tr>
+    <td class="in-lab" width="15%"><em class="required">*</em>tab显示:</td>
+    <td class="in-ctt" colspan="3">
+      <label><input type="radio" name="tab" value="true"<c:if test="${bean.tab}"> checked="checked"</c:if>/><s:message code="yes"/></label> &nbsp;
+      <label><input type="radio" name="tab" value="false"<c:if test="${empty bean.tab || !bean.tab}"> checked="checked"</c:if>/><s:message code="no"/></label>
+    </td>
+  </tr>
+  <tr>
     <td class="in-lab" width="15%"><s:message code="modelField.defValue"/>:</td>
     <td class="in-ctt" width="35%"><input type="text" name="defValue" value="<c:out value='${bean.defValue}'/>" maxlength="255" style="width:180px;"/></td>
     <td class="in-lab" width="15%"><s:message code="modelField.prompt"/>:</td>

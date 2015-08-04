@@ -37,6 +37,7 @@ import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.Servlets;
 import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Attribute;
+import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.InfoDetail;
 import com.jspxcms.core.domain.InfoImage;
@@ -49,6 +50,7 @@ import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.AttributeService;
+import com.jspxcms.core.service.BrandService;
 import com.jspxcms.core.service.InfoAttrService;
 import com.jspxcms.core.service.InfoQueryService;
 import com.jspxcms.core.service.InfoService;
@@ -143,6 +145,7 @@ public class InfoController {
 			String queryStatus, HttpServletRequest request,
 			org.springframework.ui.Model modelMap) {
 		Site site = Context.getCurrentSite(request);
+		Integer siteId = site.getId();
 		if (id != null) {
 			Info bean = query.get(id);
 			modelMap.addAttribute("bean", bean);
@@ -158,22 +161,24 @@ public class InfoController {
 		}
 		Model model = node.getInfoModel();
 		List<Attribute> attrList = attributeService.findList(site.getId());
-		List<Attr> attrssList = attrService.findList(site.getId());
-		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
-		
+		List<Attr> attrssList = attrService.findList(site.getId());
+		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
+		List<Brand> brandList = brandService.findList(siteId, null);
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
-		modelMap.addAttribute("attrssList", attrssList);
-		modelMap.addAttribute("parameterGroupList", parameterGroupList);
 		modelMap.addAttribute("groupList", groupList);
 		modelMap.addAttribute("orgTreeNumber", orgTreeNumber);
 		modelMap.addAttribute("queryNodeId", queryNodeId);
 		modelMap.addAttribute("queryNodeType", queryNodeType);
 		modelMap.addAttribute("queryInfoPermType", queryInfoPermType);
 		modelMap.addAttribute("queryStatus", queryStatus);
+		//---------------------
+		modelMap.addAttribute("brandList", brandList);
+		modelMap.addAttribute("attrssList", attrssList);
+		modelMap.addAttribute("parameterGroupList", parameterGroupList);
 		modelMap.addAttribute(OPRT, CREATE);
 		return "core/info/info_form";
 	}
@@ -190,6 +195,7 @@ public class InfoController {
 			@PageableDefaults(sort = "publishDate", sortDir = Direction.DESC) Pageable pageable,
 			HttpServletRequest request, org.springframework.ui.Model modelMap) {
 		Site site = Context.getCurrentSite(request);
+		Integer siteId = site.getId();
 		User user = Context.getCurrentUser(request);
 		Info bean = query.get(id);
 		if (!bean.isDataPerm(user)) {
@@ -243,9 +249,10 @@ public class InfoController {
 				System.out.println(naList.get(i).getAttr().getName());
 			}
 		}
+		List<Attr> attrssList = attrService.findList(site.getId());
 		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
-		modelMap.addAttribute("attrssList", aList);
-		modelMap.addAttribute("parameterGroupList", parameterGroupList);
+		List<Brand> brandList = brandService.findList(siteId, null);
+		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
@@ -255,6 +262,11 @@ public class InfoController {
 		modelMap.addAttribute("queryNodeType", queryNodeType);
 		modelMap.addAttribute("queryInfoPermType", queryInfoPermType);
 		modelMap.addAttribute("queryStatus", queryStatus);
+		//---------------------
+		modelMap.addAttribute("brandList", brandList);
+		modelMap.addAttribute("attrssList", attrssList);
+		modelMap.addAttribute("parameterGroupList", parameterGroupList);
+		modelMap.addAttribute(OPRT, CREATE);
 		modelMap.addAttribute(OPRT, EDIT);
 		return "core/info/info_form";
 	}
@@ -587,6 +599,8 @@ public class InfoController {
 	private AttributeService attributeService;
 	@Autowired
 	private AttrService attrService;
+	@Autowired
+	private BrandService brandService;
 	@Autowired
 	private ParameterGroupService parameterGroupService;
 	@Autowired

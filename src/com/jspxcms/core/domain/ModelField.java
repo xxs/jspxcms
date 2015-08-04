@@ -180,6 +180,7 @@ public class ModelField implements java.io.Serializable {
 	private Integer seq;
 	private Boolean dblColumn;
 	private Boolean disabled;
+	private Boolean tab;
 
 	public ModelField() {
 	}
@@ -310,8 +311,17 @@ public class ModelField implements java.io.Serializable {
 	public Boolean getDisabled() {
 		return disabled;
 	}
-
+	
 	public void setDisabled(Boolean disabled) {
 		this.disabled = disabled;
+	}
+	
+	@Column(name = "f_is_tab", nullable = false, length = 1)
+	public Boolean getTab() {
+		return tab;
+	}
+
+	public void setTab(Boolean tab) {
+		this.tab = tab;
 	}
 }

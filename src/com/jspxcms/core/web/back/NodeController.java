@@ -31,21 +31,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.Servlets;
+import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.NodeDetail;
+import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Role;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
 import com.jspxcms.core.domain.Workflow;
+import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.BrandService;
 import com.jspxcms.core.service.MemberGroupService;
 import com.jspxcms.core.service.ModelService;
 import com.jspxcms.core.service.NodeQueryService;
 import com.jspxcms.core.service.NodeService;
+import com.jspxcms.core.service.ParameterGroupService;
 import com.jspxcms.core.service.RoleService;
 import com.jspxcms.core.service.WorkflowService;
 import com.jspxcms.core.support.CmsException;
@@ -181,6 +185,8 @@ public class NodeController {
 		}
 		List<Workflow> workflowList = workflowService.findList(siteId);
 
+		List<Attr> attrssList = attrService.findList(site.getId());
+		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
 		List<Brand> brandList = brandService.findList(siteId, null);
 		
 		modelMap.addAttribute("workflowList", workflowList);
@@ -189,7 +195,6 @@ public class NodeController {
 		modelMap.addAttribute("parent", parent);
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("roleList", roleList);
-		modelMap.addAttribute("brandList", brandList);
 		modelMap.addAttribute("groupList", groupList);
 		modelMap.addAttribute("orgTreeNumber", orgTreeNumber);
 		modelMap.addAttribute("nodeModelList", nodeModelList);
@@ -197,6 +202,10 @@ public class NodeController {
 		modelMap.addAttribute("infoModelList", infoModelList);
 		modelMap.addAttribute("queryParentId", queryParentId);
 		modelMap.addAttribute("showDescendants", showDescendants);
+		//---------------------
+		modelMap.addAttribute("brandList", brandList);
+		modelMap.addAttribute("attrssList", attrssList);
+		modelMap.addAttribute("parameterGroupList", parameterGroupList);
 		modelMap.addAttribute(OPRT, CREATE);
 		return "core/node/node_form";
 	}
@@ -256,6 +265,8 @@ public class NodeController {
 		List<Workflow> workflowList = workflowService.findList(siteId);
 		modelMap.addAttribute("workflowList", workflowList);
 
+		List<Attr> attrssList = attrService.findList(site.getId());
+		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
 		List<Brand> brandList = brandService.findList(siteId, null);
 		
 		modelMap.addAttribute("model", model);
@@ -270,6 +281,11 @@ public class NodeController {
 		modelMap.addAttribute("infoModelList", infoModelList);
 		modelMap.addAttribute("queryParentId", queryParentId);
 		modelMap.addAttribute("showDescendants", showDescendants);
+		//---------------------
+		modelMap.addAttribute("brandList", brandList);
+		modelMap.addAttribute("attrssList", attrssList);
+		modelMap.addAttribute("parameterGroupList", parameterGroupList);
+		modelMap.addAttribute(OPRT, CREATE);
 		modelMap.addAttribute(OPRT, EDIT);
 		return "core/node/node_form";
 	}
@@ -547,4 +563,8 @@ public class NodeController {
 	private NodeQueryService query;
 	@Autowired
 	private BrandService brandService;
+	@Autowired
+	private AttrService attrService;
+	@Autowired
+	private ParameterGroupService parameterGroupService;
 }
