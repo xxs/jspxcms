@@ -17,7 +17,7 @@ import javax.persistence.TableGenerator;
  */
 @Entity
 @Table(name = "cms_spec_value")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "cms_spec_val_sequence")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "cms_spec_value_sequence")
 public class SpecValue implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
