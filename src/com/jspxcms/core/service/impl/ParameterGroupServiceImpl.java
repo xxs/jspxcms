@@ -17,15 +17,15 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jspxcms.common.orm.Limitable;
 import com.jspxcms.common.orm.SearchFilter;
 import com.jspxcms.common.util.RowSide;
+import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.NodeDao;
-import com.jspxcms.core.repository.ParameterDao;
 import com.jspxcms.core.repository.ParameterGroupDao;
+import com.jspxcms.core.repository.ParameterGroupDaoPlus;
 import com.jspxcms.core.service.ParameterGroupService;
 import com.jspxcms.core.service.ParameterService;
 import com.jspxcms.core.service.SiteService;
@@ -47,11 +47,11 @@ public class ParameterGroupServiceImpl implements ParameterGroupService,
 		if (position == null) {
 			return new RowSide<ParameterGroup>();
 		}
-		Limitable limit = RowSide.limitable(position, sort);
+		//Limitable limit = RowSide.limitable(position, sort);
 		List<ParameterGroup> list = null;
 		return RowSide.create(list, bean);
 	}
-	
+	@SuppressWarnings("unused")
 	private Specification<ParameterGroup> spec(final Integer siteId,
 			Map<String, String[]> params) {
 		Collection<SearchFilter> filters = SearchFilter.parse(params).values();
@@ -182,10 +182,15 @@ public class ParameterGroupServiceImpl implements ParameterGroupService,
 		this.nodeDao = nodeDao;
 	}
 	
-	private ParameterDao parameterDao;
-
+	private ParameterGroupDaoPlus parameterGroupDaoPlus;
+	
 	@Autowired
-	public void setParameterDao(ParameterDao parameterDao) {
-		this.parameterDao = parameterDao;
+	public void setParameterGroupDaoPlus(ParameterGroupDaoPlus parameterGroupDaoPlus) {
+		this.parameterGroupDaoPlus = parameterGroupDaoPlus;
+	}
+	
+	@Override
+	public List<ParameterGroup> findByNodeAndSite(Node node, Site site) {
+		return parameterGroupDaoPlus.findByNodeAndSite(node, site);
 	}
 }

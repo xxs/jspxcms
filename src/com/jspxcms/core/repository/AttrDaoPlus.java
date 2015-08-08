@@ -7,9 +7,11 @@ import com.jspxcms.core.domain.Attr;
 /**
  * AttrDaoPlus
  * 
- * @author liufang
+ * @author xxs
  * 
  */
 public interface AttrDaoPlus {
 	public List<Attr> findByNumbers(String[] numbers);
+
+	public List<Attr> findByNodeIdAndSiteId(Integer nodeId, Integer siteId);
 }

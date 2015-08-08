@@ -164,7 +164,9 @@ public class InfoController {
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 		List<Attr> attrssList = attrService.findList(site.getId());
-		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
+		
+		List<ParameterGroup> parameterGroupList = parameterGroupService.findByNodeAndSite(node, site);
+		
 		List<Brand> brandList = brandService.findList(siteId, null);
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);

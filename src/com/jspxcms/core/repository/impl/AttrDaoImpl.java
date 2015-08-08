@@ -37,6 +37,9 @@ public class AttrDaoImpl implements AttrDaoPlus {
 		query.where(exp);
 		return query.list(attr);
 	}
+	public List<Attr> findByNodeIdAndSiteId(Integer nodeId, Integer siteId) {
+		return null;
+	}
 
 	private EntityManager em;
 
@@ -44,4 +47,6 @@ public class AttrDaoImpl implements AttrDaoPlus {
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
+
+	
 }

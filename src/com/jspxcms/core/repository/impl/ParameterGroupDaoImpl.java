@@ -6,12 +6,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.hibernate.ejb.QueryHints;
 
-import com.jspxcms.core.domain.Attr;
-import com.jspxcms.core.domaindsl.QAttr;
-import com.jspxcms.core.repository.AttrDaoPlus;
+import com.jspxcms.core.domain.Node;
+import com.jspxcms.core.domain.Parameter;
+import com.jspxcms.core.domain.ParameterGroup;
+import com.jspxcms.core.domain.Site;
+import com.jspxcms.core.domaindsl.QParameterGroup;
+import com.jspxcms.core.repository.ParameterGroupDaoPlus;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.expr.BooleanExpression;
 
@@ -21,21 +23,24 @@ import com.mysema.query.types.expr.BooleanExpression;
  * @author xiaoshi
  * 
  */
-public class ParameterGroupDaoImpl implements AttrDaoPlus {
-	public List<Attr> findByNumbers(String[] numbers) {
-		if (ArrayUtils.isEmpty(numbers)) {
+public class ParameterGroupDaoImpl implements ParameterGroupDaoPlus {
+	public List<ParameterGroup> findByNodeIdAndSiteId(Integer nodeId,
+			Integer siteId) {
+		return null;
+	}
+
+	public List<ParameterGroup> findByNodeAndSite(Node node, Site site) {
+		if (node != null && site != null) {
 			return Collections.emptyList();
 		}
 		JPAQuery query = new JPAQuery(this.em);
 		query.setHint(QueryHints.HINT_CACHEABLE, true);
-		QAttr attr = QAttr.attr;
-		query.from(attr);
-		BooleanExpression exp = attr.number.eq(numbers[0]);
-		for (int i = 1, len = numbers.length; i < len; i++) {
-			exp = exp.or(attr.number.eq(numbers[i]));
-		}
-		query.where(exp);
-		return query.list(attr);
+		QParameterGroup parameterGroup = QParameterGroup.parameterGroup;
+		query.from(parameterGroup);
+		BooleanExpression nid = parameterGroup.node.eq(node);
+		BooleanExpression sid = parameterGroup.site.eq(site);
+		query.where(nid, sid);
+		return query.list(parameterGroup);
 	}
 
 	private EntityManager em;
@@ -44,4 +49,5 @@ public class ParameterGroupDaoImpl implements AttrDaoPlus {
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
+
 }
