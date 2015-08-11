@@ -2,8 +2,10 @@ package com.jspxcms.core.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,14 +27,17 @@ import com.jspxcms.core.service.InfoAttrService;
 @Transactional(readOnly = true)
 public class InfoAttrServiceImpl implements InfoAttrService {
 	@Transactional
-	public List<InfoAttr> save(Info info, Integer[] attrIds) {
+	public List<InfoAttr> save(Info info, Integer[] attrIds, Map<String, String> attrValues) {
 		List<InfoAttr> infoAttrs = new ArrayList<InfoAttr>();
 		if (ArrayUtils.isNotEmpty(attrIds)) {
 			InfoAttr infoAttr;
 			Attr attr;
+			String value;
 			for (Integer attrId : attrIds) {
 				attr = attrService.get(attrId);
-				infoAttr = new InfoAttr(info, attr);
+				value = attrValues.get(attrIds.toString());
+				value = StringUtils.trimToNull(value);
+				infoAttr = new InfoAttr(info, attr, value);
 				dao.save(infoAttr);
 				infoAttrs.add(infoAttr);
 			}
@@ -40,7 +45,7 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 		info.setInfoAttrss(infoAttrs);
 		return infoAttrs;
 	}
-	
+
 	@Transactional
 	public InfoAttr save(Info info, Attr attr) {
 		InfoAttr bean = new InfoAttr();
@@ -54,11 +59,11 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 	public void update(Attr attr, Integer[] infoIds) {
 		System.out.println("暂未实现此功能");
 	}
-	
+
 	@Transactional
-	public List<InfoAttr> update(Info info, Integer[] attrIds) {
+	public List<InfoAttr> update(Info info, Integer[] attrIds, Map<String, String> attrValues) {
 		dao.deleteByInfoId(info.getId());
-		return save(info, attrIds);
+		return save(info, attrIds, attrValues);
 	}
 
 	public int deleteByInfoId(Integer infoId) {
@@ -68,11 +73,11 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 	public int deleteByAttrId(Integer attrId) {
 		return dao.deleteByAttrId(attrId);
 	}
-	
+
 	public List<InfoAttr> getByInfoId(Integer infoId) {
 		return dao.getByInfoId(infoId);
 	}
-	
+
 	private AttrService attrService;
 
 	@Autowired

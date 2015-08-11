@@ -39,6 +39,7 @@ import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Attribute;
 import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
+import com.jspxcms.core.domain.InfoAttr;
 import com.jspxcms.core.domain.InfoDetail;
 import com.jspxcms.core.domain.InfoImage;
 import com.jspxcms.core.domain.MemberGroup;
@@ -251,6 +252,8 @@ public class InfoController {
 				System.out.println(naList.get(i).getAttr().getName());
 			}
 		}
+		//List<Attr> attrssList = attrService.findList(site.getId());
+		List<InfoAttr> s  = bean.getInfoAttrss();
 		List<Attr> attrssList = attrService.findList(site.getId());
 		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
 		List<Brand> brandList = brandService.findList(siteId, null);

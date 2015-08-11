@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-08-05 08:47:24
+Date: 2015-08-11 08:06:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -707,6 +707,7 @@ CREATE TABLE `cms_info_attr` (
   `f_infoattr_id` int(11) NOT NULL,
   `f_info_id` int(11) NOT NULL COMMENT '信息',
   `f_attr_id` int(11) NOT NULL COMMENT '属性',
+  `f_value` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`f_infoattr_id`),
   KEY `fk_cms_infoattr_attribute` (`f_attr_id`),
   KEY `fk_cms_infoattr_info` (`f_info_id`),
@@ -8724,7 +8725,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, '2015-07-23 15:12:01', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '1', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-08-05 00:40:29', '127.0.0.1', '2015-08-05 00:54:43', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '397', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-08-08 10:29:46', '127.0.0.1', '2015-08-09 18:47:51', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '400', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup

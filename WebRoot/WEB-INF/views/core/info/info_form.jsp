@@ -547,7 +547,8 @@ function confirmDelete() {
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 		  				
-		  					<c:forEach var="attr" items="${attrssList}">
+		  					<c:forEach var="infoAttrs" items="${bean.infoAttrss}">
+		  						<c:set var="attr" value="${infoAttrs.attr}"/>
 								<label><c:out value="${attr.name}"/></label> &nbsp;
 						  		<select name="attr.id" >
 						  			<c:forEach var="item" items="${attr.items}" >

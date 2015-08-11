@@ -27,12 +27,15 @@ public class InfoAttr implements java.io.Serializable {
 	private Info info;
 	private Attr attr;
 
+	private String value;
+
 	public InfoAttr() {
 	}
 
-	public InfoAttr(Info info, Attr attr) {
+	public InfoAttr(Info info, Attr attr, String value) {
 		this.info = info;
 		this.attr = attr;
+		this.value = value;
 	}
 
 	@Id
@@ -65,6 +68,15 @@ public class InfoAttr implements java.io.Serializable {
 
 	public void setAttr(Attr attr) {
 		this.attr = attr;
+	}
+	
+	@Column(name = "f_value")
+	public String getValue() {
+		return this.value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }
