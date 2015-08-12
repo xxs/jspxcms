@@ -10,6 +10,7 @@ import static com.jspxcms.core.support.Constants.SAVE_SUCCESS;
 import static com.jspxcms.core.support.Constants.VIEW;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -160,12 +161,17 @@ public class InfoController {
 		} else {
 			node = nodeQuery.get(queryNodeId);
 		}
+		Integer nodeId = node.getId();
 		Model model = node.getInfoModel();
 		List<Attribute> attrList = attributeService.findList(site.getId());
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
-		List<Attr> attrssList = attrService.findList(site.getId());
 		
+		List<Attr> attrssList = new ArrayList<Attr>();
+		List<NodeAttr> nodeAttrList = nodeAttrService.getByNodeId(nodeId);
+		for (int i = 0; i < nodeAttrList.size(); i++) {
+			attrssList.add(nodeAttrList.get(i).getAttr());
+		}
 		List<ParameterGroup> parameterGroupList = parameterGroupService.findByNodeAndSite(node, site);
 		
 		List<Brand> brandList = brandService.findList(siteId, null);

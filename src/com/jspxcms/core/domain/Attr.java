@@ -56,6 +56,15 @@ public class Attr implements java.io.Serializable {
 		return str.toString();
 	}
 	
+	@Transient
+	public List<Attr> geAttrs() {
+		List<Attr> attrs = new ArrayList<Attr>();
+		for (AttrItem item : items) {
+			attrs.add(item.getAttr());
+		}
+		return attrs;
+	}
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "attr")
 	public Set<NodeAttr> getNodeAttrs() {
 		return nodeAttrs;

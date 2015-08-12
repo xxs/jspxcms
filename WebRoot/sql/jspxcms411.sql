@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-08-11 08:06:49
+Date: 2015-08-12 10:09:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -6514,6 +6514,7 @@ INSERT INTO `cms_model_field` VALUES ('846', '47', '1', '2', '商品品牌', 'br
 INSERT INTO `cms_model_field` VALUES ('847', '46', '1', '2', '高级参数', 'parameters', null, null, '0', '2147483647', '0', '0', '1');
 INSERT INTO `cms_model_field` VALUES ('848', '46', '1', '2', '高级属性', 'attrs', null, null, '0', '2147483647', '0', '0', '1');
 INSERT INTO `cms_model_field` VALUES ('849', '46', '1', '2', '商品品牌', 'brand', null, null, '0', '2147483647', '0', '0', '1');
+INSERT INTO `cms_model_field` VALUES ('851', '47', '1', '2', '高级规格', 'specs', null, null, '0', '2147483647', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for cms_model_field_custom
@@ -6738,6 +6739,9 @@ INSERT INTO `cms_model_field_custom` VALUES ('848', 'width', '');
 INSERT INTO `cms_model_field_custom` VALUES ('849', 'maxLength', '');
 INSERT INTO `cms_model_field_custom` VALUES ('849', 'validation', '');
 INSERT INTO `cms_model_field_custom` VALUES ('849', 'width', '');
+INSERT INTO `cms_model_field_custom` VALUES ('851', 'maxLength', '');
+INSERT INTO `cms_model_field_custom` VALUES ('851', 'validation', '');
+INSERT INTO `cms_model_field_custom` VALUES ('851', 'width', '');
 
 -- ----------------------------
 -- Table structure for cms_node
@@ -8725,7 +8729,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, '2015-07-23 15:12:01', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '1', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-08-08 10:29:46', '127.0.0.1', '2015-08-09 18:47:51', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '400', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-08-12 07:45:55', '127.0.0.1', '2015-08-12 10:02:33', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '403', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup
@@ -9448,7 +9452,7 @@ INSERT INTO `t_id_table` VALUES ('cms_info_special', '8');
 INSERT INTO `t_id_table` VALUES ('cms_info_tag', '40');
 INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
 INSERT INTO `t_id_table` VALUES ('cms_model', '56');
-INSERT INTO `t_id_table` VALUES ('cms_model_field', '850');
+INSERT INTO `t_id_table` VALUES ('cms_model_field', '852');
 INSERT INTO `t_id_table` VALUES ('cms_node', '153');
 INSERT INTO `t_id_table` VALUES ('cms_node_attr', '793');
 INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '203');

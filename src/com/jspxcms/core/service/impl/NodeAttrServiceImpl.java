@@ -12,6 +12,7 @@ import com.jspxcms.core.domain.NodeAttr;
 import com.jspxcms.core.listener.AttrDeleteListener;
 import com.jspxcms.core.listener.NodeDeleteListener;
 import com.jspxcms.core.repository.NodeAttrDao;
+import com.jspxcms.core.repository.NodeAttrDaoPlus;
 import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.NodeAttrService;
@@ -36,7 +37,7 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 		//更新前先删除之前已经绑定的栏目ID
 		dao.deleteByAttrId(attrId);
 		System.out.println("已经执行了删除操作");
-		List<NodeAttr> nrs = dao.findByAttrId(attrId);
+		List<NodeAttr> nrs = daoPlus.findByAttrId(attrId);
 		Node node = null;
 		boolean contains;
 		for (Integer nodeId : nodeIds) {
@@ -63,7 +64,7 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 	public void update(Node node, Integer[] nodePermIds) {
 		Integer nodeId = node.getId();
 		List<Attr> attrs = attrService.findList(node.getSite().getId());
-		List<NodeAttr> nrs = dao.findByNodeId(nodeId);
+		List<NodeAttr> nrs = daoPlus.findByNodeId(nodeId);
 		Integer attrId;
 		boolean contains;
 		for (Attr attr : attrs) {
@@ -98,7 +99,7 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 	}
 
 	public List<NodeAttr> getByNodeId(Integer nodeId) {
-		return dao.findByNodeId(nodeId);
+		return daoPlus.findByNodeId(nodeId);
 	}
 
 	private AttrService attrService;
@@ -116,9 +117,16 @@ public class NodeAttrServiceImpl implements NodeAttrService,
 	}
 
 	private NodeAttrDao dao;
-
+	
 	@Autowired
 	public void setDao(NodeAttrDao dao) {
 		this.dao = dao;
+	}
+	
+	private NodeAttrDaoPlus daoPlus;
+
+	@Autowired
+	public void setDao(NodeAttrDaoPlus daoPlus) {
+		this.daoPlus = daoPlus;
 	}
 }

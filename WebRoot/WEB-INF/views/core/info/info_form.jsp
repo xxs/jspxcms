@@ -124,7 +124,10 @@ function confirmDelete() {
 				<c:when test="${field.name eq 'attrs'}">
 					<li><a href="javascript:void(0);" tab="attrs"><c:out value="${field.label}"/></a></li>
 			  	</c:when>
-				<c:when test="${field.name eq 'brand'}">
+				<c:when test="${field.name eq 'specs'}">
+					<li><a href="javascript:void(0);" tab="specs"><c:out value="${field.label}"/></a></li>
+			  	</c:when>
+			  	<c:when test="${field.name eq 'brand'}">
 					<li><a href="javascript:void(0);" tab="brand"><c:out value="${field.label}"/></a></li>
 			  	</c:when>
 		  	</c:choose>
@@ -547,8 +550,7 @@ function confirmDelete() {
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 		  				
-		  					<c:forEach var="infoAttrs" items="${bean.infoAttrss}">
-		  						<c:set var="attr" value="${infoAttrs.attr}"/>
+		  					<c:forEach var="attr" items="${attrssList}">
 								<label><c:out value="${attr.name}"/></label> &nbsp;
 						  		<select name="attr.id" >
 						  			<c:forEach var="item" items="${attr.items}" >
@@ -561,8 +563,19 @@ function confirmDelete() {
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>
 		  	</c:when>
-		  	
-			<c:when test="${field.name eq 'brand'}">
+			<c:when test="${field.name eq 'specs'}">
+				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
+					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
+						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+							<c:forEach var="item" items="${brandList}" >
+							  		${item.name}
+							</c:forEach>
+						</td>
+					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
+				</table>
+		  	</c:when>
+		  	<c:when test="${field.name eq 'brand'}">
 				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>

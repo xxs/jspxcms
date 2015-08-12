@@ -163,6 +163,9 @@ public class ModelField implements java.io.Serializable {
 		if (getDisabled() == null) {
 			setDisabled(false);
 		}
+		if (getTab() == null) {
+			setTab(false);
+		}
 	}
 
 	private Integer id;

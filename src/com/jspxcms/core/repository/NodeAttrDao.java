@@ -1,7 +1,5 @@
 package com.jspxcms.core.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -14,14 +12,6 @@ public interface NodeAttrDao extends Repository<NodeAttr, Integer> {
 	public NodeAttr save(NodeAttr bean);
 
 	public void delete(NodeAttr bean);
-
-	// --------------------
-
-	public List<NodeAttr> findByNodeIdAndAttrId(Integer nodeId, Integer attrId);
-
-	public List<NodeAttr> findByNodeId(Integer nodeId);
-
-	public List<NodeAttr> findByAttrId(Integer attrId);
 
 	@Modifying
 	@Query("delete from NodeAttr bean where bean.node.id=?1")
