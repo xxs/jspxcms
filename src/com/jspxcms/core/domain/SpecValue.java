@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 
 /**
  * Entity - 规格值
@@ -22,6 +23,13 @@ public class SpecValue implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Transient
+	public void applyDefaultValue() {
+		if (getSeq() == null) {
+			setSeq(Integer.MAX_VALUE);
+		}
+	}
+	
 	private Integer id;
 	
 	/** 名称 */
@@ -127,7 +135,7 @@ public class SpecValue implements java.io.Serializable {
 	 * @return 规格
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = false)
+	@JoinColumn(name = "f_spec_id", nullable = false)
 	public Spec getSpec() {
 		return spec;
 	}

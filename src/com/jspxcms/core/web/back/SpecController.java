@@ -27,7 +27,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.Servlets;
 import com.jspxcms.core.domain.Spec;
-import com.jspxcms.core.domain.Spec;
 import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.service.SpecService;
 import com.jspxcms.core.support.Constants;

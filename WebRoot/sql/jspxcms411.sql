@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : xxs
 Source Server Version : 50154
-Source Host           : localhost:3306
+Source Host           : 127.0.0.1:3306
 Source Database       : jspxcms411
 
 Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-08-12 10:09:18
+Date: 2015-08-19 17:06:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -8047,18 +8047,19 @@ CREATE TABLE `cms_spec` (
   `f_name` varchar(255) NOT NULL COMMENT '名称 ',
   `f_site_id` bigint(20) DEFAULT NULL,
   `f_node_id` bigint(20) DEFAULT NULL,
+  `f_description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`f_spec_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_spec
 -- ----------------------------
-INSERT INTO `cms_spec` VALUES ('1', '1', '女装', '颜色', '1', null);
-INSERT INTO `cms_spec` VALUES ('2', '2', '男装', '颜色', '1', null);
-INSERT INTO `cms_spec` VALUES ('3', '3', '女装', '尺码', '1', null);
-INSERT INTO `cms_spec` VALUES ('4', '4', '男装', '尺码', '1', null);
-INSERT INTO `cms_spec` VALUES ('5', '5', '女鞋', '尺码', '1', null);
-INSERT INTO `cms_spec` VALUES ('6', '6', '男鞋', '尺码', '1', null);
+INSERT INTO `cms_spec` VALUES ('1', null, null, '颜色', '1', null, null);
+INSERT INTO `cms_spec` VALUES ('2', '2', '男装', '颜色', '1', '144', null);
+INSERT INTO `cms_spec` VALUES ('3', '3', '女装', '尺码', '1', '144', null);
+INSERT INTO `cms_spec` VALUES ('4', '4', '男装', '尺码', '1', '144', null);
+INSERT INTO `cms_spec` VALUES ('5', '5', '女鞋', '尺码', '1', '144', null);
+INSERT INTO `cms_spec` VALUES ('6', '6', '男鞋', '尺码', '1', '144', null);
 
 -- ----------------------------
 -- Table structure for cms_special
@@ -8160,124 +8161,6 @@ CREATE TABLE `cms_special_custom` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for cms_specification
--- ----------------------------
-DROP TABLE IF EXISTS `cms_specification`;
-CREATE TABLE `cms_specification` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `orders` int(11) DEFAULT NULL,
-  `f_memo` varchar(255) DEFAULT NULL COMMENT '备注',
-  `f_name` varchar(255) NOT NULL COMMENT '名称 ',
-  `type` int(11) NOT NULL COMMENT '类型',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cms_specification
--- ----------------------------
-INSERT INTO `cms_specification` VALUES ('1', '1', '女装', '颜色', '1');
-INSERT INTO `cms_specification` VALUES ('2', '2', '男装', '颜色', '1');
-INSERT INTO `cms_specification` VALUES ('3', '3', '女装', '尺码', '0');
-INSERT INTO `cms_specification` VALUES ('4', '4', '男装', '尺码', '0');
-INSERT INTO `cms_specification` VALUES ('5', '5', '女鞋', '尺码', '0');
-INSERT INTO `cms_specification` VALUES ('6', '6', '男鞋', '尺码', '0');
-
--- ----------------------------
--- Table structure for cms_specification_value
--- ----------------------------
-DROP TABLE IF EXISTS `cms_specification_value`;
-CREATE TABLE `cms_specification_value` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `f_seq` int(11) DEFAULT NULL,
-  `f_image` varchar(255) DEFAULT NULL COMMENT '图片',
-  `f_name` varchar(255) NOT NULL COMMENT '名称',
-  `specification` bigint(20) NOT NULL COMMENT '规格',
-  PRIMARY KEY (`id`),
-  KEY `FK5E624376629A04C2` (`specification`),
-  CONSTRAINT `cms_specification_value_ibfk_1` FOREIGN KEY (`specification`) REFERENCES `cms_specification` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cms_specification_value
--- ----------------------------
-INSERT INTO `cms_specification_value` VALUES ('1', '1', 'http://storage.shopxx.net/demo-image/3.0/specification/1.gif', '无', '1');
-INSERT INTO `cms_specification_value` VALUES ('2', '2', 'http://storage.shopxx.net/demo-image/3.0/specification/2.gif', '黄色', '1');
-INSERT INTO `cms_specification_value` VALUES ('3', '3', 'http://storage.shopxx.net/demo-image/3.0/specification/3.gif', '酒红色', '1');
-INSERT INTO `cms_specification_value` VALUES ('4', '4', 'http://storage.shopxx.net/demo-image/3.0/specification/4.gif', '金色', '1');
-INSERT INTO `cms_specification_value` VALUES ('5', '5', 'http://storage.shopxx.net/demo-image/3.0/specification/5.gif', '橙色', '1');
-INSERT INTO `cms_specification_value` VALUES ('6', '6', 'http://storage.shopxx.net/demo-image/3.0/specification/6.gif', '灰色', '1');
-INSERT INTO `cms_specification_value` VALUES ('7', '7', 'http://storage.shopxx.net/demo-image/3.0/specification/7.gif', '蓝色', '1');
-INSERT INTO `cms_specification_value` VALUES ('8', '8', 'http://storage.shopxx.net/demo-image/3.0/specification/8.gif', '黑色', '1');
-INSERT INTO `cms_specification_value` VALUES ('9', '9', 'http://storage.shopxx.net/demo-image/3.0/specification/9.gif', '卡其色', '1');
-INSERT INTO `cms_specification_value` VALUES ('10', '10', 'http://storage.shopxx.net/demo-image/3.0/specification/10.gif', '混色', '1');
-INSERT INTO `cms_specification_value` VALUES ('11', '11', 'http://storage.shopxx.net/demo-image/3.0/specification/11.gif', '紫色', '1');
-INSERT INTO `cms_specification_value` VALUES ('12', '12', 'http://storage.shopxx.net/demo-image/3.0/specification/12.gif', '粉红色', '1');
-INSERT INTO `cms_specification_value` VALUES ('13', '13', 'http://storage.shopxx.net/demo-image/3.0/specification/13.gif', '银色', '1');
-INSERT INTO `cms_specification_value` VALUES ('14', '14', 'http://storage.shopxx.net/demo-image/3.0/specification/14.gif', '红色', '1');
-INSERT INTO `cms_specification_value` VALUES ('15', '15', 'http://storage.shopxx.net/demo-image/3.0/specification/15.gif', '白色', '1');
-INSERT INTO `cms_specification_value` VALUES ('16', '16', 'http://storage.shopxx.net/demo-image/3.0/specification/16.gif', '浅蓝色', '1');
-INSERT INTO `cms_specification_value` VALUES ('17', '17', 'http://storage.shopxx.net/demo-image/3.0/specification/17.gif', '深蓝色', '1');
-INSERT INTO `cms_specification_value` VALUES ('18', '18', 'http://storage.shopxx.net/demo-image/3.0/specification/18.gif', '绿色', '1');
-INSERT INTO `cms_specification_value` VALUES ('19', '19', 'http://storage.shopxx.net/demo-image/3.0/specification/19.gif', '米黄色', '1');
-INSERT INTO `cms_specification_value` VALUES ('20', '20', 'http://storage.shopxx.net/demo-image/3.0/specification/20.gif', '咖啡色', '1');
-INSERT INTO `cms_specification_value` VALUES ('21', '1', 'http://storage.shopxx.net/demo-image/3.0/specification/1.gif', '无', '2');
-INSERT INTO `cms_specification_value` VALUES ('22', '2', 'http://storage.shopxx.net/demo-image/3.0/specification/2.gif', '黄色', '2');
-INSERT INTO `cms_specification_value` VALUES ('23', '3', 'http://storage.shopxx.net/demo-image/3.0/specification/3.gif', '酒红色', '2');
-INSERT INTO `cms_specification_value` VALUES ('24', '4', 'http://storage.shopxx.net/demo-image/3.0/specification/4.gif', '金色', '2');
-INSERT INTO `cms_specification_value` VALUES ('25', '5', 'http://storage.shopxx.net/demo-image/3.0/specification/5.gif', '橙色', '2');
-INSERT INTO `cms_specification_value` VALUES ('26', '6', 'http://storage.shopxx.net/demo-image/3.0/specification/6.gif', '灰色', '2');
-INSERT INTO `cms_specification_value` VALUES ('27', '7', 'http://storage.shopxx.net/demo-image/3.0/specification/7.gif', '蓝色', '2');
-INSERT INTO `cms_specification_value` VALUES ('28', '8', 'http://storage.shopxx.net/demo-image/3.0/specification/8.gif', '黑色', '2');
-INSERT INTO `cms_specification_value` VALUES ('29', '9', 'http://storage.shopxx.net/demo-image/3.0/specification/9.gif', '卡其色', '2');
-INSERT INTO `cms_specification_value` VALUES ('30', '10', 'http://storage.shopxx.net/demo-image/3.0/specification/10.gif', '混色', '2');
-INSERT INTO `cms_specification_value` VALUES ('31', '11', 'http://storage.shopxx.net/demo-image/3.0/specification/11.gif', '紫色', '2');
-INSERT INTO `cms_specification_value` VALUES ('32', '12', 'http://storage.shopxx.net/demo-image/3.0/specification/12.gif', '粉红色', '2');
-INSERT INTO `cms_specification_value` VALUES ('33', '13', 'http://storage.shopxx.net/demo-image/3.0/specification/13.gif', '银色', '2');
-INSERT INTO `cms_specification_value` VALUES ('34', '14', 'http://storage.shopxx.net/demo-image/3.0/specification/14.gif', '红色', '2');
-INSERT INTO `cms_specification_value` VALUES ('35', '15', 'http://storage.shopxx.net/demo-image/3.0/specification/15.gif', '白色', '2');
-INSERT INTO `cms_specification_value` VALUES ('36', '16', 'http://storage.shopxx.net/demo-image/3.0/specification/16.gif', '浅蓝色', '2');
-INSERT INTO `cms_specification_value` VALUES ('37', '17', 'http://storage.shopxx.net/demo-image/3.0/specification/17.gif', '深蓝色', '2');
-INSERT INTO `cms_specification_value` VALUES ('38', '18', 'http://storage.shopxx.net/demo-image/3.0/specification/18.gif', '绿色', '2');
-INSERT INTO `cms_specification_value` VALUES ('39', '19', 'http://storage.shopxx.net/demo-image/3.0/specification/19.gif', '米黄色', '2');
-INSERT INTO `cms_specification_value` VALUES ('40', '20', 'http://storage.shopxx.net/demo-image/3.0/specification/20.gif', '咖啡色', '2');
-INSERT INTO `cms_specification_value` VALUES ('41', '1', null, '均码', '3');
-INSERT INTO `cms_specification_value` VALUES ('42', '2', null, 'XXS', '3');
-INSERT INTO `cms_specification_value` VALUES ('43', '3', null, 'XS', '3');
-INSERT INTO `cms_specification_value` VALUES ('44', '4', null, 'S', '3');
-INSERT INTO `cms_specification_value` VALUES ('45', '5', null, 'M', '3');
-INSERT INTO `cms_specification_value` VALUES ('46', '6', null, 'L', '3');
-INSERT INTO `cms_specification_value` VALUES ('47', '7', null, 'XL', '3');
-INSERT INTO `cms_specification_value` VALUES ('48', '8', null, 'XXL', '3');
-INSERT INTO `cms_specification_value` VALUES ('49', '9', null, 'XXXL', '3');
-INSERT INTO `cms_specification_value` VALUES ('50', '1', null, '均码', '4');
-INSERT INTO `cms_specification_value` VALUES ('51', '2', null, 'XXS', '4');
-INSERT INTO `cms_specification_value` VALUES ('52', '3', null, 'XS', '4');
-INSERT INTO `cms_specification_value` VALUES ('53', '4', null, 'S', '4');
-INSERT INTO `cms_specification_value` VALUES ('54', '5', null, 'M', '4');
-INSERT INTO `cms_specification_value` VALUES ('55', '6', null, 'L', '4');
-INSERT INTO `cms_specification_value` VALUES ('56', '7', null, 'XL', '4');
-INSERT INTO `cms_specification_value` VALUES ('57', '8', null, 'XXL', '4');
-INSERT INTO `cms_specification_value` VALUES ('58', '9', null, 'XXXL', '4');
-INSERT INTO `cms_specification_value` VALUES ('59', '1', null, '34', '5');
-INSERT INTO `cms_specification_value` VALUES ('60', '2', null, '35', '5');
-INSERT INTO `cms_specification_value` VALUES ('61', '3', null, '36', '5');
-INSERT INTO `cms_specification_value` VALUES ('62', '4', null, '37', '5');
-INSERT INTO `cms_specification_value` VALUES ('63', '5', null, '38', '5');
-INSERT INTO `cms_specification_value` VALUES ('64', '6', null, '39', '5');
-INSERT INTO `cms_specification_value` VALUES ('65', '7', null, '40', '5');
-INSERT INTO `cms_specification_value` VALUES ('66', '8', null, '41', '5');
-INSERT INTO `cms_specification_value` VALUES ('67', '1', null, '36', '6');
-INSERT INTO `cms_specification_value` VALUES ('68', '2', null, '37', '6');
-INSERT INTO `cms_specification_value` VALUES ('69', '3', null, '38', '6');
-INSERT INTO `cms_specification_value` VALUES ('70', '4', null, '39', '6');
-INSERT INTO `cms_specification_value` VALUES ('71', '5', null, '40', '6');
-INSERT INTO `cms_specification_value` VALUES ('72', '6', null, '41', '6');
-INSERT INTO `cms_specification_value` VALUES ('73', '7', null, '42', '6');
-INSERT INTO `cms_specification_value` VALUES ('74', '8', null, '43', '6');
-INSERT INTO `cms_specification_value` VALUES ('75', '9', null, '44', '6');
-INSERT INTO `cms_specification_value` VALUES ('76', '10', null, '45', '6');
-
--- ----------------------------
 -- Table structure for cms_spec_value
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_spec_value`;
@@ -8287,6 +8170,7 @@ CREATE TABLE `cms_spec_value` (
   `f_image` varchar(255) DEFAULT NULL COMMENT '图片',
   `f_name` varchar(255) NOT NULL COMMENT '名称',
   `f_spec_id` bigint(20) NOT NULL COMMENT '规格',
+  `f_description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`f_spec_value_id`),
   KEY `FK5E624376629A04C2` (`f_spec_id`),
   CONSTRAINT `spec` FOREIGN KEY (`f_spec_id`) REFERENCES `cms_spec` (`f_spec_id`)
@@ -8295,82 +8179,82 @@ CREATE TABLE `cms_spec_value` (
 -- ----------------------------
 -- Records of cms_spec_value
 -- ----------------------------
-INSERT INTO `cms_spec_value` VALUES ('1', '1', 'http://storage.shopxx.net/demo-image/3.0/specification/1.gif', '无', '1');
-INSERT INTO `cms_spec_value` VALUES ('2', '2', 'http://storage.shopxx.net/demo-image/3.0/specification/2.gif', '黄色', '1');
-INSERT INTO `cms_spec_value` VALUES ('3', '3', 'http://storage.shopxx.net/demo-image/3.0/specification/3.gif', '酒红色', '1');
-INSERT INTO `cms_spec_value` VALUES ('4', '4', 'http://storage.shopxx.net/demo-image/3.0/specification/4.gif', '金色', '1');
-INSERT INTO `cms_spec_value` VALUES ('5', '5', 'http://storage.shopxx.net/demo-image/3.0/specification/5.gif', '橙色', '1');
-INSERT INTO `cms_spec_value` VALUES ('6', '6', 'http://storage.shopxx.net/demo-image/3.0/specification/6.gif', '灰色', '1');
-INSERT INTO `cms_spec_value` VALUES ('7', '7', 'http://storage.shopxx.net/demo-image/3.0/specification/7.gif', '蓝色', '1');
-INSERT INTO `cms_spec_value` VALUES ('8', '8', 'http://storage.shopxx.net/demo-image/3.0/specification/8.gif', '黑色', '1');
-INSERT INTO `cms_spec_value` VALUES ('9', '9', 'http://storage.shopxx.net/demo-image/3.0/specification/9.gif', '卡其色', '1');
-INSERT INTO `cms_spec_value` VALUES ('10', '10', 'http://storage.shopxx.net/demo-image/3.0/specification/10.gif', '混色', '1');
-INSERT INTO `cms_spec_value` VALUES ('11', '11', 'http://storage.shopxx.net/demo-image/3.0/specification/11.gif', '紫色', '1');
-INSERT INTO `cms_spec_value` VALUES ('12', '12', 'http://storage.shopxx.net/demo-image/3.0/specification/12.gif', '粉红色', '1');
-INSERT INTO `cms_spec_value` VALUES ('13', '13', 'http://storage.shopxx.net/demo-image/3.0/specification/13.gif', '银色', '1');
-INSERT INTO `cms_spec_value` VALUES ('14', '14', 'http://storage.shopxx.net/demo-image/3.0/specification/14.gif', '红色', '1');
-INSERT INTO `cms_spec_value` VALUES ('15', '15', 'http://storage.shopxx.net/demo-image/3.0/specification/15.gif', '白色', '1');
-INSERT INTO `cms_spec_value` VALUES ('16', '16', 'http://storage.shopxx.net/demo-image/3.0/specification/16.gif', '浅蓝色', '1');
-INSERT INTO `cms_spec_value` VALUES ('17', '17', 'http://storage.shopxx.net/demo-image/3.0/specification/17.gif', '深蓝色', '1');
-INSERT INTO `cms_spec_value` VALUES ('18', '18', 'http://storage.shopxx.net/demo-image/3.0/specification/18.gif', '绿色', '1');
-INSERT INTO `cms_spec_value` VALUES ('19', '19', 'http://storage.shopxx.net/demo-image/3.0/specification/19.gif', '米黄色', '1');
-INSERT INTO `cms_spec_value` VALUES ('20', '20', 'http://storage.shopxx.net/demo-image/3.0/specification/20.gif', '咖啡色', '1');
-INSERT INTO `cms_spec_value` VALUES ('21', '1', 'http://storage.shopxx.net/demo-image/3.0/specification/1.gif', '无', '2');
-INSERT INTO `cms_spec_value` VALUES ('22', '2', 'http://storage.shopxx.net/demo-image/3.0/specification/2.gif', '黄色', '2');
-INSERT INTO `cms_spec_value` VALUES ('23', '3', 'http://storage.shopxx.net/demo-image/3.0/specification/3.gif', '酒红色', '2');
-INSERT INTO `cms_spec_value` VALUES ('24', '4', 'http://storage.shopxx.net/demo-image/3.0/specification/4.gif', '金色', '2');
-INSERT INTO `cms_spec_value` VALUES ('25', '5', 'http://storage.shopxx.net/demo-image/3.0/specification/5.gif', '橙色', '2');
-INSERT INTO `cms_spec_value` VALUES ('26', '6', 'http://storage.shopxx.net/demo-image/3.0/specification/6.gif', '灰色', '2');
-INSERT INTO `cms_spec_value` VALUES ('27', '7', 'http://storage.shopxx.net/demo-image/3.0/specification/7.gif', '蓝色', '2');
-INSERT INTO `cms_spec_value` VALUES ('28', '8', 'http://storage.shopxx.net/demo-image/3.0/specification/8.gif', '黑色', '2');
-INSERT INTO `cms_spec_value` VALUES ('29', '9', 'http://storage.shopxx.net/demo-image/3.0/specification/9.gif', '卡其色', '2');
-INSERT INTO `cms_spec_value` VALUES ('30', '10', 'http://storage.shopxx.net/demo-image/3.0/specification/10.gif', '混色', '2');
-INSERT INTO `cms_spec_value` VALUES ('31', '11', 'http://storage.shopxx.net/demo-image/3.0/specification/11.gif', '紫色', '2');
-INSERT INTO `cms_spec_value` VALUES ('32', '12', 'http://storage.shopxx.net/demo-image/3.0/specification/12.gif', '粉红色', '2');
-INSERT INTO `cms_spec_value` VALUES ('33', '13', 'http://storage.shopxx.net/demo-image/3.0/specification/13.gif', '银色', '2');
-INSERT INTO `cms_spec_value` VALUES ('34', '14', 'http://storage.shopxx.net/demo-image/3.0/specification/14.gif', '红色', '2');
-INSERT INTO `cms_spec_value` VALUES ('35', '15', 'http://storage.shopxx.net/demo-image/3.0/specification/15.gif', '白色', '2');
-INSERT INTO `cms_spec_value` VALUES ('36', '16', 'http://storage.shopxx.net/demo-image/3.0/specification/16.gif', '浅蓝色', '2');
-INSERT INTO `cms_spec_value` VALUES ('37', '17', 'http://storage.shopxx.net/demo-image/3.0/specification/17.gif', '深蓝色', '2');
-INSERT INTO `cms_spec_value` VALUES ('38', '18', 'http://storage.shopxx.net/demo-image/3.0/specification/18.gif', '绿色', '2');
-INSERT INTO `cms_spec_value` VALUES ('39', '19', 'http://storage.shopxx.net/demo-image/3.0/specification/19.gif', '米黄色', '2');
-INSERT INTO `cms_spec_value` VALUES ('40', '20', 'http://storage.shopxx.net/demo-image/3.0/specification/20.gif', '咖啡色', '2');
-INSERT INTO `cms_spec_value` VALUES ('41', '1', null, '均码', '3');
-INSERT INTO `cms_spec_value` VALUES ('42', '2', null, 'XXS', '3');
-INSERT INTO `cms_spec_value` VALUES ('43', '3', null, 'XS', '3');
-INSERT INTO `cms_spec_value` VALUES ('44', '4', null, 'S', '3');
-INSERT INTO `cms_spec_value` VALUES ('45', '5', null, 'M', '3');
-INSERT INTO `cms_spec_value` VALUES ('46', '6', null, 'L', '3');
-INSERT INTO `cms_spec_value` VALUES ('47', '7', null, 'XL', '3');
-INSERT INTO `cms_spec_value` VALUES ('48', '8', null, 'XXL', '3');
-INSERT INTO `cms_spec_value` VALUES ('49', '9', null, 'XXXL', '3');
-INSERT INTO `cms_spec_value` VALUES ('50', '1', null, '均码', '4');
-INSERT INTO `cms_spec_value` VALUES ('51', '2', null, 'XXS', '4');
-INSERT INTO `cms_spec_value` VALUES ('52', '3', null, 'XS', '4');
-INSERT INTO `cms_spec_value` VALUES ('53', '4', null, 'S', '4');
-INSERT INTO `cms_spec_value` VALUES ('54', '5', null, 'M', '4');
-INSERT INTO `cms_spec_value` VALUES ('55', '6', null, 'L', '4');
-INSERT INTO `cms_spec_value` VALUES ('56', '7', null, 'XL', '4');
-INSERT INTO `cms_spec_value` VALUES ('57', '8', null, 'XXL', '4');
-INSERT INTO `cms_spec_value` VALUES ('58', '9', null, 'XXXL', '4');
-INSERT INTO `cms_spec_value` VALUES ('59', '1', null, '34', '5');
-INSERT INTO `cms_spec_value` VALUES ('60', '2', null, '35', '5');
-INSERT INTO `cms_spec_value` VALUES ('61', '3', null, '36', '5');
-INSERT INTO `cms_spec_value` VALUES ('62', '4', null, '37', '5');
-INSERT INTO `cms_spec_value` VALUES ('63', '5', null, '38', '5');
-INSERT INTO `cms_spec_value` VALUES ('64', '6', null, '39', '5');
-INSERT INTO `cms_spec_value` VALUES ('65', '7', null, '40', '5');
-INSERT INTO `cms_spec_value` VALUES ('66', '8', null, '41', '5');
-INSERT INTO `cms_spec_value` VALUES ('67', '1', null, '36', '6');
-INSERT INTO `cms_spec_value` VALUES ('68', '2', null, '37', '6');
-INSERT INTO `cms_spec_value` VALUES ('69', '3', null, '38', '6');
-INSERT INTO `cms_spec_value` VALUES ('70', '4', null, '39', '6');
-INSERT INTO `cms_spec_value` VALUES ('71', '5', null, '40', '6');
-INSERT INTO `cms_spec_value` VALUES ('72', '6', null, '41', '6');
-INSERT INTO `cms_spec_value` VALUES ('73', '7', null, '42', '6');
-INSERT INTO `cms_spec_value` VALUES ('74', '8', null, '43', '6');
-INSERT INTO `cms_spec_value` VALUES ('75', '9', null, '44', '6');
-INSERT INTO `cms_spec_value` VALUES ('76', '10', null, '45', '6');
+INSERT INTO `cms_spec_value` VALUES ('1', '1', 'http://storage.shopxx.net/demo-image/3.0/specification/1.gif', '无', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('2', '2', 'http://storage.shopxx.net/demo-image/3.0/specification/2.gif', '黄色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('3', '3', 'http://storage.shopxx.net/demo-image/3.0/specification/3.gif', '酒红色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('4', '4', 'http://storage.shopxx.net/demo-image/3.0/specification/4.gif', '金色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('5', '5', 'http://storage.shopxx.net/demo-image/3.0/specification/5.gif', '橙色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('6', '6', 'http://storage.shopxx.net/demo-image/3.0/specification/6.gif', '灰色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('7', '7', 'http://storage.shopxx.net/demo-image/3.0/specification/7.gif', '蓝色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('8', '8', 'http://storage.shopxx.net/demo-image/3.0/specification/8.gif', '黑色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('9', '9', 'http://storage.shopxx.net/demo-image/3.0/specification/9.gif', '卡其色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('10', '10', 'http://storage.shopxx.net/demo-image/3.0/specification/10.gif', '混色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('11', '11', 'http://storage.shopxx.net/demo-image/3.0/specification/11.gif', '紫色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('12', '12', 'http://storage.shopxx.net/demo-image/3.0/specification/12.gif', '粉红色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('13', '13', 'http://storage.shopxx.net/demo-image/3.0/specification/13.gif', '银色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('14', '14', 'http://storage.shopxx.net/demo-image/3.0/specification/14.gif', '红色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('15', '15', 'http://storage.shopxx.net/demo-image/3.0/specification/15.gif', '白色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('16', '16', 'http://storage.shopxx.net/demo-image/3.0/specification/16.gif', '浅蓝色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('17', '17', 'http://storage.shopxx.net/demo-image/3.0/specification/17.gif', '深蓝色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('18', '18', 'http://storage.shopxx.net/demo-image/3.0/specification/18.gif', '绿色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('19', '19', 'http://storage.shopxx.net/demo-image/3.0/specification/19.gif', '米黄色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('20', '20', 'http://storage.shopxx.net/demo-image/3.0/specification/20.gif', '咖啡色', '1', null);
+INSERT INTO `cms_spec_value` VALUES ('21', '1', 'http://storage.shopxx.net/demo-image/3.0/specification/1.gif', '无', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('22', '2', 'http://storage.shopxx.net/demo-image/3.0/specification/2.gif', '黄色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('23', '3', 'http://storage.shopxx.net/demo-image/3.0/specification/3.gif', '酒红色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('24', '4', 'http://storage.shopxx.net/demo-image/3.0/specification/4.gif', '金色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('25', '5', 'http://storage.shopxx.net/demo-image/3.0/specification/5.gif', '橙色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('26', '6', 'http://storage.shopxx.net/demo-image/3.0/specification/6.gif', '灰色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('27', '7', 'http://storage.shopxx.net/demo-image/3.0/specification/7.gif', '蓝色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('28', '8', 'http://storage.shopxx.net/demo-image/3.0/specification/8.gif', '黑色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('29', '9', 'http://storage.shopxx.net/demo-image/3.0/specification/9.gif', '卡其色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('30', '10', 'http://storage.shopxx.net/demo-image/3.0/specification/10.gif', '混色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('31', '11', 'http://storage.shopxx.net/demo-image/3.0/specification/11.gif', '紫色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('32', '12', 'http://storage.shopxx.net/demo-image/3.0/specification/12.gif', '粉红色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('33', '13', 'http://storage.shopxx.net/demo-image/3.0/specification/13.gif', '银色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('34', '14', 'http://storage.shopxx.net/demo-image/3.0/specification/14.gif', '红色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('35', '15', 'http://storage.shopxx.net/demo-image/3.0/specification/15.gif', '白色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('36', '16', 'http://storage.shopxx.net/demo-image/3.0/specification/16.gif', '浅蓝色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('37', '17', 'http://storage.shopxx.net/demo-image/3.0/specification/17.gif', '深蓝色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('38', '18', 'http://storage.shopxx.net/demo-image/3.0/specification/18.gif', '绿色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('39', '19', 'http://storage.shopxx.net/demo-image/3.0/specification/19.gif', '米黄色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('40', '20', 'http://storage.shopxx.net/demo-image/3.0/specification/20.gif', '咖啡色', '2', null);
+INSERT INTO `cms_spec_value` VALUES ('41', '1', null, '均码', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('42', '2', null, 'XXS', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('43', '3', null, 'XS', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('44', '4', null, 'S', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('45', '5', null, 'M', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('46', '6', null, 'L', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('47', '7', null, 'XL', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('48', '8', null, 'XXL', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('49', '9', null, 'XXXL', '3', null);
+INSERT INTO `cms_spec_value` VALUES ('50', '1', null, '均码', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('51', '2', null, 'XXS', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('52', '3', null, 'XS', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('53', '4', null, 'S', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('54', '5', null, 'M', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('55', '6', null, 'L', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('56', '7', null, 'XL', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('57', '8', null, 'XXL', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('58', '9', null, 'XXXL', '4', null);
+INSERT INTO `cms_spec_value` VALUES ('59', '1', null, '34', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('60', '2', null, '35', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('61', '3', null, '36', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('62', '4', null, '37', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('63', '5', null, '38', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('64', '6', null, '39', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('65', '7', null, '40', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('66', '8', null, '41', '5', null);
+INSERT INTO `cms_spec_value` VALUES ('67', '1', null, '36', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('68', '2', null, '37', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('69', '3', null, '38', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('70', '4', null, '39', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('71', '5', null, '40', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('72', '6', null, '41', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('73', '7', null, '42', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('74', '8', null, '43', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('75', '9', null, '44', '6', null);
+INSERT INTO `cms_spec_value` VALUES ('76', '10', null, '45', '6', null);
 
 -- ----------------------------
 -- Table structure for cms_tag
@@ -8728,8 +8612,8 @@ CREATE TABLE `cms_user_detail` (
 -- ----------------------------
 -- Records of cms_user_detail
 -- ----------------------------
-INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', null, null, '2015-07-23 15:12:01', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '1', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-08-12 07:45:55', '127.0.0.1', '2015-08-12 10:02:33', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '403', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', '2015-08-19 15:59:40', '127.0.0.1', '2015-08-19 16:15:21', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '3', null, null, null, '22807465', null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-08-19 16:33:09', '127.0.0.1', '2015-08-19 16:37:22', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '407', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup

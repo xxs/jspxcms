@@ -87,39 +87,6 @@ function confirmDelete() {
 			</script>
     </td>
   </tr>
-  <!-- 
-  <tr>
-    <td class="in-lab" width="15%"><em class="required">*</em>绑定文档:</td>
-    <td class="in-ctt" width="85%" colspan="3">
-    	<span id="infoPermsContainer">
-    	<span id="infoPermIds">
-	  	<c:forEach var="n" items="${infoPerms}">
-	  		<f:hidden name="infoPermIds" value="${n.id}"/>
-	  	</c:forEach>
-	  	</span>
-	  	<span id="infoPermIdsNumber">
-	  	<c:forEach var="n" items="${infoPerms}">
-	  		<f:hidden name="infoPermIdsNumber" value="${n.id}"/>
-	  	</c:forEach>
-	  	</span>
-	  	<span id="infoPermIdsName">
-	  	<c:forEach var="n" items="${infoPerms}">
-	  		<f:hidden name="infoPermIdsName" value="${n.displayName}"/>
-	  	</c:forEach>
-	  	</span>
-	    <f:text id="infoPermIdsNameDisplay" readonly="readonly" style="width:220px;"/><input id="infoPermIdsButton" type="button" value="<s:message code='choose'/>"/>
-	    </span>
-			<script type="text/javascript">
-			$(function(){
-	    	Cms.f7.nodePerms("${ctx}","infoPermIds",{
-	    		settings: {"title": "<s:message code='role.infoPerms.select'/>"},
-	    		params: {"isRealNode": true}
-	    	});
-	    });
-			</script>
-    </td>
-  </tr>
-   -->
   <tr>
     <td class="in-lab" width="15%"><em class="required">*</em>属性名称:</td>
     <td class="in-ctt" width="85%" colspan="3">

@@ -24,11 +24,10 @@ import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.Spec;
 import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.NodeDao;
-import com.jspxcms.core.repository.ParameterDao;
 import com.jspxcms.core.repository.SpecDao;
-import com.jspxcms.core.service.ParameterService;
 import com.jspxcms.core.service.SiteService;
 import com.jspxcms.core.service.SpecService;
+import com.jspxcms.core.service.SpecValueService;
 import com.jspxcms.core.support.DeleteException;
 
 /**
@@ -74,18 +73,18 @@ public class SpecServiceImpl implements SpecService,
 	public Spec save(Spec bean, Integer[] infoPermIds, Integer[] nodePermIds,String[] itemName,
 			Integer siteId) {
 		Site site = siteService.get(siteId);
-//		bean.setNode(nodeDao.findOne(nodePermIds[0]));
-//		bean.setSite(site);
-//		bean.applyDefaultValue();
-//		bean = dao.save(bean);
-//		parameterService.save(itemName, bean);
+		bean.setNode(nodeDao.findOne(nodePermIds[0]));
+		bean.setSite(site);
+		bean.applyDefaultValue();
+		bean = dao.save(bean);
+		specValueService.save(itemName,null, bean);
 		return bean;
 	}
 
 	@Transactional
 	public Spec update(Spec bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
 		bean = dao.save(bean);
-//		parameterService.update(itemId, itemName, bean);
+		specValueService.update(itemId, itemName,null, bean);
 		return bean;
 	}
 	
@@ -103,7 +102,7 @@ public class SpecServiceImpl implements SpecService,
 	public Spec save(Spec bean, Integer siteId) {
 		Site site = siteService.get(siteId);
 		bean.setSite(site);
-//		bean.applyDefaultValue();
+		bean.applyDefaultValue();
 		dao.save(bean);
 		return bean;
 	}
@@ -159,11 +158,11 @@ public class SpecServiceImpl implements SpecService,
 		this.siteService = siteService;
 	}
 	
-	private ParameterService parameterService;
+	private SpecValueService specValueService;
 
 	@Autowired
-	public void setParameterService(ParameterService parameterService) {
-		this.parameterService = parameterService;
+	public void setSpecValueService(SpecValueService specValueService) {
+		this.specValueService = specValueService;
 	}
 	
 
