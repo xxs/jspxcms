@@ -42,7 +42,7 @@ public class InfoAttrServiceImpl implements InfoAttrService {
 				infoAttrs.add(infoAttr);
 			}
 		}
-		info.setInfoAttrss(infoAttrs);
+		info.setInfoAttrList(infoAttrs);
 		return infoAttrs;
 	}
 

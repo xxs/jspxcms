@@ -10,10 +10,10 @@ import static com.jspxcms.core.support.Constants.SAVE_SUCCESS;
 import static com.jspxcms.core.support.Constants.VIEW;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,13 +40,13 @@ import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Attribute;
 import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
-import com.jspxcms.core.domain.InfoAttr;
 import com.jspxcms.core.domain.InfoDetail;
 import com.jspxcms.core.domain.InfoImage;
 import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.NodeAttr;
+import com.jspxcms.core.domain.Parameter;
 import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
@@ -167,12 +167,9 @@ public class InfoController {
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 		
-		List<Attr> attrssList = new ArrayList<Attr>();
-		List<NodeAttr> nodeAttrList = nodeAttrService.getByNodeId(nodeId);
-		for (int i = 0; i < nodeAttrList.size(); i++) {
-			attrssList.add(nodeAttrList.get(i).getAttr());
-		}
-		List<ParameterGroup> parameterGroupList = parameterGroupService.findByNodeAndSite(node, site);
+		node = nodeQuery.get(nodeId);
+		Set<Attr> attrSet = node.getNodeAttrSet();
+		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
 		
 		List<Brand> brandList = brandService.findList(siteId, null);
 		modelMap.addAttribute("model", model);
@@ -186,8 +183,8 @@ public class InfoController {
 		modelMap.addAttribute("queryStatus", queryStatus);
 		//---------------------
 		modelMap.addAttribute("brandList", brandList);
-		modelMap.addAttribute("attrssList", attrssList);
-		modelMap.addAttribute("parameterGroupList", parameterGroupList);
+		modelMap.addAttribute("attrSet", attrSet);
+		modelMap.addAttribute("parameterGroupSet", parameterGroupSet);
 		modelMap.addAttribute(OPRT, CREATE);
 		return "core/info/info_form";
 	}
@@ -243,14 +240,10 @@ public class InfoController {
 		Node node = bean.getNode();
 		Model model = bean.getModel();
 		List<Attribute> attrList = attributeService.findList(site.getId());
-		
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 
-		System.out.println("iddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd:"+bean.getNode().getId());
-		
 		List<NodeAttr> naList = nodeAttrService.getByNodeId(bean.getNode().getId());
-		System.out.println("node ID："+bean.getNode().getId());
 		List<Attr> aList = new ArrayList<Attr>();
 		if(naList != null && naList.size()>0){
 			for (int i = 0; i < naList.size(); i++) {
@@ -258,10 +251,14 @@ public class InfoController {
 				System.out.println(naList.get(i).getAttr().getName());
 			}
 		}
-		//List<Attr> attrssList = attrService.findList(site.getId());
-		List<InfoAttr> s  = bean.getInfoAttrss();
-		List<Attr> attrssList = attrService.findList(site.getId());
-		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
+		
+		node = nodeQuery.get(node.getId());
+		List<Attr> s  = bean.getAttrList();
+		Set<Attr> attrSet = node.getNodeAttrSet();
+		modelMap.addAttribute("s", s);
+		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
+		
+		
 		List<Brand> brandList = brandService.findList(siteId, null);
 		
 		modelMap.addAttribute("model", model);
@@ -275,8 +272,8 @@ public class InfoController {
 		modelMap.addAttribute("queryStatus", queryStatus);
 		//---------------------
 		modelMap.addAttribute("brandList", brandList);
-		modelMap.addAttribute("attrssList", attrssList);
-		modelMap.addAttribute("parameterGroupList", parameterGroupList);
+		modelMap.addAttribute("attrSet", attrSet);
+		modelMap.addAttribute("parameterGroupSet", parameterGroupSet);
 		modelMap.addAttribute(OPRT, CREATE);
 		modelMap.addAttribute(OPRT, EDIT);
 		return "core/info/info_form";
@@ -410,6 +407,23 @@ public class InfoController {
 		}
 		Map<String, String> customs = Servlets.getParameterMap(request,
 				"customs_");
+		
+		Node node = nodeQuery.get(bean.getNode().getId());
+		Set<ParameterGroup> pgSet = node.getNodeParameterGroupSet();
+		for (ParameterGroup parameterGroup : pgSet) {
+			for (Parameter parameter : parameterGroup.getParameters()) {
+				String parameterValue = request.getParameter("parameter_" + parameter.getId());
+				if (StringUtils.isNotEmpty(parameterValue)) {
+					System.out.println("是入的值为："+parameterValue);
+					//product.getParameterValue().put(parameter, parameterValue);
+				} else {
+					System.out.println("是入的值为空："+parameterValue);
+					//product.getParameterValue().remove(parameter);
+				}
+			}
+		}
+		
+		
 		Map<String, String> clobs = Servlets.getParameterMap(request, "clobs_");
 		if (!remainDescription
 				|| StringUtils.isBlank(detail.getMetaDescription())) {

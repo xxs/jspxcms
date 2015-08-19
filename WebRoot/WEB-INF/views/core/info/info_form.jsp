@@ -519,7 +519,7 @@ function confirmDelete() {
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 							<div>
-						  		<c:forEach var="parameterGroup" items="${parameterGroupList}">
+						  		<c:forEach var="parameterGroup" items="${parameterGroupSet}">
 							  		<label><c:out value="${parameterGroup.name}"/></label> 
 							  		
 							  		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
@@ -530,7 +530,7 @@ function confirmDelete() {
 											      		${parameter.name}
 											  		</td>
 													<td width="45%">
-														<input name="" />
+														<input name="parameter_${parameter.id}" value="" />
 													</td>
 											  </tr>
 											 </tbody>
@@ -550,15 +550,35 @@ function confirmDelete() {
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 		  				
-		  					<c:forEach var="attr" items="${attrssList}">
+		  					<c:forEach var="attr" items="${attrSet}">
 								<label><c:out value="${attr.name}"/></label> &nbsp;
-						  		<select name="attr.id" >
+						  		<select name="attr_${attr.id}" >
 						  			<c:forEach var="item" items="${attr.items}" >
-							  			<option >${item.name}</option>
+							  			<option value="${item.id}">${item.name}</option>
 							  		</c:forEach>
 						  		</select>
 						  	</c:forEach>	
 						  	
+						</td>
+		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+		  					<c:forEach var="attr" items="${s}">
+								<label><c:out value="${attr.name}"/></label> &nbsp;
+						  		<select name="attr_${attr.id}" >
+						  			<c:forEach var="item" items="${attr.items}" >
+							  			<option value="${item.id}">${item.name}</option>
+							  		</c:forEach>
+						  		</select>
+						  	</c:forEach>	
+						</td>
+		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+		  					<c:forEach var="attr" items="${ss}">
+								<label><c:out value="${attr.name}"/></label> &nbsp;
+						  		<select name="attr_${attr.id}" >
+						  			<c:forEach var="item" items="${attr.items}" >
+							  			<option value="${item.id}">${item.name}</option>
+							  		</c:forEach>
+						  		</select>
+						  	</c:forEach>	
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>

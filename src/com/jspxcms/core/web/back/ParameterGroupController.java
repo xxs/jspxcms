@@ -123,8 +123,6 @@ public class ParameterGroupController {
 		}
 		if (nodePermIds == null) {
 			nodePermIds = new Integer[0];
-		}else{
-			bean.setNode(nodeDao.findOne(nodePermIds[0]));
 		}
 		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
 		logger.info("update Attr, name={}.", bean.getName());

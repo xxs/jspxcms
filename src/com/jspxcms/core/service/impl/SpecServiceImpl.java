@@ -73,7 +73,6 @@ public class SpecServiceImpl implements SpecService,
 	public Spec save(Spec bean, Integer[] infoPermIds, Integer[] nodePermIds,String[] itemName,
 			Integer siteId) {
 		Site site = siteService.get(siteId);
-		bean.setNode(nodeDao.findOne(nodePermIds[0]));
 		bean.setSite(site);
 		bean.applyDefaultValue();
 		bean = dao.save(bean);

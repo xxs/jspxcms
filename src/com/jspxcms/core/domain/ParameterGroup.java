@@ -36,22 +36,37 @@ public class ParameterGroup implements java.io.Serializable {
 	
 	@Transient
 	public Set<Node> getNodePerms() {
+		Set<NodeParameterGroup> groups = getNodeParameterGroups();
 		Set<Node> nodes = new HashSet<Node>();
-		nodes.add(this.node);
+		for (NodeParameterGroup nr : groups) {
+			nodes.add(nr.getNode());
+		}
 		return nodes;
 	}
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parameterGroup")
+	public Set<NodeParameterGroup> getNodeParameterGroups() {
+		return nodeParameterGroups;
+	}
+	
+	public void setNodeParameterGroups(Set<NodeParameterGroup> nodeParameterGroups) {
+		this.nodeParameterGroups = nodeParameterGroups;
+	}
+
+	
 	private Integer id;
 	
+
 	/** 名称 */
 	private String name;
 
-	/** 绑定分类 */
-	private Node node;
 	
 	private Site site;
 	
 	private Integer seq;
+	
+	/** 绑定分类 */
+	private Set<NodeParameterGroup> nodeParameterGroups = new HashSet<NodeParameterGroup>(0);
 	
 	/** 参数 */
 	private List<Parameter> parameters = new ArrayList<Parameter>();
@@ -107,27 +122,6 @@ public class ParameterGroup implements java.io.Serializable {
 		this.site = site;
 	}
 	
-	/**
-	 * 获取绑定node
-	 * 
-	 * @return 绑定node
-	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "f_node_id", nullable = false)
-	public Node getNode() {
-		return node;
-	}
-
-	/**
-	 * 设置绑定node
-	 * 
-	 * @param node
-	 *            绑定node
-	 */
-	public void setNode(Node node) {
-		this.node = node;
-	}
-
 	/**
 	 * 获取参数
 	 * 

@@ -127,7 +127,8 @@ public class SpecController {
 		}else{
 			//bean.setNode(nodeDao.findOne(nodePermIds[0]));
 		}
-		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
+//		bean.setNode(node);--------------------------------
+//		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
 		logger.info("update Attr, name={}.", bean.getName());
 		ra.addFlashAttribute(MESSAGE, SAVE_SUCCESS);
 		if (Constants.REDIRECT_LIST.equals(redirect)) {

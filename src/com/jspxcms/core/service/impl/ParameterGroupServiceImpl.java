@@ -23,9 +23,9 @@ import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.listener.SiteDeleteListener;
-import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.repository.ParameterGroupDao;
 import com.jspxcms.core.repository.ParameterGroupDaoPlus;
+import com.jspxcms.core.service.NodeParameterGroupService;
 import com.jspxcms.core.service.ParameterGroupService;
 import com.jspxcms.core.service.ParameterService;
 import com.jspxcms.core.service.SiteService;
@@ -74,10 +74,11 @@ public class ParameterGroupServiceImpl implements ParameterGroupService,
 	public ParameterGroup save(ParameterGroup bean, Integer[] infoPermIds, Integer[] nodePermIds,String[] itemName,
 			Integer siteId) {
 		Site site = siteService.get(siteId);
-		bean.setNode(nodeDao.findOne(nodePermIds[0]));
 		bean.setSite(site);
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
+		//infoAttrService.update(bean, infoPermIds);
+		nodeParameterGroupService.update(bean, nodePermIds);
 		parameterService.save(itemName, bean);
 		return bean;
 	}
@@ -86,6 +87,7 @@ public class ParameterGroupServiceImpl implements ParameterGroupService,
 	public ParameterGroup update(ParameterGroup bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
+		nodeParameterGroupService.update(bean, nodePermIds);
 		parameterService.update(itemId, itemName, bean);
 		return bean;
 	}
@@ -175,18 +177,19 @@ public class ParameterGroupServiceImpl implements ParameterGroupService,
 		this.dao = dao;
 	}
 	
-	private NodeDao nodeDao;
-	
-	@Autowired
-	public void setNodeDao(NodeDao nodeDao) {
-		this.nodeDao = nodeDao;
-	}
-	
 	private ParameterGroupDaoPlus parameterGroupDaoPlus;
 	
 	@Autowired
 	public void setParameterGroupDaoPlus(ParameterGroupDaoPlus parameterGroupDaoPlus) {
 		this.parameterGroupDaoPlus = parameterGroupDaoPlus;
+	}
+	
+	//private InfoParameterGroupService infoParameterGroupService ;
+	private NodeParameterGroupService nodeParameterGroupService ;
+
+	@Autowired
+	public void setNodeParameterGroupService(NodeParameterGroupService nodeParameterGroupService) {
+		this.nodeParameterGroupService = nodeParameterGroupService;
 	}
 	
 	@Override

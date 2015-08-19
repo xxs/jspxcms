@@ -874,8 +874,8 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	}
 	
 	@Transient
-	public List<Attr> getAttrss() {
-		List<InfoAttr> infoAttrss = getInfoAttrss();
+	public List<Attr> getAttrList() {
+		List<InfoAttr> infoAttrss = getInfoAttrList();
 		if (infoAttrss == null) {
 			return null;
 		}
@@ -1405,7 +1405,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	private List<InfoSpecial> infoSpecials = new ArrayList<InfoSpecial>(0);
 	private List<InfoAttribute> infoAttrs = new ArrayList<InfoAttribute>(0);
 	
-	private List<InfoAttr> infoAttrss = new ArrayList<InfoAttr>(0);
+	private List<InfoAttr> infoAttrList = new ArrayList<InfoAttr>(0);
 	
 	private List<InfoImage> images = new ArrayList<InfoImage>(0);
 	private List<InfoFile> files = new ArrayList<InfoFile>(0);
@@ -1526,12 +1526,12 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE }, mappedBy = "info")
 	@OrderBy("attr asc")
-	public List<InfoAttr> getInfoAttrss() {
-		return infoAttrss;
+	public List<InfoAttr> getInfoAttrList() {
+		return infoAttrList;
 	}
 
-	public void setInfoAttrss(List<InfoAttr> infoAttrss) {
-		this.infoAttrss = infoAttrss;
+	public void setInfoAttrList(List<InfoAttr> infoAttrList) {
+		this.infoAttrList = infoAttrList;
 	}
 
 	@ElementCollection

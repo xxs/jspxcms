@@ -624,7 +624,7 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		}
 		return roles;
 	}
-
+	
 	@Transient
 	public Set<Role> getNodePerms() {
 		Set<NodeRole> nodeRoles = getNodeRoles();
@@ -636,6 +636,67 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		}
 		return roles;
 	}
+	
+	@Transient
+	public Set<ParameterGroup> getInfoParameterGroupSet() {
+		Set<NodeParameterGroup> nodeParameterGroups = getNodeParameters();
+		Set<ParameterGroup> parameterGroups  = new HashSet<ParameterGroup>();
+		for (NodeParameterGroup nr : nodeParameterGroups) {
+			parameterGroups.add(nr.getParameterGroup());
+		}
+		return parameterGroups;
+	}
+	
+	@Transient
+	public Set<ParameterGroup> getNodeParameterGroupSet() {
+		Set<NodeParameterGroup> nodeParameters = getNodeParameters();
+		Set<ParameterGroup> parameterGroups = new HashSet<ParameterGroup>();
+		for (NodeParameterGroup nr : nodeParameters) {
+			parameterGroups.add(nr.getParameterGroup());
+		}
+		return parameterGroups;
+	}
+	
+	@Transient
+	public Set<Spec> getInfoSpecSet() {
+		Set<NodeSpec> nodeSpecSet = getNodeSpecs();
+		Set<Spec> specs = new HashSet<Spec>();
+		for (NodeSpec nr : nodeSpecSet) {
+			specs.add(nr.getSpec());
+		}
+		return specs;
+	}
+	
+	@Transient
+	public Set<Spec> getNodeSpecSet() {
+		Set<NodeSpec> nodeSpecSet = getNodeSpecs();
+		Set<Spec> specs = new HashSet<Spec>();
+		for (NodeSpec nr : nodeSpecSet) {
+			specs.add(nr.getSpec());
+		}
+		return specs;
+	}
+	
+	@Transient
+	public Set<Attr> getInfoAttrSet() {
+		Set<NodeAttr> nodeAttrSet = getNodeAttrs();
+		Set<Attr> attrs = new HashSet<Attr>();
+		for (NodeAttr nr : nodeAttrSet) {
+			attrs.add(nr.getAttr());
+		}
+		return attrs;
+	}
+	
+	@Transient
+	public Set<Attr> getNodeAttrSet() {
+		Set<NodeAttr> nodeAttrSet = getNodeAttrs();
+		Set<Attr> attrs = new HashSet<Attr>();
+		for (NodeAttr nr : nodeAttrSet) {
+			attrs.add(nr.getAttr());
+		}
+		return attrs;
+	}
+	
 
 	@Transient
 	public Set<MemberGroup> getViewGroups() {
@@ -939,6 +1000,9 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	private List<Node> children = new ArrayList<Node>(0);
 	private Set<NodeDetail> details = new HashSet<NodeDetail>(0);
 	private Set<NodeBuffer> buffers = new HashSet<NodeBuffer>(0);
+	private Set<NodeAttr> nodeAttrs = new HashSet<NodeAttr>(0);
+	private Set<NodeParameterGroup> nodeParameterGroups = new HashSet<NodeParameterGroup>(0);
+	private Set<NodeSpec> nodeSpecs = new HashSet<NodeSpec>(0);
 	private Set<NodeRole> nodeRoles = new HashSet<NodeRole>(0);
 	private Set<NodeMemberGroup> nodeGroups = new HashSet<NodeMemberGroup>(0);
 	private SortedSet<NodeOrg> nodeOrgs = new TreeSet<NodeOrg>(
@@ -1114,9 +1178,36 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	public Set<NodeRole> getNodeRoles() {
 		return nodeRoles;
 	}
-
+	
 	public void setNodeRoles(Set<NodeRole> nodeRoles) {
 		this.nodeRoles = nodeRoles;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
+	public Set<NodeSpec> getNodeSpecs() {
+		return nodeSpecs;
+	}
+	
+	public void setNodeSpecs(Set<NodeSpec> nodeSpecs) {
+		this.nodeSpecs = nodeSpecs;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
+	public Set<NodeAttr> getNodeAttrs() {
+		return nodeAttrs;
+	}
+	
+	public void setNodeAttrs(Set<NodeAttr> nodeAttrs) {
+		this.nodeAttrs = nodeAttrs;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
+	public Set<NodeParameterGroup> getNodeParameters() {
+		return nodeParameterGroups;
+	}
+
+	public void setNodeParameters(Set<NodeParameterGroup> nodeParameterGroups) {
+		this.nodeParameterGroups = nodeParameterGroups;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")

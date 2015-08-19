@@ -43,9 +43,22 @@ public class Spec implements java.io.Serializable {
 	}
 	
 	@Transient
-	public Set<Node> getNodePerms() {
+	public Set<Node> getInfoPerms() {
+		Set<NodeSpec> nodeSpecs = getNodeSpecs();
 		Set<Node> nodes = new HashSet<Node>();
-		nodes.add(this.node);
+		for (NodeSpec nr : nodeSpecs) {
+			nodes.add(nr.getNode());
+		}
+		return nodes;
+	}
+
+	@Transient
+	public Set<Node> getNodePerms() {
+		Set<NodeSpec> nodeRoles = getNodeSpecs();
+		Set<Node> nodes = new HashSet<Node>();
+		for (NodeSpec nr : nodeRoles) {
+			nodes.add(nr.getNode());
+		}
 		return nodes;
 	}
 	
@@ -56,14 +69,15 @@ public class Spec implements java.io.Serializable {
 	
 	private Site site;
 	
-	/** 绑定分类 */
-	private Node node;
 	
 	private Integer seq;
 
 	/** 备注 */
 	private String memo;
 
+	/** 绑定分类 */
+	private Set<NodeSpec> nodeSpecs = new HashSet<NodeSpec>(0);
+	
 	/** 规格值 */
 	private List<SpecValue> specValues = new ArrayList<SpecValue>();
 
@@ -101,25 +115,13 @@ public class Spec implements java.io.Serializable {
 		this.site = site;
 	}
 	
-	/**
-	 * 获取绑定node
-	 * 
-	 * @return 绑定node
-	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "f_node_id", nullable = false)
-	public Node getNode() {
-		return node;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "spec")
+	public Set<NodeSpec> getNodeSpecs() {
+		return nodeSpecs;
 	}
 
-	/**
-	 * 设置绑定node
-	 * 
-	 * @param node
-	 *            绑定node
-	 */
-	public void setNode(Node node) {
-		this.node = node;
+	public void setNodeSpecs(Set<NodeSpec> nodeSpecs) {
+		this.nodeSpecs = nodeSpecs;
 	}
 	
 	/**
