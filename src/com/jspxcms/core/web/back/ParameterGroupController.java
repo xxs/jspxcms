@@ -125,7 +125,7 @@ public class ParameterGroupController {
 			nodePermIds = new Integer[0];
 		}
 		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
-		logger.info("update Attr, name={}.", bean.getName());
+		logger.info("update ParameterGroup, name={}.", bean.getName());
 		ra.addFlashAttribute(MESSAGE, SAVE_SUCCESS);
 		if (Constants.REDIRECT_LIST.equals(redirect)) {
 			return "redirect:list.do";

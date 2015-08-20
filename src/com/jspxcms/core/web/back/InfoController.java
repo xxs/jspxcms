@@ -42,6 +42,7 @@ import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.InfoDetail;
 import com.jspxcms.core.domain.InfoImage;
+import com.jspxcms.core.domain.InfoParameter;
 import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
@@ -49,11 +50,13 @@ import com.jspxcms.core.domain.NodeAttr;
 import com.jspxcms.core.domain.Parameter;
 import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Site;
+import com.jspxcms.core.domain.Spec;
 import com.jspxcms.core.domain.User;
 import com.jspxcms.core.service.AttrService;
 import com.jspxcms.core.service.AttributeService;
 import com.jspxcms.core.service.BrandService;
 import com.jspxcms.core.service.InfoAttrService;
+import com.jspxcms.core.service.InfoParameterService;
 import com.jspxcms.core.service.InfoQueryService;
 import com.jspxcms.core.service.InfoService;
 import com.jspxcms.core.service.MemberGroupService;
@@ -170,8 +173,11 @@ public class InfoController {
 		node = nodeQuery.get(nodeId);
 		Set<Attr> attrSet = node.getNodeAttrSet();
 		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
+		Set<Spec> specList = node.getNodeSpecSet();
+		modelMap.addAttribute("specList", specList);
 		
 		List<Brand> brandList = brandService.findList(siteId, null);
+		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
@@ -257,8 +263,14 @@ public class InfoController {
 		Set<Attr> attrSet = node.getNodeAttrSet();
 		modelMap.addAttribute("s", s);
 		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
-		
-		
+		Set<Spec> specList = node.getNodeSpecSet();
+		modelMap.addAttribute("specList", specList);
+//		List<Parameter> ps = bean.getParameterList();
+//		for (int i = 0; i < ps.size(); i++) {
+//			System.out.println(ps.get(i).getName());
+//		}
+		List<InfoParameter> ips = bean.getInfoParameterList();
+		modelMap.addAttribute("ips", ips);
 		List<Brand> brandList = brandService.findList(siteId, null);
 		
 		modelMap.addAttribute("model", model);
@@ -411,18 +423,26 @@ public class InfoController {
 		Node node = nodeQuery.get(bean.getNode().getId());
 		Set<ParameterGroup> pgSet = node.getNodeParameterGroupSet();
 		for (ParameterGroup parameterGroup : pgSet) {
+			int lens = parameterGroup.getParameters() != null ? parameterGroup.getParameters().size() : 0;
+			Integer[] pIds = new Integer[lens];
+			String[] values = new String[lens];
+			int temp = 0;
 			for (Parameter parameter : parameterGroup.getParameters()) {
 				String parameterValue = request.getParameter("parameter_" + parameter.getId());
 				if (StringUtils.isNotEmpty(parameterValue)) {
-					System.out.println("是入的值为："+parameterValue);
+					System.out.println(parameter.getId()+"是入的值为："+parameterValue);
 					//product.getParameterValue().put(parameter, parameterValue);
 				} else {
-					System.out.println("是入的值为空："+parameterValue);
+					System.out.println(parameter.getId()+"是入的值为空：");
+					parameterValue = "";
 					//product.getParameterValue().remove(parameter);
 				}
+				pIds[temp] = parameter.getId();
+				values[temp] = parameterValue;
+				temp++;
 			}
+			infoParameterService.save(bean, pIds, values);
 		}
-		
 		
 		Map<String, String> clobs = Servlets.getParameterMap(request, "clobs_");
 		if (!remainDescription
@@ -630,6 +650,8 @@ public class InfoController {
 	private ParameterGroupService parameterGroupService;
 	@Autowired
 	private InfoAttrService infoAttrService;
+	@Autowired
+	private InfoParameterService infoParameterService;
 	@Autowired
 	private NodeAttrService nodeAttrService;
 	@Autowired

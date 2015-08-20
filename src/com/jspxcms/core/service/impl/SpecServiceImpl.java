@@ -25,6 +25,7 @@ import com.jspxcms.core.domain.Spec;
 import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.repository.SpecDao;
+import com.jspxcms.core.service.NodeSpecService;
 import com.jspxcms.core.service.SiteService;
 import com.jspxcms.core.service.SpecService;
 import com.jspxcms.core.service.SpecValueService;
@@ -76,13 +77,16 @@ public class SpecServiceImpl implements SpecService,
 		bean.setSite(site);
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
+		nodeSpecService.update(bean, nodePermIds);
 		specValueService.save(itemName,null, bean);
 		return bean;
 	}
 
 	@Transactional
 	public Spec update(Spec bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
+		bean.applyDefaultValue();
 		bean = dao.save(bean);
+		nodeSpecService.update(bean, nodePermIds);
 		specValueService.update(itemId, itemName,null, bean);
 		return bean;
 	}
@@ -170,6 +174,13 @@ public class SpecServiceImpl implements SpecService,
 	@Autowired
 	public void setDao(SpecDao dao) {
 		this.dao = dao;
+	}
+	
+	private NodeSpecService nodeSpecService;
+	
+	@Autowired
+	public void setNodeSpecService(NodeSpecService nodeSpecService) {
+		this.nodeSpecService = nodeSpecService;
 	}
 	
 	private NodeDao nodeDao;

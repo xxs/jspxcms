@@ -103,9 +103,8 @@ public class SpecController {
 				Constants.SEARCH_PREFIX);
 		RowSide<Spec> side = service.findSide(siteId, params, bean, position,
 				pageable.getSort());
-		//modelMap.addAttribute("nodePerms", bean.getNodePerms());
+		modelMap.addAttribute("nodePerms", bean.getNodePerms());
 		modelMap.addAttribute("bean", bean);
-		System.out.println("size()................."+bean.getSpecValues().size());
 		modelMap.addAttribute("side", side);
 		modelMap.addAttribute("position", position);
 		modelMap.addAttribute(OPRT, EDIT);
@@ -124,12 +123,9 @@ public class SpecController {
 		}
 		if (nodePermIds == null) {
 			nodePermIds = new Integer[0];
-		}else{
-			//bean.setNode(nodeDao.findOne(nodePermIds[0]));
 		}
-//		bean.setNode(node);--------------------------------
-//		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
-		logger.info("update Attr, name={}.", bean.getName());
+		service.update(bean, infoPermIds, nodePermIds,itemId,itemName);
+		logger.info("update spec, name={}.", bean.getName());
 		ra.addFlashAttribute(MESSAGE, SAVE_SUCCESS);
 		if (Constants.REDIRECT_LIST.equals(redirect)) {
 			return "redirect:list.do";

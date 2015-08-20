@@ -25,10 +25,10 @@ public interface InfoParameterDao extends Repository<InfoParameter, Integer> {
 	// --------------------
 
 	@Modifying
-	@Query("delete from InfoParameterValue t where t.info.id=?1")
+	@Query("delete from InfoParameter t where t.info.id=?1")
 	public int deleteByInfoId(Integer infoId);
 
 	@Modifying
-	@Query("delete from InfoParameterValue t where t.parameter.id=?1")
+	@Query("delete from InfoParameter t where t.parameter.id=?1")
 	public int deleteByParameterId(Integer parameterId);
 }

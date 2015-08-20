@@ -885,7 +885,19 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		}
 		return attrss;
 	}
-
+	@Transient
+	public List<Parameter> getParameterList() {
+		List<InfoParameter> infoParameters = getInfoParameterList();
+		if (infoParameters == null) {
+			return null;
+		}
+		List<Parameter> ps = new ArrayList<Parameter>(infoParameters.size());
+		for (InfoParameter infoParameter  : infoParameters) {
+			ps.add(infoParameter.getParameter());
+		}
+		return ps;
+	}
+	
 	@Transient
 	public InfoAttribute getInfoAttr(Attribute attr) {
 		Collection<InfoAttribute> infoAttrs = getInfoAttrs();
@@ -1406,6 +1418,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	private List<InfoAttribute> infoAttrs = new ArrayList<InfoAttribute>(0);
 	
 	private List<InfoAttr> infoAttrList = new ArrayList<InfoAttr>(0);
+	private List<InfoParameter> infoParameterList = new ArrayList<InfoParameter>(0);
 	
 	private List<InfoImage> images = new ArrayList<InfoImage>(0);
 	private List<InfoFile> files = new ArrayList<InfoFile>(0);
@@ -1529,9 +1542,19 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	public List<InfoAttr> getInfoAttrList() {
 		return infoAttrList;
 	}
-
+	
 	public void setInfoAttrList(List<InfoAttr> infoAttrList) {
 		this.infoAttrList = infoAttrList;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE }, mappedBy = "info")
+	@OrderBy("parameter asc")
+	public List<InfoParameter> getInfoParameterList() {
+		return infoParameterList;
+	}
+
+	public void setInfoParameterList(List<InfoParameter> infoParameterList) {
+		this.infoParameterList = infoParameterList;
 	}
 
 	@ElementCollection

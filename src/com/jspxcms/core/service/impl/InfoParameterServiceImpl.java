@@ -19,19 +19,19 @@ import com.jspxcms.core.service.ParameterService;
 @Transactional(readOnly = true)
 public class InfoParameterServiceImpl implements InfoParameterService {
 	@Transactional
-	public List<InfoParameter> save(Info info, String[] parameterNames) {
-		int len = ArrayUtils.getLength(parameterNames);
+	public List<InfoParameter> save(Info info, Integer[] parameterIds, String[] values) {
+		int len = ArrayUtils.getLength(parameterIds);
 		List<InfoParameter> infoParameters = new ArrayList<InfoParameter>(len);
 		if (len > 0) {
 			InfoParameter infoParameter;
 			Parameter parameter;
-			for (String parameterName : parameterNames) {
+			for (int i = 0; i < parameterIds.length; i++) {
 				infoParameter = new InfoParameter();
-				parameter = parameterService.refer(parameterName, info.getSite().getId());
+				parameter = parameterService.get(parameterIds[i]);
 				parameter.setSite(info.getSite());
-				parameter.set
 				infoParameter.setParameter(parameter);
 				infoParameter.setInfo(info);
+				infoParameter.setValue(values[i]);
 				infoParameters.add(infoParameter);
 				dao.save(infoParameter);
 			}
@@ -40,11 +40,9 @@ public class InfoParameterServiceImpl implements InfoParameterService {
 	}
 
 	@Transactional
-	public List<InfoParameter> update(Info info, String[] parameterNames) {
-		List<Parameter> parameters = info.getParameters();
-		parameterService.derefer(parameters);
+	public List<InfoParameter> update(Info info, Integer[] parameterIds, String[] values) {
 		dao.deleteByInfoId(info.getId());
-		List<InfoParameter> infoParameters = save(info, parameterNames);
+		List<InfoParameter> infoParameters = save(info, parameterIds,values);
 		return infoParameters;
 	}
 
