@@ -43,6 +43,16 @@ $(document).ready(function() {
         
     };
     $.jqtab("#tabs",".tab-con");
+    //规格切换js代码
+    var $specAddTh = $("#specAddTh");
+    var $specitem = $("#specSelect :checkbox");
+    $specitem.click(function(){
+    	$this = $(this);
+    	alert($(this));
+    	var id = $this.val();
+    	alert(id);
+    });
+    $specAddTh.before('<th class="123">123123</th>');
 });
 
 $(function() {
@@ -588,12 +598,17 @@ function confirmDelete() {
 				</table>
 		  	</c:when>
 			<c:when test="${field.name eq 'specs'}">
-				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
+				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }" id="specSelect">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 							<c:forEach var="spec" items="${specList}" >
-							  		<inpput type="text"/>
+							  	<input type="checkbox" name="specCheck" value="${spec.id }"/>${spec.name }
+							  		<select name="spec_${spec.id}" class="">
+							  			<c:forEach var="value" items="${spec.specValues}" >
+								  			<option value="${value.id}">${value.name }</option>
+								  		</c:forEach>
+							  		</select>
 							</c:forEach>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
@@ -653,7 +668,7 @@ function confirmDelete() {
 							  <tr>
 							    <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
 							    <th width="80"><s:message code="operate"/></th>
-							    <th>货号</th>
+							    <th id="specAddTh">货号</th>
 							    <th>销售价</th>
 							    <th>成本价</th>
 							    <th>市场价</th>
