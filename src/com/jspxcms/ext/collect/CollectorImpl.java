@@ -126,7 +126,7 @@ public class CollectorImpl implements Collector {
 				clobs.put(Info.INFO_TEXT, text);
 				infoService.save(info, detail, null, null, null, null, null,
 						clobs, null, null, null, null, null, nodeId, creatorId,
-						Info.COLLECTED, siteId);
+						Info.COLLECTED, siteId,null);
 			} catch (IOException e) {
 				logger.error(null, e);
 				return;
