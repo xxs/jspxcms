@@ -354,7 +354,7 @@ parent.frames['left'].location.href="left.do";
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 							<c:forEach var="brand" items="${brandList}" >
-							  		<label><input type="checkbox" name="brandIds" <c:if test="${fnx:contains_co(bean.nodeBrandSet,brand) || empty bean}"> checked="checked"</c:if> value="${item.id}"/>${brand.name}</label>
+							  		<label><input type="checkbox" name="brandIds" <c:if test="${fnx:contains_co(bean.nodeBrandSet,brand) || empty bean}"> checked="checked"</c:if> value="${brand.id}"/>${brand.name}</label>
 							</c:forEach>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>

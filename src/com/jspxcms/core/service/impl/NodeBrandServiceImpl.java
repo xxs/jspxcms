@@ -30,17 +30,15 @@ public class NodeBrandServiceImpl implements NodeBrandService,
 		return bean;
 	}
 	@Transactional
-	public NodeBrand save(Node node, Integer[] brandIds) {
-		NodeBrand bean = new NodeBrand();
-		Brand brand = new Brand();
+	public void save(Node node, Integer[] brandIds) {
+		NodeBrand bean;
 		for (int i = 0; i < brandIds.length; i++) {
-			brand = brandService.get(brandIds[i]);
+			bean = new NodeBrand();
 			bean.setNode(node);
-			bean.setBrand(brand);
+			bean.setBrand(brandService.get(brandIds[i]));
 			bean.applyDefaultValue();
-			bean = dao.save(bean);
+			dao.save(bean);
 		}
-		return bean;
 	}
 	
 	@Transactional

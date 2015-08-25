@@ -21,14 +21,14 @@ public interface InfoService {
 			Map<String, String> customs, Map<String, String> clobs,
 			List<InfoImage> images, List<InfoFile> files, Integer[] attrIds,
 			Map<String, String> attrImages, String[] tagNames, Integer nodeId,
-			Integer creatorId, String status, Integer siteId);
+			Integer creatorId, String status, Integer siteId,Integer brandId);
 
 	public Info update(Info bean, InfoDetail detail, Integer[] nodeIds,
 			Integer[] specialIds, Integer[] viewGroupIds, Integer[] viewOrgIds,
 			Map<String, String> customs, Map<String, String> clobs,
 			List<InfoImage> images, List<InfoFile> files, Integer[] attrIds,
 			Map<String, String> attrImages, String[] tagNames, Integer nodeId,
-			User operator, boolean pass);
+			User operator, boolean pass,Integer brandId);
 
 	public List<Info> pass(Integer[] ids, Integer userId, String opinion);
 

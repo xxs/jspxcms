@@ -157,7 +157,7 @@ public class InfoController {
 		}
 		Node node;
 		if (queryNodeId == null) {
-			node = nodeQuery.findRoot(site.getId());
+			node = nodeQuery.findRoot(siteId);
 			if (node == null) {
 				throw new CmsException("info.error.nodeNotFound");
 			}
@@ -166,7 +166,7 @@ public class InfoController {
 		}
 		Integer nodeId = node.getId();
 		Model model = node.getInfoModel();
-		List<Attribute> attrList = attributeService.findList(site.getId());
+		List<Attribute> attrList = attributeService.findList(siteId);
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 		
@@ -176,7 +176,7 @@ public class InfoController {
 		Set<Spec> specList = node.getNodeSpecSet();
 		modelMap.addAttribute("specList", specList);
 		
-		List<Brand> brandList = brandService.findList(siteId, null);
+		Set<Brand> brands = node.getNodeBrandSet();
 		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
@@ -188,7 +188,7 @@ public class InfoController {
 		modelMap.addAttribute("queryInfoPermType", queryInfoPermType);
 		modelMap.addAttribute("queryStatus", queryStatus);
 		//---------------------
-		modelMap.addAttribute("brandList", brandList);
+		modelMap.addAttribute("brands", brands);
 		modelMap.addAttribute("attrSet", attrSet);
 		modelMap.addAttribute("parameterGroupSet", parameterGroupSet);
 		modelMap.addAttribute(OPRT, CREATE);
@@ -231,12 +231,12 @@ public class InfoController {
 		}
 		Map<String, String[]> params = Servlets.getParameterValuesMap(request,
 				Constants.SEARCH_PREFIX);
-		Integer infoPermType = user.getInfoPermType(site.getId());
+		Integer infoPermType = user.getInfoPermType(siteId);
 		if (queryInfoPermType != null && queryInfoPermType > infoPermType) {
 			infoPermType = queryInfoPermType;
 		}
-		boolean allInfoPerm = user.getAllInfoPerm(site.getId());
-		RowSide<Info> side = query.findSide(site.getId(), mainNodeId, nodeId,
+		boolean allInfoPerm = user.getAllInfoPerm(siteId);
+		RowSide<Info> side = query.findSide(siteId, mainNodeId, nodeId,
 				treeNumber, user.getId(), allInfoPerm, infoPermType,
 				queryStatus, params, bean, position, pageable.getSort());
 		modelMap.addAttribute("bean", bean);
@@ -245,7 +245,7 @@ public class InfoController {
 
 		Node node = bean.getNode();
 		Model model = bean.getModel();
-		List<Attribute> attrList = attributeService.findList(site.getId());
+		List<Attribute> attrList = attributeService.findList(siteId);
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 
@@ -271,7 +271,9 @@ public class InfoController {
 //		}
 		List<InfoParameter> ips = bean.getInfoParameterList();
 		modelMap.addAttribute("ips", ips);
-		List<Brand> brandList = brandService.findList(siteId, null);
+		
+		Set<Brand> brands = node.getNodeBrandSet();
+		Brand oldBrands = bean.getBrand();
 		
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
@@ -283,7 +285,8 @@ public class InfoController {
 		modelMap.addAttribute("queryInfoPermType", queryInfoPermType);
 		modelMap.addAttribute("queryStatus", queryStatus);
 		//---------------------
-		modelMap.addAttribute("brandList", brandList);
+		modelMap.addAttribute("brands", brands);
+		modelMap.addAttribute("oldBrands", oldBrands);
 		modelMap.addAttribute("attrSet", attrSet);
 		modelMap.addAttribute("parameterGroupSet", parameterGroupSet);
 		modelMap.addAttribute(OPRT, CREATE);
@@ -354,7 +357,7 @@ public class InfoController {
 			@RequestParam(defaultValue = "false") boolean draft,
 			String[] imagesName, String[] imagesText, String[] imagesImage,
 			String redirect, Integer queryNodeId, Integer queryNodeType,
-			Integer queryInfoPermType, String queryStatus,
+			Integer queryInfoPermType, String queryStatus,Integer brandId,
 			HttpServletRequest request, RedirectAttributes ra) {
 		Integer siteId = Context.getCurrentSiteId(request);
 		Integer userId = Context.getCurrentUserId(request);
@@ -384,7 +387,7 @@ public class InfoController {
 		String status = draft ? Info.DRAFT : null;
 		service.save(bean, detail, nodeIds, specialIds, viewGroupIds,
 				viewOrgIds, customs, clobs, images, null, attrIds, attrImages,
-				tagNames, nodeId, userId, status, siteId);
+				tagNames, nodeId, userId, status, siteId,brandId);
 		logger.info("save Info, title={}.", bean.getTitle());
 		ra.addAttribute("queryNodeId", queryNodeId);
 		ra.addAttribute("queryNodeType", queryNodeType);
@@ -411,7 +414,7 @@ public class InfoController {
 			@RequestParam(defaultValue = "false") boolean remainDescription,
 			String[] imagesName, String[] imagesText, String[] imagesImage,
 			Integer position, Integer queryNodeId, Integer queryNodeType,
-			Integer queryInfoPermType, String queryStatus, String redirect,
+			Integer queryInfoPermType, String queryStatus, String redirect,Integer brandId,
 			HttpServletRequest request, RedirectAttributes ra) {
 		User user = Context.getCurrentUser(request);
 		if (!bean.isDataPerm(user) || !bean.isAuditPerm(user)) {
@@ -473,7 +476,7 @@ public class InfoController {
 		}
 		service.update(bean, detail, nodeIds, specialIds, viewGroupIds,
 				viewOrgIds, customs, clobs, images, null, attrIds, attrImages,
-				tagNames, nodeId, user, pass);
+				tagNames, nodeId, user, pass,brandId);
 		logger.info("update Info, title={}.", bean.getTitle());
 		ra.addAttribute("queryNodeId", queryNodeId);
 		ra.addAttribute("queryNodeType", queryNodeType);

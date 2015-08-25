@@ -125,7 +125,7 @@ public class ContributionController {
 		clobs.put("text", text);
 		String status = draft ? Info.DRAFT : Info.CONTRIBUTION;
 		infoService.save(bean, detail, null, null, null, null, null, clobs,
-				null, null, null, null, null, nodeId, userId, status, siteId);
+				null, null, null, null, null, nodeId, userId, status, siteId,null);
 		return resp.post();
 	}
 
@@ -165,7 +165,7 @@ public class ContributionController {
 		Map<String, String> clobs = new HashMap<String, String>();
 		clobs.put("text", text);
 		infoService.update(bean, detail, null, null, null, null, null, clobs,
-				null, null, null, null, null, nodeId, user, pass);
+				null, null, null, null, null, nodeId, user, pass,null);
 		return resp.post();
 	}
 

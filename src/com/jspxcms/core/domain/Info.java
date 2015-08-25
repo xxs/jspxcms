@@ -1432,6 +1432,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 
 	private Node node;
 	private Org org;
+	private Brand brand;
 	private User creator;
 	private Site site;
 	private InfoDetail detail;
@@ -1667,9 +1668,19 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	public Org getOrg() {
 		return org;
 	}
-
+	
 	public void setOrg(Org org) {
 		this.org = org;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "f_brand_id", nullable = false)
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

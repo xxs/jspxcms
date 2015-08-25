@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.InfoBuffer;
 import com.jspxcms.core.domain.InfoDetail;
@@ -28,6 +29,7 @@ import com.jspxcms.core.listener.OrgDeleteListener;
 import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.listener.UserDeleteListener;
 import com.jspxcms.core.repository.InfoDao;
+import com.jspxcms.core.service.BrandService;
 import com.jspxcms.core.service.CommentService;
 import com.jspxcms.core.service.InfoAttributeService;
 import com.jspxcms.core.service.InfoBufferService;
@@ -59,13 +61,15 @@ public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 			Map<String, String> customs, Map<String, String> clobs,
 			List<InfoImage> images, List<InfoFile> files, Integer[] attrIds,
 			Map<String, String> attrImages, String[] tagNames, Integer nodeId,
-			Integer creatorId, String status, Integer siteId) {
+			Integer creatorId, String status, Integer siteId, Integer brandId) {
 		bean.setSite(siteService.get(siteId));
 		User creator = userService.get(creatorId);
 		bean.setCreator(creator);
 		bean.setOrg(creator.getOrg());
 		Node node = nodeService.refer(nodeId);
 		bean.setNode(node);
+		Brand brand = brandService.get(brandId);
+		bean.setBrand(brand);
 		bean.setCustoms(customs);
 		bean.setClobs(clobs);
 		bean.setImages(images);
@@ -122,7 +126,7 @@ public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 			Map<String, String> customs, Map<String, String> clobs,
 			List<InfoImage> images, List<InfoFile> files, Integer[] attrIds,
 			Map<String, String> attrImages, String[] tagNames, Integer nodeId,
-			User operator, boolean pass) {
+			User operator, boolean pass, Integer brandId) {
 		if (detail != null && StringUtils.isNotBlank(detail.getSmallImage())) {
 			bean.setWithImage(true);
 		}
@@ -150,7 +154,9 @@ public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 				}
 			}
 		}
-
+		Brand brand = brandService.get(brandId);
+		bean.setBrand(brand);
+		
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
 		if (nodeId != null) {
@@ -459,10 +465,17 @@ public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 	}
 
 	private CommentService commentService;
-
+	
 	@Autowired
 	public void setCommentService(CommentService commentService) {
 		this.commentService = commentService;
+	}
+	
+	private BrandService brandService;
+
+	@Autowired
+	public void setBrandService(BrandService brandService) {
+		this.brandService = brandService;
 	}
 
 	private InfoDao dao;

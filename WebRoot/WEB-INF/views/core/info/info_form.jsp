@@ -593,7 +593,7 @@ function confirmDelete() {
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 							<c:forEach var="spec" items="${specList}" >
-							  		<inpput type="text"/>${spec.name}
+							  		<inpput type="text"/>
 							</c:forEach>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
@@ -604,9 +604,11 @@ function confirmDelete() {
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-							<c:forEach var="item" items="${brandList}" >
-							  		${item.name}
-							</c:forEach>
+						  	<select name="brandId" >
+								<c:forEach var="brand" items="${brands}" >
+							  			<option value="${brand.id}" <c:if test="${bean.brand.id == brand.id}"> checked="checked"</c:if> >${brand.name}</option>
+							  	</c:forEach>
+						  	</select>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>
