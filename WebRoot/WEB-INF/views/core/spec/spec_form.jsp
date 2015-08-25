@@ -102,7 +102,7 @@ function confirmDelete() {
   
   
   <div class="inls-opt margin-top5">
-  <b><s:message code="scoreGroup.items"/></b> &nbsp;
+  <b>规格值</b> &nbsp;
   <a href="javascript:void(0);" onclick="addRow();" class="ls-opt"><s:message code='addRow'/></a> &nbsp;
   <a href="javascript:void(0);" onclick="Cms.moveTop('itemIds');" class="ls-opt"><s:message code='moveTop'/></a>
   <a href="javascript:void(0);" onclick="Cms.moveUp('itemIds');" class="ls-opt"><s:message code='moveUp'/></a>

@@ -597,6 +597,98 @@ function confirmDelete() {
 							</c:forEach>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
+					<tr>
+						<td class="in-lab" width="15%"></td>
+						<td>
+							<div class="inls-opt margin-top5">
+							  <b>货品列表</b> &nbsp;
+							  <a href="javascript:void(0);" onclick="addRow();" class="ls-opt"><s:message code='addRow'/></a> &nbsp;
+							  <a href="javascript:void(0);" onclick="Cms.moveTop('itemIds');" class="ls-opt"><s:message code='moveTop'/></a>
+							  <a href="javascript:void(0);" onclick="Cms.moveUp('itemIds');" class="ls-opt"><s:message code='moveUp'/></a>
+							  <a href="javascript:void(0);" onclick="Cms.moveDown('itemIds');" class="ls-opt"><s:message code='moveDown'/></a>
+							  <a href="javascript:void(0);" onclick="Cms.moveBottom('itemIds');" class="ls-opt"><s:message code='moveBottom'/></a>     
+							</div>
+							<textarea id="templateArea" style="display:none">
+								<tr>
+							    <td align="center">
+							    	<input type="checkbox" name="itemIds" value=""/>
+							    	<input type="hidden" name="itemId" value=""/>
+							    </td>
+							    <td align="center">
+							      <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
+							    </td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center">
+							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    </td>
+							    <td align="center">
+							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    </td>
+							  </tr>
+							</textarea>
+							  <script type="text/javascript">
+							var rowIndex = 0;
+							<c:if test="${!empty bean && fn:length(bean.parameters) gt 0}">
+							rowIndex = ${fn:length(bean.parameters)};
+							</c:if>
+							var rowTemplate = $.format($("#templateArea").val());
+							function addRow() {
+								$(rowTemplate(rowIndex++)).appendTo("#pagedTable tbody");
+								$("#pagedTable").tableHighlight();
+							}
+							$(function() {
+								if(rowIndex==0) {
+									<c:if test="${oprt=='create'}">
+									addRow();
+									</c:if>
+								}
+							});
+							</script>
+							<table id="pagedTable" border="0" cellpadding="0" cellspacing="0" class="inls-tb">
+							  <thead>
+							  <tr>
+							    <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
+							    <th width="80"><s:message code="operate"/></th>
+							    <th>货号</th>
+							    <th>销售价</th>
+							    <th>成本价</th>
+							    <th>市场价</th>
+							    <th>重量</th>
+							    <th>默认</th>
+							    <th>上架</th>
+							  </tr>
+							  </thead>
+							  <tbody>
+							  <c:forEach var="item" varStatus="status" items="${bean.parameters}">
+							  <tr>
+							    <td align="center">
+							    	<input type="checkbox" name="itemIds" value="${bean.id}"/>
+							    	<input type="hidden" name="itemId" value="${item.id}"/>
+							    </td>
+							    <td align="center">
+							      <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
+							    </td>
+							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+							   	<td align="center">
+							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    </td>
+							    <td align="center">
+							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    </td>
+							  </tr>
+							  </c:forEach>
+							  </tbody>
+							</table>
+						</td>
+					</tr>
 				</table>
 		  	</c:when>
 		  	<c:when test="${field.name eq 'brand'}">
