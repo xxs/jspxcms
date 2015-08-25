@@ -29,6 +29,7 @@ import com.jspxcms.core.listener.WorkflowDeleteListener;
 import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.service.InfoNodeService;
 import com.jspxcms.core.service.ModelService;
+import com.jspxcms.core.service.NodeBrandService;
 import com.jspxcms.core.service.NodeBufferService;
 import com.jspxcms.core.service.NodeDetailService;
 import com.jspxcms.core.service.NodeMemberGroupService;
@@ -56,7 +57,7 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 			Integer[] contriGroupIds, Integer[] commentGroupIds,
 			Integer[] viewOrgIds, Integer parentId, Integer nodeModelId,
 			Integer infoModelId, Integer workflowId, Integer creatorId,
-			Integer siteId) {
+			Integer siteId,Integer[] brandIds) {
 		Node parent = null;
 		if (parentId != null) {
 			parent = dao.findOne(parentId);
@@ -90,6 +91,7 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		nodeMemberGroupService.update(bean, viewGroupIds, contriGroupIds,
 				commentGroupIds);
 		nodeOrgService.update(bean, viewOrgIds);
+		nodeBrandService.save(bean, brandIds);
 		firePostSave(new Node[] { bean });
 		return bean;
 	}
@@ -115,7 +117,7 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 			Integer[] infoPermIds, Integer[] nodePermIds,
 			Integer[] viewGroupIds, Integer[] contriGroupIds,
 			Integer[] commentGroupIds, Integer[] viewOrgIds,
-			Integer nodeModelId, Integer infoModelId, Integer workflowId) {
+			Integer nodeModelId, Integer infoModelId, Integer workflowId,Integer[] brandIds) {
 		if (nodeModelId != null) {
 			bean.setNodeModel(modelService.get(nodeModelId));
 		}
@@ -148,6 +150,7 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		nodeMemberGroupService.update(bean, viewGroupIds, contriGroupIds,
 				commentGroupIds);
 		nodeOrgService.update(bean, viewOrgIds);
+		nodeBrandService.update(bean, brandIds);
 		firePostUpdate(new Node[] { bean });
 		return bean;
 	}
@@ -411,7 +414,13 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 	private NodeBufferService nodeBufferService;
 	private UserService userService;
 	private SiteService siteService;
+	private NodeBrandService nodeBrandService;
 
+	@Autowired
+	public void setNodeBrandService(NodeBrandService nodeBrandService) {
+		this.nodeBrandService = nodeBrandService;
+	}
+	
 	@Autowired
 	public void setNodeOrgService(NodeOrgService nodeOrgService) {
 		this.nodeOrgService = nodeOrgService;

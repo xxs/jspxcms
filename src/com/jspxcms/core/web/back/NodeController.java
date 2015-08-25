@@ -185,8 +185,6 @@ public class NodeController {
 		}
 		List<Workflow> workflowList = workflowService.findList(siteId);
 
-		List<Attr> attrssList = attrService.findList(site.getId());
-		List<ParameterGroup> parameterGroupList = parameterGroupService.findList(site.getId());
 		List<Brand> brandList = brandService.findList(siteId, null);
 		
 		modelMap.addAttribute("workflowList", workflowList);
@@ -204,8 +202,6 @@ public class NodeController {
 		modelMap.addAttribute("showDescendants", showDescendants);
 		//---------------------
 		modelMap.addAttribute("brandList", brandList);
-		modelMap.addAttribute("attrssList", attrssList);
-		modelMap.addAttribute("parameterGroupList", parameterGroupList);
 		modelMap.addAttribute(OPRT, CREATE);
 		return "core/node/node_form";
 	}
@@ -293,7 +289,7 @@ public class NodeController {
 	@RequiresPermissions("core:node:save")
 	@RequestMapping("save.do")
 	public String save(Integer cid, Node bean, NodeDetail detail,
-			Integer[] infoPermIds, Integer[] nodePermIds,
+			Integer[] infoPermIds, Integer[] nodePermIds,Integer[] brandIds,
 			Integer[] viewGroupIds, Integer[] contriGroupIds,
 			Integer[] commentGroupIds, Integer[] viewOrgIds, Integer parentId,
 			Integer nodeModelId, Integer infoModelId, Integer workflowId,
@@ -326,7 +322,7 @@ public class NodeController {
 		Map<String, String> clobs = Servlets.getParameterMap(request, "clobs_");
 		service.save(bean, detail, customs, clobs, infoPermIds, nodePermIds,
 				viewGroupIds, contriGroupIds, commentGroupIds, viewOrgIds,
-				parentId, nodeModelId, infoModelId, workflowId, userId, siteId);
+				parentId, nodeModelId, infoModelId, workflowId, userId, siteId,brandIds);
 		logger.info("save Node, name={}.", bean.getName());
 		ra.addAttribute("queryParentId", queryParentId);
 		ra.addAttribute("showDescendants", showDescendants);
@@ -346,7 +342,7 @@ public class NodeController {
 	@RequiresPermissions("core:node:update")
 	@RequestMapping("update.do")
 	public String update(@ModelAttribute("bean") Node bean,
-			@ModelAttribute("detail") NodeDetail detail, Integer[] infoPermIds,
+			@ModelAttribute("detail") NodeDetail detail, Integer[] infoPermIds,Integer[] brandIds,
 			Integer[] nodePermIds, Integer[] viewGroupIds,
 			Integer[] contriGroupIds, Integer[] commentGroupIds,
 			Integer[] viewOrgIds, Integer parentId, Integer nodeModelId,
@@ -386,7 +382,7 @@ public class NodeController {
 		Map<String, String> clobs = Servlets.getParameterMap(request, "clobs_");
 		service.update(bean, detail, customs, clobs, infoPermIds, nodePermIds,
 				viewGroupIds, contriGroupIds, commentGroupIds, viewOrgIds,
-				nodeModelId, infoModelId, workflowId);
+				nodeModelId, infoModelId, workflowId,brandIds);
 		// 移动节点
 		if (parentId != null && bean.getParent() != null
 				&& !parentId.equals(bean.getParent().getId())) {

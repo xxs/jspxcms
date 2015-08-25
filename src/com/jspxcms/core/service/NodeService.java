@@ -20,14 +20,14 @@ public interface NodeService {
 			Integer[] contriGroupIds, Integer[] commentGroupIds,
 			Integer[] viewOrgIds, Integer parentId, Integer nodeModelId,
 			Integer infoModelId, Integer workflowId, Integer creatorId,
-			Integer siteId);
+			Integer siteId,Integer[] brandIds);
 
 	public Node update(Node bean, NodeDetail detail,
 			Map<String, String> customs, Map<String, String> clobs,
 			Integer[] infoPermIds, Integer[] nodePermIds,
 			Integer[] viewGroupIds, Integer[] contriGroupIds,
 			Integer[] commentGroupIds, Integer[] viewOrgIds,
-			Integer nodeModelId, Integer infoModelId, Integer workflowId);
+			Integer nodeModelId, Integer infoModelId, Integer workflowId,Integer[] brandIds);
 
 	public Node[] batchUpdate(Integer[] id, String[] name, String[] number,
 			Integer[] views, Boolean[] hidden, Integer siteId,

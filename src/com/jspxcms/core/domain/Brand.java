@@ -1,5 +1,8 @@
 package com.jspxcms.core.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 
 import com.jspxcms.core.domain.Site;
 
@@ -32,6 +37,17 @@ public class Brand implements java.io.Serializable {
 	 */
 	public static final int SAVED = 1;
 	
+	
+	@Transient
+	public Set<Brand> getNodePerms() {
+		Set<NodeBrand> groups = getNodeBrands();
+		Set<Brand> brands = new HashSet<Brand>();
+		for (NodeBrand nr : groups) {
+			brands.add(nr.getBrand());
+		}
+		return brands;
+	}
+	
 	public void applyDefaultValue() {
 		if (getSeq() == null) {
 			setSeq(Integer.MAX_VALUE);
@@ -39,6 +55,15 @@ public class Brand implements java.io.Serializable {
 		if(getStatus()==null){
 			setStatus(AUDITED);
 		}
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
+	public Set<NodeBrand> getNodeBrands() {
+		return nodeBrands;
+	}
+	
+	public void setNodeBrands(Set<NodeBrand> nodeBrands) {
+		this.nodeBrands = nodeBrands;
 	}
 	
 	private Integer id;
@@ -52,6 +77,9 @@ public class Brand implements java.io.Serializable {
 	private Boolean recommend;
 	private Integer status;
 	private Boolean withLogo;
+	
+	/** 绑定分类 */
+	private Set<NodeBrand> nodeBrands = new HashSet<NodeBrand>(0);
 
 	@Id
 	@Column(name = "f_brand_id", unique = true, nullable = false)

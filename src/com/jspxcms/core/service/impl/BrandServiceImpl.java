@@ -159,4 +159,9 @@ public class BrandServiceImpl implements BrandService, SiteDeleteListener {
 		this.dao = dao;
 	}
 
+	@Override
+	public List<Brand> findList(Integer siteId) {
+		return dao.findBySiteId(siteId, new Sort("seq", "id"));
+	}
+
 }

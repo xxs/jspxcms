@@ -348,64 +348,13 @@ parent.frames['left'].location.href="left.do";
 <c:forEach var="field" items="${model.enabledFields}">
 	<c:if test="${field.tab}">
 		<c:choose>
-			<c:when test="${field.name eq 'parameters'}">
-				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
-					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
-						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
-		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-							<div>
-						  		<c:forEach var="parameterGroup" items="${parameterGroupList}">
-							  		<label><c:out value="${parameterGroup.name}"/></label> 
-							  		
-							  		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
-								  		<c:forEach var="parameter" items="${parameterGroup.parameters}" >
-								  			<tbody>
-												<tr>
-													<td colspan="3">
-											      		${parameter.name}
-											  		</td>
-													<td width="45%">
-														<input name="" />
-													</td>
-											  </tr>
-											 </tbody>
-								  		</c:forEach>
-								  	</table>	
-							  	</c:forEach>
-						    </div>
-						</td>
-					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
-				</table>
-		  	</c:when>
-		  	
-		  	
-			<c:when test="${field.name eq 'attrs'}">
-				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
-					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
-						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
-		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-		  				
-		  					<c:forEach var="attr" items="${attrssList}">
-								<label><c:out value="${attr.name}"/></label> &nbsp;
-						  		<select name="attr.id" >
-						  			<c:forEach var="item" items="${attr.items}" >
-							  			<option >${item.name}</option>
-							  		</c:forEach>
-						  		</select>
-						  	</c:forEach>	
-						  	
-						</td>
-					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
-				</table>
-		  	</c:when>
-		  	
 			<c:when test="${field.name eq 'brand'}">
 				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-							<c:forEach var="item" items="${brandList}" >
-							  		<label><input type="checkbox" name="" value="${item.id}"/>${item.name}</label>
+							<c:forEach var="brand" items="${brandList}" >
+							  		<label><input type="checkbox" name="brandIds" <c:if test="${fnx:contains_co(bean.nodeBrandSet,brand) || empty bean}"> checked="checked"</c:if> value="${item.id}"/>${brand.name}</label>
 							</c:forEach>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
@@ -414,9 +363,6 @@ parent.frames['left'].location.href="left.do";
 	  	</c:choose>
 	  	</c:if>
   	</c:forEach>
-
-
-
 <table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5">
 <tr>
     <td colspan="4" class="in-opt">

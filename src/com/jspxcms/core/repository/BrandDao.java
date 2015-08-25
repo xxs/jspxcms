@@ -17,13 +17,11 @@ import com.jspxcms.core.domain.Brand;
  * @author xxs
  * 
  */
-public interface BrandDao extends Repository<Brand, Integer>,
-BrandDaoPlus {
+public interface BrandDao extends Repository<Brand, Integer>, BrandDaoPlus {
 
 	public List<Brand> findAll(Specification<Brand> spec, Sort sort);
 
-	public List<Brand> findAll(Specification<Brand> spec,
-			Limitable limit);
+	public List<Brand> findAll(Specification<Brand> spec, Limitable limit);
 
 	public Brand findOne(Integer id);
 

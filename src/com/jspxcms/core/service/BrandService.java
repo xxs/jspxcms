@@ -17,6 +17,8 @@ import com.jspxcms.core.domain.Brand;
  */
 
 public interface BrandService {
+	public List<Brand> findList(Integer siteId);
+	
 	public List<Brand> findList(Integer siteId, Map<String, String[]> params);
 
 	public RowSide<Brand> findSide(Integer siteId, Map<String, String[]> params, Brand bean, Integer position, Sort sort);

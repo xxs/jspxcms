@@ -48,15 +48,6 @@ public class Attr implements java.io.Serializable {
 	}
 	
 	@Transient
-	public String geAttrStr() {
-		StringBuffer str = new StringBuffer();
-		for (AttrItem item : items) {
-			str.append(item.getName()+" ");
-		}
-		return str.toString();
-	}
-	
-	@Transient
 	public List<Attr> geAttrs() {
 		List<Attr> attrs = new ArrayList<Attr>();
 		for (AttrItem item : items) {

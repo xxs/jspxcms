@@ -678,6 +678,26 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	}
 	
 	@Transient
+	public Set<Brand> getInfoBrandSet() {
+		Set<NodeBrand> nodeBrandSet = getNodeBrands();
+		Set<Brand> brands = new HashSet<Brand>();
+		for (NodeBrand nr : nodeBrandSet) {
+			brands.add(nr.getBrand());
+		}
+		return brands;
+	}
+	
+	@Transient
+	public Set<Brand> getNodeBrandSet() {
+		Set<NodeBrand> nodeBrandSet = getNodeBrands();
+		Set<Brand> brands = new HashSet<Brand>();
+		for (NodeBrand nr : nodeBrandSet) {
+			brands.add(nr.getBrand());
+		}
+		return brands;
+	}
+	
+	@Transient
 	public Set<Attr> getInfoAttrSet() {
 		Set<NodeAttr> nodeAttrSet = getNodeAttrs();
 		Set<Attr> attrs = new HashSet<Attr>();
@@ -1003,6 +1023,7 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	private Set<NodeAttr> nodeAttrs = new HashSet<NodeAttr>(0);
 	private Set<NodeParameterGroup> nodeParameterGroups = new HashSet<NodeParameterGroup>(0);
 	private Set<NodeSpec> nodeSpecs = new HashSet<NodeSpec>(0);
+	private Set<NodeBrand> nodeBrands = new HashSet<NodeBrand>(0);
 	private Set<NodeRole> nodeRoles = new HashSet<NodeRole>(0);
 	private Set<NodeMemberGroup> nodeGroups = new HashSet<NodeMemberGroup>(0);
 	private SortedSet<NodeOrg> nodeOrgs = new TreeSet<NodeOrg>(
@@ -1190,6 +1211,14 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	
 	public void setNodeSpecs(Set<NodeSpec> nodeSpecs) {
 		this.nodeSpecs = nodeSpecs;
+	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
+	public Set<NodeBrand> getNodeBrands() {
+		return nodeBrands;
+	}
+	
+	public void setNodeBrands(Set<NodeBrand> nodeBrands) {
+		this.nodeBrands = nodeBrands;
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "node")
