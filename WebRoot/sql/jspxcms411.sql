@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-09-02 17:11:48
+Date: 2015-09-03 00:54:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -703,9 +703,12 @@ INSERT INTO `cms_info` VALUES ('167', '1', '1', '7', '117', '2015-04-18 23:38:28
 INSERT INTO `cms_info` VALUES ('168', '1', '1', '7', '117', '2015-04-18 23:41:13', '0', '0', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '0');
 INSERT INTO `cms_info` VALUES ('169', '1', '1', '1', '144', '2015-05-25 10:46:39', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '0');
 INSERT INTO `cms_info` VALUES ('170', '1', '1', '1', '143', '2015-05-25 11:17:56', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '9');
-INSERT INTO `cms_info` VALUES ('173', '1', '1', '11', '161', '2015-09-02 15:41:30', '0', '0', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_info` VALUES ('174', '1', '1', '11', '161', '2015-09-02 16:58:42', '0', '0', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_info` VALUES ('175', '1', '1', '11', '161', '2015-09-02 16:58:54', '0', '0', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info` VALUES ('173', '1', '1', '11', '161', '2015-09-02 15:41:30', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info` VALUES ('174', '1', '1', '11', '161', '2015-09-02 16:58:42', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info` VALUES ('175', '1', '1', '11', '161', '2015-09-02 16:58:54', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info` VALUES ('176', '1', '1', '11', '164', '2015-09-02 23:14:51', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info` VALUES ('177', '1', '1', '11', '164', '2015-09-02 23:15:08', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info` VALUES ('178', '1', '1', '11', '164', '2015-09-02 23:15:18', '0', '1', '0', '0', '0', '0', '0', 'A', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_info_attr
@@ -781,15 +784,24 @@ INSERT INTO `cms_info_attribute` VALUES ('411', '46', '2', null);
 INSERT INTO `cms_info_attribute` VALUES ('412', '46', '3', 'http://demo.jspxcms.com/uploads/1/image/public/201308/20130813074348_modh0m.jpg');
 INSERT INTO `cms_info_attribute` VALUES ('413', '39', '3', 'http://demo.jspxcms.com/uploads/1/image/public/201303/20130318091105_d9ymqp.jpg');
 INSERT INTO `cms_info_attribute` VALUES ('414', '39', '4', null);
-INSERT INTO `cms_info_attribute` VALUES ('421', '173', '6', null);
-INSERT INTO `cms_info_attribute` VALUES ('422', '173', '7', null);
-INSERT INTO `cms_info_attribute` VALUES ('423', '173', '8', null);
-INSERT INTO `cms_info_attribute` VALUES ('430', '175', '6', null);
-INSERT INTO `cms_info_attribute` VALUES ('431', '175', '7', null);
-INSERT INTO `cms_info_attribute` VALUES ('432', '175', '8', null);
-INSERT INTO `cms_info_attribute` VALUES ('433', '174', '6', null);
-INSERT INTO `cms_info_attribute` VALUES ('434', '174', '7', null);
-INSERT INTO `cms_info_attribute` VALUES ('435', '174', '8', null);
+INSERT INTO `cms_info_attribute` VALUES ('457', '178', '6', null);
+INSERT INTO `cms_info_attribute` VALUES ('458', '178', '7', null);
+INSERT INTO `cms_info_attribute` VALUES ('459', '178', '8', null);
+INSERT INTO `cms_info_attribute` VALUES ('460', '177', '6', null);
+INSERT INTO `cms_info_attribute` VALUES ('461', '177', '7', null);
+INSERT INTO `cms_info_attribute` VALUES ('462', '177', '8', null);
+INSERT INTO `cms_info_attribute` VALUES ('463', '176', '6', null);
+INSERT INTO `cms_info_attribute` VALUES ('464', '176', '7', null);
+INSERT INTO `cms_info_attribute` VALUES ('465', '176', '8', null);
+INSERT INTO `cms_info_attribute` VALUES ('469', '175', '6', null);
+INSERT INTO `cms_info_attribute` VALUES ('470', '175', '7', null);
+INSERT INTO `cms_info_attribute` VALUES ('471', '175', '8', null);
+INSERT INTO `cms_info_attribute` VALUES ('472', '174', '6', null);
+INSERT INTO `cms_info_attribute` VALUES ('473', '174', '7', null);
+INSERT INTO `cms_info_attribute` VALUES ('474', '174', '8', null);
+INSERT INTO `cms_info_attribute` VALUES ('475', '173', '6', null);
+INSERT INTO `cms_info_attribute` VALUES ('476', '173', '7', null);
+INSERT INTO `cms_info_attribute` VALUES ('477', '173', '8', null);
 
 -- ----------------------------
 -- Table structure for cms_info_buffer
@@ -895,8 +907,11 @@ INSERT INTO `cms_info_buffer` VALUES ('168', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('169', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('170', '1', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('173', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_info_buffer` VALUES ('174', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_info_buffer` VALUES ('175', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('174', '5', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('175', '1', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('176', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('177', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('178', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_info_clob
@@ -1013,6 +1028,9 @@ INSERT INTO `cms_info_clob` VALUES ('170', 'text', '');
 INSERT INTO `cms_info_clob` VALUES ('173', 'text', '');
 INSERT INTO `cms_info_clob` VALUES ('174', 'text', '');
 INSERT INTO `cms_info_clob` VALUES ('175', 'text', '');
+INSERT INTO `cms_info_clob` VALUES ('176', 'text', '');
+INSERT INTO `cms_info_clob` VALUES ('177', 'text', '');
+INSERT INTO `cms_info_clob` VALUES ('178', 'text', '');
 
 -- ----------------------------
 -- Table structure for cms_info_custom
@@ -1110,9 +1128,8 @@ INSERT INTO `cms_info_custom` VALUES ('165', 'smallimage', '');
 INSERT INTO `cms_info_custom` VALUES ('166', 'smallimage', '');
 INSERT INTO `cms_info_custom` VALUES ('167', 'smallimage', '');
 INSERT INTO `cms_info_custom` VALUES ('168', 'smallimage', '');
-INSERT INTO `cms_info_custom` VALUES ('173', 'smallimage', '/uploads/11/image/public/201509/20150902155005_ta4uh5.png');
-INSERT INTO `cms_info_custom` VALUES ('174', 'smallimage', '/uploads/11/image/public/201509/20150902155005_ta4uh5.png');
-INSERT INTO `cms_info_custom` VALUES ('175', 'smallimage', '/uploads/11/image/public/201509/20150902155005_ta4uh5.png');
+INSERT INTO `cms_info_custom` VALUES ('174', 'price', '');
+INSERT INTO `cms_info_custom` VALUES ('173', 'price', '');
 
 -- ----------------------------
 -- Table structure for cms_info_detail
@@ -1245,9 +1262,12 @@ INSERT INTO `cms_info_detail` VALUES ('167', '博创科技浅析网站应该如�
 INSERT INTO `cms_info_detail` VALUES ('168', '收费规范的规范规定过后', null, null, null, null, null, '0', '0', null, null, '博创科技浅析网站应该如何获得流量柔柔弱弱博创科技浅析网站应该如何获得流量柔柔弱弱博创科技浅析网站应该如何获得流量柔柔弱弱', null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_info_detail` VALUES ('169', '999元抢购 MIUI/小米2A小米M2A小米手机2A 标准版16G 国行15', null, null, null, null, null, '0', '0', null, null, '999元抢购 MIUI/小米2A小米M2A小米手机2A 标准版16G 国行154444', null, null, null, 'http://demo.jspxcms.com/uploads/1/image/public/201308/20130812013337_ijdj9f.jpg', null, null, null, null, null, null, null, null);
 INSERT INTO `cms_info_detail` VALUES ('170', '三星 i959 蓝色 - GALAXY S4 / 5.0\'Full HD/ 四核1.6GHz+四核1.2GHz /双网双待/ Android4.2 /主摄头:1300万像素,副摄头:200万像素/ RAM:2GB,ROM:16GB/ 三星S4火热上市！', null, null, null, null, null, '0', '0', null, null, '三星 i959 蓝色 - GALAXY S4 / 5.0\'Full HD/ 四核1.6GHz+四核1.2GHz /双网双待/ Android4.2 /主摄头:1300万像素,副摄头:200万像素/ RAM:2GB,ROM:16GB/ 三星S4火热上市！333www', null, null, null, 'http://demo.jspxcms.com/uploads/1/image/public/201308/20130808092559_t2cufb.png', null, null, null, null, null, null, null, null);
-INSERT INTO `cms_info_detail` VALUES ('173', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_info_detail` VALUES ('174', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_info_detail` VALUES ('175', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info_detail` VALUES ('173', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, '/uploads/11/image/public/201509/20150902234316_j340b4.png', null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info_detail` VALUES ('174', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, '/uploads/11/image/public/201509/20150902234316_j340b4.png', null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info_detail` VALUES ('175', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, '/uploads/11/image/public/201509/20150902234316_j340b4.png', '/uploads/11/image/public/201509/20150902234414_v1qrf8.png!75x75', null, null, null, null, null, null, null);
+INSERT INTO `cms_info_detail` VALUES ('176', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, '/uploads/11/image/public/201509/20150902234316_j340b4.png', null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info_detail` VALUES ('177', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, '/uploads/11/image/public/201509/20150902234316_j340b4.png', null, null, null, null, null, null, null, null);
+INSERT INTO `cms_info_detail` VALUES ('178', '萌妹子大战禽流感手游源码', null, null, null, null, null, '0', '0', null, null, '萌妹子大战禽流感手游源码', null, null, null, '/uploads/11/image/public/201509/20150902234316_j340b4.png', '/uploads/11/image/public/201509/20150902234323_1tgy9y.png!75x75', null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_info_file
@@ -1426,6 +1446,12 @@ INSERT INTO `cms_info_membergroup` VALUES ('153', '0', '174', '0');
 INSERT INTO `cms_info_membergroup` VALUES ('154', '1', '174', '0');
 INSERT INTO `cms_info_membergroup` VALUES ('155', '0', '175', '0');
 INSERT INTO `cms_info_membergroup` VALUES ('156', '1', '175', '0');
+INSERT INTO `cms_info_membergroup` VALUES ('157', '0', '176', '0');
+INSERT INTO `cms_info_membergroup` VALUES ('158', '1', '176', '0');
+INSERT INTO `cms_info_membergroup` VALUES ('159', '0', '177', '0');
+INSERT INTO `cms_info_membergroup` VALUES ('160', '1', '177', '0');
+INSERT INTO `cms_info_membergroup` VALUES ('161', '0', '178', '0');
+INSERT INTO `cms_info_membergroup` VALUES ('162', '1', '178', '0');
 
 -- ----------------------------
 -- Table structure for cms_info_node
@@ -1541,9 +1567,12 @@ INSERT INTO `cms_info_node` VALUES ('306', '118', '69', '-1');
 INSERT INTO `cms_info_node` VALUES ('307', '46', '38', '-1');
 INSERT INTO `cms_info_node` VALUES ('308', '39', '39', '-1');
 INSERT INTO `cms_info_node` VALUES ('332', '170', '143', '-1');
-INSERT INTO `cms_info_node` VALUES ('339', '173', '161', '-1');
-INSERT INTO `cms_info_node` VALUES ('342', '175', '161', '-1');
-INSERT INTO `cms_info_node` VALUES ('343', '174', '161', '-1');
+INSERT INTO `cms_info_node` VALUES ('351', '178', '164', '-1');
+INSERT INTO `cms_info_node` VALUES ('352', '177', '164', '-1');
+INSERT INTO `cms_info_node` VALUES ('353', '176', '164', '-1');
+INSERT INTO `cms_info_node` VALUES ('355', '175', '161', '-1');
+INSERT INTO `cms_info_node` VALUES ('356', '174', '161', '-1');
+INSERT INTO `cms_info_node` VALUES ('357', '173', '161', '-1');
 
 -- ----------------------------
 -- Table structure for cms_info_org
@@ -1620,6 +1649,9 @@ INSERT INTO `cms_info_org` VALUES ('75', '39', '1', '0');
 INSERT INTO `cms_info_org` VALUES ('76', '173', '1', '0');
 INSERT INTO `cms_info_org` VALUES ('77', '174', '1', '0');
 INSERT INTO `cms_info_org` VALUES ('78', '175', '1', '0');
+INSERT INTO `cms_info_org` VALUES ('79', '176', '1', '0');
+INSERT INTO `cms_info_org` VALUES ('80', '177', '1', '0');
+INSERT INTO `cms_info_org` VALUES ('81', '178', '1', '0');
 
 -- ----------------------------
 -- Table structure for cms_info_parameter
@@ -6767,7 +6799,10 @@ INSERT INTO `cms_model_field` VALUES ('891', '59', '1', '2', '来源', 'source',
 INSERT INTO `cms_model_field` VALUES ('892', '59', '1', '2', '作者', 'author', null, null, '0', '9', '1', '0', '0');
 INSERT INTO `cms_model_field` VALUES ('893', '59', '1', '2', '属性', 'attributes', null, null, '0', '10', '0', '0', '0');
 INSERT INTO `cms_model_field` VALUES ('894', '59', '50', '2', '正文', 'text', null, null, '0', '13', '0', '0', '0');
-INSERT INTO `cms_model_field` VALUES ('895', '59', '7', '0', '标题图', 'smallimage', null, null, '0', '2147483647', '0', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('896', '59', '7', '2', '标题图', 'smallImage', null, null, '0', '2147483647', '0', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('897', '59', '7', '2', '正文图', 'largeImage', null, null, '0', '2147483647', '0', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('898', '59', '51', '2', '图片集', 'images', null, null, '0', '2147483647', '0', '0', '0');
+INSERT INTO `cms_model_field` VALUES ('899', '59', '1', '0', '售价', 'price', null, '0', '0', '2147483647', '1', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_model_field_custom
@@ -6993,10 +7028,13 @@ INSERT INTO `cms_model_field_custom` VALUES ('852', 'width', '180');
 INSERT INTO `cms_model_field_custom` VALUES ('853', 'maxLength', '');
 INSERT INTO `cms_model_field_custom` VALUES ('853', 'validation', '');
 INSERT INTO `cms_model_field_custom` VALUES ('853', 'width', '180');
-INSERT INTO `cms_model_field_custom` VALUES ('895', 'imageHeight', '');
-INSERT INTO `cms_model_field_custom` VALUES ('895', 'imageScale', 'false');
-INSERT INTO `cms_model_field_custom` VALUES ('895', 'imageWidth', '');
-INSERT INTO `cms_model_field_custom` VALUES ('895', 'imageWatermark', 'false');
+INSERT INTO `cms_model_field_custom` VALUES ('896', 'imageHeight', '93');
+INSERT INTO `cms_model_field_custom` VALUES ('896', 'imageWidth', '140');
+INSERT INTO `cms_model_field_custom` VALUES ('897', 'imageHeight', '200');
+INSERT INTO `cms_model_field_custom` VALUES ('897', 'imageWidth', '290');
+INSERT INTO `cms_model_field_custom` VALUES ('899', 'width', '');
+INSERT INTO `cms_model_field_custom` VALUES ('899', 'maxLength', '');
+INSERT INTO `cms_model_field_custom` VALUES ('899', 'validation', '');
 
 -- ----------------------------
 -- Table structure for cms_node
@@ -7146,8 +7184,8 @@ INSERT INTO `cms_node` VALUES ('160', '11', null, '1', '57', null, null, null, '
 INSERT INTO `cms_node` VALUES ('161', '11', '160', '1', '58', null, null, null, '59', 'icon1_nm', '源码', '0000-0000', '1', '0000', '2015-09-02 14:10:00', '3', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('162', '11', '160', '1', '58', null, null, null, '59', 'icon2_nm', '工具', '0000-0001', '1', '0002', '2015-09-02 14:10:08', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('163', '11', '160', '1', '58', null, null, null, '59', 'icon3_nm', '特效', '0000-0002', '1', '0000', '2015-09-02 14:10:19', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('164', '11', '160', '1', '58', null, null, null, '59', 'icon4_nm', '3D模型', '0000-0003', '1', '0000', '2015-09-02 14:10:29', '0', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('165', '11', '160', '1', '58', null, null, null, '59', 'icon5_nm', '2D模型', '0000-0004', '1', '0000', '2015-09-02 14:10:37', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('164', '11', '160', '1', '58', null, null, null, '59', 'icon4_nm', '3D模型', '0000-0003', '1', '0000', '2015-09-02 14:10:29', '3', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('165', '11', '160', '1', '58', null, null, null, '59', 'icon5_nm', '2D美术', '0000-0004', '1', '0000', '2015-09-02 14:10:37', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('166', '11', '160', '1', '58', null, null, null, '59', 'icon6_nm', 'UI', '0000-0005', '1', '0000', '2015-09-02 14:10:45', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('167', '11', '160', '1', '58', null, null, null, '59', 'icon7_nm', '原创音乐', '0000-0006', '1', '0000', '2015-09-02 14:10:52', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('168', '11', '160', '1', '58', null, null, null, '59', 'icon8_nm', '电子书', '0000-0007', '1', '0000', '2015-09-02 14:11:02', '0', '0', '1', '0', null, null, null, null, null, null);
@@ -8407,7 +8445,7 @@ CREATE TABLE `cms_site` (
 -- Records of cms_site
 -- ----------------------------
 INSERT INTO `cms_site` VALUES ('1', '1', '1', null, 'Jspxcms演示站', '1', 'Jspxcms演示站', '/images/no_picture.jpg', 'bluewise', null, 'localhost', '0', '0', '1', '0', '0000', '0', '0001');
-INSERT INTO `cms_site` VALUES ('3', '1', '1', null, '信诚松木家具', '3', null, '/img/no_picture.jpg', 'xincheng', null, '127.0.0.1', '0', '1', '0', '0', '0001', '0', '0000');
+INSERT INTO `cms_site` VALUES ('3', '1', '1', null, '信诚松木家具', '3', null, '/img/no_picture.jpg', 'xincheng', null, '127.0.0.1000', '0', '1', '0', '0', '0001', '0', '0000');
 INSERT INTO `cms_site` VALUES ('4', '1', '1', null, '青土景观', '4', null, '/img/no_picture.jpg', 'qingtu', null, 'qingtu', '0', '1', '0', '0', '0002', '0', '0000');
 INSERT INTO `cms_site` VALUES ('5', '1', '1', null, '设计空间', '5', null, '/img/no_picture.jpg', 'kongjian', null, 'kongjian', '0', '1', '0', '0', '0003', '0', '0000');
 INSERT INTO `cms_site` VALUES ('6', '1', '1', null, '企业模板', '6', null, '/img/no_picture.jpg', 'qiye', null, 'qiye', '0', '0', '0', '0', '0004', '0', '0000');
@@ -8415,7 +8453,7 @@ INSERT INTO `cms_site` VALUES ('7', '1', '1', null, '模版大全', '7', '模板
 INSERT INTO `cms_site` VALUES ('8', '1', '1', null, '模板商城', '8', '模板商城', '/img/no_picture.jpg', 'muban', null, 'mshop', '0', '1', '1', '0', '0006', '0', '0000');
 INSERT INTO `cms_site` VALUES ('9', '1', '1', null, '小米官网2015版', '9', '小米官网2015版', '/img/no_picture.jpg', '2015', null, 'xiaomi', '0', '0', '0', '0', '0007', '0', '0000');
 INSERT INTO `cms_site` VALUES ('10', '1', '1', null, '魅族官网2015版', '11', '魅族官网2015版', '/img/no_picture.jpg', 'meizu', null, 'meizu', '0', '1', '0', '0', '0008', '0', '0000');
-INSERT INTO `cms_site` VALUES ('11', '1', '1', null, 'COCOS SHOP', '12', 'COCOS 网上商城', '/img/no_picture.jpg', 'cc', null, 'cc', '0', '0', '0', '0', '0009', '0', '0000');
+INSERT INTO `cms_site` VALUES ('11', '1', '1', null, 'COCOS SHOP', '12', 'COCOS 网上商城', '/img/no_picture.jpg', 'cc', null, '127.0.0.1', '0', '0', '0', '0', '0009', '0', '0000');
 
 -- ----------------------------
 -- Table structure for cms_site_clob
@@ -8464,7 +8502,7 @@ CREATE TABLE `cms_spec` (
   `f_node_id` bigint(20) DEFAULT NULL,
   `f_description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`f_spec_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_spec
@@ -8585,7 +8623,7 @@ CREATE TABLE `cms_spec_value` (
   PRIMARY KEY (`f_spec_value_id`),
   KEY `FK5E624376629A04C2` (`f_spec_id`),
   CONSTRAINT `spec` FOREIGN KEY (`f_spec_id`) REFERENCES `cms_spec` (`f_spec_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_spec_value
@@ -8974,7 +9012,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', '2015-08-19 15:59:40', '127.0.0.1', '2015-08-19 16:15:21', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '3', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-09-02 10:34:36', '127.0.0.1', '2015-09-02 14:03:43', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '419', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-09-02 21:27:04', '127.0.0.1', '2015-09-02 21:44:26', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '421', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_user_membergroup
@@ -9689,18 +9727,18 @@ INSERT INTO `t_id_table` VALUES ('cms_friendlink', '22');
 INSERT INTO `t_id_table` VALUES ('cms_friendlinktype', '6');
 INSERT INTO `t_id_table` VALUES ('cms_guestbook', '29');
 INSERT INTO `t_id_table` VALUES ('cms_guestbooktype', '5');
-INSERT INTO `t_id_table` VALUES ('cms_info', '176');
+INSERT INTO `t_id_table` VALUES ('cms_info', '179');
 INSERT INTO `t_id_table` VALUES ('cms_info_attr', '4');
-INSERT INTO `t_id_table` VALUES ('cms_info_attribute', '436');
-INSERT INTO `t_id_table` VALUES ('cms_info_membergroup', '157');
-INSERT INTO `t_id_table` VALUES ('cms_info_node', '344');
-INSERT INTO `t_id_table` VALUES ('cms_info_org', '79');
+INSERT INTO `t_id_table` VALUES ('cms_info_attribute', '478');
+INSERT INTO `t_id_table` VALUES ('cms_info_membergroup', '163');
+INSERT INTO `t_id_table` VALUES ('cms_info_node', '358');
+INSERT INTO `t_id_table` VALUES ('cms_info_org', '82');
 INSERT INTO `t_id_table` VALUES ('cms_info_parameter', '131');
 INSERT INTO `t_id_table` VALUES ('cms_info_special', '8');
 INSERT INTO `t_id_table` VALUES ('cms_info_tag', '40');
 INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
 INSERT INTO `t_id_table` VALUES ('cms_model', '60');
-INSERT INTO `t_id_table` VALUES ('cms_model_field', '896');
+INSERT INTO `t_id_table` VALUES ('cms_model_field', '900');
 INSERT INTO `t_id_table` VALUES ('cms_node', '173');
 INSERT INTO `t_id_table` VALUES ('cms_node_attr', '795');
 INSERT INTO `t_id_table` VALUES ('cms_node_brand', '19');

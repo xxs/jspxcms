@@ -48,9 +48,9 @@
           <ul>
           [@TagList sort='refers desc' limit=4;list]
 		  		[#list list as tag]
-          <li><a href="${ctx}/tag/${tag.id?url}.jspx" target="_blank">${tag.name}</a></li>
-					[/#list]
-					[/@TagList]
+          			<li><a href="${ctx}/tag/${tag.id?url}.jspx" target="_blank">${tag.name}</a></li>
+				[/#list]
+		  [/@TagList]
           </ul>
         </div>
     </div><!-- //search -->
