@@ -1,0 +1,50 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>会员中心_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="${ctx}/vendor/My97DatePicker/cn_WdatePicker.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+
+</head>
+<body>
+[#include 'inc_header.html'/]
+<div class="w960 center mt2">
+   <dl class="tbox setting FlLeft">
+    <dt class='light style="border:none;"'><strong>账号管理</strong></dt>
+    <dd class='light'>
+     <ul>
+     	[#include 'inc_my_left.html'/]
+     </ul>
+    </dd>
+   </dl>
+   <div class="FlRight" style="width:760px;">
+   <dl class="tbox  memberinfo" style="margin-top:0px;">
+    <dt class='light'><strong>修改个人信息</strong></dt>
+    <dd class='light'>
+    	<form action="${ctx}/my/profile.jspx" method="post">
+      <input type="hidden" name="nextUrl" value="${ctx}/my.jspx"/>
+    		<table width="100%" cellpadding="0" cellspacing="0" background="0">
+          <tr><td><span>性别</span></td><td><input type="radio" name="gender" value="M" [#if user.gender?? && user.gender=='M'] checked="checked"[/#if]/>男&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="F" [#if user.gender?? && user.gender=='F'] checked="checked"[/#if]/>女&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="" [#if !user.gender??] checked="checked"[/#if]/>保密</td></tr>
+          <tr><td><span>生日</span></td><td><input type="text" name="birthDate" value="${(user.birthDate?string('yyyy-MM-dd'))!}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"/></td></tr>
+          <tr><td><span>自我介绍</span></td><td><textarea name="bio" maxlength="255">${user.bio!}</textarea></td></tr>
+          <tr><td><span>来自哪里</span></td><td><input type="text" name="comeFrom" maxlength="100" value="${user.comeFrom!}"/></td></tr>
+          <tr><td><span>QQ</span></td><td><input type="text" name="qq" maxlength="20" value="${user.qq!}"/></td></tr>
+          <tr><td colspan="2" style="padding-left:230px;"><input type="submit" value="修改"/></td></tr>
+        </table>
+      </form>
+    </dd>
+   </dl>
+   </div>
+</div>
+<div  style="height:190px;"></div>
+[#include 'inc_footer.html'/]
+</body>
+</html>
+[/#escape]

@@ -68,7 +68,10 @@ public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 		bean.setOrg(creator.getOrg());
 		Node node = nodeService.refer(nodeId);
 		bean.setNode(node);
-		Brand brand = brandService.get(brandId);
+		Brand brand = null;
+		if(brandId!=null){
+			brand = brandService.get(brandId);
+		}
 		bean.setBrand(brand);
 		bean.setCustoms(customs);
 		bean.setClobs(clobs);
@@ -154,7 +157,10 @@ public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 				}
 			}
 		}
-		Brand brand = brandService.get(brandId);
+		Brand brand = null;
+		if(brandId!=null){
+			brand = brandService.get(brandId);
+		}
 		bean.setBrand(brand);
 		
 		bean.applyDefaultValue();

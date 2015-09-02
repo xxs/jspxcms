@@ -33,7 +33,11 @@ public class SpecValueServiceImpl implements SpecValueService {
 			bean = new SpecValue();
 			bean.setSpec(spec);
 			bean.setName(name[i]);
-//			bean.setImage(image[i]);
+			if(image.length>0&&image.length == name.length){
+				bean.setImage(image[i]);
+			}else{
+				bean.setImage(null);
+			}
 			bean.setSeq(i);
 			bean.applyDefaultValue();
 			dao.save(bean);

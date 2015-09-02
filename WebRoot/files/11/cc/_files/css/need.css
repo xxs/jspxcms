@@ -1,0 +1,40 @@
+﻿.needbanner{padding-top: 20px;}
+.needbanner img{display: block; width: 1000px; height: 160px;}
+
+.submitneedcont{background:#f9f9f9; padding: 26px 20px 0 20px; overflow: hidden;}
+.tit_s{font-size: 16px; line-height: 18px; color:#333; padding:4px 0;}
+.exp_s{font-size: 14px; line-height: 16px; color:#666; padding:4px 0 20px 0;}
+
+.myneed_s{position: relative; padding-left: 65px;}
+.text_ms{display: block; position: absolute; top:0; left: 0; font-size: 14px; line-height: 40px; color:#333;}
+.selcategory_ms select{font-size: 14px; height: 40px; line-height: 18px; width: 300px;  padding: 8px;  border:1px #d6d6d6 solid;background: #fff;}
+.selcategory_ms option{padding: 2px 8px;}
+.textarea_ms{margin-top: 12px; position: relative; width: 800px;}
+.textarea_ms textarea{width:778px; height: 148px; border:1px #d6d6d6 solid; resize:none; padding:5px 10px; font-size: 14px; line-height: 24px; color:#333;}
+.textarea_ms .focusborder_tms{border-color:#88ccff; box-shadow: 0 0 2px #88ccff;}
+.textarea_ms .errorborder_tms{border-color:#ff8899; box-shadow: 0 0 2px #ff8899;}
+
+.textarea_ms span{display: block; background: #fff; font-size: 14px; line-height: 24px; height: 24px; color:#999; padding: 0 10px; position: absolute; right: 20px; bottom: 5px;}
+.textarea_ms i{display: inline-block; *display: inline;  *zoom:1; font-style: normal;}
+.textarea_ms .beyond_tms{color:#f00;}
+.submitbtn_ms{margin:12px 0 30px 0;}
+.submitbtn_ms a{display: block; float: left; width: 104px; height: 38px; line-height: 38px; font-size:16px; color:#fff; background: #2d97f9; border-radius: 3px; text-align: center;}
+.submitbtn_ms a:hover{background: #09a0ec;}
+.submitbtn_ms span{float: left; font-size: 14px; line-height: 38px; color:#f00; margin-left: 20px; padding-left: 20px; background: url("../images/error.png") 0 11px no-repeat;}
+
+.provideneed{margin-top: 32px;}
+.needlist_p li{position: relative; border-bottom: 1px #e4e4e4 solid; padding:15px 130px 15px 0;}
+.personalmsg_np{font-size: 12px; line-height: 14px; color:#888; padding:4px 0 8px 0;}
+.personalmsg_np span{display: block; float: left; padding-right: 15px; max-width: 690px; overflow: hidden; text-overflow:ellipsis; white-space:nowrap;}
+.personalmsg_np b{display: block; float: left; font-weight: normal;}
+.needmsg_np{font-size: 14px; line-height: 22px; color:#333;  word-wrap:break-word;}
+.uploadbtn_np{display: block; padding:6px 20px; background: #2d97f9; border-radius: 3px; position: absolute; right: 0; top:36px;}
+.uploadbtn_np:hover{background: #09a0ec;}
+.uploadbtn_np i{display: block; font-style: normal; font-size: 14px; line-height: 16px; color:#fff; padding-left:20px; background: url("../images/need_upload_icon.png") left center no-repeat;}
+
+.needListpager{margin-top: 30px;} /*分页*/
+
+
+.needtimeslimitdialog{margin:-50px 0 0 -155px;}/*提交需求次数限制提示dialog*/
+.needtimeslimitdialog .text_b{padding:20px 0; width:270px; text-align: center;}
+

@@ -1,0 +1,116 @@
+﻿/* event banner */
+.eventbannerwrap{width: 100%; height: 400px; background:#1194f6;}
+.eventbanner{width: 1300px; height: 100%; margin:0 auto; position: relative;}
+.eventbanner img{display: block; width: 100%; height: 100%;}
+.eventtime_e{display: block; font-size: 16px; line-height: 18px; color:#ff0; position: absolute; left:558px; top:155px;}
+.eventprice_e{display: block; font-size: 26px; line-height: 38px; position: absolute; left: 545px; top:218px; color:#fff;}
+.eventprice_e b{display: inline-block; *display: inline; *zoom:1; font-size: 36px; line-height: 38px; color:#ff0; padding:0 14px; position: relative; top:4px;}
+
+/* event nav */
+.eventnavwrap{width: 100%; height:46px; background:#2b2b2b;}
+.eventnav{width: 1000px; height: 100%; margin: 0 auto; position: relative;}
+.tablist_e li{float: left;}
+.tablist_e a{display: block; font-size: 18px; line-height: 20px; padding:13px 30px; color:#fff; background: #2b2b2b;}
+.tablist_e a:hover{background: #0a89e8;}
+.tablist_e .current a{background: #0a89e8;}
+.tablist_e .current a:hover{background: #0a89e8;}
+.uploadcont_e{width: 146px; height: 66px; position: absolute; right: 60px; top:-10px; z-index: 2;}
+.uploadcont_e a{display: block; width: 146px; height: 66px;  background: url("../images/event_upload_bg.png") 0 0 no-repeat;}
+.uploadcont_e i{display: block; font-style: normal; font-size: 20px; line-height: 22px; color:#fff; padding:22px 0 22px 6px; text-align: center;}
+
+/* 大赛首页 */
+.eventindexwrap{width: 100%; overflow: hidden; background: #f1f1f1;}
+.eventindex{width: 1000px; margin:20px auto; min-height: 500px; background: #fff; overflow: hidden; padding-bottom: 40px; position: relative;}
+
+.bshare{min-width: 200px; position: absolute; right: 0; top:10px;}
+.toshare_b{float: left; font-size: 14px; line-height: 24px; padding:6px 0; color:#464646;}
+.bshare .bdsharebuttonbox{float: left; min-width: 124px;}
+
+.eventrule{margin-top: 30px;}
+.tit_e{height:43px; background: url("../images/event_exp_bg.png") left center no-repeat; font-weight: normal;}
+.tit_e span{display: block; font-size: 20px; line-height: 22px; color:#fff; padding:6px 0 0 30px;}
+.tit_e i{display: block; font-style: normal; font-size: 10px; line-height: 12px; color:#fff; padding:0 0 0 30px;}
+.base_e{padding-left: 90px;}
+
+.explain_e{padding-top: 20px; padding-right: 50px;}
+.explain_e *{line-height: 28px;}
+
+.addscore_re{padding-top: 20px;}
+.dllist_are{padding:5px 0;}
+.dllist_are dt{float: left; font-size: 14px; line-height: 16px; color:#464646;}
+.dllist_are dd{float: left; font-size: 14px; line-height: 16px; color:#f45b18;} 
+.totalscore_re{padding-top: 14px;}
+.totalscore_re span{display: block; float: left; font-size: 16px; line-height: 18px; color:#333; padding:11px 25px; background:#ebf6ff; border-radius: 3px;}
+.totalscore_re span i{display: inline-block; *display: inline; *zoom:1; line-height: 12px; padding:0 3px; position: relative; top:4px;}
+.totalscore_re b{display: block; float: left; font-weight: normal; font-size: 24px; line-height: 24px; padding:8px 14px; color:#bfbfbf;}
+.stress_re{font-size: 14px; line-height: 16px; color:#464646; padding-top: 16px;}
+.stress_re i{font-style: normal; padding-right: 5px;}
+
+.awardslist_ae{padding-top: 36px;}
+.item_aae{float: left; padding-left: 30px; margin-right: 70px; position: relative;}
+.flower_iaae{display: block; width: 46px; height: 55px; background: url("../images/event_flower_icon.png") 0 0 no-repeat; position: absolute; left: 5px; top:6px;}
+.grade_iaae{font-size: 26px; line-height: 28px; color:#f6674b; padding-left: 45px;}
+.grade_iaae span{display: inline-block; *display: inline; *zoom:1; font-size: 14px; line-height: 16px;}
+.cost_iaae{width: 194px; width:190px\0; *width: 190px; box-sizing:border-box; border:2px #f6674b solid; border-radius: 3px; overflow: hidden; margin-top: 8px;}
+.cost_iaae span{display: block; width: 100%; height:30px; margin-top: 10px; font-size: 24px; line-height: 30px; font-weight: bold; background: #f6674b; color:#fff; text-align: center;}
+.cost_iaae b{font-size:16px; line-height: 18px; font-weight: normal;}
+.cost_iaae label{display: block; font-size: 14px; line-height: 16px; color:#333; padding:6px 0 7px 0; text-align: center;}
+.partin_ae{padding-top: 30px;}
+.partin_ae dl{width: 366px; float: left; padding:0 18px; border:1px dashed #f6674b; border-radius: 3px; margin-right: 44px;}
+.partin_ae dt{padding:20px 0 12px 0;}
+.partin_ae h3{font-size: 18px; line-height: 20px; font-weight: normal; color:#f6674b; text-align: center;}
+.partin_ae dd{font-size: 14px; line-height: 22px; color:#464646; text-align: center; padding-bottom: 22px;}
+.prizeway_ae{font-size: 14px; line-height: 16px; color:#464646;}
+.prizeway_ae span{display: inline-block; *display: inline; *zoom:1; color: #f6674b; padding-top: 16px;}
+
+.gametime_e{padding-top: 30px;}
+.progress_ge{margin-left: 60px; min-height: 58px;}
+.plan_pge{width: 350px; float: left; position: relative;}
+.line_ppge{width: 100%; height: 4px; background: #ffe1e0; position: absolute; top:41px; left: 0; z-index: 1;}
+.timebucket_ppge{display: block; font-size: 16px; line-height: 18px; padding:5px 0; color:#464646; text-align: center;}
+.lookprizer_tppge{display: inline-block; *display: inline; *zoom:1; color:#f67c15;}
+.bar_ppge{display: block; padding:0 10px; background: #fff; margin-left:150px; position: absolute; z-index: 2; left: 0;}
+.bar_ppge i{display: block; width: 30px; height: 30px; background: url("../images/event_plan.png") center center no-repeat;}
+.ending_pge .bar_ppge{width: 10px; height: 10px; padding: 10px; margin-left: 160px;}
+.ending_pge .bar_ppge i{width: 10px; height: 10px; background: url("../images/event_plan.png") center center no-repeat;}
+.atonceupload_e{text-align: center; padding-top: 12px;}
+.atonceupload_e a{display: inline-block; *display: inline; *zoom:1; width: 180px; height:52px; padding-bottom: 8px; font-size: 20px; line-height: 52px; text-align: center; color: #fff; background: url("../images/event_bot_upload_bg.png") 0 0 no-repeat;}
+
+.ranking_e{padding-top:27px;}
+.table_re{width: 870px;}
+.table_re th,.table_re td {font-size: 16px; line-height: 20px; color: #464646; padding:10px;}
+.table_re th{background:#f1f1f1;}
+.table_re td{background: #fff;}
+.table_re tbody tr:nth-of-type(2n) td{background: #fafafa;}
+.table_re .oddtr_tre td{background: #fafafa;}
+.th1_tre,.td1_tre p{width:80px;}
+.th2_tre,.td2_tre p{width:150px;}
+.th3_tre,.td3_tre p{width:130px;}
+.th4_tre,.td4_tre p{width:130px;}
+.th5_tre,.td5_tre p{width:130px;}
+.th6_tre,.td6_tre p{width:130px;}
+.lockmore_tre{font-size: 14px; color:#f67c15;}
+
+/*实时排名*/
+.morerank_r{}
+.ranktit_mr{font-size: 18px; line-height: 20px; color:#333; font-weight: normal; padding: 28px 0 20px 65px;}
+.morerank_r .table_re{margin:0 65px;}
+.highlight_tre td{color:#f67c15;}
+.eventrankpager,.eventrewardpager{display: none; margin-top: 30px; margin-bottom: 0; min-height: 24px;}
+.eventrankpager .tn-pagination a.pgEmpty,.eventrewardpager .tn-pagination a.pgEmpty{display: none;}
+.eventrank .atonceupload_e,.eventreward .atonceupload_e{margin-top: 30px; padding-top: 0;}
+
+/*获奖名单*/
+.winners{padding:0 50px;}
+.rewardlist_w{margin-top: 10px;}
+.tit_rw{font-size: 18px; line-height: 20px; color:#333; font-weight: normal; padding:20px 0;}
+.tit_rw span{ display: block; float: right; font-size: 14px; line-height: 20px; color:#464646;}
+.details_rw{border:1px #ffe3cb solid;}
+.rank_drw{border-bottom: 1px #ffe3cb solid;}
+.rank_drw dl{float: left; width: 298px; border-right:1px #ffe3cb solid; min-height: 96px;}
+.rank_drw .lastdl_rdrw{border-right: none;}
+.rank_drw dt,.tit_pdrw{height: 40px; line-height: 40px; background: #fafafa; font-size: 16px; color:#333; text-align: center;}
+.rank_drw dd{padding:20px 0;}
+.rank_drw dd span{display: block; text-align: center; padding:0 20px; color: #f67c15; font-size: 14px; line-height: 16px; overflow: hidden; text-overflow:ellipsis; white-space:nowrap;}
+.roll_pdrw{padding: 8px 0;}
+.roll_pdrw span{display: block; float: left; font-size: 14px; line-height: 20px; color:#464646; width: 159px; padding:7px 0 7px 20px; overflow: hidden; text-overflow:ellipsis; white-space:nowrap;}

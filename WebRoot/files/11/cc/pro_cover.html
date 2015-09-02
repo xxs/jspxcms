@@ -1,0 +1,70 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title> ${site.fullNameOrName}-- Powerd by Jspxcms</title>
+<link href="_files/zzsc.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script type="text/javascript">
+    $(function(){
+        $('.navRight li').mouseenter(function(){
+            $(this).children('span').css('transform','rotate(135deg)');
+        }).mouseleave(function(){
+            $(this).children('span').css('transform','rotate(-45deg)');
+        })
+        $('.fenlei ul li').mouseenter(function(){
+            $(this).stop().animate({'height':'289px'},300).siblings().stop().animate({'height':'44px'},300);
+            $(this).siblings().css('background','#F5F5F5');
+        }).mouseleave(function(){
+            $('.fenlei ul li').stop().animate({'height':'79px'},300)
+            $(this).siblings().css('background','#ffffff');
+        });
+    })
+</script>
+</head>
+<body>
+<div id="navOut">
+    <div class="nav">
+        <div class="navLeft">
+            <p>全部商品分类</p>
+            <div class="fenlei">
+	 	 			<ul>
+                [@NodeList parentId=node.id;nodeList]
+	  	 	  			[#list nodeList as node]
+	  	 					<li>
+	  	 						<dl class="fenleiLeft">
+	  	 							<dt>[@A bean=node target="_blank"/]</dt>
+	        							[@NodeList parentId=node.id;nodeList]
+		        							<dd>
+		        								[#list nodeList as node]
+		        									[@A bean=node target="_blank"/]
+		        								[/#list]
+		        							</dd>
+	        							[/@NodeList]
+	        					</dl>		
+	     					</li>
+	  		  			[/#list]
+	 	 	  	[/@NodeList]
+                </ul>
+            </div>
+        </div>
+        <ul class="navRight">
+            <li><a href='${ctx}/'>首页</a></li>
+            <li><a href="#">特惠</a></li>
+            <li><a href="#">搭配</a></li>
+            <li><a href="#">专辑</a><span></span></li>
+            <li><a href="#">主题</a><span></span></li>
+            <li><a href="#">店铺</a></li>
+        </ul>
+    </div>
+</div>
+<div id="banner">
+    <div class="pic">
+        <img src="_files/images/banner.jpg"/>
+    </div>
+</div>
+</body>
+</html>
+[/#escape]

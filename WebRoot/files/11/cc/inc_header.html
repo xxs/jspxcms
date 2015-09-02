@@ -1,0 +1,27 @@
+<div class="headerwrap">
+	<div class="headersideout">
+		<div class="header clearfix">
+			<a class="logo_h" href="${ctx}/">
+                <img src="_files/picture/logo.png" alt="JSPXCMS演示站" title="JSPXCMS演示站">
+                <i>商店</i>
+            </a>
+            <div class="right_h">
+    			<div class="search_h" id="Search">
+                    <input type="text" autocomplete="off" initval="Framework" value="Framework" id="searchCont" maxlength="50" name="keyword">
+                    <a id="searchBtn" class="searchbtn_sh" href="javascript:void(0);"></a>
+                    <div id="searchDownList" class="downlist_sh">
+                        <ul id="associateWord" class="associateword_dsh">
+                        </ul>
+                    </div>
+                </div>
+                <p class="hotword_rh">
+                [@TagList sort='refers desc' limit=4;list]
+		  			[#list list as tag]
+          				<a href="${ctx}/tag/${tag.id?url}.jspx" target="_blank">${tag.name}</a>
+					[/#list]
+				[/@TagList]
+                </p>
+            </div>
+		</div>
+	</div>
+</div>

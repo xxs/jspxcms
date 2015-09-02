@@ -1,0 +1,46 @@
+﻿/*重新定义scroll style*/
+.mCustomScrollBox{overflow: visible;}
+.mCSB_container{overflow: visible;}
+.mCSB_scrollTools{width: 8px; margin-left:12px; opacity: 1;}
+.mCSB_inside > .mCSB_container{margin-right: 20px;}
+.mCS-light-3.mCSB_scrollTools .mCSB_draggerRail,.mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail{width: 8px; background: #e7e7e7;}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{border-radius: 3px;}
+.mCS-light-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,.mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ width: 8px; }
+
+/*水平*/
+.mCS-light-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar, 
+.mCS-dark-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar, 
+.mCS-light-3.mCSB_scrollTools_horizontal .mCSB_draggerRail, 
+.mCS-dark-3.mCSB_scrollTools_horizontal .mCSB_draggerRail{width: 100%;height: 6px;margin: 5px 0;}
+
+.mCS-light-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail, 
+.mCS-light-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail, 
+.mCS-dark-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail, 
+.mCS-dark-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail{
+	height: 12px;
+	margin: 2px 0;
+}
+	
+/*垂直*/
+.mCS-light-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail, 
+.mCS-light-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail, 
+.mCS-dark-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail, 
+.mCS-dark-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail{
+	width: 12px;
+}
+	
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonUp{ background-position: -32px -72px; }
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonDown{ background-position: -32px -92px; }
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonLeft{ background-position: -40px -112px; }
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonRight{ background-position: -40px -128px; }
+	
+	
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background: #e7e7e7;}
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{background: #e7e7e7;}
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{background: #e7e7e7;}
+.mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail{background: #fff;}
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonUp{ background-position: -112px -72px; }
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonDown{ background-position: -112px -92px; }
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonLeft{ background-position: -120px -112px; }
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonRight{	background-position: -120px -128px; }

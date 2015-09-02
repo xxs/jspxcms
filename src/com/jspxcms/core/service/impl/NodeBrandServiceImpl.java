@@ -29,25 +29,28 @@ public class NodeBrandServiceImpl implements NodeBrandService,
 		bean = dao.save(bean);
 		return bean;
 	}
+
 	@Transactional
 	public void save(Node node, Integer[] brandIds) {
 		NodeBrand bean;
-		for (int i = 0; i < brandIds.length; i++) {
-			bean = new NodeBrand();
-			bean.setNode(node);
-			bean.setBrand(brandService.get(brandIds[i]));
-			bean.applyDefaultValue();
-			dao.save(bean);
+		if (brandIds != null && brandIds.length > 0) {
+			for (int i = 0; i < brandIds.length; i++) {
+				bean = new NodeBrand();
+				bean.setNode(node);
+				bean.setBrand(brandService.get(brandIds[i]));
+				bean.applyDefaultValue();
+				dao.save(bean);
+			}
 		}
 	}
-	
+
 	@Transactional
 	public void update(Brand brand, Integer[] nodeIds) {
 		Integer brandId = brand.getId();
-		//更新前先删除之前已经绑定的栏目ID
+		// 更新前先删除之前已经绑定的栏目ID
 		dao.deleteByBrandId(brandId);
 		System.out.println("已经执行了删除操作");
-		Set<NodeBrand> nrs =  brand.getNodeBrands();
+		Set<NodeBrand> nrs = brand.getNodeBrands();
 		Node node = null;
 		boolean contains;
 		for (Integer nodeId : nodeIds) {
@@ -73,7 +76,7 @@ public class NodeBrandServiceImpl implements NodeBrandService,
 	@Transactional
 	public void update(Node node, Integer[] brandIds) {
 		Integer nodeId = node.getId();
-		//更新前先删除之前已经绑定的栏目ID
+		// 更新前先删除之前已经绑定的栏目ID
 		dao.deleteByNodeId(nodeId);
 		save(node, brandIds);
 	}
@@ -109,10 +112,10 @@ public class NodeBrandServiceImpl implements NodeBrandService,
 	}
 
 	private NodeBrandDao dao;
-	
+
 	@Autowired
 	public void setDao(NodeBrandDao dao) {
 		this.dao = dao;
 	}
-	
+
 }
