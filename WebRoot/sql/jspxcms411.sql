@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : xxs
+Source Server         : 远程数据库服务器
 Source Server Version : 50154
-Source Host           : 127.0.0.1:3306
+Source Host           : 121.42.136.24:3306
 Source Database       : jspxcms411
 
 Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-09-03 00:54:49
+Date: 2015-09-03 10:24:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -907,7 +907,7 @@ INSERT INTO `cms_info_buffer` VALUES ('168', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('169', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('170', '1', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('173', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_info_buffer` VALUES ('174', '5', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('174', '7', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('175', '1', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('176', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('177', '0', '0', '0', '0', '0', '0', '0');
@@ -5744,8 +5744,8 @@ INSERT INTO `cms_model` VALUES ('54', '10', 'node', '新闻', '0');
 INSERT INTO `cms_model` VALUES ('55', '10', 'info', '新闻', '0');
 INSERT INTO `cms_model` VALUES ('56', '11', 'site', '站点模型', '2147483647');
 INSERT INTO `cms_model` VALUES ('57', '11', 'node_home', '首页', '0');
-INSERT INTO `cms_model` VALUES ('58', '11', 'node', '新闻', '0');
-INSERT INTO `cms_model` VALUES ('59', '11', 'info', '新闻', '0');
+INSERT INTO `cms_model` VALUES ('58', '11', 'node', 'app模型', '0');
+INSERT INTO `cms_model` VALUES ('59', '11', 'info', 'app模型', '0');
 
 -- ----------------------------
 -- Table structure for cms_model_custom
