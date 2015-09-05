@@ -5,30 +5,842 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="_files/ckplayer.js" charset="utf-8"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#nextone").click(function(){
-			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
-			$("#captcha").unbind("focusin");
-		});
-		$("#captcha").focusin(function(){
-			$(".autherimg").css("display","inline");
-			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
-		});
-		//$("#captcha").captcha("${ctx}/captcha.servlet",{title:"点击重新获取验证码"});
-	});
-</script>
+
+    <link rel="stylesheet" href="_files/css/common.css">
+    <link rel="stylesheet" href="_files/css/pager.css">
+    <link rel="stylesheet" href="_files/css/viewimg.css">
+    <link rel="stylesheet" href="_files/css/detail.css">
+    <link rel="stylesheet" href="_files/css/index.css">
+
+    <!-- 滚动条 -->
+    <link rel="stylesheet" href="_files/css/jquery.mcustomscrollbar.css">
+    <link rel="stylesheet" href="_files/css/init.mcustomscrollbar.css">
+
+    <!-- 上传内容 大赛 -->
+    <link rel="stylesheet" href="_files/css/event.css">
+    <!-- 上传内容 大赛 end -->
+
+    <!-- 需求墙 -->
+    <link rel="stylesheet" href="_files/css/need.css">
+    <script src="_files/js/jquery-1.11.1.min.js"></script>	
+
+	<!-- sso 登录检测 -->
+	<script src="_files/js/611b7bc54e1f414baf4da1f1cac341f6.js"></script>
+
+
 </head>
 <body>
 [#include "inc_header.html"/]
+<div class="containerwrap" id="containerWrap">
+	<div class="content">
+		<!-- crumbs -->
+		<div class="crumbs_c clearfix" id="Crumbs">
+			[#list node.hierarchy as n]<a href="${n.url}" class='poslink_cc' title='${n.name}'>${n.name}</a><span class='spac_cc'>></span>[/#list]${info.fullTitleOrTitle}
+			</div>
+			
+			
+		<!-- crumbs end-->
+        <!-- lsm add on 2015/5/14 -->
+    	<div class="store_detail clearfix">     
+            <div class="detail_side">
+                <div class="store_intro clearfix">
+                    <input type="hidden" id="toolsId" value="171421">
+                    <input type="hidden" id="isBuyHid" value="1"> <!-- 用户是否已购买 -->
+
+                                            <!-- 基本信息 -->
+                        <dl>
+                        <dt class="store_intro_pic">
+                          <p class="icon_gbec">
+                          	<b class="hot_gbec" ></b>
+    						    							<img src="_files/picture/180099.jpg!175x175" alt="${info.fullTitleOrTitle}"/>
+    						                             <span class="mask_igbec"></span>
+                          </p>
+                                                    <!-- 免费下载 -->
+                            <a href="javascript:void(0);" class="btns btn-state store_money candownapply" data-toolsid="171421" data-opera-state="download"><i>免费</i></a>
+                                                                                                                               </dt>
+                        <dd class="store_intro_desc">
+                            <h2>${info.fullTitleOrTitle}</h2>
+                                                        <p class="emptyscore_bec">没有足够的评级</p>
+                                                        <p class="info_bec">
+                                <span>版本：1.0</span>
+                                <span>类别：<a href="_files/stuff/category/8/score_count.html">效果图</a></span>
+                                <span>大小：2MB</span>
+                                <span>时间：2015/08/03</span>
+                                <span>要求：适用于cocos v2.2.0.0版本</span>
+                            </p>
+                            <div class="cellectandshare_bec clearfix">
+                                <p class="collect_bec" id="addCollect">
+                                                                            <a href="javascript:void(0);">收藏</a>
+                                                                    </p>
+                                <div class="share_bec clearfix">
+                                    <span>分享到：</span>
+                                                                        <div class="bdsharebuttonbox">
+                                        <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+                                        <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+                                        <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+                                        <a href="#" class="bds_more" data-cmd="more"></a>
+                                    </div>
+                                    <script>
+                                        window._bd_share_config={
+                                            "common":{
+                                                "bdSnsKey":{},
+                                                "bdText":"我在Cocos Store发现了一个非常不错的商品：一款国外的手机游戏，价格：免费，感觉不错，分享一下。",
+                                                "bdDesc":"我在Cocos Store发现了一个非常不错的商品：一款国外的手机游戏，价格：免费，感觉不错，分享一下。",
+                                                "bdComment":"我在Cocos Store发现了一个非常不错的商品：一款国外的手机游戏，价格：免费，感觉不错，分享一下。",
+                                                "bdMini":"1",
+                                                "bdMiniList":false,
+                                                "bdUrl" : "http://store.cocos.com/stuff/show/171421.html",
+                                                                                                "bdPic":"http://contentcdn.store.cocos.com/game_ui/logo/180/180099.jpg!175x175",
+                                                                                                "bdStyle":"0",
+                                                "bdSize":"16"
+                                            },
+                                            "share":{}
+                                            //"image":{"viewList":["qzone","tsina","weixin"],"viewText":"","viewSize":"16"},
+                                            //"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}
+                                        };
+                                        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                                    </script>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                                        <div class="ad_intro">
+                        <a href="need.html" target="_blank"><img src="_files/picture/details_need_ad.png" alt="需求墙"></a>
+                        <a href="https://open.cocos.com/store/add" target="_blank"><img src="_files/picture/details_upload_ad.png" alt="上传大赛"></a>
+                    </div>
+                    
+                    <!-- 简介 -->
+                <div class="store_brief">
+                    <h2 class="mod_title">简介</h2>
+                    <p class="mod_content" id="Introduction">
+													一款国外的手机游戏						                     
+					</p>
+                    <div class="subjoin_site clearfix">
+                        <p class="btn_show"><a href="javascript:void(0);" class="btn_default" id="displayMoreIntro">展开<em></em></a></p>
+                                            </div>
+                    
+                </div>
+                
+                
+                    
+                                   <!-- 简介 -->
+                <div class="store_brief">
+                    <h2 class="mod_title">简介</h2>
+                    <p class="mod_content" id="Introduction">
+													一款国外的手机游戏						                     
+					</p>
+                    <div class="subjoin_site clearfix">
+                        <p class="btn_show"><a href="javascript:void(0);" class="btn_default" id="displayMoreIntro">展开<em></em></a></p>
+                                            </div>
+                    
+                </div>
+                <!-- <div class="effect_mdec">
+                    <canvas id="effectCanvas" width="300" height="300" ></canvas>
+                </div> -->
+                				    					<div class="store_content" id="content_preview">
+						<h2 class="mod_title">内容</h2>
+							                                    <div class="imgshow_mdec">
+                                        <a href="javascript:void(0);"class="slide_imdec lslide_imdec" id="leftSlide"></a>
+                                        <a href="javascript:void(0);"class="slide_imdec rslide_imdec" id="rightSlide"></a>
+                                        <div class="imglist_imdec">
+                                            <ul class="clearfix" id="imgListBox">
+                                                                                            <li class="liitem_imdec">
+                                                    <div class="imgarea_imdec">
+                                                                                                                    <img src="picture/180055.png"/>
+                                                                                                            </div>
+                                                </li>
+                                                                                            <li class="liitem_imdec">
+                                                    <div class="imgarea_imdec">
+                                                                                                                    <img src="picture/180134.png"/>
+                                                                                                            </div>
+                                                </li>
+                                                                                            <li class="liitem_imdec">
+                                                    <div class="imgarea_imdec">
+                                                                                                                    <img src="picture/180226.png"/>
+                                                                                                            </div>
+                                                </li>
+                                                                                        </ul>
+                                        </div>
+                                        <div class="pointbg_imdec">
+                                            <p class="barpoint_imdec clearfix" id="pointListBox">
+                                                                                                    <a href="javascript:void(0)" class="current_imdec" ></a>
+                                                                                                    <a href="javascript:void(0)" ></a>
+                                                                                                    <a href="javascript:void(0)" ></a>
+                                                                                            </p>
+                                        </div>
+                                    </div>
+							
+
+					</div>
+				                                <!-- 下载内容预览 -->
+                <div class="uploadview" id="uploadView">
+                    <h2 class="mod_title">下载内容预览</h2>
+                    <div class="uppackcont_u clearfix">
+                        <div class="uppackmenu_uu" id="uppackMenu">
+                            <div class="treelist_uu" id="treeMenuList"></div>
+                        </div>
+                        <div class="vieweffect_uu">
+                            <div class="matter_vuu" id="viewEffect"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 相关标签 -->
+                
+                
+
+                <!-- 用户评分 -->
+                <div class="grade_mdec" id="statGrade">
+                        <h5 class="mod_title">用户评分</h5>
+                        <div class="score_mdec clearfix">
+                            <div class="le_smdec">
+                                <div class="clearfix">
+                                    <span class="average_lsmdec">平均评分</span>
+                                    <p class="score-star star_sid clearfix">
+                                        <b class="star-star empty-star"></b>
+                            <b class="star-star empty-star"></b>
+                            <b class="star-star empty-star"></b>
+                            <b class="star-star empty-star"></b>
+                            <b class="star-star empty-star"></b>                                    </p>
+                                </div>
+                                <p class="times_lsmdec">共有0个用户评分</p>
+                            </div>
+                            <div class="ri_smdec">
+                                <ul class="statscore_rsmdec">
+                                                                        <li class="clearfix">
+                                        <label class="star_srsmdec clearfix"><i class="fire_srsmdec1"></i></label>
+                                        <p class="bar_srsmdec">
+                                            <span>0%</span>
+                                        </p>
+                                        <b class="num_srsmdec">0</b>
+                                    </li>
+                                                                        <li class="clearfix">
+                                        <label class="star_srsmdec clearfix"><i class="fire_srsmdec2"></i></label>
+                                        <p class="bar_srsmdec">
+                                            <span>0%</span>
+                                        </p>
+                                        <b class="num_srsmdec">0</b>
+                                    </li>
+                                                                        <li class="clearfix">
+                                        <label class="star_srsmdec clearfix"><i class="fire_srsmdec3"></i></label>
+                                        <p class="bar_srsmdec">
+                                            <span>0%</span>
+                                        </p>
+                                        <b class="num_srsmdec">0</b>
+                                    </li>
+                                                                        <li class="clearfix">
+                                        <label class="star_srsmdec clearfix"><i class="fire_srsmdec4"></i></label>
+                                        <p class="bar_srsmdec">
+                                            <span>0%</span>
+                                        </p>
+                                        <b class="num_srsmdec">0</b>
+                                    </li>
+                                                                        <li class="clearfix">
+                                        <label class="star_srsmdec clearfix"><i class="fire_srsmdec5"></i></label>
+                                        <p class="bar_srsmdec">
+                                            <span>0%</span>
+                                        </p>
+                                        <b class="num_srsmdec">0</b>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="comment_mdec" id="commentModule">
+                    <div class="title_mdec clearfix">
+                        <h5 class="tit_mdec">评论</h5>
+                        <a href="javascript:void(0);" class="btn_small" id="inCommentBtn" title="为Cocos商店 tilemap45度地图坐标转换遮挡等类 撰写评论">撰写评论</a>
+
+                        <div class="sort_mdec" id="commentListSort">
+                            <a href="javascript:void(0);" class="active_smdec" data-sort="new"><i>最新评论</i></a>
+                            <ul class="pulldown_asmdec">
+                                <li><a href="javascript:void(0);" data-sort="high">最高评分</a></li>
+                                <li><a href="javascript:void(0);" data-sort="low">最低评分</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="commentlist_mdec">
+                        <ul id="commentListBox"> <!-- 评论总条数 -->
+                        </ul>
+                        <div id="commentPager" class="pager_c"></div>
+                    </div>
+                </div>
+                <div class="comment_pan" id="commentPen">
+                    <h5 class="tit_mdec">我要评论</h5>
+						<div class="title_b clearfix">
+							<dl class="selstr_tb">
+								<dt>点击评分：</dt>
+								<dd class="clearfix">
+									<p class="markstar_stb clearfix" id="selMarkStar">
+										<a href="javascript:void(0);"></a>
+										<a href="javascript:void(0);"></a>
+										<a href="javascript:void(0);"></a>
+										<a href="javascript:void(0);"></a>
+										<a href="javascript:void(0);"></a>
+									</p>
+									<span class="startips_mstb" id="starTips"></span>
+								</dd>
+							</dl>
+						</div>
+						<div class="comment_b">
+							<dl>
+								<dd>
+									<textarea autocomplete="off" class="textarea_cb" name="content" id="commentCont"></textarea>
+									<span class="beyondword_cb" id="beyondWord"><em>0</em>/2000</span>
+								</dd>
+							</dl>
+						</div>
+						<p class="comment_btn clearfix">
+							<a href="javascript:void(0);" class="btn" id="commentBtn">评论</a>
+						</p>
+                </div>
+            </div>
+
+            <!-- 右侧 -->
+            <div class="recommend_side">
+                <!-- 下载排行 -->
+                <div class="rank_intro clearfix">
+                    <!-- 下载排行 -->
+<div class="monoblock_r">
+<div class="top_mr clearfix">
+    <h2 class="tit_tmr">下载排行</h2>
+    <ul class="date_tmr rankingcut">
+        <li><a href="javascript:void(0);">日</a></li>
+        <li><a href="javascript:void(0);">周</a></li>
+        <li class="current_dtmr"><a href="javascript:void(0);">月</a></li>
+    </ul>
+</div>
+<ul class="ullist_mr disnone_mr">
+					<li class="firli_umr clearfix">
+			<label class="order_umr"><i>1.</i></label>
+			<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_img', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="http://store.cocos.com/stuff/show/126054.html" title="游戏美术参考素材 - CreatureBox插画工作室作品精选" class="applyicon_umr">
+				<b class="markbg_ia"></b>
+				<span>
+									<img src="picture/icon_1430985564.png!75x75" alt="游戏美术参考素材 - CreatureBox插画工作室作品精选"/>
+								</span>
+			</a>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="http://store.cocos.com/stuff/show/126054.html" title="游戏美术参考素材 - CreatureBox插画工作室作品精选" class="applyname_umr">
+					游戏美术参考素材 - CreatureBox插画工作室作品精选				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏美术参考素材 - CreatureBox插画工作室作品精选" data-toolsid="126054" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+						</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>2.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '我喜欢的一个UI']);" href="http://store.cocos.com/stuff/show/150187.html" class="applyname_umr" title="我喜欢的一个UI">
+					我喜欢的一个UI				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '我喜欢的一个UI']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="我喜欢的一个UI" data-toolsid="150187" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>3.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '人物畜力_42']);" href="http://store.cocos.com/stuff/show/741.html" class="applyname_umr" title="人物畜力_42">
+					人物畜力_42				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '人物畜力_42']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="人物畜力_42" data-toolsid="741" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>4.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '电影大圣归来海报PSD效果图']);" href="http://store.cocos.com/stuff/show/171227.html" class="applyname_umr" title="电影大圣归来海报PSD效果图">
+					电影大圣归来海报PSD效果图				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '电影大圣归来海报PSD效果图']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="电影大圣归来海报PSD效果图" data-toolsid="171227" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>5.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏效果图_90']);" href="http://store.cocos.com/stuff/show/790.html" class="applyname_umr" title="游戏效果图_90">
+					游戏效果图_90				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏效果图_90']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏效果图_90" data-toolsid="790" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>6.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '卡通类型手机游戏界面及素材']);" href="http://store.cocos.com/stuff/show/172412.html" class="applyname_umr" title="卡通类型手机游戏界面及素材">
+					卡通类型手机游戏界面及素材				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '卡通类型手机游戏界面及素材']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="卡通类型手机游戏界面及素材" data-toolsid="172412" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>7.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏效果图_99']);" href="http://store.cocos.com/stuff/show/799.html" class="applyname_umr" title="游戏效果图_99">
+					游戏效果图_99				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏效果图_99']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏效果图_99" data-toolsid="799" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>8.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏效果图_102']);" href="http://store.cocos.com/stuff/show/802.html" class="applyname_umr" title="游戏效果图_102">
+					游戏效果图_102				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏效果图_102']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏效果图_102" data-toolsid="802" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>9.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏效果图_105']);" href="http://store.cocos.com/stuff/show/805.html" class="applyname_umr" title="游戏效果图_105">
+					游戏效果图_105				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏效果图_105']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏效果图_105" data-toolsid="805" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>10.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '矢量图动漫表情']);" href="http://store.cocos.com/stuff/show/132202.html" class="applyname_umr" title="矢量图动漫表情">
+					矢量图动漫表情				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+									<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '矢量图动漫表情']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="矢量图动漫表情" data-toolsid="132202" data-pricenum = "0">
+						<i>免费</i>
+					</a>
+							</p>
+		</li>
+			</ul>
+<ul class="ullist_mr disnone_mr">
+					<li class="firli_umr clearfix">
+			<label class="order_umr"><i>1.</i></label>
+			<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_img', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="http://store.cocos.com/stuff/show/126054.html" title="游戏美术参考素材 - CreatureBox插画工作室作品精选" class="applyicon_umr">
+				<b class="markbg_ia"></b>
+				<span>
+									<img src="picture/icon_1430985564.png!75x75" alt="游戏美术参考素材 - CreatureBox插画工作室作品精选"/>
+								</span>
+			</a>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="http://store.cocos.com/stuff/show/126054.html" title="游戏美术参考素材 - CreatureBox插画工作室作品精选" class="applyname_umr">
+					游戏美术参考素材 - CreatureBox插画工作室作品精选				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏美术参考素材 - CreatureBox插画工作室作品精选" data-toolsid="126054" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+						</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>2.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '一款国外的手机游戏']);" href="http://store.cocos.com/stuff/show/171421.html" class="applyname_umr" title="一款国外的手机游戏">
+					一款国外的手机游戏				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '一款国外的手机游戏']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="一款国外的手机游戏" data-toolsid="171421" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>3.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '卡通类型手机游戏界面及素材']);" href="http://store.cocos.com/stuff/show/172412.html" class="applyname_umr" title="卡通类型手机游戏界面及素材">
+					卡通类型手机游戏界面及素材				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '卡通类型手机游戏界面及素材']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="卡通类型手机游戏界面及素材" data-toolsid="172412" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>4.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '电影大圣归来海报PSD效果图']);" href="http://store.cocos.com/stuff/show/171227.html" class="applyname_umr" title="电影大圣归来海报PSD效果图">
+					电影大圣归来海报PSD效果图				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '电影大圣归来海报PSD效果图']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="电影大圣归来海报PSD效果图" data-toolsid="171227" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>5.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '我喜欢的一个UI']);" href="http://store.cocos.com/stuff/show/150187.html" class="applyname_umr" title="我喜欢的一个UI">
+					我喜欢的一个UI				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '我喜欢的一个UI']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="我喜欢的一个UI" data-toolsid="150187" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>6.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '矢量图动漫表情']);" href="http://store.cocos.com/stuff/show/132202.html" class="applyname_umr" title="矢量图动漫表情">
+					矢量图动漫表情				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '矢量图动漫表情']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="矢量图动漫表情" data-toolsid="132202" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>7.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '横版写实场景原画']);" href="http://store.cocos.com/stuff/show/100174.html" class="applyname_umr" title="横版写实场景原画">
+					横版写实场景原画				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '横版写实场景原画']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="横版写实场景原画" data-toolsid="100174" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>8.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '各种GUI元素-第2部分']);" href="http://store.cocos.com/stuff/show/132271.html" class="applyname_umr" title="各种GUI元素-第2部分">
+					各种GUI元素-第2部分				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '各种GUI元素-第2部分']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="各种GUI元素-第2部分" data-toolsid="132271" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>9.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '艺术']);" href="http://store.cocos.com/stuff/show/133167.html" class="applyname_umr" title="艺术">
+					艺术				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '艺术']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="艺术" data-toolsid="133167" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>10.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏效果图_102']);" href="http://store.cocos.com/stuff/show/802.html" class="applyname_umr" title="游戏效果图_102">
+					游戏效果图_102				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏效果图_102']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏效果图_102" data-toolsid="802" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+			</ul>
+<ul class="ullist_mr">
+					<li class="firli_umr clearfix">
+			<label class="order_umr"><i>1.</i></label>
+			<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_img', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="http://store.cocos.com/stuff/show/126054.html" title="游戏美术参考素材 - CreatureBox插画工作室作品精选" class="applyicon_umr">
+				<b class="markbg_ia"></b>
+				<span>
+									<img src="picture/icon_1430985564.png!75x75" alt="游戏美术参考素材 - CreatureBox插画工作室作品精选"/>
+								</span>
+			</a>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="http://store.cocos.com/stuff/show/126054.html" title="游戏美术参考素材 - CreatureBox插画工作室作品精选" class="applyname_umr">
+					游戏美术参考素材 - CreatureBox插画工作室作品精选				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '游戏美术参考素材 - CreatureBox插画工作室作品精选']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="游戏美术参考素材 - CreatureBox插画工作室作品精选" data-toolsid="126054" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>2.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '我喜欢的一个UI']);" href="http://store.cocos.com/stuff/show/150187.html" class="applyname_umr" title="我喜欢的一个UI">
+					我喜欢的一个UI				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '我喜欢的一个UI']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="我喜欢的一个UI" data-toolsid="150187" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>3.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '卡通类型手机游戏界面及素材']);" href="http://store.cocos.com/stuff/show/172412.html" class="applyname_umr" title="卡通类型手机游戏界面及素材">
+					卡通类型手机游戏界面及素材				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '卡通类型手机游戏界面及素材']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="卡通类型手机游戏界面及素材" data-toolsid="172412" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>4.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '电影大圣归来海报PSD效果图']);" href="http://store.cocos.com/stuff/show/171227.html" class="applyname_umr" title="电影大圣归来海报PSD效果图">
+					电影大圣归来海报PSD效果图				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '电影大圣归来海报PSD效果图']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="电影大圣归来海报PSD效果图" data-toolsid="171227" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>5.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '横版写实场景原画']);" href="http://store.cocos.com/stuff/show/100174.html" class="applyname_umr" title="横版写实场景原画">
+					横版写实场景原画				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '横版写实场景原画']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="横版写实场景原画" data-toolsid="100174" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>6.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '矢量图动漫表情']);" href="http://store.cocos.com/stuff/show/132202.html" class="applyname_umr" title="矢量图动漫表情">
+					矢量图动漫表情				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '矢量图动漫表情']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="矢量图动漫表情" data-toolsid="132202" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>7.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '3D网游上古世纪精美素材 - 高清原画']);" href="http://store.cocos.com/stuff/show/126053.html" class="applyname_umr" title="3D网游上古世纪精美素材 - 高清原画">
+					3D网游上古世纪精美素材 - 高清原画				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '3D网游上古世纪精美素材 - 高清原画']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="3D网游上古世纪精美素材 - 高清原画" data-toolsid="126053" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>8.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '一款国外的手机游戏']);" href="http://store.cocos.com/stuff/show/171421.html" class="applyname_umr" title="一款国外的手机游戏">
+					一款国外的手机游戏				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '一款国外的手机游戏']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="一款国外的手机游戏" data-toolsid="171421" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>9.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '各种GUI元素-第2部分']);" href="http://store.cocos.com/stuff/show/132271.html" class="applyname_umr" title="各种GUI元素-第2部分">
+					各种GUI元素-第2部分				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '各种GUI元素-第2部分']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="各种GUI元素-第2部分" data-toolsid="132271" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+							<li class="clearfix">
+			<label class="order_umr"><i>10.</i></label>
+			<p class="namecate_umr">
+				<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '背景技术']);" href="http://store.cocos.com/stuff/show/132819.html" class="applyname_umr" title="背景技术">
+					背景技术				</a>
+				<a href="stuff/category/8/score_count.html" class="applycate_umr">效果图</a>
+			</p>
+			<p class="applyopera_umr">
+							<a onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '背景技术']);" href="javascript:void(0);" class="btns btn-gray candownapply" data-opera-state="download" data-apply-name="背景技术" data-toolsid="132819" data-pricenum = "0">
+					<i>免费</i>
+				</a>
+			
+			</p>
+		</li>
+			</ul>
+</div>
+<!-- 下载排行 end-->                </div>
+                <!-- 下载排行 end -->
+                
+                <!-- 大家也喜欢 -->
+                <div class="purchase_intro">
+                    <div class="rank_intro_title">
+                        <h2>大家也喜欢</h2>
+                    </div>
+                    <ul class="clearfix">
+                                            <li >
+                            <p>
+                                <a href="http://store.cocos.com/stuff/show/131998.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_img', '抽象主义']);" title="抽象主义" title="抽象主义">
+                                    <span class="mask60"></span>
+                                                                            <img src="picture/preview_135.png!75x75" alt="抽象主义"/>
+                                                                    </a>
+
+                            </p>
+                            <span class="purchase_title"><a href="http://store.cocos.com/stuff/show/131998.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_title', '抽象主义']);" title="抽象主义">抽象主义 </a></span>
+                        </li>
+                                            <li >
+                            <p>
+                                <a href="http://store.cocos.com/stuff/show/131550.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_img', 'tmim女主角-放气的游戏艺术']);" title="tmim女主角-放气的游戏艺术" title="tmim女主角-放气的游戏艺术">
+                                    <span class="mask60"></span>
+                                                                            <img src="picture/sprite0_3.png!75x75" alt="tmim女主角-放气的游戏艺术"/>
+                                                                    </a>
+
+                            </p>
+                            <span class="purchase_title"><a href="http://store.cocos.com/stuff/show/131550.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_title', 'tmim女主角-放气的游戏艺术']);" title="tmim女主角-放气的游戏艺术">tmim女主角-放气的游戏艺术 </a></span>
+                        </li>
+                                            <li  class="last">
+                            <p>
+                                <a href="http://store.cocos.com/stuff/show/133174.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_img', '像素艺术车']);" title="像素艺术车" title="像素艺术车">
+                                    <span class="mask60"></span>
+                                                                            <img src="picture/v_vv_0.png!75x75" alt="像素艺术车"/>
+                                                                    </a>
+
+                            </p>
+                            <span class="purchase_title"><a href="http://store.cocos.com/stuff/show/133174.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_title', '像素艺术车']);" title="像素艺术车">像素艺术车 </a></span>
+                        </li>
+                                            <li >
+                            <p>
+                                <a href="http://store.cocos.com/stuff/show/131707.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_img', '32X32像素的瓷砖艺术tilesheet']);" title="32X32像素的瓷砖艺术tilesheet" title="32X32像素的瓷砖艺术tilesheet">
+                                    <span class="mask60"></span>
+                                                                            <img src="picture/tileset.png!75x75" alt="32X32像素的瓷砖艺术tilesheet"/>
+                                                                    </a>
+
+                            </p>
+                            <span class="purchase_title"><a href="http://store.cocos.com/stuff/show/131707.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_title', '32X32像素的瓷砖艺术tilesheet']);" title="32X32像素的瓷砖艺术tilesheet">32X32像素的瓷砖艺术tilesheet </a></span>
+                        </li>
+                                            <li >
+                            <p>
+                                <a href="http://store.cocos.com/stuff/show/805.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_img', '游戏效果图_105']);" title="游戏效果图_105" title="游戏效果图_105">
+                                    <span class="mask60"></span>
+                                                                            <img src="picture/icon_rwxl_105.jpg!75x75" alt="游戏效果图_105"/>
+                                                                    </a>
+
+                            </p>
+                            <span class="purchase_title"><a href="http://store.cocos.com/stuff/show/805.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_title', '游戏效果图_105']);" title="游戏效果图_105">游戏效果图_105 </a></span>
+                        </li>
+                                            <li  class="last">
+                            <p>
+                                <a href="http://store.cocos.com/stuff/show/132486.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_img', '小屋-放气的游戏艺术']);" title="小屋-放气的游戏艺术" title="小屋-放气的游戏艺术">
+                                    <span class="mask60"></span>
+                                                                            <img src="picture/hut.png!75x75" alt="小屋-放气的游戏艺术"/>
+                                                                    </a>
+
+                            </p>
+                            <span class="purchase_title"><a href="http://store.cocos.com/stuff/show/132486.html" onclick="_hmt.push(['_trackEvent', 'web_show', 'web_show_other_click_title', '小屋-放气的游戏艺术']);" title="小屋-放气的游戏艺术">小屋-放气的游戏艺术 </a></span>
+                        </li>
+                                        </ul>
+                </div>
+                <!-- 大家也喜欢 end -->
+
+                <!-- 广告位 -->
+                <div class="recommend_intro ">
+                    <!-- 广告位：Cocos Store详情页面广告位-->
+                                                                        <a target="_blank" class="adstatistics" advert-id="34"  onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_slide_img', 'cocos商店轻松赚钱']);" href="https://cn.cocos.com/store/add">
+                                                                    <img src="picture/recommend_1435801437.png"/>
+                                                            </a>
+                                                            </div>
+                <!-- 广告位 end -->
+            </div>
+        </div>
+        <!-- lsm end on 2015/5/14 -->
+   </div>
+ </div>
+
+<form id="download_form" action="" method="post">
+    <input type="hidden" name="token" value="">
+        <input type="hidden" name="type" value="win32">
+    </form>
+
+
+
+
+
 <div class="w960 center clear mt1">
 	<div class="pleft">
     	<div class="position">
@@ -77,17 +889,6 @@
 								);
 							}
 						</script>
-            [@ScoreGroup number='mood';group]
-            <ul>
-              [#list group.items as item]
-              <li onclick="infoScoring(${info.id},${item.id});">
-                <p> <span id="score-item-${item.id}">0</span>票</p>
-                <p><img src="${item.iconUrl}"/></p>
-                <p>${item.name}${item.iconUrl}</p>
-              </li>
-              [/#list]
-            </ul>
-            [/@ScoreGroup]
             <script type="text/javascript">
               $.get("${ctx}/info_score/${info.id}.jspx?d="+new Date()*1,function(data) {
                 for(id in data) {
@@ -225,4 +1026,28 @@
 [#include "inc_footer.html"/]
 </body>
 </html>
+<script src="_files/js/ssoclient.js"></script>		
+<script src="_files/js/common.js"></script>
+<script src="_files/js/browser.js"></script>
+<script src="_files/js/jquery.mcustomscrollbar.js"></script>
+<script src="_files/js/commonsearch.js"></script> <!-- 多级导航、搜索 -->
+<script src="_files/js/viwepager.js"></script> <!-- 图片轮播 -->
+<script src="_files/js/viewimg.js"></script> <!-- 图片预览 -->
+<script src="_files/js/audio.min.js"></script> <!-- mp3 音效预览 -->
+<script src="_files/js/jquery.pager.js"></script> <!-- 分页 -->
+<script src="_files/js/buydialog.js"></script> <!-- 购买apply -->
+<script src="_files/js/applylist.js"></script> <!-- apply list -->
+
+<script src="_files/js/details.js"></script>
+<script>
+        $(function(){
+    	var audio = audiojs.createAll({
+          trackEnded: function() {
+            audio.play();
+          }
+        });
+
+        storeDeatilsPage();
+    })
+</script>
 [/#escape]
