@@ -5,13 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>用户注册_${site.fullNameOrName}</title>
-<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+
+	<link rel="stylesheet" href="_files/css/coco.css">
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="_files/css/ie.css" />
+    <![endif]-->
+    <script type="text/javascript" src="_files/js/jquery.js"></script>
+    
+    
 <script type="text/javascript">
 $(function() {
 	$("#validForm").validate();
@@ -30,24 +31,97 @@ $(function() {
 	 [/#if]
 [/#if]
 </script>
-<style type="text/css">
-.center{margin:0 auto;width:800px;}
-.clear{clear:both;}
-.div1{margin-top:150px;padding-top:5px;}
-.desc{float:left;height:180px;width:430px;padding-top:40px;text-align:center;color:#858585;font-size:28px;font-weight:bold;background:url('${ctx}/back/images/admin_logo.png') no-repeat center 8px;}
-.input_form{float:right;height:180px;width:370px;margin-top:20px;}
-.input_p{padding:8px 0;}
-.input_p_submit{text-align:left;padding:5px 0 5px 80px;}
-.label{display:block;float:left;width:70px;padding-right:10px;text-align:right;font-size:14px;font-weight:bold;color:#666666;}
-.input{display:block;float:left;width:180px;}
-.div2{text-align:center;color:#555555;}
-
-a:link,a:visited{text-decoration:none;color:#014c90;}
-a:hover,a:active{text-decoration:underline;color:#014c90;}
-
-</style>
 </head>
 <body>
+<div class="passport_header">
+    <div class="passport_top">
+        <div class="passport_top_wrapper">
+            <h2>一个帐号，畅享所有服务！</h2>
+        </div>
+    </div>
+    <div class="touying"></div>
+</div> <!-- top -->
+
+
+
+<div class="content">
+    <div class="wrap login">
+        <div class="logintitle">
+            <h1 class="clearfix"><strong class="fl">登录</strong><span class="fr">还没有帐号？<a href="https://passport.cocos.com/auth/signup">立即注册</a></span></h1>
+        </div>
+        <div class="padbom">
+            <form id="loginform" class="loginform " method="POST" action="">
+                <table>
+                    <tr>
+                        <td><input type="text" class="ipt" name="account" id="account" value="" placeholder="邮箱/用户名" /></td>
+                        <td>
+                            <div class="tip" style="background:none;"><!-- 请输入邮箱或用户名 --></div>
+                            <!--<label for="email" class="error checked"></label>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input id="password" type="password" class="ipt" name="password" placeholder="密码" /></td>
+                        <td><div class="tip" style="background:none;"><!-- 6-16个字符，区分大小写 --></div></td>
+                    </tr>
+                    <tr  id="vcodewrap"></tr>
+                    <tr>
+                        <td >
+                            <span class="fl remember">
+                                <label><input type="checkbox"  name="auto_sign"><em>自动登录</em></label>
+                            </span>
+                            <a class="fr" style="position: relative; top:4px;" href="https://passport.cocos.com/auth/forget_pass">找回密码？</a>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td ><input type="submit" class="subbtn btn btn-primary"  value="登录" id="loginsub" /></td>
+                        <td><div class="tip">&nbsp;</div></td>
+                    </tr>
+                </table>
+                <input type="hidden" id="subcheck" value="0"/>
+            </form>
+            <input type="hidden" id="vcode_invalid" value="验证码不正确，请重新输入" />
+            <input type="hidden" id='enter_the_code' value="请输入验证码" />
+            <input type="hidden" id='enter_your_email' value="请输入帐号" />
+            <input type="hidden" id='enter_your_password' value="请输入密码" />
+            <input type="hidden" id='password_is_incorrect' value="帐号或密码错误，请重新登录" />
+            <input type="hidden" id="log_in" value="登录" />
+            <input type="hidden" id="login_in_process" value="登录中...">
+        </div>
+    </div>
+</div> <!-- content -->
+<div class="footer">
+    <p>
+      <a class="email" href="mailto:cocos@chukong-inc.com">客服邮箱：cocos@chukong-inc.com</a><span>|</span>
+      <a class="email" href="mailto:dr-bd@chukong-inc.com">商务邮箱：dr-bd@chukong-inc.com</a><span>|</span>
+      语言：
+          <select class="select_system" id="changeLanguage" data-oauth="2">
+                      <option value="chinese" selected >中文</option>
+            <option value="english" >English</option>
+               </select>
+          <input type="hidden" id="view_type_pc" value="" />
+      <input type="hidden" id="app_key_pc" value="" />
+      <input type="hidden" id="redirect_uri_pc" value="" />
+      <input type="hidden" id="response_type_pc" value="" />
+  </p>
+2015 &copy; Cocos.com<br/>
+沪ICP备14008742号-5
+</div> <!-- footer -->
+<script type="text/javascript" src="_files/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="_files/js/jquery.md5.js"></script>
+<script type="text/javascript" src="_files/js/jquery.form.js"></script>
+<script type="text/javascript" src="_files/js/jquery.placeholder.js"></script>
+<script type="text/javascript" src="_files/js/pc.js"></script>
+<!--[if IE 6]>
+<script src="_files/js/dd_belatedpng.js"></script>
+<script>
+  DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+</div>
+<div style="display:none">
+</div>
+
 
 <div class="login">
   <h2>登陆</h2>

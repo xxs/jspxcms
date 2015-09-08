@@ -1,4 +1,22 @@
-[#assign script]
-[#if user??]你好，<a href="${ctx}/my.jspx">${user.username}</a><a href="${ctx}/logout.jspx">[退出]</a>[#else]游客，你好，你还未<a href="${ctx}/login.jspx">登陆</a>！[/#if]
-[/#assign]
-document.write("${script?js_string}");
+<div class="headerbg" id="cocos_top">
+	<div class="wrap clearfix" style="height:30px;">';
+		<h1 class="logo">
+			<a href="#"><span>Cocos</span>开发者平台</a>
+		</h1>
+		[#assign script] [#if user??]你好，
+			<a href="${ctx}/my.jspx">${user.username}</a>
+			<a href="${ctx}/logout.jspx">[退出]</a>
+			<div id="sso_user">
+				<a href="${ctx}/my.jspx" class="fr">${user.username}</a>
+				<span class="fr shu"></span>
+				<a href="${ctx}/logout.jspx" class="fr">[退出]</a>
+			</div>
+		[#else]
+		<div id="sso_user">
+			<a href="${ctx}/login.jspx" class="fr">注册</a>
+			<span class="fr shu"></span>
+			<a href="${ctx}/login.jspx" class="fr">登录</a>
+		</div>
+		[/#if] [/#assign] document.write("${script?js_string}");
+	</div>
+</div>
