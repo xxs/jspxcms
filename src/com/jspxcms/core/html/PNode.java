@@ -56,6 +56,8 @@ public abstract class PNode {
 			} else {
 				filename = resolver.getPath(path);
 			}
+			System.out.println("path:"+path);
+			System.out.println("filename:"+filename);
 			File file = new File(filename);
 			file.getParentFile().mkdirs();
 			// TODO like info:InfoText,title,text.
