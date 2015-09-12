@@ -62,7 +62,9 @@ public abstract class PNode {
 			file.getParentFile().mkdirs();
 			// TODO like info:InfoText,title,text.
 			rootMap.put("text", node.getText());
+			System.out.println("-============================================="+node.getSite().getAllStatic());
 			String url = node.getUrlStatic(page);
+			System.out.println("-----------------------------------------------:"+url);
 			ForeContext.setData(rootMap, site, null, null, null, null, null,
 					url, isAllSite);
 			ForeContext.setPage(rootMap, page, node);
