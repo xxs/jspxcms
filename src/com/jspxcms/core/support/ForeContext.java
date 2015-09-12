@@ -83,6 +83,7 @@ public abstract class ForeContext {
 		String ctx = site.getContextPath();
 		data.put(Constants.CTX, ctx != null ? ctx : "");
 		// 两种情景，一种是原生静态化，一种是整站静态化导出功能需要用到的
+		System.out.println("setData的时机url的值："+url);
 		if (isAllSite) {
 			site.getGlobal().setAllStatic(true);
 			data.put(FILES, "_files");
