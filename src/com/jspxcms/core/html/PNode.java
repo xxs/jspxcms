@@ -65,8 +65,7 @@ public abstract class PNode {
 			System.out.println("-============================================="+node.getSite().getAllStatic());
 			String url = node.getUrlStatic(page);
 			System.out.println("-----------------------------------------------:"+url);
-			ForeContext.setData(rootMap, site, null, null, null, null, null,
-					url, isAllSite);
+			ForeContext.setData(rootMap, site, null, null, null, null, null,url, isAllSite);
 			ForeContext.setPage(rootMap, page, node);
 			FileOutputStream fos = null;
 			Writer out = null;

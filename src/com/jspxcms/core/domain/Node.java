@@ -332,13 +332,19 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		if (StringUtils.isBlank(number)) {
 			number = getId().toString();
 		}
-		if(isAllStatic){
-			nodeNumber = "./";
-		}
 		path = StringUtils.replace(path, PATH_NODE_NUMBER, nodeNumber);
 		// 替换站点编码
 		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
 		String extension = getNodeExtensionOrDef();
+		System.out.println("前前前前前前前前前前前前前前前前前前前前前前前前前前前前前："+path);
+		//全站静态化path处理
+		if (isAllStatic) {
+			System.out.println("333333333："+path);
+			path = path.substring(path.lastIndexOf("/"),path.length());
+			System.out.println("44444444444444："+path);
+			path += extension;
+			return path;
+		}
 		if (page != null && page > 1) {
 			if (StringUtils.isNotBlank(extension)) {
 				path += "_" + page + extension;
@@ -351,10 +357,6 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 			if (StringUtils.isNotBlank(extension)) {
 				path += extension;
 			}
-		}
-		if (isAllStatic) {
-			System.out.println("判断静态化路径为生成整站静态化的路径path："+path);
-			return path;
 		}
 		StringBuilder sb = new StringBuilder();
 		if (isFull && !forRealPath) {
