@@ -605,13 +605,13 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		}
 
 		//全站静态化path处理
-				if (isAllStatic) {
-					System.out.println("333333333："+path);
-					path = path.substring(path.lastIndexOf("/"),path.length());
-					path = "."+path;
-					System.out.println("44444444444444："+path);
-					return path;
-				}
+		if (isAllStatic) {
+			System.out.println("333333333："+path);
+			path = path.substring(path.lastIndexOf("/"),path.length());
+			path = "."+path;
+			System.out.println("44444444444444："+path);
+			return path;
+		}
 		StringBuilder sb = new StringBuilder();
 		Site site = getSite();
 		

@@ -48,7 +48,7 @@ public abstract class PNode {
 		int staticPage = node.getStaticPageOrDef();
 		for (int page = 1; page <= max && page <= total && page <= staticPage
 				&& taskService.isRunning(taskId); page++) {
-			String path = node.getUrlStatic(page, false, false, true);
+			String path = node.getUrlStatic(page, false, site.getAllStatic(), true);
 			String filename = "";
 			if (isAllSite) {
 				filename = resolver.getPath(Constants.SHE_BACKUP_PATH + "//"

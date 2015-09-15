@@ -336,13 +336,10 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		// 替换站点编码
 		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
 		String extension = getNodeExtensionOrDef();
-		System.out.println("前前前前前前前前前前前前前前前前前前前前前前前前前前前前前："+path);
 		//全站静态化path处理
 		if (isAllStatic) {
-			System.out.println("333333333："+path);
 			path = path.substring(path.lastIndexOf("/"),path.length());
 			path = "."+path;
-			System.out.println("44444444444444："+path);
 			path += extension;
 			return path;
 		}
@@ -352,8 +349,6 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 			} else {
 				path += "_" + page;
 			}
-		} else if (!forRealPath && getDefPageOrDef()) {
-			path = path.substring(0, path.lastIndexOf("/") + 1);
 		} else {
 			if (StringUtils.isNotBlank(extension)) {
 				path += extension;
