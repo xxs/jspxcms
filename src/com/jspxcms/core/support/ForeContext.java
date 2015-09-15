@@ -82,10 +82,8 @@ public abstract class ForeContext {
 			Collection<Org> orgs, String url, Boolean isAllSite) {
 		String ctx = site.getContextPath();
 		data.put(Constants.CTX, ctx != null ? ctx : "");
-		// 两种情景，一种是原生静态化，一种是整站静态化导出功能需要用到的
-		System.out.println("setData的时机url的值："+url);
+		// 两种情景，一种是原生静态化，一种是整站静态化导出功能(已经在site表中添加了allStatic字段专用)需要用到的
 		if (isAllSite) {
-			site.getGlobal().setAllStatic(true);
 			data.put(FILES, "_files");
 			data.put(Freemarkers.URL, "./");
 		} else {

@@ -341,6 +341,7 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 		if (isAllStatic) {
 			System.out.println("333333333："+path);
 			path = path.substring(path.lastIndexOf("/"),path.length());
+			path = "."+path;
 			System.out.println("44444444444444："+path);
 			path += extension;
 			return path;

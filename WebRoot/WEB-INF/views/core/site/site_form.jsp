@@ -135,9 +135,14 @@ function confirmDelete() {
   </tr>
   <tr>
     <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.status"/>:</td>
-    <td class="in-ctt" width="85%" colspan="3">
+    <td class="in-ctt" width="35%">
     	<label><f:radio name="status" value="0" checked="${bean.status}" default="0" class="required" /><s:message code="site.status.0"/></label>
     	<label><f:radio name="status" value="1" checked="${bean.status}" class="required" /><s:message code="site.status.1"/></label>
+  	</td>
+    <td class="in-lab" width="15%">整站静态化:</td>
+    <td class="in-ctt" width="35%">
+    	<label><f:radio name="allStatic" value="true" checked="${bean.allStatic}" class="required" />开启</label>
+    	<label><f:radio name="allStatic" value="false" checked="${bean.allStatic}" default="false" class="required" />关闭</label>
   	</td>
   </tr>
   

@@ -118,10 +118,10 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 			public void run() {
 				try {
 					htmlService.makeNode(siteId, null, true, getConfig(),
-							resolver, taskService, taskId, true);
+							resolver, taskService, taskId, site.getAllStatic());
 					if (taskService.isRunning(taskId)) {
 						htmlService.makeInfo(siteId, null, true, getConfig(),
-								resolver, taskService, taskId, true);
+								resolver, taskService, taskId, site.getAllStatic());
 					}
 					taskService.finish(taskId);
 				} catch (Exception e) {

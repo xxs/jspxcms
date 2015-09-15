@@ -305,11 +305,6 @@ public class Site implements java.io.Serializable {
 	}
 	
 	@Transient
-	public Boolean getAllStatic() {
-		return getGlobal() != null ? getGlobal().getAllStatic() : null;
-	}
-
-	@Transient
 	public String getNoPictureUrl() {
 		return getFilesPath(getNoPicture());
 	}
@@ -377,6 +372,7 @@ public class Site implements java.io.Serializable {
 	private String templateTheme;
 	private String noPicture;
 	private Boolean urlRewrite;
+	private Boolean allStatic;
 	private Boolean identifyDomain;
 	private Boolean def;
 	private String treeNumber;
@@ -539,9 +535,18 @@ public class Site implements java.io.Serializable {
 	public Boolean getUrlRewrite() {
 		return urlRewrite;
 	}
-
+	
 	public void setUrlRewrite(Boolean urlRewrite) {
 		this.urlRewrite = urlRewrite;
+	}
+	
+	@Column(name = "f_is_all_static", nullable = false, length = 1)
+	public Boolean getAllStatic() {
+		return allStatic;
+	}
+
+	public void setAllStatic(Boolean allStatic) {
+		this.allStatic = allStatic;
 	}
 
 	@Column(name = "f_is_identify_domain", nullable = false, length = 1)

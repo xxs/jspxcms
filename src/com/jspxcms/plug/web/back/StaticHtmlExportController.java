@@ -89,6 +89,10 @@ public class StaticHtmlExportController {
 	public String makeAllSite(Integer id,HttpServletRequest request, RedirectAttributes ra) {
 		Site site = service.get(id);
 		Integer userId = Context.getCurrentUserId(request);
+		if(!site.getAllStatic()){
+			ra.addFlashAttribute(MESSAGE, "您未开启整站静态化功能！");
+			return "redirect:list.do";
+		}
 		htmlGenerator.makeAllSite(site, userId);
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
 		return "redirect:list.do";

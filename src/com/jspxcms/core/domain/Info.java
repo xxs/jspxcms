@@ -589,9 +589,6 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		if (StringUtils.isBlank(nodeNumber)) {
 			nodeNumber = node.getId().toString();
 		}
-		if(isAllStatic){
-			nodeNumber = "./";
-		}
 		path = StringUtils.replace(path, PATH_NODE_NUMBER, nodeNumber);
 		// 替换站点编码
 		path = StringUtils.replace(path, PATH_SITE_NUMBER, site.getNumber());
@@ -607,10 +604,14 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 			path += extension;
 		}
 
-		if (isAllStatic) {
-			System.out.println("info类生成的path路径："+path);
-			return path;
-		}
+		//全站静态化path处理
+				if (isAllStatic) {
+					System.out.println("333333333："+path);
+					path = path.substring(path.lastIndexOf("/"),path.length());
+					path = "."+path;
+					System.out.println("44444444444444："+path);
+					return path;
+				}
 		StringBuilder sb = new StringBuilder();
 		Site site = getSite();
 		
