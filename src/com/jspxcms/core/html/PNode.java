@@ -49,22 +49,19 @@ public abstract class PNode {
 		for (int page = 1; page <= max && page <= total && page <= staticPage
 				&& taskService.isRunning(taskId); page++) {
 			String path = node.getUrlStatic(page, false, site.getAllStatic(), true);
+			System.out.println("-----------------------"+path);
 			String filename = "";
 			if (isAllSite) {
-				filename = resolver.getPath(Constants.SHE_BACKUP_PATH + "//"
-						+ path);
+				filename = resolver.getPath(Constants.SHE_BACKUP_PATH + "\\"+site.getNumber()+"\\" + path);
 			} else {
 				filename = resolver.getPath(path);
 			}
-			System.out.println("path:"+path);
-			System.out.println("filename:"+filename);
+			System.out.println("======================"+filename);
 			File file = new File(filename);
 			file.getParentFile().mkdirs();
 			// TODO like info:InfoText,title,text.
 			rootMap.put("text", node.getText());
-			System.out.println("-============================================="+node.getSite().getAllStatic());
 			String url = node.getUrlStatic(page);
-			System.out.println("-----------------------------------------------:"+url);
 			ForeContext.setData(rootMap, site, null, null, null, null, null,url, isAllSite);
 			ForeContext.setPage(rootMap, page, node);
 			FileOutputStream fos = null;

@@ -69,13 +69,15 @@ public abstract class PInfo {
 		int total = textList.size();
 		for (int page = 1; page <= total && taskService.isRunning(taskId); page++) {
 			titleText = textList.get(page - 1);
-			String path = info.getUrlStatic(page, false,false, true);
+			String path = info.getUrlStatic(page, false,site.getAllStatic(), true);
+			System.out.println("111111111111111111111"+path);
 			String filename = "";
 			if(isAllSite){
-				filename = resolver.getPath(Constants.SHE_BACKUP_PATH+"//"+path);
+				filename = resolver.getPath(Constants.SHE_BACKUP_PATH + "\\"+site.getNumber()+"\\" + path);
 			}else{
 				filename = resolver.getPath(path);
 			}
+			System.out.println("22222222222222222222"+filename);
 			File file = new File(filename);
 			file.getParentFile().mkdirs();
 			rootMap.put("title", titleText.getTitle());
