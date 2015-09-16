@@ -4,39 +4,213 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
-<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<title>${node.name} -- ${site.fullNameOrName} -- Powerd by
+	Jspxcms</title>
 <link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
 <link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript"
+	src="${fore}/jquery.js"></script>
+<script language="javascript" type="text/javascript"
+	src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript"
+	src="_files/common.js"></script>
+
+<link href="_files/css/style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript"
+	src="_files/js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="_files/js/common.js"></script>
+<script language="javascript" type="text/javascript"
+	src="_files/js/menu.js"></script>
+<script src="_files/js/jquery.kinmaxshow-1.1.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<!--[if lte IE 6]><script type="text/javascript" src="_files/js/png.js"></script><script type="text/javascript">PNG.fix("*");</script><![endif]-->
+<script src="_files/js/swfobject_modified.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#kinMaxShow").kinMaxShow();
+		var bodyOpacityHandle = setInterval(function() {
+			var opacity = parseFloat($('body').css('opacity'));
+			if (opacity > 1) {
+				clearInterval(bodyOpacityHandle);
+				return;
+			}
+			$('body').css('opacity', opacity + 0.015);
+		}, 1);
+	});
+</script>
 </head>
 <body>
-[#include "inc_header.html"/]
-<div class="w960 center clear mt1">
-	<div class="pleft">
-         <div class="position">
-      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
-        </div>
-    <div class="textlist">
-  		  [@InfoPage nodeId=node.id pageSize=20;pagedList]
- 		  <ul>
-  		 [#list pagedList.content as info]
-  	 		<li>
-            	<span class="spanleft">[@A bean=info target="_blank"/]</span>
-            	<span class="spanright">${info.publishDate?string('yyyy-MM-dd')}</span>
-            </li>
-  		 [/#list]
-  	 	 </ul>
-         [#include "inc_page.html"/]
- 	 	 [/@InfoPage]
-     </div>
+	[#include "inc_header.html"/]
+
+	<div id="content">
+		<!--栏目广告开始-->
+		<!--    <div class="nybanner">
+    	<img src="Picture/nybanner.gif" width="1000" height="75" alt="广告说明" />
+    </div>
+-->
+		<!--end栏目广告结束-->
+		<div class="nycon">
+			<!--栏目名称导航开始-->
+			<div class="dh">
+				<div class="dhname">
+
+					<img src="_files/picture/lm-news.gif" width="139" height="32"
+						alt="new 新闻" />
+				</div>
+				<div class="dhclass">
+					<ul>
+						[@NodeList parentId=node.id;nodeList]
+							[#list nodeList as node]
+								<li><a href="${node.url }" class="weizhi">${node.name }</a></li>
+							[/#list]
+						[/@NodeList]
+						<li><a href="/List-12.shtml">青土课堂</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<!--end栏目名称导航-->
+			<!--栏目列表开始-->
+			<div class="newslist">
+				[@InfoPage nodeId=node.id pageSize=20;pagedList]
+				<ul>
+					[#list pagedList.content as info]
+					<li>
+						<div class="pic">
+							<a href="${info.url }"><img
+								src="_files/picture/s_5477e0d330a71.jpg" width="114" height="84"
+								alt="【青土】${info.title }" /></a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="${info.url }">${info.title }</a>
+							</h1>
+							<p>
+								<a href="${info.url }">北京时间2014年11月6号世界级景观设计机构SWA洛杉矶总部总裁GERDO先生与YING-YU女士在上海同济大学进行了长达三个小时的演讲，会后并与国内业界同仁做了深入交流探讨。</a>
+							</p>
+						</div>
+					</li>
+					
+					[/#list]
+				</ul>
+					[#include "inc_page.html"/] 
+				[/@InfoPage]
+					
+					
+					
+					<li>
+						<div class="pic">
+							<a href="/Content-105.shtml"><img
+								src="Picture/s_54ab9d708e1bc.jpg" width="114" height="84"
+								alt="青土人动手实践【二】“青土环”" /></a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="/Content-105.shtml">青土人动手实践【二】“青土环”</a>
+							</h1>
+							<p>
+								<a href="/Content-105.shtml">青土人动手实践【二】“青土环”2014.12其实践的目的是不愿意青土的设计师在这个普遍生搬硬套的大环境下成为“设计的奴隶”，我们更愿意保留一点点童趣，也许我们现在坚持的没有很多人需要，但我们坚信设计师的未来是以头脑风暴与实践表达的结晶。WWW.ZZCHITO....</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pic">
+							<a href="/Content-97.shtml"><img
+								src="Picture/s_54582e7b955fb.jpg" width="114" height="84"
+								alt="青土人动手实践【一】“参数墙”" /></a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="/Content-97.shtml">青土人动手实践【一】“参数墙”</a>
+							</h1>
+							<p>
+								<a href="/Content-97.shtml">青土人为项目动手实践“参数墙”
+									从基础做起，思考转化行动，行动再推回思考。为了可实施性的提高。我们做到了第15层的时候因为参照点找错了所以推翻了重做，如果在施工的过程中便会造成一定的损失。因此设计师要尽早的让问题出现，并消灭。</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pic">
+							<a href="/Content-92.shtml"><img
+								src="Picture/s_53e0ae2d1787e.jpg" width="114" height="84"
+								alt="青土景观微信公共账号正式开通" /></a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="/Content-92.shtml">青土景观微信公共账号正式开通</a>
+							</h1>
+							<p>
+								<a href="/Content-92.shtml">青土景观官方微信服务号（cto008）建立，添加关注后，可以自主查询上海青土景观设计有限公司的相关详细信息。青土景观微信服务号【cto008】青土景观微信订阅号【cto007】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pic">
+							<a href="/Content-80.shtml"><img
+								src="Picture/s_5343aa6c81a7d.jpg" width="114" height="84"
+								alt="青土景观浙江绿城参观记" /></a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="/Content-80.shtml">青土景观浙江绿城参观记</a>
+							</h1>
+							<p>
+								<a href="/Content-80.shtml">2014年3月30号上海青土景观主创设计人员在浙江金华绿城集团项目负责人的陪同下对绿城在金华的三个项目做了为期两天的参观与学习。</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pic">
+							<a href="/Content-2.shtml"><img
+								src="Picture/s_52cfac87715c3.jpg" width="114" height="84"
+								alt="青土景观成立高校实习基地" /></a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="/Content-2.shtml">青土景观成立高校实习基地</a>
+							</h1>
+							<p>
+								<a href="/Content-2.shtml">
+									2013年10月上海青土景观设计（郑州事务所）与河南工业大学设计学院合作设立了景观专业在校生实习基地。共同为河南省高校培养出更为优秀的尖端设计人才而努力。</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="pagelist">
+				<ul>
+					<!--li><a href="#"></a></li>
+            <li><a href="#" class="onpage"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li-->
+				</ul>
+			</div>
+			<!--end栏目列表-->
+		</div>
 	</div>
-	<div class="pright">
-	[#include "inc_right.html"/]
+	<!--end中间内容结束-->
+
+	<div class="w960 center clear mt1">
+		<div class="pleft">
+			<div class="position">
+				当前位置222222222222：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if
+				n_has_next]>[/#if][/#list]
+			</div>
+			<div class="textlist">
+				[@InfoPage nodeId=node.id pageSize=20;pagedList]
+				<ul>
+					[#list pagedList.content as info]
+					<li><span class="spanleft">[@A bean=info
+							target="_blank"/]</span> <span class="spanright">${info.publishDate?string('yyyy-MM-dd')}</span>
+					</li> [/#list]
+				</ul>
+				[#include "inc_page.html"/] [/@InfoPage]
+			</div>
+		</div>
+		<div class="pright">[#include "inc_right.html"/]</div>
 	</div>
-</div>
-[#include "inc_footer.html"/]
+	[#include "inc_footer.html"/]
 </body>
 </html>
 [/#escape]
