@@ -104,8 +104,13 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 		File srcDir = new File(realurl + site.getFilesPath());
 		File destDir = new File(realurl + "\\" + Constants.SHE_BACKUP_PATH
 				+ "\\" + site.getNumber() + "\\_files");
+		File baseUploads = new File(realurl + "\\" + Constants.UPLOADS
+				+ "\\" + site.getNumber());
+		File destUploads = new File(realurl + "\\" + Constants.SHE_BACKUP_PATH
+				+ "\\" + site.getNumber() + "\\uploads");
 		try {
 			FileUtils.copyDirectory(srcDir, destDir);
+			FileUtils.copyDirectoryToDirectory(baseUploads, destUploads);  
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			System.out.println("静态资源拷贝异常");
@@ -126,7 +131,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 					taskService.finish(taskId);
 				} catch (Exception e) {
 					taskService.abort(taskId);
-					logger.error("make html error000000000000000000!", e);
+					logger.error("make html error!", e);
 				}
 			}
 		}.start();
@@ -138,6 +143,7 @@ public class HtmlGeneratorImpl implements HtmlGenerator {
 		if (node != null) {
 			name = node.getDisplayName();
 		}
+		System.out.println("================================="+node.getSmallImage());
 		Task task = taskService.save("Node: " + name, null, Task.INFO_HTML,
 				userId, siteId);
 		final Integer taskId = task.getId();

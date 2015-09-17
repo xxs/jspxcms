@@ -29,8 +29,6 @@ public interface UserDao extends Repository<User, Integer>, UserDaoPlus {
 
 	public void delete(User bean);
 
-	// ------------------------------------
-
 	public User findByUsername(String username);
 
 	public User findByValidationTypeAndValidationKey(String type, String key);

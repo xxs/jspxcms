@@ -5,15 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>${site.fullNameOrName}-- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript"
-	src="${fore}/jquery.js"></script>
-<script language="javascript" type="text/javascript"
-	src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript"
-	src="_files/common.js"></script>
-
 
 <link href="_files/css/style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript"
@@ -42,317 +33,58 @@
 </head>
 <body>
 	[#include "inc_header.html"/]
-	<!--中间内容开始-->
 	<div id="content">
-		<!--栏目广告开始-->
-		<!--    <div class="nybanner">
-    	<img src="Picture/banner-jj.gif" width="1000" height="75" alt="广告说明" />
-    </div>
--->
-		<!--end栏目广告结束-->
 		<div class="nycon">
 			<!--栏目名称导航开始-->
 			<div class="dh">
 				<div class="dhname">
 
-					<img src="_files/picture/lm-jj.gif" width="245" height="32"
-						alt="introduction 简介" />
+					<img src="${node.smallImage }" width="139" height="32"
+						alt="new 新闻 ${node.smallImage }" />
 				</div>
 				<div class="dhclass">
 					<ul>
-						[@NodeList parentId=node.id;nodeList]
-							[#list nodeList as node]
-								<li><a href="${node.url }" class="weizhi">${node.name }</a></li>
-							[/#list]
-						[/@NodeList]
+						[@NodeList parentId=node.id;nodeList] 
+						[#list nodeList as n]
+						<li><a href="${n.url }" [#if n.id == node.id ]class="weizhi"[/#if]>${n.name }</a></li>
+						[/#list] [/@NodeList]
 					</ul>
 				</div>
 
 			</div>
 			<!--end栏目名称导航-->
-			<!--栏目内容开始-->
-			<div class="lmcon">
-				<div class="abouttext">
-					<p style="text-align:left;">
-						<strong><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-family:微软雅黑, &#39;microsoft yahei&#39;;">上海青土景观设计有限公司</span></strong><br />
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="background-color:#C6D9F0;color:#000000;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">1.对重视品牌的企业而言，青土是最适合您的“代理方”</span><br />
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">专
-							· 业（MAJOR）</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">专注针对不同项目的专属设计，以功能为基础，提供全方面的创意及设计管理服务，帮助你们建立品牌</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">思
-							· 维（TOUGHT）</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">青土通过敏锐的分析饿智慧，利用线条，图形和思想。将场地与人群联系起来</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">情
-							· 感（EMOTION）</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">我们拒绝毫无依据的生搬硬套，从使用人群的感受出发，力争在除了满足体验者的功能需求之外，对其内心感受有所触动</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">价
-							· 值（VALUE）</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">尊重人，以人为价值本源，尊重人的设计思想方为设计价值，最终使客户的价值最大化，最优化</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="background-color:#C6D9F0;color:#000000;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">2.我们的四层堡垒,坚固的扎实的基础.具有向心力的基于诚信与认真的团队服务</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">第一层：</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">我们习惯性的剖开思维针对项目大限度的发挥我们的创造力用脑细胞筑造出设计的强力攻势</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">第二层：</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">空想永远是创造的最大敌人一杆笔一张纸加上我们赖以生存的手绘技能，是我们最有力的优势和发展基础</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">第三层：</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">当代的设计表达，电脑是必不可少的我们的设计师经过多年的经验积累熟练掌握当下各种表达风格。帮助客户直观的体验设计</span>
-					</p>
-					<p style="text-align:left;">
-						<span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">
-							&nbsp;</span><span
-							style="background-color:#FFFFFF;color:#7F7F7F;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">第四层：</span><span
-							style="color:#7F7F7F;background-color:#FFFFFF;font-size:12px;font-family:微软雅黑, &#39;microsoft yahei&#39;;">实践是检验设计师的主考官只有经过现实历练的设计师组成的团体才是高效率，高质量的创造体</span>
-					</p>
-					<p style="text-align:left;">
-						<span style="color:#7f7f7f;"><br /></span>
-					</p>
-					<p style="text-align:left;">
-						<span style="color:#7f7f7f;"><br /></span>
-					</p>
-					<p style="text-align:left;">
-						<span style="color:#7f7f7f;"></span>
-					</p>
-					<p
-						style="padding:0px;color:#878787;font-family:微软雅黑;font-size:14px;line-height:30px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
-						<span style="background-color:#FFFFFF;color:#7F7F7F;">欢迎手机关注【青土景观】微信平台</span>
-					</p>
-					<p
-						style="padding:0px;color:#878787;font-family:微软雅黑;font-size:14px;line-height:30px;background-color:#ffffff;text-align:center;margin-top:0px;margin-bottom:0px;">
-						<img src="Picture/44251404960502.jpg"
-							title="QQ截图20140710102339.jpg"
-							style="border:0px;text-align:start;" />
-					</p>
-					<p style="text-align:left;">
-						<span style="color:#7f7f7f;"><br /></span><br />
-					</p>
-					<p>
-						<br />
-					</p>
-				</div>
-				<div class="clear"></div>
+			<!--栏目列表开始-->
+			<div class="newslist">
+				[@NodeList parentId=node.id;nodeList] [#list nodeList as node]
+				[@InfoList nodeId=node.id limit=6;list]
+				<ul>
+					[#list list as info]
+					<li>
+						<div class="pic">
+							<a href="${info.url }"> <img
+								src="${info.smallImage }" width="114" height="84"
+								alt="【青土】${info.title }" />
+							</a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="${info.url }">${info.title }</a>
+							</h1>
+							<p>
+								<a href="${info.url }">${info.metaDescription }</a>
+							</p>
+						</div>
+					</li> [/#list]
+				</ul>
+				[/@InfoList] [/#list] [/@NodeList]
 			</div>
-			<!--end栏目内容-->
+			<!--end栏目列表-->
 		</div>
 	</div>
 	<!--end中间内容结束-->
-	<!--底部开始-->
-	<!--  <div id="footer">
-  	<div class="ifootertop">
-    	<a href="/List/18.shtml"><img src="Picture/contact-us.gif" width="129" height="23" alt="contact us 联系我们" /></a>
-    </div>
-    <div class="copyright">  
-   <p>
-版权所有：（C·T·O）上海青土景观设计有限公司 <span style="display: none;">技术支持：
-<a href="http://www.e00.com.cn/">蓝创科技</a></span>
-<br />
-咨询热线：13162315912    邮箱：ZZCHITO@163.com<br>
-景观设计、景观规划、城市设计、改造设计、园林设计<br>
-  </p> </div>
-  </div>-->
-
-
-
-	<script>
-		window._bd_share_config = {
-			"common" : {
-				"bdSnsKey" : {},
-				"bdText" : "",
-				"bdMini" : "2",
-				"bdMiniList" : false,
-				"bdPic" : "",
-				"bdStyle" : "0",
-				"bdSize" : "16"
-			},
-			"slide" : {
-				"type" : "slide",
-				"bdImg" : "8",
-				"bdPos" : "right",
-				"bdTop" : "100"
-			}
-		};
-		with (document)
-			0[(getElementsByTagName('head')[0] || body)
-					.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='
-					+ ~(-new Date() / 36e5)];
-	</script>
-
-
-	<!--底部结束-->
-	<!-- 右侧浮动按钮代码开始 -->
-	<div id="tbox">
-		<a target="_blank"
-			href="http://zhan.renren.com/chenbohui?checked=true"><img
-			src="Picture/renren.gif" width="27" height="27" alt="人人网" /></a> <a
-			target="_blank" href="http://weibo.com/2013chenbo"><img
-			src="Picture/sina.gif" width="27" height="27" alt="新浪微博" /></a> <a
-			target="_blank" href="javascript:" onMouseOver="weixin('guagnfang')"
-			onMouseOut="weixinHide('guagnfang');"><img
-			src="Picture/weixin.gif" width="27" height="27" alt="微信" /></a> </br> <a
-			target="_blank" href="#"><img src="Picture/wechat_erwei.jpg"
-			width="78" height="78" alt="二维码" />
-		<p>扫描关注</p></a>
-		<!-- <a target="_blank" href="#"><img src="Picture/weixin02.jpg" width="78" height="78" alt="二维码" /></a>	 -->
-
-		<div id="apDiv1">
-			<div id="guagnfang">
-				<img src="Picture/wechat_erwei.jpg" width="100" height="100" />
-			</div>
-		</div>
-		</ul>
-		<script>
-			function weixin(id) {
-				$('#' + id).show();
-			}
-			function weixinHide(id) {
-				$('#' + id).hide();
-			}
-		</script>
-
-		<style type="text/css">
-#apDiv1 {
-	position: absolute;
-	width: 0px;
-	z-index: 1000;
-	margin: 0px auto;
-	top: 0px;
-}
-
-#guagnfang {
-	width: 104px;
-	height: 104px;
-	display: none;
-	z-index: 1000;
-	float: left;
-	margin-left: -80px;
-}
-</style>
-
-	</div>
-	<!-- 右侧浮动按钮代码结束 -->
-
-
-
-	<SCRIPT type="text/javascript">
-		$(document).ready(function() {
-			$(".upperImg,.upperImg img").stop().animate({
-				"opacity" : "1"
-			}, "fast");
-			$(".upperImg,.upperImg img").hover(function() {
-				$(this).stop().animate({
-					"opacity" : "0"
-				}, "slow");
-			}, function() {
-				$(this).stop().animate({
-					"opacity" : "1"
-				}, "slow");
-			});
-		});
-
-		$(function() {
-			$($("#menu li a")[2]).addClass("ahovertop");
-
-			$(".upperImg,.upperImg img").hover(function() {
-				$(this).stop().animate({
-					"opacity" : "0"
-				}, "slow");
-			}, function() {
-				$(this).stop().animate({
-					"opacity" : "1"
-				}, "slow");
-			});
-
-		})
-
-		function setWindowScrollTop(win, id) {
-
-			var topHeight = document.getElementById("promo_" + id).offsetTop;
-			//alert(topHeight);
-			topHeight = topHeight - 150;
-			if (win.document.documentElement) {
-
-				win.document.documentElement.scrollTop = topHeight;
-
-			}
-
-			if (win.document.body) {
-
-				win.document.body.scrollTop = topHeight;
-
-			}
-		}
-	</SCRIPT>
-
-	<!--js-->
-	[#include "inc_header.html"/]
-	<div class="w960 center clear mt1">
-		<div class="pleft">
-			<div class="position">
-				当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if
-				n_has_next]>[/#if][/#list]
-			</div>
-			<div class="textcover">
-				[@NodeList parentId=node.id;nodeList]
-				<ul>
-					[#list nodeList as node]
-					<li>
-						<h2 class="clr">[@A bean=node target="_blank"/]</h2> [@InfoList
-						nodeId=node.id limit=6;list]
-						<ul>
-							[#list list as info]
-							<li class="clr"><span class="spanleft">[@A bean=info
-									target="_blank"/]</span> <span class="spanright">${info.publishDate?string('yyyy-MM-dd')}</span>
-							</li> [/#list]
-						</ul> [/@InfoList]
-					</li> [/#list]
-				</ul>
-				[/@NodeList]
-			</div>
-		</div>
-		<div class="pright">[#include "inc_right.html"/]</div>
-	</div>
 	[#include "inc_footer.html"/]
+
+
 </body>
 </html>
 [/#escape]

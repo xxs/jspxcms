@@ -4,7 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
-<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} --
+	Powerd by Jspxcms</title>
 <link href="_files/css/style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript"
 	src="_files/js/jquery-1.4.2.js"></script>
@@ -31,84 +32,78 @@
 
 </head>
 <body>
-[#include "inc_header.html"/]
-<!--中间内容开始-->
-  <div id="content">
-  	<!--栏目广告开始-->
-<!--    <div class="nybanner">
-    	<img src="_files/picture/nybanner.gif" width="1000" height="75" alt="广告说明" />
-    </div>
--->    <!--end栏目广告结束-->
-    <div class="nycon">
-    	<!--栏目名称导航开始-->
-<div class="dh">
-        	<div class="dhname">
-            
-            <img src="_files/picture/lm-news.gif" width="139" height="32" alt="new 新闻" />            </div>
-            <div class="dhclass">
-           	  <ul>
-<li><a href="/List-10.shtml"  class="weizhi" >公司动态</a></li><li><a href="/List-11.shtml"   >行业动态</a></li><li><a href="/List-12.shtml"   >青土课堂</a></li>          	  </ul>
-            </div>
-     
-        </div>
-        <!--end栏目名称导航-->
-        <!--栏目内容开始-->
-        <div class="lmcon">
-        	<div class="title">        ${info.fullTitleOrTitle}           </div>
-            <div class="source">
-             		[#if info.getSource()??]信息来源：${info.getSource()!} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/#if]
-             		[#if info.getAuthor()??]作者：${info.getAuthor()!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/#if]
-             		时间：${info.publishDate?string('yyyy-MM-dd')}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             		
-             		
-             		浏览次数：<span id="info_views"></span>
+	[#include "inc_header.html"/]
+	<!--中间内容开始-->
+	<div id="content">
+		<div class="nycon">
+			<!--栏目名称导航开始-->
+			<div class="dh">
+				<div class="dhname">
+					<img src="_files/picture/lm-news.gif" width="139" height="32"
+						alt="new 新闻" />
+				</div>
+				<div class="dhclass">
+					<ul>
+						<li><a href="/List-10.shtml" class="weizhi">公司动态</a></li>
+						<li><a href="/List-11.shtml">行业动态</a></li>
+						<li><a href="/List-12.shtml">青土课堂</a></li>
+						
+					</ul>
+				</div>
+
+			</div>
+			<!--end栏目名称导航-->
+			<!--栏目内容开始-->
+			<div class="lmcon">
+				<div class="title">${info.fullTitleOrTitle}</div>
+				<div class="source">
+					[#if info.getSource()??]信息来源：${info.getSource()!}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/#if] [#if
+					info.getAuthor()??]作者：${info.getAuthor()!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/#if]
+					时间：${info.publishDate?string('yyyy-MM-dd')}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					浏览次数：<span id="info_views"></span>
 					<script type="text/javascript">
-						$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
-					</script></span>
-					
-					
-             		
-            </div>
-            [#if info.video??]
-	       <div style="text-align:center; margin-bottom:20px;">
-	        <div id="a1"></div>
+						$("#info_views").load(
+								"${ctx}/info_views/${info.id}.jspx?d="
+										+ new Date() * 1);
+					</script>
+					</span>
+
+
+
+				</div>
+				[#if info.video??]
+				<div style="text-align:center; margin-bottom:20px;">
+					<div id="a1"></div>
 					<script type="text/javascript">
-	           var flashvars={
-	            f:'${info.video}',
-	            c:0
-	            };
-	          CKobject.embedSWF('_files/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars);      
-	        </script>
-	       </div>
-	       
-	       [/#if]
- 	   	<div class="lmcontext">[#noescape]${text}[/#noescape]</div>
-       	[#if pagedList.totalPages>1]
-         [#include 'inc_page.html'/]
-        [/#if]
-            
-            <div class="nextfile">
-            	[@InfoPrev id=info.id;i]
-		         	 [#if i??]
-		        	 	上一条：<a href="${i.url}">${i.title!}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         	[#else]
-		         		上一条：没有了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		        	[/#if]
-				 	[/@InfoPrev]
-				 	[@InfoNext id=info.id;i]
-		         	[#if i??]
-				 		下一条：<a href="${i.url}">${i.title!}</a>
-		         	[#else]
-		        		下一条：没有了
-		         	[/#if]
-			 	[/@InfoNext ]
-            </div>
-        </div>
-        <!--end栏目内容-->
-    </div>
-  </div>
-  <!--end中间内容结束-->
-[#include "inc_footer.html"/]
+						var flashvars = {
+							f : '${info.video}',
+							c : 0
+						};
+						CKobject.embedSWF('_files/ckplayer/ckplayer.swf', 'a1',
+								'ckplayer_a1', '600', '400', flashvars);
+					</script>
+				</div>
+
+				[/#if]
+				<div class="lmcontext">[#noescape]${text}[/#noescape]</div>
+				[#if pagedList.totalPages>1] [#include 'inc_page.html'/] [/#if]
+
+				<div class="nextfile">
+					[@InfoPrev id=info.id;i] [#if i??] 上一条：<a href="${i.url}">${i.title!}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					[#else] 上一条：没有了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [/#if]
+					[/@InfoPrev] [@InfoNext id=info.id;i] [#if i??] 下一条：<a
+						href="${i.url}">${i.title!}</a> [#else] 下一条：没有了 [/#if] [/@InfoNext
+					]
+				</div>
+			</div>
+			<!--end栏目内容-->
+		</div>
+	</div>
+	<!--end中间内容结束-->
+	[#include "inc_footer.html"/]
 </body>
 </html>
 [/#escape]

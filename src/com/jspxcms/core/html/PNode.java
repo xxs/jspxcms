@@ -49,14 +49,12 @@ public abstract class PNode {
 		for (int page = 1; page <= max && page <= total && page <= staticPage
 				&& taskService.isRunning(taskId); page++) {
 			String path = node.getUrlStatic(page, false, site.getAllStatic(), true);
-			System.out.println("-----------------------"+path);
 			String filename = "";
 			if (isAllSite) {
 				filename = resolver.getPath(Constants.SHE_BACKUP_PATH + "\\"+site.getNumber()+"\\" + path);
 			} else {
 				filename = resolver.getPath(path);
 			}
-			System.out.println("======================"+filename);
 			File file = new File(filename);
 			file.getParentFile().mkdirs();
 			// TODO like info:InfoText,title,text.
@@ -71,6 +69,7 @@ public abstract class PNode {
 				out = new OutputStreamWriter(fos, "UTF-8");
 				ForeContext.resetTotalPages();
 				template.process(rootMap, out);
+				System.out.println("8888888888888888888888"+out.toString());
 				taskService.add(taskId, 1);
 				total = ForeContext.getTotalPages();
 				if (total == null || total < 1) {

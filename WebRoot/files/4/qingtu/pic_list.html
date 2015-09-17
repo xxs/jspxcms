@@ -4,38 +4,83 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
-<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<title>${node.name} -- ${site.fullNameOrName} -- Powerd by
+	Jspxcms</title>
+<link href="_files/css/style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript"
+	src="_files/js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="_files/js/common.js"></script>
+<script language="javascript" type="text/javascript"
+	src="_files/js/menu.js"></script>
+<script src="_files/js/jquery.kinmaxshow-1.1.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<!--[if lte IE 6]><script type="text/javascript" src="_files/js/png.js"></script><script type="text/javascript">PNG.fix("*");</script><![endif]-->
+<script src="_files/js/swfobject_modified.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#kinMaxShow").kinMaxShow();
+		var bodyOpacityHandle = setInterval(function() {
+			var opacity = parseFloat($('body').css('opacity'));
+			if (opacity > 1) {
+				clearInterval(bodyOpacityHandle);
+				return;
+			}
+			$('body').css('opacity', opacity + 0.015);
+		}, 1);
+	});
+</script>
 </head>
 <body>
-[#include "inc_header.html"/]
-<div class="w960 center clear mt1">
-	<div class="pleft">
-    <div class="position">
-      当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
-    </div>
-    <div class="piclist">
-  		 [@InfoList nodeId=node.id;list]
- 		   <ul>
-  		 [#list list as info]
-  	 		<li>
-        	<a class="pic" href="${info.url}"><img src="${info.smallImage!}" width="140" height="100"/></a>
-         	<a href="${info.url}">${substring(info.title,10,'...')}</a>
-        </li>
-  		 [/#list]
-  	 	 </ul>
- 	 	 	[/@InfoList]
-     </div>
+	[#include "inc_header.html"/]
+
+	<div id="content">
+		<div class="nycon">
+			<!--栏目名称导航开始-->
+			<div class="dh">
+				<div class="dhname">
+					<img src="${node.smallImage }" 	alt="${node.title }" />
+				</div>
+				<div class="dhclass">
+					<ul>
+						[@NodeList parentId=node.id;nodeList] 
+						[#list nodeList as n]
+						<li><a href="${n.url }" [#if n.id == node.id ]class="weizhi"[/#if]>${n.name }</a></li>
+						[/#list] [/@NodeList]
+					</ul>
+				</div>
+
+			</div>
+			<!--end栏目名称导航-->
+			<!--栏目列表开始-->
+			<div class="newslist">
+				[@InfoPage nodeId=node.id pageSize=20;pagedList]
+				<ul>
+					[#list pagedList.content as info]
+					<li>
+						<div class="pic">
+							<a href="${info.url }"> <img
+								src="${info.smallImage }" width="114" height="84"
+								alt="【青土】${info.title }" />
+							</a>
+						</div>
+						<div class="newstext">
+							<h1>
+								<a href="${info.url }">${info.title }</a>
+							</h1>
+							<p>
+								<a href="${info.url }">${info.metaDescription }</a>
+							</p>
+						</div>
+					</li> [/#list]
+				</ul>
+				[#include "inc_page.html"/] 
+				[/@InfoPage]
+			</div>
+			<!--end栏目列表-->
+		</div>
 	</div>
-	<div class="pright">
-	[#include "inc_right.html"/]
-	</div>
-</div>
-[#include "inc_footer.html"/]
+	<!--end中间内容结束-->
+	[#include "inc_footer.html"/]
 </body>
 </html>
 [/#escape]

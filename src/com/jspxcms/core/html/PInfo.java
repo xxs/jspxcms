@@ -52,6 +52,11 @@ public abstract class PInfo {
 		}
 		Site site = info.getSite();
 		Node node = info.getNode();
+		
+		//处理全站静态时，对uploads文件夹位置的判定
+		if(site.getAllStatic()){
+		}
+		
 		List<TitleText> textList = info.getTextList();
 		Template template = config.getTemplate(info.getTemplate());
 		Map<String, Object> rootMap = new HashMap<String, Object>();
@@ -94,6 +99,7 @@ public abstract class PInfo {
 				fos = new FileOutputStream(file);
 				out = new OutputStreamWriter(fos, "UTF-8");
 				template.process(rootMap, out);
+				System.out.println("9999999999999999999999999999999"+out.toString());
 				taskService.add(taskId, 1);
 			} finally {
 				if (out != null) {
