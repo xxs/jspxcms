@@ -42,7 +42,7 @@
 				</div>
 				<div class="dhclass">
 					<ul>
-						[@NodeList parentId=node.parent.id;nodeList] 
+						[@NodeList parentId=node.id;nodeList] 
 							[#list nodeList as n]
 								<li><a href="${n.url }" [#if n.id == node.id ]class="weizhi"[/#if]>${n.name }</a></li>
 							[/#list] 

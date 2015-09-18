@@ -85,6 +85,6 @@ public abstract class PNode {
 				}
 			}
 		}
-		site.setAllStatic(false);
+		//site.setAllStatic(false);
 	}
 }
