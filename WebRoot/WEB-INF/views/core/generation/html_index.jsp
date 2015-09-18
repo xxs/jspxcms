@@ -29,7 +29,6 @@ $(function() {
     <td class="in-ctt" width="85%" colspan="3">
     	<form method="post">
 	    	<input type="button" value="<s:message code='html.makeAllHtml'/>" onclick="this.form.action='make_all_html.do';this.form.submit();"/> &nbsp;
-    		<input type="button" value="生成整站html+css" onclick="this.form.action='make_all_site.do';this.form.submit();""/>
     	</form>    	
     </td>
   </tr>

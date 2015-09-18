@@ -56,7 +56,6 @@ function confirmDelete() {
   <tr>
     <td align="center">
       <a id="edit_opt_${bean.id}" href="make_all_site.do?id=${bean.id}" class="ls-opt">快捷生成</a>
-      <a id="edit_opt_${bean.id}" href="edit.do?id=${bean.id}" class="ls-opt">详细配置</a>
     </td>
     <td><c:out value="${bean.id}"/></td>
     <td><span style="padding-left:${bean.treeLevel*12}px"><c:out value="${bean.name}"/></span></td>

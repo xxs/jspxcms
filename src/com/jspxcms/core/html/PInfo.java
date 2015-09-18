@@ -111,5 +111,6 @@ public abstract class PInfo {
 				}
 			}
 		}
+		site.setAllStatic(false);
 	}
 }

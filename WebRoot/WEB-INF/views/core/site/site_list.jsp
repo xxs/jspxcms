@@ -87,6 +87,7 @@ function optDelete(form) {
     <th class="ls-th-sort"><span class="ls-sort" pagesort="name"><s:message code="site.name"/></span></th>
     <th class="ls-th-sort"><span class="ls-sort" pagesort="number"><s:message code="site.number"/></span></th>
     <th class="ls-th-sort"><span class="ls-sort" pagesort="domain"><s:message code="site.domain"/></span></th>
+    <th class="ls-th-sort"><span class="ls-sort" pagesort="htmlPath">整站静态化</span></th>
     <th class="ls-th-sort"><span class="ls-sort" pagesort="htmlPath"><s:message code="site.htmlPath"/></span></th>
     <th class="ls-th-sort"><span class="ls-sort" pagesort="org.treeNumber"><s:message code="site.org"/></span></th>
     <th class="ls-th-sort"><span class="ls-sort" pagesort="status"><s:message code="site.status"/></span></th>
@@ -111,6 +112,7 @@ function optDelete(form) {
     <td><span style="padding-left:${bean.treeLevel*12}px"><c:out value="${bean.name}"/></span></td>
     <td><c:out value="${bean.number}"/></td>
     <td><c:out value="${bean.domain}"/></td>
+    <td><c:out value="${bean.allStatic}"/></td>
     <td><c:out value="${bean.htmlPath}"/></td>
     <td><c:out value="${bean.org.displayName}"/></td>
     <td><s:message code="site.status.${bean.status}"/></td>

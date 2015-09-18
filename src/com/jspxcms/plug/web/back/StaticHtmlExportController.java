@@ -35,10 +35,12 @@ import com.jspxcms.core.support.Context;
 import com.jspxcms.core.support.ForeContext;
 import com.jspxcms.core.support.WebFile;
 import com.jspxcms.core.web.back.WebFileController;
+
 /**
  * 静态资源导出
+ * 
  * @author Administrator
- *
+ * 
  */
 @Controller
 @RequestMapping("/plug/she/")
@@ -46,26 +48,26 @@ public class StaticHtmlExportController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(WebFileController.class);
-	
+
 	@RequestMapping("list.do")
-	public String list(HttpServletRequest request,Model modelMap) {
-		
+	public String list(HttpServletRequest request, Model modelMap) {
+
 		List<Site> siteList = service.findList();
 		modelMap.addAttribute("siteList", siteList);
-		
-		//显示之前备份列表
-				String realPath = pathResolver.getPath(Constants.SHE_BACKUP_PATH);
-				File parent = new File(realPath);
-				WebFile parentWebFile = new WebFile(parent, parent.getAbsolutePath(),
-						request.getContextPath());
-				List<WebFile> list = parentWebFile.listFiles();
-				modelMap.addAttribute("list", list);
+
+		// 显示之前备份列表
+		String realPath = pathResolver.getPath(Constants.SHE_BACKUP_PATH);
+		File parent = new File(realPath);
+		WebFile parentWebFile = new WebFile(parent, parent.getAbsolutePath(),
+				request.getContextPath());
+		List<WebFile> list = parentWebFile.listFiles();
+		modelMap.addAttribute("list", list);
 		return "plug/she/list";
 	}
+
 	@RequestMapping("edit.do")
-	public String edit(
-			Integer id,
-			HttpServletRequest request, org.springframework.ui.Model modelMap) {
+	public String edit(Integer id, HttpServletRequest request,
+			org.springframework.ui.Model modelMap) {
 		Site bean = service.get(id);
 		String filesBasePath = bean.getFilesBasePath("");
 		File filesBaseFile = new File(pathResolver.getPath(filesBasePath));
@@ -86,18 +88,16 @@ public class StaticHtmlExportController {
 	}
 
 	@RequestMapping("make_all_site.do")
-	public String makeAllSite(Integer id,HttpServletRequest request, RedirectAttributes ra) {
+	public String makeAllSite(Integer id, HttpServletRequest request,
+			RedirectAttributes ra) {
 		Site site = service.get(id);
 		Integer userId = Context.getCurrentUserId(request);
-		if(!site.getAllStatic()){
-			ra.addFlashAttribute(MESSAGE, "您未开启整站静态化功能！");
-			return "redirect:list.do";
-		}
+		site.setAllStatic(true);
 		htmlGenerator.makeAllSite(site, userId);
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
 		return "redirect:list.do";
 	}
-	
+
 	@RequestMapping("delete.do")
 	public String delete(HttpServletRequest request,
 			HttpServletResponse response, RedirectAttributes ra)
@@ -107,7 +107,9 @@ public class StaticHtmlExportController {
 		String[] ids = Servlets.getParameterValues(request, "ids");
 		if (ArrayUtils.isNotEmpty(ids)) {
 			for (int i = 0, len = ids.length; i < len; i++) {
-				File f = new File(pathResolver.getPath(Constants.SHE_BACKUP_PATH+"//"+ids[i]));
+				File f = new File(
+						pathResolver.getPath(Constants.SHE_BACKUP_PATH + "//"
+								+ ids[i]));
 				if (!hasPermission(f, site)) {
 					response.sendError(HttpServletResponse.SC_FORBIDDEN);
 					return null;
@@ -127,7 +129,7 @@ public class StaticHtmlExportController {
 		ra.addFlashAttribute(MESSAGE, DELETE_SUCCESS);
 		return "redirect:list.do";
 	}
-	
+
 	private boolean hasPermission(File file, Site site) throws IOException {
 		String realPath = file.getCanonicalPath();
 		String baseRealPath = pathResolver.getPath("");
@@ -145,6 +147,7 @@ public class StaticHtmlExportController {
 		}
 		return true;
 	}
+
 	@RequestMapping("zip.do")
 	public String zip(HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes ra) throws IOException {
@@ -153,7 +156,8 @@ public class StaticHtmlExportController {
 		String[] ids = Servlets.getParameterValues(request, "ids");
 		File[] files = new File[ids.length];
 		for (int i = 0, len = ids.length; i < len; i++) {
-			files[i] = new File(pathResolver.getPath(Constants.SHE_BACKUP_PATH+"//"+ids[i]));
+			files[i] = new File(pathResolver.getPath(Constants.SHE_BACKUP_PATH
+					+ "//" + ids[i]));
 			if (!hasPermission(files[i], site)) {
 				response.sendError(HttpServletResponse.SC_FORBIDDEN);
 				return null;
@@ -174,7 +178,8 @@ public class StaticHtmlExportController {
 		String[] ids = Servlets.getParameterValues(request, "ids");
 		File[] files = new File[ids.length];
 		for (int i = 0, len = ids.length; i < len; i++) {
-			files[i] = new File(pathResolver.getPath(Constants.SHE_BACKUP_PATH+"//"+ids[i]));
+			files[i] = new File(pathResolver.getPath(Constants.SHE_BACKUP_PATH
+					+ "//" + ids[i]));
 			if (!hasPermission(files[i], site)) {
 				response.sendError(HttpServletResponse.SC_FORBIDDEN);
 				return;
@@ -217,7 +222,7 @@ public class StaticHtmlExportController {
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
 		return "redirect:list.do";
 	}
-	
+
 	@Autowired
 	private SiteService service;
 	@Autowired
