@@ -34,57 +34,95 @@
 <body>
 	[#include "inc_header.html"/]
 	<div id="content">
+		<!--栏目广告开始-->
 		<div class="nycon">
 			<!--栏目名称导航开始-->
 			<div class="dh">
 				<div class="dhname">
-
 					<img src="${node.smallImage }" width="139" height="32"
-						alt="${node.smallImage }" />
+						alt="${node.title }" />
 				</div>
 				<div class="dhclass">
 					<ul>
-						[@NodeList parentId=node.id;nodeList] 
-							[#list nodeList as n]
-								<li><a href="${n.url }" [#if n.id== node.id ]class="weizhi"[/#if]>${n.name}</a></li> 
-							[/#list] 
-						[/@NodeList]
+						[@NodeList parentId=node.id;nodeList] [#list nodeList as n]
+						<li><a href="${n.url }" [#if n.id== node.id ]class="weizhi"[/#if]>${n.name}</a></li>
+						[/#list] [/@NodeList]
+						<li><a href="#" class="weizhi">返回列表</a></li>
 					</ul>
 				</div>
-
 			</div>
 			<!--end栏目名称导航-->
-			<!--栏目列表开始-->
-			<div class="newslist">
-				[@NodeList parentId=node.id;nodeList] [#list nodeList as node]
-				[@InfoList nodeId=node.id limit=6;list]
-				<ul>
-					[#list list as info]
-					<li>
-						<div class="pic">
-							<a href="${info.url }"> <img src="${info.smallImage }"
-								width="114" height="84" alt="【青土】${info.title }" />
-							</a>
-						</div>
-						<div class="newstext">
-							<h1>
-								<a href="${info.url }">${info.title }</a>
-							</h1>
-							<p>
-								<a href="${info.url }">${info.metaDescription }</a>
-							</p>
-						</div>
-					</li> [/#list]
-				</ul>
-				[/@InfoList] [/#list] [/@NodeList]
+			<!--大图轮换区开始-->
+			<!-- 代码 开始 -->
+			<div class="product_ct">
+				<p
+					style="padding:0px;color:#7f7f7f;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
+					<span
+						style="color:#4F81BD;font-family:微软雅黑, &#39;microsoft yahei&#39;;font-size:18px;">宜兴中堂联排墅院</span>
+				</p>
+				<p
+					style="padding:0px;color:#7f7f7f;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
+					<span
+						style="font-size:12px;color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;">设计时间：2010.09</span><br />
+				</p>
+				<p
+					style="padding:0px;color:#7f7f7f;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
+					<span
+						style="font-size:12px;color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;">风格：新中式</span>
+				</p>
+				<p
+					style="padding:0px;color:#7f7f7f;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
+					<span
+						style="font-size:12px;color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;">面积：约50000㎡</span>
+				</p>
+				<p
+					style="padding:0px;color:#7f7f7f;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
+					<span style="font-size:12px;"><span
+						style="color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;"><span
+							style="font-size:12px;color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;">地点：</span><span
+							style="color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;font-size:12px;line-height:25px;background-color:#FFFFFF;"><span
+								style="font-size:12px;color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;line-height:25px;background-color:#FFFFFF;">宜兴城东新区</span><span
+								style="color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;line-height:26px;">太湖大道上</span></span></span><br /></span>
+				</p>
+				<p
+					style="padding:0px;color:#7f7f7f;font-family:微软雅黑;font-size:14px;line-height:20px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">
+					<span style="font-size:12px;"><span
+						style="color:#595959;font-family:微软雅黑, &#39;microsoft yahei&#39;;">关键词：中式、清雅</span></span>
+				</p>
+				<p>
+					<br />
+				</p>
 			</div>
-			<!--end栏目列表-->
+
+			<div class="banner_index">
+				<a href="javascript:void(0);" class="btn btnPre"
+					id="banner_index_pre"></a> <a href="javascript:void(0);"
+					class="btn btnNext" id="banner_index_next"></a>
+				<ul class="banner_wrap" id="banner_index">
+					[#list info.images as item]
+					<li><a href="#"><img src="${item.image }" /></a></li> [/#list]
+				</ul>
+			</div>
+
+
+			<div class="indexBanner_num" id="index_numIco"></div>
+			<script type="text/javascript">
+				var ShowPre1 = new ShowPre({
+					box : "banner_index",
+					Pre : "banner_index_pre",
+					Next : "banner_index_next",
+					numIco : "index_numIco",
+					loop : 1,
+					auto : 1
+				});
+			</script>
+			<!-- 代码 结束 -->
+
+
+			<!--end大图轮换区-->
 		</div>
 	</div>
-	<!--end中间内容结束-->
 	[#include "inc_footer.html"/]
-
-
 </body>
 </html>
 [/#escape]

@@ -42,45 +42,84 @@
 				</div>
 				<div class="dhclass">
 					<ul>
-						[@NodeList parentId=node.id;nodeList] 
-						[#list nodeList as n]
-						<li><a href="${n.url }" [#if n.id == node.id ]class="weizhi"[/#if]>${n.name }</a></li>
-						[/#list] [/@NodeList]
+						[@NodeList parentId=node.parent.id;nodeList] 
+							[#list nodeList as n]
+								<li><a href="${n.url }" [#if n.id == node.id ]class="weizhi"[/#if]>${n.name }</a></li>
+							[/#list] 
+						[/@NodeList]
 					</ul>
 				</div>
 
 			</div>
 			<!--end栏目名称导航-->
 			<!--栏目列表开始-->
-			<div class="newslist">
-				[@InfoPage nodeId=node.id pageSize=20;pagedList]
-				<ul>
+        <div class="projectlist">
+           [@InfoPage nodeId=node.id pageSize=20;pagedList]
 					[#list pagedList.content as info]
-					<li>
-						<div class="pic">
-							<a href="${info.url }"> <img
-								src="${info.smallImage }" width="114" height="84"
-								alt="【青土】${info.title }" />
-							</a>
+					
+					<div id="pro">
+		       	 	 <div class="pro_simg_list">
+						<div class="upperImg">
+							<A href="${info.url }"><IMG style="vertical-align: bottom;"  src="${info.smallImage }"  height="130px" width="135px" ></A>
 						</div>
-						<div class="newstext">
-							<h1>
-								<a href="${info.url }">${info.title }</a>
-							</h1>
-							<p>
-								<a href="${info.url }">${info.metaDescription }</a>
-							</p>
+						<div class="prolistBg" >
+							<p>${info.title }</p>
 						</div>
-					</li> [/#list]
-				</ul>
-				[#include "inc_page.html"/] 
+			       	</div>
+		           </div>
+					[/#list]
 				[/@InfoPage]
-			</div>
-			<!--end栏目列表-->
-		</div>
-	</div>
+        </div>
 	<!--end中间内容结束-->
 	[#include "inc_footer.html"/]
+	
+<SCRIPT type="text/javascript">
+
+        $(document).ready(function () {
+            $(".upperImg,.upperImg img").stop().animate({ "opacity": "1" }, "fast");
+            $(".upperImg,.upperImg img").hover(
+function () {
+    $(this).stop().animate({ "opacity": "0" }, "fast");
+},
+function () {
+    $(this).stop().animate({ "opacity": "1" }, "fast");
+});
+        });
+
+
+        $(function () {
+            $($("#menu li a")[2]).addClass("ahovertop");
+
+
+
+            $(".upperImg,.upperImg img").hover(
+function () {
+    $(this).stop().animate({ "opacity": "0" }, "fast");
+},
+function () {
+    $(this).stop().animate({ "opacity": "1" }, "fast");
+});
+
+        })
+
+        function setWindowScrollTop(win, id) {
+
+            var topHeight = document.getElementById("promo_" + id).offsetTop;
+            //alert(topHeight);
+            topHeight = topHeight - 150;
+            if (win.document.documentElement) {
+
+                win.document.documentElement.scrollTop = topHeight;
+
+            }
+
+            if (win.document.body) {
+
+                win.document.body.scrollTop = topHeight;
+
+            }
+        }
+    </SCRIPT>
 </body>
 </html>
 [/#escape]
