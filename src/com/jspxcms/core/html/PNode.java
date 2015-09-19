@@ -69,7 +69,6 @@ public abstract class PNode {
 				out = new OutputStreamWriter(fos, "UTF-8");
 				ForeContext.resetTotalPages();
 				template.process(rootMap, out);
-				System.out.println("8888888888888888888888"+out.toString());
 				taskService.add(taskId, 1);
 				total = ForeContext.getTotalPages();
 				if (total == null || total < 1) {

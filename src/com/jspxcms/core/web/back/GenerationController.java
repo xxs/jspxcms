@@ -39,6 +39,7 @@ public class GenerationController {
 	@RequestMapping("make_all_html.do")
 	public String makeAllHtml(HttpServletRequest request, RedirectAttributes ra) {
 		Site site = Context.getCurrentSite(request);
+		site.setAllStatic(false);
 		Integer userId = Context.getCurrentUserId(request);
 		htmlGenerator.makeAll(site, userId);
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
@@ -48,6 +49,7 @@ public class GenerationController {
 	@RequestMapping("make_all_site.do")
 	public String makeAllSite(HttpServletRequest request, RedirectAttributes ra) {
 		Site site = Context.getCurrentSite(request);
+		site.setAllStatic(false);
 		Integer userId = Context.getCurrentUserId(request);
 		htmlGenerator.makeAllSite(site, userId);
 		ra.addFlashAttribute(MESSAGE, OPERATION_SUCCESS);
@@ -58,6 +60,8 @@ public class GenerationController {
 	@RequestMapping("make_home_html.do")
 	public String makeHomeHtml(HttpServletRequest request, RedirectAttributes ra) {
 		Integer siteId = Context.getCurrentSiteId(request);
+		Site site = Context.getCurrentSite(request);
+		site.setAllStatic(false);
 		Node node = nodeQuery.findRoot(siteId);
 		if (node != null) {
 			htmlGenerator.makeNode(node);
@@ -84,6 +88,8 @@ public class GenerationController {
 	public String makeNodeHtml(Integer nodeId,
 			@RequestParam(defaultValue = "true") boolean includeChildren,
 			HttpServletRequest request, RedirectAttributes ra) {
+		Site site = Context.getCurrentSite(request);
+		site.setAllStatic(false);
 		Integer siteId = Context.getCurrentSiteId(request);
 		Integer userId = Context.getCurrentUserId(request);
 		Node node = null;
@@ -100,6 +106,8 @@ public class GenerationController {
 	public String makeInfoHtml(Integer nodeId,
 			@RequestParam(defaultValue = "true") boolean includeChildren,
 			HttpServletRequest request, RedirectAttributes ra) {
+		Site site = Context.getCurrentSite(request);
+		site.setAllStatic(false);
 		Integer siteId = Context.getCurrentSiteId(request);
 		Integer userId = Context.getCurrentUserId(request);
 		Node node = null;
@@ -122,6 +130,8 @@ public class GenerationController {
 	@RequestMapping("fulltext_submit.do")
 	public String fulltextSubmit(Integer nodeId, HttpServletRequest request,
 			RedirectAttributes ra) {
+		Site site = Context.getCurrentSite(request);
+		site.setAllStatic(false);
 		Integer siteId = Context.getCurrentSiteId(request);
 		Integer userId = Context.getCurrentUserId(request);
 		Node node = null;
