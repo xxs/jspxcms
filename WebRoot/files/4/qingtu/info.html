@@ -44,10 +44,11 @@
 				</div>
 				<div class="dhclass">
 					<ul>
-						<li><a href="/List-10.shtml" class="weizhi">公司动态</a></li>
-						<li><a href="/List-11.shtml">行业动态</a></li>
-						<li><a href="/List-12.shtml">青土课堂</a></li>
-						
+						[@NodeList parentId=node.parent.id;nodeList] 
+							[#list nodeList as n]
+							<li><a href="${n.url }" [#if n.id == node.id ]class="weizhi"[/#if]>${n.name }</a></li>
+							[/#list]
+						[/@NodeList]
 					</ul>
 				</div>
 
