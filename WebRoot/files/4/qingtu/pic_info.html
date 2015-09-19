@@ -44,10 +44,6 @@
 				</div>
 				<div class="dhclass">
 					<ul>
-						[@NodeList parentId=node.parent.id;nodeList] 
-						[#list nodeList as n]
-						<li><a href="${n.url }" [#if n.id== node.id ]class="weizhi"[/#if]>${n.name}</a></li>
-						[/#list] [/@NodeList]
 						<li><a href="javascript:history.go(-1)" class="weizhi">返回列表</a></li>
 					</ul>
 				</div>
