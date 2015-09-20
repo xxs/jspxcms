@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-09-20 23:51:43
+Date: 2015-09-21 01:08:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -960,7 +960,7 @@ INSERT INTO `cms_info_buffer` VALUES ('190', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('191', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('192', '1', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('193', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_info_buffer` VALUES ('194', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_info_buffer` VALUES ('194', '1', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('195', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('196', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_info_buffer` VALUES ('197', '0', '0', '0', '0', '0', '0', '0');
@@ -6113,11 +6113,11 @@ INSERT INTO `cms_model_custom` VALUES ('23', 'template', '/index.html');
 INSERT INTO `cms_model_custom` VALUES ('23', 'staticMethod', '3');
 INSERT INTO `cms_model_custom` VALUES ('23', 'generateNode', 'false');
 INSERT INTO `cms_model_custom` VALUES ('23', 'generateInfo', 'false');
-INSERT INTO `cms_model_custom` VALUES ('23', 'nodePath', '');
-INSERT INTO `cms_model_custom` VALUES ('23', 'defPage', 'false');
+INSERT INTO `cms_model_custom` VALUES ('23', 'nodePath', '/{site_number}/index');
+INSERT INTO `cms_model_custom` VALUES ('23', 'defPage', 'true');
 INSERT INTO `cms_model_custom` VALUES ('23', 'nodeExtension', '.html');
 INSERT INTO `cms_model_custom` VALUES ('23', 'infoExtension', '.html');
-INSERT INTO `cms_model_custom` VALUES ('23', 'infoPath', '');
+INSERT INTO `cms_model_custom` VALUES ('23', 'infoPath', '/{site_number}/index_{info_id}');
 INSERT INTO `cms_model_custom` VALUES ('23', 'staticPage', '1');
 INSERT INTO `cms_model_custom` VALUES ('24', 'staticMethod', '3');
 INSERT INTO `cms_model_custom` VALUES ('24', 'generateNode', 'false');
@@ -7367,7 +7367,7 @@ INSERT INTO `cms_node` VALUES ('83', '3', '76', '1', '17', null, null, null, '18
 INSERT INTO `cms_node` VALUES ('84', '3', '78', '1', '17', null, null, null, '21', '84', '瑞彩千呈相关知识', '0000-0003-0000', '2', '0000', '2015-03-28 20:50:09', '4', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('85', '3', '78', '1', '17', null, null, null, '21', '85', '乳胶漆相关知识', '0000-0003-0001', '2', '0000', '2015-03-28 20:50:15', '4', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('86', '3', '78', '1', '17', null, null, null, '21', '86', '木器漆相关知识', '0000-0003-0002', '2', '0000', '2015-03-28 20:50:23', '4', '0', '1', '0', null, null, null, null, null, null);
-INSERT INTO `cms_node` VALUES ('87', '4', null, '1', '23', null, null, null, '25', null, '新闻', '0000', '0', '0004', '2015-03-28 22:31:57', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('87', '4', null, '1', '23', null, null, null, '25', '87', '新闻', '0000', '0', '0004', '2015-03-28 22:31:57', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('88', '4', '87', '1', '24', null, null, null, '25', 'introduction', '简介', '0000-0000', '1', '0005', '2015-03-28 22:54:08', '5', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('89', '4', '87', '1', '24', null, null, null, '25', 'news', '新闻', '0000-0001', '1', '0003', '2015-03-28 22:54:23', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('90', '4', '87', '1', '26', null, null, null, '27', 'project', '项目', '0000-0002', '1', '0005', '2015-03-28 22:54:37', '0', '0', '1', '0', null, null, null, null, null, null);
@@ -7691,7 +7691,7 @@ INSERT INTO `cms_node_detail` VALUES ('83', null, null, null, null, null, null, 
 INSERT INTO `cms_node_detail` VALUES ('84', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_node_detail` VALUES ('85', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_node_detail` VALUES ('86', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_node_detail` VALUES ('87', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_node_detail` VALUES ('87', null, null, null, null, null, null, '1', '1', '.html', '.html', '/{site_number}/index', '/{site_number}/index_{info_id}', '1', '4', '1', null, null);
 INSERT INTO `cms_node_detail` VALUES ('88', null, null, null, null, '/news_info.html', '/news_info.html', '1', '1', '.html', '.html', '/{site_number}/jianjie', '/{site_number}/jianjie_{info_id}', '1', '4', '5', '/uploads/4/image/public/201509/20150920100956_riihod.gif', null);
 INSERT INTO `cms_node_detail` VALUES ('89', null, null, null, null, null, null, '1', '1', '.html', '.html', '/{site_number}/news', '/{site_number}/news_{info_id}', '1', '4', null, '/uploads/4/image/public/201509/20150920101012_i2gpv0.gif', null);
 INSERT INTO `cms_node_detail` VALUES ('90', null, null, null, null, null, null, '1', '1', '.html', '.html', '/{site_number}/xiangmu', '/{site_number}/xiangmu_{info_id}', '1', '4', null, '/uploads/4/image/public/201509/20150920101029_iakstu.gif', null);
@@ -8663,7 +8663,7 @@ CREATE TABLE `cms_site` (
 -- ----------------------------
 INSERT INTO `cms_site` VALUES ('1', '1', '1', null, 'Jspxcms演示站', '1', 'Jspxcms演示站', '/images/no_picture.jpg', 'bluewise', null, 'localhost', '0', '0', '1', '0', '0000', '0', '0001', '0');
 INSERT INTO `cms_site` VALUES ('3', '1', '1', null, '信诚松木家具', '3', null, '/img/no_picture.jpg', 'xincheng', null, '127.0.0.1000', '0', '1', '0', '0', '0001', '0', '0000', '1');
-INSERT INTO `cms_site` VALUES ('4', '1', '1', null, '青土景观', '4', null, '/img/no_picture.jpg', 'qingtu', null, '127.0.0.1', '0', '1', '0', '0', '0002', '0', '0000', '0');
+INSERT INTO `cms_site` VALUES ('4', '1', '1', null, '青土景观', '4', null, '/img/no_picture.jpg', 'qingtu', null, 'www.dedweek.com', '0', '1', '0', '0', '0002', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('5', '1', '1', null, '设计空间', '5', null, '/img/no_picture.jpg', 'kongjian', null, 'kongjian', '0', '1', '0', '0', '0003', '0', '0000', '1');
 INSERT INTO `cms_site` VALUES ('6', '1', '1', null, '企业模板', '6', null, '/img/no_picture.jpg', 'qiye', null, 'qiye', '0', '0', '0', '0', '0004', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('7', '1', '1', null, '模版大全', '7', '模板大全', '/img/no_picture.jpg', 'muban', null, 'muban', '0', '1', '1', '0', '0005', '0', '0000', '0');
@@ -9342,6 +9342,13 @@ INSERT INTO `cms_task` VALUES ('400', '1', '4', 'Site: 青土景观', null, '201
 INSERT INTO `cms_task` VALUES ('401', '1', '4', 'Site: 青土景观', null, '2015-09-20 23:49:17', '2015-09-20 23:49:21', '36', '1', '1');
 INSERT INTO `cms_task` VALUES ('402', '1', '4', 'Site: 青土景观', null, '2015-09-20 23:49:48', '2015-09-20 23:49:51', '36', '1', '1');
 INSERT INTO `cms_task` VALUES ('403', '1', '4', 'Site: 青土景观', null, '2015-09-20 23:50:11', '2015-09-20 23:50:14', '36', '1', '1');
+INSERT INTO `cms_task` VALUES ('404', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:04:34', '2015-09-21 00:04:38', '37', '1', '1');
+INSERT INTO `cms_task` VALUES ('405', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:05:03', '2015-09-21 00:05:06', '37', '1', '1');
+INSERT INTO `cms_task` VALUES ('406', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:05:58', '2015-09-21 00:06:01', '37', '1', '1');
+INSERT INTO `cms_task` VALUES ('407', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:30:39', '2015-09-21 00:30:40', '1', '1', '2');
+INSERT INTO `cms_task` VALUES ('408', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:35:21', '2015-09-21 00:35:22', '1', '1', '2');
+INSERT INTO `cms_task` VALUES ('409', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:59:34', '2015-09-21 00:59:37', '37', '1', '1');
+INSERT INTO `cms_task` VALUES ('410', '1', '4', 'Site: 青土景观', null, '2015-09-21 01:00:31', '2015-09-21 01:00:32', '37', '1', '1');
 
 -- ----------------------------
 -- Table structure for cms_user
@@ -9410,7 +9417,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', '2015-08-19 16:15:21', '127.0.0.1', '2015-09-11 16:00:48', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '4', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-09-20 09:19:42', '127.0.0.1', '2015-09-20 21:52:08', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '453', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-09-21 00:35:16', '222.137.114.231', '2015-09-21 00:58:39', '222.137.114.231', '2013-02-21 20:59:27', '127.0.0.1', '456', null, null, null, null, null, null);
 INSERT INTO `cms_user_detail` VALUES ('10', null, null, null, '0', null, null, null, null, '2015-09-17 17:23:53', '0:0:0:0:0:0:0:1', '0', null, null, null, null, null, null);
 
 -- ----------------------------
@@ -10163,7 +10170,7 @@ INSERT INTO `t_id_table` VALUES ('cms_special', '28');
 INSERT INTO `t_id_table` VALUES ('cms_special_category', '7');
 INSERT INTO `t_id_table` VALUES ('cms_spec_value', '3');
 INSERT INTO `t_id_table` VALUES ('cms_tag', '85');
-INSERT INTO `t_id_table` VALUES ('cms_task', '404');
+INSERT INTO `t_id_table` VALUES ('cms_task', '411');
 INSERT INTO `t_id_table` VALUES ('cms_user', '11');
 INSERT INTO `t_id_table` VALUES ('cms_user_membergroup', '10');
 INSERT INTO `t_id_table` VALUES ('cms_user_org', '10');
