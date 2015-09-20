@@ -35,30 +35,13 @@ $(function(){
 <div id="indexcontent"> 
    <!--轮换广告开始--> 
    <div id="kinMaxShow"> 
-    <div>
-     <a href="#"><img src="_files/picture/2014091218023624356.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/2014061812152326757.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/201410151649585027.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/2014090211182915646.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/2014011317140928813.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/2015021115104813214.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/2014052610592014105.jpg" /></a>
-    </div>
-    <div>
-     <a href="#"><img src="_files/picture/201401131718024674.jpg" /></a>
-    </div> 
+    	[@InfoList attr='banners';list]
+      [#list list as info]
+      	<div>
+	     <a href="${info.url}"><img src='${info.attrImageUrl}' alt='${info.title}' /></a>
+	    </div>
+      [/#list]
+      [/@InfoList]
    </div> 
    <!--轮换广告结束--> 
    

@@ -1,6 +1,11 @@
 <div id="footer">
   	<div class="ifootertop">
-    	<a href="/List/18.shtml"><img src="_files/picture/contact-us.gif" width="129" height="23" alt="contact us 联系我们" /></a>
+    	[@Info id=182;i]
+         	 [#if i??]
+        	 <a href="${i.url }"><img src="_files/picture/contact-us.gif" width="129" height="23" alt="${i.title }" /></a>
+         	
+        	[/#if]
+		[/@Info]
     </div>
     <div class="copyright">  
 		   <p>

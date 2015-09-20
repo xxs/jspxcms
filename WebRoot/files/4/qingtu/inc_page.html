@@ -14,7 +14,7 @@
 <a href="${paging(page+1)}" class="page-a">下一页</a>
 [/#if]
 
-<a[#if page<pagedList.totalPages] href="${paging(pagedList.totalPages)}"[/#if] class="page-a" >末页</a>
+<a[#if page<pagedList.totalPages] href="${paging(pagedList.totalPages)}"[/#if] class="page-a" >末页 </a> 共${pagedList.totalPages }页
 <div style="clear:both;"></div>
 </div>
 
