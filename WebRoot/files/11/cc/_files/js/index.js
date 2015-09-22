@@ -183,12 +183,15 @@ CategoryWrap.prototype = {
 
 		var ranking = $("#rankingDate").val();
 		var sort = $("#sortOrder").val(); //正序(asc)、倒序(desc)
-		var url = "stuff/get_category_data/cat" + category + "/" +ranking + "/" + sort +"/" + that.pageNum + ".html";
+
+		var get_category_post_url = "stuff/get_category_data/cat" + category + "/" +ranking + "/" + sort +"/" + that.pageNum + ".html";
 		
+		//百度统计
+       	baiDuStatisticsPageviewFun(get_category_post_url);
 
 		$.ajax({  
            type : "POST",
-           url : url,
+           url : get_category_post_url,
            data : data,
            dataType: "json",
            success : function(res){
@@ -282,11 +285,14 @@ ToBuyWrap.prototype = {
 		var data = {};
 		data.page = that.pageNum;
 
-		var url = "jsapi/collection_list.html";
+		var collection_list_post_url = "jsapi/collection_list.html";
 		
+		//百度统计
+       	baiDuStatisticsPageviewFun(collection_list_post_url);
+
 		$.ajax({  
            type : "POST",
-           url : url,
+           url : collection_list_post_url,
            data : data,
            dataType: "json",
            success : function(res){
@@ -355,6 +361,12 @@ ToBuyWrap.prototype = {
 			var data = {};
 			data.tool_id = _this.attr("data-toolsId");
 
+			var collection_del_post_url = "/jsapi/collection_del.html";
+
+			//百度统计
+       		baiDuStatisticsPageviewFun(collection_del_post_url);
+
+
 			isLoginAjax();
 			if($("#isLogin").val() == 0)	{
 				return false;
@@ -364,7 +376,7 @@ ToBuyWrap.prototype = {
 				collect_ajax = true;
 				$.ajax({
 					type : "POST",
-					url : "/jsapi/collection_del.html",
+					url : collection_del_post_url,
 					data : data,
 					dataType: "json",
 					success : function(res){
@@ -422,10 +434,15 @@ TagApplyWrap.prototype = {
 		that.pageNum = num;
 		that.pager.hide();
 
+		var get_tag_post_url = "jsapi/get_tag_data/"+ that.curTagName +"/"+ that.pageNum +".html";
+
+		//百度统计
+       	baiDuStatisticsPageviewFun(get_tag_post_url);
+
 		var data = {};
 			$.ajax({  
 			type : "POST",
-			url : "jsapi/get_tag_data/"+ that.curTagName +"/"+ that.pageNum +".html",
+			url : get_tag_post_url,
 			data : data,
 			dataType: "json",
 			success : function(res){

@@ -138,9 +138,14 @@ CommonSearchWrap.prototype = {
         var data = {};
         data.word = text;
 
+        var hot_word_post_url = "/jsapi/search_hot_word.html";
+        
+        //百度统计
+        baiDuStatisticsPageviewFun(hot_word_post_url);
+
         $.ajax({
            type : "POST",
-           url : "/jsapi/search_hot_word.html",
+           url : hot_word_post_url,
            data : data,
            dataType: "json",
            success : function(res){

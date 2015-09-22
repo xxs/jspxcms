@@ -1,7 +1,6 @@
 $(function(){
 	validataOSFun();
 	nthchildIE8Fun();
-	footerWrapFun(); //页脚划过微信、qq显示其二维码
 	rankingListFun(); //排行榜列表切换
 	appendShadowFun(); //添加遮罩层
 	appendTipsFun(); //添加tips层
@@ -26,18 +25,12 @@ function nthchildIE8Fun(){
 	}
 }
 
-//页脚划过微信、qq显示其二维码
-function footerWrapFun(){
-	var $share_a = $("#footerShareList").find("a"),
-		$dis_code = $(".discode_sf");
-	$share_a.hover(function(){
-		var _this = $(this);
-		$dis_code.hide();
-		_this.parent().find(".discode_sf").show();
-	},function(){
-		var _this = $(this);
-		_this.parent().find(".discode_sf").hide();
-	});
+/********** 百度统计 **********/
+/*
+	pageURL : 请求的URL
+*/
+function baiDuStatisticsPageviewFun(pageURL){
+	_hmt.push(['_trackPageview', pageURL]);
 }
 
 //下载、购买操作按钮
@@ -74,19 +67,6 @@ function operaBtnFun(ulBox){
 		_this.removeClass("btn-gray-hover");
 		_this.find("i").text(init_text);
 		_this.find("span").remove();
-	});
-}
-//页脚划过微信、qq显示其二维码
-function footerWrapFun(){
-	var $share_a = $("#footerShareList").find("a"),
-		$dis_code = $(".discode_sf");
-	$share_a.hover(function(){
-		var _this = $(this);
-		$dis_code.hide();
-		_this.parent().find(".discode_sf").show();
-	},function(){
-		var _this = $(this);
-		_this.parent().find(".discode_sf").hide();
 	});
 }
 
@@ -161,9 +141,14 @@ function applyListHoverFun(ulBox,addCls){
 
 /********** 判断用户是否需要登录 **********/
 function isLoginAjax(){ //登录检查 state:{comment:评论，buy:购买，download:下载，updata:更新，open：打开}
+	var login_post_url = "user/check_login";
+
+	//百度统计
+	baiDuStatisticsPageviewFun(login_post_url);
+
 	$.ajax({
        type : "POST",
-       url : "user/check_login",
+       url : login_post_url,
        data : {},
        async: false, //false:同步，true:异步(默认)
        dataType: "json",
@@ -270,9 +255,15 @@ function adStatisticsFun(){
 	$(".adstatistics").bind("click",function(){
 		var _this = $(this);
 		var adId = _this.attr("advert-id");
+
+		var ad_post_url = "search/ad_browse/"+ adId +".html";
+		
+		//百度统计
+		baiDuStatisticsPageviewFun(ad_post_url);
+
 		$.ajax({
 	       type : "POST",
-	       url : "search/ad_browse/"+ adId +".html",
+	       url : ad_post_url,
 	       data : {},
 	       async: false, //false:同步，true:异步(默认)
 	       dataType: "json",
@@ -380,12 +371,16 @@ function footerMyCollect(){
 
 function get_content_url(id){
     var refer = window.location.href;
-    var url = '';
+    var get_cont_post_url = 'jsapi/get_content_url/'+id+'.html';
+
+    //百度统计
+	baiDuStatisticsPageviewFun(get_cont_post_url);
+
     $.ajax({
         type:'POST',
         async:false,
         data:{refer:refer},
-        url:'jsapi/get_content_url/'+id+'.html',
+        url:get_cont_post_url,
         dataType:'text',
         success:function(msg){
             url = msg;

@@ -128,16 +128,19 @@ StoreDeatilsWrap.prototype = {
 			}
 			
 			if(_this.hasClass("cancel_cbec")){
-				url = "/jsapi/collection_del.html";
+				var collection_post_url = "/jsapi/collection_del.html";
 			}else{
-				url = "/jsapi/collection_add.html";
+				var collection_post_url = "/jsapi/collection_add.html";
 			}
+
+			//百度统计
+       		baiDuStatisticsPageviewFun(collection_post_url);
 
 			if(!collect_ajax){
 				collect_ajax = true;
 				$.ajax({
 					type : "POST",
-					url : url,
+					url : collection_post_url,
 					data : data,
 					dataType: "json",
 					success : function(res){
@@ -214,9 +217,15 @@ StoreDeatilsWrap.prototype = {
 		that.treeMenuHtml = "";
 		that.treeMenuList.html("");
 		//that.toolsId = "127775";
+
+		var get_zip_post_url = "/jsapi/get_zip_preview/"+ that.toolsId + "/" + arg + ".html";
+
+		//百度统计
+       	baiDuStatisticsPageviewFun(get_zip_post_url);
+
 		$.ajax({
             type : "POST",
-            url : "/jsapi/get_zip_preview/"+ that.toolsId + "/" + arg + ".html",
+            url : get_zip_post_url,
             data : data,
             dataType: "json",
             success : function(res){
@@ -329,11 +338,16 @@ StoreDeatilsWrap.prototype = {
 			}
 
 			var data = {};
+			var get_comment_post_url = "/stuff/get_comment/"+ that.toolsId +".html";
+
+			//百度统计
+       		baiDuStatisticsPageviewFun(get_comment_post_url);
+
 			if(!get_comment_cont_ajax){
 			 	get_comment_cont_ajax = true;
 			 	$.ajax({
 	                type : "POST",
-	                url : "/stuff/get_comment/"+ that.toolsId +".html",
+	                url : get_comment_post_url,
 	                data : data,
 	                dataType: "json",
 	                success : function(res){ //{1：评论成功，0：评论失败}
@@ -490,11 +504,16 @@ StoreDeatilsWrap.prototype = {
 			data.score = that.selMarkStar.attr("startotal") || 5;
 			data.content = conVal;
 			
+			var comment_add_post_url = "/stuff/comment_add";
+
+			//百度统计
+       		baiDuStatisticsPageviewFun(comment_add_post_url);
+
 			if(!tAjax){
 			 	tAjax = true;
 			 	$.ajax({
 	                type : "POST",
-	                url : "/stuff/comment_add",
+	                url : comment_add_post_url,
 	                data : data,
 	                dataType: "json",
 	                success : function(res){ //{1：评论成功，0：评论失败}
@@ -527,9 +546,14 @@ StoreDeatilsWrap.prototype = {
 		data.page = that.pageNum;
 		data.sort = that.comment_sort;
 
+		var comment_list_post_url = "/stuff/comment_list";
+
+		//百度统计
+       	baiDuStatisticsPageviewFun(comment_list_post_url);
+
 		$.ajax({
            type : "POST",
-           url : "/stuff/comment_list",
+           url : comment_list_post_url,
            data : data,
            dataType: "json",
            success : function(res){

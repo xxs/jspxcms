@@ -1,42 +1,819 @@
 [#escape x as (x)!?html]
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="author" content="atarm" />
-<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<title>${node.name} -- ${site.fullNameOrName} -- Powerd by
+	Jspxcms</title>
+<meta charset="utf-8">
+<meta name="description"
+	content="Cocos商店提供源码分类，均为开发者自行添加(上传)的源码,正版游戏开发源码下载" />
+<meta name="keywords"
+	content="源码,Cocos商店,Cocos最新版,插件,脚本,Cocos框架,第三方服务,源码下载,游戏字体,3D模型,游戏场景,游戏UI,特效​,效果图,源码,素材,正版素材下载,Cocos引擎,Cocos工具,Cocos官网,Cocos开发者" />
+
+<link rel="stylesheet" href="_files/css/common.css">
+<link rel="stylesheet" href="_files/css/pager.css">
+<link rel="stylesheet" href="_files/css/viewimg.css">
+<link rel="stylesheet" href="_files/css/detail.css">
+<link rel="stylesheet" href="_files/css/index.css">
+
+<!-- 滚动条 -->
+<link rel="stylesheet" href="_files/css/jquery.mcustomscrollbar.css">
+<link rel="stylesheet" href="_files/css/init.mcustomscrollbar.css">
+
+<!-- 上传内容 大赛 -->
+<link rel="stylesheet" href="_files/css/event.css">
+<!-- 上传内容 大赛 end -->
+
+<!-- 需求墙 -->
+<link rel="stylesheet" href="_files/css/need.css">
+<script src="_files/js/jquery-1.11.1.min.js"></script>
+
+<!-- sso 登录检测 -->
+<script src="_files/js/b71f949871d3484eb0aca13f57f16f46.js"></script>
+<!-- sso 登录检测 end -->
 </head>
+
 <body>
-[#include "inc_header.html"/]
-<div class="w960 center clear mt1">
-	<div class="pleft">
-         <div class="position">
-      	  当前位置oooooo：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
-        </div>
-    <div class="textlist">
-  		  [@InfoPage nodeId=node.id pageSize=20;pagedList]
- 		  <ul>
-  		 [#list pagedList.content as info]
-  	 		<li>
-            	<span class="spanleft">[@A bean=info target="_blank"/]</span>
-            	<span class="spanright">${info.publishDate?string('yyyy-MM-dd')}</span>
-            </li>
-  		 [/#list]
-  	 	 </ul>
-         [#include "inc_page.html"/]
- 	 	 [/@InfoPage]
-     </div>
+	[#include "inc_header.html"/]
+	<div class="containerwrap">
+		<div class="content">
+			<div class="mainmodule clearfix">
+				<div class="navbar_m">
+					<p class="allclassify_nm">
+						<a
+							onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_graphics_title', '']);"
+							href="http://store.cocos.com/">全部分类</a>
+					</p>
+					<ul class="classifylist_nm" id="classifyNavbar">
+						[@NodeList;list] [#list list as node]
+						<li><a href="${node.url}"
+							class="first_cnm [#if node.children?size != 0 ]haschild_cnm[/#if] ">${node.name}<b
+								class="${node.number} icon_nm"></b></a> [#if node.children?size != 0
+							]
+							<div class="childmenu_hcnm">
+								<ol>
+									[#list node.children as nd]
+									<li><a href="${nd.url}">${nd.name }</a></li> [/#list]
+								</ol>
+							</div> [/#if]</li> [/#list] [/@NodeList]
+					</ul>
+				</div>
+				<!-- banner -->
+				<div class="bannerarea_m">
+					<ul class="imglist_b clearfix" id="bannerImgBox">
+						[@InfoList attr='focus';list] [#list list as info]
+						<li class="liitem_ib"><a href='${info.url}'
+							class="adstatistics" target="_blank"> <img
+								src='${info.attrImageUrl}'
+								alt='${info.title}${info.attrImageUrl}' />
+						</a></li> [/#list] [/@InfoList]
+					</ul>
+					<div class="pointbg_b">
+						<p class="barpoint_pb clearfix" id="bannerPointBox">
+							[@InfoList attr='focus';list] [#list list as info] <a
+								href="javascript:void(0)" [#if info_index==
+								0 ]class="current_bpb"[/#if] ></a> [/#list] [/@InfoList]
+						</p>
+					</div>
+				</div>
+				<!-- banner end-->
+
+				<div class="slideimg_m">
+					<a href="javascript:void(0);" class="l_sm" id="arrowLeft"></a> <a
+						href="javascript:void(0);" class="r_sm" id="arrowRight"></a>
+					<div class="imagesbox_sm">
+						<ul id="slideApply" class="applylistwrap ullist_ism clearfix">
+							[@InfoList attr='recommend' limit=10;list] [#list list as info]
+							<li><b class="hot_a"></b> <a href="${info.url}"
+								target="_blank" class="itemapply_a"> <b class="markbg_ia"></b>
+									<span class="icondis_ia"> <img src="${info.largeImage}"
+										alt="${info.title}" /></span> <span class="text_ia">${substring(info.title,17,'...')}</span>
+							</a></li> [/#list] [/@InfoList]
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="categorynav clearfix" id="categoryApply">
+				<div class="applymodule">
+					<div class="top_a clearfix">
+						<!-- 面包屑 -->
+						<div class="crumbs_ta clearfix">
+							[#list node.hierarchy as n]<a href="${n.url}" title="${n.name}">${n.name} ></a>[#if
+							n_has_next]>[/#if][/#list]
+						</div>
+						<!-- 面包屑 end-->
+						<!-- 热度、名称、价格、发布时间 -->
+						<div class="ranking_ta clearfix">
+							<a href="stuff/category/12/score_count.html" class="current_rta">热度</a>
+							<b></b> <a href="stuff/category/12/title.html">名称</a> <b></b> <a
+								href="stuff/category/12/price_cn.html">价格</a> <b></b> <a
+								href="stuff/category/12/update_time.html">发布时间</a>
+						</div>
+						<!-- 热度、名称、价格、发布时间 end-->
+					</div>
+					<div class="applycont_a clearfix">
+
+						[@InfoPage nodeId=node.id pageSize=20;pagedList]
+						<ul class="applylistwrap ullist_aa clearfix">
+							[#list pagedList.content as info]
+							<li><b class="hot_a"></b><a href="${info.url }"
+								class="itemapply_a" title="${info.title }"> <b
+									class="markbg_ia"></b> <span class="icondis_ia"> <img
+										src="${info.largeImage}" alt="${info.title }">
+								</span> <span class="text_ia">${info.title }</span>
+							</a></li> [/#list]
+						</ul>
+						[#include "inc_page.html"/] [/@InfoPage]
+					</div>
+					<div class="pager_a" id="applyListPage"></div>
+				</div>
+				<!-- 下载排行 -->
+				<div class="monoblock_r">
+					<div class="top_mr clearfix">
+						<h2 class="tit_tmr">下载排行</h2>
+						<ul class="date_tmr rankingcut">
+							<li><a href="javascript:void(0);">日</a></li>
+							<li><a href="javascript:void(0);">周</a></li>
+							<li class="current_dtmr"><a href="javascript:void(0);">月</a></li>
+						</ul>
+					</div>
+					<ul class="ullist_mr disnone_mr">
+						<li class="firli_umr clearfix"><label class="order_umr"><i>1.</i></label>
+							<a
+							onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_img', '爱不释手之拼图']);"
+							href="http://store.cocos.com/stuff/show/178763.html"
+							title="爱不释手之拼图" class="applyicon_umr"> <b class="markbg_ia"></b>
+								<span> <img
+									src="picture/store_cocos_com_648ac377gw1eirwyrl4maj20dw0ds75x_647928_crop_1442496192.png!75x75"
+									alt="爱不释手之拼图" />
+							</span>
+						</a>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '爱不释手之拼图']);"
+									href="http://store.cocos.com/stuff/show/178763.html"
+									title="爱不释手之拼图" class="applyname_umr"> 爱不释手之拼图 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '爱不释手之拼图']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="爱不释手之拼图"
+									data-toolsid="178763" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>2.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '宝石消除demo']);"
+									href="http://store.cocos.com/stuff/show/126170.html"
+									class="applyname_umr" title="宝石消除demo"> 宝石消除demo </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '宝石消除demo']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="宝石消除demo"
+									data-toolsid="126170" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>3.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'cocos跨平台电话簿']);"
+									href="http://store.cocos.com/stuff/show/178764.html"
+									class="applyname_umr" title="cocos跨平台电话簿"> cocos跨平台电话簿 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'cocos跨平台电话簿']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="cocos跨平台电话簿"
+									data-toolsid="178764" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>4.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'cocos2dx lua 数据加密算法']);"
+									href="http://store.cocos.com/stuff/show/178751.html"
+									class="applyname_umr" title="cocos2dx lua 数据加密算法"> cocos2dx
+									lua 数据加密算法 </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'cocos2dx lua 数据加密算法']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download"
+									data-apply-name="cocos2dx lua 数据加密算法" data-toolsid="178751"
+									data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>5.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'EarthWarrior3D射击游戏源码']);"
+									href="http://store.cocos.com/stuff/show/128526.html"
+									class="applyname_umr" title="EarthWarrior3D射击游戏源码">
+									EarthWarrior3D射击游戏源码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'EarthWarrior3D射击游戏源码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download"
+									data-apply-name="EarthWarrior3D射击游戏源码" data-toolsid="128526"
+									data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>6.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'JS-FantasyWarriors3D']);"
+									href="http://store.cocos.com/stuff/show/80.html"
+									class="applyname_umr" title="JS-FantasyWarriors3D">
+									JS-FantasyWarriors3D </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'JS-FantasyWarriors3D']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download"
+									data-apply-name="JS-FantasyWarriors3D" data-toolsid="80"
+									data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>7.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'EarthWarrior3D']);"
+									href="http://store.cocos.com/stuff/show/17.html"
+									class="applyname_umr" title="EarthWarrior3D">
+									EarthWarrior3D </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'EarthWarrior3D']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="EarthWarrior3D"
+									data-toolsid="17" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>8.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'Earlybird']);"
+									href="http://store.cocos.com/stuff/show/129111.html"
+									class="applyname_umr" title="Earlybird"> Earlybird </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'Earlybird']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="Earlybird"
+									data-toolsid="129111" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>9.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '萌妹子大战禽流感手游源码']);"
+									href="http://store.cocos.com/stuff/show/173677.html"
+									class="applyname_umr" title="萌妹子大战禽流感手游源码"> 萌妹子大战禽流感手游源码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '萌妹子大战禽流感手游源码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="萌妹子大战禽流感手游源码"
+									data-toolsid="173677" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>10.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '神棍传说cocos-jsV3.6']);"
+									href="http://store.cocos.com/stuff/show/126138.html"
+									class="applyname_umr" title="神棍传说cocos-jsV3.6">
+									神棍传说cocos-jsV3.6 </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '神棍传说cocos-jsV3.6']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="神棍传说cocos-jsV3.6"
+									data-toolsid="126138" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+					</ul>
+					<ul class="ullist_mr disnone_mr">
+						<li class="firli_umr clearfix"><label class="order_umr"><i>1.</i></label>
+							<a
+							onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_img', '宝石消除demo']);"
+							href="http://store.cocos.com/stuff/show/126170.html"
+							title="宝石消除demo" class="applyicon_umr"> <b class="markbg_ia"></b>
+								<span> <img
+									src="picture/052ba9480b8da0736f77a118bb2220df.png!75x75"
+									alt="宝石消除demo" />
+							</span>
+						</a>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '宝石消除demo']);"
+									href="http://store.cocos.com/stuff/show/126170.html"
+									title="宝石消除demo" class="applyname_umr"> 宝石消除demo </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '宝石消除demo']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="宝石消除demo"
+									data-toolsid="126170" data-pricenum="0"> <i>免费</i>
+								</a>
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>2.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '爱不释手之拼图']);"
+									href="http://store.cocos.com/stuff/show/178763.html"
+									class="applyname_umr" title="爱不释手之拼图"> 爱不释手之拼图 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '爱不释手之拼图']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="爱不释手之拼图"
+									data-toolsid="178763" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>3.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '萌妹子大战禽流感手游源码']);"
+									href="http://store.cocos.com/stuff/show/173677.html"
+									class="applyname_umr" title="萌妹子大战禽流感手游源码"> 萌妹子大战禽流感手游源码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '萌妹子大战禽流感手游源码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="萌妹子大战禽流感手游源码"
+									data-toolsid="173677" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>4.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'Earlybird']);"
+									href="http://store.cocos.com/stuff/show/129111.html"
+									class="applyname_umr" title="Earlybird"> Earlybird </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'Earlybird']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="Earlybird"
+									data-toolsid="129111" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>5.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'cocos跨平台电话簿']);"
+									href="http://store.cocos.com/stuff/show/178764.html"
+									class="applyname_umr" title="cocos跨平台电话簿"> cocos跨平台电话簿 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'cocos跨平台电话簿']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="cocos跨平台电话簿"
+									data-toolsid="178764" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>6.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '小流人']);"
+									href="http://store.cocos.com/stuff/show/178761.html"
+									class="applyname_umr" title="小流人"> 小流人 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '小流人']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="小流人"
+									data-toolsid="178761" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>7.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'EarthWarrior3D']);"
+									href="http://store.cocos.com/stuff/show/17.html"
+									class="applyname_umr" title="EarthWarrior3D">
+									EarthWarrior3D </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'EarthWarrior3D']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="EarthWarrior3D"
+									data-toolsid="17" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>8.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'cocos2dx lua 数据加密算法']);"
+									href="http://store.cocos.com/stuff/show/178751.html"
+									class="applyname_umr" title="cocos2dx lua 数据加密算法"> cocos2dx
+									lua 数据加密算法 </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'cocos2dx lua 数据加密算法']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download"
+									data-apply-name="cocos2dx lua 数据加密算法" data-toolsid="178751"
+									data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>9.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'Cocos3d samples']);"
+									href="http://store.cocos.com/stuff/show/16.html"
+									class="applyname_umr" title="Cocos3d samples"> Cocos3d
+									samples </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'Cocos3d samples']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="Cocos3d samples"
+									data-toolsid="16" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>10.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '横版动作游戏源码']);"
+									href="http://store.cocos.com/stuff/show/128551.html"
+									class="applyname_umr" title="横版动作游戏源码"> 横版动作游戏源码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '横版动作游戏源码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="横版动作游戏源码"
+									data-toolsid="128551" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+					</ul>
+					<ul class="ullist_mr">
+						<li class="firli_umr clearfix"><label class="order_umr"><i>1.</i></label>
+							<a
+							onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_img', '宝石消除demo']);"
+							href="http://store.cocos.com/stuff/show/126170.html"
+							title="宝石消除demo" class="applyicon_umr"> <b class="markbg_ia"></b>
+								<span> <img
+									src="picture/052ba9480b8da0736f77a118bb2220df.png!75x75"
+									alt="宝石消除demo" />
+							</span>
+						</a>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '宝石消除demo']);"
+									href="http://store.cocos.com/stuff/show/126170.html"
+									title="宝石消除demo" class="applyname_umr"> 宝石消除demo </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '宝石消除demo']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="宝石消除demo"
+									data-toolsid="126170" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>2.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '欢乐捕鱼源代码']);"
+									href="http://store.cocos.com/stuff/show/173309.html"
+									class="applyname_umr" title="欢乐捕鱼源代码"> 欢乐捕鱼源代码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '欢乐捕鱼源代码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="欢乐捕鱼源代码"
+									data-toolsid="173309" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>3.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'Earlybird']);"
+									href="http://store.cocos.com/stuff/show/129111.html"
+									class="applyname_umr" title="Earlybird"> Earlybird </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'Earlybird']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="Earlybird"
+									data-toolsid="129111" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>4.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'Cocos3d samples']);"
+									href="http://store.cocos.com/stuff/show/16.html"
+									class="applyname_umr" title="Cocos3d samples"> Cocos3d
+									samples </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'Cocos3d samples']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="Cocos3d samples"
+									data-toolsid="16" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>5.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '人机五子棋']);"
+									href="http://store.cocos.com/stuff/show/172416.html"
+									class="applyname_umr" title="人机五子棋"> 人机五子棋 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '人机五子棋']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="人机五子棋"
+									data-toolsid="172416" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>6.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'EarthWarrior3D']);"
+									href="http://store.cocos.com/stuff/show/17.html"
+									class="applyname_umr" title="EarthWarrior3D">
+									EarthWarrior3D </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'EarthWarrior3D']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="EarthWarrior3D"
+									data-toolsid="17" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>7.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '萌妹子大战禽流感手游源码']);"
+									href="http://store.cocos.com/stuff/show/173677.html"
+									class="applyname_umr" title="萌妹子大战禽流感手游源码"> 萌妹子大战禽流感手游源码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '萌妹子大战禽流感手游源码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="萌妹子大战禽流感手游源码"
+									data-toolsid="173677" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>8.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '捕鱼达人源码和教程']);"
+									href="http://store.cocos.com/stuff/show/171246.html"
+									class="applyname_umr" title="捕鱼达人源码和教程"> 捕鱼达人源码和教程 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '捕鱼达人源码和教程']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="捕鱼达人源码和教程"
+									data-toolsid="171246" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>9.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', '横版动作游戏源码']);"
+									href="http://store.cocos.com/stuff/show/128551.html"
+									class="applyname_umr" title="横版动作游戏源码"> 横版动作游戏源码 </a> <a
+									href="stuff/category/12/score_count.html" class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', '横版动作游戏源码']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="横版动作游戏源码"
+									data-toolsid="128551" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+						<li class="clearfix"><label class="order_umr"><i>10.</i></label>
+							<p class="namecate_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_click_rank_title', 'FantasyWarrior3D']);"
+									href="http://store.cocos.com/stuff/show/18.html"
+									class="applyname_umr" title="FantasyWarrior3D">
+									FantasyWarrior3D </a> <a href="stuff/category/12/score_count.html"
+									class="applycate_umr">源码</a>
+							</p>
+							<p class="applyopera_umr">
+								<a
+									onclick="_hmt.push(['_trackEvent', 'web_index', 'web_index_rank_download', 'FantasyWarrior3D']);"
+									href="javascript:void(0);" class="btns btn-gray candownapply"
+									data-opera-state="download" data-apply-name="FantasyWarrior3D"
+									data-toolsid="18" data-pricenum="0"> <i>免费</i>
+								</a>
+
+							</p></li>
+					</ul>
+				</div>
+				<!-- 下载排行 end-->
+			</div>
+		</div>
 	</div>
-	<div class="pright">
-	[#include "inc_right.html"/]
+	<form id="download_form" action="" method="post">
+		<input type="hidden" name="token" value=""> <input
+			type="hidden" name="type" value="win32">
+	</form>
+	<div class="footerwrap">
+		<div class="footer">
+			<div class="link_f clearfix">
+				<div class="box_lf quicklinks_lf">
+					<h2 class="tit_lf">快速链接</h2>
+					<ul class="list_lf clearfix">
+						<li><a href="http://store.cocos.com/" alt="Cocos商店首页">Cocos商店首页</a></li>
+						<li><a href="https://open.cocos.com/charge" target="_blank"
+							alt="Cocos充值">Cocos充值</a></li>
+						<li><a
+							href="http://store.cocos.com/stuff/pre_shopping_list.html"
+							id="myCollect" alt="我的收藏">我的收藏</a></li>
+						<li><a href="https://open.cocos.com/store/buy"
+							target="_blank" alt="已购项目">已购项目</a></li>
+						<li><a href="http://apistore.baidu.com/" target="_blank"
+							alt="API Store">API Store</a></li>
+						<li><a href="http://store.cocos.com/special/index.html"
+							target="_blank" alt="所有专题">所有专题</a></li>
+					</ul>
+				</div>
+
+				<div class="box_lf help_lf">
+					<h2 class="tit_lf">帮助</h2>
+					<ul class="list_lf">
+						<li><a
+							href="https://open.cocos.com/wiki/index.php?title=Store%E6%96%B0%E6%89%8B"
+							target="_blank">Cocos商店新手指南</a></li>
+						<li><a href="https://open.cocos.com/store/add"
+							target="_blank">发布内容到Cocos商店</a></li>
+					</ul>
+				</div>
+
+				<div class="box_lf mylinks_lf">
+					<h2 class="tit_lf">友情链接</h2>
+					<ul class="list_lf">
+						<li><a href="http://www.cocos.com/" target="_blank">Cocos官网</a></li>
+						<li><a href="http://www.cocoachina.com/" target="_blank">CocosChina</a></li>
+						<li><a href="http://cn.cocos2d-x.org/" target="_blank">Cocos2d-x中文站</a></li>
+					</ul>
+				</div>
+
+				<div class="base_lf">
+					<p class="img_blf">
+						<img src="picture/footer_logo.png" />
+					</p>
+					<p class="email_blf">
+						咨询邮箱：<a
+							href="mailto:store@cocos.com?subject=cocos%20store%20feedback">Store@cocos.com</a>
+					</p>
+					<!-- <ul class="sharelist_blf clearfix" id="footerShareList">
+					<li><a href="http://weibo.com/cocos2dx" target="_blank" title="微博" class="weibo_blf"></a></li>
+					<li>
+						<a href="javascript:void(0);" class="weixin_blf"></a>
+						<div class="discode_sf">
+							<img width="142" height="150" alt="" src="picture/footer_wx_code.png">
+						</div>
+					</li>
+					<li>
+						<a href="javascript:void(0);" class="qq_blf"></a>
+						<div class="discode_sf">
+							<img width="142" height="150" alt="" src="picture/footer_wx_code.png">
+						</div>
+					</li>
+				</ul> -->
+				</div>
+			</div>
+			<p class="textmsg_f">2015 @ Cocos.com 沪ICP备14008742号-5</p>
+		</div>
 	</div>
-</div>
-[#include "inc_footer.html"/]
+
+	<!-- 右侧栏 -->
+	<div class="rightsidebar" id="rightSideBar">
+		<ul class="relatedlist_r">
+			<li class="cont_rr"><a target="_blank"
+				href="https://open.cocos.com/store/add" title="提交内容">提交内容</a></li>
+			<li class="qq_rr"><a target="_blank"
+				href="http://shang.qq.com/wpa/qunwpa?idkey=5a106d7cb71c621dcffa75d08a765a208f44899149e6103781cc44fd6ae1a4c7"
+				title="QQ"><img border="0" src="picture/group.png"
+					alt="Cocos商店交流1群" title="Cocos商店交流1群"></a></li>
+			<li class="wb_rr"><a target="_blank"
+				href="http://weibo.com/storeofcocos" title="微博">微博</a></li>
+			<li class="wx_rr">
+				<div class="weixin_rr" id="weixinCodeBox">
+					<img src="picture/weixin.png" />
+				</div> <a href="javascript:void(0);" id="showWeixinCode">微信</a>
+			</li>
+			<!-- <li class="support_rr">
+			<a href="mailto:store@cocos.com?subject=cocos%20store" title="联系我们">联系我们</a>
+		</li> -->
+		</ul>
+		<div class="returntop_r" id="returnTop">
+			<a href="javascript:void(0);" title="回到顶部">回到顶部</a>
+		</div>
+	</div>
 </body>
 </html>
+<script src="_files/js/ssoclient.js"></script>
+<script src="_files/js/common.js"></script>
+<script src="_files/js/browser.js"></script>
+<script src="_files/js/jquery.mcustomscrollbar.js"></script>
+<script src="_files/js/commonsearch.js"></script>
+<!-- 多级导航、搜索 -->
+<script src="_files/js/viwepager.js"></script>
+<!-- 图片轮播 -->
+<script src="_files/js/viewimg.js"></script>
+<!-- 图片预览 -->
+<script src="_files/js/audio.min.js"></script>
+<!-- mp3 音效预览 -->
+<script src="_files/js/jquery.pager.js"></script>
+<!-- 分页 -->
+<script src="_files/js/buydialog.js"></script>
+<!-- 购买apply -->
+<script src="_files/js/applylist.js"></script>
+<!-- apply list -->
+<script src="_files/js/footer.js"></script>
+<!-- apply list -->
+
+<script src="_files/js/index.js"></script>
+<script>
+	$(function() {
+		categoryPage();
+	})
+</script>
 [/#escape]

@@ -136,9 +136,14 @@ PayWrap.prototype = {
 		var that = this;
 		var data = {};
 
+		var get_balance_post_url = "/order/balance";
+
+		//百度统计
+		baiDuStatisticsPageviewFun(get_balance_post_url);
+
 		$.ajax({
 			type : "POST",
-			url : "/order/balance",
+			url : get_balance_post_url,
 			data : data,
 			dataType: "json",
 			success : function(res){ //res:{1:成功，0:失败}
@@ -160,9 +165,14 @@ PayWrap.prototype = {
 		var data = {};
 		data.tools_id = that.tools_id;
 
+		var get_righttype_post_url = "jsapi/right_type.html";
+
+		//百度统计
+		baiDuStatisticsPageviewFun(get_righttype_post_url);
+
 		$.ajax({
 			type : "POST",
-			url : "jsapi/right_type.html",
+			url : get_righttype_post_url,
 			data : data,
 			dataType: "json",
 			success : function(res){ //res:{1:成功，0:失败}
@@ -322,12 +332,17 @@ PayWrap.prototype = {
 				data.tool_id = that.tools_id;
 				data.price = that.toolsPrice.text();
 
+				var balance_pay_post_url = "/order/balance_pay";
+
+				//百度统计
+				baiDuStatisticsPageviewFun(balance_pay_post_url);
+
 				if(!$_tAjax){
 					$_tAjax = true;
 					$.ajax({
 					  type : "POST",
 					  async : false,
-					  url : "/order/balance_pay",
+					  url : balance_pay_post_url,
 					  data : data,
 					  dataType: "json",
 					  success : function(res){ //res:{1:成功，0:失败}
@@ -459,7 +474,7 @@ PayWrap.prototype = {
 			    +'<span></span>'
 			    +'<input type="checkbox" id="copyRightChecked"/>'
 			    +'</label>'
-			    +'<label for="copyRightChecked">该内容作者 需要您详细阅读 “<a href="javascript:void(0)" id="copyrightUrl" target="_blank">版权要求</a>” 后才能购买(下载)</label>'
+			    +'<label for="copyRightChecked">该内容作者需要您详细阅读 “<a href="javascript:void(0)" id="copyrightUrl" target="_blank">版权要求</a>” 后才能购买(下载)</label>'
 			    +'</div>'
 				+'</div>'
 				+'<div class="footerdialog">'
@@ -484,12 +499,15 @@ PayWrap.prototype = {
 		var that = this;
 		var data = {};
 
+		var get_copyright_post_url = "jsapi/get_copyright_info/"+ that.tools_id +".html";
+		//百度统计
+		baiDuStatisticsPageviewFun(get_copyright_post_url);
 		$.ajax({
 			type : "POST",
-			url : "jsapi/get_copyright_info/"+ that.tools_id +".html",
+			url : get_copyright_post_url,
 			data : data,
 			dataType: "json",
-			success : function(res){
+			success : function(res){				
 			 	if(res.right_agree == 1){ //需要授权信息
 			 		showShadowFun(); //显示遮罩
 					that.AuthorizeDialog.show();
