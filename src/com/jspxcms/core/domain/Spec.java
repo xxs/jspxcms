@@ -69,7 +69,6 @@ public class Spec implements java.io.Serializable {
 	
 	private Site site;
 	
-	
 	private Integer seq;
 
 	/** 备注 */

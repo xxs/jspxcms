@@ -43,6 +43,7 @@ $(document).ready(function() {
         
     };
     $.jqtab("#tabs",".tab-con");
+    
     //规格切换js代码
     var $specAddTh = $("#specAddTh");
     var $specitem = $("#specSelect :checkbox");
@@ -52,7 +53,7 @@ $(document).ready(function() {
     	var id = $this.val();
     	alert(id);
     });
-    $specAddTh.before('<th class="123">123123</th>');
+    //$specAddTh.before('<th class="123">33333</th>');
 });
 
 $(function() {
@@ -527,6 +528,7 @@ function confirmDelete() {
 				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+						<c:if test="${!empty parameterGroupSet}">
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 							<div>
 						  		<c:forEach var="parameterGroup" items="${parameterGroupSet}">
@@ -553,47 +555,28 @@ function confirmDelete() {
 							  	</c:forEach>
 						    </div>
 						</td>
+						</c:if>
+						<c:if test="${empty parameterGroupSet}"><td class="in-ctt">此分类没有定义[${field.label}] 信息 </td></c:if>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>
 		  	</c:when>
-		  	
-		  	
 			<c:when test="${field.name eq 'attrs'}">
 				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
-		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-		  				
-		  					<c:forEach var="attr" items="${attrSet}">
-								<label><c:out value="${attr.name}"/></label> &nbsp;
-						  		<select name="attr_${attr.id}" >
-						  			<c:forEach var="item" items="${attr.items}" >
-							  			<option value="${item.id}">${item.name}</option>
-							  		</c:forEach>
-						  		</select>
-						  	</c:forEach>	
-						  	
-						</td>
-		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-		  					<c:forEach var="attr" items="${s}">
-								<label><c:out value="${attr.name}"/></label> &nbsp;
-						  		<select name="attr_${attr.id}" >
-						  			<c:forEach var="item" items="${attr.items}" >
-							  			<option value="${item.id}">${item.name}</option>
-							  		</c:forEach>
-						  		</select>
-						  	</c:forEach>	
-						</td>
-		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-		  					<c:forEach var="attr" items="${ss}">
-								<label><c:out value="${attr.name}"/></label> &nbsp;
-						  		<select name="attr_${attr.id}" >
-						  			<c:forEach var="item" items="${attr.items}" >
-							  			<option value="${item.id}">${item.name}</option>
-							  		</c:forEach>
-						  		</select>
-						  	</c:forEach>	
-						</td>
+						<c:if test="${!empty attrSet}">
+			  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
+			  					<c:forEach var="attr" items="${attrSet}">
+									<label><c:out value="${attr.name}"/></label> &nbsp;
+							  		<select name="attr_${attr.id}" >
+							  			<c:forEach var="item" items="${attr.items}" >
+								  			<option value="${item.id}" <c:if test=""> checked="checked" </c:if> >${item.name}</option>
+								  		</c:forEach>
+							  		</select>
+							  	</c:forEach>	
+							</td>
+						</c:if>
+						<c:if test="${empty attrSet}"><td class="in-ctt">此分类没有定义[${field.label}] 信息 <a href="core/attr/list.do" class="red">点击设置</a></td></c:if>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>
 		  	</c:when>
@@ -601,14 +584,10 @@ function confirmDelete() {
 				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }" id="specSelect">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+						<c:if test="${!empty specList}">
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
-							<c:forEach var="spec" items="${specList}" >
-							  	<input type="checkbox" name="specCheck" value="${spec.id }"/>${spec.name }
-							  		<select name="spec_${spec.id}" class="">
-							  			<c:forEach var="value" items="${spec.specValues}" >
-								  			<option value="${value.id}">${value.name }</option>
-								  		</c:forEach>
-							  		</select>
+							<c:forEach var="sp" items="${specList}" >
+							  	<input type="checkbox" name="specCheck" value="${sp.id }"/>${sp.name }
 							</c:forEach>
 						</td>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
@@ -633,22 +612,31 @@ function confirmDelete() {
 							      <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
 							    </td>
 							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <c:forEach var="sp" items="${specList}" >
+							    	<td align="center">
+									  		<select name="spec_${sp.id}" class="">
+									  			<c:forEach var="it" items="${sp.specValues}" >
+										  			<option value="${it.id}">${it.name }</option>
+										  		</c:forEach>
+									  		</select>
+									</td>
+								</c:forEach>
 							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
 							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
 							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
 							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
 							    <td align="center">
-							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    	<f:checkbox name="def" value="" default="false"/>
 							    </td>
 							    <td align="center">
-							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    	<f:checkbox name="def" value="" default="false"/>
 							    </td>
 							  </tr>
 							</textarea>
 							  <script type="text/javascript">
 							var rowIndex = 0;
-							<c:if test="${!empty bean && fn:length(bean.parameters) gt 0}">
-							rowIndex = ${fn:length(bean.parameters)};
+							<c:if test="${!empty bean && fn:length(bean.specs) gt 0}">
+							rowIndex = ${fn:length(bean.specs)};
 							</c:if>
 							var rowTemplate = $.format($("#templateArea").val());
 							function addRow() {
@@ -669,6 +657,9 @@ function confirmDelete() {
 							    <th width="25"><input type="checkbox" onclick="Cms.check('ids',this.checked);"/></th>
 							    <th width="80"><s:message code="operate"/></th>
 							    <th id="specAddTh">货号</th>
+							    <c:forEach var="sp" items="${specList}" >
+								  	<th>${sp.name }</th>
+								</c:forEach>
 							    <th>销售价</th>
 							    <th>成本价</th>
 							    <th>市场价</th>
@@ -678,7 +669,6 @@ function confirmDelete() {
 							  </tr>
 							  </thead>
 							  <tbody>
-							  <c:forEach var="item" varStatus="status" items="${bean.parameters}">
 							  <tr>
 							    <td align="center">
 							    	<input type="checkbox" name="itemIds" value="${bean.id}"/>
@@ -687,29 +677,40 @@ function confirmDelete() {
 							    <td align="center">
 							      <a href="javascript:void(0);" onclick="$(this).parent().parent().remove();" class="ls-opt"><s:message code="delete"/></a>
 							    </td>
-							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
-							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
-							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
-							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
-							    <td align="center"><f:text name="itemName" value="${item.name}" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <c:forEach var="sp" items="${specList}" >
+							    	<td align="center">
+									  		<select name="spec_${sp.id}" class="">
+									  			<c:forEach var="it" items="${sp.specValues}" >
+										  			<option value="${it.id}">${it.name }</option>
+										  		</c:forEach>
+									  		</select>
+									</td>
+								</c:forEach>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
+							    <td align="center"><f:text name="itemName" value="" class="required" maxlength="100" style="width:150px;"/></td>
 							   	<td align="center">
-							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    	<f:checkbox name="def" value="" default="false"/>
 							    </td>
 							    <td align="center">
-							    	<f:checkbox name="def" value="${bean.def}" default="false"/>
+							    	<f:checkbox name="def" value="" default="false"/>
 							    </td>
 							  </tr>
-							  </c:forEach>
 							  </tbody>
 							</table>
 						</td>
-					</tr>
+						</c:if>
+						<c:if test="${empty attrSet}"><td class="in-ctt">此分类没有定义[${field.label}] 信息 <a href="core/attr/list.do" class="red">点击设置</a></td></c:if>
+					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>
 		  	</c:when>
 		  	<c:when test="${field.name eq 'brand'}">
 				<table border="0"  cellpadding="0" cellspacing="0" class="in-tb margin-top5 tab-con" id="${field.name }">
 					<c:if test="${colCount%2==0||!field.dblColumn}"><tr></c:if>
 						<td class="in-lab" width="15%"><c:if test="${field.required}"><em class="required">*</em></c:if><c:out value="${field.label}"/>:</td>
+		  				<c:if test="${!empty brands}">
 		  				<td<c:if test="${field.type!=50}"> class="in-ctt"</c:if><c:choose><c:when test="${field.dblColumn}"> width="35%"</c:when><c:otherwise> width="85%" colspan="3"</c:otherwise></c:choose>>
 						  	<select name="brandId" >
 								<c:forEach var="brand" items="${brands}" >
@@ -717,6 +718,8 @@ function confirmDelete() {
 							  	</c:forEach>
 						  	</select>
 						</td>
+						</c:if>
+						<c:if test="${empty brands}"><td class="in-ctt">此分类没有定义[${field.label}] 信息 </td></c:if>
 					<c:if test="${colCount%2==1||!field.dblColumn}"></tr></c:if>
 				</table>
 		  	</c:when>

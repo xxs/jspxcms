@@ -32,12 +32,12 @@ public class NodeSpecServiceImpl implements NodeSpecService,
 	}
 
 	@Transactional
-	public void update(Spec attr, Integer[] nodeIds) {
-		Integer attrId = attr.getId();
+	public void update(Spec spec, Integer[] nodeIds) {
+		Integer specId = spec.getId();
 		//更新前先删除之前已经绑定的栏目ID
-		dao.deleteBySpecId(attrId);
+		dao.deleteBySpecId(specId);
 		System.out.println("已经执行了删除操作");
-		List<NodeSpec> nrs = daoPlus.findBySpecId(attrId);
+		List<NodeSpec> nrs = daoPlus.findBySpecId(specId);
 		Node node = null;
 		boolean contains;
 		for (Integer nodeId : nodeIds) {
@@ -55,7 +55,7 @@ public class NodeSpecServiceImpl implements NodeSpecService,
 				contains = true;
 			}
 			if (contains) {
-				save(node, attr);
+				save(node, spec);
 			}
 		}
 	}
@@ -63,21 +63,21 @@ public class NodeSpecServiceImpl implements NodeSpecService,
 	@Transactional
 	public void update(Node node, Integer[] nodePermIds) {
 		Integer nodeId = node.getId();
-		List<Spec> attrs = attrService.findList(node.getSite().getId());
+		List<Spec> specs = specService.findList(node.getSite().getId());
 		List<NodeSpec> nrs = daoPlus.findByNodeId(nodeId);
-		Integer attrId;
+		Integer specId;
 		boolean contains;
-		for (Spec attr : attrs) {
+		for (Spec spec : specs) {
 			contains = false;
-			attrId = attr.getId();
+			specId = spec.getId();
 			for (NodeSpec nr : nrs) {
-				if (!nr.getSpec().getId().equals(attrId)) {
+				if (!nr.getSpec().getId().equals(specId)) {
 					contains = true;
 					break;
 				}
 			}
 			if (!contains) {
-				save(node, attr);
+				save(node, spec);
 			}
 		}
 	}
@@ -102,11 +102,11 @@ public class NodeSpecServiceImpl implements NodeSpecService,
 		return daoPlus.findByNodeId(nodeId);
 	}
 
-	private SpecService attrService;
+	private SpecService specService;
 
 	@Autowired
-	public void setSpecService(SpecService attrService) {
-		this.attrService = attrService;
+	public void setSpecService(SpecService specService) {
+		this.specService = specService;
 	}
 
 	private NodeDao nodeDao;

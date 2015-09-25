@@ -12,36 +12,36 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 /**
- * InfoAttr 高级属性
+ * InfoSpec 高级规格
  * 
  * @author xxs
  * 
  */
 @Entity
-@Table(name = "cms_info_attr")
+@Table(name = "cms_info_spec")
 public class InfoSpec implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
 	private Info info;
-	private Attr attr;
+	private Spec spec;
 
 	private String value;
 
 	public InfoSpec() {
 	}
 
-	public InfoSpec(Info info, Attr attr, String value) {
+	public InfoSpec(Info info, Spec spec, String value) {
 		this.info = info;
-		this.attr = attr;
+		this.spec = spec;
 		this.value = value;
 	}
 
 	@Id
-	@Column(name = "f_infoattr_id", unique = true, nullable = false)
-	@TableGenerator(name = "tg_cms_info_attr", pkColumnValue = "cms_info_attr", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tg_cms_info_attr")
+	@Column(name = "f_infospec_id", unique = true, nullable = false)
+	@TableGenerator(name = "tg_cms_info_spec", pkColumnValue = "cms_info_spec", table = "t_id_table", pkColumnName = "f_table", valueColumnName = "f_id_value", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tg_cms_info_spec")
 	public Integer getId() {
 		return this.id;
 	}
@@ -61,13 +61,13 @@ public class InfoSpec implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "f_attr_id", nullable = false)
-	public Attr getAttr() {
-		return this.attr;
+	@JoinColumn(name = "f_spec_id", nullable = false)
+	public Spec getSpec() {
+		return this.spec;
 	}
 
-	public void setAttr(Attr attr) {
-		this.attr = attr;
+	public void setSpec(Spec spec) {
+		this.spec = spec;
 	}
 	
 	@Column(name = "f_value")
