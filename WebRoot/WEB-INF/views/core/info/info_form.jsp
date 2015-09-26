@@ -635,8 +635,8 @@ function confirmDelete() {
 							</textarea>
 							  <script type="text/javascript">
 							var rowIndex = 0;
-							<c:if test="${!empty bean && fn:length(bean.specs) gt 0}">
-							rowIndex = ${fn:length(bean.specs)};
+							<c:if test="${!empty bean && bean.specs.size gt 0}">
+							rowIndex = ${bean.specs.size};
 							</c:if>
 							var rowTemplate = $.format($("#templateArea").val());
 							function addRow() {

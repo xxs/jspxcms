@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2015-09-21 01:08:02
+Date: 2015-09-26 10:24:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -8663,7 +8663,7 @@ CREATE TABLE `cms_site` (
 -- ----------------------------
 INSERT INTO `cms_site` VALUES ('1', '1', '1', null, 'Jspxcms演示站', '1', 'Jspxcms演示站', '/images/no_picture.jpg', 'bluewise', null, 'localhost', '0', '0', '1', '0', '0000', '0', '0001', '0');
 INSERT INTO `cms_site` VALUES ('3', '1', '1', null, '信诚松木家具', '3', null, '/img/no_picture.jpg', 'xincheng', null, '127.0.0.1000', '0', '1', '0', '0', '0001', '0', '0000', '1');
-INSERT INTO `cms_site` VALUES ('4', '1', '1', null, '青土景观', '4', null, '/img/no_picture.jpg', 'qingtu', null, 'www.dedweek.com', '0', '1', '0', '0', '0002', '0', '0000', '0');
+INSERT INTO `cms_site` VALUES ('4', '1', '1', null, '青土景观', '4', null, '/img/no_picture.jpg', 'qingtu', null, '127.0.0.1', '0', '1', '0', '0', '0002', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('5', '1', '1', null, '设计空间', '5', null, '/img/no_picture.jpg', 'kongjian', null, 'kongjian', '0', '1', '0', '0', '0003', '0', '0000', '1');
 INSERT INTO `cms_site` VALUES ('6', '1', '1', null, '企业模板', '6', null, '/img/no_picture.jpg', 'qiye', null, 'qiye', '0', '0', '0', '0', '0004', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('7', '1', '1', null, '模版大全', '7', '模板大全', '/img/no_picture.jpg', 'muban', null, 'muban', '0', '1', '1', '0', '0005', '0', '0000', '0');
@@ -9349,6 +9349,7 @@ INSERT INTO `cms_task` VALUES ('407', '1', '4', 'Site: 青土景观', null, '201
 INSERT INTO `cms_task` VALUES ('408', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:35:21', '2015-09-21 00:35:22', '1', '1', '2');
 INSERT INTO `cms_task` VALUES ('409', '1', '4', 'Site: 青土景观', null, '2015-09-21 00:59:34', '2015-09-21 00:59:37', '37', '1', '1');
 INSERT INTO `cms_task` VALUES ('410', '1', '4', 'Site: 青土景观', null, '2015-09-21 01:00:31', '2015-09-21 01:00:32', '37', '1', '1');
+INSERT INTO `cms_task` VALUES ('411', '1', '4', 'Site: 青土景观', null, '2015-09-21 09:27:51', '2015-09-21 09:28:04', '37', '1', '1');
 
 -- ----------------------------
 -- Table structure for cms_user
@@ -9417,7 +9418,7 @@ CREATE TABLE `cms_user_detail` (
 -- Records of cms_user_detail
 -- ----------------------------
 INSERT INTO `cms_user_detail` VALUES ('0', null, null, null, '0', '2015-08-19 16:15:21', '127.0.0.1', '2015-09-11 16:00:48', '127.0.0.1', '2013-03-09 22:18:56', '127.0.0.1', '4', null, null, null, '22807465', null, null);
-INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-09-21 00:35:16', '222.137.114.231', '2015-09-21 00:58:39', '222.137.114.231', '2013-02-21 20:59:27', '127.0.0.1', '456', null, null, null, null, null, null);
+INSERT INTO `cms_user_detail` VALUES ('1', null, null, null, '0', '2015-09-21 09:23:30', '127.0.0.1', '2015-09-22 16:30:52', '127.0.0.1', '2013-02-21 20:59:27', '127.0.0.1', '458', null, null, null, null, null, null);
 INSERT INTO `cms_user_detail` VALUES ('10', null, null, null, '0', null, null, null, null, '2015-09-17 17:23:53', '0:0:0:0:0:0:0:1', '0', null, null, null, null, null, null);
 
 -- ----------------------------
@@ -10170,7 +10171,7 @@ INSERT INTO `t_id_table` VALUES ('cms_special', '28');
 INSERT INTO `t_id_table` VALUES ('cms_special_category', '7');
 INSERT INTO `t_id_table` VALUES ('cms_spec_value', '3');
 INSERT INTO `t_id_table` VALUES ('cms_tag', '85');
-INSERT INTO `t_id_table` VALUES ('cms_task', '411');
+INSERT INTO `t_id_table` VALUES ('cms_task', '412');
 INSERT INTO `t_id_table` VALUES ('cms_user', '11');
 INSERT INTO `t_id_table` VALUES ('cms_user_membergroup', '10');
 INSERT INTO `t_id_table` VALUES ('cms_user_org', '10');

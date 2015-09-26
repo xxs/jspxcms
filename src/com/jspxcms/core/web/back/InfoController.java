@@ -259,9 +259,9 @@ public class InfoController {
 		}
 		
 		node = nodeQuery.get(node.getId());
-		List<Attr> s  = bean.getAttrList();
+		List<Attr> attrsList  = bean.getAttrList();
 		Set<Attr> attrSet = node.getNodeAttrSet();
-		modelMap.addAttribute("s", s);
+		modelMap.addAttribute("attrsList", attrsList);
 		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
 		Set<Spec> specList = node.getNodeSpecSet();
 		modelMap.addAttribute("specList", specList);
