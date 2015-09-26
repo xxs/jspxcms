@@ -5,6 +5,7 @@ import static com.jspxcms.core.support.Constants.SITE_PREFIX;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REMOVE;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,6 +42,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import net.shopxx.entity.Attribute;
+
+import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -127,6 +131,16 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	 * 归档
 	 */
 	public static final String ARCHIVE = "Z";
+	
+	/**
+	 * 商品属性值属性个数
+	 */
+	public static final int ATTRIBUTE_VALUE_PROPERTY_COUNT = 20;
+	
+	/**
+	 * 商品属性值属性名称前缀
+	 */
+	public static final String ATTR_VALUE_PROPERTY_NAME_PREFIX = "a";
 	/**
 	 * 替换标识:栏目ID
 	 */
@@ -2168,6 +2182,42 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 		this.a19 = a19;
 	}
 	
-	
+	@Transient
+	public String getAttrValue(Attribute attribute) {
+		if (attribute != null && attribute.getPropertyIndex() != null) {
+			try {
+				String propertyName = ATTR_VALUE_PROPERTY_NAME_PREFIX + attribute.getPropertyIndex();
+				return (String) PropertyUtils.getProperty(this, propertyName);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	@Transient
+	public void setAttrValue(Attr attr, String value) {
+		if (attr != null) {
+			if (StringUtils.isEmpty(value)) {
+				value = null;
+			}
+			if (value == null || (attr.getOptions() != null && attribute.getOptions().contains(value))) {
+				try {
+					String propertyName = ATTR_VALUE_PROPERTY_NAME_PREFIX + attr.getPropertyIndex();
+					PropertyUtils.setProperty(this, propertyName, value);
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 	
 }

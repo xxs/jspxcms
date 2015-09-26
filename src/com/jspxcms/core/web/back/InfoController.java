@@ -384,6 +384,29 @@ public class InfoController {
 				}
 			}
 		}
+		//保存参数
+		Set<ParameterGroup> pgSet = bean.getNode().getNodeParameterGroupSet();
+		for (ParameterGroup parameterGroup : pgSet) {
+			int lens = parameterGroup.getParameters() != null ? parameterGroup.getParameters().size() : 0;
+			Integer[] pIds = new Integer[lens];
+			String[] values = new String[lens];
+			int temp = 0;
+			for (Parameter parameter : parameterGroup.getParameters()) {
+				String parameterValue = request.getParameter("parameter_" + parameter.getId());
+				if (StringUtils.isNotEmpty(parameterValue)) {
+					System.out.println(parameter.getId()+"是入的值为："+parameterValue);
+					//product.getParameterValue().put(parameter, parameterValue);
+				} else {
+					System.out.println(parameter.getId()+"是入的值为空：");
+					parameterValue = "";
+					//product.getParameterValue().remove(parameter);
+				}
+				pIds[temp] = parameter.getId();
+				values[temp] = parameterValue;
+				temp++;
+			}
+			infoParameterService.save(bean, pIds, values);
+		}
 		String status = draft ? Info.DRAFT : null;
 		service.save(bean, detail, nodeIds, specialIds, viewGroupIds,
 				viewOrgIds, customs, clobs, images, null, attrIds, attrImages,
@@ -422,8 +445,8 @@ public class InfoController {
 		}
 		Map<String, String> customs = Servlets.getParameterMap(request,
 				"customs_");
-		
 		Node node = nodeQuery.get(bean.getNode().getId());
+		//保存高级参数
 		Set<ParameterGroup> pgSet = node.getNodeParameterGroupSet();
 		for (ParameterGroup parameterGroup : pgSet) {
 			int lens = parameterGroup.getParameters() != null ? parameterGroup.getParameters().size() : 0;
@@ -444,7 +467,16 @@ public class InfoController {
 				values[temp] = parameterValue;
 				temp++;
 			}
-			infoParameterService.save(bean, pIds, values);
+			infoParameterService.update(bean, pIds, values);
+		}
+		//保存高级属性
+		for (Attr attr : node.getNodeAttrSet()) {
+			String attributeValue = request.getParameter("attr_" + attr.getId());
+			if (StringUtils.isNotEmpty(attributeValue)) {
+				product.setAttributeValue(attribute, attributeValue);
+			} else {
+				product.setAttributeValue(attribute, null);
+			}
 		}
 		
 		Map<String, String> clobs = Servlets.getParameterMap(request, "clobs_");

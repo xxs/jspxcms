@@ -70,8 +70,8 @@ public class Attr implements java.io.Serializable {
 	private Integer id;
 	
 	private Site site;
-	
 	private String number;
+	private Integer propertyIndex;
 	private String name;
 	private Integer seq;
 	
@@ -135,6 +135,15 @@ public class Attr implements java.io.Serializable {
 
 	public void setItems(List<AttrItem> items) {
 		this.items = items;
+	}
+	
+	@Column(name = "f_property_index", nullable = false)
+	public Integer getPropertyIndex() {
+		return propertyIndex;
+	}
+
+	public void setPropertyIndex(Integer propertyIndex) {
+		this.propertyIndex = propertyIndex;
 	}
 	
 }
