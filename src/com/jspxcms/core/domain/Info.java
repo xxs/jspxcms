@@ -42,8 +42,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import net.shopxx.entity.Attribute;
-
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -2183,10 +2181,10 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 	}
 	
 	@Transient
-	public String getAttrValue(Attribute attribute) {
-		if (attribute != null && attribute.getPropertyIndex() != null) {
+	public String getAttrValue(Attr attr) {
+		if (attr != null && attr.getPropertyIndex() != null) {
 			try {
-				String propertyName = ATTR_VALUE_PROPERTY_NAME_PREFIX + attribute.getPropertyIndex();
+				String propertyName = ATTR_VALUE_PROPERTY_NAME_PREFIX + attr.getPropertyIndex();
 				return (String) PropertyUtils.getProperty(this, propertyName);
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
@@ -2205,7 +2203,7 @@ public class Info implements java.io.Serializable, Anchor, Siteable,
 			if (StringUtils.isEmpty(value)) {
 				value = null;
 			}
-			if (value == null || (attr.getOptions() != null && attribute.getOptions().contains(value))) {
+			if (value == null || attr.getItems() != null ) {
 				try {
 					String propertyName = ATTR_VALUE_PROPERTY_NAME_PREFIX + attr.getPropertyIndex();
 					PropertyUtils.setProperty(this, propertyName, value);

@@ -169,15 +169,15 @@ public class InfoController {
 		List<Attribute> attrList = attributeService.findList(siteId);
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
-		
+
 		node = nodeQuery.get(nodeId);
 		Set<Attr> attrSet = node.getNodeAttrSet();
 		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
 		Set<Spec> specList = node.getNodeSpecSet();
 		modelMap.addAttribute("specList", specList);
-		
+
 		Set<Brand> brands = node.getNodeBrandSet();
-		
+
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
@@ -187,7 +187,7 @@ public class InfoController {
 		modelMap.addAttribute("queryNodeType", queryNodeType);
 		modelMap.addAttribute("queryInfoPermType", queryInfoPermType);
 		modelMap.addAttribute("queryStatus", queryStatus);
-		//---------------------
+		// ---------------------
 		modelMap.addAttribute("brands", brands);
 		modelMap.addAttribute("attrSet", attrSet);
 		modelMap.addAttribute("parameterGroupSet", parameterGroupSet);
@@ -249,32 +249,33 @@ public class InfoController {
 		List<MemberGroup> groupList = memberGroupService.findList();
 		String orgTreeNumber = site.getOrg().getTreeNumber();
 
-		List<NodeAttr> naList = nodeAttrService.getByNodeId(bean.getNode().getId());
+		List<NodeAttr> naList = nodeAttrService.getByNodeId(bean.getNode()
+				.getId());
 		List<Attr> aList = new ArrayList<Attr>();
-		if(naList != null && naList.size()>0){
+		if (naList != null && naList.size() > 0) {
 			for (int i = 0; i < naList.size(); i++) {
 				aList.add(naList.get(i).getAttr());
 				System.out.println(naList.get(i).getAttr().getName());
 			}
 		}
-		
+
 		node = nodeQuery.get(node.getId());
-		List<Attr> attrsList  = bean.getAttrList();
+		List<Attr> attrsList = bean.getAttrList();
 		Set<Attr> attrSet = node.getNodeAttrSet();
 		modelMap.addAttribute("attrsList", attrsList);
 		Set<ParameterGroup> parameterGroupSet = node.getNodeParameterGroupSet();
 		Set<Spec> specList = node.getNodeSpecSet();
 		modelMap.addAttribute("specList", specList);
-//		List<Parameter> ps = bean.getParameterList();
-//		for (int i = 0; i < ps.size(); i++) {
-//			System.out.println(ps.get(i).getName());
-//		}
+		// List<Parameter> ps = bean.getParameterList();
+		// for (int i = 0; i < ps.size(); i++) {
+		// System.out.println(ps.get(i).getName());
+		// }
 		List<InfoParameter> ips = bean.getInfoParameterList();
 		modelMap.addAttribute("ips", ips);
-		
+
 		Set<Brand> brands = node.getNodeBrandSet();
 		Brand oldBrands = bean.getBrand();
-		
+
 		modelMap.addAttribute("model", model);
 		modelMap.addAttribute("node", node);
 		modelMap.addAttribute("attrList", attrList);
@@ -284,7 +285,7 @@ public class InfoController {
 		modelMap.addAttribute("queryNodeType", queryNodeType);
 		modelMap.addAttribute("queryInfoPermType", queryInfoPermType);
 		modelMap.addAttribute("queryStatus", queryStatus);
-		//---------------------
+		// ---------------------
 		modelMap.addAttribute("brands", brands);
 		modelMap.addAttribute("oldBrands", oldBrands);
 		modelMap.addAttribute("attrSet", attrSet);
@@ -357,7 +358,7 @@ public class InfoController {
 			@RequestParam(defaultValue = "false") boolean draft,
 			String[] imagesName, String[] imagesText, String[] imagesImage,
 			String redirect, Integer queryNodeId, Integer queryNodeType,
-			Integer queryInfoPermType, String queryStatus,Integer brandId,
+			Integer queryInfoPermType, String queryStatus, Integer brandId,
 			HttpServletRequest request, RedirectAttributes ra) {
 		Integer siteId = Context.getCurrentSiteId(request);
 		Integer userId = Context.getCurrentUserId(request);
@@ -384,22 +385,35 @@ public class InfoController {
 				}
 			}
 		}
-		//保存参数
-		Set<ParameterGroup> pgSet = bean.getNode().getNodeParameterGroupSet();
+		Node node;
+		if (queryNodeId == null) {
+			node = nodeQuery.findRoot(siteId);
+			if (node == null) {
+				throw new CmsException("info.error.nodeNotFound");
+			}
+		} else {
+			node = nodeQuery.get(queryNodeId);
+		}
+		// 保存参数
+		Set<ParameterGroup> pgSet = node.getNodeParameterGroupSet();
 		for (ParameterGroup parameterGroup : pgSet) {
-			int lens = parameterGroup.getParameters() != null ? parameterGroup.getParameters().size() : 0;
+			int lens = parameterGroup.getParameters() != null ? parameterGroup
+					.getParameters().size() : 0;
 			Integer[] pIds = new Integer[lens];
 			String[] values = new String[lens];
 			int temp = 0;
 			for (Parameter parameter : parameterGroup.getParameters()) {
-				String parameterValue = request.getParameter("parameter_" + parameter.getId());
+				String parameterValue = request.getParameter("parameter_"
+						+ parameter.getId());
 				if (StringUtils.isNotEmpty(parameterValue)) {
-					System.out.println(parameter.getId()+"是入的值为："+parameterValue);
-					//product.getParameterValue().put(parameter, parameterValue);
+					System.out.println(parameter.getId() + "parameter_的值为："
+							+ parameterValue);
+					// product.getParameterValue().put(parameter,
+					// parameterValue);
 				} else {
-					System.out.println(parameter.getId()+"是入的值为空：");
+					System.out.println(parameter.getId() + "parameter_的值为空：");
 					parameterValue = "";
-					//product.getParameterValue().remove(parameter);
+					// product.getParameterValue().remove(parameter);
 				}
 				pIds[temp] = parameter.getId();
 				values[temp] = parameterValue;
@@ -407,10 +421,32 @@ public class InfoController {
 			}
 			infoParameterService.save(bean, pIds, values);
 		}
+		// 保存属性
+		Set<Attr> atSet = node.getNodeAttrSet();
+		for (Attr attr : atSet) {
+			int lens = atSet != null ? atSet.size() : 0;
+			Integer[] aIds = new Integer[lens];
+			String[] values = new String[lens];
+			int temp = 0;
+			String attrValue = request.getParameter("attr_" + attr.getId());
+			if (StringUtils.isNotEmpty(attrValue)) {
+				System.out.println(attr.getId() + "attr_的值为：" + attrValue);
+				// product.getParameterValue().put(parameter, parameterValue);
+			} else {
+				System.out.println(attr.getId() + "attr_的值为空：");
+				attrValue = "";
+				// product.getParameterValue().remove(parameter);
+			}
+			aIds[temp] = attr.getId();
+			values[temp] = attrValue;
+			bean.setAttrValue(attr, attrValue);
+			//infoParameterService.save(bean, aIds, values);
+		}
+
 		String status = draft ? Info.DRAFT : null;
 		service.save(bean, detail, nodeIds, specialIds, viewGroupIds,
 				viewOrgIds, customs, clobs, images, null, attrIds, attrImages,
-				tagNames, nodeId, userId, status, siteId,brandId);
+				tagNames, nodeId, userId, status, siteId, brandId);
 		logger.info("save Info, title={}.", bean.getTitle());
 		ra.addAttribute("queryNodeId", queryNodeId);
 		ra.addAttribute("queryNodeType", queryNodeType);
@@ -437,8 +473,8 @@ public class InfoController {
 			@RequestParam(defaultValue = "false") boolean remainDescription,
 			String[] imagesName, String[] imagesText, String[] imagesImage,
 			Integer position, Integer queryNodeId, Integer queryNodeType,
-			Integer queryInfoPermType, String queryStatus, String redirect,Integer brandId,
-			HttpServletRequest request, RedirectAttributes ra) {
+			Integer queryInfoPermType, String queryStatus, String redirect,
+			Integer brandId, HttpServletRequest request, RedirectAttributes ra) {
 		User user = Context.getCurrentUser(request);
 		if (!bean.isDataPerm(user) || !bean.isAuditPerm(user)) {
 			throw new CmsException("accessDenied");
@@ -446,22 +482,26 @@ public class InfoController {
 		Map<String, String> customs = Servlets.getParameterMap(request,
 				"customs_");
 		Node node = nodeQuery.get(bean.getNode().getId());
-		//保存高级参数
+		// 保存高级参数
 		Set<ParameterGroup> pgSet = node.getNodeParameterGroupSet();
 		for (ParameterGroup parameterGroup : pgSet) {
-			int lens = parameterGroup.getParameters() != null ? parameterGroup.getParameters().size() : 0;
+			int lens = parameterGroup.getParameters() != null ? parameterGroup
+					.getParameters().size() : 0;
 			Integer[] pIds = new Integer[lens];
 			String[] values = new String[lens];
 			int temp = 0;
 			for (Parameter parameter : parameterGroup.getParameters()) {
-				String parameterValue = request.getParameter("parameter_" + parameter.getId());
+				String parameterValue = request.getParameter("parameter_"
+						+ parameter.getId());
 				if (StringUtils.isNotEmpty(parameterValue)) {
-					System.out.println(parameter.getId()+"是入的值为："+parameterValue);
-					//product.getParameterValue().put(parameter, parameterValue);
+					System.out.println(parameter.getId() + "parameter_的值为："
+							+ parameterValue);
+					// product.getParameterValue().put(parameter,
+					// parameterValue);
 				} else {
-					System.out.println(parameter.getId()+"是入的值为空：");
+					System.out.println(parameter.getId() + "parameter_的值为空：");
 					parameterValue = "";
-					//product.getParameterValue().remove(parameter);
+					// product.getParameterValue().remove(parameter);
 				}
 				pIds[temp] = parameter.getId();
 				values[temp] = parameterValue;
@@ -469,16 +509,28 @@ public class InfoController {
 			}
 			infoParameterService.update(bean, pIds, values);
 		}
-		//保存高级属性
-		for (Attr attr : node.getNodeAttrSet()) {
-			String attributeValue = request.getParameter("attr_" + attr.getId());
-			if (StringUtils.isNotEmpty(attributeValue)) {
-				product.setAttributeValue(attribute, attributeValue);
+		// 保存属性
+		Set<Attr> atSet = bean.getNode().getNodeAttrSet();
+		for (Attr attr : atSet) {
+			int lens = atSet != null ? atSet.size() : 0;
+			Integer[] aIds = new Integer[lens];
+			String[] values = new String[lens];
+			int temp = 0;
+			String attrValue = request.getParameter("attr_" + attr.getId());
+			if (StringUtils.isNotEmpty(attrValue)) {
+				System.out.println(attr.getId() + "attr_的值为：" + attrValue);
+				// product.getParameterValue().put(parameter, parameterValue);
 			} else {
-				product.setAttributeValue(attribute, null);
+				System.out.println(attr.getId() + "attr_的值为空：");
+				attrValue = "";
+				// product.getParameterValue().remove(parameter);
 			}
-		}
-		
+			aIds[temp] = attr.getId();
+			values[temp] = attrValue;
+			bean.setAttrValue(attr, attrValue);
+			//infoParameterService.save(bean, aIds, values);
+		}		
+
 		Map<String, String> clobs = Servlets.getParameterMap(request, "clobs_");
 		if (!remainDescription
 				|| StringUtils.isBlank(detail.getMetaDescription())) {
@@ -508,7 +560,7 @@ public class InfoController {
 		}
 		service.update(bean, detail, nodeIds, specialIds, viewGroupIds,
 				viewOrgIds, customs, clobs, images, null, attrIds, attrImages,
-				tagNames, nodeId, user, pass,brandId);
+				tagNames, nodeId, user, pass, brandId);
 		logger.info("update Info, title={}.", bean.getTitle());
 		ra.addAttribute("queryNodeId", queryNodeId);
 		ra.addAttribute("queryNodeType", queryNodeType);

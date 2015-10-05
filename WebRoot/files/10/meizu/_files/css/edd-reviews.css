@@ -1,0 +1,58 @@
+﻿/**
+ * EDD Reviews CSS
+ *
+ * Copyright (c) 2014, Sunny Ratilal.
+ */
+.comment_form_rating { overflow: hidden; }
+.clear { clear: both; }
+.edd_reviews_rating_box { position: relative; background: url('../images/stars.png') repeat-x bottom left; width: 95px; height: 19px; }
+.edd_star_rating { background: url('../images/stars.png') repeat-x top left; height: 20px; float: left; width: 92px;}
+.edd_ratings { position: absolute; top: 0; left: 0; }
+.edd_reviews_rating_box a { background: none; float: right; height: 19px; width: 19px; }
+.edd_reviews_rating_box a:hover { background: url('../images/stars.png') no-repeat top left; }
+.comment_form_rating .edd_reviews_rating_box:hover .edd_star_rating { display: none; }
+.edd-review-meta .star-rating { overflow: hidden; }
+.comment_form_rating .edd_reviews_rating_box a:hover ~ a, .comment_form_rating .edd_reviews_rating_box a:hover { background: url('../images/stars.png') no-repeat top left; }
+.comment_form_rating label { float: left; margin-right: 5px; }
+.review-title:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.edd_reviews_rating_box { float: left; }
+.edd-review-microdata { display: none; }
+.review-title-text { margin-right: 7px; font-weight: bold; }
+.comment-meta .meta-top { display: block; overflow: hidden; }
+.comment-meta .meta { display: block; float: none; margin-left: 10px; }
+.edd-review { margin: 10px 0; border-color: #eee #ddd #ccc #ddd; border-style: solid; border-width: 1px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); background-color: #fff; position: relative; outline: none; width: 500px; }
+.edd-review .edd-review-h-card { padding: 8px; }
+.edd-review .edd-review-h-card p { margin: 0; padding: 0; font: bold 16px/16px "Helvetica Neue", Arial, sans-serif; }
+.edd-review .edd-review-h-card p + p { font-size: 12px; margin-top: 5px; }
+.edd-review .edd-review-h-card .avatar { float: left; margin-right: 8px; }
+.edd-review .avatar { border-radius: 4px; }
+.edd-review .edd-review-content, .edd-review .edd-dateline { padding: 8px; }
+.edd-review .edd-review-dateline { padding: 8px; color: #999; font: 12px/16px "Helvetica Neue", Arial, sans-serif; }
+.edd-review .edd-dateline { color: #7f8c8d; font-size: 12px; }
+.edd-review-vote { background-color: #ecf0f1; padding: 10px; margin-bottom: 20px; clear: both; }
+.edd-review-vote .edd-review-voting-feedback { margin-bottom: 5px; font-style: italic; font-size: inherit; font-weight: normal; }
+.edd-review-vote .edd-review-voting-feedback + p,
+.edd-review-vote p { margin-bottom: 15px; font-weight: bold; font-size: 12px; }
+.edd-review-vote p + p { margin-bottom: 0; font-weight: normal; }
+.edd-reviews-voting-buttons a { -webkit-backface-visibility: hidden; background-color: #95a5a6; color: #fff; padding: 2px 6px; margin: 0 4px; text-decoration: none; -webkit-transition: 0.25s; -moz-transition: 0.25s; -o-transition: 0.25s; -ms-transition: 0.25s; transition: 0.25s; }
+.edd-reviews-voting-buttons a:hover { background: #5dade2;}
+.edd-reviews-date-published { margin-top: 8px; color: #5e5e5e; font-size: 12px; }
+.edd-review-vote { display: none; }
+.edd-yellowfade { -webkit-animation: yellow-fade 3s 1; -moz-animation: yellow-fade 3s 1; -ms-animation: yellow-fade 3s 1; -o-animation: yellow-fade 3s 1; animation: yellow-fade 3s 1; }
+@keyframes "yellow-fade" { 0% { background-color: #ffff99; } 100% { background-color: #ecf0f1; } }
+@-moz-keyframes yellow-fade { 0% { background-color: #ffff99; } 100% { background-color: #ecf0f1; } }
+@-webkit-keyframes "yellow-fade" { 0% { background-color: #ffff99; } 100% { background-color: #ecf0f1; } }
+@-ms-keyframes "yellow-fade" { 0% { background-color: #ffff99; } 100% { background-color: #ecf0f1; } }
+@-o-keyframes "yellow-fade" { 0% { background-color: #ffff99; } 100% { background-color: #ecf0f1; } }
+.edd_reviews_breakdown { margin: 20px 0; }
+.edd_reviews_breakdown .edd-counter-container { display: block; margin: 3px 0; padding: 0; }
+.edd_reviews_breakdown .edd-counter-container:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.edd_reviews_breakdown .edd-counter-label { float: left; margin-right: 4px; }
+.edd_reviews_breakdown .edd-review-count { float: left; margin-left: 4px; }
+.edd_reviews_breakdown .edd-counter-front { float: left; background: #f1c40f; height: 20px; display: block; }
+.edd_reviews_breakdown .edd-counter-container-1 .edd-counter-back { margin-left: 7px; }
+.edd_reviews_breakdown .edd-counter-back { width: 92px; background: #ececec; height: 20px; float: left; }
+.edd_reviews_breakdown .edd-reviews-total-count { font-weight: bold; }
+/* Twenty Thirteen Specific */
+.single-download .comments-area .no-comments { display: none; }
+.single-download .comments-area .edd_reviews_breakdown { display: block; margin-left: auto; margin-right: auto; max-width: 604px; width: 100%; }

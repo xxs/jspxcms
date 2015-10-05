@@ -1,0 +1,158 @@
+﻿.edd-points-clear {
+	clear: both;
+}
+.edd-points-float-left{
+	float: left;
+}
+.edd-points-float-right{
+	float: right;
+}
+.edd-points-login-error,
+.edd-points-login-loader{
+	display:none;
+}
+.edd-points-login-error{
+	clear: both;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #F1ACAC;
+	border: 1px solid #EE4B4B;
+	margin-bottom: 1.650em;
+	box-shadow: 0px 2px 2px 2px #ccc;
+	padding: 8px 5px 8px 8px;
+}
+.edd-points-login-error span{
+	display: block;
+}
+.edd-points-social-wrap img{
+	outline: 0;
+}
+.edd-points-social-container a {
+	text-decoration: none !important;
+}
+.edd-points-login-wrapper {
+	float: left;
+	margin-right: 5px;
+}
+.edd-points-login-wrapper a {
+	outline: 0;
+}
+.edd-points-clear {
+	clear: both;
+}
+.edd-points-social-container {
+	border: 1px solid #eee;
+	padding: 1.387em;
+	margin: 0 0 21px;
+}
+.edd-points-social-container legend {
+	display: block;
+	font-size: 120%;
+	line-height: 1;
+	font-weight: 700;
+	width: 100%;
+	margin: 0 0 21px;
+	padding: 0;
+}
+.edd-points-widget-content .edd-points-login-wrapper {
+	margin-bottom: 5px;
+}
+.edd-points-social-container.edd-points-widget-content{
+	border:none !important;
+}
+
+#doaction, #doaction2, #post-query-submit {
+    margin: 1px 8px 0 0;
+}
+.point-list table{
+	border : 2px solid #EDEDED !important;
+}
+.point-list table tr{
+	padding:10px !important;
+}
+.point-list table th,.point-list table td{
+	padding:8px !important;
+}
+/*.edd-points-checkout-message,
+.edd-points-redeem-points-wrap {
+	background-color: #FAFAFA;
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 98%;
+}*/
+.edd-points-redeem-points-wrap form {
+	float: right;
+	margin: 0px;
+}
+.edd-points-product-message {
+	padding-bottom:10px;
+}
+/** Redeem points CSS Start **/
+.edd-points-redeem-message {
+	padding:3px;
+}
+.edd-points-apply-discount-button {
+	float:right;
+	font-weight:bold;
+	clear:both;
+}
+/** Redeem points CSS End **/
+
+/************************************** Pagination CSS Start *****************************************/
+.edd-points-paging {
+	clear: both;
+	margin-top: 10px;
+    text-align: center;
+}
+.edd-points-paging .edd-points-tablenav-pages {
+    color: #636363;
+}
+.edd-points-paging .edd-points-tablenav-pages .dots {
+	color: #636363 !important;
+	font-weight: bold !important;
+}
+.edd-points-paging .edd-points-tablenav-pages {
+    cursor: default;
+    display: block;
+    /*float: right;*/
+    line-height: 10px;
+}
+.edd-points-paging .edd-points-tablenav-pages a, .edd-points-tablenav-pages span.disabled {
+	color: #636363 !important;
+	background-color: #F5F5F5;
+}
+.edd-points-paging .edd-points-tablenav-pages  a, 
+.edd-points-tablenav-pages span.current, .edd-points-tablenav-pages span.disabled{
+    padding: 3px 6px;
+    text-decoration: none;
+    margin: 0px 2.5px;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px 0px #CCCCCC;
+    background: linear-gradient(to bottom, #f9f9f9 0%,#efefef 44%,#e7e7e7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e7e7e7',GradientType=0 ); /* IE6-9 */
+}
+.edd-points-paging .edd-points-tablenav-pages .current {
+    font-weight: bold;
+    background-color:#F5F5F5;
+}
+.edd-points-tablenav-pages a {
+    font-weight: normal;
+    padding: 0px 2px;
+}
+.edd-points-sales-loader img{
+	box-shadow: none !important;
+}
+.edd-points-cartdetails-loader,
+.edd-points-sales-loader {
+	display: none;
+	margin-top: -5px;
+    text-align: center;
+}
+.edd-points-paging .edd-points-tablenav-pages a:hover, 
+.edd-points-tablenav-pages span.current:hover, 
+.edd-points-edd-points-tablenav-pages span.disabled:hover {
+    background: #e7e7e7;
+}
+/************************************** Pagination CSS End *****************************************/

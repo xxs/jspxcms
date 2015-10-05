@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.ejb.QueryHints;
 
 import com.jspxcms.core.domain.Node;
-import com.jspxcms.core.domain.Parameter;
 import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domaindsl.QParameterGroup;

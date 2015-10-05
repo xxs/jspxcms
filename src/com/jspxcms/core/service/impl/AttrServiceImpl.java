@@ -75,6 +75,9 @@ public class AttrServiceImpl implements AttrService,
 			Integer siteId) {
 		Site site = siteService.get(siteId);
 		bean.setSite(site);
+		if(bean.getPropertyIndex()==null){
+			bean.setPropertyIndex(dao.findUnusedPropertyIndex());
+		}
 		bean.applyDefaultValue();
 		bean = dao.save(bean);
 		infoAttrService.update(bean, infoPermIds);
@@ -87,8 +90,10 @@ public class AttrServiceImpl implements AttrService,
 	@Transactional
 	public Attr update(Attr bean, Integer[] infoPermIds, Integer[] nodePermIds,Integer[] itemId,String[] itemName) {
 		bean.applyDefaultValue();
+		if(bean.getPropertyIndex()==null){
+			bean.setPropertyIndex(dao.findUnusedPropertyIndex());
+		}
 		bean = dao.save(bean);
-		
 		nodeAttrService.update(bean, nodePermIds);
 		//infoAttrService.update(bean, infoPermIds);
 		attrItemService.update(itemId,itemName,bean);

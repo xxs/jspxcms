@@ -5,36 +5,161 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+  <link rel="stylesheet" id="bbp-default-css" href="_files/css/bbpress.min.css" type="text/css" media="screen" /> 
+  <link rel="stylesheet" id="edd-styles-css" href="_files/css/edd.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-points-public-style-css" href="_files/css/style-public.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-rp-styles-css" href="_files/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-reviews-css" href="_files/css/edd-reviews.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="marketify-fonts-css" href="_files/css/b1279010f5bf419692c1cf705d8383a5.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="marketify-base-css" href="_files/css/style.css" type="text/css" media="all" /> 
+  <style type="text/css">
+.site-header,.site-footer,.page-header,body.minimal,body.custom-background.minimal,.header-outer,.minimal .entry-content .edd-slg-social-container span legend {background-color: #515a63;}button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.main-navigation .edd-cart .cart_item.edd_checkout a,.page-header .button:hover,.content-grid-download .button:hover,body .marketify_widget_slider_hero .soliloquy-caption a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.nav-previous a:hover i,.nav-next a:hover i,body-footer.light .site-info .site-title,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,#recaptcha_area .recaptchatable a,#recaptcha_area .recaptchatable a:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn {color: #515a63;}button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.edd_price_options input[type=radio]:checked,body #edd-wl-modal input[type=radio]:checked,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.entry-content blockquote,.nav-previous a:hover,.nav-next a:hover,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn {border-color: #515a63;}button:hover,input[type=reset]:hover,input[type=submit]:hover,.button:hover,a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields > span:after,.edd-reviews-voting-buttons a:hover,.flex-control-nav a.flex-active,.search-form .search-submit,.fes-pagination a.page-numbers:hover,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn:hover,.upload_file_button:hover,.fes-avatar-image-btn:hover {background-color: #515a63;}a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.edd-reviews-voting-buttons a,a.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,a.edd_terms_links {color: #4ed0aa;}a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.edd-reviews-voting-buttons a,.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,.edd_terms_links,.site-footer.dark .mailbag-wrap input[type=submit],.insert-file-row {border-color: #4ed0aa;}a.edd-cart-saving-button:hover,input[name=edd_update_cart_submit]:hover,.minimal #edd_purchase_submit input[type=submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.minimal a.edd-cart-saving-button,.minimal input[name=edd_update_cart_submit],.minimal .fes-form input[type=submit],.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.main-navigation .search-form.active .search-submit,.main-navigation.toggled .search-form .search-submit,.edd-fes-adf-submission-add-option-button:hover,#fes-insert-image:hover,.edd-reviews-voting-buttons a:hover,.minimal #edd_login_submit,.minimal input[name=edd_register_submit],.edd_terms_links:hover,.site-footer.dark .mailbag-wrap input[type=submit],.home-search .page-header .search-submit,.search-form-overlay .search-submit,.marketify_widget_taxonomy_stylized,.insert-file-row {background-color: #4ed0aa;}.site-footer.light, {background-color: #ffffff;}.content-grid-download .entry-image:hover .overlay,.content-grid-download .entry-image.hover .overlay,.download-image-grid-preview .slides li.active a:before,.download-image-grid-preview .slides li:hover a:before {background: rgba( 81,90,99, .80 );border: 1px solid rgba( 81,90,99, .80 );}.search-form-overlay {background: rgba( 81,90,99, .90 );}
+</style> 
+  <link rel="stylesheet" id="sccss_style-css" href="_files/css/c669707854af4d66811c069b15b106de.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-wl-styles-css" href="_files/css/edd-wl.min.css" type="text/css" media="screen" /> 
+  <script type="text/javascript" src="_files/js/jquery.js"></script> 
+  <script type="text/javascript" src="_files/js/jquery-migrate.min.js"></script> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","position_in_cart":"","already_in_cart_message":"\u4f60\u5df2\u7ecf\u5c06\u672c\u5546\u54c1\u6dfb\u52a0\u5230\u8d2d\u7269\u8f66","empty_cart_message":"\u60a8\u7684\u8d2d\u7269\u8f66\u662f\u7a7a\u7684\uff01","loading":"\u52a0\u8f7d\u4e2d...","select_option":"\u8bf7\u9009\u62e9\u4e00\u4e2a\u9009\u9879","ajax_loader":"http:\/\/ymb.me\/wp-content\/plugins\/easy-digital-downloads\/assets\/images\/loading.gif","is_checkout":"0","default_gateway":"alipay","redirect_to_checkout":"0","checkout_page":"http:\/\/ymb.me\/%e4%bb%98%e6%ac%be\/","permalinks":"1"};
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="_files/js/edd-ajax.min.js"></script> 
+  <script type="text/javascript">
+		var RecaptchaOptions = {
+			theme : 'clean',
+		};
+	</script> 
+  <style type="text/css">
+			.site-branding .site-title,
+		.site-branding .site-description,
+		.site-header-minimal .site-title,
+		.site-header-minimal .site-description {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		.site-title a,
+	.site-description,
+	.main-navigation a {
+		color: #fff;
+	}
+
+	.site-title {
+		line-height: 55px
+	}
+	</style> 
 </head>
-<body>
-[#include "inc_header.html"/]
-<div class="w960 center clear mt1">
-	<div class="pleft">
-         <div class="position">
-      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
-        </div>
-    <div class="textlist">
-  		  [@InfoPage nodeId=node.id pageSize=20;pagedList]
- 		  <ul>
+ <body class="home page page-id-33 page-template page-template-page-templateshome-php custom-background home-1"> 
+  <div id="page" class="hfeed site"> 
+  <div class="header-outer">
+	[#include "inc_header.html"/]
+	<div class="search-form-overlay">
+		<form role="search" method="get" class="search-form"
+			action="http://ymb.me/">
+			<button type="submit" class="search-submit">
+				<i class="icon-search"></i>
+			</button>
+			<label> <span class="screen-reader-text">搜索：</span> <input
+				type="search" class="search-field" placeholder="Search" value=""
+				name="s" title="Search for:" />
+			</label> <a href="#" class="header-search-toggle"><i class="icon-cross"></i></a>
+			<input type="hidden" name="post_type" value="download" />
+		</form>
+	</div>
+	<header class="page-header">
+		<div class="container">
+			<h1 class="page-title">世界顶级主题/模版/数字作品交易市场</h1>
+			<p>
+				<a class="button"
+					href="#">买主题</a> <a
+					class="button" href="开始赚钱/">卖主题</a>
+			</p>
+		</div>
+	</header>
+	<!-- .page-header -->
+</div>
+
+<!-- .header-outer --> 
+   <div class="container"> 
+    <div id="content" class="site-content row"> 
+     <section id="primary" class="content-area col-md-12 col-sm-7 col-xs-12"> 
+      <main id="main" class="site-main" role="main"> 
+       <div class="section-title">
+        <span> 所有 ${node.name } </span>
+       </div> 
+       <div class="download-grid-wrapper columns-3 row" data-columns=""> 
+       
+       
+       [@InfoPage nodeId=node.id pageSize=20;pagedList]
   		 [#list pagedList.content as info]
-  	 		<li>
-            	<span class="spanleft">[@A bean=info target="_blank"/]</span>
-            	<span class="spanright">${info.publishDate?string('yyyy-MM-dd')}</span>
-            </li>
+  		 	<article id="post-26853" class="post-26853 type-download status-publish format-standard has-post-thumbnail hentry content-grid-download truncate-title edd-download edd-download-cat-wordpress%e4%b8%bb%e9%a2%98 edd-download-tag-%e4%bd%9c%e5%93%81%e9%9b%86 edd-download-tag-%e5%88%9b%e6%84%8f"> 
+	         <div class="entry-image"> 
+	          <div class="overlay"> 
+	           <div class="actions"> 
+	            <form id="edd_purchase_26853" class="edd_download_purchase_form" method="post"> 
+	             <div class="edd_purchase_submit_wrapper"> 
+	              <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="26853" data-variable-price="no" data-price-mode="single"><span class="edd-add-to-cart-label">加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+	              <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="加入购物车" data-action="edd_add_to_cart" data-download-id="26853" data-variable-price="no" data-price-mode="single" />
+	              <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+	              <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+	             </div>
+	             <!--end .edd_purchase_submit_wrapper--> 
+	             <input type="hidden" name="download_id" value="26853" /> 
+	             <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+	            </form>
+	            <!--end #edd_purchase_26853--> 
+	            <a href="${info.url }" rel="bookmark" class="button">详情</a> 
+	            <strong class="item-price"><span>项目价格: <span class="edd_price" id="edd_price_26853">CNY 40.00</span></span></strong> 
+	           </div> 
+	          </div> 
+	          <img width="501" height="300" src="_files/picture/simplicity-creative-flat-retina-theme.png" class="attachment-content-grid-download wp-post-image" alt="Hype" /> 
+	         </div> 
+	         <div id="buy-now-26853" class="popup"> 
+	          <h1 class="section-title"><span>购买选项</span></h1> 
+	          <form id="edd_purchase_26853" class="edd_download_purchase_form" method="post"> 
+	           <div class="edd_purchase_submit_wrapper"> 
+	            <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="26853" data-variable-price="no" data-price-mode="single"><span class="edd-add-to-cart-label">CNY 40.00&nbsp;–&nbsp;加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+	            <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="CNY 40.00&nbsp;–&nbsp;加入购物车" data-action="edd_add_to_cart" data-download-id="26853" data-variable-price="no" data-price-mode="single" />
+	            <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+	            <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+	           </div>
+	           <!--end .edd_purchase_submit_wrapper--> 
+	           <input type="hidden" name="download_id" value="26853" /> 
+	           <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+	          </form>
+	          <!--end #edd_purchase_26853--> 
+	         </div> 
+	         <header class="entry-header"> 
+	          <h1 class="entry-title"><a href="#" rel="bookmark">${info.name }</a></h1> 
+	          <div class="entry-meta"> 
+	           <span class="byline"> 发布人 <span class="author vcard"><a class="url fn n" href="#" title="查看全部 Downloads 发布人 ThemeZilla">ThemeZilla <img src="_files/picture/themezilla-avatar.jpg" alt="" height="50" width="50" class="avatar" /></a></span></span> 
+	          </div> 
+	         </header>
+	         <!-- .entry-header -->
+	        </article>
+  		 
+  		 
   		 [/#list]
-  	 	 </ul>
          [#include "inc_page.html"/]
  	 	 [/@InfoPage]
-     </div>
-	</div>
-	<div class="pright">
-	[#include "inc_right.html"/]
-	</div>
+       </div> 
+       <nav role="navigation" id="nav-below" class="paging-navigation"> 
+        <h1 class="screen-reader-text">文章导航</h1> 
+        <span class="page-numbers current">1</span> 
+        <a class="page-numbers" href="http://ymb.me/downloads/category/wordpress%E4%B8%BB%E9%A2%98/page/2/">2</a> 
+        <a class="page-numbers" href="http://ymb.me/downloads/category/wordpress%E4%B8%BB%E9%A2%98/page/3/">3</a> 
+        <span class="page-numbers dots">…</span> 
+        <a class="page-numbers" href="http://ymb.me/downloads/category/wordpress%E4%B8%BB%E9%A2%98/page/28/">28</a> 
+        <a class="next page-numbers" href="http://ymb.me/downloads/category/wordpress%E4%B8%BB%E9%A2%98/page/2/">下一页 &raquo;</a> 
+       </nav>
+       <!-- #nav-below --> 
+      </main>
+      <!-- #main --> 
+     </section>
+     <!-- #primary --> 
+    </div>
+    <!-- #content --> 
+   </div> 
 </div>
 [#include "inc_footer.html"/]
 </body>

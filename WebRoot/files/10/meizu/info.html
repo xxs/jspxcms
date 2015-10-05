@@ -5,30 +5,363 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="_files/ckplayer.js" charset="utf-8"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#nextone").click(function(){
-			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
-			$("#captcha").unbind("focusin");
-		});
-		$("#captcha").focusin(function(){
-			$(".autherimg").css("display","inline");
-			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
-		});
-		//$("#captcha").captcha("${ctx}/captcha.servlet",{title:"点击重新获取验证码"});
-	});
-</script>
+  <link rel="stylesheet" id="bbp-default-css" href="_files/css/bbpress.min.css" type="text/css" media="screen" /> 
+  <link rel="stylesheet" id="edd-styles-css" href="_files/css/edd.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-points-public-style-css" href="_files/css/style-public.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-rp-styles-css" href="_files/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-reviews-css" href="_files/css/edd-reviews.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="marketify-fonts-css" href="_files/css/b1279010f5bf419692c1cf705d8383a5.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="marketify-base-css" href="_files/css/style.css" type="text/css" media="all" /> 
+  <style type="text/css">
+.site-header,.site-footer,.page-header,body.minimal,body.custom-background.minimal,.header-outer,.minimal .entry-content .edd-slg-social-container span legend {background-color: #515a63;}button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.main-navigation .edd-cart .cart_item.edd_checkout a,.page-header .button:hover,.content-grid-download .button:hover,body .marketify_widget_slider_hero .soliloquy-caption a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.nav-previous a:hover i,.nav-next a:hover i,body-footer.light .site-info .site-title,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,#recaptcha_area .recaptchatable a,#recaptcha_area .recaptchatable a:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn {color: #515a63;}button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.edd_price_options input[type=radio]:checked,body #edd-wl-modal input[type=radio]:checked,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.entry-content blockquote,.nav-previous a:hover,.nav-next a:hover,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn {border-color: #515a63;}button:hover,input[type=reset]:hover,input[type=submit]:hover,.button:hover,a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields > span:after,.edd-reviews-voting-buttons a:hover,.flex-control-nav a.flex-active,.search-form .search-submit,.fes-pagination a.page-numbers:hover,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn:hover,.upload_file_button:hover,.fes-avatar-image-btn:hover {background-color: #515a63;}a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.edd-reviews-voting-buttons a,a.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,a.edd_terms_links {color: #4ed0aa;}a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.edd-reviews-voting-buttons a,.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,.edd_terms_links,.site-footer.dark .mailbag-wrap input[type=submit],.insert-file-row {border-color: #4ed0aa;}a.edd-cart-saving-button:hover,input[name=edd_update_cart_submit]:hover,.minimal #edd_purchase_submit input[type=submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.minimal a.edd-cart-saving-button,.minimal input[name=edd_update_cart_submit],.minimal .fes-form input[type=submit],.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.main-navigation .search-form.active .search-submit,.main-navigation.toggled .search-form .search-submit,.edd-fes-adf-submission-add-option-button:hover,#fes-insert-image:hover,.edd-reviews-voting-buttons a:hover,.minimal #edd_login_submit,.minimal input[name=edd_register_submit],.edd_terms_links:hover,.site-footer.dark .mailbag-wrap input[type=submit],.home-search .page-header .search-submit,.search-form-overlay .search-submit,.marketify_widget_taxonomy_stylized,.insert-file-row {background-color: #4ed0aa;}.site-footer.light, {background-color: #ffffff;}.content-grid-download .entry-image:hover .overlay,.content-grid-download .entry-image.hover .overlay,.download-image-grid-preview .slides li.active a:before,.download-image-grid-preview .slides li:hover a:before {background: rgba( 81,90,99, .80 );border: 1px solid rgba( 81,90,99, .80 );}.search-form-overlay {background: rgba( 81,90,99, .90 );}
+</style> 
+  <link rel="stylesheet" id="sccss_style-css" href="_files/css/c669707854af4d66811c069b15b106de.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="edd-wl-styles-css" href="_files/css/edd-wl.min.css" type="text/css" media="screen" /> 
+  <script type="text/javascript" src="_files/js/jquery.js"></script> 
+  <script type="text/javascript" src="_files/js/jquery-migrate.min.js"></script> 
+  <script type="text/javascript">
+/* <![CDATA[ */
+var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","position_in_cart":"","already_in_cart_message":"\u4f60\u5df2\u7ecf\u5c06\u672c\u5546\u54c1\u6dfb\u52a0\u5230\u8d2d\u7269\u8f66","empty_cart_message":"\u60a8\u7684\u8d2d\u7269\u8f66\u662f\u7a7a\u7684\uff01","loading":"\u52a0\u8f7d\u4e2d...","select_option":"\u8bf7\u9009\u62e9\u4e00\u4e2a\u9009\u9879","ajax_loader":"http:\/\/ymb.me\/wp-content\/plugins\/easy-digital-downloads\/assets\/images\/loading.gif","is_checkout":"0","default_gateway":"alipay","redirect_to_checkout":"0","checkout_page":"http:\/\/ymb.me\/%e4%bb%98%e6%ac%be\/","permalinks":"1"};
+/* ]]> */
+</script> 
+  <script type="text/javascript" src="_files/js/edd-ajax.min.js"></script> 
+  <script type="text/javascript">
+		var RecaptchaOptions = {
+			theme : 'clean',
+		};
+	</script> 
+  <style type="text/css">
+			.site-branding .site-title,
+		.site-branding .site-description,
+		.site-header-minimal .site-title,
+		.site-header-minimal .site-description {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		.site-title a,
+	.site-description,
+	.main-navigation a {
+		color: #fff;
+	}
+
+	.site-title {
+		line-height: 55px
+	}
+	</style> 
 </head>
-<body>
+<body class="single single-download postid-677 single-format-standard custom-background"> 
+  <div id="page" class="hfeed site"> 
+   <div class="header-outer"> 
 [#include "inc_header.html"/]
+<div class="search-form-overlay"> 
+     <form role="search" method="get" class="search-form" action="http://ymb.me/"> 
+      <button type="submit" class="search-submit"><i class="icon-search"></i></button> 
+      <label> <span class="screen-reader-text">搜索：</span> <input type="search" class="search-field" placeholder="Search" value="" name="s" title="Search for:" /> </label> 
+      <a href="#" class="header-search-toggle"><i class="icon-cross"></i></a> 
+      <input type="hidden" name="post_type" value="download" /> 
+     </form> 
+    </div> 
+    <header class="page-header"> 
+     <div class="container"> 
+      <h1 class="page-title"><span itemprop="name">${info.fullTitleOrTitle}</span></h1> 
+     </div> 
+     <div class="download-actions"> 
+      <a href="#buy-now-677" class="button buy-now popup-trigger">加入购物车</a>
+      <a href="http://normawp.themerex.net/" class="button" target="_blank">演示</a> 
+     </div> 
+     <div class="download-info"> 
+      <span class="edd_price" id="edd_price_677">CNY 50.00</span> 
+     </div> 
+     <div class="featured-image container"> 
+      <div class="download-image flexslider"> 
+       <ul class="slides"> 
+        <li><img width="590" height="300" src="_files/picture/norma-clean-responsive-wordpress-theme.jpg" class="attachment-fullsize" alt="NORMA Clean &amp; Responsive WordPress Theme" /></li> 
+       </ul> 
+      </div> 
+     </div> 
+    </header>
+    <!-- .page-header --> 
+   </div>
+   <!-- .header-outer --> 
+   <div class="container"> 
+    <div id="content" class="site-content row"> 
+     <section id="primary" class="content-area col-md-8 col-sm-7 col-xs-12"> 
+      <main id="main" class="site-main" role="main"> 
+       <h2 class="section-title"><span>关于 Download</span></h2> 
+       <article id="post-677" class="post-677 type-download status-publish format-standard has-post-thumbnail hentry truncate-title edd-download edd-download-cat-wordpress%e4%b8%ad%e6%96%87%e4%b8%bb%e9%a2%98 edd-download-cat-wordpress%e4%b8%bb%e9%a2%98 edd-download-tag-%e4%ba%a7%e5%93%81%e5%b1%95%e7%a4%ba edd-download-tag-%e4%bc%81%e4%b8%9a edd-download-tag-%e5%85%ac%e5%8f%b8 edd-download-tag-%e5%95%86%e5%8a%a1 edd-download-tag-%e8%90%a5%e9%94%80"> 
+        <div class="entry-content"> 
+         <div style="display:none" class="edd-review-microdata" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> 
+          <span itemprop="ratingValue">0</span> 
+          <span itemprop="reviewCount">0</span> 
+         </div> 
+         <div itemscope="" itemtype="http://schema.org/Product" itemprop="description">
+          <div class="edd-points-product-message">
+           购买这个作品并立即获得 
+           <strong>50.00</strong> 积分!
+          </div>
+          <p>NORMA WordPress主题是一个企业、公司主题，适用于任何类型的企业，响应（自适应）式设计,视网膜支持，5个首页布局，自定义布局选项，高级主题选项面板，2个首页幻灯片，首页轮播，博客文章支持，众多的简码，8个自定义小工具。</p> 
+          <form id="edd_purchase_677" class="edd_download_purchase_form download-variable" method="post"> 
+           <div class="edd_price_options"> 
+            <ul> 
+             <li id="edd_price_option_677_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_677_0"><input type="checkbox" name="edd_options[price_id][]" id="edd_price_option_677_0" class="edd_price_option_677" value="0" />&nbsp;<span class="edd_price_option_name" itemprop="description">英文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 50.00</span></label></li>
+             <li id="edd_price_option_677_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_677_1"><input type="checkbox" checked="checked" name="edd_options[price_id][]" id="edd_price_option_677_1" class="edd_price_option_677" value="1" />&nbsp;<span class="edd_price_option_name" itemprop="description">中文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 70.00</span></label></li> 
+            </ul> 
+           </div>
+           <!--end .edd_price_options--> 
+           <div class="edd_purchase_submit_wrapper"> 
+            <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="677" data-variable-price="yes" data-price-mode="multi"><span class="edd-add-to-cart-label">加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+            <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="加入购物车" data-action="edd_add_to_cart" data-download-id="677" data-variable-price="yes" data-price-mode="multi" />
+            <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+            <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+           </div>
+           <!--end .edd_purchase_submit_wrapper--> 
+           <input type="hidden" name="download_id" value="677" /> 
+           <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+          </form>
+          <!--end #edd_purchase_677--> 
+         </div> 
+         <a href="#" class="edd-wl-button  edd-wl-action edd-wl-open-modal glyph-left " data-action="edd_wl_open_modal" data-download-id="677" data-variable-price="yes" data-price-mode="multi"><i class="glyphicon glyphicon-heart"></i><span class="label">添加到愿望清单</span><span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a> 
+        </div>
+        <!-- .entry-content --> 
+        <div id="buy-now-677" class="popup"> 
+         <h1 class="section-title"><span>购买选项</span></h1> 
+         <form id="edd_purchase_677" class="edd_download_purchase_form download-variable" method="post"> 
+          <div class="edd_price_options"> 
+           <ul> 
+            <li id="edd_price_option_677_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_677_0"><input type="checkbox" name="edd_options[price_id][]" id="edd_price_option_677_0" class="edd_price_option_677" value="0" />&nbsp;<span class="edd_price_option_name" itemprop="description">英文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 50.00</span></label></li>
+            <li id="edd_price_option_677_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_677_1"><input type="checkbox" checked="checked" name="edd_options[price_id][]" id="edd_price_option_677_1" class="edd_price_option_677" value="1" />&nbsp;<span class="edd_price_option_name" itemprop="description">中文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 70.00</span></label></li> 
+           </ul> 
+          </div>
+          <!--end .edd_price_options--> 
+          <div class="edd_purchase_submit_wrapper"> 
+           <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="677" data-variable-price="yes" data-price-mode="multi"><span class="edd-add-to-cart-label">加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+           <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="加入购物车" data-action="edd_add_to_cart" data-download-id="677" data-variable-price="yes" data-price-mode="multi" />
+           <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+           <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+          </div>
+          <!--end .edd_purchase_submit_wrapper--> 
+          <input type="hidden" name="download_id" value="677" /> 
+          <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+         </form>
+         <!--end #edd_purchase_677--> 
+        </div>
+       </article>
+       <!-- #post-## --> 
+      </main>
+      <!-- #main --> 
+     </section>
+     <!-- #primary --> 
+     <div id="secondary" class="col-md-4 col-sm-5 col-xs-12" role="complementary"> 
+      <aside id="marketify_widget_download_details-2" class="widget download-single-widget marketify_widget_download_details">
+       <h1 class="section-title"><span>作者介绍</span></h1> 
+       <div class="download-product-details"> 
+        <div class="download-author"> 
+         <a class="author-link" href="http://ymb.me/作者/themerex/" rel="author"><img src="picture/themerex-avatar.jpg" alt="" height="130" width="130" class="avatar" /></a> 
+         <a class="author-link" href="http://ymb.me/作者/themerex/" rel="author">${info.getAuthor()!}</a> 
+         <span class="author-joined">作者注册日期： ${fulltextInfo.publishDate?string('yyyy-MM-dd')}</span> 
+        </div> 
+        <div class="download-ratings full"> 
+         <a href="#comments"><strong> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> </strong> 平均评分</a> 
+        </div> 
+       </div> 
+      </aside>
+      <aside id="widget_edd_fpd-3" class="widget download-single-widget widget_edd_fpd">
+       <h1 class="download-single-widget-title">更新信息</h1> 
+       <table class="edd-fpd"> 
+        <tbody>
+         <tr> 
+          <th>版本号</th> 
+          <td>1.4</td> 
+         </tr> 
+         <tr> 
+          <th>最后更新</th> 
+          <td>24/04/2015</td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </aside>
+      <aside id="edd_product_details-3" class="widget download-single-widget widget_edd_product_details">
+       <h1 class="download-single-widget-title">详细信息</h1>
+       <p class="edd-meta"><span class="categories">分类：<a href="http://ymb.me/downloads/category/wordpress%e4%b8%bb%e9%a2%98/wordpress%e4%b8%ad%e6%96%87%e4%b8%bb%e9%a2%98/" rel="tag">wordpress中文主题</a>, <a href="http://ymb.me/downloads/category/wordpress%e4%b8%bb%e9%a2%98/" rel="tag">WordPress主题</a></span><br /><span class="tags">标签: <a href="http://ymb.me/downloads/tag/%e4%ba%a7%e5%93%81%e5%b1%95%e7%a4%ba/" rel="tag">产品展示</a>, <a href="http://ymb.me/downloads/tag/%e4%bc%81%e4%b8%9a/" rel="tag">企业</a>, <a href="http://ymb.me/downloads/tag/%e5%85%ac%e5%8f%b8/" rel="tag">公司</a>, <a href="http://ymb.me/downloads/tag/%e5%95%86%e5%8a%a1/" rel="tag">商务</a>, <a href="http://ymb.me/downloads/tag/%e8%90%a5%e9%94%80/" rel="tag">营销</a></span></p>
+      </aside> 
+     </div>
+     <!-- #secondary --> 
+    </div>
+    <!-- #content --> 
+    <div id="comments" class="comments-area row"> 
+     <section class="col-sm-8 col-xs-12"> 
+      <h2 class="comments-title section-title"><span> <h2 class="comments-title" id="comments-title">评价</h2> </span></h2> 
+      <div id="respond" class="comment-respond">
+       <div class="edd-reviews-must-log-in  comment-form" id="commentform">
+        <p class="edd-reviews-not-logged-in">You must log in and be a buyer of this download to submit a review.</p> 
+        <form name="loginform" id="loginform" action="http://ymb.me/wp-login.php" method="post"> 
+         <p class="login-username"> <label for="user_login">用户名</label> <input type="text" name="log" id="user_login" class="input" value="" size="20" /> </p> 
+         <p class="login-password"> <label for="user_pass">密码</label> <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" /> </p> 
+         <p class="login-remember"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> 记住我的登录信息</label></p> 
+         <p class="login-submit"> <input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="登录" /> <input type="hidden" name="redirect_to" value="http://ymb.me/downloads/norma-%E5%95%86%E5%8A%A1%E4%BC%81%E4%B8%9A-wordpress%E4%B8%BB%E9%A2%98/" /> </p> 
+        </form>
+       </div>
+       <!-- /.edd-reviews-must-log-in -->
+      </div>
+      <!-- /#respond --> 
+     </section> 
+     <div id="secondary" class="col-sm-4 col-xs-12" role="complementary"> 
+      <aside id="marketify_widget_download_review_details-2" class="widget download-single-widget comments marketify_widget_download_review_details">
+       <h1 class="section-title"><span>评价详情</span></h1> 
+       <div class="download-product-review-details"> 
+        <h1 class="download-single-widget-title">买家评价</h1> 
+        <div class="download-ratings"> 
+         <strong> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> </strong> 
+        </div> 
+        <p>0.00 average based on 0 reviews.</p> 
+       </div> 
+      </aside> 
+     </div>
+     <!-- #secondary --> 
+    </div>
+    <!-- #comments --> 
+    <h1 class="section-title recommended-products"><span>推荐产品</span></h1> 
+    <div class="row edd-recommended-products"> 
+     <div class="col-lg-3 col-md-4 col-sm-6"> 
+      <article id="post-2251" class="post-2251 type-download status-publish format-standard has-post-thumbnail hentry content-grid-download truncate-title edd-download edd-download-cat-wordpress%e4%b8%ad%e6%96%87%e4%b8%bb%e9%a2%98 edd-download-cat-wordpress%e4%b8%bb%e9%a2%98 edd-download-tag-%e4%ba%a7%e5%93%81%e5%b1%95%e7%a4%ba edd-download-tag-%e4%bc%81%e4%b8%9a edd-download-tag-%e4%bd%9c%e5%93%81%e5%b1%95%e7%a4%ba edd-download-tag-%e5%9c%a8%e7%ba%bf%e8%b4%ad%e7%89%a9 edd-download-tag-%e5%a4%9a%e7%94%a8%e9%80%94"> 
+       <div class="entry-image"> 
+        <div class="overlay"> 
+         <div class="actions"> 
+          <a href="#buy-now-2251" class="button buy-now popup-trigger">加入购物车</a> 
+          <a href="http://ymb.me/downloads/the7-%e6%b8%85%e6%96%b0%e4%bc%81%e4%b8%9a%e5%a4%9a%e7%94%a8%e9%80%94-wordpress%e4%b8%bb%e9%a2%98/" rel="bookmark" class="button">详情</a> 
+          <strong class="item-price"><span>项目价格: <span class="edd_price" id="edd_price_2251">CNY 30.00</span></span></strong> 
+         </div> 
+        </div> 
+        <img width="590" height="300" src="picture/the7-—-responsive-multi-purpose-wordpress-theme.png" class="attachment-content-grid-download wp-post-image" alt="The7 — Responsive Multi-Purpose WordPress Theme" /> 
+       </div> 
+       <div id="buy-now-2251" class="popup"> 
+        <h1 class="section-title"><span>购买选项</span></h1> 
+        <form id="edd_purchase_2251" class="edd_download_purchase_form download-variable" method="post"> 
+         <div class="edd_price_options"> 
+          <ul> 
+           <li id="edd_price_option_2251_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_2251_0"><input type="radio" name="edd_options[price_id][]" id="edd_price_option_2251_0" class="edd_price_option_2251" value="0" />&nbsp;<span class="edd_price_option_name" itemprop="description">中文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 50.00</span></label></li>
+           <li id="edd_price_option_2251_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_2251_2"><input type="radio" name="edd_options[price_id][]" id="edd_price_option_2251_2" class="edd_price_option_2251" value="2" />&nbsp;<span class="edd_price_option_name" itemprop="description">英文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 30.00</span></label></li> 
+          </ul> 
+         </div>
+         <!--end .edd_price_options--> 
+         <div class="edd_purchase_submit_wrapper"> 
+          <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="2251" data-variable-price="yes" data-price-mode="single"><span class="edd-add-to-cart-label">加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+          <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="加入购物车" data-action="edd_add_to_cart" data-download-id="2251" data-variable-price="yes" data-price-mode="single" />
+          <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+          <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+         </div>
+         <!--end .edd_purchase_submit_wrapper--> 
+         <input type="hidden" name="download_id" value="2251" /> 
+         <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+        </form>
+        <!--end #edd_purchase_2251--> 
+       </div> 
+       <header class="entry-header"> 
+        <h1 class="entry-title"><a href="http://ymb.me/downloads/the7-%e6%b8%85%e6%96%b0%e4%bc%81%e4%b8%9a%e5%a4%9a%e7%94%a8%e9%80%94-wordpress%e4%b8%bb%e9%a2%98/" rel="bookmark"><span itemprop="name">The7.2 清新企业多用途 WordPress主题</span></a></h1> 
+        <div class="entry-meta"> 
+         <span class="byline"> 发布人 <span class="author vcard"><a class="url fn n" href="http://ymb.me/作者/dream-theme/" title="查看全部 Downloads 发布人 Dream-Theme">Dream-Theme <img src="picture/dream-theme-avatar.png" alt="" height="50" width="50" class="avatar" /></a></span></span> 
+        </div> 
+       </header>
+       <!-- .entry-header -->
+      </article>
+      <!-- #post-## --> 
+     </div> 
+     <div class="col-lg-3 col-md-4 col-sm-6"> 
+      <article id="post-8299" class="post-8299 type-download status-publish format-standard has-post-thumbnail hentry content-grid-download truncate-title edd-download edd-download-cat-wordpress%e4%b8%ad%e6%96%87%e4%b8%bb%e9%a2%98 edd-download-cat-wordpress%e4%b8%bb%e9%a2%98 edd-download-tag-%e4%ba%a7%e5%93%81%e5%b1%95%e7%a4%ba edd-download-tag-%e4%bc%81%e4%b8%9a edd-download-tag-%e8%b4%ad%e7%89%a9%e5%95%86%e5%9f%8e"> 
+       <div class="entry-image"> 
+        <div class="overlay"> 
+         <div class="actions"> 
+          <a href="#buy-now-8299" class="button buy-now popup-trigger">加入购物车</a> 
+          <a href="http://ymb.me/downloads/kallyas-%e5%a4%9a%e7%94%a8%e9%80%94%e4%bc%81%e4%b8%9a-wordpress%e4%b8%bb%e9%a2%98/" rel="bookmark" class="button">详情</a> 
+          <strong class="item-price"><span>项目价格: <span class="edd_price" id="edd_price_8299">CNY 40.00</span></span></strong> 
+         </div> 
+        </div> 
+        <img width="590" height="300" src="picture/kallyas-responsive-multi-purpose-wordpress-theme.jpg" class="attachment-content-grid-download wp-post-image" alt="KALLYAS - Responsive Multi-Purpose WordPress Theme" /> 
+       </div> 
+       <div id="buy-now-8299" class="popup"> 
+        <h1 class="section-title"><span>购买选项</span></h1> 
+        <form id="edd_purchase_8299" class="edd_download_purchase_form download-variable" method="post"> 
+         <div class="edd_price_options"> 
+          <ul> 
+           <li id="edd_price_option_8299_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_8299_0"><input type="checkbox" name="edd_options[price_id][]" id="edd_price_option_8299_0" class="edd_price_option_8299" value="0" />&nbsp;<span class="edd_price_option_name" itemprop="description">英文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 40.00</span></label></li>
+           <li id="edd_price_option_8299_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_8299_1"><input type="checkbox" checked="checked" name="edd_options[price_id][]" id="edd_price_option_8299_1" class="edd_price_option_8299" value="1" />&nbsp;<span class="edd_price_option_name" itemprop="description">中文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 60.00</span></label></li>
+           <li id="edd_price_option_8299_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_8299_2"><input type="checkbox" name="edd_options[price_id][]" id="edd_price_option_8299_2" class="edd_price_option_8299" value="2" />&nbsp;<span class="edd_price_option_name" itemprop="description">英文版+购买码</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 350.00</span></label></li> 
+          </ul> 
+         </div>
+         <!--end .edd_price_options--> 
+         <div class="edd_purchase_submit_wrapper"> 
+          <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="8299" data-variable-price="yes" data-price-mode="multi"><span class="edd-add-to-cart-label">加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+          <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="加入购物车" data-action="edd_add_to_cart" data-download-id="8299" data-variable-price="yes" data-price-mode="multi" />
+          <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+          <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+         </div>
+         <!--end .edd_purchase_submit_wrapper--> 
+         <input type="hidden" name="download_id" value="8299" /> 
+         <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+        </form>
+        <!--end #edd_purchase_8299--> 
+       </div> 
+       <header class="entry-header"> 
+        <h1 class="entry-title"><a href="http://ymb.me/downloads/kallyas-%e5%a4%9a%e7%94%a8%e9%80%94%e4%bc%81%e4%b8%9a-wordpress%e4%b8%bb%e9%a2%98/" rel="bookmark"><span itemprop="name">KALLYAS 多用途企业 WordPress主题</span></a></h1> 
+        <div class="entry-meta"> 
+         <span class="byline"> 发布人 <span class="author vcard"><a class="url fn n" href="http://ymb.me/作者/hogash/" title="查看全部 Downloads 发布人 hogash">hogash <img src="picture/hogash-avatar.png" alt="" height="50" width="50" class="avatar" /></a></span></span> 
+        </div> 
+       </header>
+       <!-- .entry-header -->
+      </article>
+      <!-- #post-## --> 
+     </div> 
+     <div class="col-lg-3 col-md-4 col-sm-6"> 
+      <article id="post-667" class="post-667 type-download status-publish format-standard has-post-thumbnail hentry content-grid-download truncate-title edd-download edd-download-cat-wordpress%e4%b8%ad%e6%96%87%e4%b8%bb%e9%a2%98 edd-download-cat-wordpress%e4%b8%bb%e9%a2%98 edd-download-tag-seo edd-download-tag-woocommerce edd-download-tag-%e4%bc%81%e4%b8%9a edd-download-tag-%e4%bd%9c%e5%93%81%e5%b1%95%e7%a4%ba edd-download-tag-%e5%88%9b%e6%84%8f edd-download-tag-%e8%b4%ad%e7%89%a9%e5%95%86%e5%9f%8e"> 
+       <div class="entry-image"> 
+        <div class="overlay"> 
+         <div class="actions"> 
+          <a href="#buy-now-667" class="button buy-now popup-trigger">加入购物车</a> 
+          <a href="http://ymb.me/downloads/neighborhood-%e8%b4%ad%e7%89%a9%e5%95%86%e5%9f%8e-wordpress%e4%b8%bb%e9%a2%98/" rel="bookmark" class="button">详情</a> 
+          <strong class="item-price"><span>项目价格: <span class="edd_price" id="edd_price_667">CNY 58.00</span></span></strong> 
+         </div> 
+        </div> 
+        <img width="590" height="300" src="picture/neighborhood-responsive-multi-purpose-shop-theme.jpg" class="attachment-content-grid-download wp-post-image" alt="Neighborhood - Responsive Multi-Purpose Shop Theme" /> 
+       </div> 
+       <div id="buy-now-667" class="popup"> 
+        <h1 class="section-title"><span>购买选项</span></h1> 
+        <form id="edd_purchase_667" class="edd_download_purchase_form download-variable" method="post"> 
+         <div class="edd_price_options"> 
+          <ul> 
+           <li id="edd_price_option_667_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_667_0"><input type="checkbox" name="edd_options[price_id][]" id="edd_price_option_667_0" class="edd_price_option_667" value="0" />&nbsp;<span class="edd_price_option_name" itemprop="description">英文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 58.00</span></label></li>
+           <li id="edd_price_option_667_" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"><label for="edd_price_option_667_1"><input type="checkbox" checked="checked" name="edd_options[price_id][]" id="edd_price_option_667_1" class="edd_price_option_667" value="1" />&nbsp;<span class="edd_price_option_name" itemprop="description">中文版</span><span class="edd_price_option_sep">&nbsp;–&nbsp;</span><span class="edd_price_option_price" itemprop="price">CNY 110.00</span></label></li> 
+          </ul> 
+         </div>
+         <!--end .edd_price_options--> 
+         <div class="edd_purchase_submit_wrapper"> 
+          <a href="#" class="edd-add-to-cart button blue edd-submit" data-action="edd_add_to_cart" data-download-id="667" data-variable-price="yes" data-price-mode="multi"><span class="edd-add-to-cart-label">加入购物车</span> <span class="edd-loading"><i class="edd-icon-spinner edd-icon-spin"></i></span></a>
+          <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="加入购物车" data-action="edd_add_to_cart" data-download-id="667" data-variable-price="yes" data-price-mode="multi" />
+          <a href="http://ymb.me/%e4%bb%98%e6%ac%be/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">付款</a> 
+          <span class="edd-cart-ajax-alert"> <span class="edd-cart-added-alert" style="display: none;"> <i class="edd-icon-ok"></i>添加到购物车 </span> </span> 
+         </div>
+         <!--end .edd_purchase_submit_wrapper--> 
+         <input type="hidden" name="download_id" value="667" /> 
+         <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" /> 
+        </form>
+        <!--end #edd_purchase_667--> 
+       </div> 
+       <header class="entry-header"> 
+        <h1 class="entry-title"><a href="http://ymb.me/downloads/neighborhood-%e8%b4%ad%e7%89%a9%e5%95%86%e5%9f%8e-wordpress%e4%b8%bb%e9%a2%98/" rel="bookmark"><span itemprop="name">Neighborhood 购物商城 WordPress主题</span></a></h1> 
+        <div class="entry-meta"> 
+         <span class="byline"> 发布人 <span class="author vcard"><a class="url fn n" href="http://ymb.me/作者/swiftideas/" title="查看全部 Downloads 发布人 SwiftIdeas">SwiftIdeas <img src="picture/swiftideas-avatar.png" alt="" height="50" width="50" class="avatar" /></a></span></span> 
+        </div> 
+       </header>
+       <!-- .entry-header -->
+      </article>
+      <!-- #post-## --> 
+     </div> 
+    </div> 
+   </div> 
+   
+   
+   
+   
+   
 <div class="w960 center clear mt1">
 	<div class="pleft">
     	<div class="position">
@@ -62,78 +395,9 @@
        	[#if pagedList.totalPages>1]
          [#include 'inc_page.html'/]
         [/#if]
-          <div class="mood">
-            <script type="text/javascript">
-							function infoScoring(id,itemId) {
-								$.post('${ctx}/info_scoring.jspx',
-									{id:id,itemId:itemId},
-									function(data) {
-										if(data!="0"){
-											$("#score-item-"+itemId).text(data);
-										}else{
-											alert("你已经表达过心情了！");	
-										}
-									}
-								);
-							}
-						</script>
-            [@ScoreGroup number='mood';group]
-            <ul>
-              [#list group.items as item]
-              <li onclick="infoScoring(${info.id},${item.id});">
-                <p> <span id="score-item-${item.id}">0</span>票</p>
-                <p><img src="${item.iconUrl}"/></p>
-                <p>${item.name}</p>
-              </li>
-              [/#list]
-            </ul>
-            [/@ScoreGroup]
-            <script type="text/javascript">
-              $.get("${ctx}/info_score/${info.id}.jspx?d="+new Date()*1,function(data) {
-                for(id in data) {
-                  $("#score-item-"+id).text(data[id]);
-                }
-              },"json");
-            </script>
-          </div>
+          
         
         
-       		<div class="digg clr">
-						<script type="text/javascript">
-              function digg() {
-                $.post('${ctx}/info_digg.jspx',
-                  {id:${info.id}},
-                  function(data){
-                    if(data!="0") {
-                      $('#diggs').text(data);
-                    }else{
-                      alert("你已经顶过一次！")
-                    }
-                  }
-                );
-              }
-              function bury() {
-                $.post('${ctx}/info_bury.jspx',
-                  {id:${info.id}},
-                  function(data){
-                    if(data!="0") {
-                      $('#burys').text(data);
-                    }else{
-                      alert("你已经踩过一次！")
-                    }
-                  }
-                );
-              }
-            </script>
-            <a onclick="digg();" class="supports FlLeft" href="javascript:return false;"><span id="diggs"></span></a>
-            <a onclick="bury();" class="againsts FlRight" href="javascript:return false;"><span id="burys"></span></a>
-            <script type="text/javascript">
-              $.get("${ctx}/info_diggs/${info.id}.jspx?d="+new Date()*1,function(data) {
-                $("#diggs").text(data[0]);
-                $("#burys").text(data[1]);
-              },"json");
-            </script>
-         </div>
          
           <!-- Baidu Button BEGIN -->
             <div class="share-btn" style="margin:10px 8px; height:30px;">

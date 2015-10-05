@@ -570,7 +570,7 @@ function confirmDelete() {
 									<label><c:out value="${attr.name}"/></label> &nbsp;
 							  		<select name="attr_${attr.id}" >
 							  			<c:forEach var="item" items="${attr.items}" >
-								  			<option value="${item.id}" <c:if test=""> checked="checked" </c:if> >${item.name}</option>
+								  			<option value="${item.name}" <c:if test=""> checked="checked" </c:if> >${item.name}--${item.id}</option>
 								  		</c:forEach>
 							  		</select>
 							  	</c:forEach>	

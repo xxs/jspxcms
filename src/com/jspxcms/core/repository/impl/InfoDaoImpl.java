@@ -2,6 +2,7 @@ package com.jspxcms.core.repository.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.jspxcms.common.orm.Limitable;
 import com.jspxcms.common.orm.QuerydslUtils;
+import com.jspxcms.core.domain.Attr;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domaindsl.QAttribute;
 import com.jspxcms.core.domaindsl.QInfo;
@@ -54,7 +56,7 @@ public class InfoDaoImpl implements InfoDaoPlus {
 				mainNodeId, userId, viewGroupId, viewOrgId, treeNumber,
 				specialTitle, tagName, priority, beginDate, endDate, title,
 				includeId, excludeId, excludeMainNodeId, excludeTreeNumber,
-				isWithImage, status);
+				isWithImage, status,null);
 		return QuerydslUtils.list(query, info, limitable);
 	}
 
@@ -73,7 +75,7 @@ public class InfoDaoImpl implements InfoDaoPlus {
 				mainNodeId, userId, viewGroupId, viewOrgId, treeNumber,
 				specialTitle, tagName, priority, beginDate, endDate, title,
 				includeId, excludeId, excludeMainNodeId, excludeTreeNumber,
-				isWithImage, status);
+				isWithImage, status,null);
 		return QuerydslUtils.page(query, info, pageable);
 	}
 
@@ -84,9 +86,14 @@ public class InfoDaoImpl implements InfoDaoPlus {
 			String[] specialTitle, String[] tagName, Integer[] priority,
 			Date beginDate, Date endDate, String[] title, Integer[] includeId,
 			Integer[] excludeId, Integer[] excludeMainNodeId,
-			String[] excludeTreeNumber, Boolean isWithImage, String[] status) {
+			String[] excludeTreeNumber, Boolean isWithImage, String[] status, Map<Attr, String> attrValue) {
 		boolean isDistinct = false;
 		query.from(info);
+		//----------------
+//		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+//		CriteriaQuery<Info> criteriaQuery = criteriaBuilder.createQuery(Info.class);
+		//Root<Info> root = criteriaQuery.from(Info.class);
+		//--------------
 		BooleanBuilder exp = new BooleanBuilder();
 		if (ArrayUtils.isNotEmpty(nodeId)) {
 			QInfoNode infoNode = QInfoNode.infoNode;
@@ -95,6 +102,12 @@ public class InfoDaoImpl implements InfoDaoPlus {
 			if (nodeId.length > 1) {
 				isDistinct = true;
 			}
+//			if(attrValue != null){
+//				for (Entry<Attr, String> entry : attrValue.entrySet()) {
+//					String propertyName = Info.ATTR_VALUE_PROPERTY_NAME_PREFIX + entry.getKey().getPropertyIndex();
+//					exp = exp.or(root.get(propertyName).equals(entry.getValue()));
+//				}
+//			}
 		}
 		if (ArrayUtils.isNotEmpty(attrId)) {
 			QInfoAttribute infoAttr = QInfoAttribute.infoAttribute;

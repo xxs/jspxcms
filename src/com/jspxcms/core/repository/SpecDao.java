@@ -12,8 +12,6 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.Repository;
 
 import com.jspxcms.common.orm.Limitable;
-import com.jspxcms.core.domain.Parameter;
-import com.jspxcms.core.domain.ParameterGroup;
 import com.jspxcms.core.domain.Spec;
 
 public interface SpecDao extends Repository<Spec, Integer> {

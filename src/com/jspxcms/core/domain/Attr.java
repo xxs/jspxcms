@@ -35,6 +35,9 @@ public class Attr implements java.io.Serializable {
 		if (getSeq() == null) {
 			setSeq(Integer.MAX_VALUE);
 		}
+		if (getPropertyIndex() == null) {
+			
+		}
 	}
 
 	@Transient

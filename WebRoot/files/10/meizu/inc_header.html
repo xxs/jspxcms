@@ -1,64 +1,71 @@
-  <div id="main_banners">
-   <div class="b_main_nav">
-    <h1><a href="/">经典漆．中国美</a></h1>
-    <ul>
-     [@NodeList;list]
-		[#list list as node]
- 		 	<li class="${node.number}"><a href="${node.url}">${node.name}</a></li>
-		[/#list]
-	 [/@NodeList]
-    </ul>
-   </div>
-   <ul class="banners">
-    <li id="banner_brand">
-     <header></header>
-     <section>
-      <div class="bg"></div>
-      <a href="/brand"><h1>经典漆 • 中国美</h1><p>世间极致，一向以时间臻其完美</p></a>
-     </section></li>
-    <li id="banner_color">
-     <header></header>
-     <section>
-      <div class="bg"></div>
-      <a href="/colors"><h1>瑞彩千呈</h1><h2>千呈色彩，包罗万象</h2><p>经典色彩体系<br />为中国家庭量身定制</p></a>
-     </section></li>
-    <li id="banner_eco">
-     <header></header>
-     <section>
-      <div class="bg"></div>
-      <a href="/product"><h1>健康环保 绿色经典</h1></a>
-     </section></li>
-    <li id="banner_ibaby">
-     <header></header>
-     <section>
-      <div class="bg"></div>
-      <a href="/product/1.html"><h1>爱宝贝耐污抗菌儿童漆</h1><h2>纳米防氡抗菌技术</h2><p>用起来安全的和看起来漂亮的<br />总是不谋而合</p></a>
-     </section></li>
-    <li id="banner_paint">
-     <header></header>
-     <section>
-      <div class="bg"></div>
-      <a href="/product/32.html"><h1>全效净味木器漆</h1><h2>尊享您的呼吸特权</h2><p>中国唯一获专利的净味木器漆<br />专利号：200810200519.9 200910198980.X</p>
-       <div class="icon">
-        独有净味技术 24小时净味
-       </div>
-       <div class="product">
-        全效净味木器漆
-       </div></a>
-     </section></li>
-   </ul>
-   <span id="banner_prev">&lt;</span>
-   <span id="banner_next">&gt;</span>
-  </div>
-  <!-- 导航 -->
-  <nav id="main_nav">
-   <h1><a href="/">经典漆 • 中国美</a></h1>
-   <ul>
-    [@NodeList;list]
-		[#list list as node]
- 		 	<li class="${node.number}"><a href="${node.url}">${node.name}</a></li>
-		[/#list]
-	 [/@NodeList]
-   </ul>
-  </nav>
-  <!-- 导航 -->
+	<header id="masthead" class="site-header" role="banner">
+		<div class="container">
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<h1 class="menu-toggle">
+					<i class="icon-list2"></i>
+				</h1>
+				<div class="header-search-icon">
+					<i class="icon-search"></i>
+				</div>
+				<form role="search" method="get" class="search-form"
+					action="http://ymb.me/">
+					<button type="submit" class="search-submit">
+						<i class="icon-search"></i>
+					</button>
+					<label> <span class="screen-reader-text">搜索：</span> <input
+						type="search" class="search-field" placeholder="Search" value=""
+						name="s" title="Search for:" />
+					</label> <input type="hidden" name="post_type" value="download" />
+				</form>
+				<div class="main-menu">
+					<ul id="menu-%e4%b8%bb%e8%8f%9c%e5%8d%95" class="menu">
+						<li class="current-cart"><a href="#"><i class="icon-cart"></i>
+								<span class="edd-cart-quantity">0</span></a>
+							<ul class="sub-menu nav-menu">
+								<li class="widget"><p class="edd-cart-number-of-items"
+										style="display:none;">
+										购物车中的商品数量: <span class="edd-cart-quantity">0</span>
+									</p>
+									<ul class="edd-cart">
+										<li class="cart_item empty"><span class="edd_empty_cart">您的购物车是空的。</span></li>
+										<li class="cart_item edd_subtotal" style="display:none;">小计：
+											<span class="subtotal">CNY 0</span>
+										</li>
+										<li class="cart_item edd_checkout" style="display:none;"><a
+											href="http://ymb.me/%e4%bb%98%e6%ac%be/">付款</a></li>
+									</ul></li>
+							</ul></li> 
+						[@NodeList;list] [#list list as node]
+							<li id="menu-item-70"
+								class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-70">
+								<a href="${node.url}">${node.name}</a>
+								
+								[@NodeList parentId=node.id;nodeList]
+									<ul class="sub-menu">
+										[#list nodeList as n]
+											<li id="menu-item-169"
+												class="menu-item menu-item-type-taxonomy menu-item-object-download_category menu-item-169"><a
+												href="${n.url}">${n.name}</a></li>
+										[/#list]
+									</ul>
+								[/@NodeList]
+							</li> 
+						[/#list] [/@NodeList]
+					</ul>
+					</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- #site-navigation -->
+			<div class="site-branding">
+				<a href="http://ymb.me/" title="云模版" rel="home"
+					class="custom-header"><img src="_files/picture/cropped-ymb3.png"
+					alt="" /></a>
+				<h1 class="site-title">
+					<a href="http://ymb.me/" title="云模版" rel="home">云模版</a>
+				</h1>
+				<h2 class="site-description screen-reader-text">你的主题/模板/创意/数字作品交易市场！</h2>
+			</div>
+		</div>
+	</header>
+
