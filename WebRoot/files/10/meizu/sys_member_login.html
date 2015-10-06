@@ -5,13 +5,120 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>用户注册_${site.fullNameOrName}</title>
-<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<link rel="stylesheet" id="bbp-default-css"
+	href="_files/css/bbpress.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" id="edd-styles-css" href="_files/css/edd.css"
+	type="text/css" media="all" />
+<link rel="stylesheet" id="edd-points-public-style-css"
+	href="_files/css/style-public.css" type="text/css" media="all" />
+<link rel="stylesheet" id="edd-rp-styles-css"
+	href="_files/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" id="edd-reviews-css"
+	href="_files/css/edd-reviews.css" type="text/css" media="all" />
+<link rel="stylesheet" id="marketify-fonts-css"
+	href="_files/css/b1279010f5bf419692c1cf705d8383a5.css" type="text/css"
+	media="all" />
+<link rel="stylesheet" id="marketify-base-css"
+	href="_files/css/style.css" type="text/css" media="all" />
+<style type="text/css">
+.site-header,.site-footer,.page-header,body.minimal,body.custom-background.minimal,.header-outer,.minimal .entry-content .edd-slg-social-container span legend
+	{
+	background-color: #515a63;
+}
+
+button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.main-navigation .edd-cart .cart_item.edd_checkout a,.page-header .button:hover,.content-grid-download .button:hover,body .marketify_widget_slider_hero .soliloquy-caption a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.nav-previous a:hover i,.nav-next a:hover i,body-footer.light .site-info .site-title,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,#recaptcha_area .recaptchatable a,#recaptcha_area .recaptchatable a:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn
+	{
+	color: #515a63;
+}
+
+button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.edd_price_options input[type=radio]:checked,body #edd-wl-modal input[type=radio]:checked,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.entry-content blockquote,.nav-previous a:hover,.nav-next a:hover,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn
+	{
+	border-color: #515a63;
+}
+
+button:hover,input[type=reset]:hover,input[type=submit]:hover,.button:hover,a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields>span:after,.edd-reviews-voting-buttons a:hover,.flex-control-nav a.flex-active,.search-form .search-submit,.fes-pagination a.page-numbers:hover,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn:hover,.upload_file_button:hover,.fes-avatar-image-btn:hover
+	{
+	background-color: #515a63;
+}
+
+a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.edd-reviews-voting-buttons a,a.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,a.edd_terms_links
+	{
+	color: #4ed0aa;
+}
+
+a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.edd-reviews-voting-buttons a,.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,.edd_terms_links,.site-footer.dark .mailbag-wrap input[type=submit],.insert-file-row
+	{
+	border-color: #4ed0aa;
+}
+
+a.edd-cart-saving-button:hover,input[name=edd_update_cart_submit]:hover,.minimal #edd_purchase_submit input[type=submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.minimal a.edd-cart-saving-button,.minimal input[name=edd_update_cart_submit],.minimal .fes-form input[type=submit],.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.main-navigation .search-form.active .search-submit,.main-navigation.toggled .search-form .search-submit,.edd-fes-adf-submission-add-option-button:hover,#fes-insert-image:hover,.edd-reviews-voting-buttons a:hover,.minimal #edd_login_submit,.minimal input[name=edd_register_submit],.edd_terms_links:hover,.site-footer.dark .mailbag-wrap input[type=submit],.home-search .page-header .search-submit,.search-form-overlay .search-submit,.marketify_widget_taxonomy_stylized,.insert-file-row
+	{
+	background-color: #4ed0aa;
+}
+
+.site-footer
+
+
+.light
+,
+{
+background-color
+
+
+:
+
+ 
+
+#ffffff
+
+
+;
+}
+.content-grid-download .entry-image:hover .overlay,.content-grid-download .entry-image.hover .overlay,.download-image-grid-preview .slides li.active a:before,.download-image-grid-preview .slides li:hover a:before
+	{
+	background: rgba(81, 90, 99, .80);
+	border: 1px solid rgba(81, 90, 99, .80);
+}
+
+.search-form-overlay {
+	background: rgba(81, 90, 99, .90);
+}
+</style>
+<link rel="stylesheet" id="sccss_style-css"
+	href="_files/css/c669707854af4d66811c069b15b106de.css" type="text/css"
+	media="all" />
+<link rel="stylesheet" id="edd-wl-styles-css"
+	href="_files/css/edd-wl.min.css" type="text/css" media="screen" />
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","position_in_cart":"","already_in_cart_message":"\u4f60\u5df2\u7ecf\u5c06\u672c\u5546\u54c1\u6dfb\u52a0\u5230\u8d2d\u7269\u8f66","empty_cart_message":"\u60a8\u7684\u8d2d\u7269\u8f66\u662f\u7a7a\u7684\uff01","loading":"\u52a0\u8f7d\u4e2d...","select_option":"\u8bf7\u9009\u62e9\u4e00\u4e2a\u9009\u9879","ajax_loader":"http:\/\/ymb.me\/wp-content\/plugins\/easy-digital-downloads\/assets\/images\/loading.gif","is_checkout":"0","default_gateway":"alipay","redirect_to_checkout":"0","checkout_page":"http:\/\/ymb.me\/%e4%bb%98%e6%ac%be\/","permalinks":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="_files/js/edd-ajax.min.js"></script>
+<script type="text/javascript">
+		var RecaptchaOptions = {
+			theme : 'clean',
+		};
+	</script>
+<style type="text/css">
+.site-branding .site-title,.site-branding .site-description,.site-header-minimal .site-title,.site-header-minimal .site-description
+	{
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.site-title a,.site-description,.main-navigation a {
+	color: #fff;
+}
+
+.site-title {
+	line-height: 55px
+}
+</style>
+
+
 <script type="text/javascript">
 $(function() {
 	$("#validForm").validate();
@@ -30,57 +137,228 @@ $(function() {
 	 [/#if]
 [/#if]
 </script>
-<style type="text/css">
-.center{margin:0 auto;width:800px;}
-.clear{clear:both;}
-.div1{margin-top:150px;padding-top:5px;}
-.desc{float:left;height:180px;width:430px;padding-top:40px;text-align:center;color:#858585;font-size:28px;font-weight:bold;background:url('${ctx}/back/images/admin_logo.png') no-repeat center 8px;}
-.input_form{float:right;height:180px;width:370px;margin-top:20px;}
-.input_p{padding:8px 0;}
-.input_p_submit{text-align:left;padding:5px 0 5px 80px;}
-.label{display:block;float:left;width:70px;padding-right:10px;text-align:right;font-size:14px;font-weight:bold;color:#666666;}
-.input{display:block;float:left;width:180px;}
-.div2{text-align:center;color:#555555;}
 
-a:link,a:visited{text-decoration:none;color:#014c90;}
-a:hover,a:active{text-decoration:underline;color:#014c90;}
-
-</style>
 </head>
-<body>
+<body
+	class="page page-id-29 page-template page-template-page-templatesfull-width-php custom-background fes-page">
 
-<div class="login">
-  <h2>登陆</h2>
-  <form id="validForm" action="${ctx}/login.jspx" method="post" class="input_form">
-		<p class="input_p">
-			<label for="username" class="label">用户名:</label>
-			<input type="text" id="username" name="username" value="${username!}" class="input required"/>
-			<div class="clear"></div>
-		</p>
-		<p class="input_p">
-			<label for="password" class="label">密码:</label>
-			<input type="password" id="password" name="password" class="input"/>
-			<div class="clear"></div>
-		</p>
-		[#if Session.shiroCaptchaRequired??]
-		<p class="input_p">
-			<label for="captcha" class="label">验证码:</label>
-			<input type="text" id="captcha" name="captcha" class="input required"/>
-			<div class="clear"></div>
-		</p>
-		<p class="input_p">
-			<label for="captcha" class="label">&nbsp;</label>
-			<img src="${ctx}/captcha.servlet" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" style="cursor:pointer;border:1px solid #ccc;" title="点击重新获取验证码"/>
-			<div class="clear"></div>
-		</p>		
-		[/#if]
-		<p class="input_p_submit">
-			<input type="submit" value="提交" style="height:25px;width:60px;margin-right:20px;"/><a href="${ctx}/forgot_password.jspx">忘记密码</a>
-		</p>
-	</form>
-  <div class="otherlink"><a href="${ctx}/">返回首页</a>如果您还没有账号，请先<a href="${ctx}/register.jspx">注册</a></div>
-</div>
+	<div id="page" class="hfeed site">
+		<div class="header-outer">[#include "inc_header.html"/]</div>
+		<!-- .header-outer -->
+		<div class="container">
+			<div id="content" class="site-content row">
 
+				<div id="primary" class="content-area col-sm-12">
+					<main id="main" class="site-main" role="main"> 
+					<article
+						id="post-29"
+						class="post-29 page type-page status-publish hentry truncate-title">
+					<div class="entry-content">
+						<table>
+							<tr>
+								<td id="fes_login_registration_form_row_left"
+									class="fes_login_registration_form_row fes_login_registration_form_row_half_width"
+									style="width: 44%; clear: none; float: left;">
+									<form class="fes-form-login-form" id="validForm" action="${ctx}/login.jspx" method="post">
+										<div class="fes-form">
+											<h1 class="fes-headers" id="fes-login-form-title">登录</h1>
+											<p class="fes-form-error fes-error" style="display: none;"></p>
+											<fieldset class="fes-el user_login">
+												<div class="fes-label">
+													<label for="fes-user_login">用户名 <span
+														class="edd-required-indicator">*</span></label> <br />
+												</div>
+
+												<div class="fes-fields">
+													<input class="textfield edd-required-indicator"
+														id="username" type="text" data-required="yes"
+														data-type="text" required="required" name="username"
+														placeholder="" value="${username!}" size="40" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-el password">
+												<div class="fes-label">
+													<label for="fes-password">密码 <span
+														class="edd-required-indicator">*</span></label> <br />
+												</div>
+
+												<div class="fes-fields">
+													<input id="pass1" type="password" class="password"
+														data-required="yes" data-type="text" required="required"
+														name="password" placeholder="" value="" size="40" />
+												</div>
+
+											</fieldset>
+											
+											[#if Session.shiroCaptchaRequired??]
+												<div class="fes-label">
+													<label for="fes-captcha">验证码: <span
+														class="edd-required-indicator">*</span></label> <br />
+												</div>
+
+												<div class="fes-fields">
+													<input id="captcha" type="text" class="textfield edd-required-indicator"
+														data-required="yes" data-type="text" required="required"
+														name="captcha" placeholder="" value="" size="40" />
+												</div>
+												<p class="input_p">
+													<label for="captcha" class="label">&nbsp;</label> <img
+														src="${ctx}/captcha.servlet"
+														onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"
+														style="cursor:pointer;border:1px solid #ccc;" title="点击重新获取验证码" />
+													<div class="clear"></div>
+												</p>
+											[/#if]
+											<fieldset class="fes-submit">
+												<div class="fes-label">&nbsp;</div>
+												<input type="submit" class="edd-submit blue button" name="submit" value="登录" /> 
+													<a href="${ctx}/forgot_password.jspx" id="fes_lost_password_link" title="忘记密码？">忘记密码？</a>
+											</fieldset>
+										</div>
+									</form>
+								</td>
+								<td id="fes_login_registration_form_row_right"
+									class="fes_login_registration_form_row fes_login_registration_form_row_half_width"
+									style="width: 44%; float: left;">
+									<form class="fes-form-registration-form" action=""
+										method="post">
+										<div class="fes-form">
+											<h1 class="fes-headers" id="fes-registration-form-title">注册</h1>
+											<fieldset class="fes-el first_name">
+												<div class="fes-label">
+													<label for="fes-first_name">名字 <span
+														class="edd-required-indicator">*</span></label> <br /> <span
+														class="fes-help">输入你的名字</span>
+												</div>
+
+												<div class="fes-fields">
+													<input class="textfield edd-required-indicator"
+														id="first_name" type="text" data-required="yes"
+														data-type="text" required="required" name="first_name"
+														placeholder="" value="" size="40" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-el last_name">
+												<div class="fes-label">
+													<label for="fes-last_name">姓氏 <span
+														class="edd-required-indicator">*</span></label> <br /> <span
+														class="fes-help">输入你的姓氏</span>
+												</div>
+
+												<div class="fes-fields">
+													<input class="textfield edd-required-indicator"
+														id="last_name" type="text" data-required="yes"
+														data-type="text" required="required" name="last_name"
+														placeholder="" value="" size="40" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-el user_email">
+												<div class="fes-label">
+													<label for="fes-user_email">Email <span
+														class="edd-required-indicator">*</span></label> <br /> <span
+														class="fes-help">输入邮箱地址</span>
+												</div>
+
+												<div class="fes-fields">
+													<input id="fes-user_email" type="email" class="email"
+														data-required="yes" data-type="text" required="required"
+														name="user_email" placeholder="" value="" size="40" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-el user_login">
+												<div class="fes-label">
+													<label for="fes-user_login">用户名 <span
+														class="edd-required-indicator">*</span></label> <br /> <span
+														class="fes-help">用户名不支持中文，请使用英文或数字</span>
+												</div>
+
+												<div class="fes-fields">
+													<input class="textfield edd-required-indicator"
+														id="user_login" type="text" data-required="yes"
+														data-type="text" required="required" name="user_login"
+														placeholder="" value="" size="40" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-el password">
+												<div class="fes-label">
+													<label for="fes-password">密码 <span
+														class="edd-required-indicator">*</span></label> <br /> <span
+														class="fes-help">密码长度至少6位</span>
+												</div>
+
+												<div class="fes-fields">
+													<input id="pass1" type="password" class="password"
+														data-required="yes" data-type="text" required="required"
+														name="pass1" placeholder="" value="" size="" />
+												</div>
+
+												<div class="fes-label">
+													<label for="fes-pass2">再次输入密码 <span
+														class="edd-required-indicator">*</span></label> <br />
+												</div>
+
+												<div class="fes-fields">
+													<input id="pass2" type="password" class="password"
+														data-required="yes" data-type="text" required="required"
+														name="pass2" value="" size="" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-el display_name">
+												<div class="fes-label">
+													<label for="fes-display_name">显示昵称 <span
+														class="edd-required-indicator">*</span></label> <br /> <span
+														class="fes-help">昵称可以是中文或任何名字</span>
+												</div>
+
+												<div class="fes-fields">
+													<input class="textfield edd-required-indicator"
+														id="display_name" type="text" data-required="yes"
+														data-type="text" required="required" name="display_name"
+														placeholder="" value="" size="40" />
+												</div>
+
+											</fieldset>
+											<fieldset class="fes-submit">
+												<div class="fes-label">&nbsp;</div>
+												<input type="hidden" id="_wpnonce" name="_wpnonce"
+													value="d4d7d814db" /><input type="hidden"
+													name="_wp_http_referer"
+													value="/%E5%BC%80%E5%A7%8B%E8%B5%9A%E9%92%B1/" /> <input
+													type="hidden" name="action" value="fes_submit_registration">
+													<input type="hidden" name="form_id" value="12"> <input
+														type="submit" class="edd-submit blue button" name="submit"
+														value="成为一个作者" />
+											</fieldset>
+										</div>
+									</form>
+								</td>
+							</tr>
+							</div>
+						</table>
+					</div>
+					<!-- .entry-content --> </article><!-- #post-## --> <nav role="navigation"
+						id="nav-below" class="paging-navigation">
+					<h1 class="screen-reader-text">文章导航</h1>
+
+
+					</nav><!-- #nav-below --> </main>
+					<!-- #main -->
+				</div>
+				<!-- #primary -->
+
+			</div>
+		</div>
+
+
+		[#include "inc_footer.html"/]
+	</div>
+	<!-- #page -->
 </body>
 </html>
 [/#escape]

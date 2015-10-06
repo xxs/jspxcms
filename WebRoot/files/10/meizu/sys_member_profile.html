@@ -5,46 +5,263 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>会员中心_${site.fullNameOrName}</title>
-<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${ctx}/vendor/My97DatePicker/cn_WdatePicker.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+<link rel="stylesheet" id="bbp-default-css"
+	href="_files/css/bbpress.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" id="edd-styles-css" href="_files/css/edd.css"
+	type="text/css" media="all" />
+<link rel="stylesheet" id="edd-points-public-style-css"
+	href="_files/css/style-public.css" type="text/css" media="all" />
+<link rel="stylesheet" id="edd-rp-styles-css"
+	href="_files/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" id="edd-reviews-css"
+	href="_files/css/edd-reviews.css" type="text/css" media="all" />
+<link rel="stylesheet" id="marketify-fonts-css"
+	href="_files/css/b1279010f5bf419692c1cf705d8383a5.css" type="text/css"
+	media="all" />
+<link rel="stylesheet" id="marketify-base-css"
+	href="_files/css/style.css" type="text/css" media="all" />
+<style type="text/css">
+.site-header,.site-footer,.page-header,body.minimal,body.custom-background.minimal,.header-outer,.minimal .entry-content .edd-slg-social-container span legend
+	{
+	background-color: #515a63;
+}
 
+button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.main-navigation .edd-cart .cart_item.edd_checkout a,.page-header .button:hover,.content-grid-download .button:hover,body .marketify_widget_slider_hero .soliloquy-caption a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.nav-previous a:hover i,.nav-next a:hover i,body-footer.light .site-info .site-title,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,#recaptcha_area .recaptchatable a,#recaptcha_area .recaptchatable a:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn
+	{
+	color: #515a63;
+}
+
+button,input[type=reset],input[type=submit],.button,a.button,.fes-button,.edd_price_options input[type=radio]:checked,body #edd-wl-modal input[type=radio]:checked,#edd_checkout_form_wrap fieldset#edd_cc_fields legend,.marketify_widget_featured_popular .home-widget-title span:hover,.marketify_widget_featured_popular .home-widget-title span.active,.entry-content blockquote,.nav-previous a:hover,.nav-next a:hover,body a.edd-wl-action,body a.edd-wl-action.edd-wl-button,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn,.upload_file_button,.fes-avatar-image-btn
+	{
+	border-color: #515a63;
+}
+
+button:hover,input[type=reset]:hover,input[type=submit]:hover,.button:hover,a.button:hover,#edd_checkout_form_wrap fieldset#edd_cc_fields>span:after,.edd-reviews-voting-buttons a:hover,.flex-control-nav a.flex-active,.search-form .search-submit,.fes-pagination a.page-numbers:hover,body a.edd-wl-action.edd-wl-button:hover,.fes-feat-image-btn:hover,.upload_file_button:hover,.fes-avatar-image-btn:hover
+	{
+	background-color: #515a63;
+}
+
+a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.edd-reviews-voting-buttons a,a.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,a.edd_terms_links
+	{
+	color: #4ed0aa;
+}
+
+a.edd-cart-saving-button,input[name=edd_update_cart_submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.download-variable .entry-content .edd-add-to-cart.button.edd-submit:hover,.download-variable .entry-content .edd_go_to_checkout.button.edd-submit:hover,.popup .edd-add-to-cart.button.edd-submit:hover,.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.edd-reviews-voting-buttons a,.edd-fes-adf-submission-add-option-button,#fes-insert-image,#fes-view-comment a,.edd_terms_links,.site-footer.dark .mailbag-wrap input[type=submit],.insert-file-row
+	{
+	border-color: #4ed0aa;
+}
+
+a.edd-cart-saving-button:hover,input[name=edd_update_cart_submit]:hover,.minimal #edd_purchase_submit input[type=submit],.main-navigation .edd-cart .cart_item.edd_checkout a:hover,.minimal a.edd-cart-saving-button,.minimal input[name=edd_update_cart_submit],.minimal .fes-form input[type=submit],.popup .edd_go_to_checkout.button.edd-submit,.popup .edd_go_to_checkout.button.edd-submit:hover,.main-navigation .search-form.active .search-submit,.main-navigation.toggled .search-form .search-submit,.edd-fes-adf-submission-add-option-button:hover,#fes-insert-image:hover,.edd-reviews-voting-buttons a:hover,.minimal #edd_login_submit,.minimal input[name=edd_register_submit],.edd_terms_links:hover,.site-footer.dark .mailbag-wrap input[type=submit],.home-search .page-header .search-submit,.search-form-overlay .search-submit,.marketify_widget_taxonomy_stylized,.insert-file-row
+	{
+	background-color: #4ed0aa;
+}
+
+.site-footer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.light
+,
+{
+background-color
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+#ffffff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
+}
+.content-grid-download .entry-image:hover .overlay,.content-grid-download .entry-image.hover .overlay,.download-image-grid-preview .slides li.active a:before,.download-image-grid-preview .slides li:hover a:before
+	{
+	background: rgba(81, 90, 99, .80);
+	border: 1px solid rgba(81, 90, 99, .80);
+}
+
+.search-form-overlay {
+	background: rgba(81, 90, 99, .90);
+}
+</style>
+<link rel="stylesheet" id="sccss_style-css"
+	href="_files/css/c669707854af4d66811c069b15b106de.css" type="text/css"
+	media="all" />
+<link rel="stylesheet" id="edd-wl-styles-css"
+	href="_files/css/edd-wl.min.css" type="text/css" media="screen" />
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var edd_scripts = {
+		"ajaxurl" : "http:\/\/ymb.me\/wp-admin\/admin-ajax.php",
+		"position_in_cart" : "",
+		"already_in_cart_message" : "\u4f60\u5df2\u7ecf\u5c06\u672c\u5546\u54c1\u6dfb\u52a0\u5230\u8d2d\u7269\u8f66",
+		"empty_cart_message" : "\u60a8\u7684\u8d2d\u7269\u8f66\u662f\u7a7a\u7684\uff01",
+		"loading" : "\u52a0\u8f7d\u4e2d...",
+		"select_option" : "\u8bf7\u9009\u62e9\u4e00\u4e2a\u9009\u9879",
+		"ajax_loader" : "http:\/\/ymb.me\/wp-content\/plugins\/easy-digital-downloads\/assets\/images\/loading.gif",
+		"is_checkout" : "0",
+		"default_gateway" : "alipay",
+		"redirect_to_checkout" : "0",
+		"checkout_page" : "http:\/\/ymb.me\/%e4%bb%98%e6%ac%be\/",
+		"permalinks" : "1"
+	};
+	/* ]]> */
+</script>
+<script type="text/javascript" src="_files/js/edd-ajax.min.js"></script>
+<script type="text/javascript">
+	var RecaptchaOptions = {
+		theme : 'clean',
+	};
+</script>
+<style type="text/css">
+.site-branding .site-title,.site-branding .site-description,.site-header-minimal .site-title,.site-header-minimal .site-description
+	{
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.site-title a,.site-description,.main-navigation a {
+	color: #fff;
+}
+
+.site-title {
+	line-height: 55px
+}
+</style>
 </head>
-<body>
-[#include 'inc_header.html'/]
-<div class="w960 center mt2">
-   <dl class="tbox setting FlLeft">
-    <dt class='light style="border:none;"'><strong>账号管理</strong></dt>
-    <dd class='light'>
-     <ul>
-     	[#include 'inc_my_left.html'/]
-     </ul>
-    </dd>
-   </dl>
-   <div class="FlRight" style="width:760px;">
-   <dl class="tbox  memberinfo" style="margin-top:0px;">
-    <dt class='light'><strong>修改个人信息</strong></dt>
-    <dd class='light'>
-    	<form action="${ctx}/my/profile.jspx" method="post">
-      <input type="hidden" name="nextUrl" value="${ctx}/my.jspx"/>
-    		<table width="100%" cellpadding="0" cellspacing="0" background="0">
-          <tr><td><span>性别</span></td><td><input type="radio" name="gender" value="M" [#if user.gender?? && user.gender=='M'] checked="checked"[/#if]/>男&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="F" [#if user.gender?? && user.gender=='F'] checked="checked"[/#if]/>女&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="" [#if !user.gender??] checked="checked"[/#if]/>保密</td></tr>
-          <tr><td><span>生日</span></td><td><input type="text" name="birthDate" value="${(user.birthDate?string('yyyy-MM-dd'))!}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"/></td></tr>
-          <tr><td><span>自我介绍</span></td><td><textarea name="bio" maxlength="255">${user.bio!}</textarea></td></tr>
-          <tr><td><span>来自哪里</span></td><td><input type="text" name="comeFrom" maxlength="100" value="${user.comeFrom!}"/></td></tr>
-          <tr><td><span>QQ</span></td><td><input type="text" name="qq" maxlength="20" value="${user.qq!}"/></td></tr>
-          <tr><td colspan="2" style="padding-left:230px;"><input type="submit" value="修改"/></td></tr>
-        </table>
-      </form>
-    </dd>
-   </dl>
-   </div>
-</div>
-<div  style="height:190px;"></div>
-[#include 'inc_footer.html'/]
+<body
+	class="page page-id-29 page-template page-template-page-templatesfull-width-php logged-in custom-background fes-page">
+
+	<div id="page" class="hfeed site">
+		<div class="header-outer">[#include 'inc_header.html'/]</div>
+		<!-- .header-outer -->
+		<div class="container">
+			<div id="content" class="site-content row">
+
+				<div id="primary" class="content-area col-sm-12">
+					<main id="main" class="site-main" role="main"> <article
+						id="post-29"
+						class="post-29 page type-page status-publish hentry truncate-title">
+					<div class="entry-content">
+						<nav class="fes-vendor-menu">
+						<ul>[#include 'inc_my_left.html'/]
+						</ul>
+						</nav>
+						<h1 class="fes-headers" id="fes-profile-page-title">
+							<span>简介</span>
+						</h1>
+						<form class="fes-profile-form" action="${ctx}/my/profile.jspx"
+							method="post">
+							<div class="fes-form">
+								<fieldset class="fes-el user_url">
+									<div class="fes-label">
+										<label for="fes-user_url">你的网站</label> <br> <span
+											class="fes-help">在这里输入你的网站地址，让别人了解你更多</span>
+									</div>
+
+									<div class="fes-fields">
+										<input id="fes-user_url" type="url" class="url"
+											data-required="no" data-type="text" name="user_url"
+											placeholder="" value="" size="40">
+									</div>
+
+								</fieldset>
+								<fieldset class="fes-el description">
+									<div class="fes-label">
+										<label for="fes-description">履历信息</label> <br>
+									</div>
+
+									<div class="fes-fields">
+										<textarea class="textareafield" id="description"
+											name="description" data-required="no" data-type="textarea"
+											placeholder="" rows="5" cols="25"></textarea>
+									</div>
+
+								</fieldset>
+								<fieldset class="fes-el eddc_user_paypal">
+									<div class="fes-label">
+										<label for="fes-eddc_user_paypal">支付宝收款帐号</label> <br>
+									</div>
+
+									<div class="fes-fields">
+										<input id="fes-eddc_user_paypal" type="email" class="email"
+											data-required="no" data-type="text" name="eddc_user_paypal"
+											placeholder="" value="" size="40">
+									</div>
+
+								</fieldset>
+								<fieldset class="fes-submit">
+									<div class="fes-label">&nbsp;</div>
+									<input type="submit" class="edd-submit blue button"	name="submit" value="更新个人资料">
+								</fieldset>
+							</div>
+						</form>
+
+					</div>
+					<!-- .entry-content --> </article><!-- #post-## --> <nav role="navigation"
+						id="nav-below" class="paging-navigation">
+					<h1 class="screen-reader-text">文章导航</h1>
+
+
+					</nav><!-- #nav-below --> </main>
+					<!-- #main -->
+				</div>
+				<!-- #primary -->
+
+			</div>
+		</div>
+	</div>
+	[#include 'inc_footer.html'/]
 </body>
 </html>
 [/#escape]
