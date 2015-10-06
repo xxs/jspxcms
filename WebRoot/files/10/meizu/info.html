@@ -70,7 +70,7 @@ var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","positi
       <a href="${info.getSourceUrl()!}" class="button" target="_blank">${info.getSource()!}</a> 
      </div> 
      <div class="download-info"> 
-      <span class="edd_price" id="edd_price_677">CNY 50.00</span> 
+      <span class="edd_price" id="edd_price_677">￥ ${info.customs['price'] }.00</span> 
      </div> 
      <div class="featured-image container"> 
       <div class="download-image flexslider"> 
@@ -87,7 +87,7 @@ var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","positi
     <div id="content" class="site-content row"> 
      <section id="primary" class="content-area col-md-8 col-sm-7 col-xs-12"> 
       <main id="main" class="site-main" role="main"> 
-       <h2 class="section-title"><span>关于 Download</span></h2> 
+       <h2 class="section-title"><span>关于 ${info.title }</span></h2> 
        <article id="post-677" class="post-677 type-download status-publish format-standard has-post-thumbnail hentry truncate-title edd-download edd-download-cat-wordpress%e4%b8%ad%e6%96%87%e4%b8%bb%e9%a2%98 edd-download-cat-wordpress%e4%b8%bb%e9%a2%98 edd-download-tag-%e4%ba%a7%e5%93%81%e5%b1%95%e7%a4%ba edd-download-tag-%e4%bc%81%e4%b8%9a edd-download-tag-%e5%85%ac%e5%8f%b8 edd-download-tag-%e5%95%86%e5%8a%a1 edd-download-tag-%e8%90%a5%e9%94%80"> 
         <div class="entry-content"> 
          <div style="display:none" class="edd-review-microdata" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> 
@@ -97,7 +97,7 @@ var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","positi
          <div itemscope="" itemtype="http://schema.org/Product" itemprop="description">
           <div class="edd-points-product-message">
            购买这个作品并立即获得 
-           <strong>50.00</strong> 积分!
+           <strong>${info.customs['price'] }</strong> 积分!
           </div>
           <p>NORMA WordPress主题是一个企业、公司主题，适用于任何类型的企业，响应（自适应）式设计,视网膜支持，5个首页布局，自定义布局选项，高级主题选项面板，2个首页幻灯片，首页轮播，博客文章支持，众多的简码，8个自定义小工具。</p> 
           <form id="edd_purchase_677" class="edd_download_purchase_form download-variable" method="post"> 
