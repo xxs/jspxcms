@@ -67,7 +67,7 @@ var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","positi
      </div> 
      <div class="download-actions"> 
       <a href="#buy-now-677" class="button buy-now popup-trigger">加入购物车</a>
-      <a href="http://normawp.themerex.net/" class="button" target="_blank">演示</a> 
+      <a href="${info.getSourceUrl()!}" class="button" target="_blank">${info.getSource()!}</a> 
      </div> 
      <div class="download-info"> 
       <span class="edd_price" id="edd_price_677">CNY 50.00</span> 
@@ -158,7 +158,7 @@ var edd_scripts = {"ajaxurl":"http:\/\/ymb.me\/wp-admin\/admin-ajax.php","positi
         <div class="download-author"> 
          <a class="author-link" href="http://ymb.me/作者/themerex/" rel="author"><img src="picture/themerex-avatar.jpg" alt="" height="130" width="130" class="avatar" /></a> 
          <a class="author-link" href="http://ymb.me/作者/themerex/" rel="author">${info.getAuthor()!}</a> 
-         <span class="author-joined">作者注册日期： ${fulltextInfo.publishDate?string('yyyy-MM-dd')}</span> 
+         <span class="author-joined">作者注册日期： ${fulltextInfo.publishDate?string('yyyy-MM-dd')} </span> 
         </div> 
         <div class="download-ratings full"> 
          <a href="#comments"><strong> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> <i class="icon-star2"></i> </strong> 平均评分</a> 
