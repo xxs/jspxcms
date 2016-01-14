@@ -41,7 +41,7 @@
 .course li.odd .course_text{ border-left: solid #e8343b 1px; padding-left: 20px;}
 .course li.even .course_text{ border-right: solid #e8343b 1px; padding-right: 20px;}
 
-.banner_about_us{background: url("../images/banner_01.jpg") no-repeat center;}
+.banner_about_us{background: url("../images/banner_02.jpg") no-repeat center;}
 
 #main-slider .item{height: 670px !important;}
 

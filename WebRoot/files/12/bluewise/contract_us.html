@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
-<title>${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName}</title>
 <!--[if lte IE 7]>
     <script type="text/javascript">
         window.location.href("kill-ie.html");
@@ -20,11 +20,12 @@
 <!-- Bootstrap -->
 <link href="_files/css/site.css" rel="stylesheet">
 <link href="_files/css/base.css" rel="stylesheet">
-<link href="_files/css/news_list.css" rel="stylesheet">
+<link href="_files/css/contract_us.css" rel="stylesheet">
 
 <script src="_files/js/jquery.js"></script>
-<script src="_files/js/news_list.js"></script>
 <script src="_files/js/framework.js"></script>
+
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -38,45 +39,24 @@
     </script>
 </head>
 <body>
-[#include "inc_header.html"/]
-<!--内容 开始-->
+	[#include "inc_header.html"/]
+	<!--内容 开始-->
 	<section>
 		<!--banner 开始-->
-		<div class="banner banner_news_list" id="banner"></div>
+		<div class="banner banner_contract_us" id="banner"></div>
+		<a href="#" target="_blank"
+			title="点击跳转到百度地图" class="map_jump"></a>
 		<!--banner 结束-->
-
-		<div class="banner_text"></div>
-
-		<div class="content">
-			<div class="main">
-			[@NodeList parentId=node.id;nodeList]
-			[#list nodeList as node]
-		 		<div class="page_title">
-					<span class="h1">${node.name}
-						<div></div>
-					</span>
+		<div class="content" style="padding-bottom: 0px;">
+			<div class="main contract_us">
+				<div class="contact_info">
+					[#noescape]${node.text}[/#noescape]
 				</div>
-				<div class="list" id="newsList1">
-					<!--新闻列表第一页 开始-->
-					[@InfoList nodeId=node.id limit=10;list] 
-					<ul class="active">
-			  		 [#list list as info]
-			  	 		<li>
-			  	 			<a href="${info.url}" target="_blank">${info.title}<span class="date">${info.publishDate?string('yyyy/MM/dd')}</span></a>
-			            </li>
-			  		 [/#list]
-		  	 	 	</ul>
-		  	 	 	[/@InfoList]
-					<!--新闻列表第一页 结束-->
-				</div>
-				<div style="height: 120px;"></div>
-			[/#list]
-			[/@NodeList]
 			</div>
 		</div>
 	</section>
 	<!--内容 结束-->
-[#include "inc_footer.html"/]
+	[#include "inc_footer.html"/]
 </body>
 </html>
 [/#escape]
