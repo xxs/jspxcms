@@ -1,0 +1,13 @@
+﻿.list ul{line-height: 40px; list-style: none; padding: 0px; display: none;}
+.list ul.active{display: block;}
+.list ul li{text-align: left; padding-left: 40px; background: url("../images/grey.png") no-repeat 18px 18px;}
+.list ul li:hover{color: #db251d; background-image: url("../images/red.png");}
+.list ul li a{width: 860px; display: block;}
+.list ul li a:hover{color: #db251d !important;}
+.list ul li a:visited{color: #999999;}
+.list ul li .date{ width: 78px; float: right;}
+
+.news_list_pages{text-align: right;}
+.news_list_pages .pagination{margin: 0px;}
+
+.banner_news_list{background: url("../images/banner_01.jpg") no-repeat center;}

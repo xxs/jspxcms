@@ -1,0 +1,187 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName}</title>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+    window.location.href("kill-ie.html");
+</script>
+<![endif]-->
+
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+<link href="favicon.ico" type="image/x-icon" rel=icon>
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+
+<!-- core CSS -->
+<link href="_files/css/bootstrap.css" rel="stylesheet">
+<link href="_files/css/animate.min.css" rel="stylesheet">
+
+<link href="_files/css/responsive.css" rel="stylesheet">
+<link href="_files/css/base.css" rel="stylesheet">
+<link href="_files/css/site.css" rel="stylesheet">
+<link href="_files/css/main.css" rel="stylesheet">
+
+<script src="_files/js/jquery.js"></script>
+<script src="_files/js/framework.js"></script>
+
+<!--[if lt IE 9]>
+<script src="_files/js/html5shiv.js"></script>
+<script src="_files/js/respond.min.js"></script>
+<![endif]-->
+<script>
+    $(function(){
+        $("#solutionItem").bgVisual({isBackgroundImg: true});
+    });
+</script>
+
+</head>
+<body class="homepage">
+[#include "inc_header.html"/]
+<!--头部导航 结束-->
+	<section class="no-margin">
+		<div id="solution-slider" class="carousel slide mb_0">
+			<div class="carousel-inner">
+
+				<div id="solutionItem" class="item active"
+					style="background: url(${node.smallImage}) no-repeat center;">
+					<div class="container">
+						<div class="row slide-margin">
+							<div class="col-sm-12">
+								<div class="carousel-content">
+									<h1 class="animation animated-item-1">${node.metaKeywords}</h1>
+									<div style="height: 65px;"></div>
+									<h4 class="animation animated-item-3"
+										style="margin-top: -10px; font-family: 'Microsoft Yahei';">${node.metaDescription }</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/.item-->
+			</div>
+
+			<div class="container" id="solution-inner">
+				<div class="" style="width: 100%">
+					<div class="solution-tab" id="solution-tab">
+						[@InfoList nodeId=176 limit=10;list]
+					 	  [#list list as info]
+					 	  	<a class="solution-tab0${info_index+1 } " style="outline: none; margin-top: 30px"
+								data-toggle="tab" href="#solution_${info_index+1 }" title="${info.title }"><i class="icon"></i>
+								<div class="solutionTabText">${substring(info.title,17,'...')}</div>
+							</a> 
+					      [/#list]
+					    [/@InfoList]
+					</div>
+				</div>
+				<div class="solution-tab-hidden animated">
+					<div class="solution-tab" id="solution-tab-fixed">
+						[@InfoList nodeId=176 limit=10;list]
+					 	  [#list list as info]
+					 	  	<a class="solution-tab0${info_index+1 }" data-toggle="tab" href="#solution_${info_index+1 }" style="outline: none;" title="${info.title }">
+								<i class="icon"></i>
+								<div class="solutionTabText">${substring(info.title,17,'...')}</div>
+							</a>
+					      [/#list]
+					    [/@InfoList]
+					</div>
+				</div>
+			</div>
+
+			<!--/.carousel-inner-->
+		</div>
+		<!--/.carousel-->
+	</section>
+	<!--/#main-slider-->
+	<section>
+		<div>
+			[@InfoList nodeId=176 limit=10;list]
+			  [#list list as info]
+			  	<div class="tab-pane solutionsTabContentSlide" id="solution_${info_index+1 }">[#noescape]${info.text}[/#noescape]</div>
+			  [/#list]
+			[/@InfoList]
+			<div style="height: 160px;"></div>
+		</div>
+		<!-- tab-content -->
+	</section>
+[#include "inc_footer.html"/]
+	<script src="_files/js/jquery.js"></script>
+	<script src="_files/js/bootstrap.js"></script>
+
+	<script src="_files/js/wow.min.js"></script>
+
+	<script type="text/javascript">
+    // 选项卡 固定浏览器顶部
+    var tabTop = $("#solution-tab").offset().top
+            - $(".navbar-default").height()+50; // #solution-tab 距离顶部的距离 -
+    // 固定nav的高度
+    $(window).scroll(function() { // 滚动窗口
+        var scrollTop = $(document).scrollTop(); // 滚动条距离窗口顶部的距离
+        if (scrollTop >= tabTop) { // 当 滚动条距离串口顶部的距离的大于等于 #solution-tab 距离顶部的距离
+            // - 固定nav的高度， 红色背景固定条出现，反之消失。
+            $(".solution-tab-hidden").addClass("solution-tab-fixed");
+            $("#solution-tab").removeClass("solution-tab-animate");
+            $("#solution-tab").css("visibility",'hidden');
+        } else {
+            $(".solution-tab-hidden").removeClass("solution-tab-fixed");
+            $("#solution-tab").addClass("solution-tab-animate");
+            $("#solution-tab").css("visibility",'visible');
+        }
+    });
+
+    function goToIndex() {
+        if("ActiveXObject" in window){
+             addCookie("indexFlag", true);
+         }else{
+             localStorage.indexFlag=true;
+         } 
+
+         window.location.href="index.html";
+    }
+
+    function getCookie(objName) {// 获取指定名称的cookie的值
+        var arrStr = document.cookie.split("; ");
+        for ( var i = 0; i < arrStr.length; i++) {
+            var temp = arrStr[i].split("=");
+            if (temp[0] == objName)
+                return unescape(temp[1]);
+        }
+    }
+
+    function addCookie(objName, objValue, objHours) { // 添加cookie
+        var str = objName + "=" + escape(objValue);
+        if (objHours > 0) { // 为时不设定过期时间，浏览器关闭时cookie自动消失
+            var date = new Date();
+            var ms = objHours * 3600 * 1000;
+            date.setTime(date.getTime() + ms);
+            str += "; expires=" + date.toGMTString();
+        }
+        document.cookie = str;
+    }
+
+    $("#solution-tab").find("a:eq("+ 0 +")").addClass("active");
+    $("#solution-tab-fixed").find("a:eq("+ 0 +")").addClass("active");
+    // tab 选项卡 hover 和active 增加样式
+    $(".solution-tab a").click(function(e){
+        e.preventDefault();
+        $(this).siblings().removeClass("active");
+        $("#solution-tab a,#solution-tab-fixed a").removeClass("active");
+        var index = $(this).index();
+        $("#solution-tab").find("a:eq("+ index +")").addClass("active");
+        $("#solution-tab-fixed").find("a:eq("+ index +")").addClass("active");
+
+        var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if(winScroll>550){
+            window.scrollTo(100,550);
+        }
+
+    });
+
+    </script>
+</body>
+</html>
+[/#escape]

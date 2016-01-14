@@ -1,0 +1,39 @@
+﻿i{background: url("../images/join_us_icon.png") no-repeat;display: block; position: absolute;}
+
+.strategy{ margin-top: 30px; margin-bottom: 120px;}
+.strategy ul{ list-style: none; padding-left: 7px;}
+.strategy ul li{line-height: 25px; height: 50px;}
+.strategy ul li:not(:last-child) {margin-bottom: 60px;}
+.strategy .icon{ width: 50px; height: 50px; left: -75px; top: -13px;}
+.strategy .strategy_title{height: 50px; line-height: 50px; position: relative;margin-left: 75px; margin-right: 90px;}
+.strategy ul li p{width: 630px; float: right; margin: 0px;}
+
+.icon.develop{background-position:0px 0px;}
+.icon.payment{background-position:0px -50px;}
+.icon.talents{background-position:0px -100px;}
+.icon.care{background-position:0px -150px;}
+
+.hr_email{ margin: 15px auto 30px -55px; padding-left: 55px; text-align: center; height: 22px; line-height: 22px; }
+.hr_email span{position: relative; font-size: 18px; color: #2b2c2f;}
+.hr_email .icon{background-position: -74px 0px; width: 30px; height: 22px;  left: -55px;}
+
+.jobs{}
+.job_icon_hd{ width: 45px;}
+.job_name_hd{ width: 450px;}
+.job_type_hd{ width: 300px;}
+.job_addr_hd{ width: 105px;}
+
+.jobs table thead tr th{ padding: 30px 0px;}
+.jobs table tbody tr.odd td{ height: 30px; line-height: 30px;}
+.jobs table tbody tr.odd td:first-child{}
+.jobs table tbody tr.odd td:first-child .icon{ width: 24px; height: 24px; background-position: -50px -24px; position: relative; cursor: pointer;}
+.jobs table tbody tr.odd td:first-child .icon.job_content_expanded{background-position:-50px 0px;}
+
+.panel{background: inherit; border: none; margin: 0px;box-shadow: none; -webkit-box-shadow: none;}
+.job_content{ /*padding: 30px 0px 50px 45px;*/ padding: 0px 0px 0px 45px;}
+.job_content div:first-child{ height: 14px; line-height: 14px;}
+.job_content p{margin: 0px;}
+
+.banner_join_us{ background: url("../images/banner.jpg") no-repeat center;}
+
+.text_emphasize{cursor: pointer;}

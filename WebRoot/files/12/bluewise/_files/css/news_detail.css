@@ -1,0 +1,10 @@
+﻿.main.news_detail{padding-top: 130px;}
+
+.return_list{text-align: right; margin-bottom: 40px;}
+
+.news_title{text-align: center; margin-bottom: 60px;}
+.news_content p{text-indent:2em; font-size: 14px; line-height: 25px; margin: 20px 0px;}
+.news_img{text-align: center;}
+.news_img img{max-width: 900px;}
+.img_title{margin: 20px 0px 40px;}
+.author{text-align: right; padding: 0px 100px;}

@@ -1,0 +1,247 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="author" content="atarm" />
+	<title>${site.fullNameOrName} -- Powerd by Jspxcms</title>
+	<meta name="description" content="这是JSPXCMS的演示站点，包含了新闻、图集、视频、下载、在线留言等模块，能够轻松方便构件您的站点。" />
+	<meta name="keywords" content="演示站 JSPX 站长 资讯 创业 小说程序 运营 管理 " />
+	<link href="favicon.ico" type="image/x-icon" rel=icon>
+	<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+	<!-- core CSS -->
+	<link href="_files/css/bootstrap.css" rel="stylesheet">
+	<link href="_files/css/animate.min.css" rel="stylesheet">
+	<link href="_files/css/responsive.css" rel="stylesheet">
+	<link href="_files/css/base.css" rel="stylesheet">
+	<link href="_files/css/site.css" rel="stylesheet">
+	<link href="_files/css/main.css" rel="stylesheet">
+	<script src="_files/js/jquery.js"></script>
+	<script src="_files/js/jquery-migrate-1.1.1.js"></script>
+	<script src="_files/js/framework.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="_files/js/html5shiv.js"></script>
+	    <script src="_files/js/respond.min.js"></script>
+    <![endif]-->
+
+	<script type="text/javascript">
+		var isSupportedBro = true;
+		var isIE8 = false;
+	</script>
+	<script src="_files/js/bootstrap.js"></script>
+	<script src="_files/js/main.js"></script>
+	<script src="_files/js/wow.min.js"></script>
+	<script src="_files/js/countup.min.js"></script>
+	<!--[if lte IE 7]>
+	    <script type="text/javascript">
+	        window.location.href("kill-ie.html");
+	    </script>
+    <![endif]-->
+	<!--[if lte IE 8]>
+	    <script type="text/javascript">
+	        //isSupportedBro = false;
+	        isIE8 = true;
+	    </script>
+    <![endif]-->
+
+</head>
+<body class="homepage">
+	[#include "inc_header.html"/]
+	<section class="no-margin">
+		<div id="main-slider" class="carousel slide">
+			<div class="carousel-inner">
+				[@InfoPage nodeId=173 pageSize=20;pagedList]
+			  		[#list pagedList.content as info]
+			  			<div class="item [#if info_index==0]active[/#if] " style="background-image: url(${info.smallImage});">
+							<div class="container">
+								<div class="row slide-margin">
+									<div class="col-sm-12">
+										<div class="carousel-content">
+											<h1 class="animation animated-item-1">${info.title}</h1>
+		
+											<div class="placeholderSubTitle"></div>
+		
+											<h2 class="animation animated-item-2">${info.subtitle}</h2>
+		
+											<div class="placeholderLogin"></div>
+		
+											<a id="btn_login"
+												href="https://payment.china-clearing.com/PaymentUser/index.htm"
+												target="_blank"></a>
+											<!--
+		                                    <a href="#" id="btn_login" data-toggle="modal" data-target="#loginModal"></a>
+		                                     -->
+										</div>
+									</div>
+		
+								</div>
+							</div>
+						</div>
+			  		[/#list]
+		 	 	[/@InfoPage]
+				<!--/.item-->
+			</div>
+			<!--/.carousel-inner-->
+			<a class="carousel-control left" href="#main-slider"
+				data-slide="prev"> </a> <a class="carousel-control right"
+				href="#main-slider" data-slide="next"> </a>
+		</div>
+		<!--/.carousel-->
+
+		<!-- 模态框（Modal） -->
+
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog"
+				style="width: 350px; height: 360px; margin-top: 15%;">
+				<div class="modal-content" style="width: 350px; height: 360px">
+					<div class="modal-header" style="border-width: 0px">
+						<a class="" id="btn_close" data-dismiss="modal"></a>
+						<div style="height: 10px"></div>
+						<table>
+							<tr>
+								<td width="50%"><a href="#" data-toggle="tab"
+									style="margin-left: 40px; font-size: 18px; font-family: 'Microsoft Yahei'; color: #ffffff">个人登录</a>
+								</td>
+								<td width="50%"><a href="#" data-toggle="tab"
+									style="margin-left: 40px; font-size: 18px; font-family: 'Microsoft Yahei'; color: #666870">企业登录</a>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="modal-body" style="width: 100%; margin-top: -8px;">
+
+						<form action="#" method="post">
+							<div class="form-group">
+
+								<div class="col-xs-12  " style="height: 50px;">
+									<div class="input-group"
+										style="width: 228px; margin-left: 23px !important">
+										<span class="input-group-addon"
+											style="background: #000; border-color: #666870;"><span
+											class="glyphicon glyphicon-user"></span></span> <input type="text"
+											id="username" name="username" class="form-control"
+											placeholder="用户名"
+											style="background: #000; border-color: #666870; border-left: 0px;">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12  " style="height: 50px;">
+									<div class="input-group"
+										style="width: 228px; margin-left: 23px !important">
+										<span class="input-group-addon"
+											style="background: #000; border-color: #666870;"><span
+											class="glyphicon glyphicon-lock"></span></span> <input type="text"
+											id="password" name="password" class="form-control"
+											placeholder="密码"
+											style="background: #000; border-color: #666870; border-left: 0px;">
+									</div>
+								</div>
+							</div>
+							<div>
+								<table>
+									<tr>
+										<td><input type="text" id="" name="" class="form-control"
+											placeholder="验证码"
+											style="width: 80px; height: 40px; background: #000; border-color: #666870; border-left: 0px; margin-left: 40px; border-left: solid 1px;">
+										</td>
+										<td><img src="picture/validation.png"
+											style="margin-left: 10px"></td>
+										<td><img src="picture/login_14.png"
+											style="margin-left: 10px"></td>
+									</tr>
+								</table>
+
+							</div>
+							<div class="form-group form-actions">
+								<div class=" " style="">
+									<button id="btn_sub" class="btn btn-sm btn-info">登录</button>
+								</div>
+							</div>
+							<div class="form-group">
+
+								<div class="col-xs-4 link" style="margin-left: 20px;">
+									<p class="text-center remove-margin">
+										<a href="javascript:void(0)" style="color: #666870">没有帐号？</a>
+									</p>
+								</div>
+								<div class="col-xs-4 link" style="margin-left: -20px;">
+									<p class="text-center remove-margin">
+										<a href="javascript:void(0)"
+											style="color: #db251d; font-family: 'Microsoft Yahei';">免费注册</a>
+									</p>
+								</div>
+								<div class="col-xs-4 link" style="margin-left: -20px;">
+									<p class="text-center remove-margin">
+										<a href="javascript:void(0)"
+											style="color: #db251d; font-size: 14px; font-family: 'Microsoft Yahei';">忘记密码</a>
+									</p>
+								</div>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<!--/#main-slider-->
+	<div class="">
+		<div class="  " id="businessH"
+			style="width: 100%; background-color: #DB251D; text-align: center; padding-top: 10px; z-index: 999; position: relative;">
+			<h1 class="redDivh1" style="">可信赖的互联网金融服务</h1>
+
+			<h3 class="redDivh2" style="">Securing Your Business Payment</h3>
+		</div>
+	</div>
+
+	<div style="height: 125px;"></div>
+	<div class="clearfix" id="numContainer"
+		style="width: 100%; min-width: 1000px;">
+		<div class="laySpace" style=""></div>
+		<div class="lay1" style="">
+			<div class="numberDiv">
+				<div class="numberConner" style="margin-right: 50px;">+</div>
+				<div class="countUpNum1 " id="countUpNum1">500</div>
+				<hr class="mumLine" style="" />
+			</div>
+			<div class="numberDes font_b">重点行业</div>
+		</div>
+		<div class="lay1" style="">
+			<div class="numberDiv">
+				<div class="numberConner" style="margin-right: 28px;">+</div>
+				<div class="countUpNum " id="countUpNum2">500</div>
+				<hr class="mumLine" style="" />
+			</div>
+			<div class="numberDes font_b">核心企业</div>
+		</div>
+		<div class="lay1" style="">
+			<div class="numberDiv">
+				<div class="numberConner" style="margin-right: 28px;">+</div>
+				<div class="countUpNum " id="countUpNum3">500</div>
+				<hr class="mumLine" style="" />
+			</div>
+			<div class="numberDes font_b">合作银行</div>
+		</div>
+		<div class="lay1" style="">
+			<div class="numberDiv">
+				<div class="numberConner" style="margin-right: 12px;">万+</div>
+				<div class="countUpNum " id="countUpNum4">500</div>
+				<hr class="mumLine" style="" />
+			</div>
+			<div class="numberDes font_b">企业客户</div>
+		</div>
+
+
+	</div>
+
+	<div style="height: 100px;"></div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

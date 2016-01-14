@@ -1,0 +1,74 @@
+	<script type="text/javascript">
+		function getBroInfo() {
+			var Sys = {};
+			var ua = navigator.userAgent.toLowerCase();
+
+			var s;
+			(s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1]
+					: (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1]
+							: (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1]
+									: (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1]
+											: (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1]
+													: (s = ua
+															.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1]
+															: 0;
+
+			if (Sys.ie)
+				return {
+					"name" : "IE",
+					"version" : Sys.ie
+				};
+			if (Sys.firefox)
+				return {
+					"name" : "Firefox",
+					"version" : Sys.firefox
+				};
+			if (Sys.chrome)
+				return {
+					"name" : "Chrome",
+					"version" : Sys.chrome
+				};
+			if (Sys.opera)
+				return {
+					"name" : "Opera",
+					"version" : Sys.opera
+				};
+			if (Sys.safari)
+				return {
+					"name" : "Safari",
+					"version" : Sys.safari
+				};
+			return {
+				"name" : "Unknow",
+				"version" : "Unknow"
+			};
+
+		}
+
+	</script>
+	<!--头部导航 开始-->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!--LOGO 开始-->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="javascript:;"> <img
+					src="_files/picture/icon_03_03.png" />
+				</a>
+			</div>
+			<!--LOGO 结束-->
+			<!--导航 开始-->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					[@NodeList;list]
+        				<li class="active"><a href='${ctx}/'>首页</a></li>  
+						[#list list as node]
+		 		 		<li><a href="${node.url}">${node.name}</a></li>
+						[/#list]
+					[/@NodeList]    
+				</ul>
+			</div>
+			<!--导航 结束-->
+		</div>
+	</nav>
+	<!--头部导航 结束-->

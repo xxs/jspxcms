@@ -1,0 +1,50 @@
+﻿.main.about_us{width: 100%;}
+
+.introduction{width: 900px; margin: 0px auto;}
+.introduction span{display: inline-block;}
+.introduction_content{width: 630px;}
+.introduction_content p{margin-bottom: 0px;}
+.introduction_content p:not(:first-child){margin-top: 24px;}
+.introduction img{max-width: 229px; vertical-align: top; margin-left: 36px;}
+.colon{ width: 50px; height: 38px; background: url("../images/colon.png"); display: inline-block;}
+
+.culture{ height: 320px; background-color: #dc251f; padding: 70px 0px;}
+.culture_content{width: 100%; height: 180px; margin: 0px auto;}
+.culture_content ul{ list-style: none; padding: 20px 0px 0px;}
+.culture_content ul li{ width: 33%; float: left; text-align: center; position: relative;}
+.culture_content ul li p{ font-size: 18px; color: #ffffff; margin-bottom: 5px;}
+.culture_content ul li span{display: block; width: 1px; height: 180px; top: -20px; right: 0; background: #e35d52; position: absolute;}
+.culture_content .title{ font-family: "Cpcn Font Normal"; font-size: 30px; color: #ffffff; margin-bottom: 30px;}
+
+.course{width: 900px; margin: 30px auto 0px; list-style: none; padding: 0px;}
+.course_text{width: 265px;}
+.course_square{ width: 6px; height: 29px; background-color: #e8343b;}
+.course_year{ width: 135px; height: 60px; background: url("../images/years.png") no-repeat; margin: 0px 40px;}
+.year_2015{background-position:0px -360px;}
+.year_2014{background-position:0px -300px;}
+.year_2013{background-position:0px -240px;}
+.year_2012{background-position:0px -180px;}
+.year_2011{background-position:0px -120px;}
+.year_2010{background-position:0px -60px;}
+.year_2005{background-position:0px 0px;}
+
+.course li.odd .course_text,
+.course li.odd .course_square,
+.course li.odd .course_year{float: right;}
+.course li.even .course_text,
+.course li.even .course_square,
+.course li.even .course_year{float: left;}
+
+.course li.odd .course_text{text-align: left;}
+.course li.even .course_text{text-align: right;}
+
+.course li.odd .course_text{ border-left: solid #e8343b 1px; padding-left: 20px;}
+.course li.even .course_text{ border-right: solid #e8343b 1px; padding-right: 20px;}
+
+.banner_about_us{background: url("../images/banner_01.jpg") no-repeat center;}
+
+#main-slider .item{height: 670px !important;}
+
+.modal-dialog {
+    width: 630px;
+}

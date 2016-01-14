@@ -1,0 +1,70 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName}</title>
+<!--[if lte IE 7]>
+    <script type="text/javascript">
+        window.location.href("kill-ie.html");
+    </script>
+    <![endif]-->
+
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+<link href="favicon.ico" type="image/x-icon" rel=icon>
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+
+<!-- Bootstrap -->
+<link href="_files/css/site.css" rel="stylesheet">
+<link href="_files/css/base.css" rel="stylesheet">
+<link href="_files/css/about_us.css" rel="stylesheet">
+<link href="_files/css/responsive.css" rel="stylesheet">
+
+<script src="_files/js/jquery.js"></script>
+<script src="_files/js/bootstrap.js"></script>
+<script src="_files/js/news_list.js"></script>
+<script src="_files/js/framework.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="_files/js/html5shiv.js"></script>
+    <script src="_files/js/respond.min.js"></script>
+    <![endif]-->
+	<script type="text/javascript">
+        $(function(){
+            $("#banner").bgVisual();
+        });
+    </script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<!--内容 开始-->
+	<section>
+		<!--banner 开始-->
+		<div class="banner banner_about_us" id="banner"></div>
+		<!--banner 结束-->
+
+		<div class="banner_text">
+			<div class="banner_text_title">
+				<img src="${node.smallImage}" />
+			</div>
+			<div class="banner_text_sub_title">
+				<p>${node.metaKeywords}</p>
+				<p>${node.metaDescription }</p>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="main about_us">
+				[#noescape]${node.text}[/#noescape]
+			</div>
+		</div>
+	</section>
+	<!--内容 结束-->
+	[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

@@ -1,0 +1,39 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js" ></script>
+</head>
+<body>
+[#include "inc_header.html"/]
+    <div class="w960 center clear mt1">
+        <div class="position">当前位置：<a href="${ctx}/">首页</a>&nbsp;»&nbsp;<a href="#">评论</a></div>
+        	<div style="border:1px solid #DADADA;">
+   				<h1 style="text-align:center; margin:20px 0px;"><a href="${anchor.url}">${anchor.title}</a></h1>
+				<p style="margin:20px 50px; border:1px #94cfe4 solid; background-color:#f2f5f9;padding:10px 20px; text-indent:2em;">
+                	${anchor.description}
+                 </p>
+				<div style="padding:0px 50px;">
+				[@CommentPage fid=Param.fid;pagedList]
+				<h2 style="margin-bottom:20px;">网友评论:</h2>
+				<ul>
+					[#list pagedList.content as comment]
+					<li style=" border-bottom:1px dashed #94cfe4; margin-bottom:10px;">
+						<div>${comment.creator.username}:&nbsp;&nbsp;${comment.text!?html}</div>
+						<p style="color:#ABA9A2; margin-top:10px;">${comment.creationDate?string("yyyy-MM-dd mm:ss")}</p>
+				  </li>
+					[/#list]
+				</ul>
+				[/@CommentPage]
+              </div>
+	 </div>
+  </div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

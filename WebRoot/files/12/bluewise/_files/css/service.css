@@ -1,0 +1,62 @@
+﻿.main.service{ width: 100%;}
+.banner_service{ background: url("../images/banner_01.jpg") no-repeat center;}
+
+.banner_text_title{ height: 154px; color: #ffffff;}
+
+.business_rule {padding-top: 30px; width: 900px; margin: 0 auto;}
+.business_rule h2 {margin-bottom: 15px;}
+.business_rule ul{ list-style: none; padding: 0px 90px;}
+.business_rule ul li:not(:last-child){ margin-bottom: 65px;}
+.business_rule ul li p {margin: 0px;}
+
+.service_contract{ width: 100%; height: 590px; background-color: #efefef;}
+.service_contract_inner{ width: 900px; margin: 0 auto; padding: 62px 0px 62px 60px;}
+.service_telephone_email{ float: left; padding-top: 141px;}
+
+.service_price{ width: 900px; margin: 0 auto;}
+.service_price > div { width: 25%; float: left; text-align: center;}
+.service_price > div > div { background: url("../images/price.png") no-repeat; width: 140px; height: 140px; margin: 0 auto;}
+.service_price > div > div.opening_fee{}
+.service_price > div > div.year_fee{ background-position: -250px 0px;}
+.service_price > div > div.company_fee{ background-position: -490px 0px;}
+.service_price > div > div.card_fee{ background-position: -740px 0px;}
+.sub_title{ height: 68px; line-height: 68px;}
+
+.bank_list{width: 960px; margin: 0 auto;}
+.bank_list ul{ list-style: none; padding: 0px;}
+.bank_list ul li{ float: left;}
+.bank{ display: block; width: 210px; height: 60px; background: url("../images/bank_list.png") no-repeat;}
+.bank:hover{background: url("../images/bank_on_list.png") no-repeat;}
+.bank_11{}
+.bank_12, .bank_12:hover{ background-position: -210px 0px;}
+.bank_13, .bank_13:hover{ background-position: -420px 0px;}
+.bank_14, .bank_14:hover{ background-position: -630px 0px;}
+
+.bank_21, .bank_21:hover{ background-position: 0px -60px;}
+.bank_22, .bank_22:hover{ background-position: -210px -60px;}
+.bank_23, .bank_23:hover{ background-position: -420px -60px;}
+.bank_24, .bank_24:hover{ background-position: -630px -60px;}
+
+.bank_31, .bank_31:hover{ background-position: 0px -120px;}
+.bank_32, .bank_32:hover{ background-position: -210px -120px;}
+.bank_33, .bank_33:hover{ background-position: -420px -120px;}
+.bank_34, .bank_34:hover{ background-position: -630px -120px;}
+
+.bank_41, .bank_41:hover{ background-position: 0px -180px;}
+.bank_42, .bank_42:hover{ background-position: -210px -180px;}
+.bank_43, .bank_43:hover{ background-position: -420px -180px;}
+.bank_44, .bank_44:hover{ background-position: -630px -180px;}
+
+.bank_51, .bank_51:hover{ background-position: 0px -240px;}
+.bank_52, .bank_52:hover{ background-position: -210px -240px;}
+.bank_53, .bank_53:hover{ background-position: -420px -240px;}
+.bank_54, .bank_54:hover{ background-position: -630px -240px;}
+
+.subTitleTexth4{
+  text-align: center;
+  column-rule: #2b2c2f;
+  font-size: 18px;
+  font-family: 'Microsoft Yahei';
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
