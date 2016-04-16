@@ -137,6 +137,34 @@ public class SiteController {
 		ra.addAttribute("id", bean.getId());
 		return "redirect:edit.do";
 	}
+	/**
+	 * 循环生成站点，做站点的测试
+	 * @param bean
+	 * @param parentId
+	 * @param orgId
+	 * @param redirect
+	 * @param request
+	 * @param ra
+	 * @return
+	 */
+	@RequiresRoles({ "super" })
+	@RequiresPermissions({ "core:site:save" })
+	@RequestMapping({ "savetest.do" })
+	public String savetest(Site bean, Integer parentId, Integer orgId,
+			String redirect, HttpServletRequest request, RedirectAttributes ra) {
+		Site site = Context.getCurrentSite(request);
+		Integer userId = Context.getCurrentUserId(request);
+		this.service.save(bean, parentId, orgId, userId, site);
+		logger.info("save Site, name={}.", bean.getName());
+		ra.addFlashAttribute("message", "saveSuccess");
+		if ("list".equals(redirect))
+			return "redirect:list.do";
+		if ("create".equals(redirect)) {
+			return "redirect:create.do";
+		}
+		ra.addAttribute("id", bean.getId());
+		return "redirect:edit.do";
+	}
 
 	@RequiresRoles({ "super" })
 	@RequiresPermissions({ "core:site:update" })
