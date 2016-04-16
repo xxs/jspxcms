@@ -152,18 +152,33 @@ public class SiteController {
 	@RequestMapping({ "savetest.do" })
 	public String savetest(Site bean, Integer parentId, Integer orgId,
 			String redirect, HttpServletRequest request, RedirectAttributes ra) {
+		//获取当前的站点数据
 		Site site = Context.getCurrentSite(request);
 		Integer userId = Context.getCurrentUserId(request);
-		this.service.save(bean, parentId, orgId, userId, site);
+		//开始循环生成站点数据（用于测试站群）
+		for (int i = 0; i < 200; i++) {
+			Site forSite = new Site();
+			System.out.println("站点域名："+i+".dedweek.com");
+			System.out.println("站点名称："+i+"号测试站点");
+			System.out.println("站点名称："+i+"号测试站点全名");
+			System.out.println("站点编码："+i+"000001");
+			forSite.setFullName(i+"号测试站点全名");
+			forSite.setName(i+"号测试站点");
+			forSite.setDomain(i+".dedweek.com");
+			forSite.setIdentifyDomain(true);
+			forSite.setNumber(i+"000001");
+			forSite.setUrlRewrite(false);
+			forSite.setTemplateTheme("default");
+			forSite.setNoPicture("/img/no_picture.jpg");
+			forSite.setAllStatic(false);
+			forSite.setDef(false);
+			forSite.setStatus(0);
+			this.service.save(forSite, null, 1, userId, site);
+		}
 		logger.info("save Site, name={}.", bean.getName());
 		ra.addFlashAttribute("message", "saveSuccess");
-		if ("list".equals(redirect))
-			return "redirect:list.do";
-		if ("create".equals(redirect)) {
-			return "redirect:create.do";
-		}
 		ra.addAttribute("id", bean.getId());
-		return "redirect:edit.do";
+		return "redirect:savetest.do";
 	}
 
 	@RequiresRoles({ "super" })
