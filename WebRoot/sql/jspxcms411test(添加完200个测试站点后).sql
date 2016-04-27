@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2016-04-18 21:57:53
+Date: 2016-04-18 22:21:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23868,6 +23868,8 @@ INSERT INTO `cms_node` VALUES ('184', '134', null, '1', '547', null, null, null,
 INSERT INTO `cms_node` VALUES ('185', '133', null, '1', '543', null, null, null, '545', null, '首页', '0000', '0', '0000', '2016-04-16 22:28:12', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('186', '131', null, '1', '535', null, null, null, '537', null, '首页', '0000', '0', '0000', '2016-04-16 22:31:08', '0', '0', '1', '0', null, null, null, null, null, null);
 INSERT INTO `cms_node` VALUES ('187', '19', null, '1', '87', null, null, null, '89', null, '首页', '0000', '0', '0000', '2016-04-18 21:32:46', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('190', '20', null, '1', '91', null, null, null, '93', null, '首页', '0000', '0', '0000', '2016-04-18 22:04:06', '0', '0', '1', '0', null, null, null, null, null, null);
+INSERT INTO `cms_node` VALUES ('191', '29', null, '1', '127', null, null, null, '129', null, '首页', '0000', '0', '0000', '2016-04-18 22:20:48', '0', '0', '1', '0', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_node_attr
@@ -24036,6 +24038,8 @@ INSERT INTO `cms_node_buffer` VALUES ('184', '0');
 INSERT INTO `cms_node_buffer` VALUES ('185', '0');
 INSERT INTO `cms_node_buffer` VALUES ('186', '0');
 INSERT INTO `cms_node_buffer` VALUES ('187', '0');
+INSERT INTO `cms_node_buffer` VALUES ('190', '0');
+INSERT INTO `cms_node_buffer` VALUES ('191', '0');
 
 -- ----------------------------
 -- Table structure for cms_node_clob
@@ -24220,6 +24224,8 @@ INSERT INTO `cms_node_detail` VALUES ('184', null, null, null, null, null, null,
 INSERT INTO `cms_node_detail` VALUES ('185', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_node_detail` VALUES ('186', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_node_detail` VALUES ('187', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_node_detail` VALUES ('190', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_node_detail` VALUES ('191', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for cms_node_membergroup
@@ -24472,6 +24478,10 @@ INSERT INTO `cms_node_membergroup` VALUES ('269', '186', '0', '1', '1', '1');
 INSERT INTO `cms_node_membergroup` VALUES ('270', '186', '1', '1', '1', '1');
 INSERT INTO `cms_node_membergroup` VALUES ('271', '187', '0', '1', '1', '1');
 INSERT INTO `cms_node_membergroup` VALUES ('272', '187', '1', '1', '1', '1');
+INSERT INTO `cms_node_membergroup` VALUES ('277', '190', '0', '1', '1', '1');
+INSERT INTO `cms_node_membergroup` VALUES ('278', '190', '1', '1', '1', '1');
+INSERT INTO `cms_node_membergroup` VALUES ('279', '191', '0', '1', '1', '1');
+INSERT INTO `cms_node_membergroup` VALUES ('280', '191', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for cms_node_org
@@ -24604,6 +24614,8 @@ INSERT INTO `cms_node_org` VALUES ('129', '1', '184', '0');
 INSERT INTO `cms_node_org` VALUES ('130', '1', '185', '0');
 INSERT INTO `cms_node_org` VALUES ('131', '1', '186', '0');
 INSERT INTO `cms_node_org` VALUES ('132', '1', '187', '0');
+INSERT INTO `cms_node_org` VALUES ('135', '1', '190', '0');
+INSERT INTO `cms_node_org` VALUES ('136', '1', '191', '0');
 
 -- ----------------------------
 -- Table structure for cms_node_parametergroup
@@ -24770,6 +24782,8 @@ INSERT INTO `cms_node_role` VALUES ('142', '184', '135', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('143', '185', '134', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('144', '186', '132', '0', '0');
 INSERT INTO `cms_node_role` VALUES ('145', '187', '20', '0', '0');
+INSERT INTO `cms_node_role` VALUES ('148', '190', '21', '0', '0');
+INSERT INTO `cms_node_role` VALUES ('149', '191', '30', '0', '0');
 
 -- ----------------------------
 -- Table structure for cms_node_spec
@@ -25388,7 +25402,7 @@ INSERT INTO `cms_site` VALUES ('8', '1', '1', null, '模板商城', '8', '模板
 INSERT INTO `cms_site` VALUES ('9', '1', '1', null, '小米官网2015版', '9', '小米官网2015版', '/img/no_picture.jpg', '2015', null, 'xiaomi', '0', '0', '0', '0', '0007', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('10', '1', '1', null, '魅族官网2015版', '11', '魅族官网2015版', '/img/no_picture.jpg', 'meizu', null, 'meizu', '0', '1', '0', '0', '0008', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('11', '1', '1', null, 'COCOS SHOP', '12', 'COCOS 网上商城', '/img/no_picture.jpg', 'cc', null, 'localhost', '0', '1', '0', '0', '0009', '0', '0000', '0');
-INSERT INTO `cms_site` VALUES ('12', '1', '1', null, '中金支付', '20', '中金安全支付', '/img/no_picture.jpg', 'bluewise', null, '1.dedweek.com', '0', '1', '0', '0', '000a', '0', '0000', '0');
+INSERT INTO `cms_site` VALUES ('12', '1', '1', null, '中金支付', '20', '中金安全支付', '/img/no_picture.jpg', 'bluewise', null, 'zhongjin.dedweek.com', '0', '1', '0', '0', '000a', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('15', '1', '1', null, '0号测试站点', '100000', '0号测试站点全名', '/img/no_picture.jpg', 'default', null, '0.dedweek.com', '0', '1', '0', '0', '000b', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('16', '1', '1', null, '1号测试站点', '100001', '1号测试站点全名', '/img/no_picture.jpg', 'default', null, '1.dedweek.com', '0', '1', '0', '0', '000c', '0', '0000', '0');
 INSERT INTO `cms_site` VALUES ('19', '1', '1', null, '0号测试站点', '0000001', '0号测试站点全名', '/img/no_picture.jpg', 'default', null, '0.dedweek.com', '0', '1', '0', '0', '000d', '0', '0000', '0');
@@ -27284,13 +27298,13 @@ INSERT INTO `t_id_table` VALUES ('cms_info_tag', '49');
 INSERT INTO `t_id_table` VALUES ('cms_member_group', '2');
 INSERT INTO `t_id_table` VALUES ('cms_model', '886');
 INSERT INTO `t_id_table` VALUES ('cms_model_field', '9773');
-INSERT INTO `t_id_table` VALUES ('cms_node', '190');
+INSERT INTO `t_id_table` VALUES ('cms_node', '192');
 INSERT INTO `t_id_table` VALUES ('cms_node_attr', '795');
 INSERT INTO `t_id_table` VALUES ('cms_node_brand', '19');
-INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '277');
-INSERT INTO `t_id_table` VALUES ('cms_node_org', '135');
+INSERT INTO `t_id_table` VALUES ('cms_node_membergroup', '281');
+INSERT INTO `t_id_table` VALUES ('cms_node_org', '137');
 INSERT INTO `t_id_table` VALUES ('cms_node_parametergroup', '5');
-INSERT INTO `t_id_table` VALUES ('cms_node_role', '148');
+INSERT INTO `t_id_table` VALUES ('cms_node_role', '150');
 INSERT INTO `t_id_table` VALUES ('cms_node_spec', '5');
 INSERT INTO `t_id_table` VALUES ('cms_org', '3');
 INSERT INTO `t_id_table` VALUES ('cms_parameter', '20');

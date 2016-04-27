@@ -1,0 +1,45 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>操作成功 --  ${site.fullNameOrName}</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+[#if timeout??]
+	[#if timeout=="-1"]
+		[#--timeout等于-1，不跳转--]
+	[#elseif timeout=="0"]
+		[#--timeout等于0，直接跳转，不延时--]
+		location.href="${(nextUrl!(ctx+'/'))?html}";
+	[#else]
+		setTimeout(function(){location.href="${(nextUrl!(ctx+'/'))?html}";},${timeout});
+	[/#if]
+[#else]
+setTimeout(function(){location.href="${(nextUrl!(ctx+'/'))?html}";},2000);
+[/#if]
+</script>
+</head>
+<body class="index">
+	<div class="w960 center clear mt1">
+    <div class="operation">
+   		<h2>提示信息</h2>
+      <ul>
+        [#if .data_model['status_${status}']??]
+         <li class="success">${.data_model['status_${status}']?html}</li>
+        [#elseif messages?? && messages?size>0]
+        [#list messages as m]
+         <li class="success">${m?html}</li>
+        [/#list]
+        [#else]
+         <li class="success">操作成功</li>
+        [/#if]
+      </ul>
+			<p><a href="${nextUrl!(ctx+'/')}">如果您的浏览器没有反应，请点击这里...</a></p>
+ 		</div>
+  </div>
+</body>
+</html>
+[/#escape]
+

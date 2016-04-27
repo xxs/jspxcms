@@ -1,0 +1,31 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>操作失败 --  ${site.fullNameOrName}</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body class="index">
+	<div class="w960 center clear mt1">
+     <div class="operation">
+    	<h2>提示信息</h2>
+      <ul>
+        [#if .data_model['status_${status}']??]
+         <li class="error">${.data_model['status_${status}']?html}</li>
+      	[#elseif messages?? && messages?size>0]
+        [#list messages as m]
+         <li class="error">${m}</li>
+        [/#list]
+      	[#else]
+         <li class="error">操作失败</li>
+      	[/#if]
+      </ul>
+      <p><a href="javascript:history.go(-1);">返回</a></p>
+ 		</div>
+  </div>
+</body>
+</html>
+[/#escape]
