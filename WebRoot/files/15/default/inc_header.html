@@ -1,0 +1,87 @@
+<!--//不变部分-->
+<div id="topBlackLink">
+	<div class="mainPage"> <!--mainPage页面宽度-->
+		<div id="topLanguage">
+			<span class="lang"><a ="http://nicenic.net" class="default_web" target="_blank" >English - 英文站</a> <span class="enarr_t">.</span>
+			<ul class="lang_menu">
+				<li><a ="/" class="en">中国 - 简体中文</a></li>
+				<li><a ="http://nicenic.net" target="_blank" class="en">English - 英文站</a></li>
+				<li><a ="http://www.iisp.mobi" target="_blank">手机版 - Mobi</a></li>
+				<li><a ="http://big5.iisp.com" target="_blank">香港 - 繁体站</a></li>
+				<li><a ="http://ct.iisp.com">官网 - 电信线路</a></li>
+				<li><a ="http://cnc.iisp.com">官网 - 网通线路</a></li>
+						
+					</ul>
+			</span>
+		</div>
+		<ul class="top_menu">
+			<li id="topMenuLogin">
+								<a ="/user/" class="redfont" target="_blank">用户登录</a>  <span class="enarr_t">.</span>
+				<form method="post" action="/user/login_submit.php">
+						<div class="loginForm windows">
+								<!--<p class="close_p"><font class="close_p">×</font></p>-->
+								<h4 class="yahei">用户登录</h4>
+							    <p><input type="text" name="loginname" id="loginname" class="user blocks" placeholder="请输入您的用户名"/></p>
+							    <p><input type="password" name="loginpwd" id="loginpwd" class="userpsw blocks" placeholder="请输入您的用户密码"/></p>
+															    <p><a ="/user/password.php" target="_blank" class="forgetpsw">忘记密码?</a></p>
+							    <p><input type="button" onclick="window.open('/user/register.php');return false;" value="免费注册" class="regisbtn blocks yahei"/><input type="submit" value="登  录" class="loginbtn blocks yahei"/></p>
+						</div>
+						</form>
+									</li>
+			<li>	<a ="/user/register.php" target="_blank">免费注册</a></li>
+			<li><a ="/customer/pay.php" target="_blank">支付方式</a></li>
+			<li class="message"><a ="/news/" target="_blank">最新消息<span class="topTipInfoCount" id="msgcount">(0)</span></a>
+				<div class="msg_win windows list_win" id="news_logs_list">
+							
+						</div>
+			</li>
+			<li><a ="/support/" target="_blank">客户服务</a></li>
+			<li class="buy_car"><a ="/cart/shoppingcart.php" id="topShoppingCart" onmouseover="ajaxshowshop(1);">购物车<span class="topTipInfoCount" id="showcount">(0)</span></a>
+				<div id="shopping" class="buy_win windows list_win" >
+						<!-- <p class="close_p"><font class="close_p">×</font></p> -->
+						<p><a onmouseover="ajaxshowshop(1);" >正在加载...</a></p>
+						</div>
+			</li>
+			<li class="li_tel">
+				<span class="tel400 blocks"><img src="_files/picture/tel.png" /> <a ="/customer/contact.php" target="_blank"><b class="redfont yahei">销售  400-622-8200</b></a></span>
+				<ul class="contactQQ">
+					<li><a class="QQnum yahei" ="http://wpa.qq.com/msgrd?V=1&uin=52064595&Site=www.nicenic.com&Menu=yesV=1&uin=52064595&Site=www.nicenic.com&Menu=yes" target="_blank">
+						<img src="_files/picture/conqq.png" /><font class="yahei">咨询</font>
+						52064595</a></li>
+				</ul>
+		    </li>
+		</ul>
+	</div>
+</div>
+<div id="mainMenu">
+	<div class="mainPage"> 
+	<!--	mainPage页面宽度  -->
+	<style> #mainLogo{padding:0px;}</style>
+		<div id="mainLogo"><a ="/" title="耐思尼克"><img src="_files/picture/logo.png" style="margin-top:15px" border="0" alt="耐思尼克"></a></div>
+		<ul class="menu">
+			<!--选中li a的class="homeMain"-->
+			<li><a href='${ctx}/'>首页</a></li>
+			[@NodeList;list]
+				[#list list as node]
+ 		 		<li class=current><a href="${node.url}">${node.name}</a></li>
+				[/#list]
+			[/@NodeList] 
+			<li ><a href="#">特惠</a></li>
+			<li ><a href="#">域名</a></li>
+
+		</ul>
+	</div>
+
+</div>
+
+
+<script>
+$(function(){
+	$("#logimg").css({ 'float':'none', 'margin':'0'});
+});
+
+</script>
+
+<div id="Pages">
+
+</div>

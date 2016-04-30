@@ -1,0 +1,10 @@
+<ul>
+[@CommentList fid=Param.fid limit=8;list]
+[#list list as comment]
+	<li style=" border-bottom:1px dashed #94cfe4; margin-bottom:10px;">
+		<div>${comment.creator.username}:&nbsp;&nbsp;${comment.text!?html}</div>
+		<p style="color:#ABA9A2; margin-top:10px;">${comment.creationDate?string("yyyy-MM-dd mm:ss")}</p>
+	</li>
+[/#list]
+[/@CommentList]
+</ul>

@@ -1,0 +1,179 @@
+.designBoxDiv{overflow:hidden;zoom:1}
+.dBoxBanner{background:url(../images/mbg.jpg) center top no-repeat;text-align:center;}
+.dBannerTxt{padding:55px 0px;}
+.dBannerBtn{text-align:center;padding-bottom:60px;}
+.dBannerBtn .openBtn{width:345px;margin:0 auto;height:70px;background:#c00;font-size:36px;color:#fff;text-align:center;font-family:"Microsoft YaHei","verdana";border:0px;border-radius:5px 5px;cursor:pointer;}
+.dBannerBtn .openBtn:hover{filter:alpha(opacity=90);-moz-opacity:0.9; opacity:0.9;}
+
+.dSubBanner{background:#f8f8f8 url(../images/subbanner.png) center top no-repeat;overflow:hidden;zoom:1;}
+.dSubBanner .bigTxt{font-size:36px;color:#333;text-align:center;padding:98px 0px 37px;font-family:"Microsoft YaHei","verdana";font-weight:normal}
+.dSubBanner .dTxt{font-size:18px;line-height:180%;color:#333;text-align:center;padding:0px 0px 100px;font-family:"Microsoft YaHei","verdana";font-weight:normal}
+
+.designStepDiv{background:#e0e0e0;padding:80px 0px 40px;}
+.designStepDiv .dStepTitle,.dCaseTitle{font-size:42px;color:#333;text-align:center;padding:0px 0px 60px;font-family:"Microsoft YaHei","verdana";font-weight:normal}
+.stepBoxList{overflow:hidden;zoom:1;width:1182px;margin:0 auto;}
+.stepBoxList .sBox{float:left;background:#fff;margin-right:20px;width:380px;margin-bottom:20px;}
+.stepBoxList .lastBox{margin-right:0px;}
+.stepBoxList .sBox-left{width:190px;background:#67A3F3;height:240px;color:#fff;float:left}
+.stepBoxList .sBox-left .sboxImg{margin-top:32px;text-align:center;}
+.stepBoxList .sBox-left .bTxt{font-size:18px;font-family:"Microsoft YaHei","verdana";margin-top:15px}
+.stepBoxList .sBox-right{float:right;overflow:hidden;zoom:1;width:190px;height:240px}
+.stepBoxList .fUl{overflow:hidden;zoom:1;}
+.stepBoxList .fUl li{border-bottom:1px solid #e8e8e8;width:190px;text-align:left;line-height:59px;color:#666}
+.stepBoxList .fUl li:hover{background:#f5f5f5}
+.stepBoxList .fUl li img{margin:0px 10px 0px 20px;}
+.stepBoxList .pinksBox{background:#E49ED5}
+.stepBoxList .qBox{background:#00DCE3}
+.stepBoxList .rBox{background:#FF7E79}
+.stepBoxList .zBox{background:#AAB9FC}
+
+.designCase{background:#eee;padding:80px 0px 40px}
+.designCase .dCaseTitle{padding-bottom:30px}
+.cSubTitle{font-size:18px;font-family:"Microsoft YaHei","verdana";margin-bottom:40px}
+.caseBoxDiv{overflow:hidden;zoom:1;width:1182px;margin:0 auto;}
+.caseBoxDiv .caseBox{background:#fff;width:498px;border:1px solid #fff;padding:40px;margin-right:20px;float:left;margin-bottom:20px;text-align:left}
+.caseBoxDiv .caseBox:hover{background:#fefefe;transform: scale(1.01,1.01);}
+.caseBoxDiv .rCBox{margin-right:0px}
+.caseBoxDiv .caseBox .caseTitle{font-family:"Microsoft YaHei","verdana";font-size:22px;font-weight:normal;margin-bottom:12px}
+.caseBoxDiv .caseBox .caseTitle a{color:#333}
+.caseDetail{color:#666}
+.caseInfo{margin-top:12px;color:#47809A}
+.caseBtn a{display:block;width:120px;line-height:32px;border:1px solid #c00;color:#c00;font-size:12px;text-align:center;margin:12px 0px 20px;}
+.caseBtn a .st{font-family:"宋体"}
+.caseBtn a:hover{background:#c00;color:#fff;}
+.showCase{overflow:hidden;zoom:1;margin-top:30px;}
+.showCase a{float:left;display:block;width:24%;border-right:1px solid #eee;}
+.showCase a img{padding-left:10%;}
+.showCase a.alast{border:0px}
+
+#templatelistBg{background:#fff;}
+#templatelist{width:1182px; margin:0 auto; padding-bottom:30px; padding-top:20px;}
+.btitle{font-size:36px;padding-bottom:8px;padding-top:40px}
+.templateDetail{font-size:16px;font-family:"Microsoft YaHei","verdana";margin-bottom:20px}
+.templateDetail b{color:#c00;font-family:georgia}
+
+.createDesign{background:#eee;text-align:center;padding:45px 0px}
+.createDesign .t{font-family:"Microsoft YaHei","verdana";color:#333;font-size:20px;font-weight:normal}
+.createDesign .t a{color:#333}
+.createDesign .b{font-weight:bold}
+.createDesign input{border:1px solid #333;color:#333;font-size:20px;padding:8px 25px;margin:0px 10px;font-family:"Microsoft YaHei","verdana";background:none;cursor:pointer}
+.createDesign input.createBtn{background:#c00;border:1px solid #c00;color:#fff;}
+.createDesign input:hover{filter:alpha(opacity=80);-moz-opacity:0.8; opacity:0.8;}
+#bottom{margin-top:0px;}
+
+
+
+
+
+
+
+
+.dBanner{background:#0033CC}
+.sub_wrap{margin-bottom:0px !important}
+#Pages{width:1182px;margin:0 auto}
+
+.box_edit_nav {padding-bottom:40px;}
+.box_edit_nav ul{background:#ccc;margin:auto;width:800px;height:40px;border-radius:20px;}
+.box_edit_nav ul li{float:left;width:200px;text-align:center;font-size:14px;}
+.box_edit_nav ul li a{display:block;padding:9px; color:#000;background:url(../images/x1.png) 30px top no-repeat;padding-left:40px;border-radius:20px;height:22px;}
+.box_edit_nav ul li.hot a,.box_edit_nav ul li a:hover{color:white;background:url(../images/x1h.png) 30px top no-repeat #ff0000;}
+.box_edit_nav ul li a.fxLink{background:url(../images/fenxiaoico.png) 32px 10px no-repeat;}
+.box_edit_nav ul li.hot a.fxLink,.box_edit_nav ul li a.fxLink:hover{background:#ff0000 url(../images/fenxiaoico.png) 32px -59px no-repeat;}
+
+.box_edit_nav ul li.hot a p,.box_edit_nav ul li a:hover p{border-top-color: #ff0000;}
+.box_edit_nav ul li.hot a:hover{background-color:#ff0000;}
+.box_edit_nav ul li.hot a:hover p{border-top-color: #ff0000;}
+.box_edit_nav ul li a p{position:absolute;margin-top:10px;margin-left:50px;border:6px solid #eee; border-top-color: #eee;}
+.dLink{background-position:10px top !important}
+.sBoxDivs{overflow:hidden;zoom:1;width:1182px;margin:0 auto;}
+.sTitleDiv{overflow:hidden;zoom:1;padding-top:40px}
+.sTitleDiv .sTitleLeft{float:left;font-size:36px;font-family:"Microsoft YaHei","verdana";}
+.sTitleDiv .sTitleRight{float:right}
+
+.box_edit_nav ul li a.showL{background:url(../images/displayicon.png) 30px 9px no-repeat}
+.box_edit_nav ul li.hot a.showL, .box_edit_nav ul li a.showL:hover{background-image:url(../images/displayicon.png);background-position:30px -24px;background-color:#ff0000}
+
+
+.sBoxMain{overflow:hidden;zoom:1}
+.sBoxMain .s-left{border:1px solid #ccc;border-width:0px 0px 1px 1px;background:#fff;float:left;border-right:20px solid #c00;position:relative}
+.s-left table {width:819px;margin-right:1px;}
+.s-left table .tr td{font-family:"Microsoft YaHei","verdana";background:#DDDDDD;line-height:25px;font-size:18px;}
+.s-left table td{text-align:left;padding:22px;border:1px solid #CCC;border-width:1px 1px 0px 0px}
+.s-left table td.lTd{width:88px;text-align:center;font-size:14px}
+.sBoxMain .s-right{overflow:hidden;zoom:1;}
+.setDiv,.toolDivs{color:#666;line-height:25px}
+
+.sTopArr{    border-style: solid dashed dashed;border-width: 20px 0px 20px 21px;border-color: transparent transparent #eee transparent;height: 0;width: 0;font-size: 0;line-height: 0%;display: block;position: absolute;right: -20px;bottom: -1px;}
+.sBottomArr{    border-style: solid dashed dashed;border-width: 0px 20px 20px 0px;border-color: transparent transparent #eee transparent;height: 0;width: 0;font-size: 0;line-height: 0%;display: block;position: absolute;top: -1px;right:-20px;transform: rotate(180deg);}
+
+.buyBoxDivs{margin:70px 0px;}
+.buyDiv{background:#D5D5D5;padding:20px;text-align:left}
+.hotDiv{background:#c00;color:#fff}
+.buyDiv h2{font-family:"Microsoft YaHei","verdana";font-size:20px;margin:10px 0px 5px;font-weight:normal}
+.hotDiv .detail{color:#FFCC33;margin-top:10px}
+.sBuyBottom{overflow:hidden;zoom:1;margin-top:20px}
+.hotDiv .sBuyBottom{margin-top:40px;}
+
+.sBuyBottom select{text-indent:10px;float:left;height:42px;background:#fff;border:0px;width:150px;color:#c00;font-size:12px;font-family:"Microsoft YaHei","verdana";text-align:center}
+.sBuyBottom .sBtn{float:left;height:42px;width:150px;background:#c00;text-align:center;color:#fff;font-size:14px;border:0px;cursor:pointer;}
+.sBuyBottom .sBtn:hover{filter:alpha(opacity=80);-moz-opacity:0.8; opacity:0.8;}
+.hotDiv .sBuyBottom .sBtn{background:#000}
+.gDetail{color:#666;line-height:25px;margin-top:10px}
+
+.problemDiv{overflow:hidden;zoom:1}
+.problemDiv .pTitle{font-size:26px;margin:20px auto;text-align:left;line-height:50px;overflow:hidden;zoom:1;font-family:"Microsoft YaHei","verdana";}
+.pmain{position:relative;}
+.pvs{position:absolute;top: -61px;left: 492px;}
+.pTable {background:#fff;border:1px solid #ccc;}
+.pTable td{vertical-align:top}
+.pTable .tr td{line-height:65px;background:#CDCDCD;text-align:center;font-size:24px;font-weight:normal;font-family:"Microsoft YaHei","verdana";}
+.disadvantage{}
+.pTable .mTd{width:312px;padding-top:90px}
+.pTable .tr .mTd{padding-top:0px;}
+.advUl{overflow:hidden;zoom:1;width:398px;padding:50px 20px 30px;}
+.advUl li{border-bottom:1px solid #ccc;line-height:80px;font-size:14px;}
+.advUl li.noborder{border:0px;}
+.downArr{border-style: solid dashed dashed;border-width: 28px;border-color: #CDCDCD transparent transparent;height: 0;width: 0;font-size: 0;line-height: 0%;z-index: 99;position:absolute;left:189px;top:60px;display: block;}
+.rDownArr{left:auto;right:189px;}
+.Template-case{background:#fff}
+
+.slide-wrap {overflow:hidden;zoom:1; position:relative;}
+	.slide-content {position:absolute;width:100%;left:0px;}
+	.slide-content .p1Info{width:1182px;margin:auto;font-family:微软雅黑,黑体;text-align:left;/*position:relative;*/}
+	.slide-content .title{font-size:36px;display:block;padding: 75px 0 10px 40px;/*position:absolute;top:50px;left:0;*/}
+	.slide-content .title_info{font-size:24px;display:block;padding:30px 0 0 40px;/*position:absolute;top:120px;left:0;*/}
+	.slide-nav {position:relative;bottom:10px; height:18px; padding-top:2px; z-index:3;margin:0 auto;width:96px;top:260px;right:1px;}
+	.slide-nav li { opacity:0.8; border:1px solid #000; color:#999; cursor:pointer; float:left; text-align:center;border-radius:50%;	
+	width:12px; height:12px; line-height:10px; background:#ccc; font-size:0; border:0; margin:10px 10px 0px 10px;}
+	.slide-nav li.on {color:#FFFFFF;font-weight:bold;width:12px; height:12px; line-height:10px; background:#999; margin-top:10px;}
+
+#homeBanner .slide-content li {width:760px;height:300px;  vertical-align:middle; font-size:14px;}
+	#homeBanner{width:100%;height:300px;overflow:hidden;zoom:1;}
+	#homeBanner .slide-content li{width:100%;height:300px;cursor:pointer}
+
+	#homeBanner .HB01{background:#1570B7 url(../images/cloud_web_banner_main.jpg) center center no-repeat;}
+	#homeBanner .HB02{background:#201938 url(../images/wcy.png) no-repeat 70% center;color:white;}
+	#homeBanner .HB02 .title{font-size:42px;padding-top:85px;}
+	#homeBanner .HB02 .title_info{font-size:32px;}
+	#homeBanner .HB02 .blocks{margin:40px 0 0 40px;}
+	#homeBanner .HB02 .p1 a{  width: 180px;height: 45px;line-height: 45px;border-bottom: none;background: #f40;font-size: 18px;margin-top: 10px;}
+	#homeBanner .HB03{background:#293146 url(../images/three_web.png) no-repeat top center;}
+	#homeBanner .HB03 .title{font-size:24px; color:#fff; padding:130px 0 0 76px;}
+	#homeBanner .HB03 .title_info{font-Size:24px; color:#fff;padding:30px 0  10px 76px;}
+	#homeBanner .HB03 span.p1{margin-left:76px;}
+	#homeBanner .HB04{background:#1a729f url(../images/cnanden.png) no-repeat top center;}
+	#homeBanner .HB04 .title{font-size:24px; color:#fff; padding:125px 0 0 0px;}
+	#homeBanner .HB04 .title_info{font-Size:24px; color:#fff;padding:25px 0  10px 0px;}
+	#homeBanner .HB05{background:url(../images/1680x350px_03.jpg) top center;}
+	.showImg{position:relative;}
+	.showImg p{position:absolute;bottom:12px;right:20px;}
+
+.nPages{position:absolute;right:80px;bottom:6px;}
+.nPages a{display:block;width:10px;height:10px;border-radius:100%;background:#eee;float:left;margin-right:5px;}
+.nPages a.hotA{background:#E49ED5}
+
+.speDiv{background:#06c;width:200px;height:22px;line-height:22px;color:#fff;}
+.speDiv .h{padding:3px 6px 4px;background:#FFCC31;color:#CB0000;}
+.speDiv .w{padding-left:10px;} 
+
+.zhe8{position:absolute;right:0px;top:0px;}
