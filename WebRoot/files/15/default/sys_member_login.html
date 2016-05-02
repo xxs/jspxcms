@@ -185,9 +185,7 @@ $(document).ready(function()
    </div>
    <div id="userLogin_right"><!--右边-->
          <div id="loginbox">
-		<form method="post" action="/user/login_submit.php" onsubmit="return CheckForm(this)">
-		<input type="hidden" name="tag" value="">
-		<input type="hidden" name="refer" value="">
+		<form id="validForm" method="post" action="${ctx}/login.jspx" class="input_form" onsubmit="return CheckForm(this)">
 		
 		<span style='display:none;color:red;font-size:12px;' id="errmsg"></span>
 		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="user_login">
@@ -195,7 +193,7 @@ $(document).ready(function()
 			<td colspan="2">
 				<div  class='u'>
 				<span class="user-Name">用户名</span>
-				<input name="loginname" type="text" class="Linput" id="loginname"  onFocus="" size="16" maxlength="20" check="^[a-zA-Z0-9_]{6,20}$" warning="请输入您的用户名,6-16位数字、字母、下划线组成" value="" tabindex="1">
+				<input type="text" id="username" name="username" onFocus="" value="${username!}" class="Linput required" warning="请输入您的用户名,6-16位数字、字母、下划线组成" tabindex="1"/>
 				</div>
 			</td>
 		</tr>
@@ -203,28 +201,32 @@ $(document).ready(function()
 			<td colspan="2">
 				<div class='p'>
 				<span class="user-Name">密　码</span>
-				<input name="loginpwd" type="password" class="Linput" id="loginpwd"  onFocus="" size="16" maxlength="20" check="[a-zA-Z0-9_]{6,20}$" warning="请输入正确的密码,6-16位数字、字母、下划线组成" tabindex="2">
+				<input type="password" id="password" name="password" class="Linput" onFocus="" warning="请输入正确的密码,6-16位数字、字母、下划线组成" tabindex="2"/>
 				</div>
 			</td>
 		</tr>
+		[#if Session.shiroCaptchaRequired??]
 		<tr>
 			<td colspan="2">
 				<div class='c'>
 				<span class="user-Name">验证码</span>
-				<input name="logincode" type="text" id="logincode"  onFocus="" size="5" maxlength="20" check="[0-9_]{5}$" warning="请输入正确的验证码,5位数字" style="background:none;border:0;  width:223px; padding:3px 10px; height:35px; line-height:35px; margin-right:5px;" tabindex="3">
-				<span id="imgcode"><img src="picture/codeimg.php" width="56" height="20" align="absmiddle" class="codeImg" id="codeImg" onClick="codeImg.src='/passport/codeimg.php?'+Math.random();" title="刷新验证码"></span>
+				<input type="text" id="captcha" name="captcha" onFocus="" class="input required" style="background:none;border:0;  width:223px; padding:3px 10px; height:35px; line-height:35px; margin-right:5px;" tabindex="3"/>
+				<span id="imgcode">
+				<img src="${ctx}/captcha.servlet" width="56" height="20" align="absmiddle" class="codeImg" id="codeImg" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" style="cursor:pointer;border:1px solid #ccc;" title="点击重新获取验证码"/>
+				</span>
 				</div>
 			</td>
 		</tr>
+		[/#if]
 		<tr>
-		<td class="forget_pass"><a href="../user/password.php">忘记密码?</a></td>
-		<td class="reg"><span class="n">还没有耐思尼克账户？</span><a href="../user/register.php?refer=%2Fuser%2Findex.php" class="redfont freeReg">免费注册</a></td>
+		<td class="forget_pass"><a href="${ctx}/forgot_password.jspx">忘记密码?</a></td>
+		<td class="reg"><span class="n">还没有账户？</span><a href="${ctx}/register.jspx" class="redfont freeReg">免费注册</a></td>
 		</tr>
 		<tr>
 			<td colspan="2">
 			<div class="LoginBtn"><input name="submit" type="submit" class="btn btn2 btnB" value="  登　　录  " tabindex="4"></div>
 			<div class="LoginQQ">
-			使用合作网站账号登录耐思尼克：<a href="/user/qq_oauth/qq_login.php">QQ登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/login_wx.php">微信登录</a>			</div>
+			使用合作网站账号登录耐思尼克：<a href="#">QQ登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">微信登录</a>			</div>
 			</td>
 		</tr>
 		
@@ -246,39 +248,6 @@ if(errmsg!=""){ $('#errmsg').css('display','block').html(errmsg);}
 </div>
   
 [#include "inc_footer.html"/]  
-  
-<div class="login">
-  <h2>登陆</h2>
-  <form id="validForm" action="${ctx}/login.jspx" method="post" class="input_form">
-		<p class="input_p">
-			<label for="username" class="label">用户名:</label>
-			<input type="text" id="username" name="username" value="${username!}" class="input required"/>
-			<div class="clear"></div>
-		</p>
-		<p class="input_p">
-			<label for="password" class="label">密码:</label>
-			<input type="password" id="password" name="password" class="input"/>
-			<div class="clear"></div>
-		</p>
-		[#if Session.shiroCaptchaRequired??]
-		<p class="input_p">
-			<label for="captcha" class="label">验证码:</label>
-			<input type="text" id="captcha" name="captcha" class="input required"/>
-			<div class="clear"></div>
-		</p>
-		<p class="input_p">
-			<label for="captcha" class="label">&nbsp;</label>
-			<img src="${ctx}/captcha.servlet" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" style="cursor:pointer;border:1px solid #ccc;" title="点击重新获取验证码"/>
-			<div class="clear"></div>
-		</p>		
-		[/#if]
-		<p class="input_p_submit">
-			<input type="submit" value="提交" style="height:25px;width:60px;margin-right:20px;"/><a href="${ctx}/forgot_password.jspx">忘记密码</a>
-		</p>
-	</form>
-  <div class="otherlink"><a href="${ctx}/">返回首页</a>如果您还没有账号，请先<a href="${ctx}/register.jspx">注册</a></div>
-</div>
-
 </body>
 </html>
 [/#escape]
