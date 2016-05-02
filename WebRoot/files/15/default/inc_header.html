@@ -10,20 +10,7 @@
 			</span>
 		</div>
 		<ul class="top_menu">
-			<li id="topMenuLogin">
-				<a ="/user/" class="redfont" target="_blank">用户登录</a>  <span class="enarr_t">.</span>
-				<form method="post" action="/user/login_submit.php">
-						<div class="loginForm windows">
-								<!--<p class="close_p"><font class="close_p">×</font></p>-->
-								<h4 class="yahei">用户登录</h4>
-							    <p><input type="text" name="loginname" id="loginname" class="user blocks" placeholder="请输入您的用户名"/></p>
-							    <p><input type="password" name="loginpwd" id="loginpwd" class="userpsw blocks" placeholder="请输入您的用户密码"/></p>
-															    <p><a ="/user/password.php" target="_blank" class="forgetpsw">忘记密码?</a></p>
-							    <p><input type="button" onclick="window.open('/user/register.php');return false;" value="免费注册" class="regisbtn blocks yahei"/><input type="submit" value="登  录" class="loginbtn blocks yahei"/></p>
-						</div>
-						</form>
-			</li>
-			<li>	<a ="/user/register.php" target="_blank">免费注册</a></li>
+			<script type="text/javascript" src="${ctx}/login_ajax.jspx"></script>
 			<li><a ="/customer/pay.php" target="_blank">支付方式</a></li>
 			<li><a ="/support/" target="_blank">客户服务</a></li>
 			<li class="li_tel">
