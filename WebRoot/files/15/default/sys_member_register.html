@@ -5,13 +5,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>用户注册_${site.fullNameOrName}</title>
-<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
+<link href="_files/css/2010-6.css" rel="stylesheet" type="text/css">
+</head>
+<script src="_files/js/check.js"></script>
+<script src="_files/js/ajax.js"></script>
+<script src="_files/js/pinyin.js"></script>
+<script>
+function change2cn(en, cninput){
+	cninput.value=getSpell(en, " ");
+}
+
+function send_mobile_code(form,o){
+	o.disabled = true;
+	document.getElementById("send_mobile_code").style.display = "";
+	document.getElementById("mobilecode").style.display = "";
+	SendQuery('/user/user_auth_send_unlogin.php?type=mobile&checkonly=1&mobile='+form.Mobile.value, 'send_mobile_code');
+}
+</script>
+
+<body>
+<div id="Page">
+<!-- 头部 -->
+
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="_files/js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+
+
+
+
 <script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
 <script type="text/javascript">
 $(function() {
 	$("#agree").click(function(){
@@ -33,30 +64,62 @@ $(function() {
 	$("#validForm").validate();
 });
 </script>
-</head>
-<body>
 [#include 'inc_header.html'/]
-<div class="w960 center mt1">
-  <div class="register">
-   <form id="validForm" action="${ctx}/register.jspx" method="post">
-   <input type="hidden" name="redirectUrl" value="${ctx}/register_message.jspx?username={username}&email={email}&verifyMode={verifyMode}"/>
-  	<table border="0" cellpadding="0" cellspacing="0">
-    <tr><td><em style="color:red;margin-right:5px;">*</em>用户名：</td><td><input type="text" name="username" class="{required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" maxlength="${global.register.maxLength}"/></td></tr>
-    <tr><td><em style="color:red;margin-right:5px;">*</em>密码：</td><td><input type="password" id="password" name="password" class="required" maxlength="100"/></td></tr>
-    <tr><td><em style="color:red;margin-right:5px;">*</em>确认密码：</td><td><input type="password"  class="required" equalTo="#password"/></td></tr>
-    <tr><td><em style="color:red;margin-right:5px;">*</em>邮箱：</td><td><input type="text" name="email" class="email required" maxlength="100"/></td></tr>
-    <tr><td><em style="color:red;margin-right:5px;">*</em>验证码：</td><td><input id="captcha" type="text" name="captcha" class="required" maxlength="20"/><span class="autherimg">
-                <img id="auther"  src="javascript:false;" width="120" height="30" 
-                onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
-                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
-                </span></td></tr>
-    <tr><td>用户注册协议：</td><td><textarea style="width:500px;height:80px;">${global.register.userAgreement!}</textarea></td></tr>
-    <tr><td colspan="2"><label><em style="color:red;margin-right:5px;">*</em><input type="checkbox" id="agree" name="agree" value="true" class="required"/>&nbsp;同意协议</label></td></tr>
-   	<tr><td colspan="2"><input type="submit" id="register"  disabled="disabled" value="提交" style="width:50px; height:25px;"/></td></tr>
-   </table>
-  </form>
- </div>
+
+
+  <div id="Pages">
+<form id="validForm" action="${ctx}/register.jspx" method="post">
+<input type="hidden" name="redirectUrl" value="${ctx}/register_message.jspx?username={username}&email={email}&verifyMode={verifyMode}"/>
+<div class="v8Title">欢迎您注册成为耐思尼克会员</div>
+<div id="border" class="v8Padding">
+
+<div id="info" class="info cssform" style="padding:20px;">
+	<div class="itip">基本信息以及联系信息请如实填写，在本网站的注册信息将会受到耐思尼克相关隐私条例保护，您的私人信息仅用于本网站与您之间的联系以及购买相关产品时的身份证明使用，我们将保护您的隐私不被泄露.</div>
+	<div id="ctitle" class="ctitle" style="padding-top:6px;">请填写登陆信息</div>
+	<div class="line"></div>
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="4">
+          <tr>
+            <td width="200" class="r">登陆用户名:</td>
+            <td width="360">
+            	<input type="text" name="username" class="{required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*6-16位字母、数字或者下划线</span></span></td>
+          </tr>
+          <tr>
+            <td class="r">密码:</td>
+            <td><input type="password" id="password" name="password" class="required input" maxlength="100"/></td><td><span class="redfont" id="PasswordInfo">*</span></td>
+          </tr>
+          <tr>
+            <td class="r">再次输入密码:</td>
+            <td><input type="password"  class="required" equalTo="#password"/></td><td><span class="redfont" id="Password2Info">*</span></td>
+          </tr>
+          <tr>
+            <td class="r">邮箱:</td>
+            <td><input type="text" name="email" class="email required" maxlength="100"/></td><td><span class="redfont" id="Password2Info">*</span></td>
+          </tr>
+		  <tr>
+            <td class="r">验证码:</td>
+            <td><input id="captcha" type="text" name="captcha" class="required" maxlength="20"/>
+                <img id="auther"  src="javascript:false;" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" width="56" height="20"> <span class="redfont">*请输入您的验证码</span></td>
+          </tr>
+		</table>
+		 <div style="text-align:center;padding:10px 0px 30px 0px;">
+		 <input type="checkbox" id="agree" name="agree" value="true" class="required"/>
+			我已阅读、理解并接受[  <a href="#" target="_blank">耐思尼克会员注册条款</a> ]
+			<br /><br />
+		<span class="btsb"><input type="submit" value="确认,并进入下一步"></span>
+		</div>
+		
+	</div>
 </div>
+
+</form>		
+<script>citySetup();</script>
+</div>
+</div>
+</div>
+
 [#include 'inc_footer.html'/]
 </body>
 </html>
