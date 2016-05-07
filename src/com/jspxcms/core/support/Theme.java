@@ -13,7 +13,9 @@ public class Theme {
 	private String siteUrl;
 
 	private String preview;
-
+	
+	public static final String THEME_TEMPLATE_PATH = "/theme";
+	
 	public String getId() {
 		return id;
 	}

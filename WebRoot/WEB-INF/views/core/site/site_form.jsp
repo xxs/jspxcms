@@ -113,16 +113,9 @@ function confirmDelete() {
     </td>
     <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.templateTheme"/>:</td>
     <td class="in-ctt" width="35%">
-    	<c:choose>
-    	<c:when test="${oprt=='create'}">
-    		<f:text name="templateTheme" value="${bean.templateTheme}" default="default"/>
-    	</c:when>
-    	<c:otherwise>    	
 	    	<select name="templateTheme">
-	    		<f:options items="${themeList}" selected="${bean.templateTheme}"/>
+	    		<f:options items="${themes}"  selected="${bean.templateTheme}" itemLabel="name" itemValue="id"/>
 	    	</select>
-    	</c:otherwise>
-    	</c:choose>
     </td>
   </tr>
   <tr>
@@ -145,7 +138,6 @@ function confirmDelete() {
     	<label><f:radio name="allStatic" value="false" checked="${bean.allStatic}" default="false" class="required" />关闭</label>
   	</td>
   </tr>
-  
   <tr>
     <td colspan="4" class="in-opt">
       <div class="in-btn"><input type="submit" value="<s:message code="save"/>"/></div>

@@ -42,6 +42,7 @@ import com.jspxcms.core.service.UserService;
 import com.jspxcms.core.support.Configurable;
 import com.jspxcms.core.support.DeleteException;
 import com.jspxcms.core.support.ForeContext;
+import com.jspxcms.core.support.Theme;
 
 /**
  * SiteServiceImpl
@@ -164,14 +165,18 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		if (nodeModel != null) {
 			modelService.clone(nodeModel, bean.getId());
 		}
+		//复制一条节点数据
+		
+		
 		// 复制信息模型
 		Model infoModel = modelService.findDefault(srcSiteId, Info.MODEL_TYPE);
 		if (infoModel != null) {
 			modelService.clone(infoModel, bean.getId());
 		}
+		
 
 		// 复制模版
-		String srcTemplate = ForeContext.FILES_PATH + srcSite.getTemplate(null);
+		String srcTemplate = Theme.THEME_TEMPLATE_PATH + "/" + srcSite.getTemplateTheme();
 		String destTemplate = ForeContext.FILES_PATH + bean.getTemplate(null);
 		File srcDir = new File(pathResolver.getPath(srcTemplate));
 		File destDir = new File(pathResolver.getPath(destTemplate));

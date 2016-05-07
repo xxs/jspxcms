@@ -9,37 +9,31 @@ import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
-import com.jspxcms.core.support.Theme;
-import com.jspxcms.core.service.ThemeService;
-import com.jspxcms.core.support.CompressUtils;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.jspxcms.core.service.ThemeService;
+import com.jspxcms.core.support.CompressUtils;
+import com.jspxcms.core.support.Theme;
 
 @Service("themeServiceImpl")
 public class ThemeServiceImpl implements ThemeService, ServletContextAware {
 
 	private ServletContext servletContext;
 
-	@Value("${theme.template_path}")
-	private String themeTemplatePath;
-	@Value("${theme.resource_path}")
-	private String themeResourcePath;
-
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 
 	public List<Theme> getAll() {
-		File[] files = new File(servletContext.getRealPath(themeTemplatePath)).listFiles(new FileFilter() {
+		File[] files = new File(servletContext.getRealPath(Theme.THEME_TEMPLATE_PATH)).listFiles(new FileFilter() {
 			public boolean accept(File file) {
 				File themeXmlFile = new File(file, "theme.xml");
 				return themeXmlFile.exists() && themeXmlFile.isFile();
@@ -57,7 +51,7 @@ public class ThemeServiceImpl implements ThemeService, ServletContextAware {
 		if (StringUtils.isEmpty(id)) {
 			return null;
 		}
-		File themeXmlFile = new File(servletContext.getRealPath(themeTemplatePath + "/" + id), "theme.xml");
+		File themeXmlFile = new File(servletContext.getRealPath(Theme.THEME_TEMPLATE_PATH + "/" + id), "theme.xml");
 		if (themeXmlFile.exists() && themeXmlFile.isFile()) {
 			return get(themeXmlFile);
 		}
@@ -77,8 +71,7 @@ public class ThemeServiceImpl implements ThemeService, ServletContextAware {
 			if (themeXmlFile.exists() && themeXmlFile.isFile()) {
 				Theme theme = get(themeXmlFile);
 				if (theme != null && StringUtils.isNotEmpty(theme.getId())) {
-					FileUtils.moveDirectory(new File(tempThemeDir, "/template"), new File(servletContext.getRealPath(themeTemplatePath), theme.getId()));
-					FileUtils.moveDirectory(new File(tempThemeDir, "/resources"), new File(servletContext.getRealPath(themeResourcePath), theme.getId()));
+					FileUtils.moveDirectory(new File(tempThemeDir, "/template"), new File(servletContext.getRealPath(Theme.THEME_TEMPLATE_PATH), theme.getId()));
 					return true;
 				}
 			}
@@ -115,5 +108,4 @@ public class ThemeServiceImpl implements ThemeService, ServletContextAware {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-
 }

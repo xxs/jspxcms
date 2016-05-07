@@ -32,6 +32,7 @@ import com.jspxcms.core.domain.Org;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.service.OrgService;
 import com.jspxcms.core.service.SiteService;
+import com.jspxcms.core.service.ThemeService;
 import com.jspxcms.core.support.Context;
 
 @Controller
@@ -45,6 +46,9 @@ public class SiteController {
 
 	@Autowired
 	private SiteService service;
+	
+	@Autowired
+	private ThemeService themeService;
 
 	@Autowired
 	private PathResolver pathResolver;
@@ -74,6 +78,9 @@ public class SiteController {
 		modelMap.addAttribute("org", org);
 		List themeList = new ArrayList();
 		themeList.add("bluewise");
+		
+		modelMap.addAttribute("themes", themeService.getAll());
+		
 		modelMap.addAttribute("themeList", themeList);
 		modelMap.addAttribute("oprt", "create");
 		return "core/site/site_form";
@@ -110,6 +117,7 @@ public class SiteController {
 			themeList.add("bluewise");
 		}
 		modelMap.addAttribute("themeList", themeList);
+		modelMap.addAttribute("themes", themeService.getAll());
 		modelMap.addAttribute("bean", bean);
 		modelMap.addAttribute("parent", bean.getParent());
 		modelMap.addAttribute("org", bean.getOrg());
