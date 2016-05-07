@@ -1,0 +1,293 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<meta name="description" content="这是JSPXCMS的演示站点，包含了新闻、图集、视频、下载、在线留言等模块，能够轻松方便构件您的站点。" />
+<meta name="keywords" content="演示站 JSPX 站长 资讯 创业 小说程序 运营 管理 " />
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/jqFancyTransitions.min.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_scroll.js"></script>
+<script language="javascript" type="text/javascript" src="_files/YLMarquee.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="_files/litenav.js"></script>
+<script language="javascript" type="text/javascript">
+	$(document).ready( function(){
+	    $('#slideshowHolder').jqFancyTransitions({ width:424, height:290,links:true,delay:3000,effect:'wave'});
+	});
+</script>
+</head>
+<body class="index">
+[#include "inc_header.html"/]
+<!-- /header -->
+<div class="w960 center clear mt1">
+<!--焦点图宽为424，高为290-->
+ <div class="pleft">
+   <div class="bignews">
+   <div class="flashnews">
+   	<div id='slideshowHolder'>
+      [@InfoList attr='focus';list]
+      [#list list as info]
+        <img src='${info.attrImageUrl}' alt='${info.title}' />
+        <a href ='${info.url}' target="_blank"></a>
+      [/#list]
+      [/@InfoList]
+    </div>
+   </div>
+   <!--头条-->
+   <div class="onenews"> 
+      [@InfoList attr='bignews'  limit=1;list]
+ 	  [#list list as info]
+      <h2><a href="${info.url}">${info.title}</a></h2>
+       <p>${substring(info.description,85,'...')}<a href="${info.url}">[查看全文]</a></p>
+      [/#list]
+      [/@InfoList]
+    <!-- /onenews -->
+   <div class="d1">
+      [@InfoList attr='bignews' offset=1 limit=4;list]
+ 	  [#list list as info]
+      <div class='d1arc'><a href="${info.url}">${substring(info.title,17,'...')}</a></div>
+      [/#list]
+      [/@InfoList]
+   </div>
+   </div>
+   <!--/头条-->
+  </div>
+  <!-- /bignews -->
+ <div class="notice">
+   <dl class="tbox" style="border:none;">
+    <dt class='light style="border:none;"'><strong>网站公告</strong></dt>
+    <dd class='light' style="border:none; margin-top:4px; overflow:hidden;" id="scroll-notice">
+     <ul class="c1 ico1">
+      [#assign size=0]
+      [@InfoList nodeId=45 limit=5;list]
+ 	  [#list list as info]
+      <li> <a href="${info.url}" target="_blank">${info.title}</a></li>
+      [#if info_has_next][#assign size=size+1 /][/#if]
+      [/#list]
+      [/@InfoList]
+     </ul>
+    <script>$('#scroll-notice').YlMarquee({visiable:${size},step:1,textMode:true,vertical:true});</script>
+    </dd>
+   </dl>
+  </div>
+  <!-- /latestnews -->
+   <div class='latestnews'>
+    <dl class="tbox" style="border:none;">
+    <dt class='light'><strong>最新文章</strong></dt>
+    <dd class='light'>
+    <ul class="d4">
+    <!--最新文档-->
+      [@InfoList limit=10 isHidden=false;list]
+ 	  [#list list as info]
+      <li><span> ${info.publishDate?string('MM-dd')}</span><a href="${info.url}" target="_blank">${substring(info.title,15,'...')}</a></li>
+      [/#list]
+      [/@InfoList]
+    <!--//最新文档-->
+   </ul>
+      </dd>
+   </dl>
+ </div>
+  <!-- /flashnews -->
+  <div class="picnews">
+   <dl class="tbox light">
+    <dt class='light' ><strong>图文资讯</strong></dt>
+    <dd class='light'>
+     <div class="infiniteCarousel">
+      <div class="wrapper">
+       <ul id='imgscroll'>
+         [@InfoList isWithImage=true limit=9;list]
+         [#list list as info]
+         <li>
+          <a href="${info.url!}" target="_blank"><img src='${info.smallImageUrl}' width='143' height='106' alt='${info.title!}'>
+          <span class="title">${substring(info.title,10,'...')}</span></a>
+         </li>
+         [/#list]
+         [/@InfoList]
+       </ul>
+      </div>
+     </div>
+    </dd>
+   </dl>
+  </div>
+ <!-- /picnews -->
+  <div class="listbox"> 
+  [@NodeList isHidden=false ;list]
+	[#list list as node]
+  [#if node.number! != 'picture' && node.number! != 'download' && node.number! != 'guestbook' && node.number! != 'bbs']
+  <dl class="tbox">
+    <dt><strong>[@A bean=node target="_blank"/]</strong><span class="more"><a href="${node.url}"><img src="_files/images/more.gif"></a></span></dt>
+    <dd>
+     <ul class="d1 ico3">
+      [@InfoList nodeId=node.id isIncludeChildren=true limit=4;list]
+  		[#list list as info]
+      <li><span>${info.publishDate?string('MM-dd')}</span>[@A bean=info length="20" append="..." target="_blank"/]</li>
+      [/#list]
+  	 [/@InfoList]
+     </ul>
+    </dd>
+   </dl>
+	[/#if]
+  [/#list]
+ 	[/@NodeList]
+  </div>
+  <!-- /listbox -->
+ </div>
+ <!--左边部分-->
+ <!-- /pleft -->
+ <div class="pright"> 
+      <!-- /notice -->
+ 	<div class="interaction">
+   <dl class="tbox">
+    <dt><strong><a href="${ctx}/guestbook.jspx">网友留言</a></strong><span class="more"><a href="${ctx}/guestbook.jspx"><img src="_files/images/more.gif"></a></span></dt>
+    <dd>
+      <ul>
+      	[@GuestbookList limit=3;list]
+        [#list list as guest]
+        <li>
+          <p><span>${guest.creator.username!}</span>&nbsp;${guest.creationDate?string('yyyy-MM-dd hh:mm:ss')}&nbsp;说:</p>
+          <p>${guest.text!}</p>
+        </li>
+        [/#list]
+        [/@GuestbookList]
+      </ul>
+    </dd>
+   </dl>
+  </div>     
+      
+ 	<div class="interaction">
+   <dl class="tbox">
+    <dt><strong><a href="#">网友评论</a></strong></dt>
+    <dd>
+      <ul>
+   		 	[@CommentList limit=2;list]
+				[#list list as comment]
+        <li>
+          <p><span>${comment.creator.username}</span>&nbsp;${comment.creationDate?string('yyyy-MM-dd hh:mm:ss')}&nbsp;说:</p>
+          <p>${comment.text!}</p>
+        </li>
+        [/#list]
+        [/@CommentList]
+      </ul>
+    </dd>
+   </dl>
+  </div>     
+     
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1">
+     [@InfoList attr='recommend' limit=10;list]
+ 	   [#list list as info]
+      <li class='dotline' style="background:url(_files/images/icon/${info_index+1}.gif) 2px 9px no-repeat;">
+      <a href="${info.url}" target="_blank">${substring(info.title,17,'...')}</a>
+      </li>
+      [/#list]
+      [/@InfoList]
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot" style="margin-top:8px;">
+   <dl class="tbox light">
+    <dt class="light"><strong>热点专题</strong></dt>
+    <dd class="light">
+    	[@SpecialList limit=1;list]
+		[#list list as special]
+    <a href="${ctx}/special/${special.id}.jspx" target="_blank" class="pic"><img src="${special.smallImageUrl!}" alt="" height="70" width="95"></a><h3><a href="${ctx}/special/${special.id}.jspx" target="_blank">${special.title}</a></h3>
+		<p>${special.description}<a href="#" target="_blank">[详细]</a></p>
+		[/#list]
+		[/@SpecialList]	  
+     <ul class="d2 ico2 clr">
+		[@SpecialList offset=1 limit=5;list]
+		[#list list as special]
+        <li><span></span><a href="${ctx}/special/${special.id}.jspx" target="_blank">${special.title}</a></li>
+		[/#list]
+		[/@SpecialList]
+     </ul>
+    </dd>
+   </dl>
+  </div>
+
+ <div class="commend" style="margin-top:10px;">
+   <dl class="tbox light">
+    <dt class='light'><strong>Digg</strong></dt>
+    <dd class='light'>
+     <ul class="c1">
+     [@InfoList sort='diggs desc' limit=6;list]
+ 	  [#list list as info]
+      <li class='dotline' style="background:url(_files/images/icon/${info_index+1}.gif) 2px 9px no-repeat;">
+      <a href="${info.url}" target="_blank">${substring(info.title,17,'...')}</a>
+      </li>
+      [/#list]
+      [/@InfoList]
+     </ul>
+    </dd>
+   </dl>
+  </div>
+ <!-- /vote -->
+ <div class="hot" style="margin-top:8px;">
+  <dl class="tbox light" >
+  	<dd style="border-top:1px #dadada solid;">
+    	[@Vote;vote]
+      [#if vote??]
+      <p class="votetitle"><a href="${ctx}/vote.jspx?id=${vote.id}" target="_blank">${vote.title?html}</a></p>
+      <form action="${ctx}/vote.jspx" method="post" id="vote">
+      <input type="hidden" name="id" value="${vote.id}"/>
+      <ul style="margin:10px 10px;">
+      [#list vote.options as option]
+      <li style=" height:21px;"><input type="radio" name="optionIds" value="${option.id}"/> ${option.title}</li>
+      [/#list]
+      </ul>
+      <input type="hidden" name="status_560" value="您已经投过票了"/>
+      <input type="hidden" name="redirectUrl" value="${ctx}/vote/{id}.jspx"/>
+      <input type="submit" value="投票" style="width:60px;height:25px;margin:5px 10px;"/>
+      <a href="${ctx}/vote/${vote.id}.jspx" target="_blank">查看结果</a>
+      </form>
+      [#else]
+      <p>没有投票</p>
+      [/#if]
+      [/@Vote]
+   	</dd>
+  </dl>
+ </div>
+ <!-- /voteEnd -->
+<!-- /pleft -->
+</div>
+<div class="clr"></div>
+<div class="w960 center mt1">
+ <dl class="tbox">
+  <dt><strong>友情链接</strong>
+  <div>
+  [@FriendlinkTypeList;list]
+  [#list list as type]
+    <span class="linklabel">${type.name}</span>
+  [/#list]
+  [/@FriendlinkTypeList]
+  </div>
+ 	</dt>
+  <dd>
+    [@FriendlinkTypeList;list]
+  	[#list list as type]
+  	[@FriendlinkList typeId=type.id;list]
+    <ul class="f5" [#if type_index!=0]style="display:none;"[/#if]>
+      [#list list as link]
+      	<li><a href='${link.url}' target='_blank'>${link.name}</a> </li>
+      [/#list]
+    </ul>
+    [/@FriendlinkList]
+    [/#list]
+    [/@FriendlinkTypeList]
+  </dd>
+ </dl>
+</div>
+<!-- /flink -->
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

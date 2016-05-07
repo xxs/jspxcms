@@ -1,0 +1,29 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>用户注册_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/jspxcms.css"/>
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#validForm").validate();
+});
+</script>
+</head>
+<body>
+[#include 'inc_header.html'/]
+
+<div style="margin:40px 0px;">
+[#if Param.verifyMode=='1']
+	<div style="width:960px;margin:0 auto;">用户注册成功，我们给您的注册邮箱发送一封验证身份验证邮件，请进入你的注册邮箱进行身份验证，以激活此账号。</div>
+[/#if]
+</div>
+[#include 'inc_footer.html'/]
+</body>
+</html>
+[/#escape]

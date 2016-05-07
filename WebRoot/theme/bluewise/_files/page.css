@@ -1,0 +1,135 @@
+.pleft{
+	width:712px;
+	float:left;
+	overflow:hidden;
+}
+.pright{
+	margin-bottom:4px;
+	width:240px;
+	float:right;
+	overflow:hidden;
+}
+/*---------- index ---------*/
+.index .bignews{
+	width:424px;
+	overflow:hidden;
+	float:right;
+}
+.index .bignews a{
+	color:#555;
+}
+.index .bignews .onenews{
+	margin-top:8px;
+	padding:7px 6px;
+	border:1px #DADADA solid;
+}
+.index .bignews .onenews h2{
+	border-bottom:1px dashed #DADADA;
+	margin-bottom:5px;
+	text-align:center;
+	display:block;
+	height:30px;
+	line-height:28px;
+}
+.index .bignews .onenews h2 a{
+	font-size:16px;
+}
+.index .bignews .onenews p{
+	text-indent:2em;
+	line-height:19px;
+	color:#666;
+}
+
+.index .bignews div.flashnews{
+	width:424px;
+	font-size:0px;
+	color:#fff;
+}
+
+.index .bignews div.d1{
+	padding:3px 8px;
+	clear:both;
+	width:406px;
+	_width:390px;
+	overflow:hidden;
+}
+
+.index .bignews div.d1arc{
+	margin-right:12px;
+	_margin-right:6px;
+	width:190px;
+
+	float:left;
+	height:24px;
+	line-height:24px;
+	overflow:hidden;
+}
+.index .bignews div.d1arc a:hover {
+	color:red;
+}
+.index .bignews ul.c2{
+	width:416px;
+	padding:0px 4px 0px;
+	clear:both;
+	overflow:hidden;
+}
+.index .bignews ul.c2 a {
+	font-size:13px;
+}
+.index .bignews ul.c2 a:hover{
+	color:red;
+}
+.index .notice{
+	width:278px;
+	border:1px solid #DADADA;
+	height:140px;
+	margin-bottom:8px;
+	overflow:hidden;
+	float:left;
+}
+.index .latestnews{
+	width:280px;
+	height:310px;
+	border-bottom:1px solid #DADADA;
+	float:left;
+	overflow:hidden;
+}
+.index .picnews{
+	width:712px;
+	float:left;
+	clear:both;
+	overflow:hidden;
+	margin-top:9px;
+	*margin-top:12px;
+	_margin-top:8px;
+}
+.listbox{
+	width:720px;
+	margin-top:8px;
+	overflow:hidden;
+	float:left;
+	clear:both;
+}
+.index .listbox dl{
+	width:352px;
+	margin-right:8px;
+	margin-bottom:6px;
+	float:left;
+}
+.index .listbox ul a{
+	color:#666;
+}
+.index .listbox ul a:hover{
+	color:red;
+}
+.index .commend dl dd{
+	padding-top:0px;
+}
+.index .hot dl dd{
+	padding-top:0px;
+}
+.index .hot dl dd .c1 li{
+	width:210px;
+	overflow:hidden;
+}
+

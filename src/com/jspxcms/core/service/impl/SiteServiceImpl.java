@@ -12,6 +12,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -26,6 +27,7 @@ import com.jspxcms.core.domain.Global;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
+import com.jspxcms.core.domain.NodeDetail;
 import com.jspxcms.core.domain.Role;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
@@ -34,6 +36,8 @@ import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.SiteDao;
 import com.jspxcms.core.service.GlobalService;
 import com.jspxcms.core.service.ModelService;
+import com.jspxcms.core.service.NodeQueryService;
+import com.jspxcms.core.service.NodeService;
 import com.jspxcms.core.service.OrgService;
 import com.jspxcms.core.service.RoleService;
 import com.jspxcms.core.service.SiteService;
@@ -166,7 +170,13 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 			modelService.clone(nodeModel, bean.getId());
 		}
 		//复制一条节点数据
-		
+		Integer inte = 1;
+		Node node = nodeQuery.get(inte);
+		Node dest = new Node();
+		BeanUtils.copyProperties(node, dest);
+		dest.setId(null);
+		Integer ints[] = {0};
+		//nodeService.save(dest, new NodeDetail(), null, null, ints, ints, ints, ints, ints, ints, null, null, null, null, userId, bean.getId(), null);
 		
 		// 复制信息模型
 		Model infoModel = modelService.findDefault(srcSiteId, Info.MODEL_TYPE);
@@ -324,8 +334,8 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 
 	private PathResolver pathResolver;
 	private ModelService modelService;
-	// private NodeService nodeService;
-	// private NodeQueryService nodeQuery;
+	private NodeService nodeService;
+	private NodeQueryService nodeQuery;
 	private UserRoleService userRoleService;
 	private RoleService roleService;
 	private UserService userService;
@@ -342,15 +352,15 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		this.modelService = modelService;
 	}
 
-	// @Autowired
-	// public void setNodeService(NodeService nodeService) {
-	// this.nodeService = nodeService;
-	// }
-	//
-	// @Autowired
-	// public void setNodeQuery(NodeQueryService nodeQuery) {
-	// this.nodeQuery = nodeQuery;
-	// }
+	 @Autowired
+	 public void setNodeService(NodeService nodeService) {
+	 this.nodeService = nodeService;
+	 }
+	
+	 @Autowired
+	 public void setNodeQuery(NodeQueryService nodeQuery) {
+	 this.nodeQuery = nodeQuery;
+	 }
 
 	@Autowired
 	public void setUserRoleService(UserRoleService userRoleService) {
