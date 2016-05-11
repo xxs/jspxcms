@@ -1,0 +1,39 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>Jspxcms投票_${Param.q!?html}_${site.fullNameOrName}</title>
+<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
+<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
+<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="w960 center clear mt1">
+	<div class="pleft">
+   <div class="position">
+    当前位置:<a href="${ctx}/">首页</a> > 投票
+  	</div>
+    <div class="textlist">
+  	 	<p class="votetitle"><a href="${ctx}/vote.jspx?id=${vote.id}" target="_blank">${vote.title?html}</a></p>
+      <p style="margin:10px 10px;">总票数：<span style="color:red">${vote.total}</span></p>
+      <input type="hidden" name="id" value="${vote.id}"/>
+      <ul>
+        [#list vote.options as option]
+        <li>${option.title} ${option.count} / ${vote.total}</li>
+        [/#list]
+      </ul>
+    </div>
+	</div>
+	<div class="pright">
+	[#include "inc_right.html"/]
+	</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

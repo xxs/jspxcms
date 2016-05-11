@@ -82,36 +82,33 @@ $(function() {
           <tr>
             <td width="200" class="r">登陆用户名:</td>
             <td width="360">
-            	<input type="text" name="username" class="{required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" maxlength="${global.register.maxLength}"/>             
+            	<input type="text" name="username" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
             	</td><td>
 				<span id="showdiv"><span class="redfont">*6-16位字母、数字或者下划线</span></span></td>
           </tr>
           <tr>
             <td class="r">密码:</td>
-            <td><input type="password" id="password" name="password" class="required input" maxlength="100"/></td><td><span class="redfont" id="PasswordInfo">*</span></td>
+            <td><input name="Password" type="password" class="input" id="Password"  style="width:350px;" onFocus="" size="20" maxlength="16" check="[a-zA-Z0-9_]{8,20}$" warning="密码输入错误，需要8-16位组成"  onChange="checkValue(this)"></td><td><span class="redfont" id="PasswordInfo">*</span></td>
           </tr>
           <tr>
             <td class="r">再次输入密码:</td>
-            <td><input type="password"  class="required" equalTo="#password"/></td><td><span class="redfont" id="Password2Info">*</span></td>
-          </tr>
-          <tr>
-            <td class="r">邮箱:</td>
-            <td><input type="text" name="email" class="email required" maxlength="100"/></td><td><span class="redfont" id="Password2Info">*</span></td>
+            <td><input name="Password2" type="password" class="input" id="Password2"  style="width:350px;" onFocus="" size="20" maxlength="16" check="^[a-zA-Z0-9_]{8,20}$" warning="密码输入错误，需要8-16位组成"  onChange="check2Pass(Password,Password2)"></td><td><span class="redfont" id="Password2Info">*</span></td>
           </tr>
 		  <tr>
             <td class="r">验证码:</td>
-            <td><input id="captcha" type="text" name="captcha" class="required" maxlength="20"/>
-                <img id="auther"  src="javascript:false;" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" width="56" height="20"> <span class="redfont">*请输入您的验证码</span></td>
+            <td><input name="logincode" type="text" class="input" id="logincode" onFocus="" size="20" maxlength="16" autocomplete="off" check="^[0-9]{5,5}$" warning="请输入正确的验证码">
+                <img src="picture/codeimg.php" width="56" height="20"> <span class="redfont">*请输入您的验证码</span></td>
           </tr>
-		</table>
+	</table>
+
 		 <div style="text-align:center;padding:10px 0px 30px 0px;">
-		 <input type="checkbox" id="agree" name="agree" value="true" class="required"/>
-			我已阅读、理解并接受[  <a href="#" target="_blank">耐思尼克会员注册条款</a> ]
+		 <input type="checkbox" id="agree" class="checkbox required" name="agree" value="true" check="^0$" warning="您必须阅读、理解并接受我们的注册条款">
+			我已阅读、理解并接受[  <a href="/support/print.php?IDDoc=27&Type=view" target="_blank">会员注册条款</a> ]
 			<br /><br />
-		<span class="btsb"><input type="submit" value="确认,并进入下一步"></span>
+		<span class="btsb"><input type="submit" value="确认注册"></span>
 		</div>
 		
-	</div>
+</div>
 </div>
 
 </form>		
@@ -120,7 +117,7 @@ $(function() {
 </div>
 </div>
 
-[#include 'inc_footer.html'/]
+[#include "inc_footer.html"/]  
 </body>
 </html>
 [/#escape]
