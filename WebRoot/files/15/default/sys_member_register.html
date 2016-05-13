@@ -88,16 +88,20 @@ $(function() {
           </tr>
           <tr>
             <td class="r">密码:</td>
-            <td><input name="Password" type="password" class="input" id="Password"  style="width:350px;" onFocus="" size="20" maxlength="16" check="[a-zA-Z0-9_]{8,20}$" warning="密码输入错误，需要8-16位组成"  onChange="checkValue(this)"></td><td><span class="redfont" id="PasswordInfo">*</span></td>
+            <td><input name="Password" type="password" class="input" id="Password"  style="width:350px;" onFocus="" size="20" maxlength="16" check="[a-zA-Z0-9_]{3,20}$" warning="密码输入错误，需要8-16位组成"  onChange="checkValue(this)"></td><td><span class="redfont" id="PasswordInfo">*</span></td>
           </tr>
           <tr>
             <td class="r">再次输入密码:</td>
-            <td><input name="Password2" type="password" class="input" id="Password2"  style="width:350px;" onFocus="" size="20" maxlength="16" check="^[a-zA-Z0-9_]{8,20}$" warning="密码输入错误，需要8-16位组成"  onChange="check2Pass(Password,Password2)"></td><td><span class="redfont" id="Password2Info">*</span></td>
+            <td><input name="Password2" type="password" class="input" id="Password2"  style="width:350px;" onFocus="" size="20" maxlength="16" check="^[a-zA-Z0-9_]{3,20}$" warning="密码输入错误，需要8-16位组成"  onChange="check2Pass(Password,Password2)"></td><td><span class="redfont" id="Password2Info">*</span></td>
           </tr>
 		  <tr>
             <td class="r">验证码:</td>
-            <td><input name="logincode" type="text" class="input" id="logincode" onFocus="" size="20" maxlength="16" autocomplete="off" check="^[0-9]{5,5}$" warning="请输入正确的验证码">
-                <img src="picture/codeimg.php" width="56" height="20"> <span class="redfont">*请输入您的验证码</span></td>
+            <td>
+            	<input id="captcha" type="text" name="captcha" class="input required" maxlength="20" autocomplete="off"/>
+                <img id="auther"  src="javascript:false;" width="56" height="20" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
+                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
+                <span class="redfont">*</span>
+            </td>
           </tr>
 	</table>
 
