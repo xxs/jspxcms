@@ -151,7 +151,7 @@
 	z-index:0;
 	top:0px;
 	left:0px;
-	background:url(../img/shujupan.png) no-repeat center;
+	background:url(shujupan.png) no-repeat center;
 }
 .sms-num{
 	position:absolute;
@@ -170,7 +170,7 @@
 	position:absolute;
 	width:120px;
 	height:21px;
-	background:url(../img/smszhizhen.png) no-repeat center;
+	background:url(smszhizhen.png) no-repeat center;
 	top:94px;
 	left:30px;
 	transition: all 1s;
