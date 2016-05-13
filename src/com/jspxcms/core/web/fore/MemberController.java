@@ -33,6 +33,7 @@ import com.jspxcms.core.support.Response;
 public class MemberController {
 	public static final String SPACE_TEMPLATE = "sys_member_space.html";
 	public static final String MY_TEMPLATE = "sys_member_my.html";
+	public static final String PANEL_TEMPLATE = "sys_member_panel.html";
 	public static final String PROFILE_TEMPLATE = "sys_member_profile.html";
 	public static final String PASSWORD_TEMPLATE = "sys_member_password.html";
 	public static final String EMAIL_TEMPLATE = "sys_member_email.html";
@@ -69,6 +70,15 @@ public class MemberController {
 		Map<String, Object> data = modelMap.asMap();
 		ForeContext.setData(data, request);
 		return site.getTemplate(MY_TEMPLATE);
+	}
+	
+	@RequestMapping(value = "/panel.jspx")
+	public String panel(HttpServletRequest request, HttpServletResponse response,
+			org.springframework.ui.Model modelMap) {
+		Site site = Context.getCurrentSite(request);
+		Map<String, Object> data = modelMap.asMap();
+		ForeContext.setData(data, request);
+		return site.getTemplate(PANEL_TEMPLATE);
 	}
 
 	@RequestMapping(value = "/my/profile.jspx")
