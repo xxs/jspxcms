@@ -5,8 +5,8 @@
 	#subMenu .mainTitle{font-family:Microsoft Yahei,÷ÚÌו,"ËÎÌו";font-size:26px;padding:10px 0px 9px 3px;text-align:left;float:left;color:#333333;}
 	#subMenuItem{z-index:10000;}
 	#subMenuItem li	{float: left;list-style: none;line-height:60px;height:60px;position:relative;font-family:"ËÎÌו";}
-	#subMenuItem li a{white-space:nowrap;color:#333333;text-align:center;height:60px;line-height:60px;font-size:14px;display:block;padding:0px 15px;}
-	#subMenuItem li a.xlmenu{padding: 0px 35px 0px 29px;}
+	#subMenuItem li a{white-space:nowrap;color:#333333;text-align:center;height:60px;line-height:60px;font-size:14px;display:block;padding:0px 16px;}
+	#subMenuItem li a.xlmenu{padding: 0px 24px 0px 25px;}
 	#subMenuItem li a:hover	{color:#cc0000;}	
 	#subMenuItem li a .enarr{transition: transform .2s ease-in;margin-top:30px;margin-left:5px;}
 	#subMenuItem li:hover a .enarr{transform: rotate(180deg);transform-origin: 50% 30%;}

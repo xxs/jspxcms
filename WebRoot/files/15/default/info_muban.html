@@ -5,224 +5,186 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="atarm" />
 <title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
-<link href="_files/jspxcms.css" rel="stylesheet" type="text/css" />
-<link href="_files/pic_change.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript" src="${fore}/jquery.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/bluewise.js" ></script>
-<script language="javascript" type="text/javascript" src="${fore}/fore.js" ></script>
-<script language="javascript" type="text/javascript" src="_files/pic_change.js"></script>
-<script language="javascript" type="text/javascript" src="_files/common.js"></script>
-<script language="javascript" type="text/javascript" src="_files/ckplayer.js" charset="utf-8"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#nextone").click(function(){
-			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
-			$("#captcha").unbind("focusin");
-		});
-		$("#captcha").focusin(function(){
-			$(".autherimg").css("display","inline");
-			$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
-		});
-		//$("#captcha").captcha("${ctx}/captcha.servlet",{title:"点击重新获取验证码"});
-	});
-</script>
+<meta name="description" content="安然建站助手" />
+<meta name="keywords" content="安然建站助手" />
+<link href="_files/css/2010-6.css" rel="stylesheet" type="text/css">
+<link href="_files/css/design.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<link href="_files/css/popbox.css" rel="stylesheet" type="text/css">
+<div id="Page">
+    <!-- 头部 -->
+    
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="_files/js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="index">
 [#include "inc_header.html"/]
-<div class="w960 center clear mt1">
-	<div class="pleft">
-    	<div class="position">
-      	  当前位置：[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>>[/#list]正文
-        </div>
-    	<div class="textinfo">
-      	 <h2 class="title mt2">${info.fullTitleOrTitle}</h2>
-         <p class="infoattr">
-         	<span>${info.publishDate?string('yyyy-MM-dd')}</span>
-                <span>浏览次数：<span id="info_views"></span>
-        		[#if info.getSource()??]<span>来源：${info.getSource()!} </span>[/#if]
-         		[#if info.getAuthor()??]<span>作者：${info.getAuthor()!}</span>[/#if]
-				<script type="text/javascript">
-					$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
-				</script></span>
-         </p>
-       [#if info.video??]
-       <div style="text-align:center; margin-bottom:20px;">
-        <div id="a1"></div>
-				<script type="text/javascript">
-           var flashvars={
-            f:'${info.video}',
-            c:0
-            };
-          CKobject.embedSWF('_files/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars);      
-        </script>
-       </div>
-       
-       [/#if]
- 	   	 <div class="text">[#noescape]${text}[/#noescape]</div>
-       	[#if pagedList.totalPages>1]
-         [#include 'inc_page.html'/]
-        [/#if]
-          <div class="mood">
-            <script type="text/javascript">
-							function infoScoring(id,itemId) {
-								$.post('${ctx}/info_scoring.jspx',
-									{id:id,itemId:itemId},
-									function(data) {
-										if(data!="0"){
-											$("#score-item-"+itemId).text(data);
-										}else{
-											alert("你已经表达过心情了！");	
-										}
-									}
-								);
-							}
-						</script>
-            [@ScoreGroup number='mood';group]
-            <ul>
-              [#list group.items as item]
-              <li onclick="infoScoring(${info.id},${item.id});">
-                <p> <span id="score-item-${item.id}">0</span>票</p>
-                <p><img src="${item.iconUrl}"/></p>
-                <p>${item.name}</p>
-              </li>
-              [/#list]
-            </ul>
-            [/@ScoreGroup]
-            <script type="text/javascript">
-              $.get("${ctx}/info_score/${info.id}.jspx?d="+new Date()*1,function(data) {
-                for(id in data) {
-                  $("#score-item-"+id).text(data[id]);
-                }
-              },"json");
-            </script>
-          </div>
-        
-        
-       		<div class="digg clr">
-						<script type="text/javascript">
-              function digg() {
-                $.post('${ctx}/info_digg.jspx',
-                  {id:${info.id}},
-                  function(data){
-                    if(data!="0") {
-                      $('#diggs').text(data);
-                    }else{
-                      alert("你已经顶过一次！")
-                    }
-                  }
-                );
-              }
-              function bury() {
-                $.post('${ctx}/info_bury.jspx',
-                  {id:${info.id}},
-                  function(data){
-                    if(data!="0") {
-                      $('#burys').text(data);
-                    }else{
-                      alert("你已经踩过一次！")
-                    }
-                  }
-                );
-              }
-            </script>
-            <a onclick="digg();" class="supports FlLeft" href="javascript:return false;"><span id="diggs"></span></a>
-            <a onclick="bury();" class="againsts FlRight" href="javascript:return false;"><span id="burys"></span></a>
-            <script type="text/javascript">
-              $.get("${ctx}/info_diggs/${info.id}.jspx?d="+new Date()*1,function(data) {
-                $("#diggs").text(data[0]);
-                $("#burys").text(data[1]);
-              },"json");
-            </script>
-         </div>
-         
-          <!-- Baidu Button BEGIN -->
-            <div class="share-btn" style="margin:10px 8px; height:30px;">
-            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-                <span class="bds_more">分享到：</span>
-                <a class="bds_qzone"></a>
-                <a class="bds_tsina"></a>
-                <a class="bds_tqq"></a>
-                <a class="bds_renren"></a>
-                <a class="shareCount"></a>
-            </div>
-        	<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
-      		<script type="text/javascript" id="bdshell_js"></script>
-            <script type="text/javascript">
-            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
-        	</script>
-           </div>
-        <!-- Baidu Button END -->
-       </div>
-       <div class="othernews">
-       	<ul>
-      		 [@InfoPrev id=info.id;i]
-         	 [#if i??]
-        	 <li>
-         		<span class="spanleft">上一条：<a href="${i.url}">${i.title!}</a></span>
-         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
-      		 </li>
-         	[#else]
-         	<li><span class="spanleft">上一条：没有了</span></li>
-        	[/#if]
-		 	[/@InfoPrev]
-		 	[@InfoNext id=info.id;i]
-         	[#if i??]
-		 	<li>
-         		<span class="spanleft">下一条：<a href="${i.url}">${i.title!}</a></span>
-         		<span class="spanright">${i.publishDate?string('yyyy-MM-dd')}</span>
-         	</li>
-         	[#else]
-        	<li><span class="clr">下一条：没有了</span></li>
-         	[/#if]
-		 	[/@InfoNext ]
-         </ul>
-       </div>
-       <div class="comment">	 
-    		  <p style="font-size:14px;">评论</p>
-        [#assign conf = site.getConf('com.jspxcms.core.domain.SiteComment')/]
-			  <form id="comment" action="${ctx}/comment_submit.jspx" method="post">
-			  	<input type="hidden" name="ftype" value="Info"/>
-			  	<input type="hidden" name="fid" value="${info.id}"/>
-          <input type="hidden" name="status_0" value="评论成功！"/>
-          <input type="hidden" name="status_1" value="评论成功，请等待管理员审核！"/>
-			  	<input type="hidden" name="nextUrl" value="${url}"/>
-			  	<p><textarea id="content" name="text" maxlength="${conf.maxLength}"></textarea></p>
-					<script type="text/javascript" src="${ctx}/app.jspx?template=comment_captcha"></script>
-			  	<p><input id="commit" type="submit" value=" "/></p>
-			  </form>
-        <h2 style="margin:20px 0px;">网友评论:</h2>
-			  <div id="comment_div"></div>
-          <script type="text/javascript">
-         		$("#comment_div").load("${ctx}/comment_list.jspx?fid=${info.id}&d="+new Date()*1);
-          </script>
-          <p>
-              <a href="${ctx}/comment.jspx?fid=${info.id}">
-              共<span id="info_comments"></span>评论。点击查看
-              </a>
-					<script type="text/javascript">
-             $("#info_comments").load("${ctx}/info_comments/${info.id}.jspx?d="+new Date()*1);
-					</script>
-         </p>
-		   </div>     
-       <div class="reletednews">
-       		<p>相关新闻：</p>
-       		[@InfoFulltextList q=info.title excludeId=info.id limit=4;list]
-            </ul>
-							[#list list as fulltextInfo]
-							<li>
-              	<span class="spanleft">[@A bean=fulltextInfo target="_blank"/]</span>
-            		<span class="spanright">${fulltextInfo.publishDate?string('yyyy-MM-dd')}</span>
-              </li>
-							[/#list]
-       	 		</ul>
- 	 				[/@InfoFulltextList]
-       </div>
+
+<link href="_files/css/designglobal.css" rel="stylesheet" type="text/css" >
+<style>
+#topLink{display:none;}
+</style>
+<div id="Pages">
+<div class="advTop">
+  <div class="advTopLeft">
+     <div class="advImg"><img src="_files/picture/f-point.png" border="0"></div>
+     <div class="advName">
+	    <div class="n"><span class="nt">用户沉淀 - 积分系统</span><span class="cate">分类：<a href="#">用户</a></span></div>
+		<p class="d">企业小付出，用户大回报</p>
+	 </div>
+  </div>
+  <div class="advTopRight"><a href="box_edition.php" class="createBtn">立即创建</a></div>
+</div>
+
+<div class="advMain">
+	<div class="advTitles">产品介绍</div>
+	<div class="advContent padding40">
+		<div class="advDetial">积分系统融合了积分记录、积分查询、积分兑换、积分抵扣等各项会员积分管理功能，帮助企业沉淀用户，实现多次消费。</div>
+		<div class="advShowImg" >
+				<div class="LeftBotton" id="LeftArr2"><img src="_files/picture/leftarr.png" border="0"></div>
+		<div class="RightBotton" id="RightArr2"><img src="_files/picture/rightarr.png" border="0"></div>
+     <div id="picList">
+		<ul class="slide-content">
+				  <li><img src="_files/picture/adv-point.png" border="0"></li>
+				  <li><img src="_files/picture/adv-point2.png" border="0"></li>
+				  <li><img src="_files/picture/adv-point3.png" border="0"></li>
+				  <li><img src="_files/picture/adv-point4.png" border="0"></li>
+			
+		</ul>
+		</div>
+				</div>
 	</div>
-	<div class="pright">
-		[#include "inc_right.html"/]
+
+	<div class="advTitles">相关产品</div>
+	<div class="advContent">
+		<div class="advShowList">
+		   <ul>
+		   		     <li>
+			   <div class="adImg"><img src="_files/picture/f-usercard.png" border="0" onclick="location.href='function-usercard.php'"/></div>
+			   <div class="adDetail" onclick="location.href='function-usercard.php'">
+			     <h2>会员卡</h2>
+				 <div class="c">尊享会员特权，乐当忠诚顾客</div>
+			   </div>
+			 </li>
+					     <li>
+			   <div class="adImg"><img src="_files/picture/f-fans.png" border="0" onclick="location.href='function-fans.php'"/></div>
+			   <div class="adDetail" onclick="location.href='function-fans.php'">
+			     <h2>粉丝管理</h2>
+				 <div class="c">粉丝后台管理，助力精准营销</div>
+			   </div>
+			 </li>
+					   </ul>
+		</div>
+	</div>
+	<div class="advTitles">使用的人还使用了</div>
+	<div class="advContent">
+		<div class="advShowList">
+		   <ul>
+		     		     <li>
+			   <div class="adImg"><img src="_files/picture/f-usercard.png" border="0" onclick="location.href='function-usercard.php'"/></div>
+			   <div class="adDetail" onclick="location.href='function-usercard.php'">
+			     <h2>会员卡</h2>
+				 <div class="c">尊享会员特权，乐当忠诚顾客</div>
+			   </div>
+			 </li>
+					     <li>
+			   <div class="adImg"><img src="_files/picture/f-fans.png" border="0" onclick="location.href='function-fans.php'"/></div>
+			   <div class="adDetail" onclick="location.href='function-fans.php'">
+			     <h2>粉丝管理</h2>
+				 <div class="c">粉丝后台管理，助力精准营销</div>
+			   </div>
+			 </li>
+					   </ul>
+		</div>
 	</div>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+
 [#include "inc_footer.html"/]
+<style>
+.fixLeftMenu{width:110px;position: fixed; text-align: center; z-index:9999; cursor: pointer; left: 0px;top:50%;margin-top:102px; _position: absolute; _right:0px;}
+</style>
+<style>
+.advTop{background:#fff;padding:25px;overflow:hidden;zoom:1;}
+.advTopLeft{float:left;overflow:hidden;zoom:1}
+.advImg{background:#F5F5F5;padding:20px;float:left}
+.advImg img{width:60px;}
+.advName .n{margin-bottom:10px;padding-top:20px}
+.advName .n .nt{font-family:"Microsoft YaHei","verdana";color:#333;font-size:24px;}
+.advName .d{color:#999;font-size:14px;}
+.advName .cate{margin-left:20px;color:#999}
+.advName .cate a{padding:5px 10px;border:1px solid #eee;color:#333}
+.advName .cate a:hover{background:#f8f8f8}
+.advName{float:left;margin-left:25px;}
+.advTopRight{margin-top:20px}
+.advTopRight a.createBtn {width:123px;display:block;height:35px;line-height:35px;text-align:center;color:#fff;font-family:"Microsoft YaHei","verdana";background:#c00}
+.advTopRight a.createBtn:hover{background:#a00}
+.advTopRight{float:right}
+.advContent{background:#fff;padding:40px;}
+.advMain{text-align:left;width:1182px;margin:0 auto;}
+.advMain .advTitles{text-align:left;font-family:"Microsoft YaHei","verdana";color:#333;font-size:24px;font-weight:normal;line-height:45px;margin:10px auto}
+.advMain .advDetial{margin:10px auto 20px;font-size:14px;font-family:"Microsoft YaHei","verdana";}
+.advMain .advShowImg{background:#F5F5F5;padding:30px 20px;text-align:center;}
+
+.advShowList{overflow:hidden;zoom:1}
+.advShowList li{float:left;overflow:hidden;zoom:1;width:162px;margin-right:10px;}
+.adImg {float:left;font-family:"Microsoft YaHei","verdana";}
+.adDetail {float:left}
+.adDetail:hover,.adImg img{cursor:pointer}
+.adDetail h2{font-family:"Microsoft YaHei","verdana";font-size:14px;color:#333;margin-bottom:6px;width:98%;width: 83px;text-overflow: ellipsis; overflow: hidden;  zoom: 1;   white-space: nowrap;}
+.adDetail  .c{color:#999;font-size:12px;line-height:normal;width:83px;}
+.advShowList li img{width:60px;margin-right:10px;}
+
+.advShowImg{overflow:hidden;zoom:1;position:relative;}
+.LeftBotton{width:27px;height:57px;background:none;position:absolute;left:0px;top:245px;}
+.RightBotton{width:27px;height:57px;background:none;position:absolute;right:0px;top:245px;}
+#picList{width:100%;overflow:hidden;zoom:1;overflow:hidden;zoom:1;}
+#picList li{width:100%;text-align:center;}
+#picList li img{margin:0 auto;}
+</style>
+<script type="text/javascript" src="_files/js/jcarousellite.js"></script>
+
+  <script>
+  	$(function(){
+	$("#picList").jCarouselLite({ 
+		btnNext:"#RightArr2", 
+		btnPrev:"#LeftArr2",  
+		scroll :1,  
+		visible:1,
+		auto:4500,
+		speed:1000,
+	setHeight:520
+	});
+
+		$(".LeftBotton").mouseover(function(){
+			$(this).find("img").attr("src","_files/images/leftArr-hot.png");
+		}).mouseout(function(){
+		    $(this).find("img").attr("src","_files/images/leftArr.png");
+		})
+		$(".RightBotton").mouseover(function(){
+			$(this).find("img").attr("src","_files/images/rightArr-hot.png");
+		}).mouseout(function(){
+		    $(this).find("img").attr("src","_files/images/rightArr.png");
+		})
+
+	
+});
+  </script>
 </body>
 </html>
 [/#escape]
