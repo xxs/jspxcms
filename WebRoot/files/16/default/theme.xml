@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme>
+	<id>defaule</id>
+	<name>默认模板</name>
+	<version>1.0</version>
+	<author>xxs</author>
+	<siteUrl>http://www.baidu.com</siteUrl>
+	<preview>/resources/shop/default/images/preview.jpg</preview>
+</theme>
