@@ -157,6 +157,8 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		if (siteModel != null) {
 			modelService.clone(siteModel, bean.getId());
 		}
+		//此处修改为复制整站模型
+		
 		// 复制首页模型
 		Model homeModel = modelService.findDefault(srcSiteId,
 				Node.HOME_MODEL_TYPE);

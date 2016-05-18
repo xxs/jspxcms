@@ -90,6 +90,13 @@ public class ModelServiceImpl implements ModelService, SiteDeleteListener {
 	public Model findDefault(Integer siteId, String type) {
 		return dao.findDefault(siteId, type);
 	}
+	
+	public List<Model> findAllModelBySiteIdAndType(Integer siteId, String type) {
+		return dao.findAllModelBySiteIdAndType(siteId, type);
+	}
+	public List<Model> findAllModelBySiteId(Integer siteId) {
+		return dao.findAllModelBySiteId(siteId);
+	}
 
 	public Model get(Integer id) {
 		return dao.findOne(id);

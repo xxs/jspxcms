@@ -21,6 +21,10 @@ public interface ModelDao extends Repository<Model, Integer>, ModelDaoPlus {
 	public List<Model> findAll(Specification<Model> spec, Sort sort);
 
 	public List<Model> findAll(Specification<Model> spec, Limitable limit);
+	
+	public List<Model> findAllModelBySiteIdAndType(Integer siteId, String type);
+	
+	public List<Model> findAllModelBySiteId(Integer siteId);
 
 	public Model findOne(Integer id);
 

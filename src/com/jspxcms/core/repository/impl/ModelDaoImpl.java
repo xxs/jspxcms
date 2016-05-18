@@ -46,6 +46,35 @@ public class ModelDaoImpl implements ModelDaoPlus {
 		List<Model> list = query.list(model);
 		return !list.isEmpty() ? list.get(0) : null;
 	}
+	
+	public List<Model> findAllModelBySiteIdAndType(Integer siteId, String type) {
+		JPAQuery query = new JPAQuery(this.em);
+		QModel model = QModel.model;
+		query.from(model);
+		BooleanBuilder exp = new BooleanBuilder();
+		if (siteId != null) {
+			exp = exp.and(model.site.id.eq(siteId));
+		}
+		exp = exp.and(model.type.eq(type));
+		query.where(exp);
+		query.orderBy(model.seq.asc());
+		List<Model> list = query.list(model);
+		return !list.isEmpty() ? list : null;
+	}
+	
+	public List<Model> findAllModelBySiteId(Integer siteId) {
+		JPAQuery query = new JPAQuery(this.em);
+		QModel model = QModel.model;
+		query.from(model);
+		BooleanBuilder exp = new BooleanBuilder();
+		if (siteId != null) {
+			exp = exp.and(model.site.id.eq(siteId));
+		}
+		query.where(exp);
+		query.orderBy(model.seq.asc());
+		List<Model> list = query.list(model);
+		return !list.isEmpty() ? list : null;
+	}
 
 	private EntityManager em;
 
