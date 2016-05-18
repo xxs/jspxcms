@@ -757,6 +757,20 @@ public class Node implements java.io.Serializable, Anchor, Siteable,
 	}
 
 	@Transient
+	public Integer[] getViewOrgIds() {
+		Set<NodeOrg> nos = getNodeOrgs();
+		int number = nos.size();
+		Integer[] orgIds = new Integer[number];
+		int count = 0;
+		for (NodeOrg no : nos) {
+			if (no.getViewPerm()) {
+				orgIds[count] = no.getOrg().getId();
+				count++;
+			}
+		}
+		return orgIds;
+	}
+	@Transient
 	public List<Org> getViewOrgs() {
 		Set<NodeOrg> nos = getNodeOrgs();
 		List<Org> orgs = new ArrayList<Org>(nos.size());

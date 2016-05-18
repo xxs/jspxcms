@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,86 @@ import com.jspxcms.core.support.DeleteException;
 @Transactional
 public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		UserDeleteListener, WorkflowDeleteListener, ModelDeleteListener {
+	
+	@Transactional
+	public void clone(List<Node> nodes, Integer siteId,Integer userId,Integer parentId) {
+		Node node = new Node();
+		for (int i = 0; i < nodes.size(); i++) {
+			node = nodes.get(i);
+			//排除root节点，因为第一步已经复制过root节点
+			if(node.getParent()!=null){
+				Node dest = new Node();
+				BeanUtils.copyProperties(node, dest);
+				Set<NodeDetail> detail = node.getDetails();
+				Set<NodeBuffer> buffers = node.getBuffers();
+				dest.setBuffers(buffers);
+				Map<String, String> customs = node.getCustoms();
+				Map<String, String> clobs = node.getClobs();
+//				Integer[] infoPermIds = node.getInfoPerms();
+//				Integer[] nodePermIds = node.getNodePerms();
+//				Integer[] viewOrgIds = node.getViewOrgs();
+				dest.setId(null);
+				cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
+			}
+		}
+	}
+	@Transactional
+	public Node clone(Node node, Integer siteId,Integer userId) {
+		Node dest = new Node();
+		BeanUtils.copyProperties(node, dest);
+		Set<NodeDetail> detail = node.getDetails();
+		Map<String, String> customs = node.getCustoms();
+		Map<String, String> clobs = node.getClobs();
+		dest.setId(null);
+		Node nn = cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
+		return nn;
+	}
+	
+	public Node cloneSave(Node bean, Set<NodeDetail> detail, Map<String, String> customs,
+			Map<String, String> clobs, Integer[] infoPermIds,
+			Integer[] nodePermIds, Integer[] viewGroupIds,
+			Integer[] contriGroupIds, Integer[] commentGroupIds,
+			Integer[] viewOrgIds, Integer parentId, Integer nodeModelId,
+			Integer infoModelId, Integer workflowId, Integer creatorId,
+			Integer siteId,Integer[] brandIds) {
+		Node parent = null;
+		if (parentId != null) {
+			parent = dao.findOne(parentId);
+			bean.setParent(parent);
+		}
+		if (nodeModelId != null) {
+			bean.setNodeModel(modelService.get(nodeModelId));
+		}
+		if (infoModelId != null) {
+			bean.setInfoModel(modelService.get(infoModelId));
+			bean.setRealNode(true);
+		} else {
+			// 首页必须为真实节点
+			bean.setRealNode(bean.getParent() == null);
+		}
+		if (workflowId != null) {
+			bean.setWorkflow(workflowService.get(workflowId));
+		}
+		bean.setCreator(userService.get(creatorId));
+		bean.setSite(siteService.get(siteId));
+		bean.setCustoms(customs);
+		bean.setClobs(clobs);
+		
+		bean.applyDefaultValue();
+		treeSave(bean, parent);
+		bean = dao.save(bean);
+		
+		nodeDetailService.saveBatch(detail, bean);
+		nodeBufferService.save(new NodeBuffer(), bean);
+		//Integer temp[]={0};
+		//nodeRoleService.update(bean, temp, temp);
+		//nodeMemberGroupService.update(bean, temp, temp, temp);
+		//nodeOrgService.update(bean, temp);
+		//nodeBrandService.save(bean, temp);
+		firePostSave(new Node[] { bean });
+		return bean;
+	}
+	
 	public Node save(Node bean, NodeDetail detail, Map<String, String> customs,
 			Map<String, String> clobs, Integer[] infoPermIds,
 			Integer[] nodePermIds, Integer[] viewGroupIds,

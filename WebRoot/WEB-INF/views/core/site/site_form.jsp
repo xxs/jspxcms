@@ -113,9 +113,9 @@ function confirmDelete() {
     </td>
     <td class="in-lab" width="15%"><em class="required">*</em><s:message code="site.templateTheme"/>:</td>
     <td class="in-ctt" width="35%">
-	    	<select name="templateTheme">
-	    		<f:options items="${themes}"  selected="${bean.templateTheme}" itemLabel="name" itemValue="id"/>
-	    	</select>
+	    	<c:forEach items="${themes}" var="theme">
+	    		<img src="${theme.preview }" alt="${theme.name }" width="50" height="50" /><label><f:radio name="templateTheme" value="${theme.id }" checked="${bean.templateTheme}" class="required" />${theme.name }</label>
+	    	</c:forEach>
     </td>
   </tr>
   <tr>

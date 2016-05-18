@@ -24,7 +24,6 @@ import com.jspxcms.common.orm.SearchFilter;
 import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.PathResolver;
 import com.jspxcms.core.domain.Global;
-import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Role;
@@ -43,6 +42,7 @@ import com.jspxcms.core.service.SiteService;
 import com.jspxcms.core.service.UserRoleService;
 import com.jspxcms.core.service.UserService;
 import com.jspxcms.core.support.Configurable;
+import com.jspxcms.core.support.Context;
 import com.jspxcms.core.support.DeleteException;
 import com.jspxcms.core.support.ForeContext;
 import com.jspxcms.core.support.Theme;
@@ -168,29 +168,32 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 //		if (nodeModel != null) {
 //			modelService.clone(nodeModel, bean.getId());
 //		}
+//		// 复制信息模型
+//		Model infoModel = modelService.findDefault(srcSiteId, Info.MODEL_TYPE);
+//		if (infoModel != null) {
+//			modelService.clone(infoModel, bean.getId());
+//		}
 		//此处修改为复制整站模型
 		List<Model> siteModels = modelService.findAllModelBySiteId(srcSiteId);
 		if(siteModels!=null && siteModels.size()>0){
 			modelService.clone(siteModels, bean.getId());
 		}
-		//复制一条节点数据
-		Integer inte = 1;
-		Node node = nodeQuery.get(inte);
-		Node dest = new Node();
-		BeanUtils.copyProperties(node, dest);
-		dest.setId(null);
-		Integer ints[] = {0};
-		//nodeService.save(dest, new NodeDetail(), null, null, ints, ints, ints, ints, ints, ints, null, null, null, null, userId, bean.getId(), null);
-		
-		// 复制信息模型
-		Model infoModel = modelService.findDefault(srcSiteId, Info.MODEL_TYPE);
-		if (infoModel != null) {
-			modelService.clone(infoModel, bean.getId());
+		//复制root（首页）栏目
+		Node node = nodeQuery.findRoot(srcSiteId);
+		Node parentNode = null;
+		if (node != null) {
+			parentNode = nodeService.clone(node, bean.getId(),userId);
 		}
+//		if(parentNode !=null){
+//			List<Node> nodes = nodeQuery.findList(srcSiteId,null);
+//			if(nodes!=null && nodes.size()>0){
+//				nodeService.clone(nodes, bean.getId(),userId,parentNode.getId());
+//			}
+//		}
 		
 
 		// 复制模版
-		String srcTemplate = Theme.THEME_TEMPLATE_PATH + "/" + srcSite.getTemplateTheme();
+		String srcTemplate = Theme.THEME_TEMPLATE_PATH + "/" + bean.getTemplateTheme();
 		String destTemplate = ForeContext.FILES_PATH + bean.getTemplate(null);
 		File srcDir = new File(pathResolver.getPath(srcTemplate));
 		File destDir = new File(pathResolver.getPath(destTemplate));

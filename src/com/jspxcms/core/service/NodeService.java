@@ -33,6 +33,10 @@ public interface NodeService {
 			Integer[] views, Boolean[] hidden, Integer siteId,
 			boolean isUpdateTree);
 
+	public void clone(List<Node> nodes, Integer siteId,Integer userId,Integer parentId);
+	
+	public Node clone(Node node, Integer siteId,Integer userId);
+	
 	public int move(Integer[] ids, Integer id, Integer siteId);
 
 	public Node delete(Integer id);

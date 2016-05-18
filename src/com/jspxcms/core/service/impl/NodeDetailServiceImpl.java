@@ -1,5 +1,7 @@
 package com.jspxcms.core.service.impl;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,15 @@ public class NodeDetailServiceImpl implements NodeDetailService {
 		detail.setNode(node);
 		detail.applyDefaultValue();
 		dao.save(detail);
+	}
+	@Transactional
+	public void saveBatch(Set<NodeDetail> detailSet, Node node) {
+		for (NodeDetail detail : detailSet) {
+			node.setDetail(detail);
+			detail.setNode(node);
+			detail.applyDefaultValue();
+			dao.save(detail);
+		}
 	}
 
 	@Transactional

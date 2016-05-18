@@ -66,7 +66,6 @@ public class SiteController {
 		return "core/site/site_list";
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequiresPermissions({ "core:site:create" })
 	@RequestMapping({ "create.do" })
 	public String create(Integer id, Model modelMap) {
@@ -76,12 +75,12 @@ public class SiteController {
 		}
 		Org org = this.orgService.findRoot();
 		modelMap.addAttribute("org", org);
-		List themeList = new ArrayList();
-		themeList.add("bluewise");
+//		List themeList = new ArrayList();
+//		themeList.add("bluewise");
+//		modelMap.addAttribute("themeList", themeList);
 		
 		modelMap.addAttribute("themes", themeService.getAll());
 		
-		modelMap.addAttribute("themeList", themeList);
 		modelMap.addAttribute("oprt", "create");
 		return "core/site/site_form";
 	}
@@ -113,10 +112,10 @@ public class SiteController {
 				themeList.add(themeFile.getName());
 			}
 		}
-		if (themeList.isEmpty()) {
-			themeList.add("bluewise");
-		}
-		modelMap.addAttribute("themeList", themeList);
+//		if (themeList.isEmpty()) {
+//			themeList.add("bluewise");
+//		}
+//		modelMap.addAttribute("themeList", themeList);
 		modelMap.addAttribute("themes", themeService.getAll());
 		modelMap.addAttribute("bean", bean);
 		modelMap.addAttribute("parent", bean.getParent());

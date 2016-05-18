@@ -9,6 +9,7 @@ import com.jspxcms.core.domain.Node;
  * 
  */
 public interface NodeListener {
+	
 	public void postNodeSave(Node[] beans);
 
 	public void postNodeUpdate(Node[] beans);
