@@ -27,7 +27,6 @@ import com.jspxcms.core.domain.Global;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.Model;
 import com.jspxcms.core.domain.Node;
-import com.jspxcms.core.domain.NodeDetail;
 import com.jspxcms.core.domain.Role;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
@@ -152,24 +151,27 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		userRoleService.save(user, role, 0);
 
 		Integer srcSiteId = srcSite.getId();
-		// 复制站点模型
-		Model siteModel = modelService.findDefault(srcSiteId, Site.MODEL_TYPE);
-		if (siteModel != null) {
-			modelService.clone(siteModel, bean.getId());
-		}
+//		// 复制站点模型
+//		Model siteModel = modelService.findDefault(srcSiteId, Site.MODEL_TYPE);
+//		if (siteModel != null) {
+//			modelService.clone(siteModel, bean.getId());
+//		}
+//		// 复制首页模型
+//		Model homeModel = modelService.findDefault(srcSiteId,
+//				Node.HOME_MODEL_TYPE);
+//		if (homeModel != null) {
+//			modelService.clone(homeModel, bean.getId());
+//		}
+//		// 复制节点模型
+//		Model nodeModel = modelService.findDefault(srcSiteId,
+//				Node.NODE_MODEL_TYPE);
+//		if (nodeModel != null) {
+//			modelService.clone(nodeModel, bean.getId());
+//		}
 		//此处修改为复制整站模型
-		
-		// 复制首页模型
-		Model homeModel = modelService.findDefault(srcSiteId,
-				Node.HOME_MODEL_TYPE);
-		if (homeModel != null) {
-			modelService.clone(homeModel, bean.getId());
-		}
-		// 复制节点模型
-		Model nodeModel = modelService.findDefault(srcSiteId,
-				Node.NODE_MODEL_TYPE);
-		if (nodeModel != null) {
-			modelService.clone(nodeModel, bean.getId());
+		List<Model> siteModels = modelService.findAllModelBySiteId(srcSiteId);
+		if(siteModels!=null && siteModels.size()>0){
+			modelService.clone(siteModels, bean.getId());
 		}
 		//复制一条节点数据
 		Integer inte = 1;

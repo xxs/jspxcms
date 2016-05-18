@@ -130,6 +130,31 @@ public class ModelServiceImpl implements ModelService, SiteDeleteListener {
 	}
 
 	@Transactional
+	public void clone(List<Model> models, Integer siteId) {
+		Model model = new Model();
+		for (int i = 0; i < models.size(); i++) {
+			model = models.get(i);
+			Model dest = new Model();
+			BeanUtils.copyProperties(model, dest);
+			dest.setFields(null);
+			dest.setId(null);
+			Map<String, String> mapDest = new HashMap<String, String>(
+					model.getCustoms());
+			save(dest, siteId, mapDest);
+			
+			List<ModelField> fields = model.getFields();
+			if (fields != null) {
+				List<ModelField> fieldDests = new ArrayList<ModelField>();
+				ModelField fieldDest;
+				for (ModelField field : fields) {
+					fieldDest = modelFieldService.clone(field, dest);
+					fieldDests.add(fieldDest);
+				}
+				dest.setFields(fieldDests);
+			}
+		}
+	}
+	@Transactional
 	public Model clone(Model model, Integer siteId) {
 		Model dest = new Model();
 		BeanUtils.copyProperties(model, dest);

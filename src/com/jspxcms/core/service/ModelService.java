@@ -25,6 +25,10 @@ public interface ModelService {
 	public List<Model> findList(Integer siteId, String type);
 
 	public Model findDefault(Integer siteId, String type);
+	
+	public List<Model> findAllModelBySiteIdAndType(Integer siteId, String type);
+	
+	public List<Model> findAllModelBySiteId(Integer siteId);
 
 	public Model get(Integer id);
 
@@ -34,6 +38,8 @@ public interface ModelService {
 			Map<String, String> customs);
 
 	public Model clone(Model model, Integer siteId);
+	
+	public void clone(List<Model> models, Integer siteId);
 
 	public Model[] batchUpdate(Integer[] id, String[] name);
 
