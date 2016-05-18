@@ -64,14 +64,13 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 				BeanUtils.copyProperties(node, dest);
 				Set<NodeDetail> detail = node.getDetails();
 				Set<NodeBuffer> buffers = node.getBuffers();
-				dest.setBuffers(buffers);
 				Map<String, String> customs = node.getCustoms();
 				Map<String, String> clobs = node.getClobs();
 //				Integer[] infoPermIds = node.getInfoPerms();
 //				Integer[] nodePermIds = node.getNodePerms();
 //				Integer[] viewOrgIds = node.getViewOrgs();
 				dest.setId(null);
-				cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
+				cloneSave(dest, detail,buffers, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
 			}
 		}
 	}
@@ -80,14 +79,19 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		Node dest = new Node();
 		BeanUtils.copyProperties(node, dest);
 		Set<NodeDetail> detail = node.getDetails();
+		Set<NodeBuffer> buffers = node.getBuffers();
+		dest.setBuffers(buffers);
 		Map<String, String> customs = node.getCustoms();
 		Map<String, String> clobs = node.getClobs();
+//		Integer[] infoPermIds = node.getInfoPerms();
+//		Integer[] nodePermIds = node.getNodePerms();
+//		Integer[] viewOrgIds = node.getViewOrgs();
 		dest.setId(null);
-		Node nn = cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
+		Node nn = cloneSave(dest, detail,buffers, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
 		return nn;
 	}
 	
-	public Node cloneSave(Node bean, Set<NodeDetail> detail, Map<String, String> customs,
+	public Node cloneSave(Node bean, Set<NodeDetail> detail,Set<NodeBuffer> buffers, Map<String, String> customs,
 			Map<String, String> clobs, Integer[] infoPermIds,
 			Integer[] nodePermIds, Integer[] viewGroupIds,
 			Integer[] contriGroupIds, Integer[] commentGroupIds,
@@ -116,13 +120,14 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		bean.setSite(siteService.get(siteId));
 		bean.setCustoms(customs);
 		bean.setClobs(clobs);
-		
+		bean.setDetails(detail);
+		bean.setBuffers(buffers);
 		bean.applyDefaultValue();
 		treeSave(bean, parent);
 		bean = dao.save(bean);
 		
 		nodeDetailService.saveBatch(detail, bean);
-		nodeBufferService.save(new NodeBuffer(), bean);
+		//nodeBufferService.save(new NodeBuffer(), bean);
 		//Integer temp[]={0};
 		//nodeRoleService.update(bean, temp, temp);
 		//nodeMemberGroupService.update(bean, temp, temp, temp);
