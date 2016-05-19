@@ -1,0 +1,85 @@
+<!--调用尾部-->
+<div class="center zl_tit1">
+		<div class="mtop30"></div>
+		<div class="zl_tit">质量是需要全员参与监督才能生产出顾客满意的产品</div>
+</div>
+<div id="link" class="w1004 i_link">
+		<SCRIPT type="text/javascript" src="_files/js/link.js"></SCRIPT>
+		<div class="lk_width"> <i class="lk_ctrl btn1"><img src="_files/picture/left.jpg"  width="28" height="28"/></i>
+				<div class="center">
+						<div class="lk_con">
+								<div class="lkgd">
+								 
+								 [@InfoPage parentId=247 pageSize=20;pagedList]
+											 
+									  [#list pagedList.content as info]
+									  		 
+									  		 <div class="lkson">
+									  		 	<a href="${info.url }" title="${info.title }" class="pic">
+									  		 		<img src="${info.smallImage }" width="288" height="216" title="${info.title }" alt="${info.title }"/> 
+									  		 	</a>
+												<a href="${info.url }" title="${info.title }" class="text">${info.title }</a>
+												</div>
+									
+									  	[/#list]
+								[/@InfoPage]
+								</div>
+						</div>
+				</div>
+				<i class="lk_ctrl2 btn2"><img src="_files/picture/right.jpg"  width="28" height="28"/></i> </div>
+</div>
+
+
+<!--调用尾部结束-->
+<!--调用尾部-->
+
+<div id="frd_link">
+		<div class="fndlink">
+				<div class="links"> 
+						[@FriendlinkTypeList;list]
+					  	[#list list as type]
+					  	[@FriendlinkList typeId=type.id;list]
+					      [#list list as link]
+					      	<a href='${link.url}' target='_blank'>${link.name}</a>
+					      [/#list]
+					    [/@FriendlinkList]
+					    [/#list]
+					    [/@FriendlinkTypeList]
+						<div class="clear"></div>
+				</div>
+		</div>
+</div>
+<div id="foot">
+		<div class="center">
+				<div class="fl">
+					<div class="logo"> <a href="/" title="某某某金属制品有限公司"> <img src="_files/picture/mstore300.png"
+					style="padding-top: 40px;" alt="某某某金属制品有限公司" title="某某某金属制品有限公司"> </a> </div>
+				</div>
+				<div class="fr">
+						<div class="contact_us"> 地址：子虚省乌有市18号<br/>
+								电话：0000-0000000   传真：0000-00000000   手机：88888888888 <br/>
+								某某某有限公司　技术支持：某某某科技 <br/>
+电话：0798-000000  邮箱：0000000@qq.com<br/>
+
+								备案号：<a href="http://www.miitbeian.gov.cn" target="_blank"  title="正在备案">正在备案</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								技术支持：<a href="http://ms.mingsoft.net/" title="铭飞科技" target='_blank'>铭飞科技</a>&nbsp;
+								【<a href="http://ms.mingsoft.net/" title="铭飞科技" target="_blank">定制网站</a>】 <br/>
+						</div>
+				</div>
+				<div class="clear"></div>
+		</div>
+</div>
+<div id="footer">
+		<div class="center">
+				<div class="footer"> 
+						[@NodeList;list]
+					        	<a href='${ctx}/'>网站首页</a> <a>|</a>
+								[#list list as node]
+					 		 		<a href="${node.url}" title="${node.name}">${node.name}</a> <a>|</a>
+								[/#list]
+							[/@NodeList] 
+				</div>
+		</div>
+</div>
+
+<!--调用尾部结束-->

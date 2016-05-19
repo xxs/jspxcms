@@ -1,0 +1,54 @@
+﻿[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--调用头部公共文件-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${site.fullNameOrName}</title>
+<link rel="shortcut icon" href="http://cdn.mingsoft.net/global/images/ms.ico" type="x-icon">
+<LINK href="_files/css/index.css" rel=stylesheet>
+<LINK href="_files/css/jbox.css" rel=stylesheet>
+<meta name="mstore-key" content="mstore0181d0695d6f5920a7c5160c9b4cd33a"/>
+<script language="JavaScript" type="text/javascript" src="_files/js/jquery.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/hdp.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/zong.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/formvalid.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/fv_onblur.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/jquery.jbox-2.3.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/mstore-header.js"></script>
+
+<!--调用头部结束-->
+</head>
+<body>
+[#include "inc_header.html"/]
+<!--调用导航栏结束-->
+<div class="banner"> 
+		<img src="${node.smallImage }" width="1600" height="231" title="${node.name }"  alt="${node.name }"/> 
+</div>
+<!--公司简介-->
+<div class="products_show">
+		<div class="center">
+				<div class="position">
+						<div class="fl">
+								<div class="cpzs gsjj">${node.name }</div>
+						</div>
+						<div class="fr">
+								<div class="n2_dqwz">
+								 	您当前的位置:
+								 	[#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
+								 </div>
+						</div>
+						<div class="clear"></div>
+				</div>
+				<div class="artical">
+						<div class="artical_nr">
+								<!--调用文章内容-->
+								[#noescape]${node.text}[/#noescape]
+					    </div>
+				</div>
+		</div>
+</div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]

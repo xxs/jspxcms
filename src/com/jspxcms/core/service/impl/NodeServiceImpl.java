@@ -203,8 +203,6 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		bean.setCreator(userService.get(creatorId));
 		bean.setSite(siteService.get(siteId));
 		
-		detail.setId(null);
-		
 		bean.setCustoms(customs);
 		bean.setClobs(clobs);
 

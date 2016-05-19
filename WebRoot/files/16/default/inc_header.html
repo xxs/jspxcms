@@ -1,0 +1,28 @@
+<!--调用头部导航栏-->
+<div id="head">
+		<div class="head_nav"><img src="_files/picture/nav.png"/></div>
+</div>
+<div id="header">
+		<div class="center"> 
+				<div class="nav">
+						<ul>
+							[@NodeList;list]
+					        	<li><a href='${ctx}/'>网站首页</a></li>  
+								[#list list as node]
+					 		 		<li><a href="${node.url}" title="${node.name}">${node.name}</a></li>
+					 		 		[#if node_index==3]
+					 		 			<li class="logo"> 
+											<a href="/" title="某某某金属制品有限公司"> 
+											<img src="_files/picture/mstore.png"  title="某某某金属制品有限公司"
+											 alt="某某某金属制品有限公司" style="width: 155px; height: 53px;padding-top: 19px;" /> </a> 
+										</li>
+					 		 		[/#if]
+								[/#list]
+							[/@NodeList] 
+						</ul>
+				</div>
+		</div>
+		<div style="position:fixed; left:20px; top:300px;z-index:999999"> </div>
+</div>
+<!--调用导航栏结束-->
+

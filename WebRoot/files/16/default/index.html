@@ -1,0 +1,164 @@
+﻿[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--调用头部公共文件-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${site.fullNameOrName}</title>
+<link rel="shortcut icon" href="http://cdn.mingsoft.net/global/images/ms.ico" type="x-icon">
+<LINK href="_files/css/index.css" rel=stylesheet>
+<LINK href="_files/css/jbox.css" rel=stylesheet>
+<meta name="mstore-key" content="mstore0181d0695d6f5920a7c5160c9b4cd33a"/>
+<script language="JavaScript" type="text/javascript" src="_files/js/jquery.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/hdp.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/zong.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/formvalid.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/fv_onblur.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/jquery.jbox-2.3.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="_files/js/mstore-header.js"></script>
+
+<!--调用头部结束-->
+</head>
+<body>
+[#include "inc_header.html"/]
+<div class="ibanner">
+		<div class="ban">
+				<div id="focus">
+						<ul>
+							[@InfoList attr='focus';list]
+						      [#list list as info]
+						      <li><a target="_blank" href="${info.url}" title="${info.title}"><img src="${info.attrImageUrl}" 
+									onerror="this.src='_files/images/nopic.gif';" width="1600" height="490" alt="${info.title}"/></a></li>
+						      [/#list]
+						      [/@InfoList]
+									
+						</ul>
+				</div>
+		</div>
+</div>
+<!--产品中心-->
+<div class="c_zs">
+		<div class="center">
+				<div class="kong"><img src="_files/picture/cpzsbg.png" width="543" height="247" title="产品" alt="产品"/></div>
+				<a href="${ctx}/node/247.jspx" title="查看更多产品" class="more_p">查看更多产品</a>
+				<div class="clear"></div>
+		</div>
+</div>
+<div class="pro_show">
+		<div class="center">
+				<div class="fl">
+						<div class="heart_pro">
+								<ul>
+								 	[@NodeList parentId=247;nodeList]
+								  	 	  [#list nodeList as node]
+											<li> <a href="${node.url }" title="${node.name }">${node.name }</a> </li>
+								  		  [/#list]
+								 	[/@NodeList]
+								</ul>
+								<a id="more_pro" title="更多产品分类" href="${ctx}/node/247.jspx">更多产品分类</a> </div>
+				</div>
+				<div class="fr">
+						<div class="lft"> 
+							 
+										
+								[@InfoPage parentId=247 pageSize=1;pagedList]
+									[#list pagedList.content as info]
+									  		 <a href="${info.url }" id="href1" title="${info.title }"> <img src="${info.smallImage }"  id="bigpic"
+										 onerror="this.src='${info.smallImage }';" width="518" height="388"  title="${info.title }" alt="${info.title }"/> 										</a><span><a href="http://609bfcf302615847.mb.mstore.mingsoft.net/html/1601/64/74/94.html" id="href2" title="钛箔" >
+										 <font id="titles">${info.title }</font><em>查看详情&gt;&gt;</em></a></span>
+										 
+									  		 [/#list]
+								[/@InfoPage]
+								
+								</div>
+						<div class="lgt" id="lgt">
+								 
+								 [@InfoPage parentId=247 pageSize=20;pagedList]
+											 
+									  		 [#list pagedList.content as info]
+									  		 <div class="pic_i"> 
+												<a href="${info.url }" title="制动盘用钛合金螺栓"> <img src="${info.smallImage }" rel="17" 
+												onerror="this.src='${info.smallImage }';" width="163" height="121" title="${info.title }" alt="${info.title }"/> 
+												</a>
+											 </div>
+									  		 [/#list]
+								[/@InfoPage]
+								 </div>
+								<div class="clear"></div>
+						</div>
+						<script>
+			$(function(){
+				$(".pic_i").hover(function(){
+					var lujing=$(this).find("img").attr("src"); 
+					$("#bigpic").attr("src",lujing);
+					var title=$(this).find("img").attr("title"); 
+					$("#titles").html(title);
+					$("#href1").attr("href",$(this).find("a").attr("href"));
+					$("#href1").attr("title",$(this).find("a").attr("title"));
+					$("#href2").attr("href",$(this).find("a").attr("href"));
+					$("#href2").attr("title",$(this).find("a").attr("title"));
+				})
+				})
+			</script>
+						<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+		</div>
+		<div class="mtop52"></div>
+</div>
+<!--公司简介-->
+<div id="cpmpany">
+		<div class="center">
+				<div class="fl">
+						<script  src="_files/js/slideshow.js" type="text/javascript"></script>
+						<div class="comiis_wrapad" id="slideContainer">
+								<div id="frameHlicAe" class="frame cl">
+										<div class="block">
+												<div class="slide_1">
+													<ul class="slideshow" id="slidesImgs">
+													 
+													 <li>
+																<a href="#" title="组织结构"> <img src="_files/picture/1459138415986.jpg"
+																onerror="this.src='images/nopic.gif';" width="290" height="195" alt="组织结构" />					 																 </a>
+														</li>
+							 						 
+													 <li>
+																<a href="#" title="企业文化"> <img src="_files/picture/1459157972442.jpg"
+																onerror="this.src='images/nopic.gif';" width="290" height="195" alt="企业文化" />					 																 </a>
+														</li>
+							 						 
+													 <li>
+																<a href="#" title="资质荣誉"> <img src="_files/picture/1459138468499.jpg"
+																onerror="this.src='images/nopic.gif';" width="290" height="195" alt="资质荣誉" />					 																 </a>
+														</li>
+							 						
+													</ul>
+												</div>
+												<div class="slidebar" id="slideBar">
+														<ul>
+																<li class="on">1</li>
+																<li>2</li>
+																<li>3</li>
+														</ul>
+												</div>
+										</div>
+								</div>
+						</div>
+						<script type="text/javascript">
+				SlideShow(4000);
+			</script>
+				</div>
+				<div class="fr">
+						<p class="title1 title1_1">我们为国内外的客户提供最优质的产品和最一流的服务</p>
+						 
+						<div class="conts_1">国家级高新技术企业,首家通过CMMI（软件能力成熟度模型）国际认证的企业,双软认定企业,通过ISO9001：2008质量体系认证,首家备案的“广东省档案中介服务机构”,民营科技企业...<a href="#" title="查看详细">查看详细 》</a></div>
+						
+				</div>
+				<div class="clear"></div>
+		</div>
+</div>
+<div class="clear"></div>
+[#include "inc_footer.html"/]
+</body>
+</html>
+[/#escape]
