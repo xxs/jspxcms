@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.NodeBuffer;
 import com.jspxcms.core.domain.NodeDetail;
@@ -29,12 +30,14 @@ import com.jspxcms.core.listener.UserDeleteListener;
 import com.jspxcms.core.listener.WorkflowDeleteListener;
 import com.jspxcms.core.repository.NodeDao;
 import com.jspxcms.core.service.InfoNodeService;
+import com.jspxcms.core.service.MemberGroupService;
 import com.jspxcms.core.service.ModelService;
 import com.jspxcms.core.service.NodeBrandService;
 import com.jspxcms.core.service.NodeBufferService;
 import com.jspxcms.core.service.NodeDetailService;
 import com.jspxcms.core.service.NodeMemberGroupService;
 import com.jspxcms.core.service.NodeOrgService;
+import com.jspxcms.core.service.NodeQueryService;
 import com.jspxcms.core.service.NodeRoleService;
 import com.jspxcms.core.service.NodeService;
 import com.jspxcms.core.service.SiteService;
@@ -61,37 +64,52 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 			//排除root节点，因为第一步已经复制过root节点
 			if(node.getParent()!=null){
 				Node dest = new Node();
-				BeanUtils.copyProperties(node, dest);
-				Set<NodeDetail> detail = node.getDetails();
-				Set<NodeBuffer> buffers = node.getBuffers();
-				Map<String, String> customs = node.getCustoms();
-				Map<String, String> clobs = node.getClobs();
+				NodeDetail detail = new NodeDetail();
+				NodeBuffer buffer = new NodeBuffer();
+				Map<String, String> customs = new HashMap<String, String>();
+				Map<String, String> clobs = new HashMap<String, String>();
+				String[] ignorePros = new String[]{"id","customs","clobs","children","details","buffers","nodeAttrs","nodeParameterGroups","nodeSpecs","nodeBrands","nodeRoles","nodeGroups","nodeOrgs","parent","site","workflow","creator","nodeModel","infoModel"};
+				BeanUtils.copyProperties(node, dest,ignorePros);
+				
+				detail = node.getDetail();
+				detail.setId(null);
+				buffer = node.getBuffer();
+				buffer.setId(null);
+//				Set<NodeBuffer> buffers = node.getBuffers();
+				customs = node.getCustoms();
+				clobs = node.getClobs();
 //				Integer[] infoPermIds = node.getInfoPerms();
 //				Integer[] nodePermIds = node.getNodePerms();
 //				Integer[] viewOrgIds = node.getViewOrgs();
-				dest.setId(null);
-				cloneSave(dest, detail,buffers, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
+				cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
 			}
 		}
 	}
 	@Transactional
 	public Node clone(Node node, Integer siteId,Integer userId) {
 		Node dest = new Node();
-		BeanUtils.copyProperties(node, dest);
-		Set<NodeDetail> detail = node.getDetails();
-		Set<NodeBuffer> buffers = node.getBuffers();
-		dest.setBuffers(buffers);
-		Map<String, String> customs = node.getCustoms();
-		Map<String, String> clobs = node.getClobs();
+		NodeDetail detail = new NodeDetail();
+		NodeBuffer buffer = new NodeBuffer();
+		Map<String, String> customs = new HashMap<String, String>();
+		Map<String, String> clobs = new HashMap<String, String>();
+		String[] ignorePros = new String[]{"id","customs","clobs","children","details","buffers","nodeAttrs","nodeParameterGroups","nodeSpecs","nodeBrands","nodeRoles","nodeGroups","nodeOrgs","parent","site","workflow","creator","nodeModel","infoModel"};
+		BeanUtils.copyProperties(node, dest,ignorePros);
+		
+		detail = node.getDetail();
+		detail.setId(null);
+		buffer = node.getBuffer();
+		buffer.setId(null);
+//		Set<NodeBuffer> buffers = node.getBuffers();
+		customs = node.getCustoms();
+		clobs = node.getClobs();
 //		Integer[] infoPermIds = node.getInfoPerms();
 //		Integer[] nodePermIds = node.getNodePerms();
 //		Integer[] viewOrgIds = node.getViewOrgs();
-		dest.setId(null);
-		Node nn = cloneSave(dest, detail,buffers, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
+		Node nn = cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
 		return nn;
 	}
 	
-	public Node cloneSave(Node bean, Set<NodeDetail> detail,Set<NodeBuffer> buffers, Map<String, String> customs,
+	public Node cloneSave(Node bean, NodeDetail detail, Map<String, String> customs,
 			Map<String, String> clobs, Integer[] infoPermIds,
 			Integer[] nodePermIds, Integer[] viewGroupIds,
 			Integer[] contriGroupIds, Integer[] commentGroupIds,
@@ -116,23 +134,29 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		if (workflowId != null) {
 			bean.setWorkflow(workflowService.get(workflowId));
 		}
+		//准备数据
+		infoPermIds = getInfoPermIds(siteId);
+		nodePermIds = getNodePermIds(siteId);
+		viewGroupIds = getGroupIds(siteId);
+		contriGroupIds = getGroupIds(siteId);
+		commentGroupIds = getGroupIds(siteId);
 		bean.setCreator(userService.get(creatorId));
 		bean.setSite(siteService.get(siteId));
-		bean.setCustoms(customs);
-		bean.setClobs(clobs);
-		bean.setDetails(detail);
-		bean.setBuffers(buffers);
+//		bean.setCustoms(customs);
+//		bean.setClobs(clobs);
+//		bean.setDetails(detail);
+//		bean.setBuffers(buffers);
 		bean.applyDefaultValue();
 		treeSave(bean, parent);
 		bean = dao.save(bean);
 		
-		nodeDetailService.saveBatch(detail, bean);
-		//nodeBufferService.save(new NodeBuffer(), bean);
-		//Integer temp[]={0};
-		//nodeRoleService.update(bean, temp, temp);
-		//nodeMemberGroupService.update(bean, temp, temp, temp);
-		//nodeOrgService.update(bean, temp);
-		//nodeBrandService.save(bean, temp);
+		nodeDetailService.save(detail, bean);
+		nodeBufferService.save(new NodeBuffer(), bean);
+		nodeRoleService.update(bean, infoPermIds, nodePermIds);
+		nodeMemberGroupService.update(bean, viewGroupIds, contriGroupIds,
+				commentGroupIds);
+		nodeOrgService.update(bean, viewOrgIds);
+		nodeBrandService.save(bean, brandIds);
 		firePostSave(new Node[] { bean });
 		return bean;
 	}
@@ -501,7 +525,17 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 	private UserService userService;
 	private SiteService siteService;
 	private NodeBrandService nodeBrandService;
+	private NodeQueryService query;
+	private MemberGroupService memberGroupService;
 
+	@Autowired
+	public void setMemberGroupService(MemberGroupService memberGroupService) {
+		this.memberGroupService = memberGroupService;
+	}
+	@Autowired
+	public void setNodeQueryService(NodeQueryService query) {
+		this.query = query;
+	}
 	@Autowired
 	public void setNodeBrandService(NodeBrandService nodeBrandService) {
 		this.nodeBrandService = nodeBrandService;
@@ -563,5 +597,35 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 	@Autowired
 	public void setDao(NodeDao dao) {
 		this.dao = dao;
+	}
+	
+	private Integer[] getInfoPermIds(Integer siteId) {
+		List<Node> list = query.findList(siteId, null, true, null);
+		int len = list.size();
+		Integer[] ids = new Integer[len];
+		for (int i = 0; i < len; i++) {
+			ids[i] = list.get(i).getId();
+		}
+		return ids;
+	}
+
+	private Integer[] getNodePermIds(Integer siteId) {
+		List<Node> list = query.findList(siteId, null, null, null);
+		int len = list.size();
+		Integer[] ids = new Integer[len];
+		for (int i = 0; i < len; i++) {
+			ids[i] = list.get(i).getId();
+		}
+		return ids;
+	}
+
+	private Integer[] getGroupIds(Integer siteId) {
+		List<MemberGroup> list = memberGroupService.findList();
+		int len = list.size();
+		Integer[] ids = new Integer[len];
+		for (int i = 0; i < len; i++) {
+			ids[i] = list.get(i).getId();
+		}
+		return ids;
 	}
 }
