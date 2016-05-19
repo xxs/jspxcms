@@ -65,23 +65,27 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 			if(node.getParent()!=null){
 				Node dest = new Node();
 				NodeDetail detail = new NodeDetail();
+				NodeDetail destdetail = new NodeDetail();
 				NodeBuffer buffer = new NodeBuffer();
 				Map<String, String> customs = new HashMap<String, String>();
 				Map<String, String> clobs = new HashMap<String, String>();
-				String[] ignorePros = new String[]{"id","customs","clobs","children","details","buffers","nodeAttrs","nodeParameterGroups","nodeSpecs","nodeBrands","nodeRoles","nodeGroups","nodeOrgs","parent","site","workflow","creator","nodeModel","infoModel"};
-				BeanUtils.copyProperties(node, dest,ignorePros);
+//				String[] ignorePros = new String[]{"id","customs","clobs","children","details","buffers","nodeAttrs","nodeParameterGroups","nodeSpecs","nodeBrands","nodeRoles","nodeGroups","nodeOrgs","parent","site","workflow","creator","nodeModel","infoModel"};
+//				BeanUtils.copyProperties(node, dest,ignorePros);
+				dest.setName(node.getName());
 				
 				detail = node.getDetail();
-				detail.setId(null);
-				buffer = node.getBuffer();
-				buffer.setId(null);
+				String[] ignorePros = new String[]{"id","node"};
+				BeanUtils.copyProperties(detail, destdetail,ignorePros);
+				
+//				buffer = node.getBuffer();
+//				buffer.setId(null);
 //				Set<NodeBuffer> buffers = node.getBuffers();
 				customs = node.getCustoms();
 				clobs = node.getClobs();
 //				Integer[] infoPermIds = node.getInfoPerms();
 //				Integer[] nodePermIds = node.getNodePerms();
 //				Integer[] viewOrgIds = node.getViewOrgs();
-				cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
+				cloneSave(dest, destdetail, customs, clobs, null, null, null, null, null, null, null, null, parentId, null, userId, siteId, null);
 			}
 		}
 	}
@@ -89,23 +93,33 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 	public Node clone(Node node, Integer siteId,Integer userId) {
 		Node dest = new Node();
 		NodeDetail detail = new NodeDetail();
+		NodeDetail destdetail = new NodeDetail();
 		NodeBuffer buffer = new NodeBuffer();
 		Map<String, String> customs = new HashMap<String, String>();
 		Map<String, String> clobs = new HashMap<String, String>();
-		String[] ignorePros = new String[]{"id","customs","clobs","children","details","buffers","nodeAttrs","nodeParameterGroups","nodeSpecs","nodeBrands","nodeRoles","nodeGroups","nodeOrgs","parent","site","workflow","creator","nodeModel","infoModel"};
-		BeanUtils.copyProperties(node, dest,ignorePros);
+//		String[] ignorePros = new String[]{"id","customs","clobs","children","details","buffers","nodeAttrs","nodeParameterGroups","nodeSpecs","nodeBrands","nodeRoles","nodeGroups","nodeOrgs","parent","site","workflow","creator","nodeModel","infoModel"};
+//		BeanUtils.copyProperties(node, dest,ignorePros);
+		dest.setName(node.getName());
+		
+		Integer parentId = node.getParent().getId();
+		Integer nodeModelId = node.getNodeModel().getId();
+		Integer infoModelId = node.getInfoModel().getId();
+		Integer workflowId = node.getWorkflow().getId();
+		
 		
 		detail = node.getDetail();
-		detail.setId(null);
-		buffer = node.getBuffer();
-		buffer.setId(null);
+		String[] ignorePros = new String[]{"id","node"};
+		BeanUtils.copyProperties(detail, destdetail,ignorePros);
+		
+//		buffer = node.getBuffer();
+//		buffer.setId(null);
 //		Set<NodeBuffer> buffers = node.getBuffers();
 		customs = node.getCustoms();
 		clobs = node.getClobs();
 //		Integer[] infoPermIds = node.getInfoPerms();
 //		Integer[] nodePermIds = node.getNodePerms();
 //		Integer[] viewOrgIds = node.getViewOrgs();
-		Node nn = cloneSave(dest, detail, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
+		Node nn = cloneSave(dest, destdetail, customs, clobs, null, null, null, null, null, null, null, null, null, null, userId, siteId, null);
 		return nn;
 	}
 	
@@ -188,6 +202,9 @@ public class NodeServiceImpl implements NodeService, SiteDeleteListener,
 		}
 		bean.setCreator(userService.get(creatorId));
 		bean.setSite(siteService.get(siteId));
+		
+		detail.setId(null);
+		
 		bean.setCustoms(customs);
 		bean.setClobs(clobs);
 

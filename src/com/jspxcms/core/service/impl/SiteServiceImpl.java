@@ -12,7 +12,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -25,7 +24,6 @@ import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.PathResolver;
 import com.jspxcms.core.domain.Global;
 import com.jspxcms.core.domain.Model;
-import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Role;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
@@ -34,15 +32,12 @@ import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.SiteDao;
 import com.jspxcms.core.service.GlobalService;
 import com.jspxcms.core.service.ModelService;
-import com.jspxcms.core.service.NodeQueryService;
-import com.jspxcms.core.service.NodeService;
 import com.jspxcms.core.service.OrgService;
 import com.jspxcms.core.service.RoleService;
 import com.jspxcms.core.service.SiteService;
 import com.jspxcms.core.service.UserRoleService;
 import com.jspxcms.core.service.UserService;
 import com.jspxcms.core.support.Configurable;
-import com.jspxcms.core.support.Context;
 import com.jspxcms.core.support.DeleteException;
 import com.jspxcms.core.support.ForeContext;
 import com.jspxcms.core.support.Theme;
@@ -179,17 +174,18 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 			modelService.clone(siteModels, bean.getId());
 		}
 		//复制root（首页）栏目
-		Node node = nodeQuery.findRoot(srcSiteId);
-		Node parentNode = null;
-		if (node != null) {
-			parentNode = nodeService.clone(node, bean.getId(),userId);
-		}
+//		Node node = nodeQuery.findRoot(srcSiteId);
+//		Node parentNode = null;
+//		if (node != null) {
+//			parentNode = nodeService.clone(node, bean.getId(),userId);
+//		}
 //		if(parentNode !=null){
 //			List<Node> nodes = nodeQuery.findList(srcSiteId,null);
 //			if(nodes!=null && nodes.size()>0){
 //				nodeService.clone(nodes, bean.getId(),userId,parentNode.getId());
 //			}
 //		}
+		//栏目模型复制不可行原因：  我们复制了整站的模型，但是创建栏目的时候，模型是手动选择的，没来来源，  还有个原因是可以复制源站点的模型，但是源站点的模型我们已经重新复制了，没有规则对应起来，所以没法判定源站点创建栏目的时候选择的模型；所以先放弃复制栏目
 		
 
 		// 复制模版
@@ -341,8 +337,6 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 
 	private PathResolver pathResolver;
 	private ModelService modelService;
-	private NodeService nodeService;
-	private NodeQueryService nodeQuery;
 	private UserRoleService userRoleService;
 	private RoleService roleService;
 	private UserService userService;
@@ -359,15 +353,17 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		this.modelService = modelService;
 	}
 
-	 @Autowired
-	 public void setNodeService(NodeService nodeService) {
-	 this.nodeService = nodeService;
-	 }
-	
-	 @Autowired
-	 public void setNodeQuery(NodeQueryService nodeQuery) {
-	 this.nodeQuery = nodeQuery;
-	 }
+//	private NodeService nodeService;
+//	private NodeQueryService nodeQuery;
+//	 @Autowired
+//	 public void setNodeService(NodeService nodeService) {
+//	 this.nodeService = nodeService;
+//	 }
+//	
+//	 @Autowired
+//	 public void setNodeQuery(NodeQueryService nodeQuery) {
+//	 this.nodeQuery = nodeQuery;
+//	 }
 
 	@Autowired
 	public void setUserRoleService(UserRoleService userRoleService) {
