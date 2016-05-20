@@ -35,7 +35,9 @@ public class ApplySiteController {
 		Map<String, Object> data = modelMap.asMap();
 		ForeContext.setData(data, request);
 		ForeContext.setPage(data, page);
-		return site.getTemplate(TEMPLATE);
+		System.out.println("base:"+site.getTemplate(TEMPLATE));
+//		return site.getTemplate(TEMPLATE);
+		return "/15/default/"+TEMPLATE;
 	}
 
 	@RequestMapping(value = "/apply_site.jspx", method = RequestMethod.POST)

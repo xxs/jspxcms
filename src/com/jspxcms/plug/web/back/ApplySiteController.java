@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.Servlets;
 import com.jspxcms.core.support.Constants;
 import com.jspxcms.core.support.Context;
@@ -34,56 +33,45 @@ import com.jspxcms.plug.domain.ApplySite;
 import com.jspxcms.plug.service.ApplySiteService;
 
 @Controller
-@RequestMapping("/plug/resume")
+@RequestMapping("/plug/apply_site")
 public class ApplySiteController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ApplySiteController.class);
 
-//	@RequiresPermissions("plug:resume:list")
-//	@RequestMapping("list.do")
-//	public String list(
-//			@PageableDefaults(sort = "id", sortDir = Direction.DESC) Pageable pageable,
-//			HttpServletRequest request, org.springframework.ui.Model modelMap) {
-//		Integer siteId = Context.getCurrentSiteId(request);
-//		Map<String, String[]> params = Servlets.getParameterValuesMap(request,
-//				Constants.SEARCH_PREFIX);
-//		Page<ApplySite> pagedList = service.findAll(siteId, params, pageable);
-//		modelMap.addAttribute("pagedList", pagedList);
-//		return "plug/resume/resume_list";
-//	}
-//
-//	@RequiresPermissions("plug:resume:create")
-//	@RequestMapping("create.do")
-//	public String create(Integer id, org.springframework.ui.Model modelMap) {
-//		if (id != null) {
-//			ApplySite bean = service.get(id);
-//			modelMap.addAttribute("bean", bean);
-//		}
-//		modelMap.addAttribute(OPRT, CREATE);
-//		return "plug/resume/resume_form";
-//	}
+	@RequestMapping("list.do")
+	public String list(
+			@PageableDefaults(sort = "id", sortDir = Direction.DESC) Pageable pageable,
+			HttpServletRequest request, org.springframework.ui.Model modelMap) {
+		Map<String, String[]> params = Servlets.getParameterValuesMap(request,
+				Constants.SEARCH_PREFIX);
+		Page<ApplySite> pagedList = service.findAll(params, pageable);
+		modelMap.addAttribute("pagedList", pagedList);
+		return "plug/apply_site/apply_site_list";
+	}
 
-//	@RequiresPermissions("plug:resume:edit")
-//	@RequestMapping("edit.do")
-//	public String edit(
-//			Integer id,
-//			Integer position,
-//			@PageableDefaults(sort = "id", sortDir = Direction.DESC) Pageable pageable,
-//			HttpServletRequest request, org.springframework.ui.Model modelMap) {
-//		Integer siteId = Context.getCurrentSiteId(request);
-//		ApplySite bean = service.get(id);
-//		Map<String, String[]> params = Servlets.getParameterValuesMap(request,
-//				Constants.SEARCH_PREFIX);
-//		RowSide<ApplySite> side = service.findSide(siteId, params, bean, position,
-//				pageable.getSort());
-//		modelMap.addAttribute("bean", bean);
-//		modelMap.addAttribute("side", side);
-//		modelMap.addAttribute("position", position);
-//		modelMap.addAttribute(OPRT, EDIT);
-//		return "plug/resume/resume_form";
-//	}
+	@RequestMapping("create.do")
+	public String create(Integer id, org.springframework.ui.Model modelMap) {
+		if (id != null) {
+			ApplySite bean = service.get(id);
+			modelMap.addAttribute("bean", bean);
+		}
+		modelMap.addAttribute(OPRT, CREATE);
+		return "plug/apply_site/apply_site_form";
+	}
 
-	@RequiresPermissions("plug:resume:save")
+	@RequestMapping("edit.do")
+	public String edit(
+			Integer id,
+			Integer position,
+			@PageableDefaults(sort = "id", sortDir = Direction.DESC) Pageable pageable,
+			HttpServletRequest request, org.springframework.ui.Model modelMap) {
+		ApplySite bean = service.get(id);
+		modelMap.addAttribute("bean", bean);
+		modelMap.addAttribute("position", position);
+		modelMap.addAttribute(OPRT, EDIT);
+		return "plug/apply_site/apply_site_form";
+	}
+
 	@RequestMapping("save.do")
 	public String save(@Valid ApplySite bean, String redirect,
 			HttpServletRequest request, RedirectAttributes ra) {
@@ -101,7 +89,6 @@ public class ApplySiteController {
 		}
 	}
 
-	@RequiresPermissions("plug:resume:update")
 	@RequestMapping("update.do")
 	public String update(@ModelAttribute("bean") ApplySite bean, Integer position,
 			String redirect, RedirectAttributes ra) {
@@ -117,7 +104,6 @@ public class ApplySiteController {
 		}
 	}
 
-	@RequiresPermissions("plug:resume:delete")
 	@RequestMapping("delete.do")
 	public String delete(Integer[] ids, RedirectAttributes ra) {
 		ApplySite[] beans = service.delete(ids);

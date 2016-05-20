@@ -1,0 +1,93 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>建站申请_${site.fullNameOrName}</title>
+</head>
+<body>
+<div id="Page">
+<div id="Pages">
+<form id="validForm" action="${ctx}/apply_site.jspx" method="post">
+<input type="hidden" name="redirectUrl" value="${ctx}/register_message.jspx?username={username}&email={email}&verifyMode={verifyMode}"/>
+<div class="v8Title">建站申请</div>
+<div id="border" class="v8Padding">
+
+<div id="info" class="info cssform" style="padding:20px;">
+	<div class="itip">基本信息以及联系信息请如实填写.</div>
+	<div id="ctitle" class="ctitle" style="padding-top:6px;">请填写申请信息</div>
+	<div class="line"></div>
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="4">
+          <tr>
+            <td width="200" class="r">网站名称:</td>
+            <td width="360">
+            	<input type="text" name="name" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*网站简称</span></span></td>
+          </tr>
+          <tr>
+            <td width="200" class="r">网站全名:</td>
+            <td width="360">
+            	<input type="text" name="fullName" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*网站全称</span></span></td>
+          </tr>
+          <tr>
+            <td width="200" class="r">网站域名:</td>
+            <td width="360">
+            	<input type="text" name="domain" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*填写顶级域名</span></span></td>
+          </tr>
+          <tr>
+            <td width="200" class="r">网站模板:</td>
+            <td width="360">
+            	<input type="text" name="templateTheme" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*</span></span></td>
+          </tr>
+          <tr>
+            <td width="200" class="r">申请人:</td>
+            <td width="360">
+            	<input type="text" name="linkMan" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*真实姓名</span></span></td>
+          </tr>
+          <tr>
+            <td width="200" class="r">联系电话:</td>
+            <td width="360">
+            	<input type="text" name="linkPhone" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*务必填写正确</span></span></td>
+          </tr>
+		  <tr>
+            <td class="r">验证码:</td>
+            <td>
+            	<input id="captcha" type="text" name="captcha" class="input required" maxlength="20" autocomplete="off"/>
+                <img id="auther"  src="javascript:false;" width="56" height="20" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
+                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
+                <span class="redfont">*</span>
+            </td>
+          </tr>
+	</table>
+
+		 <div style="text-align:center;padding:10px 0px 30px 0px;">
+		 <input type="checkbox" id="agree" class="checkbox required" name="agree" value="true" check="^0$" warning="您必须阅读、理解并接受我们的注册条款">
+			我已阅读、理解并接受[  <a target="_blank">申请条款</a> ]
+			<br /><br />
+		<span class="btsb"><input type="submit" value="确认注册"></span>
+		</div>
+		
+</div>
+</div>
+
+</form>		
+</div>
+</div>
+</div>
+
+</body>
+</html>
+[/#escape]

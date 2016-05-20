@@ -48,4 +48,4 @@ $(function(){
 
 
 //追加头部html
-document.write('<div style="width:100%;height:30px;"></div><div id="mstore-header"><div class="mstore-headbody"><div class="mstore-title">安然建站系统-演示模板</div><ul class="mstore-menu"><li><a href="http://zs.arscf.com/login.jspx?themeId=10001" target="_blank" style="margin-left:0px">申请建站</a></li></ul></div></div>');
+document.write('<div style="width:100%;height:30px;"></div><div id="mstore-header"><div class="mstore-headbody"><div class="mstore-title">安然建站系统-演示模板</div><ul class="mstore-menu"><li><a href="http://zs.arscf.com/apply_site.jspx?themeId=10001" target="_blank" style="margin-left:0px">申请建站</a></li></ul></div></div>');

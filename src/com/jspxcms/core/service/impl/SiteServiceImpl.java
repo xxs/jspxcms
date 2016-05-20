@@ -189,10 +189,16 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		
 
 		// 复制模版
-		String srcTemplate = Theme.THEME_TEMPLATE_PATH + "/" + bean.getTemplateTheme();
+		//采用独立的模板中心方式复制
+//		String srcTemplate = Theme.THEME_TEMPLATE_PATH + "/" + bean.getTemplateTheme();
+		//采用复制当前选择站点的模板
+		String srcTemplate = ForeContext.FILES_PATH + srcSite.getTemplate(null);
 		String destTemplate = ForeContext.FILES_PATH + bean.getTemplate(null);
 		File srcDir = new File(pathResolver.getPath(srcTemplate));
 		File destDir = new File(pathResolver.getPath(destTemplate));
+		
+		
+		
 		try {
 			destDir.mkdirs();
 			FileUtils.copyDirectory(srcDir, destDir);

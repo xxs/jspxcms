@@ -1,4 +1,4 @@
-#topBlackLink{background:#000;height:40px;color:#ddd;position:fixed;width:100%;top:0px;z-index:1000000;left:0px;clear:both;}
+${ctx}/files/15/default/#topBlackLink{background:#000;height:40px;color:#ddd;position:fixed;width:100%;top:0px;z-index:1000000;left:0px;clear:both;}
 #topLanguage{float:left;width:110px;text-align:left;}
 #topLanguage .lang{position:relative;cursor:pointer;width:110px;height:40px;display:block;line-height:40px;color:#ddd;}
 .lang .default_web{color:#ddd;}
@@ -66,7 +66,7 @@
 #topBlackLink .message,.buy_car{color:#ddd;position:relative;}
 #mainMenu{background:url(../images/menuback.png)  no-repeat right bottom;height:85px;clear:both;margin-top:40px;clear:both;}
 #mainMenu ul{float:right;position:relative;}
-#mainMenu li{float:left;font-family:Microsoft Yahei,ºÚÌå;font-size:18px;}
+#mainMenu li{float:left;font-family:Microsoft Yahei,ï¿½ï¿½ï¿½ï¿½;font-size:18px;}
 #mainMenu li a{padding:35px 12px 0px 12px;display:block;float:left;color:#333;}
 #mainMenu li a.homeMain{padding-top:33px;border-top:2px solid #cc0000;color:#cc0000;}
 #mainMenu li a:hover{color:#c00;}
@@ -90,7 +90,7 @@
 .tel400 b{font-size:14px;font-weight:normal;color:#e8e8e8;}
 .enarr_t{border-color:#ccc transparent transparent;border-style:solid dashed dashed; border-width:4px;height:0; width:0; font-size:0;}
 
-/*ÓÒ²àÐü¸¡ÔÚÏß×ÉÑ¯*/
+/*ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯*/
 .rides-cs {  font-size: 12px; position: fixed; top: 220px; right: -150px; _position: absolute; z-index: 1500; }
 .rides-cs a { color: #00A0E9;}
 .rides-cs a:hover { color: #ff8100; text-decoration: none;}
@@ -114,7 +114,7 @@
 
 /*bottom0*/
 
-	#bottom{background:#111;color:#ccc;width:100%;padding-bottom:30px;font-family:"Microsoft Yahei","Microsoft YaHei","ºÚÌå";height:360px;}
+	#bottom{background:#111;color:#ccc;width:100%;padding-bottom:30px;font-family:"Microsoft Yahei","Microsoft YaHei","ï¿½ï¿½ï¿½ï¿½";height:360px;}
 	#bottom li{float:left;width:15%;text-align:left;}
 	#bottom li .Item-Title,#bottom li .Item-Title a{padding:40px 0px 30px 10px;font-size:18px;font-weight:normal;color:#fff;}
 	#bottom li .Item-Title a{padding-left:0;}
@@ -122,7 +122,7 @@
 	#bottom li p{padding:0px 10px 0px 10px;}
 	#bottom li p a {display:block;font-size:14px;padding:3px 0px 3px 0px;color:#666;}
 	#bottom li p a:hover,#bottom li .Item-Title a:hover{color:#a00;}
-	#bottom_link{height:60px;background:#cc0000;color:white;font-family:"Microsoft Yahei","Microsoft YaHei","ºÚÌå";font-size:16px;}
+	#bottom_link{height:60px;background:#cc0000;color:white;font-family:"Microsoft Yahei","Microsoft YaHei","ï¿½ï¿½ï¿½ï¿½";font-size:16px;}
 	#bottom_link .link_m{width:980px;margin:0 auto;}
 	#bottom_link span{float:left;height:60px;line-height:60px;margin-right:5px;}
 	#bottom_link img{vertical-align:-12px;margin-right:10px;width:40px;}
