@@ -1,0 +1,99 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>${site.fullNameOrName}-${node.name }</title>
+<link rel="stylesheet" type="text/css" href="_files/css/style.css"/>
+<script type="text/javascript" src="_files/js/jquery.min.js"></script>
+<script type="text/javascript" src="_files/js/turn.js"></script>
+<script type="text/javascript" src="_files/js/mstore-header.js"></script>
+</head>
+<body>
+[#include "inc_header.html"/]
+
+<div class="listTop">
+  <div class="Column1000">
+    <div class="listTopbg">
+      <div class="fr">
+        <div class="T_cten fr" style=" padding-right:10px;"> 
+            <em class="clineT fl">当前位置:</em> 
+            [#list node.hierarchy as n]<a href="${n.url}">${n.name}</a>[#if n_has_next]>[/#if][/#list]
+        </div>
+      </div>
+      <div class="litsfl"> <em class="sus f30 yahei">${node.name }</em> </div>
+    </div>
+  </div>
+</div>
+<div class="icWpbg">
+  <div class="hr20"></div>
+  <div class="Column1000">
+    <div class="subnav">
+      <ul>
+      	[@NodeList;list]
+			[#list list as node]
+				[#if node_index<3]
+	 		 		<li><a href="${node.url}" class="f14 fb col2">${node.name}</a></li>
+				[/#if]
+			[/#list]
+		[/@NodeList] 
+      </ul>
+    </div>
+    <div class="hr20"></div>
+    	[@NodeList parentId=node.id;nodeList]
+    <div class="cCases">
+      <ul>
+  	 	  [#list nodeList as node]
+     	  [@InfoList nodeId=node.id limit=6;list] 
+     		<ul>
+     	  [#list list as info]
+            <li> 
+	        	<a href="${info.url }" class="imga fb f20 first sus"><b>${info.title }</b></a>
+	            <a href="${info.url }">
+	            	<img src="${info.smallImage }" alt="${info.title }">
+	            </a>
+	            <p> <em class="su">类型</em> <em class="su">订购专线</em> <em class="su">${node.customs['type']}</em> <em class="su">123456</em> </p>
+	            <div class="hr10"></div>
+	            <div class="lifl fl"> 
+	            	<span class="fb sus">设计思路:</span>${info.subtitle }
+	
+	            	<div class="hr10"></div>
+	            	<a href="" class="tmore fl" target="_blank"></a> 
+	            </div>
+	          	<div class="lifr fr">
+	            	 <a href="" title="" target="_blank" class="imga">
+	                 	<img src="_files/picture/wb.jpg" alt=""/></a>
+	                     <a href="" target="_blank" class="f14 fb sus imga">家具色板
+	                 </a> 
+	            </div>
+	        </li>
+          [/#list]
+          [/@InfoList]
+  		  [/#list]
+ 	 	
+      </ul>
+    </div>
+    <script type="text/javascript">
+			$(document).ready(function(e) {
+				for(var n=0; n<=$('.cCases ul').children('li').length;n++){
+					$('.cCases ul').children('li').eq(3*n+2).attr('id',"end");
+				}
+			});
+		</script>
+    <div class="hr30"></div>
+    [#include "inc_page.html"/]
+    [/@NodeList]
+    <div class="hr20"></div>
+  </div>
+  <div class="hr30"></div>
+</div>
+[#include "inc_footer.html"/]
+</script>
+<script type="text/javascript" src="_files/js/ad-gallery.js"></script>
+<script src="_files/js/rollup.min.js" type="text/javascript"></script> 
+<script type="text/javascript">/* <![CDATA[ */(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script>
+ 
+
+</body>
+</html>
+[/#escape]
