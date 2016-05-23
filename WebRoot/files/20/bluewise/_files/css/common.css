@@ -1,0 +1,115 @@
+﻿/* Last modified: Jin @ 2012.2.1 */
+
+/* Reset */
+body,dl,dt,dd,p,ul,h1,h2,h3,h4,h5,h6,form,input,textarea,th,td {padding:0; margin:0}
+button,input,select {font-size:100%; vertical-align:middle;}
+textarea {overflow:auto;vertical-align:top;}
+table {border-collapse:collapse;}
+img {-ms-interpolation-mode:bicubic}
+
+/* Fix needed */
+strong {font-weight:700!important;}
+#mainmenu,.menu,.menu2,.menu li {z-index:1}
+#mainmenu{z-index:9999;}
+.menu2 li {position:relative;}
+.menu2 li ul {left:0}
+.menu ul, #submenu ul, #boxNewsList, .prodcate, .prodcatem, .newscate, .flink,.sitemap {list-style:none}
+#left_border,#right_border,.left,.right {overflow:hidden}
+#top,#bottom{clear:both}
+#banner1 {*font-size:0} /* IE default height bug*/
+#banner1 * {*font-size:12px;}
+.bx1,.bx2,.bx3,.bx4,.bx5,.bx6,.bbx1,.bbx2 {zoom:1}
+.content {overflow:hidden;zoom:1}/*FF and IE automatic height*/
+.bx_t,.bx_c {zoom:1}/*clearfix for ie*/
+.bx_t:after,.bx_c:after {content:"\0020"; display:block; height:0;font-size:0; clear:both}/*clearfix for other browser*/
+.bx_b {overflow:hidden;width:100%;height:0} /*for ie: give a default size*/
+/*#boxNewsList li {vertical-align:middle;} /*fix for ie*/
+
+/* global */
+.left  {float:left}
+.right {float:right}
+.r font {padding-right:10px;font-size:11px;vertical-align:middle;font-weight:normal}/*top more settings*/
+.r img {border:none}
+.more2 {text-align:right;padding-right:5px;clear:both}/*bottom more settings and clearfix*/
+.redfont{color:red}
+.clear {clear:both}
+
+/*产品展示*/
+.prodtdclass {vertical-align:top; padding-top:10px; padding-bottom:10px}
+.prodtdclass br {line-height:0.5}
+.pro_name {text-align:center}
+.pro_info {margin-bottom:10px; color:#999;}
+.pro_img2 {float:left;} /*多图*/
+.showtype1 .pro_detail {margin:10px 0; line-height:26px;}
+.showtype2 .pro_detail,
+.showtype3 .pro_detail { margin-left:320px; line-height:26px; }
+.pd_price span {color:#f00; font-size:1.25em;}
+.pd_price2 span {color:#f60; font-size:1.25em;}
+.pd_custom span {padding-right:8px;} /*自定义属性*/
+.pro_content {overflow:hidden;clear:both; margin:15px 0;}
+.gform td {padding:3px 2px;}
+/*产品分页居中*/
+#prodpage{text-align:center}
+
+/* old -- To make compatible width old border */
+.r {text-align:right;}
+#more2 {float:right;text-align:right;width:100%;}
+/*产品上一个，下一个2012-9-20*/
+#nextlink {margin:0;padding:0;overflow:hidden;zoom:1;}
+#nextlink a.pro_pre,#nextlink a.pro_next{margin:0px; padding:0px;float:left;}
+#nextlink .btn1{display:block;text-align:center;}
+#nextlink a.pro_pre{margin-right:8px;}
+
+#nextlink_copy {margin:0;padding:0;overflow:hidden;zoom:1;margin-top:10px;}
+#nextlink_copy a.pro_pre,#nextlink_copy a.pro_next{margin:0px; padding:0px;float:left;}
+#nextlink_copy .btn1{display:block;text-align:center;}
+#nextlink_copy a.pro_pre{margin-right:8px;}
+
+
+
+#container {position: relative;}
+
+
+.block{
+	position:relative;
+ 
+
+}
+.block.add{
+	position:absolute;
+}
+.block.absolute{position:absolute !important;}
+
+.clear{
+	clear: both;
+}
+
+#mainmenu, #top,#container,#bottom,#banner{
+	position:relative;
+}
+.block_clear{position:static !important}
+.homelink{position:static;left:auto;right:auto;bottom:auto;top:auto;}
+
+a.textimg_img{height:auto;}
+#logo{position:static !important;top:auto;right:auto;bottom:auto;left:auto;}
+
+/*新闻略缩图展示风格*/
+#boxNewsList{width:100%;}/*2014/7/23*/
+#boxNewsList .sumary_list{height:auto;overflow:hidden;zoom:1;margin-bottom:5px;text-align:left}
+#boxNewsList .sumary_list .News_img{overflow:hidden;zoom:1;margin-right:10px;}
+/*人才招聘字体颜色*/
+.joblist .job_name{color:#666}
+
+/*网站地图*/
+.Subsite{float:left;padding-right:4px;}
+
+/*图片轮播*/
+div.div_center{margin:0 auto}
+div.div_right{float:right !important;overflow:hidden;zoom:1;}
+div.div_left{float:left !important;overflow:hidden;zoom:1;}
+
+
+.block.fakeabsolute{position: absolute !important;}
+.dmain2{overflow:visible !important}
+
+

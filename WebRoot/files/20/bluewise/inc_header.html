@@ -1,0 +1,85 @@
+<div id="top_bg">
+<div id="top">
+	<div class="inner">
+		<div id="top1"><div id="box0e74a7fac77c070c515154489a03898b" class="block block_logo" style=" overflow:hidden;"><div id="logo"><table style="width:100%"><tr><td><a href='index.html'><img src='_files/picture/logo.png'  border=0 align=absmiddle></a></td></tr></table></div></div></div>
+		<div id="top2"><span class="top2_1"><div id="box7645ec963054cb4e2484360d147dc8c4" class="block block_text" style=" overflow:hidden;"><div class="iv"><a style="cursor:pointer;" onclick="this.style.behavior='url(#default#homepage)';this.sethomepage(location.href);" title="将我们的网站设置为浏览器主页">设为主页</a>&nbsp;&nbsp;&nbsp; <a style="cursor:hand;" onclick="window.external.AddFavorite(location.href,document.title);" title="将我们的网站加入您的浏览器收藏">加入收藏</a>&nbsp; <br />
+</div></div><div id="box569dd500bd25f08bb048c05605d03073" class="block block_prodsearch" style=" overflow:hidden;"><div id="prodsearch">
+<input name="pkeyword" id="pkeyword" class="pkeyword_0cc918dec28dbd91f6006a2ce8101e2e" size="20">
+<input type="button" id="psbt" class="btn" value="搜索">
+</div>
+<script language=javascript>
+function product_search_0cc918dec28dbd91f6006a2ce8101e2e(){
+	var kw=$('.pkeyword_0cc918dec28dbd91f6006a2ce8101e2e').val();
+	var sgid="";
+
+
+
+	if(window.location.href.indexOf('pkeyword=')>-1) href = window.location.href.replace('pkeyword='+Request("pkeyword"), 'pkeyword='+kw);
+	else href = location.href+(window.location.href.indexOf('?')>-1?'&':'?')+"pkeyword="+kw+sgid;
+	location.href = href;
+
+}
+
+$('.pkeyword_0cc918dec28dbd91f6006a2ce8101e2e').val(decodeURIComponent(Request("pkeyword")));
+
+</script></div></span><span class="top2_2"></span></div>
+	</div>
+</div>
+</div>
+
+
+<div id="mainmenu_bg">
+<div id="mainmenu" class="nav">
+<div class="inner"><div id="box01045755fdc52f529cbce89e2fa692cb" class="block block_menu2  class='tm6 last'" style="z-index:999999;">
+<div id="menu151017" class="menu">
+<ul class="menu2">
+
+		[@NodeList;list]
+        	<li class='tm1 first'><a href='${ctx}/'>网站首页</a></li>  
+			[#list list as node]
+ 		 		<li class='tm${node_index+2} [#if !node_has_next]last[/#if]'><a href="${node.url}">${node.name}</a>
+ 		 		</li>
+			[/#list]
+		[/@NodeList]
+</ul>
+
+</div>
+<script>
+function startList(id) {
+if (window.ActiveXObject&&!window.XMLHttpRequest) {
+var navRoot = document.getElementById(id).getElementsByTagName('UL')[0];
+for (i=0; i<navRoot.childNodes.length; i++) {
+var node = navRoot.childNodes[i];
+if (node.nodeName=="LI") {
+	node.onmouseover=function(){this.className+=" over";}
+	node.onmouseout=function(){this.className=this.className.replace(" over", "");}
+}
+}
+}
+}
+startList("menu151017");
+</script>
+</div></div></div> 
+</div>
+
+<!-- banner -->
+<div id="banner_bg">
+<div id="banner">
+<div class="inner">
+<div id="boxccb59ce9d93ebf99ee3b5a16fcb182ec" class="block block_piclist" style=" overflow:hidden;">
+<style>
+.piclist_title{ text-align:center;padding-top:5px;}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  
+	<td id="piclist_img" class="piclist_img"><img src="_files/picture/banner.jpg" border="0"  width="978" height="296" /></td>
+  
+  </tr>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
