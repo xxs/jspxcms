@@ -15,12 +15,14 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.MapKeyType;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Length;
@@ -97,6 +99,7 @@ public class Global implements java.io.Serializable {
 	}
 
 	private Integer id;
+	private PublishPoint uploadsPublishPoint;
 	private List<Site> sites = new ArrayList<Site>(0);
 	private Map<String, String> customs = new HashMap<String, String>(0);
 	private Map<String, String> clobs = new HashMap<String, String>(0);
@@ -199,5 +202,36 @@ public class Global implements java.io.Serializable {
 
 	public void setDataVersion(String dataVersion) {
 		this.dataVersion = dataVersion;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "f_uploads_publishpoint_id", nullable = false)
+	public PublishPoint getUploadsPublishPoint() {
+		return uploadsPublishPoint;
+	}
+
+	public void setUploadsPublishPoint(PublishPoint uploadsPublishPoint) {
+		this.uploadsPublishPoint = uploadsPublishPoint;
+	}
+	
+	/**
+	 * 获取模版的显示路径，如为Web上下文发布，则加上上下文路径。如/template, /ctx/template
+	 * 
+	 * @return
+	 */
+	@Transient
+	public String getTemplateDisplayPathByCtx() {
+		String ctx = getContextPath();
+		StringBuilder sb = new StringBuilder();
+		// 存储路径是file:开头代表模版在独立应用里部署，不需加上下文路径。
+		if (StringUtils.isNotBlank(ctx)
+				&& !StringUtils.startsWith(Constants.TEMPLATE_STORE_PATH,
+						"file:")) {
+			sb.append(ctx);
+		}
+		if (StringUtils.isNotBlank(Constants.TEMPLATE_DISPLAY_PATH)) {
+			sb.append(Constants.TEMPLATE_DISPLAY_PATH);
+		}
+		return sb.toString();
 	}
 }

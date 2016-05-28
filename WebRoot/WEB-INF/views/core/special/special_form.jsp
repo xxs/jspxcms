@@ -95,13 +95,13 @@ function imgCrop(name) {
   <tr>
     <td class="in-lab" width="15%"><s:message code="special.smallImage"/>:</td>
     <td class="in-ctt" width="85%" colspan="3">
-	    <tags:image_upload name="smallImage" value="${bean.smallImage}"/>
+	    <tags:image_upload name="smallImage" value="${bean.smallImage}" width="${field.customs['imageWidth']}" height="${field.customs['imageHeight']}" watermark="${field.customs['imageWatermark']}" scale="${field.customs['imageScale']}"/>
 		</td>
 	</tr>
   <tr>
     <td class="in-lab" width="15%"><s:message code="special.largeImage"/>:</td>
     <td class="in-ctt" width="85%" colspan="3">
-	    <tags:image_upload name="largeImage" value="${bean.largeImage}"/>
+	    <tags:image_upload name="largeImage" value="${bean.largeImage}" width="${field.customs['imageWidth']}" height="${field.customs['imageHeight']}" watermark="${field.customs['imageWatermark']}" scale="${field.customs['imageScale']}"/>
 		</td>
 	</tr>
 	<tr>

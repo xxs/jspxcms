@@ -256,6 +256,33 @@ public class Site implements java.io.Serializable {
 		}
 		return sb.toString();
 	}
+	
+	/**
+	 * 获得模板的基础路径
+	 * 
+	 * 例如：/1/...
+	 * 
+	 * @param path
+	 * @return
+	 */
+	@Transient
+	public String getSiteBase(String path) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("/").append(getId());
+		if (StringUtils.isNotBlank(path)) {
+			if (!path.startsWith("/")) {
+				sb.append("/");
+			}
+			sb.append(path);
+		}
+		return sb.toString();
+	}
+	
+	@Transient
+	public PublishPoint getUploadsPublishPoint() {
+		return getGlobal() != null ? getGlobal().getUploadsPublishPoint()
+				: null;
+	}
 
 	/**
 	 * 获得模板的基础路径

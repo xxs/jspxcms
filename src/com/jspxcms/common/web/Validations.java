@@ -24,6 +24,15 @@ public abstract class Validations {
 	public static boolean exist(Object value) {
 		return value != null;
 	}
+	
+	public static boolean uri(String value) {
+		return !StringUtils.contains(value, "..");
+	}
+
+	public static boolean uri(String value, String prefix) {
+		return !StringUtils.contains(value, "..")
+				&& StringUtils.startsWith(value, prefix);
+	}
 
 	public static boolean exist(Object value, List<String> messages,
 			String name, Object id) {

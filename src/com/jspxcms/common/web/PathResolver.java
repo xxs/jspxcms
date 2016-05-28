@@ -8,4 +8,6 @@ package com.jspxcms.common.web;
  */
 public interface PathResolver {
 	public String getPath(String uri);
+	
+	public String getPath(String uri, String prefix);
 }

@@ -3,8 +3,10 @@ package com.jspxcms.common.image;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -60,6 +62,35 @@ public class Images {
 				alpha));
 		g.drawImage(watermark, x, y, null);
 		g.dispose();
+	}
+	
+	/**
+	 * Checks if the underlying input stream contains an image.
+	 * 
+	 * @param in
+	 *            input stream of an image
+	 * @return 图片类型。如果为null，代表不是图片。
+	 * @throws IOException
+	 */
+	// URL获取的InputStream不支持reset，要考虑这个问题。
+	// 另外考虑一下gif的问题。
+	// png\gif都不是好惹的货，一个是多桢动画、一个是透明图片。
+	// png按png格式写入。
+	// 不支持多桢的gif，不考虑jdk1.5不支持gif写入问题。
+	// 格式判断全部采用file，或者无法判断时，按后缀格式处理。
+	// 远程的url就先存为file吧。
+	// 这个方法的目的是判断是否可以操作的图片格式，以及真实的图片格式。
+	public static String getFormatName(InputStream in) throws IOException {
+		ImageInfo ii = new ImageInfo();
+		ii.setInput(in);
+		if (ii.check()) {
+			String formatName = ii.getFormatName().toLowerCase();
+			if (ArrayUtils.contains(IMAGE_EXTENSIONS, formatName)) {
+				return formatName;
+			}
+		}
+		return null;
+
 	}
 
 	public static void watermark(BufferedImage buff, BufferedImage watermark,

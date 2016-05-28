@@ -1,0 +1,12 @@
+html,body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,th,td{margin:0;padding:0;}
+html,body{font:12px/1.5 arial,'\5b8b\4f53';}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+ul,ol{list-style:none;}
+img{border:0;}
+.disabled,.readonly{background-color:#D4D0C8;}
+.disabled-a{padding:0 2px;color:#999;text-decoration:underline;}
+/*textarea[disabled='disabled'],input[type='text'][disabled='disabled'],select[disabled='disabled'],.disabled,.readonly{background-color:#D4D0C8;}*/
+/*input[type='text'],input[type='password']{width:150px;height:16px;}*/
+a{color:#000;}
+a:link,a:visited{text-decoration:none;}
+a:hover,a:active{text-decoration:underline;}
