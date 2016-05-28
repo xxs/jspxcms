@@ -145,6 +145,7 @@ public class WebFileF7Controller {
 		if (!Validations.uri(parentId)) {
 			throw new CmsException("invalidURI");
 		}
+		
 
 		PublishPoint point = site.getUploadsPublishPoint();
 		String urlPrefix = point.getUrlPrefix();
