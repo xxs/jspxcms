@@ -18,6 +18,9 @@ $(function() {
 	$("#validForm").validate({
 		<c:if test="${oprt=='edit'}">
 		submitHandler: function(form) {
+			<c:if test="${oprt=='create'||bean.editable}">
+      $('#name').val($('#baseName').val()+'.'+$('#extension').val());
+      </c:if>
 			$(form).ajaxSubmit({
 				success: function() {
 					var name = $("#name").val();
@@ -29,7 +32,7 @@ $(function() {
 		}
 		</c:if>
 	});
-	$("input[name='shortName']").focus();
+	$("input[name='baseName']").focus();
 
 	$("#text").keydown(function(event) {
 		if((event.keyCode==83 || event.keyCode==115) && event.ctrlKey){
@@ -49,7 +52,7 @@ parent.frames['left'].reload();
 <body class="c-body">
 <jsp:include page="/WEB-INF/views/commons/show_message.jsp"/>
 <div class="c-bar margin-top5">
-  <span class="c-position"><s:message code="webFile.management"/> - <s:message code="${oprt=='edit' ? 'edit' : 'create'}"/></span>
+  <span class="c-position"><s:message code="webFile${type}.management"/> - <s:message code="${oprt=='edit' ? 'edit' : 'create'}"/></span>
 </div>
 <form id="validForm" action="${oprt=='edit' ? 'update' : 'save'}.do" method="post">
 <tags:search_params/>
@@ -60,14 +63,14 @@ parent.frames['left'].reload();
 <table border="0" cellpadding="0" cellspacing="0" class="in-tb margin-top5">
   <tr>
     <td colspan="4" class="in-opt">
-			<shiro:hasPermission name="core:web_file:create">
+			<shiro:hasPermission name="core:web_file_${type}:create">
 			<div class="in-btn"><input type="button" value="<s:message code="create"/>" onclick="location.href='create.do?parentId=${fnx:urlEncode(parentId)}&${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
 			<div class="in-btn"></div>
 			</shiro:hasPermission>
-			<shiro:hasPermission name="core:web_file:copy">
+			<shiro:hasPermission name="core:web_file_${type}:copy">
 			<div class="in-btn"><input type="button" value="<s:message code="copy"/>" onclick="location.href='create.do?cid=${bean.id}&parentId=${fnx:urlEncode(parentId)}&${searchstring}';"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
 			</shiro:hasPermission>
-			<shiro:hasPermission name="core:web_file:delete">
+			<shiro:hasPermission name="core:web_file_${type}:delete">
 			<div class="in-btn"><input type="button" value="<s:message code="delete"/>" onclick="if(confirmDelete()){location.href='delete.do?ids=${bean.id}&parentId=${fnx:urlEncode(parentId)}&${searchstring}';}"<c:if test="${oprt=='create'}"> disabled="disabled"</c:if>/></div>
 			</shiro:hasPermission>
 			<div class="in-btn"></div>
@@ -80,7 +83,7 @@ parent.frames['left'].reload();
   </tr>
   <tr>
     <td class="in-lab" width="15%"><s:message code="webFile.directory"/>:</td>
-    <td class="in-ctt" width="85%" colspan="3"><c:out value="${oprt=='edit' ? (bean.parentFile.id) : (parentId)}"/></td>
+    <td class="in-ctt" width="85%" colspan="3"><c:out value="${parentId}"/></td>
   </tr>
   <c:choose>
   <c:when test="${oprt=='create'||bean.editable}">
@@ -88,7 +91,7 @@ parent.frames['left'].reload();
     <td class="in-lab" width="15%"><s:message code="webFile.name"/>:</td>
     <td class="in-ctt" width="85%" colspan="3">
     	<f:hidden id="name" name="name" value="${bean.name}"/>
-    	<f:text id="shortName" name="shortName" value="${oprt=='edit' ? (bean.shortName) : ''}" class="required" maxlength="150" style="width:200px;"/> .
+    	<f:text id="baseName" name="baseName" value="${oprt=='edit' ? (bean.baseName) : ''}" class="required" maxlength="150" style="width:200px;"/> .
     	<select id="extension" tabindex="-1">
     		<f:options items="${fn:split('html,htm,js,css,txt,xml,ftl,vm,jsp,jspx,asp,aspx,php,tld,tag,properties,sql',',')}" selected="${fn:toLowerCase(bean.extension)}"/>
     	</select>
@@ -101,14 +104,14 @@ parent.frames['left'].reload();
   <tr id="textEdit">
     <td class="in-lab" width="15%"><s:message code="webFile.text"/>:</td>
     <td class="in-ctt" width="85%" colspan="3">
-    	<f:textarea id="text" name="text" wrap="off" value="${bean.text}" style="width:95%;height:300px;"/>
+    	<f:textarea id="text" name="text" wrap="off" spellcheck="false" value="${bean.text}" style="width:95%;height:300px;"/>
     	<iframe id="textView" src="javascript:false;" scrollbars="yes" resizable="yes" style="width:98%;height:300px;display:none;"></iframe>
     </td>
   </tr>
   <script type="text/javascript">
   	$("#viewButton").toggle(function(){
   		$(this).val("<s:message code='webFile.edit'/>");
-  		$("#textView").attr("src","${ctx}${bean.id}");
+  		$("#textView").attr("src","${ctx}/template${bean.id}");
   		//var textViewDoc = window.frames["textView"].document;
   		//textViewDoc.open();
   		//textViewDoc.write($("#text").val());
@@ -122,8 +125,8 @@ parent.frames['left'].reload();
   		$("#textView").hide();
   	});
   	$(function(){
-  		$("#validForm").submit(function() {
-  			$('#name').val($('#shortName').val()+'.'+$('#extension').val());
+  		$("#baseName").change(function() {
+  			$('#name').val($('#baseName').val()+'.'+$('#extension').val());
   		});
   	});
   </script>

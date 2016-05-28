@@ -1115,6 +1115,11 @@
 		<function-signature>void escapeJavaScript(java.io.Writer,java.lang.String)</function-signature>
 	</function>
 	<function>
+		<name>escapeEcmaScript</name>
+		<function-class>org.apache.commons.lang3.StringEscapeUtils</function-class>
+		<function-signature>java.lang.String escapeEcmaScript(java.lang.String)</function-signature>
+	</function>
+	<function>
 		<name>unescapeJava_s</name>
 		<function-class>org.apache.commons.lang.StringEscapeUtils</function-class>
 		<function-signature>java.lang.String unescapeJava(java.lang.String)</function-signature>

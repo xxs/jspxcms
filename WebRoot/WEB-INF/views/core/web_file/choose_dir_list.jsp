@@ -15,7 +15,7 @@
   </thead>
   <tbody>
   <c:forEach var="bean" varStatus="status" items="${list}">
-  <c:url value="/cmscp/core/web_file/choose_dir_list.do" var="url">
+  <c:url value="choose_dir_list.do" var="url">
 		<c:param name="parentId" value="${bean.id}"/>
 	</c:url>
 	<c:forEach var="id" items="${ids}">

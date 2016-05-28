@@ -8,6 +8,6 @@
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 [
 	<c:forEach var="bean" items="${list}" varStatus="status">
-	{"id":"${bean.id}","name":"${bean.name}"<c:choose><c:when test="${!bean.hasChildDir}">,"iconSkin":"dir","children":[]</c:when><c:otherwise>,"isParent":true</c:otherwise></c:choose>}<c:if test="${!status.last}">,</c:if>
+	{"id":"${bean.id}","name":"${bean.name}"<c:choose><c:when test="${!bean.directory}">,"iconSkin":"dir","children":[]</c:when><c:otherwise>,"isParent":true</c:otherwise></c:choose>}<c:if test="${!status.last}">,</c:if>
 	</c:forEach>
 ]

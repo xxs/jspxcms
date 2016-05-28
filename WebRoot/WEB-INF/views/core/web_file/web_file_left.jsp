@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.jspxcms.core.support.WebFile,com.jspxcms.common.util.Strings,org.apache.commons.lang3.*,org.springframework.web.util.WebUtils,javax.servlet.http.*,java.util.*" %>
+<%@ page import="com.jspxcms.common.file.WebFile,com.jspxcms.common.util.Strings,org.apache.commons.lang3.*,org.springframework.web.util.WebUtils,javax.servlet.http.*,java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -88,39 +88,13 @@ var setting = {
 	}
 };
 var zNodes =[
-  {"id":"${parent.id}","pId":null,"name":"${isSiteFile ? 'root' : 'template'}","open":true},
-		<%
-		Queue<WebFile> queue = new LinkedList<WebFile>();
-		List<WebFile> list = (List<WebFile>) request.getAttribute("list");
-		for(WebFile wf : list) {
-			queue.offer(wf);
-		}
-		String[] openIdArr = null;
-		Cookie cookie = WebUtils.getCookie(request, "open_ids");
-		if(cookie!=null) {
-			String openIds = Strings.urlDecode(cookie.getValue());
-			if(StringUtils.isNotBlank(openIds)) {
-				openIdArr = StringUtils.split(openIds,",");
-			}			
-		}
-		Boolean last;
-		while(!queue.isEmpty()) {
-			WebFile bean = queue.poll();
-			if(ArrayUtils.contains(openIdArr, bean.getId())) {
-				List<WebFile> children = bean.listFiles();
-				for(WebFile wf:children) {
-					queue.offer(wf);
-				}
-			}
-			last = queue.isEmpty();
-			request.setAttribute("bean", bean);
-			request.setAttribute("last", last);
-		%>
-		{"id":"${bean.id}","pId":"${bean.parentFile.id}","name":"${bean.name}"<c:choose><c:when test="${!bean.hasChildDir}">,"iconSkin":"dir","children":[]</c:when><c:otherwise>,"isParent":true</c:otherwise></c:choose>}<c:if test="${!last}">,</c:if>
-		<%}%>
+  {"id":"${parent.id}","pId":null,"name":"<c:choose><c:when test='${type==1}'>template</c:when><c:when test='${type==2}'>uploads</c:when><c:otherwise>root</c:otherwise></c:choose>","open":true},
+  <c:forEach var="bean" items="${list}">
+	{"id":"${bean.id}","pId":"${parent.id}","name":"${bean.name}"<c:choose><c:when test="${!bean.directory}">,"iconSkin":"dir","children":[]</c:when><c:otherwise>,"isParent":true</c:otherwise></c:choose>}<c:if test="${!last}">,</c:if>
+	</c:forEach>
 ];
 function reload() {
-	location.href = "left.do${isSiteFile ? '?isSiteFile=true' : ''}";
+	location.href = "left.do";
 }
 function fireClick(){
 	var treeObj = $.fn.zTree.getZTreeObj("tree");
@@ -137,7 +111,7 @@ $(function(){
 		var themeId = "${parent.id}/${theme}";
 		var themeNode = treeObj.getNodeByParam("id",themeId);
 		if(themeNode) {
-			//treeObj.selectNode(themeNode);
+			treeObj.selectNode(themeNode);
 			treeObj.expandNode(themeNode,true,false,false,true);
 		}
 		</c:if>
@@ -179,10 +153,7 @@ $(function(){
 </script>
 </head>
 <body class="left-body">
-<div style="padding:7px 0 3px 0;text-align:center;">
-	<c:set var="hasPermission"><shiro:hasPermission name="core:web_file:site_file">true</shiro:hasPermission></c:set>
-  <label for="siteFile"><input id="siteFile" type="checkbox" onclick="location.href='left.do?noSelect=true'+(this.checked?'&isSiteFile=true':'')"<c:if test="${isSiteFile}"> checked="checked"</c:if><c:if test="${hasPermission!='true' || !isEnableSiteFile}"> disabled="disabeld"</c:if>/><s:message code="webFile.siteFile"/></label>
-</div>
+<div style="padding:7px 0 3px 0;text-align:center;"><s:message code="webFile${type}.management"/></div>
 <hr/>
 <ul id="tree" class="ztree" style="padding-top:5px"></ul>
 </body>

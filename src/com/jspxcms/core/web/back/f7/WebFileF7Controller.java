@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jspxcms.common.file.CommonFile;
 import com.jspxcms.common.file.FileHandler;
+import com.jspxcms.common.file.WebFile;
 import com.jspxcms.common.web.PathResolver;
 import com.jspxcms.common.web.Servlets;
 import com.jspxcms.common.web.Validations;
@@ -26,7 +27,6 @@ import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.support.CmsException;
 import com.jspxcms.core.support.Constants;
 import com.jspxcms.core.support.Context;
-import com.jspxcms.core.support.WebFile;
 
 /**
  * WebFileF7Controller
