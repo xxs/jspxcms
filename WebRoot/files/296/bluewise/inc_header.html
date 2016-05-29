@@ -1,0 +1,59 @@
+<!--//不变部分-->
+<div id="topBlackLink">
+	<div class="mainPage"> <!--mainPage页面宽度-->
+		<div id="topLanguage">
+			<span class="lang"><a ="http://nicenic.net" class="default_web" target="_blank" >官网 - 建站助手</a> <span class="enarr_t">.</span>
+			<ul class="lang_menu">
+				<li><a class="en">中国 - 简体中文</a></li>
+				<li><a target="_blank" class="en">English - 英文站</a></li>
+			</ul>
+			</span>
+		</div>
+		<ul class="top_menu">
+			<script type="text/javascript" src="${ctx}/login_ajax.jspx"></script>
+			<li><a ="/customer/pay.php" target="_blank">支付方式</a></li>
+			<li><a ="/support/" target="_blank">客户服务</a></li>
+			<li class="li_tel">
+				<span class="tel400 blocks">
+					<img src="_files/picture/tel.png" /> 
+					<a ="/customer/contact.php" target="_blank">
+						<b class="redfont yahei">销售  400-888-8888</b>
+					</a>
+				</span>
+				<ul class="contactQQ">
+					<li><a class="QQnum yahei" target="_blank">
+						<img src="_files/picture/conqq.png" /><font class="yahei">咨询</font>
+						80000000</a></li>
+				</ul>
+		    </li>
+		</ul>
+	</div>
+</div>
+<div id="mainMenu">
+	<div class="mainPage"> 
+	<!--	mainPage页面宽度  -->
+	<style> #mainLogo{padding:0px;}</style>
+		<div id="mainLogo"><a ="/" title="建站助手"><img src="_files/picture/logo.png" style="margin-top:15px" border="0" alt="建站助手"></a></div>
+		<ul class="menu">
+			<!--选中li a的class="homeMain"-->
+			<li><a href='${ctx}/'>首页</a></li>
+			[@NodeList;list]
+				[#list list as node]
+ 		 		<li class=current><a href="${node.url}">${node.name}</a></li>
+				[/#list]
+			[/@NodeList] 
+		</ul>
+	</div>
+</div>
+
+
+<script>
+$(function(){
+	$("#logimg").css({ 'float':'none', 'margin':'0'});
+});
+
+</script>
+
+<div id="Pages">
+
+</div>

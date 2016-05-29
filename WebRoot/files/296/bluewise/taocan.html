@@ -1,0 +1,1470 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${site.fullNameOrName} -- 安然建站助手</title>
+<meta name="description" content="安然建站助手" />
+<meta name="keywords" content="安然建站助手" />
+<link href="_files/css/2010-6.css" rel="stylesheet" type="text/css">
+<link href="_files/css/design.css" rel="stylesheet" type="text/css">
+<link href="_files/css/style.css" rel="stylesheet" type="text/css">
+
+<style>
+	#boxlist{}
+#boxlist #title{overflow:hidden;zoom:1; }
+#boxlist .l{font-family:"微软雅黑";font-size:30px;color:#333;float:left;line-height:220%;}
+#boxlist .r{font-size:14px;float:right;text-align:right;line-height:220%;padding-top:25px;}
+#boxlist .r a{color:#333}
+#boxlist .r a:hover{color:#c00}
+.explanlist {border:1px solid #ccc;border-width:1px 1px 0px 0px;margin-bottom:30px; }
+.explanlist td{border:1px solid #ccc;border-width:0px 0px 1px 1px;text-align:center;height:50px;line-height:50px;}
+.explanlist .tr td{background:#ddd;font-size:16px;color:#333;}
+.explanlist .ptd td{height:220px;line-height:20px !important;}
+.explanlist .ptd .price{font-family:"georgia";font-size:40px;}
+.explanlist .bigclass{width:20px;font-size:16px;margin:0 auto;line-height:25px}
+.explanlist .rtd{border-left:1px solid #c00;}
+.explanlist .tr .rtd{background:#c00}
+.explanlist .tr .nortd{background:#ddd}
+.explanlist .rtd .rfont{position:absolute;top:-10px;left:52px\9;left:531px;text-align:center;width:217px;background:#c00;font-size:16px;line-height:58px;color:#fff;}
+.tableBuy .brtd{border-bottom:1px solid #c00}
+.tableBuy td{text-align:center;height:60px}
+.tableBuy a{color:#fff;background:#c00;height:35px;line-height:35px;width:95px;display:block;margin:0 auto;cursor:pointer}
+.tableBuy a:hover{background:#f00;color:#fff;}
+
+#floatTitle{width:1180px;overflow:hidden;zoom:1;margin-left:1px;display:none}
+#floatTitle li{float:left;width:215px;background:#f5f5f5;font-size:16px;color:#333;display:block;height:50px;line-height:50px;text-align:center;border-right:1px solid #e5e5e5}
+#floatTitle li.first{width:314px;}
+#floatTitle li.last{border-right:0;width:217px;}
+
+#floatBuy{width:1180px;overflow:hidden;zoom:1;margin-left:1px;display:none}
+#floatBuy li{float:left;width:215px;background:#f5f5f5;font-size:16px;color:#333;display:block;height:50px;line-height:50px;text-align:center;border-right:1px solid #e5e5e5}
+#floatBuy li.first{width:314px;}
+#floatBuy li.last{border-right:0;width:217px;}
+#floatBuy a.mainButton{background:#c00;color:#fff;padding:5px 10px;font-size:14px;cursor:pointer;}
+#floatBuy a.mainButton:hover{background:#f00}
+#floatBuy{border-top:1px solid #e5e5e5}
+.sbanner_text  .t{margin-top:44px;}
+a.Add_cart{background:none !important;padding-left:0 !important;}
+.dSelect select{width: 85%;border: 1px solid #ccc;height: 30px;line-height: 29px;text-indent: 5px;color: #333;cursor:pointer;margin: 20px 0 12px 0;}
+.aBg{margin-bottom:10px;}
+.aBg a{width: 181px;height: 30px;border-bottom: none;line-height: 30px;border: 1px solid #ccc;background: none;color: #333;}
+.aBg a:hover{border:1px solid #c00;background:#f00;}
+.aBg2 a{background:#c00;border: 1px solid #c00;color:#fff;}
+.price_div{margin-top:25px;}
+
+ .todos-thumb-span{width:590px;height:440px;position:fixed;left:50%;top:50%;margin-left:-275px;margin-top:-180px;z-index:888888;opacity: 1;display:none}
+.active { z-index: 100000;opacity: 1;}
+.todos-thumb-span img:hover{-webkit-transform:rotate(360deg);transform:rotate(360deg);-webkit-transition:0.3s linear;transition:0.3s ease-in;z-index:1800;}
+.todos-thumb-span .todoBg{width:590px;height:440px;position:absolute;left:0px;top:0px;background:#000;filter:alpha(opacity=65); -moz-opacity:0.65; opacity:0.65;z-index:-1}
+.todos-thumb-span .tTitle{font-size:16px;display:block;text-align:left;overflow:hidden;zoom:1;color:#fff;font-weight:normal;padding:10px 0px 10px 30px}
+.todos-thumb-span .tTitle b{font-size:25px;font-weight:normal;padding-right:12px;font-family:"Microsoft Yahei","verdana"}
+
+
+</style>
+</head>
+<style>
+.sBox{cursor:pointer}
+</style>
+<link href="css/popbox.css" rel="stylesheet" type="text/css">
+
+<div id="screen"></div><!--遮罩层-->
+<div class="popbox">
+	<h2><span class="add_cart">加入购物车</span><a href="#" onClick="closepopbox(1);return false;" title="关闭窗口">×</a></h2><div class="mainlist">
+		
+	</div>
+</div><!--弹出框-->
+<div id="Page">
+    <!-- 头部 -->
+    
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="index">
+[#include "inc_header.html"/]
+<style>   
+    html{overflow-x: hidden;}
+	#banner{width:100%; height:230px; background:#487DB1;}
+	#banner .main{ width:983px;margin:0 auto;height:230px;;position: absolute;/*display:none*/}
+	#banner .bannerleft{ width:330px; /*float:left;*/font-family:'微软雅黑','黑体';text-align:left; padding-top:25px; color:#fff;}
+	#banner .bannerleft .bigTitle{ font-size:36px; line-height:180%; margin-bottom:5px; position: relative;}
+	#banner .bannerleft .smallTitle{ border-top:1px solid #fff; font-size:20px; padding-top:10px; margin-bottom:15px;position: relative;}
+
+	.banner-main{margin:0 auto;width:983px;}
+	.bannerright01{position: absolute;right:0;top:30px}
+	.bannerright02{position: absolute;right:0;top:20px}
+	.LHeight{line-height:180%}
+	.dw{line-height:180%;width:400px}
+	.tws{width:400px;}
+	.fxBanner{background:#0094E6;text-align:center;}
+
+</style>
+
+<div class="fxBanner">
+  <div class="fxImg">
+     <a ="/design/fenxiao.php"><img src="_files/picture/design_index.gif" border="0"></a>
+  </div>
+</div>
+<link href="css/designglobal.css" rel="stylesheet" type="text/css" >
+<style>
+#topLink{display:none;}
+</style>
+[#include "inc_submenu.html"/]
+
+
+<script src="js/jquery.popbox.js"></script>
+<script>
+function showcart(type,id){//展示购物车配置页面
+	$.get("/cart/cart_ajaxpage.php",{ptype:type, pid:id},function(data){
+		$(".mainlist").html(data);
+	});
+	showpopbox();
+}
+function showcart2(type,id){//展示购物车配置页面
+	$.get("/cart/cart_ajaxpage.php",{ptype:type, spid:id, years:1},function(data){
+		$(".mainlist").html(data);
+	});
+	showpopbox();
+}
+</script>
+<style>
+.speDiv{position:absolute;top:7px;right:51px}
+.spTd{position:relative}
+</style>
+<style>
+.box_edit_nav {padding-bottom:40px;}
+.box_edit_nav ul{background:#ccc;margin:auto;width:800px;height:40px;border-radius:20px;}
+.box_edit_nav ul li{float:left;width:200px;text-align:center;font-size:14px;}
+.box_edit_nav ul li a{display:block;padding:9px; color:#000;background:url(_files/images/x1.png) 30px top no-repeat;padding-left:40px;border-radius:20px;height:22px;}
+.box_edit_nav ul li.hot a,.box_edit_nav ul li a:hover{color:white;background:url(_files/images/x1h.png) 30px top no-repeat #cc0000;}
+.box_edit_nav ul li a.fxLink{background:url(_files/images/fenxiaoico.png) 40px 10px no-repeat;}
+.box_edit_nav ul li.hot a.fxLink,.box_edit_nav ul li a.fxLink:hover{background:#cc0000 url(_files/images/fenxiaoico.png) 40px -59px no-repeat;}
+
+.box_edit_nav ul li.hot a p,.box_edit_nav ul li a:hover p{border-top-color: #cc0000;}
+.box_edit_nav ul li.hot a:hover{background-color:#ff0000;}
+.box_edit_nav ul li.hot a:hover p{border-top-color: #ff0000;}
+.box_edit_nav ul li a p{position:absolute;margin-top:10px;margin-left:50px;border:6px solid #eee; border-top-color: #eee;</style>
+<div class="box_edit_nav">
+	<ul>
+		<li class="hot"><a ="box_edition.php">三站合一<p></p></a></li>
+		<li ><a ="box_edition_mobile.php" style="background-position-y:-80px;">手机版<p></p></a></li>
+		<li ><a ="box_edition_catering.php" style="background-position-y:-40px;">微餐饮版<p></p></a></li>
+		<li  class=""><a ="box_edition_fenxiao.php" class="fxLink">商城分销版 <p></p></a></li>
+	</ul>
+</div>
+<div class="pageMarginHeight mainPage">
+<div id="content" style="position:relative;background:#fff;" class="yahei">
+<table cellspacing="0" cellpadding="0" border="1" width="100%" class="explanlist" style="">
+<tr class="tr">
+	<td colspan="2" >建站助手</td>
+	<td width="206">标准版</td>
+	<td class="rtd" width="206"><p class="rfont">全能版</p></td>
+	<td class="rtd nortd" width="206">尊享版</td>
+	<td width="206">商城版</td>
+	</tr>
+<tr class="ptd">
+	<td colspan="2" style="font-size:16px;">型号与售价</td>
+	<td>
+		<form method="post" action="boxorder.php" target="_blank" name="f2">		
+		<input type="hidden" name="pid" value="5502">
+		<div class="price_div"><span class="price">296</span>元/年</div>
+		<div class="dSelect">
+					<select name="period" id="period" onchange="getPrice('f2','296',this)">
+					<option value="1" selected>一年 296 元</option>
+					<option value="2">两年 592 元</option>
+					<option value="3">三年 888 元, 买三送一</option>
+					<option value="4">四年 1184 元</option>
+					<option value="5">五年 1480 元, 买五年以上送二年</option>
+					<option value="6">六年 1776 元</option>
+					<option value="7">七年 2072 元</option>
+					<option value="8">八年 2368 元</option>
+					<option value="9">九年 2664 元</option>
+					<option value="10">十年 2960 元</option>
+					</select>
+				</div>
+				<div class="aBg aBg2">
+					<a href="#" onclick="f2.submit();return false;" class="btn btn1 btnB">立刻购买</a>
+				</div>				
+				<a ="design_nicebox.php" class="greenfont">购买套餐更优惠</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onclick="newshowcart('f2');return false;" class="Add_cart" id="cart0">加入购物车</a>
+			</form>
+	</td>
+	<td class="rtd">
+		<form method="post" action="boxorder.php" target="_blank" name="f3">
+		<input type="hidden" name="pid" value="5503">
+		<div class="price_div"><span class="price">596</span>元/年</div>
+		<div class="dSelect">
+					<select name="period" id="period" onchange="getPrice('f3','596',this)">
+					<option value="1" selected>一年 596 元</option>
+					<option value="2">两年 1192 元, 买两年送一年</option>
+					<option value="3">三年 1788 元, 买三年送两年</option>
+					<option value="4">四年 2384 元</option>
+					<option value="5">五年 2980 元, 买五年以上送三年</option>
+					<option value="6">六年 3576 元</option>
+					<option value="7">七年 4172 元</option>
+					<option value="8">八年 4768 元</option>
+					<option value="9">九年 5364 元</option>
+					<option value="10">十年 5960 元</option>				
+					</select>
+				</div>
+				<div class="aBg">
+					<a href="#" onclick="f3.submit();return false;" class="btn btn1 btnB">立刻购买</a>
+				</div>
+				<a ="design_nicebox.php" class="greenfont">购买套餐更优惠</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onclick="newshowcart('f3');return false;" class="Add_cart" id="cart0">加入购物车</a>
+			</form>
+		</td>
+	<td class="rtd spTd">
+		<form method="post" target="_blank" name="f4">
+		<input type="hidden" name="pid" value="5504">
+		<div class="price_div"><span class="price">996</span>元/年 <br /></div>
+
+		<div class="dSelect">
+					<select name="period" id="period" onchange="getPrice('f4','996',this)">
+					<option value="1" selected>一年 996 元</option>
+					<option value="2">两年 1992 元, 买两年送一年</option>
+					<option value="3">三年 2988 元, 买三年送两年</option>
+					<option value="4">四年 3984 元</option>
+					<option value="5">五年 4980 元, 买五年以上送三年</option>
+					<option value="6">六年 5976 元</option>
+					<option value="7">七年 6972 元</option>
+					<option value="8">八年 7968 元</option>
+					<option value="9">九年 8964 元</option>
+					<option value="10">十年 9960 元</option>				
+					</select>
+				</div>
+				<div class="aBg">
+					<a href="#" onclick="f4.submit();return false;" class="btn btn1 btnB">立刻购买</a>
+				</div>
+				<a ="design_nicebox.php" class="greenfont">购买套餐更优惠</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onclick="newshowcart('f4');return false;" class="Add_cart" id="cart0">加入购物车</a>
+			</form>
+		</td>
+	<td class="spTd">
+		<form method="post" action="boxorder.php" target="_blank" name="f5">
+		<input type="hidden" name="pid" value="5505">
+		<div class="price_div"><span class="price">1596</span>元/年 <br />  </div>
+		<div class="dSelect">
+					<select name="period" id="period" onchange="getPrice('f5','1596',this)">
+					<option value="1" selected>一年 1596 元</option>
+					<option value="2">两年 3192 元, 买两年送一年</option>
+					<option value="3">三年 4788 元, 买三年送两年</option>
+					<option value="4">四年 6384 元</option>
+					<option value="5">五年 7980 元, 买五年以上送二年</option>
+					<option value="6">六年 9576 元</option>
+					<option value="7">七年 11172 元</option>
+					<option value="8" >八年 12768 元</option>
+					<option value="9">九年 14364 元</option>
+					<option value="10">十年 15960 元</option>
+					</select>
+				</div>
+				<div class="aBg">
+					<a href="#" onclick="f5.submit();" class="btn btn1 btnB">立刻购买</a>
+				</div>	
+				<a ="design_nicebox.php" class="greenfont">购买套餐更优惠</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onclick="newshowcart('f5');return false;" class="Add_cart" id="cart0">加入购物车</a>
+			</form>
+	</td>
+	</tr>
+	<!--<tr>
+	<td rowspan="4" width="80" align="center"><p class="bigclass">版本设置</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		空间大小		</div>
+</td>
+<td width="176">100M</td>
+<td class="rtd" width="176">1000M</td>
+<td class="rtd" width="176">2000M</td>
+<td width="176">1000M</td>
+ 	</tr>
+	<tr><td width="220" class="showboxImg">
+<div id="c">
+		赠送com/cn域名		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		去除广告		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		赠送二级域名		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr class="tableBuy">
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+    <td><a ='../freetry.php?IDPack=&buyfrom='>免费开通</a></td>
+	<td><a ='order.php?pid=9104&IDPack=&buyfrom='>立即开通</a></td>
+	<td class="rtd"><a ='order.php?pid=9126&IDPack=&buyfrom='>立即开通</a></td>
+	<td class="rtd"><a ='order.php?pid=9205&IDPack=&buyfrom='>立即开通</a></td>
+	<td><a ='order.php?pid=9126&formobile=1&IDPack=&buyfrom='>立即开通</a></td>
+	</tr>-->
+	<tr>
+	<td rowspan="13" width="80" align="center"><p class="bigclass">基本配置</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		图片库容量(助手自带)				<div class="todos-thumb-span todos28">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>图片库容量(助手自带)</b>在线上传管理图片搜索简明快捷</font>
+		 <img src="_files/picture/function28.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">50M</td>
+<td class="rtd" width="176">200M</td>
+<td class="rtd" width="176">500M</td>
+<td width="176">1000M</td>
+ 	
+	<tr><td width="220" class="showboxImg">
+<div id="c">
+		栏目数量		</div>
+</td>
+<td width="176">200</td>
+<td class="rtd" width="176">1000</td>
+<td class="rtd" width="176">2000</td>
+<td width="176">不限</td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		文章数量		</div>
+</td>
+<td width="176">1000</td>
+<td class="rtd" width="176">10000</td>
+<td class="rtd" width="176">20000</td>
+<td width="176">不限</td>
+ </tr> 
+	<tr><td width="220" class="showboxImg">
+<div id="c">
+		产品数量		</div>
+</td>
+<td width="176">1000</td>
+<td class="rtd" width="176">10000</td>
+<td class="rtd" width="176">20000</td>
+<td width="176">不限</td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		多语言管理				<div class="todos-thumb-span todos22">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>多语言管理</b>中英文双语网站管理后台 消除语言障碍</font>
+		 <img src="_files/picture/function22.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">一种(中文)</td>
+<td class="rtd" width="176">多种(中、英、日等)</td>
+<td class="rtd" width="176">多种(中、英、日等)</td>
+<td width="176">多种(中、英、日等)</td>
+ </tr>			<tr><td width="220" class="showboxImg">
+<div id="c">
+		PC网站		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		手机网站				<div class="todos-thumb-span todos10">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>手机网站</b>自定义底部导航链接，方便快捷</font>
+		 <img src="_files/picture/function10.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微网站 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos11">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>微网站 <img src='_files/picture/new.jpg' border='0'/></b>微信墙 微活动 互动口碑两相宜</font>
+		 <img src="_files/picture/function11.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		手机底部导航 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos12">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>手机底部导航 <img src='_files/picture/new.jpg' border='0'/></b>自定义底部导航链接，方便快捷</font>
+		 <img src="_files/picture/function12.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		网站APP下载		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		自定义模版样式				<div class="todos-thumb-span todos24">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>自定义模版样式</b>无需FTP工具html css在线编辑</font>
+		 <img src="_files/picture/function24.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		模块样式设置 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		应用市场 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos46">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>应用市场 <img src='_files/picture/new.jpg' border='0'/></b>开放、创新，满足不同用户的功能需求</font>
+		 <img src="_files/picture/function46.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+
+	<tr>
+	<td rowspan="15" width="80" align="center"><p class="bigclass">微信基本配置</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		绑定公众号		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+    	<tr><td width="220" class="showboxImg">
+<div id="c">
+		自动回复		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		LBS定位设置 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos8">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>LBS定位设置 <img src='_files/picture/new.jpg' border='0'/></b>精准测算门店地理位置 快速查找最近门店</font>
+		 <img src="_files/picture/function8.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		群发消息 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		自定义菜单 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		图文管理		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		消息管理		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微会员管理		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		模板消息		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微收款		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微信墙				<div class="todos-thumb-span todos6">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>微信墙</b>活跃现场气氛 让粉丝涨起来</font>
+		 <img src="_files/picture/function6.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微相册				<div class="todos-thumb-span todos4">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>微相册</b>引爆朋友圈的图片 个性化设计展示</font>
+		 <img src="_files/picture/function4.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微投票		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微留言		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微场景 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos7">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>微场景 <img src='_files/picture/new.jpg' border='0'/></b>重新定义广告传播模式 让宣传风靡朋友圈</font>
+		 <img src="_files/picture/function7.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+
+	<tr>
+	<td rowspan="9" width="80" align="center"><p class="bigclass">营销活动</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		积分活动 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+    	<tr><td width="220" class="showboxImg">
+<div id="c">
+		优惠券 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>优惠券 <img src='_files/picture/new.jpg' border='0'/></b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		满赠促销 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>满赠促销 <img src='_files/picture/new.jpg' border='0'/></b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		满减促销 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>满减促销 <img src='_files/picture/new.jpg' border='0'/></b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		单品促销 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>单品促销 <img src='_files/picture/new.jpg' border='0'/></b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		团购秒杀 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>团购秒杀 <img src='_files/picture/new.jpg' border='0'/></b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		套餐促销(优惠套餐) <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>套餐促销(优惠套餐) <img src='_files/picture/new.jpg' border='0'/></b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"> -</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		抽奖活动-大转盘				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>抽奖活动-大转盘</b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		抽奖活动-刮刮卡				<div class="todos-thumb-span todos9">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>抽奖活动-刮刮卡</b>支持多种促销形式增加互动</font>
+		 <img src="_files/picture/function9.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+	<td rowspan="5" width="80" align="center"><p class="bigclass">模板管理</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		初始化安装		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	<tr><td width="220" class="showboxImg">
+<div id="c">
+		更换模板				<div class="todos-thumb-span todos23">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>更换模板</b>全行业精致网站模板 免费使用</font>
+		 <img src="_files/picture/function23.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		开场动画设置				<div class="todos-thumb-span todos34">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>开场动画设置</b>渲染氛围 展示企业实力 树立品牌</font>
+		 <img src="_files/picture/function34.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		网站ico图标设置		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		网站背景设置		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>     </tr>
+	<tr>
+	<td rowspan="4" width="80" align="center"><p class="bigclass">网站编辑</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		网站栏目管理		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	<tr><td width="220" class="showboxImg">
+<div id="c">
+		网站模块管理		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		模块自由拖动				<div class="todos-thumb-span todos38">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>模块自由拖动</b>化繁为简 拖拽建站 傻瓜式操作</font>
+		 <img src="_files/picture/function38.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		多语言管理				<div class="todos-thumb-span todos22">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>多语言管理</b>中英文双语网站管理后台 消除语言障碍</font>
+		 <img src="_files/picture/function22.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	</tr>
+     <tr>
+    <td rowspan="5" width="80" align="center"><p class="bigclass">文章管理系统</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		文章发布		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+    	<tr><td width="220" class="showboxImg">
+<div id="c">
+		文章分类管理		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		文章管理				<div class="todos-thumb-span todos25">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>文章管理</b>三站展示 互动评论 新闻营销</font>
+		 <img src="_files/picture/function25.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		文章评论管理		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		新闻查看权限		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>
+   	</tr>
+
+	<tr>
+    <td rowspan="9" width="80" align="center"><p class="bigclass">产品管理系统</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		添加产品		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+    	<tr><td width="220" class="showboxImg">
+<div id="c">
+		产品分类管理		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		产品管理				<div class="todos-thumb-span todos15">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>产品管理</b>全方位展示产品优势 把握商机</font>
+		 <img src="_files/picture/function15.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		产品留言管理		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		在线评价管理 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos21">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>在线评价管理 <img src='_files/picture/new.jpg' border='0'/></b>评价以星级方式展现 提高用户购买热度</font>
+		 <img src="_files/picture/function21.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		分类筛选 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos18">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>分类筛选 <img src='_files/picture/new.jpg' border='0'/></b>产品高级分类查询功能 快捷高效</font>
+		 <img src="_files/picture/function18.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr><!--商城-->
+	<tr><td width="220" class="showboxImg">
+<div id="c">
+		淘宝产品导入 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos19">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>淘宝产品导入 <img src='_files/picture/new.jpg' border='0'/></b>批量导入淘宝店铺宝贝 告别单一方式</font>
+		 <img src="_files/picture/function19.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr><!--商城-->
+	<td width="220" class="showboxImg">
+<div id="c">
+		产品详情页 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	<tr><td width="220" class="showboxImg">
+<div id="c">
+		自定义产品规格 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos17">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>自定义产品规格 <img src='_files/picture/new.jpg' border='0'/></b>品牌、颜色、尺寸......任性设置产品规格</font>
+		 <img src="_files/picture/function17.png"/>
+		</div>
+		</div>
+</td>
+<td width="176">-</td>
+<td class="rtd" width="176">-</td>
+<td class="rtd" width="176"> -</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>
+   </tr>
+	<tr>
+    <td rowspan="14" width="80" align="center"><p class="bigclass">在线购物系统</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		开启关闭购物系统				<div class="todos-thumb-span todos13">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>开启关闭购物系统</b>随心所欲，想买就买 一键快捷购物</font>
+		 <img src="_files/picture/function13.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	
+   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		订单系统				<div class="todos-thumb-span todos16">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>订单系统</b>超便捷的在线打印 订单功能,一键搞定</font>
+		 <img src="_files/picture/function16.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		会员充值				<div class="todos-thumb-span todos41">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>会员充值</b>管理客户财务记录 多种充值方式</font>
+		 <img src="_files/picture/function41.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		开启关闭支付方式				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>开启关闭支付方式</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		支付宝支付				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>支付宝支付</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		手机支付				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>手机支付</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		微信支付 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>微信支付 <img src='_files/picture/new.jpg' border='0'/></b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		快钱支付				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>快钱支付</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		网银在线支付				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>网银在线支付</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		财付通支付				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>财付通支付</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		环迅支付				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>环迅支付</b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		余额支付 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos14">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>余额支付 <img src='_files/picture/new.jpg' border='0'/></b>对接主流支付平台 自动结算到账</font>
+		 <img src="_files/picture/function14.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	   	   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		配送设置 <img src='_files/picture/new.jpg' border='0'/>				<div class="todos-thumb-span todos40">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>配送设置 <img src='_files/picture/new.jpg' border='0'/></b>自定义多种配送方式 最佳物流配送</font>
+		 <img src="_files/picture/function40.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		包装设置		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   		</tr>
+	<tr>
+    <td rowspan="3" width="80" align="center"><p class="bigclass">会员系统</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		会员注册				<div class="todos-thumb-span todos26">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>会员注册</b>客户信息尽在掌握 支持微信会员卡</font>
+		 <img src="_files/picture/function26.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	
+   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		会员体系 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td width="220" class="showboxImg">
+<div id="c">
+		会员消息		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+    <td rowspan="2" width="80" align="center"><p class="bigclass">管理员管理</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		多用户管理		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	<tr><td width="220" class="showboxImg">
+<div id="c">
+		管理员权限 <img src='_files/picture/new.jpg' border='0'/>		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+    <td rowspan="8" width="80" align="center"><p class="bigclass">更多系统功能</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		备份/恢复				<div class="todos-thumb-span todos27">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>备份/恢复</b>海量数据云端备份 永不丢失</font>
+		 <img src="_files/picture/function27.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	<tr><td width="220" class="showboxImg">
+<div id="c">
+		广告系统				<div class="todos-thumb-span todos29">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>广告系统</b>展示多样化管理便捷 效果监控</font>
+		 <img src="_files/picture/function29.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		招聘系统				<div class="todos-thumb-span todos31">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>招聘系统</b>灵活管理招聘 邮件通知 不漏失人才</font>
+		 <img src="_files/picture/function31.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		投票系统				<div class="todos-thumb-span todos39">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>投票系统</b>收集海量数据 了解客户心声</font>
+		 <img src="_files/picture/function39.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"> -</td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		计数器设置		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		访问统计				<div class="todos-thumb-span todos30">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>访问统计</b>一键设置主流统计代码 精准统计</font>
+		 <img src="_files/picture/function30.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		表单系统				<div class="todos-thumb-span todos33">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>表单系统</b>自定义多种表单 步入大数据时代</font>
+		 <img src="_files/picture/function33.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		留言板				<div class="todos-thumb-span todos43">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>留言板</b>在线网站留言 挖掘潜在客户</font>
+		 <img src="_files/picture/function43.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+    <td rowspan="5" width="80" align="center"><p class="bigclass">网站推广和优化</p></td>
+	<td width="220" class="showboxImg">
+<div id="c">
+		网站关键字和描述		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ 	
+	<tr><td width="220" class="showboxImg">
+<div id="c">
+		SEO优化				<div class="todos-thumb-span todos37">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>SEO优化</b>全站SEO 极致搜索引擎优化体验</font>
+		 <img src="_files/picture/function37.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td width="220" class="showboxImg">
+<div id="c">
+		搜索引擎		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>		<tr><td width="220" class="showboxImg">
+<div id="c">
+		网站地图		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>		<tr><td width="220" class="showboxImg">
+<div id="c">
+		35BA推广				<div class="todos-thumb-span todos36">
+		  <p class="todoBg"></p>
+			<font class="yahei tTitle"><b>35BA推广</b>对接B2B供求平台 免费发布产品信息</font>
+		 <img src="_files/picture/function36.png"/>
+		</div>
+		</div>
+</td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td class="rtd" width="176"><img src="_files/picture/right.jpg"></td>
+<td width="176"><img src="_files/picture/right.jpg"></td>
+ </tr>			</tr>
+	<tr class="tableBuy">
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td><a ='boxorder.php?pid=5502'>立即开通</a></td>
+	<td class="rtd brtd"><a ='boxorder.php?pid=5503'>立即开通</a></td>
+	<td class="rtd"><a ='boxorder.php?pid=5504'>立即开通</a></td>
+	<td><a ='boxorder.php?pid=5505'>立即开通</a></td>
+	</tr> 
+</table>
+
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+	$(".explanlist .showboxImg").mouseenter(function(){
+	    $(this).find('div.todos-thumb-span').show();
+	    $(this).css("background","#efefef");
+		
+	});
+	$(".explanlist .showboxImg").mouseleave(function(){
+		$(this).find('div.todos-thumb-span').hide();
+		 $(this).css({"background":"#fff","cursor":"pointer"});
+	});
+});
+</script>
+<ul style="" id="floatTitle" class="yahei">
+	<li class="first">建站助手</li>
+	<li>标准版</li>
+	<li>全能版</li>
+	<li>尊享版</li>
+	<li class="last">商城版</li>
+</ul>
+<ul style="" id="floatBuy" class="yahei">
+	<li class="first"></li>
+	<li><a onclick="f2.submit();" class="mainButton">立即开通</a></li>
+	<li><a onclick="f3.submit();" class="mainButton">立即开通</a></li>
+	<li><a onclick="f4.submit();" class="mainButton">立即开通</a></li>
+	<li class="last"><a onclick="f5.submit();" class="mainButton">立即开通</a></li>
+</ul>
+<script>
+window.onscroll = function(){ 
+    var t = document.documentElement.scrollTop || document.body.scrollTop;  
+    var top_div = $(".explanlist" );
+	if(t>480 & t < 4800){/*看不见了*/
+	
+		$("#floatTitle").css("display","block");
+		$("#floatTitle").css("position","fixed");
+		$("#floatTitle").css("top","101px");
+		$("#floatTitle").css("z-index","9999");
+
+		$("#floatBuy").css("display","block");
+		$("#floatBuy").css("position","fixed");
+		$("#floatBuy").css("top","151px");
+		$("#floatBuy").css("z-index","9999");
+		$("#floatBuy").css("box-shadow","0px 4px 0px rgba(0, 0, 0, 0.4)");
+	}else{
+		$("#floatTitle").css("display","none");
+		$("#floatBuy").css("display","none");
+	}
+} 
+
+function getPrice(form,pirce,o){
+	form = $('form[name="'+form+'"]');
+	var yaer = $(o).val(); 
+	$(".price", form).html(pirce*yaer);
+	return ;
+}
+</script>
+<script>
+function newshowcart(form){
+    form = $('form[name="'+form+'"]');
+	var id = $('input[name="pid"]', form).val();
+	var period = $('select[name="period"]',form).val();
+	/*
+    var selected = $('input[name="pid"]:checked', form);
+    if(selected.length<=0){
+        alert('请选择产品');
+        return ;
+    }
+    var id = selected.val();
+	*/
+    if(id>=9000){
+        showcart2('special', id);
+    }else{
+        showcart('nicebox', id, period);
+    }
+}
+</script>
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+[#include "inc_footer.html"/]
+
+</body>
+</html>
+[/#escape]

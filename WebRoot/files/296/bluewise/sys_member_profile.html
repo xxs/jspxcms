@@ -1,0 +1,122 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>会员中心_${site.fullNameOrName}</title>
+<style>
+/*******自定义颜色*********/
+.Btn1,.mainBg,.tabLists .listPage a.current,.Btn:hover.comm-top{background:#31a66b !important;}
+/*.fontColor{
+	color:#31a66b !important;
+}*/
+.Btn1:hover{
+	transition: all 0.3s ease 0s;
+	opacity:0.8;
+}
+.Btn1{
+	transition: all 0.3s ease 0s;
+}
+.tabMenu li.current{border-color:#31a66b !important}
+
+</style>
+<link rel="stylesheet" type="text/css" href="_files/member/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="_files/member/controlShare.css">
+<link rel="stylesheet" type="text/css" href="_files/member/nUserInfo.css">
+<link rel="stylesheet" type="text/css" href="_files/member/WdatePicker.css" >
+<script type="text/javascript" src="_files/member/check.js"></script>
+<script type="text/javascript" src="_files/member/WdatePicker.js"></script>
+<script type="text/javascript" src="_files/member/pingying.js"></script>
+<script type="text/javascript" src="_files/member/list.js"></script></head>
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+
+
+<body>
+<div class="mainBox">
+	<!--<form class="shareSearch">
+		<input type="text" class="Input" placeholder="请输入关键字搜索"/>
+		<button class="fa fa-search blocks Btn1" type="button"></button>
+	</form>-->
+	<!----手机版显示的菜单--->
+	<div class="mobileSonMenu">
+		<span class="block tit">修改个人信息</span>
+		<div class="menuIco">
+			<i class="fa fa-list-ul micon mainBg blocks"></i>
+		</div>
+		<!--点击图标显示的菜单 默认不显示-->
+		<ul class="mDropDown">
+				<li class="mainBg"><a href="javascript:void(0);">修改个人信息</a></li>
+			</ul>
+	</div>
+	
+	<div class="conBox">
+		<div class="shareTab">
+			<ul class="tabMenu over">
+				<li class="current"><a href="javascript:void(0);" class="clickItems" target="mainFrame" model="items-user" action="m-items-user" ctrl="m-items-user-info">修改个人信息</a></li>
+			</ul>
+			<form action="${ctx}/my/profile.jspx" method="post">
+      		<input type="hidden" name="nextUrl" value="${ctx}/my.jspx"/>
+			<div class="tabLists over clear">
+			<div class="contectInfo">
+		  	<div class="padding">
+                           <p class="over clear">
+		  	  	<span class="float blocks l">性别</span>
+		  	  	<span class="float blocks">
+		  	  		<input type="radio" name="gender" value="M" [#if user.gender?? && user.gender=='M'] checked="checked"[/#if]/>男&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="F" [#if user.gender?? && user.gender=='F'] checked="checked"[/#if]/>女&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="" [#if !user.gender??] checked="checked"[/#if]/>保密
+		  	  	</span>
+		  	  </p>
+               <p class="over clear">
+		  	  	<span class="float blocks l">生日</span>
+		  	  	<span class="float blocks">
+		  	  		<input type="text" name="birthDate" value="${(user.birthDate?string('yyyy-MM-dd'))!}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="Input inp5 float"/>
+		  	  	</span>
+		  	  </p>
+               <p class="over clear">
+		  	  	<span class="float blocks l">自我介绍</span>
+		  	  	<span class="float blocks">
+		  	  		<textarea name="bio" maxlength="255">${user.bio!}</textarea>
+		  	  	</span>
+		  	  </p>
+               <p class="over clear">
+		  	  	<span class="float blocks l">来自哪里</span>
+		  	  	<span class="float blocks">
+		  	  		<input type="text" name="comeFrom" value="${user.comeFrom!}" class="Input inp5 float"/>
+		  	  	</span>
+		  	  </p>
+               <p class="over clear">
+		  	  	<span class="float blocks l">QQ</span>
+		  	  	<span class="float blocks">
+		  	  		<input type="text" name="birthDate" value="${user.qq!}" class="Input inp5 float"/>
+		  	  	</span>
+		  	  </p>
+		  	</div>
+		  </div>
+		  <div class="btnDD" style="text-align:center;">
+		  		<!--<a href="###" class="Btn3 blocks">返回</a>-->
+		  		<input type="submit" class="Btn1" value="提交">
+		  	</div>
+			</div>
+		</form></div>
+        
+</div>
+<div class="footer">
+	CopyRight <font class="copy">&#169;</font> 2000-2016 Date: 2016-05-13</div></div>
+<script>citySetup();</script>
+<script>
+$(function(){
+	$('.tabMenu li').click(function(){
+		$('.tabMenu li').removeClass('current');
+		$(this).addClass('current');
+	});
+	pingyingListen('name_cn','name_en');
+	pingyingListen('com_cn','com_en');
+	pingyingListen('addr','addr_en');
+});
+</script>
+
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 999999; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; opacity: 0;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 623px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: 999999; position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;"><div style="position: relative; top: 0px; height: 5px; width: 1590px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body>
+</html>
+[/#escape]

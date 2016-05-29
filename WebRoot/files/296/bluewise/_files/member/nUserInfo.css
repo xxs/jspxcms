@@ -1,0 +1,50 @@
+@charset "GB2312";
+/* CSS Document */
+
+
+.tabLists .padding{padding:25px;}
+.tabLists .InfoTit{background:#F0F2F5;}
+.tabLists .InfoTit .padding{padding:20px;}
+.tabLists .InfoTit p{padding:0 40px;line-height:28px;}
+.tabLists .InfoTit .l,.tabLists .InfoTit .r{float:left;}
+.tabLists .InfoTit .l{width:110px;}
+.pswSafe{padding:30px 0;}
+.pswSafe .float{float:left;}
+.pswSafe .t{padding-left:20px;}
+.pswSafe font{vertical-align:2px;}
+.pswSafe .valBar{width:440px;height:13px;border-radius:13px;background:#E1E1E7;margin:0 20px;}
+.pswSafe .valBar em{width:100px;height:13px;border-radius:13px;background:#3c0;}
+.pswSafe .pval{font-size:18px;color:#3c0;}
+.userTabCon td{border-top:1px solid #E6E8EB;padding:20px 0;text-align:center;}
+.userTabCon .iconTd{width:10%;}
+.userTabCon .r{width:15%;}
+.userTabCon .center{text-align:left;}
+.userTabCon .iconTd i{display:inline-block;width:40px;height:40px;line-height:40px;text-align:center;border-radius:100%;font-size:22px;color:#fff;background:#999;}
+.userTabCon .iconTd .key{background:#72ADEC;}
+.userTabCon .iconTd .mail{background:#1EC5A1;}
+.userTabCon .iconTd .phone{background:#FFC571;}
+.userTabCon .iconTd .card{background:#1EBFC5;}
+.userTabCon .iconTd .lock{background:#FF664B;}
+.userTabCon .r .Btn3{width:124px;height:35px;line-height:35px;}
+.userTabCon .center h5{font-size:16px;color:#333;line-height:30px;}
+
+
+
+@media screen and (max-width: 1000px) { 
+
+.tabLists .padding{padding:12px}
+.contectInfo p{padding:10px 0px 0px;}
+.contectInfo p .l{width:60px;}
+select#c_country,select#c_province,select#c_city{width:100% !important;margin-bottom:10px;}
+
+.contectInfo p .as, .contectInfo p .as a{padding-left:0px;}
+
+.tabLists .InfoTit p{padding:0 0px;}
+.pswSafe .valBar{width:80%;margin-right:8px;}
+
+.userTabCon td{display:block}
+.userTabCon .iconTd{width:20%;float:left}
+.userTabCon .center{width:80%;float:right;padding-bottom:10px;}
+.userTabCon .r{width:100%;clear:both;overflow:hidden;zoom:1;border-top:0px;padding:8px 0px}
+
+}

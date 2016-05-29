@@ -1,0 +1,153 @@
+TD.magnifiertitletd {
+	PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; PADDING-TOP: 8px
+}
+
+
+A.wbkeywd:link {
+	FONT-SIZE: 100%; COLOR: black; TEXT-DECORATION: underline
+}
+A.wbkeywd:visited {
+	FONT-SIZE: 100%; COLOR: #660066; TEXT-DECORATION: underline
+}
+TD.tcontent {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 80%; LINE-HEIGHT: 150%; PADDING-TOP: 10px
+}
+.pgraywp {
+	FONT-SIZE: 13px; COLOR: #9e9e9e; LINE-HEIGHT: 130%
+}
+.predwp {
+	COLOR: #cc0033
+}
+.pgraywp {
+	COLOR: #9e9e9e
+}
+.porangywp {
+	COLOR: #ff9900
+}
+.pgreenwp {
+	COLOR: #006401
+}
+.pzisewp {
+	COLOR: #9a2180
+}
+.pzosewp {
+	COLOR: #8c4316
+}
+.pbluenwp {
+	COLOR: #072e85
+}
+TD.wsnoresultsorry {
+	PADDING-LEFT: 20px; FONT-SIZE: 85%; PADDING-BOTTOM: 15px; LINE-HEIGHT: 22px; PADDING-TOP: 20px
+}
+TD.wsnoresultsuggest {
+	PADDING-LEFT: 20px; FONT-SIZE: 75%; LINE-HEIGHT: 18px
+}
+TD.wsnoresultcontent {
+	PADDING-LEFT: 45px; FONT-SIZE: 75%; LINE-HEIGHT: 22px
+}
+.wsrightt {
+	PADDING-RIGHT: 10px; FONT-SIZE: 100%; LINE-HEIGHT: 116%
+}
+.wsr1 {
+	PADDING-LEFT: 10px; BORDER-LEFT: #e1e1e1 1px solid; WORD-BREAK: break-all; WORD-WRAP: break-word
+}
+.wsr {
+	WIDTH: 225px; CURSOR: hand; WORD-BREAK: break-all
+}
+A.blue212n2:link {
+	FONT-SIZE: 100%; COLOR: #7da1cd; TEXT-DECORATION: underline
+}
+A.blue212n2:visited {
+	FONT-SIZE: 100%; COLOR: #660066; TEXT-DECORATION: underline
+}
+.pred {
+	COLOR: #cc0033
+}
+.wss {
+	PADDING-LEFT: 10px; FONT-SIZE: 100%; PADDING-BOTTOM: 20px; WIDTH: 32em; LINE-HEIGHT: 116%
+}
+.wsssuojin {
+	PADDING-LEFT: 50px; FONT-SIZE: 100%; PADDING-BOTTOM: 20px; WIDTH: 32em; LINE-HEIGHT: 116%
+}
+.websearchnote1 {
+	PADDING-LEFT: 10px; FONT-SIZE: 90%; PADDING-BOTTOM: 6px
+}
+DIV.debug {
+	BORDER-RIGHT: #013644 1px dotted; BORDER-TOP: #013644 1px dotted; FONT-SIZE: 83%; BORDER-LEFT: #013644 1px dotted; COLOR: blue; BORDER-BOTTOM: #013644 1px dotted
+}
+DIV#rightbox {
+	RIGHT: 10px; FLOAT: right; MARGIN: 5px; POSITION: relative; TOP: 10px
+}
+TABLE.rightbox {
+	BORDER-RIGHT: #d0d8df 1px; BORDER-TOP: #d0d8df 1px; BORDER-LEFT: #d0d8df 1px solid; WIDTH: 15em; BORDER-BOTTOM: #d0d8df 1px
+}
+DIV.advertise {
+	MARGIN-TOP: 1em; MARGIN-LEFT: 5px
+}
+#rightbox .maintitle {
+	FONT-SIZE: 83%; COLOR: #555500; TEXT-ALIGN: center
+}
+#rightbox .summary {
+	FONT-SIZE: 83%
+}
+.popup {
+	BORDER-RIGHT: red 0px solid; BORDER-TOP: red 0px solid; BORDER-LEFT: red 0px solid; WIDTH: 465px; BORDER-BOTTOM: red 0px solid; POSITION: absolute; HEIGHT: 350px
+}
+.popupContent {
+	BORDER-RIGHT: red 0px solid; BORDER-TOP: red 0px solid; MARGIN-LEFT:0px; overflow-y: auto; BORDER-LEFT: red 0px solid; WIDTH: 448px; WORD-BREAK: break-all; LINE-HEIGHT: 150%; BORDER-BOTTOM: red 0px solid; HEIGHT: 228px; WORD-WRAP: break-word
+}
+.popdown {
+	BORDER-RIGHT: red 0px solid; BORDER-TOP: red 0px solid; BORDER-LEFT: red 0px solid; WIDTH:465px; BORDER-BOTTOM: red 0px solid; POSITION: absolute; HEIGHT: 350px
+}
+.dssubject {
+	MARGIN-TOP: 1em; FONT-WEIGHT: bold; FONT-SIZE: 120%; MARGIN-BOTTOM: 1em; TEXT-ALIGN: center
+}
+.dsnormal {
+	FONT-SIZE: 100%
+}
+.dstrivial {
+	FONT-SIZE: 100%; COLOR: gray
+}
+.dsbold {
+	FONT-WEIGHT: bold
+}
+
+
+.ffnei {
+	PADDING-LEFT: 2px; FONT-SIZE: 14px; LINE-HEIGHT: 20px; FONT-FAMILY: Verdana; HEIGHT: 24px
+}
+.bbnei {
+	FONT-SIZE: 13px; WIDTH: 65px; LINE-HEIGHT: 16px; FONT-FAMILY: Verdana; HEIGHT: 24px
+}
+.bbnei2 {
+	FONT-SIZE: 13px; WIDTH: 105px; LINE-HEIGHT: 16px; FONT-FAMILY: Verdana; HEIGHT: 24px
+}
+
+.wbkeywdbid{
+	font-weight:bold;line-height:32px;width:auto 
+}
+.close-showD{font-size:18px;font-weight:normal;}
+.close-showD:hover{color:#c00}
+nobr{padding-left:15px}
+
+
+div.popupContent::-webkit-scrollbar-track-piece{
+	background-color:#DEE0E3;
+	-webkit-border-radius:0 3px 3px 0;
+	border-left:1px solid #ccc;
+}
+div.popupContent::-webkit-scrollbar{
+	width:10px;
+	height:8px;
+}
+div.popupContent::-webkit-scrollbar-thumb{
+	height:30px;
+	background-color:#C2C2C2;
+	-webkit-border-radius:0px 3px 3px 0px;
+	outline:0px solid #fff;
+	outline-offset:-2px;
+	border: 1px solid #ccc;
+}
+div.popupContent::-webkit-scrollbar-thumb:hover{
+	background-color:#C2C2C2;
+	#popInnerBox a{text-decoration:none;}

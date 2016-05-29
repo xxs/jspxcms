@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://www.iisp.com/control/nUserData.php -->
+<html style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta charset="GB2312">
+
+<script src="jquery.min.js"></script>
+<script>
+var isMobile=false;
+</script>
+<title>控制台</title>
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="nComm.css">
+<script src="jquery.nicescroll.js"></script>
+<script src="nComm.js"></script>
+<style>
+/*******自定义颜色*********/
+.Btn1,.mainBg,.tabLists .listPage a.current,.Btn:hover.comm-top{background:#31a66b !important;}
+/*.fontColor{
+	color:#31a66b !important;
+}*/
+.Btn1:hover{
+	transition: all 0.3s ease 0s;
+	opacity:0.8;
+}
+.Btn1{
+	transition: all 0.3s ease 0s;
+}
+.tabMenu li.current{border-color:#31a66b !important}
+
+</style><link rel="stylesheet" type="text/css" href="font-awesome.min.css"><link rel="stylesheet" type="text/css" href="controlShare.css"><link rel="stylesheet" type="text/css" href="nUserInfo.css"><script src="check.js"></script><script type="text/javascript" src="WdatePicker.js"></script><link href="WdatePicker.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="pingying.js"></script><script type="text/javascript" src="list.js"></script></head>
+
+
+
+
+
+
+
+
+
+<body>
+<div class="mainBox">
+	<!--<form class="shareSearch">
+		<input type="text" class="Input" placeholder="请输入关键字搜索"/>
+		<button class="fa fa-search blocks Btn1" type="button"></button>
+	</form>-->
+	<!----手机版显示的菜单--->
+	<div class="mobileSonMenu">
+		<span class="block tit">基本资料</span>
+		<div class="menuIco">
+			<i class="fa fa-list-ul micon mainBg blocks"></i>
+		</div>
+		<!--点击图标显示的菜单 默认不显示-->
+		<ul class="mDropDown">
+				<li class="mainBg"><a href="http://www.iisp.com/control/nUserInfo.php">安全中心</a></li>
+				<li class="mainBg"><a href="nUserData.html">基本资料</a></li>
+			</ul>
+	</div>
+	
+	<div class="conBox">
+		<div class="shareTab">
+			<ul class="tabMenu over">
+				<li><a href="http://www.iisp.com/control/nUserInfo.php" class="clickItems" target="mainFrame" model="items-user" action="m-items-user" ctrl="m-items-user-info">安全中心</a></li>
+				<li class="current"><a href="nUserData.html" class="clickItems" target="mainFrame" model="items-user" action="m-items-user" ctrl="m-items-user-info">基本资料</a></li>
+			</ul>
+			<form method="post" action="http://www.iisp.com/control/nUserDataSave.php" onsubmit="return CheckForm(this)">
+			<div class="tabLists over clear">
+			<div class="contectInfo">
+		  	<div class="padding">
+                           <p class="over clear">
+		  	  	<span class="float blocks l">中文姓名</span>
+		  	  	<span class="float blocks">
+		  	  		<input type="text" name="name_cn" id="name_cn" class="Input inp5 float" value="个人名称" size="25" check="[\u4e00-\u9fa5]" warning="姓名必须含有中文，且不能为空">
+		  	  	</span>
+						  	  	<span class="as"><a href="http://www.iisp.com/control/nUser_card_auth.php" class="fontColor">未认证,现在认证</a></span>
+		  	  </p>
+               <p class="over clear">
+		  	  	<span class="float blocks l">英文姓名</span>
+		  	  	<span class="float blocks">
+		  	  		<input type="text" name="name_en" id="name_en" class="Input inp5 float" value="123123" size="25" check="[a-zA-Z0-9_\.\,]{2,99}$" warning="姓名必须为英文，且不能为空">
+		  	  	</span>
+		  	  </p>
+		  	</div>
+		  </div>
+		  <div class="btnDD" style="text-align:center;">
+		  		<!--<a href="###" class="Btn3 blocks">返回</a>-->
+		  		<input type="submit" class="Btn1" value="提交">
+		  	</div>
+			</div>
+		</form></div>
+        
+</div>
+<div class="footer">
+	CopyRight <font class="copy">&#169;</font> 2000-2016 Date: 2016-05-13</div></div>
+<script>citySetup();</script>
+<script>
+$(function(){
+	$('.tabMenu li').click(function(){
+		$('.tabMenu li').removeClass('current');
+		$(this).addClass('current');
+	});
+	pingyingListen('name_cn','name_en');
+	pingyingListen('com_cn','com_en');
+	pingyingListen('addr','addr_en');
+});
+</script>
+
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 999999; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; opacity: 0;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 623px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: 999999; position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;"><div style="position: relative; top: 0px; height: 5px; width: 1590px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body></html>

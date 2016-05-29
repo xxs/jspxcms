@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.iisp.com/control/nAccountList.php -->
+<html style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta charset="GB2312">
+
+<script src="jquery.min.js"></script>
+<script>
+var isMobile=false;
+</script>
+<title>控制台</title>
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="nComm.css">
+<script src="jquery.nicescroll.js"></script>
+<script src="nComm.js"></script>
+<style>
+/*******自定义颜色*********/
+.Btn1,.mainBg,.tabLists .listPage a.current,.Btn:hover.comm-top{background:#31a66b !important;}
+/*.fontColor{
+	color:#31a66b !important;
+}*/
+.Btn1:hover{
+	transition: all 0.3s ease 0s;
+	opacity:0.8;
+}
+.Btn1{
+	transition: all 0.3s ease 0s;
+}
+.tabMenu li.current{border-color:#31a66b !important}
+
+</style><link rel="stylesheet" type="text/css" href="controlShare.css"><link rel="stylesheet" type="text/css" href="n_accountList.css"><script type="text/javascript" src="WdatePicker.js"></script><link href="WdatePicker.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="list.js"></script><script type="text/javascript" src="ajax.js"></script><script type="text/javascript" src="showdetail.js"></script><link rel="stylesheet" href="showhelp.css" type="text/css"></head>
+
+
+
+
+
+
+<body><div id="detailedSummaryBG" style="display:none;width:500px;height:350px;position:absolute;z-index:10"></div><div class="popup" id="detailedSummaryBox" style="display:none;z-index:11"> <table cellpadding="0" cellspacing="0" border="0" width="100%" id="popInnerBox" onmouseover="javascript:inBoxFlag=true;" onmouseout="javascript:inBoxFlag=false;"><tbody><tr><td style="padding-bottom:5px"><div style="width:430px;overflow:hidden"><nobr><a href="http://www.iisp.com/control/nAccountList.php#" target="_blank" id="detailedSummaryURL" class="wbkeywdbid" onclick="javascript:ct(this, &#39;%E6%B5%8B%E8%AF%95&#39;, currentHitPos+&#39;.1&#39;, &#39;OPEN_HIT_BY_MAG&#39;);"></a></nobr></div></td><td align="left" style="padding-bottom:5px;"> <a href="javascript:void(0);" onmousedown="javascript:hideDetailedSummary();" class="close-showD">× </a></td> </tr><tr><td colspan="2" style="border-top-style:solid;border-top-width:1px;border-top-color:#E1E4E5;padding-top:5px;padding-lefT:12px"><div class="popupContent" id="detailedSummaryContent"></div></td></tr></tbody></table></div>
+
+<div class="mainBox">
+		<!----手机版显示的菜单--->
+	<div class="mobileSonMenu">
+		<span class="block tit">所有订单</span>
+		<div class="menuIco">
+			<i class="fa fa-list-ul micon mainBg blocks"></i>
+		</div>
+		<!--点击图标显示的菜单 默认不显示-->
+		<ul class="mDropDown">
+				<li class="mainBg"><a href="http://www.iisp.com/control/nAccountList.php?">所有订单</a></li>
+				<li class="mainBg"><a href="http://www.iisp.com/control/nAccountList.php?status=0">未生效</a></li>
+				<li class="mainBg"><a href="http://www.iisp.com/control/nAccountList.php?status=1">已交费</a></li>
+				<li class="mainBg"><a href="http://www.iisp.com/control/nAccountList.php?status=2">已开通</a></li>
+				<li class="mainBg"><a href="http://www.iisp.com/control/nAccountList.php?sDate=2016-5-11&tDate=2016-5-11">当天订单</a></li>
+			</ul>
+	</div>
+	
+	<div class="conBox">
+		<div class="shareTab">
+			<ul class="tabMenu over">
+            		
+				<li class="current"><a href="http://www.iisp.com/control/nAccountList.php?">所有订单</a></li>
+				<li><a href="http://www.iisp.com/control/nAccountList.php?status=0">未生效</a></li>
+				<li><a href="http://www.iisp.com/control/nAccountList.php?status=1">已交费</a></li>
+				<li><a href="http://www.iisp.com/control/nAccountList.php?status=2">已开通</a></li>
+				<li><a href="http://www.iisp.com/control/nAccountList.php?sDate=2016-5-11&tDate=2016-5-11">当天订单</a></li>
+			</ul>
+			<div class="tabLists over clear">
+				<div class="search over">
+					<div class="leftS">
+                    <form method="get">
+					<font class="f blocks float">时间:</font>
+					<span class="selectDate float blocks">
+						<input type="text" class="Input blocks float" placeholder="不限" id="sDate" onfocus="WdatePicker({lang:&#39;zh-cn-gbk&#39;,maxDate:&#39;#F{$dp.$D(\&#39;tDate\&#39;)||\&#39;2016-05-11\&#39;}&#39;})" name="sDate" value="">
+						<i class="fa fa-clock-o float blocks" onclick="WdatePicker({el:&#39;sDate&#39;})"></i>
+					</span>
+                    <font class="f blocks float zhi">至</font>
+                    <span class="selectDate float blocks">
+						<input type="text" class="Input blocks float" placeholder="不限" id="tDate" onfocus="WdatePicker({lang:&#39;zh-cn-gbk&#39;,minDate:&#39;#F{$dp.$D(\&#39;sDate\&#39;)}&#39;,maxDate:&#39;2016-05-11&#39;})" name="tDate" value="">
+						<i class="fa fa-clock-o float blocks" onclick="WdatePicker({el:&#39;tDate&#39;})"></i>
+					</span>
+					<span class="selectDate float blocks">
+						<input type="text" class="Input blocks float s" placeholder="关键词" name="keyword" value="">
+						<button type="submit" class="fa fa-search blocks float b"></button>
+					</span>
+                     </form>
+				</div>
+				<div class="rightS">
+					<a href="javascript:void(0)" onclick="location.reload()" class="fa fa-refresh blocks up"></a>
+				</div>
+				</div>
+                				<form id="listform" name="listform" method="POST" action="">
+					<table border="0" cellspacing="0" cellpadding="0" width="100%" class="shareTabs">
+						<tbody><tr>
+							<th width="5%"><input type="checkbox" onclick="selectAll(document.listform,this,&#39;ID[]&#39;)"></th>
+							<th class="l" width="10%">编号</th>
+							<th class="l">产品</th>
+							<th width="6%">用户</th>
+							<th>提交时间</th>
+							<th width="6%">收入</th>
+							<th width="6%">支出</th>
+							<th width="10%">推广支出</th>
+							<th width="6%">利润</th>
+							<th width="6%">金额</th>
+							<th class="r" width="14%">操作/管理</th>
+						</tr>
+                         <!---------------foreach start---------------->
+                             						<tr>
+	  						<td><input type="checkbox" value="1240971" name="ID[]"></td>
+                             	<td class="l">
+                                		                            			<a id="detailedSummary" href="javascript:void(0)" onclick="showDetailedSummary(this, &#39;../control/user_remarks.php?mark=actions_1240971_2022&#39;, &#39;查看订单[1240971]备注信息&#39;, &#39;&#39;);return false;" class="fa  fa-tag"></a>
+                            			<font class="fontColor IDn"><a class="en" href="http://www.iisp.com/control/nFixaction.php?actionid=1240971" title="订单详情">1240971</a></font>
+                            	</td>
+                            	<td class="l">
+                                	<p class="rowp"><a href="http://www.iisp.com/control/nGo.php?id=X72767">X72767</a></p>
+                                	<font class="rowf">建站助手标准版 123.123.123.123 123123 1 年</font>
+                            	</td>
+                             	<td><a class="en" href="http://www.iisp.com/control/nAgent_user_view.php?c=s&userid=2022">2022</a></td>
+                              <td>
+								<p class="rowp enfont">2016/05/11</p>
+								<font class="rowf enfont">21:44:27</font>
+							</td>
+							<td>0</td> 
+							<td>0</td>
+							<td></td>
+							<td><font class="red">0</font></td> 
+							<td><font class="orange">296</font></td>
+						   <td class="r">
+                            		   						<a href="http://www.iisp.com/control/nPayaction.php?actionid=1240971" class="fontColor">交费</a>
+		   						<font class="line">|</font>
+		   						<a href="http://www.iisp.com/account/payin_product.php?actionid=1240971" target="_blank" class="fontColor">网上支付</a>
+		   						<font class="line">|</font>
+		   				  	  					 						   	   <a href="http://www.iisp.com/control/nFixaction.php?actionid=1240971" class="fontColor">详情</a>
+						   </td>
+						</tr>
+       
+    												<!--------------------end---------------------->
+						<tr class="lastTr">
+							<td><input type="checkbox" onclick="selectAll(document.listform,this,&#39;ID[]&#39;)"></td>
+							<td colspan="6" class="l">
+								<input type="button" value="删除" class="Btn" onclick="Removeorder(document.listform);return false;">
+								<input type="button" value="批量续费" class="Btn" onclick="Pay(document.listform);return false;">
+								<input type="button" value="批量网上续费" class="Btn" onclick="Payonline(document.listform);return false;">
+							</td>
+						</tr>
+					</tbody></table>
+                    </form>
+					<!----手机版显示，因为相差太大--->
+			       <table class="m_shareTabs" border="0" width="100%" cellspacing="0" cellpadding="0">
+			       	   <tbody><tr>
+			       	   	  <form action="" method="get"></form>
+              <th class="l" width="100%"> <div class="allD" style="width:100%; position:relative;">
+                  <input type="text" style="display:block; padding:5px 2%; width:92%; margin-left:2%; position:relative;" placeholder="搜索关键词" name="keyword" value="">
+                </div>
+                </th>
+              <th class="l"><button type="submit" class="fa fa-search blocks float b" style="width:35px; position:relative; height:30px; line-height:30px; margin:3px 0px; text-align:center; border:1px #ccc solid;"></button></th>
+            
+			       	   </tr>
+                       <!-------------foreach start----------------->
+                           						<tr>
+                            	<td class="l">
+				       	   	   	<p class="dName"><a href="http://www.iisp.com/control/nGo.php?id=X72767">X72767</a><font class="line">|</font>
+                                	<font class="rowf">建站助手标准版 123.123.123.123 123123 1 年</font></p>
+				       	   	   	<p class="staus orange"><font>金额</font><font class="line">|</font><font class="green">296</font></p>
+				       	   	   	<p> <a href="http://www.iisp.com/control/nPayaction.php?actionid=1240971" class="fontColor">交费</a><font class="line">|</font><a href="http://www.iisp.com/control/nFixaction.php?actionid=1240971" class="fontColor">详情</a></p>
+				       	   	 </td> 
+				       	   	  <td class="r">
+				       	   	   	<p><a href="http://www.iisp.com/control/nFixaction.php?actionid=1240971" class="fa fa-gear"></a></p>
+				       	   	   	<p>&nbsp;</p>
+				       	   	   	<p class="time">2016/05/11</p>
+			       	   	   	</td>
+						</tr>
+       
+    						                       <!--------------old-----------------------
+			       	   <tr>
+			       	   	   <td class="l">
+				       	   	   	<p class="dName">域名sdgasgasgsag.com交易5%手续费</p>
+				       	   	   	<p class="staus orange"><font>汇入</font><font class="line">|</font><font class="green">+20.00</font></p>
+				       	   	   	<p><a href="###" class="fontColor">交费</a><font class="line">|</font><a href="###" class="fontColor">详情</a></p>
+				       	   	 </td>
+				       	   	  <td class="r">
+				       	   	   	<p><a href="###" class="fa fa-gear"></a></p>
+				       	   	   	<p>&nbsp;</p>
+				       	   	   	<p class="time">15/06/09</p>
+			       	   	   	</td>
+			       	   </tr>
+			       	   <!----------foreach end------------>
+			       </tbody></table>  
+				<div class="listPage">
+					<div class="l">
+						<a href="http://www.iisp.com/control/nAccountList.php?page=0&keyword=&sDate=&tDate=&pDate=&status=&sortby=id&s=5&needrenew=&users=&firstletter=&prod=&folderid=" class="fa fa-chevron-left"></a>
+						                        <a href="http://www.iisp.com/control/nAccountList.php?page=2&keyword=&sDate=&tDate=&pDate=&status=&sortby=id&s=5&needrenew=&users=&firstletter=&prod=&folderid=" class="fa fa-chevron-right"></a>
+					</div>
+					<div class="r">
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-10" val="10">10</a>
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-20" val="20">20</a>
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-50" val="50">50</a>
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-100" val="100">100</a>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<div class="footer">
+	CopyRight <font class="copy">&#169;</font> 2000-2016 Date: 2016-05-11</div></div>
+<script>
+$(function(){
+	/*$('.tabMenu li').click(function(){
+		$('.tabMenu li').removeClass('current');
+		$(this).addClass('current');
+	});*/
+	var accountListPageSize=getCookie('accountListPageSize');
+	if(accountListPageSize==null||accountListPageSize==''){
+		var myscreenheight=getCookie('myscreenheight');
+		if(myscreenheight==null||myscreenheight==''){
+			accountListPageSize=20;	
+		}else{
+			accountListPageSize=myscreenheight;
+		}
+	}else{
+		setCookie("accountListPageSize",accountListPageSize,24*7);
+	}
+	$(".accountListPageSize").removeClass("current");
+	$("#accountListPageSize-"+accountListPageSize).addClass("current");
+	$(".accountListPageSize").click(function(){
+		setCookie("accountListPageSize",$(this).attr("val"),24*7);
+		var tempUrl=window.location.href;
+		var reg = /page=\d*?&/g;
+		var newstart = tempUrl.replace(reg, "page=1&");
+		window.location.href=newstart;
+	});
+});
+function selectAll(form,obj,id){
+  for(i=0;i<form.length;i++){
+	   if(form[i].name.indexOf(id)!=-1)  {
+		   if(obj.checked) form[i].checked=true;
+		   else form[i].checked=false;
+	   } 
+  }
+}
+function Removeorder(form){
+	if(confirm("您是否确认要删除这些选中的未生效订单?\r\n\n删除后可能会导致无法交费!")){
+		form.action="nAccountDel.php";
+		form.target="";
+		form.submit();
+	}
+}
+function Pay(form){
+	form.action="/control/nMpayaction.php";
+	form.target="";
+	form.submit();
+}
+function Payonline(form){
+	form.action="../account/mpayin_product.php";
+	form.target="_blank";
+	form.submit();
+}
+</script>
+
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 999999; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: 999999; position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none;"><div style="position: relative; top: 0px; height: 5px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body></html>

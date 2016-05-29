@@ -1,0 +1,152 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${title!} -- ${node.name} -- ${site.fullNameOrName} -- Powerd by Jspxcms</title>
+<meta name="description" content="安然建站助手" />
+<meta name="keywords" content="安然建站助手" />
+<link href="_files/css/2010-6.css" rel="stylesheet" type="text/css">
+<link href="_files/css/design.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<link href="_files/css/popbox.css" rel="stylesheet" type="text/css">
+<div id="Page">
+    <!-- 头部 -->
+    
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="_files/js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="index">
+[#include "inc_header.html"/]
+
+<link href="_files/css/designglobal.css" rel="stylesheet" type="text/css" >
+<style>
+#topLink{display:none;}
+</style>
+<div id="Pages">
+<div class="advTop">
+  <div class="advTopLeft">
+     <div class="advImg"><img src="_files/picture/f-point.png" border="0"></div>
+     <div class="advName">
+	    <div class="n"><span class="nt">${info.fullTitleOrTitle}</span><span class="cate">分类：<a href="#">模板</a></span></div>
+		<p class="d">已有 <span id="info_views"></span> 人选择此模板</p>
+				<script type="text/javascript">
+					$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
+				</script>
+	 </div>
+  </div>
+  <div class="advTopRight"><a href="javascript:void(0);" class="createBtn">立即创建</a></div>
+</div>
+
+<div class="advMain">
+	<div class="advTitles">模板预览</div>
+	<div class="advContent padding40">
+		<div class="advDetial">${info.fullTitleOrTitle}。</div>
+		<div class="advShowImg" >
+				<div class="LeftBotton" id="LeftArr2"><img src="_files/picture/leftarr.png" border="0"></div>
+		<div class="RightBotton" id="RightArr2"><img src="_files/picture/rightarr.png" border="0"></div>
+     <div id="picList">
+		<ul class="slide-content">
+				 <!-- 
+				 <li><img src="_files/picture/adv-point.png" border="0"></li>
+				  -->
+				[#list info.images as image]
+					<li><img src="${image.image}" border="0"></li>
+	           [/#list]
+			
+		</ul>
+		</div>
+				</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+[#include "inc_footer.html"/]
+<style>
+.fixLeftMenu{width:110px;position: fixed; text-align: center; z-index:9999; cursor: pointer; left: 0px;top:50%;margin-top:102px; _position: absolute; _right:0px;}
+</style>
+<style>
+.advTop{background:#fff;padding:25px;overflow:hidden;zoom:1;}
+.advTopLeft{float:left;overflow:hidden;zoom:1}
+.advImg{background:#F5F5F5;padding:20px;float:left}
+.advImg img{width:60px;}
+.advName .n{margin-bottom:10px;padding-top:20px}
+.advName .n .nt{font-family:"Microsoft YaHei","verdana";color:#333;font-size:24px;}
+.advName .d{color:#999;font-size:14px;}
+.advName .cate{margin-left:20px;color:#999}
+.advName .cate a{padding:5px 10px;border:1px solid #eee;color:#333}
+.advName .cate a:hover{background:#f8f8f8}
+.advName{float:left;margin-left:25px;}
+.advTopRight{margin-top:20px}
+.advTopRight a.createBtn {width:123px;display:block;height:35px;line-height:35px;text-align:center;color:#fff;font-family:"Microsoft YaHei","verdana";background:#c00}
+.advTopRight a.createBtn:hover{background:#a00}
+.advTopRight{float:right}
+.advContent{background:#fff;padding:40px;}
+.advMain{text-align:left;width:1182px;margin:0 auto;}
+.advMain .advTitles{text-align:left;font-family:"Microsoft YaHei","verdana";color:#333;font-size:24px;font-weight:normal;line-height:45px;margin:10px auto}
+.advMain .advDetial{margin:10px auto 20px;font-size:14px;font-family:"Microsoft YaHei","verdana";}
+.advMain .advShowImg{background:#F5F5F5;padding:30px 20px;text-align:center;}
+
+.advShowList{overflow:hidden;zoom:1}
+.advShowList li{float:left;overflow:hidden;zoom:1;width:162px;margin-right:10px;}
+.adImg {float:left;font-family:"Microsoft YaHei","verdana";}
+.adDetail {float:left}
+.adDetail:hover,.adImg img{cursor:pointer}
+.adDetail h2{font-family:"Microsoft YaHei","verdana";font-size:14px;color:#333;margin-bottom:6px;width:98%;width: 83px;text-overflow: ellipsis; overflow: hidden;  zoom: 1;   white-space: nowrap;}
+.adDetail  .c{color:#999;font-size:12px;line-height:normal;width:83px;}
+.advShowList li img{width:60px;margin-right:10px;}
+
+.advShowImg{overflow:hidden;zoom:1;position:relative;}
+.LeftBotton{width:27px;height:57px;background:none;position:absolute;left:0px;top:245px;}
+.RightBotton{width:27px;height:57px;background:none;position:absolute;right:0px;top:245px;}
+#picList{width:100%;overflow:hidden;zoom:1;overflow:hidden;zoom:1;}
+#picList li{width:100%;text-align:center;}
+#picList li img{margin:0 auto;}
+</style>
+<script type="text/javascript" src="_files/js/jcarousellite.js"></script>
+
+  <script>
+  	$(function(){
+	$("#picList").jCarouselLite({ 
+		btnNext:"#RightArr2", 
+		btnPrev:"#LeftArr2",  
+		scroll :1,  
+		visible:1,
+		auto:4500,
+		speed:1000,
+	setHeight:520
+	});
+
+		$(".LeftBotton").mouseover(function(){
+			$(this).find("img").attr("src","_files/images/leftArr-hot.png");
+		}).mouseout(function(){
+		    $(this).find("img").attr("src","_files/images/leftArr.png");
+		})
+		$(".RightBotton").mouseover(function(){
+			$(this).find("img").attr("src","_files/images/rightArr-hot.png");
+		}).mouseout(function(){
+		    $(this).find("img").attr("src","_files/images/rightArr.png");
+		})
+
+	
+});
+  </script>
+</body>
+</html>
+[/#escape]

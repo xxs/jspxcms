@@ -1,0 +1,253 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>用户注册_${site.fullNameOrName}</title>
+<link type="text/css" rel="stylesheet" href="_files/css/2010-6.css">
+<style>
+form,td {margin:0;padding:0}
+.chun3{background:url(images/xia3.jpg) 0 45px no-repeat;width:377px;}
+a{color:#000;}
+a:hover{color:#666;}
+
+.loginboxbg{ }
+#loginbox{ background:#fff; padding:40px 30px 30px;text-align:left;margin-left:10px;}
+#loginbox .Linput{width:280px;border:0px; height:35px; line-height:35px; font-size:14px;text-indent:10px;}
+#loginbox table{ position:relative;}
+#loginbox table td{ padding:0px 0; color:#666; }
+
+
+
+#userLogin{overflow:hidden;zoom:1;}
+#userLogin_left{float:left;width:733px;}
+#userLogin_right{float:right;width:449px;height:378px;background:#fff}
+
+.v8Title{overflow:hidden;zoom:1;line-height:34px;}
+.v8Title span{float:left}
+.v8Title .user_reg{background:#d6d6d6;width:160px;height:34px;line-height:34px;display:block;font-size:14px;color:#333;float:left;text-align:center;margin-left:20px}
+.v8Title a.user_reg:hover{background:#c00;color:#fff}
+#bottom{margin-top:0px !important;}
+
+.user_login td .u,.user_login td .p,.user_login td .c{border:1px solid #ccc;width:350px;height:41px;line-height:41px;padding-left:10px;margin-bottom:20px;}
+.user_login .user-Name{color:#888;}
+.user_login td .u{background:url(images/user-ico.png) 335px 13px no-repeat;}
+.user_login td .p{background:url(images/user-ico.png) 335px -36px no-repeat;}
+.user_login{table-layout:fixed}
+.forget_pass a{color:#666;font-size:14px}
+.freeReg{font-size:14px;margin-right:5px}
+.LoginBtn .btn{width:362px;height:40px;line-height:40px;color:#fff;margin-top:10px;border:0px;background:#c00;font-size:18px;font-family:"微软雅黑","verdana"}
+.LoginQQ{margin-top:10px;text-align:left}
+.LoginBtn .btn:hover{background:#f00}
+#codeImg{cursor:pointer}
+
+</style>
+<script src="_files/js/check.js"></script>
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript" src="${fore}/jquery.validation_zh_CN.js"></script>
+
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+</head>
+<body bx-name="member_index" bx-path="components/member_index/">
+<script type="text/javascript">
+$(function() {
+	$("#validForm").validate();
+	$("#username").focus().select();
+});
+
+[#if shiroLoginFailure??]
+	 [#if shiroLoginFailure=='com.jspxcms.common.security.IncorrectCaptchaException']
+	 	alert("[@s.message code='incorrectCaptchaError'/]");
+	 [#elseif shiroLoginFailure=='com.jspxcms.common.security.CaptchaRequiredException']
+	  //do nothing
+	 [#elseif shiroLoginFailure=='org.apache.shiro.authc.UnknownAccountException']
+	  alert("此用户不在或未激活！");
+	 [#else]
+	  alert("${shiroLoginFailure}");
+	 [/#if]
+[/#if]
+</script>
+[#include "inc_header.html"/]
+<style>
+#topLink{display:none;}
+#subMenu {height:60px;width:100%;}
+#subMenubg{filter:alpha(opacity=60);-moz-opacity:0.6;opacity:0.6;background:#000;height:60px;}
+#subMenu .mainTitle{font-family:微软雅黑,黑体;font-size:26px;padding:8px 0px 10px 3px;text-align:left;float:left;color:#333333;}
+#subMenuItem{padding:0px 6px 0px 0px;z-index:10000;width:1180px;margin:0 auto;margin-top:-60px;position:relative;z-index:99999}
+#subMenuItem li	{float: left;list-style: none}
+#subMenuItem li a{display: block;white-space: nowrap;font-size:16px;color:#fff;padding:0px 50px 0px 50px;line-height:60px;display:block;float:left;font-family:微软雅黑,黑体;}
+#subMenuItem li a:hover,#subMenuItem li.hot a	{color:#222;background:#fff}	
+#subMenuItem li ul{padding: 0;position: absolute;visibility: hidden;z-index:10000;background:#ffffff;top:60px}
+#subMenuItem li ul li{float: none;display: inline;}			
+#subMenuItem li ul li a{float:none;height:35px;line-height:35px;border-bottom:1px solid #eee;color:#666;font-size:14px;width:125px;padding:0px;text-align:center}
+.downarr{background:url(images/downarr.png) left 21px no-repeat;padding:12px 4px;}
+#subMenuItem li a:hover .downarr,#subMenuItem li.hot a .downarr{background-image:url(images/downarr_b.png);}
+#subMenuItem li ul li a:hover{font-weight:bold}
+
+
+
+/*文字说明*/
+#topLine {border-top:1px solid #cccccc;border-bottom:1px solid #ffffff;margin-bottom:5px;}
+#topInfo {padding:5px 20px 5px 20px;line-height:250%;color:#666;}
+</style>
+
+<DIV id="subMenu">
+<div id="subMenubg"></div>
+<form action="order.php" method="post">
+	<ul id="subMenuItem">
+		<li class="hot"><a href="${ctx}/login.jspx" class="m">用户登录</a></li>
+		<li class=""><a href="${ctx}/register.jspx" target="_blank">用户注册</a></li>
+	</ul>
+</form>
+</DIV>
+<script type="text/javascript">
+var timeout         = 100;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+function jsddm_open()
+{	jsddm_canceltimer();
+	jsddm_close();
+	ddmenuitem = $(this).find('ul').eq(0).css('visibility', 'visible');}
+
+function jsddm_close()
+{	if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
+
+function jsddm_timer()
+{	closetimer = window.setTimeout(jsddm_close, timeout);}
+
+function jsddm_canceltimer()
+{	if(closetimer)
+	{	window.clearTimeout(closetimer);
+		closetimer = null;}}
+
+$(document).ready(function()
+{	$('#subMenuItem > li').bind('mouseover', jsddm_open);
+	$('#subMenuItem > li').bind('mouseout',  jsddm_timer);});
+
+
+  </script>
+  
+  <div id="Pages" style="margin:50px auto">
+   <div id="userLogin">
+   <div id="userLogin_left"><!--左边-->
+
+   		<div id="slide">
+		<ul class="slide-content">
+		 <li title="企业转型——建站助手全网营销系统"><a href="/design/" target="_self"><img src="_files/picture/loginindex.gif" border="0" /></a></li>
+
+		 
+         <li title=".VC域名注册、续费一样的价格"><a href="/domain/intro_vc.php" target="_self"><img src="_files/picture/loginbanner.jpg" border="0" /></a></li>
+		 <li title="给力优惠，震撼特价"><a href="/special/" target="_self"><img src="picture/loginbanner.gif" border="0" /></a></li>
+         <li title="建站助手微信红包震撼上线！助力企业品牌营销，快速吸粉"><a href="/design/weixin_act.php" target="_self"><img src="picture/login.gif" border="0" /></a></li>
+                   
+		</ul>
+		</div>
+		<script src="js/jquery.slide.js"></script>
+		<script>
+		$(function(){
+		$('#slide').slide({effect:'fade',timer:3000});	
+		function isMouseLeaveOrEnter(e, handler) {  
+			if (e.type != 'mouseout' && e.type != 'mouseover') return false;  
+			var reltg = e.relatedTarget ? e.relatedTarget : e.type == 'mouseout' ? e.toElement : e.fromElement;  
+			while (reltg && reltg != handler) reltg = reltg.parentNode;  
+			return (reltg != handler);  
+		}
+			$('#showDomain').click(function(){
+				$('#selectDomain').slideDown(300,function(){
+					$(this).mouseout(function(event){
+						if(isMouseLeaveOrEnter(event,this)) $(this).fadeOut(500);
+					});
+				});
+			});
+		});
+	</script>
+<style>
+#slide{width:733px;height:378px !important; position:relative}
+#slide .slide-content{overflow:visible !important}
+#slide .slide-content li{ width:733px;height:378px; border-radius:5px 5px 0 0;}
+#slide .slide-nav{ left:auto;right:347px; bottom:6px; height:18px; padding-top:2px; z-index:3;}
+#slide .slide-nav li{background:#e0e0e0;font-size:0;width:10px;height:10px;border-radius:100%;border:0px;margin-right:5px}
+#slide .slide-nav li.on{ background:#c00;margin-top:0px}
+.bindWX{position: relative;text-align: center;line-height: 40px;top: 0px;left: -85px;display: block;float: inherit;color:red}
+</style>	 
+   </div>
+   <div id="userLogin_right"><!--右边-->
+         <div id="loginbox">
+		<form id="validForm" method="post" action="${ctx}/login.jspx" class="input_form" onsubmit="return CheckForm(this)">
+		
+		<span style='display:none;color:red;font-size:12px;' id="errmsg"></span>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="user_login">
+		<tr>
+			<td colspan="2">
+				<div  class='u'>
+				<span class="user-Name">用户名</span>
+				<input type="text" id="username" name="username" onFocus="" value="${username!}" class="Linput required" warning="请输入您的用户名,6-16位数字、字母、下划线组成" tabindex="1"/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class='p'>
+				<span class="user-Name">密　码</span>
+				<input type="password" id="password" name="password" class="Linput" onFocus="" warning="请输入正确的密码,6-16位数字、字母、下划线组成" tabindex="2"/>
+				</div>
+			</td>
+		</tr>
+		[#if Session.shiroCaptchaRequired??]
+		<tr>
+			<td colspan="2">
+				<div class='c'>
+				<span class="user-Name">验证码</span>
+				<input type="text" id="captcha" name="captcha" onFocus="" class="input required" style="background:none;border:0;  width:223px; padding:3px 10px; height:35px; line-height:35px; margin-right:5px;" tabindex="3"/>
+				<span id="imgcode">
+				<img src="${ctx}/captcha.servlet" width="56" height="20" align="absmiddle" class="codeImg" id="codeImg" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1" style="cursor:pointer;border:1px solid #ccc;" title="点击重新获取验证码"/>
+				</span>
+				</div>
+			</td>
+		</tr>
+		[/#if]
+		<tr>
+		<td class="forget_pass"><a href="${ctx}/forgot_password.jspx">忘记密码?</a></td>
+		<td class="reg"><span class="n">还没有账户？</span><a href="${ctx}/register.jspx" class="redfont freeReg">免费注册</a></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div class="LoginBtn"><input name="submit" type="submit" class="btn btn2 btnB" value="  登　　录  " tabindex="4"></div>
+			<div class="LoginQQ">
+			使用合作网站账号登录耐思尼克：<a href="#">QQ登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">微信登录</a>			</div>
+			</td>
+		</tr>
+		
+		</table>
+
+			
+		</form>
+	</div>   
+   </div>   
+   </div>
+<div>
+<script type="text/javascript">
+var errmsg = '';
+if(errmsg!=""){ $('#errmsg').css('display','block').html(errmsg);}
+</script>
+<!--<div><img src="picture/5.jpg" width="68" height="68" border="0"></div>-->
+</div>
+</div>
+</div>
+  
+[#include "inc_footer.html"/]  
+</body>
+</html>
+[/#escape]

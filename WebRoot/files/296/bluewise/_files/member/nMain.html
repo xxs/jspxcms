@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.iisp.com/control/nMain.php -->
+<html style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta charset="GB2312">
+
+<script src="jquery.min.js"></script>
+<script>
+var isMobile=false;
+</script>
+<title>控制台</title>
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="nComm.css">
+<script src="jquery.nicescroll.js"></script>
+<script src="nComm.js"></script>
+<style>
+/*******自定义颜色*********/
+.Btn1,.mainBg,.tabLists .listPage a.current,.Btn:hover.comm-top{background:#31a66b !important;}
+/*.fontColor{
+	color:#31a66b !important;
+}*/
+.Btn1:hover{
+	transition: all 0.3s ease 0s;
+	opacity:0.8;
+}
+.Btn1{
+	transition: all 0.3s ease 0s;
+}
+.tabMenu li.current{border-color:#31a66b !important}
+
+</style><link rel="stylesheet" type="text/css" href="controlShare.css"><link rel="stylesheet" type="text/css" href="n_index.css"><style type="text/css">
+.sms-xz{
+	transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+}
+.weixinShadow{width:100%;height:100%;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:88888;}
+.weixinBind{width:650px;height:280px;position:fixed;top:50%;left:50%;margin:-140px 0 0 -350px;z-index:99999;}
+.subDiv{position:relative;}
+.subDiv .txt{position:absolute;top:0;left:-7px;width:440px;height:190px;background:#E63732;border-radius:50%;}
+.subDiv .txt p{color:#fff;margin:50px;line-height:220%;text-indent:25px;}
+.subDiv .niceSir{width:145px;height:278px;position:absolute;top:-92px;left:380px;z-index:10;} 
+.subDiv .codeimg{width:120px;height:120px;position:absolute;top:82px;right:1px;z-index:8;}
+.subDiv .codeimg img{width:120px;height:120px;}
+.subDiv .close{display:inline-block;width:26px;height:26px;position:absolute;top:-90px;right:0;z-index:20;}
+.subDiv .yinying{width:232px;height:37px;position:absolute;left:418px;top:186px;z-index:5;}
+
+
+.slide-nav {position:absolute;left:50%;margin-left:-40px; bottom:0px; height:18px; padding-top:2px; z-index:3;}
+.slide-nav li {background: #ddd; opacity:0.8;color:#ddd; cursor:pointer; float:left; width:10px;height:10px; line-height:0px; margin-left:10px;vertical-align:middle; text-align:center;border-radius:100%;font-size:0;padding:0px;}
+.slide-nav li.on { background-color:#000;color:#000;font-weight:bold;line-height:0px;width:10px;height:10px;font-size:0}
+#homeLeftBanner{height:119px;}
+#homeLeftBanner .slide-content li {width:100%;height:100%; text-align:center; vertical-align:middle;padding:0px}
+
+</style><script type="text/javascript" src="nMain.js"></script><script src="jquery.slide.js"></script><script>2
+$(function(){
+			window.parent.ifrClick('items-index','','');
+});
+</script></head>
+
+
+
+
+
+
+
+<body>
+<div class="mainBox">
+	<div class="conBox">
+		<!--<div class="showIp">
+			<i class="fa fa-info-circle green"></i>
+			<font class="ip_now">登陆IP:
+				                		<a href="http://www.51pr.com/?ip=219.156.116.115" target="_blank">219.156.116.115 </a>
+				             </font>
+			<font>上次登陆:2016-05-13 21:05:13</font>
+		</div>-->
+		<div class="dateInfo over">
+			<dl class="userInfo DIDiv over">
+				<div class="one padding over">
+				<dt>
+					<h5 class="yahei">
+						<font class="stime yahei">
+                    晚上好！				</font>
+					<a href="http://www.iisp.com/control/nUserData.php" class="uname yahei">123123</a>
+                    </h5>
+					<p class="picon">
+						                         		<a href="http://www.iisp.com/user/qq_oauth/qq_login.php" target="_blank" title="绑定QQ"><i class="fa fa-qq"></i></a>
+                                                                           		<a href="javascript:void(0);" onclick="showWeixin();" title="绑定微信"><i class="fa fa-weixin"></i></a>
+                                                  <a href="http://www.iisp.com/control/nUserInfo.php" title="实名认证" class="clickItems" model="items-user" action="m-items-user" ctrl="m-items-user-info"><i class="fa fa-user"></i></a>
+						<font class="line">|</font>
+						<font class="agentJB">会员级别: 普通会员</font>
+                        							<a class="shengji fontColor" href="http://www.iisp.com/agent/?page=price" target="_blank">升级</a>
+											</p>
+					<p>
+                                                                                  					 <font class="agentJB">升级成为代理最高可享<b class="red">3.5折</b>优惠哦</font>
+					 					</p>
+				</dt>
+			  <dd>
+			  	<i class="fa fa-user"></i>
+			  </dd>
+			  </div>
+			</dl>
+			<dl class="moneyInfo DIDiv over">
+				<div class="two padding over">
+				<dt>
+					<p>余额: <b>￥0</b><a href="http://www.iisp.com/control/nPayin.php" class="payIn fontColor clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-Pay">充值</a></p>
+                    
+                                        <p>优惠券: 可用<b>0</b>张                    </p>
+                    <p>可开票金额: <b>￥0</b>元</p>
+                                  </dt>
+			  <dd>
+			  	<i class="fa fa-rmb"></i>
+			  </dd>
+			  </div>
+			</dl>
+			<dl class="otherInfo DIDiv over">
+				<div class="three padding over">
+				<dt>
+					<p>待续费: 有<a href="http://www.iisp.com/control/nDomainList.php?needrenew=1" class="redfont clickItems" model="items-ym" action="m-items-ym" ctrl="m-items-ym-xf"><strong style="color:#c00;">0</strong></a>个域名需续费,请尽快<a href="http://www.iisp.com/control/nDomainList.php?needrenew=1" class="redfont fontColor clickItems" model="items-ym" action="m-items-ym" ctrl="m-items-ym-xf">续费</a></p>
+					<p>登陆IP: <a href="http://www.51pr.com/?ip=219.156.116.115" target="_blank" class="enfont">219.156.116.115 </a> </p>
+					<p>上次登陆: <font class="enfont">2016-05-13 21:05:13</font></p>
+				</dt>
+			  <dd>
+			  	<i class="fa fa-bar-chart"></i>
+			  </dd>
+			  </div>
+			</dl>
+		
+		</div>
+		<div class="listInfo over">
+			<div class="rightB">
+				<div class="sms smd">
+					<div class="top">
+						<div class="sms-title">客服短信</div>
+						<div class="hasNum"></div>
+                        	<div class="hasNumZz sms-xz" id="hasNumZz"></div>
+                         <div class="sms-left sms-num">0</div><div class="sms-right sms-num">1500</div>
+					</div>
+					<div class="showN">还剩<font>0</font>条</div>
+				</div>
+                				<div class="contact smd">
+					<div class="top mainBg">
+						<p>您的客服经理：冯欣</p>
+						<center>
+                        		                                	<img src="pic_staff.php">
+                                                       </center>
+						<p class="tel">0756-3366365</p>
+					</div>
+					<ul class="over">
+						<li class="first">
+                        	                            	<p><a href="javascript:void(0);" onclick="javascript:window.open(&#39;http://wpa.qq.com/msgrd?v=1&amp;uin=52064595&amp;Menu=yes&#39;, &#39;_blank&#39;, &#39;height=544, 	width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);"><i class="fa fa-edit"></i></a></p>
+							<a onclick="javascript:window.open(&#39;http://wpa.qq.com/msgrd?v=1&amp;uin=52064595&amp;Menu=yes&#39;, &#39;_blank&#39;, &#39;height=544, 	width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);" href="javascript:void(0);">QQ交谈</a>
+                         						</li>
+						<li>
+							<p><a href="http://www.iisp.com/control/nSubQuestion.php"><i class="fa fa-question-circle"></i></a></p>
+							<a href="http://www.iisp.com/control/nSubQuestion.php">提交问题</a>
+                        								<!--<p><a href="mailto:anny@iisp.com" target="_blank"><i class="fa fa-envelope-o fa-fw"></i></a></p>
+							<a href="mailto:anny@iisp.com" target="_blank">邮箱联系</a>--->
+                         						</li>
+					</ul>
+				</div>
+                 				<div id="homeLeftBanner" class="ban clear">
+					<ul class="slide-content">
+				     					 <li style="position: absolute; left: 0px; top: 0px; z-index: 0; opacity: 0;"><a href="http://www.iisp.com/design/zhongchou.php" style="background:url(/design/images/zhongchou/controlBanner.jpg) no-repeat top center;background-size: cover;width: 100%;height: 119px;display:inline-block;" target="_blank"></a></li>
+					 <li style="position: absolute; left: 0px; top: 0px; opacity: 0; z-index: 0;"><a href="http://www.iisp.com/idc/niceyun.php" style="background:url(/idc/images/niceyun/controlBanner.jpg) no-repeat top center;background-size: cover;width: 100%;height: 119px;display:inline-block;" target="_blank"></a></li>
+				    <li style="position: absolute; left: 0px; top: 0px; opacity: 0; z-index: 0;"><a href="http://www.iisp.com/domain/intro_vip.php" style="background:url(/domain/images/vip/controlBanner.jpg) no-repeat top center;background-size: cover;width: 100%;height: 119px;display:inline-block;" target="_blank"></a></li>
+				    <li style="position: absolute; left: 0px; top: 0px; opacity: 1; z-index: 1;"><a href="http://www.iisp.com/domain/intro_vc.php" style="background:url(/domain/images/vc/controlBanner.jpg) no-repeat top center;background-size: cover;width: 100%;height: 119px;display:inline-block;" target="_blank"></a></li>
+				    
+				   
+				    <!--<li><a href="/design/fenxiao.php" style="background:url(img/ban1.jpg) no-repeat top center;background-size: cover;width: 100%;height: 119px;display:inline-block;" target="_blank"></a></li>-->
+				    				   </ul>
+				<ul class="slide-nav"><li class="">1</li><li class="">2</li><li class="">3</li><li class="on">4</li></ul></div>
+<script>
+	$('#homeLeftBanner').slide({
+		effect:'fade',
+		speed:500,
+		auto:4500,
+		isNav: true
+	});
+</script>
+			</div>
+			<div class="leftB">
+				<h5 class="tit"><span>未缴费订单</span><a href="http://www.iisp.com/control/nAccountList.php?status=0" class="blocks fontColor clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-order">更多 <i class="fa fa-angle-right fontColor"></i></a></h5>
+				<table border="0" width="100%" cellspacing="0" cellpadding="0" class="orderTab">	
+					<tbody><tr>
+						<th class="l firstTh"><b>订单内容</b></th>
+						<th><b>金额</b></th>
+						<th class="r"><b>操作管理</b></th>
+					</tr>
+                    			
+					<tr>
+						<td class="l">建站助手标准版 123.123.123.123 123123 1 年</td>
+						<td>￥296</td>
+						<td class="r"><a href="http://www.iisp.com/control/nPayaction.php?actionid=1240971" class="clickItems fontColor" model="items-money" action="m-items-money" ctrl="m-items-money-order">交费开通</a></td>
+					</tr>
+                    									</tbody></table>
+			</div>
+		</div>
+ 		
+<div class="fbFAQ"><a href="http://www.iisp.com/control/nSubQuestion.php">+ 我要发表</a>体验新版，聊聊感觉，请为我们提出宝贵意见，我们会努力做的更好！</div>
+<style>
+.fbFAQ{background:#fff;line-height:20px;padding:10px 10px 10px 20px;margin-top:20px}
+.fbFAQ a{float:right;color:#06c}
+.fbFAQ i{font-size:14px;vertical-align:middle;color:#06c}
+</style>
+</div>
+<!--绑定微信-->
+
+	<!--<div class="border" style="float:none;*float:left;position: absolute;top:200px;border:0px;width:650px;display:none" id="weixindiv">
+    <div id="border_wx" style="width:650px;margin-top:30px;height:155px;background-color:#99CC00;border:0px;border-radius:3px;">
+        <table>
+            <tr>
+                <td><a href="javascript:void(0);" onclick="$('#weixindiv').hide();" class="close" style="color:#c00;position:absolute;top:35px;right:2px;">×</a></td>
+            </tr>
+            <tr>
+            <td><img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQHo7zoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL1hVekRkU1BtVlprc1lqVVd4R0tIAAIEC9E1VwMECAcAAA==" title="请使用微信扫描二维码" height="100" style="margin:15px 10px 0px 10px"></td>
+            <td></td>
+            <td>
+            <p style="display:block;font-weight:bold;font-size:14px;color:#ff0000">您好！系统检测到您还未绑定微信，请立即扫描二维码一键绑定。</p>
+            <p>绑定后可以享受活动通知、产品到期通知、优惠券推送、有问必答回复推送等服务。</p>
+            <p>(打开手机微信, 用"扫一扫"功能扫描左边的二维码即可,此二维码含私密信息，请勿发给其他人)</p>
+            </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="right"><span>若您的手机号已变更或联系方式已过期，请<a href="nUserData.php" style="color:#06c;" class="clickItems" model="items-user" action="m-items-user" ctrl="m-items-user-info">及时修改</a>，否则将无法正常享受相关服务!</span>&nbsp;<a href="javascript:void(0);" onclick="not_show_bind_again();" style="color:#06c;">不再提示</a></td>
+            </tr>
+        </table>
+    </div>
+</div>-->
+
+<div class="weixinShadow" style="display: none;">&nbsp;</div>
+<div class="weixinBind" style="display: none;">
+	<div class="subDiv">
+	<div class="txt">
+		<p class="yahei">亲，检测到您的账户未绑定微信，请扫描右侧二维码一键绑定！绑定后可享受活动通知、产品到期提醒，更有优惠好礼相送哦！还等什么，拿起手机扫一扫吧！</p>
+	</div>
+	<div class="niceSir">
+    		        		<img src="niceSir.png">
+        	</div>
+	<div class="codeimg"><img src="showqrcode" title="请使用微信扫描二维码"></div>
+	<a class="close" href="javascript:void(0)" onclick="$(&#39;.weixinBind&#39;).hide();	$(&#39;.weixinShadow&#39;).hide();"><img src="closeimg.png"></a>
+	<div class="yinying"><img src="yinying.png"></div>
+</div>
+</div>
+
+<script src="cookie.js"></script>
+<script>
+function not_show_bind_again(){
+	$('.weixinBind').hide();
+	$('.weixinShadow').hide();
+	setCookie('noshowbind', 1);
+}
+if(!getCookie('noshowbind')) $('.weixinBind').show();
+</script>
+<script>
+$(function(){
+		$('.weixinBind').hide();	$('.weixinShadow').hide();	
+	});
+</script>
+
+<div class="footer">
+	CopyRight <font class="copy">&#169;</font> 2000-2016 Date: 2016-05-13</div></div>
+<script>
+function showWeixin(){
+		$('.weixinBind').show();	$('.weixinShadow').show();	
+	}
+
+</script>
+
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 999999; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: 999999; position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none;"><div style="position: relative; top: 0px; height: 5px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body></html>

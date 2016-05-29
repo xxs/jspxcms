@@ -1,0 +1,126 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>用户注册_${site.fullNameOrName}</title>
+<link href="_files/css/2010-6.css" rel="stylesheet" type="text/css">
+</head>
+<script src="_files/js/check.js"></script>
+<script src="_files/js/ajax.js"></script>
+<script src="_files/js/pinyin.js"></script>
+<script>
+function change2cn(en, cninput){
+	cninput.value=getSpell(en, " ");
+}
+
+function send_mobile_code(form,o){
+	o.disabled = true;
+	document.getElementById("send_mobile_code").style.display = "";
+	document.getElementById("mobilecode").style.display = "";
+	SendQuery('/user/user_auth_send_unlogin.php?type=mobile&checkonly=1&mobile='+form.Mobile.value, 'send_mobile_code');
+}
+</script>
+
+<body>
+<div id="Page">
+<!-- 头部 -->
+
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="_files/js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+
+
+
+
+<script language="javascript" type="text/javascript" src="_files/common.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#agree").click(function(){
+			$("#register").attr("disabled",!this.checked);
+	});
+	$("#nextone").click(function(){
+		$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+		$("#captcha").unbind("focusin");
+	});
+	$("#captcha").focusin(function(){
+		$(".autherimg").css("display","inline");
+		$("#auther").attr('src','${ctx}/captcha.servlet?d='+new Date()*1);
+	});
+	$.validator.addMethod("username", function(value) {
+		if(value.length==0) {return true;}
+		var p = /${global.register.validCharacter}/;
+		return p.exec(value) ? true : false;
+	}, "用户名必须是字母、数字和汉字");
+	$("#validForm").validate();
+});
+</script>
+[#include 'inc_header.html'/]
+
+
+  <div id="Pages">
+<form id="validForm" action="${ctx}/register.jspx" method="post">
+<div class="v8Title">欢迎您注册成为耐思尼克会员</div>
+<div id="border" class="v8Padding">
+
+<div id="info" class="info cssform" style="padding:20px;">
+	<div class="itip">基本信息以及联系信息请如实填写，在本网站的注册信息将会受到安然相关隐私条例保护，您的私人信息仅用于本网站与您之间的联系以及购买相关产品时的身份证明使用，我们将保护您的隐私不被泄露.</div>
+	<div id="ctitle" class="ctitle" style="padding-top:6px;">请填写登陆信息</div>
+	<div class="line"></div>
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="4">
+          <tr>
+            <td width="200" class="r">登陆用户名:</td>
+            <td width="360">
+            	<input type="text" name="username" class="input {required:true,minlength:${global.register.minLength},username:true,remote:'${ctx}/check_username.jspx',messages:{remote:'用户名已存在'}}" style="width:350px;" onFocus="" size="20" maxlength="16" maxlength="${global.register.maxLength}"/>             
+            	</td><td>
+				<span id="showdiv"><span class="redfont">*6-16位字母、数字或者下划线</span></span></td>
+          </tr>
+          <tr>
+            <td class="r">密码:</td>
+            <td><input name="Password" type="password" class="input" id="Password"  style="width:350px;" onFocus="" size="20" maxlength="16" check="[a-zA-Z0-9_]{3,20}$" warning="密码输入错误，需要8-16位组成"  onChange="checkValue(this)"></td><td><span class="redfont" id="PasswordInfo">*</span></td>
+          </tr>
+          <tr>
+            <td class="r">再次输入密码:</td>
+            <td><input name="Password2" type="password" class="input" id="Password2"  style="width:350px;" onFocus="" size="20" maxlength="16" check="^[a-zA-Z0-9_]{3,20}$" warning="密码输入错误，需要8-16位组成"  onChange="check2Pass(Password,Password2)"></td><td><span class="redfont" id="Password2Info">*</span></td>
+          </tr>
+		  <tr>
+            <td class="r">验证码:</td>
+            <td>
+            	<input id="captcha" type="text" name="captcha" class="input required" maxlength="20" autocomplete="off"/>
+                <img id="auther"  src="javascript:false;" width="56" height="20" onclick="this.src='${ctx}/captcha.servlet?d='+new Date()*1"/>
+                <a  id="nextone" style="cursor:pointer;">看不清，换一张</a>
+                <span class="redfont">*</span>
+            </td>
+          </tr>
+	</table>
+
+		 <div style="text-align:center;padding:10px 0px 30px 0px;">
+		 <input type="checkbox" id="agree" class="checkbox required" name="agree" value="true" check="^0$" warning="您必须阅读、理解并接受我们的注册条款">
+			我已阅读、理解并接受[  <a  target="_blank">会员注册条款</a> ]
+			<br /><br />
+		<span class="btsb"><input type="submit" value="确认注册"></span>
+		</div>
+		
+</div>
+</div>
+
+</form>		
+<script>citySetup();</script>
+</div>
+</div>
+</div>
+
+[#include "inc_footer.html"/]  
+</body>
+</html>
+[/#escape]

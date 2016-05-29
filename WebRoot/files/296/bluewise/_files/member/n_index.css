@@ -1,0 +1,205 @@
+@charset "GB2312";
+/* CSS Document */
+.DIDiv{background:#fff;float:left;width:32%;margin-left:2%}
+.DIDiv:hover{background:#f5f5f5;}
+.userInfo{margin-left:0;}
+.dateInfo{margin-bottom:2%;}
+.DIDiv{height:130px;}
+.dateInfo .padding{padding:20px;}
+.DIDiv dt,.DIDiv dd{float:left;}
+.DIDiv dt{width:70%;}
+.DIDiv dd{width:30%;text-align:right;}
+.DIDiv dd i{width:58px;height:58px;text-align:center;line-height:58px;border-radius:100%;border:5px solid #BFC2CD;font-size:36px;color:#888;margin:13px 8px 0 0;}
+.DIDiv .two dd i{line-height:65px;}
+.DIDiv .three dd i{font-size:28px;}
+.DIDiv p,.DIDiv h5{height:30px;line-height:30px;}
+.DIDiv .line{color:#ccc;}
+.DIDiv .payIn{padding-left:5px;}
+.DIDiv .zai{padding-left:5px;color:#B0B0B0}
+.userInfo dt h5{margin-bottom:7px;}
+.userInfo dt .stime{font-size:18px;float:left;line-height:30px;margin-right:10px;}
+.userInfo dt h5 .uname{display:inline-block;width:160px;height:30px;line-height:30px;font-size:24px;color:#333;overflow:hidden;  white-space: nowrap;  text-overflow: ellipsis;}
+.userInfo dt .picon i{display:inline-block;width:20px;height:20px;margin-right:5px;line-height:20px;text-align:center;border:1px solid #797979;border-radius:100%;color:#999;font-size:12px;}
+.listInfo .rightB{width:32%;float:right;}
+.listInfo .leftB{width:66%;float:left;}
+.listInfo .leftB .tit{background:#F0F2F5;height:44px;line-height:44px;}
+.listInfo .leftB .tit span{padding-left:25px;color:#333;}
+.listInfo .leftB .tit a{float:right;line-height:44px;margin-right:25px;}
+.listInfo .leftB .tit a i{font-size:15px;}
+.orderTab td{text-align:center;background:#fff;border-bottom:1px solid #eeeff1;height:40px;line-height:40px;}
+.orderTab .l{text-align:left;padding-left:25px;}
+.orderTab th{height:50px;line-height:50px;font-weight:normal;color:#333;line-height:50px;border-bottom:1px solid #eeeff1;background:#fff;}
+.listInfo .rightB .smd{width:46.5%;float:left;background:#fff;height:205px;margin-bottom:6%;}
+.listInfo .rightB .contact{float:right;}
+.listInfo .rightB .smd .top{height:147px;}
+.listInfo .rightB .sms .showN,.listInfo .rightB .contact ul{height:58px;}
+.listInfo .rightB .sms .showN{background:#6B6B6B;color:#fff;line-height:58px;text-align:center;}
+.listInfo .rightB .sms .showN font{color:#fff;padding:0 5px;}
+.listInfo .rightB .contact ul li{width:50%;float:left;height:58px;text-align:center;}
+.listInfo .rightB .contact ul li:hover{background:#f5f5f5;cursor:pointer;}
+.listInfo .rightB .contact ul li.first{position:relative;}
+.listInfo .rightB .contact ul li:before{content:'';display:inline-block;width:1px;height:100%;position:absolute;right:0;top:0;background:#E6E7EC;}
+.listInfo .rightB .contact ul li p{margin:13px 0 5px 0;}
+.listInfo .rightB .contact ul li p i{font-size:14px;}
+.listInfo .rightB .contact .top p{text-align:center;color:#fff;padding-top:15px;}
+.listInfo .rightB .contact .top .tel{padding-top:9px;}
+.listInfo .rightB .contact .top center{margin-top:10px;}
+.listInfo .rightB .contact .top center img{width:62px;height:62px;border-radius:100%;border:5px solid rgba(255,255,255,0.1);}
+.problem{margin-bottom:6%;}
+.problem .tit{background:#EBDE96;height:44px;line-height:44px;}
+.problem .tit b{padding-left:25px;color:#333;}
+.problem .tit a{float:right;line-height:44px;margin-right:25px;}
+.problem .tit a i{font-size:15px;}
+.problemList{height:90px;background:#F4EAB2; position:relative;}
+.showIp{text-align:center;margin-bottom:20px;}
+.showIp .ip_now{padding:0 10px;}
+.showIp i{font-size:18px;vertical-align:-2px;}
+.ban{position:relative;width:100%;height:119px;}
+
+
+
+/********/
+.problemList-ul{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:block;
+	border:none;
+	margin:0px;
+	padding:0px;
+	height:90px;
+	overflow:hidden;
+	z-index:90;
+}
+.problemList-li{
+	position:relative;
+	display:block;
+	float:left;
+	overflow:hidden;
+	height:90px;
+	width:400px;
+	margin:0px;
+	padding:0px;
+	border:none;
+}
+.problemList-li .problemList-q{
+	position:absolute;
+	left:40px;
+	top:20px;
+	font-size:12px;
+	line-height:25px;
+	width:320px;
+	white-space:nowrap;
+ 	text-overflow:ellipsis;
+ 	-o-text-overflow:ellipsis;
+ 	overflow: hidden; 
+}
+.problemList-li .problemList-a{
+	position:absolute;
+	left:40px;
+	bottom:20px;
+	font-size:12px;
+	line-height:25px;
+	width:320px;
+	white-space:nowrap;
+ 	text-overflow:ellipsis;
+ 	-o-text-overflow:ellipsis;
+ 	overflow: hidden; 
+}
+.problemList-left{
+	left:0px;
+}
+.problemList-right{
+	right:0px;
+}
+.problemList-i{
+	display:block;
+	height:90px;
+	width:30px;
+	position:absolute;
+	font-size:22px;
+	line-height:90px;
+	top:0px;
+	z-index:900;
+	text-align:center;
+	cursor:pointer;
+}
+.problemList-i:hover{
+	background:#000;
+	opacity:0.3;
+	color:#fff;
+}
+.animi{
+	transition: all 0.5s;
+}
+.sms .top{
+	position:relative;
+}
+.sms .top .sms-title{
+	position:absolute;
+	width:100%;
+	text-align:center;
+	line-height:30px;
+	top:6px;
+	left:0px;
+	z-index:800;
+}
+.sms .top .hasNum{
+	position:absolute;
+	width:100%;
+	height:100%;
+	z-index:0;
+	top:0px;
+	left:0px;
+	background:url(shujupan.png) no-repeat center;
+}
+.sms-num{
+	position:absolute;
+	z-index:100;
+	top:108px;
+	width:50px;
+	text-align:center;
+}
+.sms-left{
+	left:8px;
+}
+.sms-right{
+	right:9px;
+}
+.sms .top .hasNumZz{
+	position:absolute;
+	width:120px;
+	height:21px;
+	background:url(smszhizhen.png) no-repeat center;
+	top:94px;
+	left:30px;
+	transition: all 1s;
+}
+
+
+
+@media screen and (min-width: 1024px) and (max-width: 1280px){
+	.userInfo dt h5 .uname{width:110px;} 
+	}
+@media screen and (max-width: 1000px) { 
+	.DIDiv{float:none;width:100%;clear:both;margin-left:0;margin-bottom:4%;height:auto;}
+	.listInfo .rightB{float:none;width:100%;margin-bottom:4%;}
+	.listInfo .leftB{float:none;width:100%;}
+	.orderTab .firstTh{width:63%;}
+	.orderTab td{line-height:250%;}
+	.userInfo dt h5 .stime{font-size:12px;}
+	.userInfo dt h5 .uname{width:100px;font-size:16px;}
+	.DIDiv p,.DIDiv h5{height:auto}
+	.DIDiv dt{width:80%;}
+	.DIDiv dd{width:20%;}
+	.DIDiv dd i{width:48px;line-height:50px;border-width:4px;height:48px;font-size:30px;}
+	.DIDiv .two dd i{line-height:50px;}
+    .DIDiv .zai{padding-left:0px;}
+	.dateInfo .padding{padding:12px;}
+	.listInfo .rightB .smd{width:47.2%}
+	.orderTab .l{;padding-left:12px;padding-top:6px;padding-bottom:6px;line-height:22px;}
+	
+	.problemList{width:100%;}
+	.problem .tit{overflow:hidden;zoom:1;}
+	.sms .top .hasNumZz{  left: 50%;    margin: 0 auto 0 -60px;}
+  }

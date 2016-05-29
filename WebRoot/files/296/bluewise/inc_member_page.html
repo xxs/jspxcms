@@ -1,0 +1,18 @@
+<div class="listPage">
+					<div class="l">
+						[#if page>1]
+							<a href="${paging(page-1)}" class="fa fa-chevron-left">上一页</a>
+						[/#if]
+						[#if page < pagedList.totalPages]
+							<a href="${paging(page+1)}" class="fa fa-chevron-right">下一页</a>
+						[/#if]
+					</div>
+					<!-- 
+					<div class="r">
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-10" val="10">10</a>
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-20" val="20">20</a>
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-50" val="50">50</a>
+						<a href="javascript:void(0);" class="accountListPageSize" id="accountListPageSize-100" val="100">100</a>
+					</div>
+					 -->
+				</div>

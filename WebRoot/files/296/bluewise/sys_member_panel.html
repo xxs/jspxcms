@@ -1,0 +1,144 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>会员中心_${site.fullNameOrName}</title>
+<style>
+/****主题颜色****/
+.comm-top{
+	background-color:#31a66b !important;
+}
+.center-left{
+	background-color:#31a66b !important;
+}
+.left-menu{
+	background-color:#31a66b;
+}
+.pointer{
+	background-color:#31a66b;
+}
+.pointer3{
+	background-color:#31a66b;
+}
+.pointer3:hover{
+	color:#31a66b;
+}
+.menu-on{
+	color:#31a66b !important;
+}
+.top-left{background:#22744B !important}
+
+</style>
+
+<script src="_files/member/jquery.min.js"></script>
+<script src="_files/member/jquery.nicescroll.js"></script>
+<script>
+var isMobile=false;
+</script>
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="_files/member/ncontrol.css">
+<script src="_files/member/ncontrol.js"></script>
+<script src="_files/member/ncontrolFunction.js"></script>
+</head>
+
+<body youdao="bind">
+<div class="comm-top">
+	<div class="top-left">
+    		        <a href="#" target="_blank"><img src="_files/member/logo.png" class="logo"></a>
+            </div>
+    <div class="top-right" style="width: 1770px;">
+    		<div class="t-r-left pointer" id="mini-menu" type="1" ><i class="fa fa-bars" style="padding:15px 20px;"></i></div>
+        	<div class="t-r-menu">
+	         	<div class="menu-items pointer3" id="btn-username"><span>${user.username}</span><i class="fa fa-angle-down i-right animi3"></i></div>
+	            <div class="menu-items pointer3" id="btn-gd"><span>消息管理</span><i class="fa fa-angle-down i-right animi3"></i></div>
+	            <div class="menu-items pointer3 mobile-ndisplay" style="padding:15px 20px;" id="btn-skin"><i class="fa fa-magic"></i><span></span></div>
+        	</div>
+         <div class="label-skin mobile-ndisplay" opentype="0">
+                 <div class="skin-val">
+                    <a style="background:#0971B2" href="javascript:void(0);" val="0971B2"></a>
+                    <a style="background:#0054BB" href="javascript:void(0);" val="0054BB"></a>
+                    <a style="background:#0066cc" href="javascript:void(0);" val="0066cc"></a>
+                    <a style="background:#4683FF" href="javascript:void(0);" val="4683FF"></a>
+					<a style="background:#4D84F3" href="javascript:void(0);" val="4D84F3"></a>
+					<a style="background:#0DA1FF" href="javascript:void(0);" val="0DA1FF"></a>
+					<a style="background:#5AB1EB" href="javascript:void(0);" val="1C94E3"></a>
+                    <a style="background:#00829A" href="javascript:void(0);" val="00829A"></a>
+                    <a style="background:#090" href="javascript:void(0);" val="090"></a>
+                    <a style="background:#31a66b" href="javascript:void(0);" val="31a66b"></a>
+                    <a style="background:#00B233" href="javascript:void(0);" val="00B233"></a>
+                    <a style="background:#ff6600" href="javascript:void(0);" val="ff6600"></a>
+                    <a style="background:#ECAC04" href="javascript:void(0);" val="ECAC04"></a>
+                    <a style="background:#993D3D" href="javascript:void(0);" val="993D3D"></a>
+                    <a style="background:#B200B2" href="javascript:void(0);" val="B200B2"></a>
+                    <a style="background:#B1639F" href="javascript:void(0);" val="B1639F"></a>
+                    <a style="background:#6B51C0" href="javascript:void(0);" val="6B51C0"></a>
+                    <a style="background:#595CA0" href="javascript:void(0);" val="595CA0"></a>
+                    <a style="background:#B10000" href="javascript:void(0);" val="B10000"></a>
+                    <a style="background:#222" href="javascript:void(0);" val="222"></a>
+                    <a style="background:#666666" href="javascript:void(0);" val="666666"></a>
+                 </div>
+                 <div class="skin-title"><em class="fa fa-cogs"></em>点击色块更换皮肤</div>
+        	</div>
+        	<div class="label-user" opentype="0">
+             <a href="${ctx}/logout.jspx" class="btn-loginOut animi">退出</a>
+        	</div>
+        	<div class="label-gd" opentype="0" style="right: 116.5px;">
+            	<a href="javascript:void(0);" >问题管理<em id="wt-num">0</em></a>
+            	<a href="javascript:void(0);" >在线提交问题</a>
+        	</div>
+    </div>
+</div>
+<!--<div class="comm-center">-->
+	<div class="center-left" style="height: 881px; top: 45px; width: 150px;">
+    		<ul class="left-menu iosHide" id="left-menu" tabindex="5000" style="overflow-y: hidden; outline: none;">
+             <li class="menu-items menu-on" forurl="${ctx}/my.jspx" id="items-index"><i class="fa fa-home btn-ico" style="font-size:16px;"></i><span class="btn-title">首页</span></li>
+             <li class="menu-items pointer3" forurl="${ctx}/my/profile.jspx" id="items-my-edit"><i class="fa fa-user btn-ico"></i><span class="btn-title">修改个人信息</span></li>
+      		 <li class="menu-items pointer3" forurl="${ctx}/my/password.jspx" id="items-psd-edit"><i class="fa fa-money btn-ico"></i><span class="btn-title">修改密码</span></li>
+      	     <li class="menu-items pointer3" forurl="${ctx}/my/email.jspx" id="items-email-edit"><i class="fa fa-envelope btn-ico"></i><span class="btn-title">修改邮箱</span></li>
+			 <li class="menu-items pointer3" forurl="${ctx}/my/contribution/create.jspx" id="items-info-add"><i class="fa fa-tasks btn-ico"></i><span class="btn-title">我要投稿</span></li>
+			 <li class="menu-items pointer3" forurl="${ctx}/my/contribution.jspx" id="items-info-list"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">稿件列表</span></li>
+             <!-- 
+              <li class="menu-items pointer3" fortype="m-items-user" id="items-user"><i class="fa fa-user btn-ico"></i><span class="btn-title">用户中心</span></li>
+              -->
+             </ul>
+             <!-- 
+        	<div class="left-menu-two iosHide" id="left-menu-two" tabindex="5001" style="overflow-y: hidden; outline: none;">
+             <div class="menu-two-items" id="m-items-user">
+                	<h1 class="m-t-i-title">用户中心</h1>
+                 <ul class="m-t-i-list">
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                 	<li class="list-items"><a url="#" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+				</ul>
+             </div>   
+              -->
+        	</div>
+    </div>
+    <div class="center-right" style="height: 881px; top: 45px; width: 1770px; right: 0px;">
+    		<div class="menu-load"></div>
+    		<div class="center-load" style="display: none; opacity: 0;">
+    			<div class="center-load-bg"></div>
+    			<img src="_files/member/load.gif">
+    			<span class="center-load-tips">努力加载中...</span>
+    		</div>
+    		<iframe src="${ctx}/my.jspx" frameborder="0" scrolling="auto" class="frame" id="frame" name="mainFrame"></iframe>
+    </div>
+
+<div class="windowMsg">
+	<span>这里是提示文字</span>
+</div>
+<script src="_files/member/nFolder.js"></script>
+<script>
+</script>
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 901; cursor: default; position: absolute; top: 80px; left: 143px; height: 881px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2001" class="nicescroll-rails" style="width: 7px; z-index: 901; cursor: default; position: absolute; top: 45px; left: 323px; height: 881px; opacity: 0.1;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 294px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body>
+</html>
+[/#escape]

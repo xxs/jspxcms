@@ -1,0 +1,4 @@
+[#assign script]
+[#if user??]<li><a href="${ctx}/panel.jspx">${user.username}</a></li><li><a href="${ctx}/logout.jspx">[退出]</a></li>[#else]<li><a href="${ctx}/login.jspx" target="_blank">登陆</a></li><li><a href="${ctx}/register.jspx" target="_blank">注册</a></li>[/#if]
+[/#assign]
+document.write("${script?js_string}");

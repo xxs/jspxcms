@@ -1,0 +1,186 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>会员中心_${site.fullNameOrName}</title>
+<style>
+/****主题颜色****/
+.comm-top{
+	background-color:#31a66b !important;
+}
+.center-left{
+	background-color:#31a66b !important;
+}
+.left-menu{
+	background-color:#31a66b;
+}
+.pointer{
+	background-color:#31a66b;
+}
+.pointer3{
+	background-color:#31a66b;
+}
+.pointer3:hover{
+	color:#31a66b;
+}
+.menu-on{
+	color:#31a66b !important;
+}
+.top-left{background:#22744B !important}
+
+</style>
+
+<script src="_files/member/jquery.min.js"></script>
+<script src="_files/member/jquery.nicescroll.js"></script>
+<script>
+var isMobile=false;
+</script>
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="_files/member/ncontrol.css">
+<script src="_files/member/ncontrol.js"></script>
+<script src="_files/member/ncontrolFunction.js"></script>
+</head>
+
+<body youdao="bind">
+<div class="comm-top">
+	<div class="top-left">
+    		        <a href="http://www.iisp.com/" target="_blank"><img src="_files/member/logo.png" class="logo"></a>
+            </div>
+    <div class="top-right" style="width: 1770px;">
+    		<div class="t-r-left pointer" id="mini-menu" type="1"><i class="fa fa-bars"></i></div>
+        	<div class="t-r-menu">
+         	<div class="menu-items pointer3" id="btn-username"><span>123123</span><i class="fa fa-angle-down i-right animi3"></i></div>
+            	<div class="menu-items pointer3" id="btn-gd"><span>工单管理</span><i class="fa fa-angle-down i-right animi3"></i></div>
+            	<a href="http://www.iisp.com/cart/shoppingcart.php" class="linkTag" target="_blank"><div class="menu-items pointer menu-hide pointer3"><i class="fa fa-shopping-cart i-left"></i><span>购物车（<em class="color-red f-margin" id="showcount">0</em>）</span></div></a>
+             <a href="javascript:void(0);" url="/control/nMsg.php" class="linkTag clickItems" model="items-user" action="m-items-user" ctrl="m-items-user-msg"><div class="menu-items pointer menu-hide pointer3"><i class="fa fa-comment i-left"></i><span>消息（<em class="color-red f-margin" id="showMsgCount">0</em>）</span></div></a>
+             
+             <!--<div class="menu-items pointer3" style="padding:0 20px;" id="btn-weixin"><i class="fa fa-weixin"></i><span></span></div>-->
+             <div class="menu-items pointer3 mobile-ndisplay" style="padding:0 20px;" onclick="javascript:location.href=&#39;/control/scontrol.php&#39;" title="返回旧版控制中心"><i class="fa fa-rotate-left"></i> 返回旧版<span></span></div>
+             <div class="menu-items pointer3 mobile-ndisplay" style="padding:0 20px;" id="btn-skin"><i class="fa fa-magic"></i><span></span></div>
+             
+        	</div>
+                	<!--<div class="label-weixin" opentype="0">
+            	<img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQHo7zoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL1hVekRkU1BtVlprc1lqVVd4R0tIAAIEC9E1VwMECAcAAA==" title="请使用微信扫描二维码" height="150" style="margin:15px 10px 0px 10px">
+             <p class="title-1">扫一扫绑定微信</p>
+             <p class="title-2">活动优惠享不停</p>
+        	</div>-->
+         <div class="label-skin mobile-ndisplay" opentype="0">
+                 <div class="skin-val">
+                    <a style="background:#0971B2" href="javascript:void(0);" val="0971B2"></a>
+                    <a style="background:#0054BB" href="javascript:void(0);" val="0054BB"></a>
+                    <a style="background:#0066cc" href="javascript:void(0);" val="0066cc"></a>
+                     <a style="background:#4683FF" href="javascript:void(0);" val="4683FF"></a>
+					<a style="background:#4D84F3" href="javascript:void(0);" val="4D84F3"></a>
+					<a style="background:#0DA1FF" href="javascript:void(0);" val="0DA1FF"></a>
+					<a style="background:#5AB1EB" href="javascript:void(0);" val="1C94E3"></a>
+                    <a style="background:#00829A" href="javascript:void(0);" val="00829A"></a>
+                    <a style="background:#090" href="javascript:void(0);" val="090"></a>
+                    <a style="background:#31a66b" href="javascript:void(0);" val="31a66b"></a>
+                    <a style="background:#00B233" href="javascript:void(0);" val="00B233"></a>
+                    <a style="background:#ff6600" href="javascript:void(0);" val="ff6600"></a>
+                    <a style="background:#ECAC04" href="javascript:void(0);" val="ECAC04"></a>
+                    <a style="background:#993D3D" href="javascript:void(0);" val="993D3D"></a>
+                    <a style="background:#B200B2" href="javascript:void(0);" val="B200B2"></a>
+                    <a style="background:#B1639F" href="javascript:void(0);" val="B1639F"></a>
+                    <a style="background:#6B51C0" href="javascript:void(0);" val="6B51C0"></a>
+                    <a style="background:#595CA0" href="javascript:void(0);" val="595CA0"></a>
+                    <a style="background:#B10000" href="javascript:void(0);" val="B10000"></a>
+                    <a style="background:#222" href="javascript:void(0);" val="222"></a>
+                    <a style="background:#666666" href="javascript:void(0);" val="666666"></a>
+                 </div>
+                 <div class="skin-title"><em class="fa fa-cogs"></em>点击色块更换皮肤</div>
+        	</div>
+        	<div class="label-user" opentype="0">
+            	<span class="user-ye">账户余额</span>
+            	<span class="user-ye-price"><em id="ye-num">0</em>元</span>
+            	<a href="javascript:void(0);" url="/control/nPayin.php" class="user-btn-link animi clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-Pay">马上充值</a>
+            	<div class="user-menu-list"><a href="javascript:void(0);" url="/control/nNicecode.php" class="link-color clickItems" model="items-money" action="m-items-money" ctrl="m-items-getchit">优惠券</a><span class="fenge">|</span><a href="javascript:void(0);" url="/control/nProduct_list.php?Expired=&amp;dateNow=" class="link-color clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-order">续费</a><span class="fenge">|</span><a href="javascript:void(0);" url="nInvoice.php" class="link-color clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-fapiaosq">发票管理</a></div>
+             <div class="user-other-menu">
+             	<div class="u-o-m-items"><a href="javascript:void(0);" url="nUserData.php" class="clickItems" model="items-user" action="m-items-user" ctrl="m-items-user-info">账户信息</a></div>
+                	<div class="u-o-m-items"><a href="javascript:void(0);" url="/control/nAccountList.php" class="clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-order">我的订单</a></div>
+                 <div class="u-o-m-items"><a href="javascript:void(0);" url="/control/nAccountStatistics.php" class="clickItems" model="items-money" action="m-items-money" ctrl="m-items-money-list">我的财务</a></div>
+             </div>
+            	<a href="http://www.iisp.com/user/logout.php" class="btn-loginOut animi">退出</a>
+        	</div>
+        	<div class="label-gd" opentype="0" style="right: 116.5px;">
+            	<a href="javascript:void(0);" url="/control/nAllQuestion.php" class="clickItems" model="items-user" action="m-items-user" ctrl="m-items-user-question">问题管理<em id="wt-num">0</em></a>
+            	<a href="javascript:void(0);" url="/control/nSubQuestion.php" class="clickItems" model="items-user" action="m-items-user" ctrl="m-items-user-question">在线提交问题</a>
+        	</div>
+    </div>
+</div>
+<!--<div class="comm-center">-->
+	<div class="center-left" style="height: 881px; top: 45px; width: 150px;">
+    		<ul class="left-menu iosHide" id="left-menu" tabindex="5000" style="overflow-y: hidden; outline: none;">
+            	<li class="menu-items menu-on" forurl="/control/nMain.php" id="items-index"><i class="fa fa-home btn-ico" style="font-size:16px;"></i><span class="btn-title">首页</span></li>
+             <li class="menu-items pointer3" fortype="m-items-ym" id="items-ym"><i class="fa fa-globe btn-ico" style="font-size:16px;"></i><span class="btn-title">域名服务</span></li>
+             <li class="menu-items pointer3" fortype="m-items-zhuji" id="items-zhuji"><i class="fa fa-windows btn-ico"></i><span class="btn-title">虚拟主机</span></li>
+             <li class="menu-items pointer3" fortype="m-items-youju"><i class="fa fa-envelope btn-ico"></i><span class="btn-title">企业邮局</span></li>
+             <li class="menu-items pointer3" fortype="m-items-box"><i class="fa fa-desktop btn-ico"></i><span class="btn-title">建站助手</span></li>
+             <li class="menu-items pointer3" fortype="m-items-server"><i class="fa fa-tasks btn-ico"></i><span class="btn-title">服务器管理</span></li>
+             <li class="menu-items pointer3" fortype="m-items-other" id="items-other"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">增值服务</span></li>
+             
+             <li class="menu-items pointer3" forurl="${ctx}/my/profile.jspx" id="items-my-edit"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">修改个人信息</span></li>
+      		 <li class="menu-items pointer3" forurl="${ctx}/my/profile.jspx" id="items-psd-edit"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">修改密码</span></li>
+      	     <li class="menu-items pointer3" forurl="${ctx}/my/profile.jspx" id="items-email-edit"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">修改邮箱</span></li>
+			 <li class="menu-items pointer3" forurl="${ctx}/my/profile.jspx" id="items-info-add"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">我要投稿</span></li>
+			 <li class="menu-items pointer3" forurl="${ctx}/my/profile.jspx" id="items-info-list"><i class="fa fa-bar-chart btn-ico"></i><span class="btn-title">稿件列表</span></li>
+			 
+             <li class="menu-items pointer3" fortype="m-items-money" id="items-money"><i class="fa fa-money btn-ico"></i><span class="btn-title">财务中心</span></li>
+             <li class="menu-items pointer3" fortype="m-items-user" id="items-user"><i class="fa fa-user btn-ico"></i><span class="btn-title">用户中心</span></li>
+                     	</ul>
+        	<div class="left-menu-two iosHide" id="left-menu-two" tabindex="5001" style="overflow-y: hidden; outline: none;">
+            	
+           	<!----------------------------->
+             <div class="menu-two-items" id="m-items-money">
+                	<h1 class="m-t-i-title">财务中心</h1>
+                 <ul class="m-t-i-list">
+                 	<li class="list-items"><a url="/control/nAccountList.php" class="list-items-link" id="m-items-money-order">订单管理</a></li>
+                    	<li class="list-items"><a url="/control/nSchedule_list.php" class="list-items-link" id="m-items-money-yuding">预定续费列表</a></li>
+                    	<li class="list-items"><a url="/control/nAccountRecords.php" class="list-items-link" id="m-items-money-list">财务记录</a></li>
+                                             <li class="list-items"><a url="/control/nNicecode.php" class="list-items-link" id="m-items-money-kj">优惠券</a></li>
+                 		<li class="list-items"><a url="/control/nAccountStatistics.php" class="list-items-link" id="m-items-money-tj">财务统计</a></li>
+                    	<li class="list-items"><a url="/control/nInvoice.php" class="list-items-link" id="m-items-money-fapiaosq">发票管理</a></li>
+                     <li class="list-items"><a url="/control/nPayin.php" class="list-items-link" id="m-items-money-Pay">汇入预付款</a></li>
+                     <!--<li class="list-items"><a url="/control/nManageAddr.php" class="list-items-link" id="m-items-money-add">管理邮寄地址</a></li>
+                     <li class="list-items"><a url="/control/nManageInvoice.php" class="list-items-link" id="m-items-money-fapiao">管理发票信息</a></li>-->
+                     <li class="list-items"><a href="http://www.iisp.com/customer/pay.php" class="list-items-link" target="_blank">更多支付方式</a></li>
+                 </ul>
+            	</div>   
+             <!----------------------------->
+             <div class="menu-two-items" id="m-items-user">
+                	<h1 class="m-t-i-title">用户中心</h1>
+                 <ul class="m-t-i-list">
+                 	<li class="list-items"><a url="/control/nUserInfo.php" class="list-items-link" id="m-items-user-info">用户信息</a></li>
+                    	<li class="list-items"><a url="/control/nMsg.php" class="list-items-link" id="m-items-user-msg">消息中心</a></li>
+                 	<li class="list-items"><a url="/control/nAllQuestion.php" class="list-items-link" id="m-items-user-question">工单管理</a></li>
+                     <li class="list-items"><a url="/control/nSupport_list.php" class="list-items-link" id="m-items-user-help">帮助中心</a></li>
+					 					 <li class="list-items"><a href="http://www.iisp.com/log/index.php" class="list-items-link" target="_blank">升级日志</a></li>
+                     <li class="list-items"><a href="http://www.iisp.com/video/" class="list-items-link" target="_blank">耐思大讲堂</a></li>
+					                  </ul>
+            	</div>   
+			<!----------------------------->
+                        	<!---end--->
+        	</div>
+    </div>
+    <div class="center-right" style="height: 881px; top: 45px; width: 1770px; right: 0px;">
+    		<div class="menu-load"></div>
+    		<div class="center-load" style="display: none; opacity: 0;">
+    			<div class="center-load-bg"></div>
+    			<img src="_files/member/load.gif">
+    			<span class="center-load-tips">努力加载中...</span>
+    		</div>
+    		<iframe src="my.jspx" frameborder="0" scrolling="auto" class="frame" id="frame" name="mainFrame"></iframe>
+    </div>
+
+<div class="windowMsg">
+	<span>这里是提示文字</span>
+</div>
+<script src="_files/member/nFolder.js"></script>
+<script>
+</script>
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 901; cursor: default; position: absolute; top: 80px; left: 143px; height: 881px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2001" class="nicescroll-rails" style="width: 7px; z-index: 901; cursor: default; position: absolute; top: 45px; left: 323px; height: 881px; opacity: 0.1;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 294px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body>
+</html>
+[/#escape]

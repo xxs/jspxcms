@@ -1,0 +1,1785 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="atarm" />
+<title>${site.fullNameOrName} -- 安然建站助手</title>
+<meta name="description" content="安然建站助手" />
+<meta name="keywords" content="安然建站助手" />
+<link href="_files/css/design.css" rel="stylesheet" type="text/css">
+<link href="_files/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+.sBox{cursor:pointer}
+</style>
+<body>
+<div id="Page">
+    <!-- 头部 -->
+    
+<!--常用JS文件-->
+<!--[if lt IE 7]>
+<script src="js/pngfix.js"></script>
+<![endif]-->
+<script type="text/javascript" src="_files/js/jquery.js"></script>
+<script type="text/javascript" src="_files/js/jquery.slide.js"></script>
+<script type="text/javascript" src="_files/js/jquery.tabs.js"></script>
+<script type="text/javascript" src="_files/js/jquery.global.js"></script>
+<script type="text/javascript" src="_files/js/menu.js"></script>
+<link href="_files/css/2015-01.css" rel="stylesheet" type="text/css">
+<link href="_files/css/globalstyle.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="index">
+[#include "inc_header.html"/]
+
+<div id="qy_banner_bg">
+<div id="qy_banner">
+	<img src="_files/picture/cloud_web_banner.jpg" />
+	<div class="bText yahei">
+	<p class="b">轻云建站 独<span class="yFont">站</span>云端</p>
+	<p class="s">轻云主机+PC网站+手机网站+微网站+APP网站</p>
+     <div class="bBtn"><input type="button" value="马上建站" name="designBtn" ="window.open('/special/order.php?spid=9891&dbType=1')" ></div>
+	</div>
+	</div>
+</div>
+<link href="_files/css/designglobal.css" rel="stylesheet" type="text/css" >
+<style>
+#topLink{display:none;}
+</style>
+
+[#include "inc_submenu.html"/]
+
+
+ <script src="js/jquery.popbox.js"></script>
+<script>
+function newshowcart(form){
+    var id = $("#spid").val();
+	var dbType = $("#dbType").val();
+    if(id>=9000){
+        showcart2('special', id, dbType);
+    }else{
+        showcart('nicebox', id);
+    }
+}
+function showcart(type,id){//展示购物车配置页面
+	$.get("/cart/cart_ajaxpage.php",{ptype:type, pid:id},function(data){
+		$(".mainlist").html(data);
+	});
+	showpopbox();
+}
+function showcart2(type,id,dbType){//展示购物车配置页面
+	$.get("/cart/cart_ajaxpage.php",{ptype:type, spid:id, dbType:dbType, years:1},function(data){
+		$(".mainlist").html(data);
+	});
+	showpopbox();
+}
+</script>
+
+<div class="pageMarginHeight">
+<div class="mainPage Qcloud">
+	<div class="top_tit">
+		<h4 class="pro_name yahei">轻云建站<font>套餐</font></h4>
+		<p class="pro_txt yahei">轻云主机+PC网站+手机网站+微站+APP</p>
+	</div>
+	<div class="showCon">
+		<form action="/special/order.php" id="mainform" method="get">
+		<input type="hidden" name="spid" id="spid" value="9891">
+		<input type="hidden" name="dbType" id="dbType" value="1">
+			<div class="configure">
+				<p class="fitWho yahei">
+					<span class="blocks">适合用户</span>  大中小企业 政府机构 科教文演等事业单位
+				</p>
+				<div class="selectDB">
+					<p class="yahei">
+						<font class="DBgrayfont">选择数据库类型:</font>
+						<span class="DB_S DB1">
+							<em><i>&nbsp;</i></em>SQL Server数据库 
+						</span>
+						<span class="DB_S DB2">
+							<em class="current"><i>&nbsp;</i></em>MYSQL数据库
+						</span>
+					</p>
+					<script>
+					$(".DB1").click(function(){
+						$(".DB2").find("em").attr("class","");
+						$(this).find("em").attr("class","current");
+						$("#dbType").val(0);
+					});
+					$(".DB2").click(function(){
+						$(".DB1").find("em").attr("class","");
+						$(this).find("em").attr("class","current");
+						$("#dbType").val(1);
+					});
+					</script>
+				</div>
+				<div class="configure_list">
+					<!--SQL和Mysql数据库--->
+					<dl class="DBdl DB1_list yahei hide" >
+						<dt class="DBgrayfont">套餐包含:</dt>
+						<dd>
+							<p>建站助手<b class="redfont">全能版</b>（PC网站+手机网站+微网站+APP）</p>
+							<p><b class="redfont">10G</b>独立网站硬盘 / 送 1G 在线备份空间</p>
+							<p>送<b class="redfont">1G/10</b>用户邮局, 每用户 100M</p>
+							<p>独享<b class="redfont">1核</b>CPU</p>
+							<p>脚本支持PHP/ASP/ASP.NET 2.0/ASP.NET 4.0</p>
+						</dd>
+					</dl>
+					<dl class="DBdl DB2_list yahei">
+						<dt class="DBgrayfont">套餐包含:</dt>
+						<dd>
+							<p>独立云服务器,独立IP,<b class="redfont">1M</b>独立带宽，不限流量,独享<b class="redfont">1核</b> CPU</p>
+							<p><b class="redfont">10G</b>独立网站硬盘 / 送<b class="redfont"> 1G </b>在线备份空间</p>
+							<p>送<b class="redfont">1G/10</b>用户邮局, 每用户<b class="redfont"> 100M</b></p>
+							<p>脚本支持PHP/ASP/ASP.NET 2.0/ASP.NET 4.0</p>
+                            <p>送建站助手全能版（PC网站+手机网站+微网站+APP)</p>
+                            <p>送价值<b class="redfont">88元</b>顶级域名com/net/cn一个</p>
+
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="pro_price">
+				<div class="price_show">
+					<p class="yahei first_p"><font class="redfont">￥</font><b class="price">1999</b>/年起</p>
+					<span>(<font>原价:2999元</font>,省1000元)</span>
+					<p>
+						<input type="button" ="newshowcart('9891');return false;" class="btns add_cart yahei blocks" value="加入购物车"/>
+						<input type="submit" class="btns buy_now yahei blocks" value="立即购买"/>
+					</p>
+					<p class="howtoCustomze"><a ="customize.php" class="more_link">不想做站，选择私人定制，打造独特的企业网站</a></p>
+				</div>
+				
+			</div>
+		</form>
+	</div>
+	<div class="online yahei">
+		<div class="xzFont">震撼首发</div>
+	</div>
+</div>
+
+
+<div id="Pages" class="pages_mt">
+
+
+<div class="nicetab">
+	<ul class="tab_menu">
+				<li class="current">轻云建站优势</li>
+								<li  >模板超市</li>
+		<li>功能对比</li>
+		<li>推荐案例</li>
+			</ul>
+	<div class="tab_box">
+				<div class="tpllist"><div id="maine" class="qy_function">
+<div class="main_d div_odd yahei">
+	<div class="img_d">
+		<img src="_files/picture/cimg1.png" />
+	</div>
+	<div class="txt_d">
+		<h4>简单易用：全网营销 运营出彩</h4>
+		<p>电脑站+手机站+微站+APP，全网覆盖式营销</p>
+		<p>免费开放SEO优化和网站推广服务，流量更高、排名更好</p>
+	</div>
+</div>
+<div class="main_d div_even yahei">
+	<div class="txt_d">
+		<h4>安全稳定: 尊贵独享 快速运行</h4>
+		<p>独立云服务器，独立IP，独享CPU，独立带宽，1G独立数据库，不限流量</p>
+		<p>数据可靠性、独享内存、独享带宽，不受干扰云端</p>
+		<p>安全防御，稳定可靠</p>
+	</div>
+	<div class="img_d">
+		<img src="_files/picture/cimg2.png" />
+	</div>
+</div>
+
+
+<div class="main_d div_odd yahei">
+	<div class="img_d">
+		<img src="_files/picture/cimg5.png" class='mImg-seo'/>
+	</div>
+	<div class="txt_d">
+		<h4>SEO：独立IP，搜索引擎最爱</h4>
+		<p>有利于搜索引擎SEO优化：一个IP地址上只绑定了一个网站</p>
+		<p>会更容易被搜索引擎认可，可更快收录你的网站</p>
+		<p>对于提升搜索引擎排名也有帮助，还不会被同服务器上的作弊网站牵连</p>
+	</div>
+</div>
+
+
+
+<div class="main_d div_even yahei">
+	
+	<div class="txt_d">
+		<h4>贴心服务：7*24H 服务不掉线</h4>
+		<p>电话、邮件、工单、企业QQ任一联系方式随时获取帮助</p>
+		<p>畅享远程技术支持</p>
+			</div>
+	<div class="img_d">
+		<img src="_files/picture/cimg3.png" />
+	</div>
+</div>
+<div class="main_d div_odd yahei noborder" >
+	<div class="img_d">
+		<img src="_files/picture/cimg4.png" style="mImg-tb"/>
+	</div>
+	<div class="txt_d">
+		<h4>蜕变：借势“互联网+”迎企业转型</h4>
+		<p>“互联网+”计划最优建站解决方案</p>
+		<p>为企业构建高效网络平台</p>
+		<p>稳占下一轮经济发展的“风口”
+</p>
+	</div>
+	
+</div>
+</div>
+
+</div>
+								<div class='hide'><meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<div class="cataList tBar" id="tCateList">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="100" class="category fenlei">
+			<ul>
+		  		  	<li><span>所有版本</span> <span class="enarr all-template"></span>
+		  		<ul>
+		  			<li><a ="?">所有版本</a></li>
+		  			<li><a ="?grade=1">标准版</a></li>
+		  			<li><a ="?grade=2">全能版</a></li>
+		  			<li><a ="?grade=100">尊享版</a></li>
+		  			<li><a ="?grade=101">商城版</a></li>
+		  		</ul>
+		  	</li>
+		  </ul>
+		</td>
+		<td width="85"><div class="modelbtn">行业分类 <img src="_files/picture/showdown.png"/></div></td>
+		<td width="65" align="right">颜色分类：</td>
+		<td width="285"><div class="colorList">
+				<a ="?color=#FF0000" ="gettpllist();return false();void(0)"  style="border:1px solid #FF0000;" >红色</a>
+				<a ="?color=#FF9900" ="gettpllist();return false();void(0)"  style="border:1px solid #FF9900;" >橙色</a>
+				<a ="?color=#FFCC00" ="gettpllist();return false();void(0)"  style="border:1px solid #FFCC00;" >黄色</a>
+				<a ="?color=#009900" ="gettpllist();return false();void(0)"  style="border:1px solid #009900;" >绿色</a>
+				<a ="?color=#00CCFF" ="gettpllist();return false();void(0)"  style="border:1px solid #00CCFF;" >青色</a>
+				<a ="?color=#336699" ="gettpllist();return false();void(0)"  style="border:1px solid #336699;" >蓝色</a>
+				<a ="?color=#FF99CC" ="gettpllist();return false();void(0)"  style="border:1px solid #FF99CC;" >紫色</a>
+				<a ="?color=#000000" ="gettpllist();return false();void(0)"  style="border:1px solid #000000;" >黑色</a>
+				<a ="?color=#999999" ="gettpllist();return false();void(0)"  style="border:1px solid #999999;" >灰色</a>
+				<a ="?color=#FFFFFF" ="gettpllist();return false();void(0)"  style="border:1px solid #dedede;" >白色</a>
+				<a ="?cat=" class='all-color'>所有颜色</a>
+		</div></td>
+		<td class='talgin'>
+		 <input type="text" name="search" size="18" placeholder="模板搜索"  class="search_txt" onchange="document.location.='?search='+this.value+'&mobl=&from=';" value="">
+		<input type="button" value="" class="search_btn">
+		</td>
+	</tr>
+	</table>
+</div>
+
+<div class="modelCata">
+	<ul>
+	<li><a ="?cat=">浏览所有类别</a></li>
+		<li  class='hot' 0>
+		<a ="?cat=0" ="gettpllist();return false();">标准网站模板</a>
+		
+	</li>
+		<li   1>
+		<a ="?cat=1" ="gettpllist();return false();">IT科技、软件、通讯模板</a>
+		
+	</li>
+		<li   2>
+		<a ="?cat=2" ="gettpllist();return false();">办公、文教、乐器模板</a>
+		
+	</li>
+		<li style='margin:0'  3>
+		<a ="?cat=3" ="gettpllist();return false();">餐饮、旅游模板</a>
+		
+	</li>
+		<li   4>
+		<a ="?cat=4" ="gettpllist();return false();">宠物模板</a>
+		
+	</li>
+		<li   5>
+		<a ="?cat=5" ="gettpllist();return false();">电子、电工、电器模板</a>
+		
+	</li>
+		<li   6>
+		<a ="?cat=6" ="gettpllist();return false();">房地产、房屋租赁模板</a>
+		
+	</li>
+		<li   7>
+		<a ="?cat=7" ="gettpllist();return false();">服装、鞋帽、皮具模板</a>
+		
+	</li>
+		<li style='margin:0'  8>
+		<a ="?cat=8" ="gettpllist();return false();">化工、化学、涂料模板</a>
+		
+	</li>
+		<li   9>
+		<a ="?cat=9" ="gettpllist();return false();">环保、生态模板</a>
+		
+	</li>
+		<li   10>
+		<a ="?cat=10" ="gettpllist();return false();">婚庆、广告、服务模板</a>
+		
+	</li>
+		<li   11>
+		<a ="?cat=11" ="gettpllist();return false();">机械、工业制品模板</a>
+		
+	</li>
+		<li   12>
+		<a ="?cat=12" ="gettpllist();return false();">家电、音响模板</a>
+		
+	</li>
+		<li style='margin:0'  13>
+		<a ="?cat=13" ="gettpllist();return false();">家居、日用、家具模板</a>
+		
+	</li>
+		<li   14>
+		<a ="?cat=14" ="gettpllist();return false();">建筑、建材、装饰模板</a>
+		
+	</li>
+		<li   15>
+		<a ="?cat=15" ="gettpllist();return false();">金融、证券模板</a>
+		
+	</li>
+		<li   16>
+		<a ="?cat=16" ="gettpllist();return false();">贸易、物流、出口模板</a>
+		
+	</li>
+		<li   17>
+		<a ="?cat=17" ="gettpllist();return false();">美容、美发、护肤模板</a>
+		
+	</li>
+		<li style='margin:0'  18>
+		<a ="?cat=18" ="gettpllist();return false();">名家个人网站模板</a>
+		
+	</li>
+		<li   19>
+		<a ="?cat=19" ="gettpllist();return false();">拍卖、投资、典当模板</a>
+		
+	</li>
+		<li   20>
+		<a ="?cat=20" ="gettpllist();return false();">汽车、运输、汽配模板</a>
+		
+	</li>
+		<li   21>
+		<a ="?cat=21" ="gettpllist();return false();">摄影、冲印、玩具模板</a>
+		
+	</li>
+		<li   22>
+		<a ="?cat=22" ="gettpllist();return false();">食品、饮料加工模板</a>
+		
+	</li>
+		<li style='margin:0'  23>
+		<a ="?cat=23" ="gettpllist();return false();">文化、娱乐休闲模板</a>
+		
+	</li>
+		<li   24>
+		<a ="?cat=24" ="gettpllist();return false();">五金、仪器、仪表模板</a>
+		
+	</li>
+		<li   25>
+		<a ="?cat=25" ="gettpllist();return false();">物业、票务模板</a>
+		
+	</li>
+		<li   26>
+		<a ="?cat=26" ="gettpllist();return false();">鲜花、礼品、工艺品模板</a>
+		
+	</li>
+		<li   27>
+		<a ="?cat=27" ="gettpllist();return false();">学校、教育培训模板</a>
+		
+	</li>
+		<li style='margin:0'  28>
+		<a ="?cat=28" ="gettpllist();return false();">医疗、药品、保健模板</a>
+		
+	</li>
+		<li   29>
+		<a ="?cat=29" ="gettpllist();return false();">照明、水电、能源模板</a>
+		
+	</li>
+		<li   30>
+		<a ="?cat=30" ="gettpllist();return false();">政府、综合性门户模板</a>
+		
+	</li>
+		<li   31>
+		<a ="?cat=31" ="gettpllist();return false();">钟表、眼镜模板</a>
+		
+	</li>
+		<li   32>
+		<a ="?cat=32" ="gettpllist();return false();">珠宝、首饰、饰品模板</a>
+		
+	</li>
+		<li style='margin:0'  33>
+		<a ="?cat=33" ="gettpllist();return false();">咨询、顾问、翻译模板</a>
+		
+	</li>
+		<li   34>
+		<a ="?cat=34" ="gettpllist();return false();">律师模板</a>
+		
+	</li>
+		<li   35>
+		<a ="?cat=35" ="gettpllist();return false();">双语言模板</a>
+		
+	</li>
+		<li   36>
+		<a ="?cat=36" ="gettpllist();return false();">纯英文模板</a>
+		
+	</li>
+		<li   37>
+		<a ="?cat=37" ="gettpllist();return false();">单页模板模板</a>
+		
+	</li>
+		<li style='margin:0'  38>
+		<a ="?cat=38" ="gettpllist();return false();">商城网站模板</a>
+		
+	</li>
+		
+	</ul>
+	<a ="#" id="hidebtn">收起</a>
+</div>
+
+
+<script>
+$(function(){
+	$(".modelbtn").click(function(){
+		$(".modelCata").animate({"height":210+"px"});
+		return false;
+	})
+	$("#hidebtn").click(function(){
+		$(".modelCata").animate({"height":0+"px"});
+		return false;
+	})
+	$(".colorList a").each(function(){
+		var length = $(this).attr("href").length;
+		var color = $(this).attr("href").substring(length-6,length);
+		$(this).css({"background-color":"#"+color});
+	})
+})
+var cat = $("#cat").val();
+if(cat)$(".modelCata").animate({"height":210+"px"});
+</script>
+
+<div id="modeList-t-bg">
+
+<div id="modelList">
+<ul class="w1182">
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?779efbd24d5a7e37" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?779efbd24d5a7e37" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：办公、文教、乐器</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?779efbd24d5a7e37" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?6271faadeedd7626" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?6271faadeedd7626" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：化工、化学、涂料</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?6271faadeedd7626" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?17eb7ecc4c38e470" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?17eb7ecc4c38e470" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：金融、证券</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?17eb7ecc4c38e470" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li class=rLi>
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?f9fd2624beefbc78" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?f9fd2624beefbc78" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：食品、饮料加工</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?f9fd2624beefbc78" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?6e3197aae95c2ff8" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?6e3197aae95c2ff8" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：食品、饮料加工</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?6e3197aae95c2ff8" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?6b8b8e3bd6ad94b9" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?6b8b8e3bd6ad94b9" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：服装、鞋帽、皮具</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?6b8b8e3bd6ad94b9" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?2650d6089a6d640c" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?2650d6089a6d640c" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：服装、鞋帽、皮具</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?2650d6089a6d640c" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li class=rLi>
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?e2c61965b5e23b47" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?e2c61965b5e23b47" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：餐饮、旅游</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?e2c61965b5e23b47" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?46b2644cbdf489fa" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?46b2644cbdf489fa" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：办公、文教、乐器</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?46b2644cbdf489fa" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?56cb94cb34617aea" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?56cb94cb34617aea" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：建筑、建材、装饰</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?56cb94cb34617aea" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li >
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?aee92f16efd522b9" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?aee92f16efd522b9" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：精华 - 全能版<br/>
+				<span class="grayfont">行业：商城网站</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?aee92f16efd522b9" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+ 
+<li class=rLi>
+
+		<div class="showModel" style="margin-right:0;">
+		<div class="showImg">
+			<div id="PC_show">
+				<a ="http://demo.nicebox.cn/?6244b2ba957c48bc" target="_blank" title="预览演示网站" class="myshow"><img src="_files/picture/preview.jpg"></a>
+			</div>
+		<!--判断是否有手机版-->
+
+		   <div class="mobile_show" >
+           <a  ="http://demo.nicebox.cn/?6244b2ba957c48bc" target="_blank" title="预览演示网站" class="mymobileshow"><img src="_files/picture/preview_mobi.jpg" alt="" width=72 > 
+		   </a>
+            </div>   
+			         </div>
+				<div class="showContent" title="">
+				<div id="left-content">
+				版本：所有版本均可使用<br/>
+				<span class="grayfont">行业：金融、证券</span><br/></div>
+				<div id="right-content">
+					<a ="http://demo.nicebox.cn/?6244b2ba957c48bc" class="btn btn1 btnB btn_pre" target="_blank" >预览</a>
+					<a ="box_edition.php" class="btn btn1 btnB">购买</a>
+				</div>
+				</div>
+			</div>
+		
+</li>
+</ul>
+</div>
+
+
+<div id="pagelist" style="display:none"><a ='?cat=&page=1' class=h ='gettpllist(1);return false;'>1</a><a ='?cat=&page=2'  ='gettpllist(2);return false;'>2</a><a ='?cat=&page=3'  ='gettpllist(3);return false;'>3</a><a ='?cat=&page=4'  ='gettpllist(4);return false;'>4</a><a ='?cat=&page=5'  ='gettpllist(5);return false;'>5</a><a ='?cat=&page=6'  ='gettpllist(6);return false;'>6</a><a ='?cat=&page=7'  ='gettpllist(7);return false;'>7</a><a ='?cat=&page=8'  ='gettpllist(8);return false;'>8</a><a ='?cat=&page=9'  ='gettpllist(9);return false;'>9</a><a ='?cat=&page=10'  ='gettpllist(10);return false;'>10</a><a ='?cat=&page=11'  ='gettpllist(11);return false;'>11</a><a ='?cat=&page=12'  ='gettpllist(12);return false;'>12</a><a ='?cat=&page=13'  ='gettpllist(13);return false;'>13</a><a ='?cat=&page=14'  ='gettpllist(14);return false;'>14</a><a ='?cat=&page=15'  ='gettpllist(15);return false;'>15</a><a ='?cat=&page=16'  ='gettpllist(16);return false;'>16</a></div>
+
+</div>
+
+<br/>
+<center>
+	<a ="site_package.php" class="btn btn1 more-show-template">更多模板展示</a>
+</center>
+<script>
+$(function(){
+	$(".nicetab").tabs({ event:'click' });
+	$(".nicetab .tab_menu li").click(function(){
+		$(".redTab div").height($(".explanTab").height()-60);
+	})
+})
+</script></div>
+
+		<div id="bbSet" class="hide"><style>
+#boxlist{}
+#boxlist #title{overflow:hidden;zoom:1; }
+#boxlist .l{font-family:"微软雅黑";font-size:30px;color:#333;float:left;line-height:220%;}
+#boxlist .r{font-size:14px;float:right;text-align:right;line-height:220%;padding-top:25px;}
+#boxlist .r a{color:#333}
+#boxlist .r a:hover{color:#c00}
+.explanlist {border:1px solid #ccc;border-width:1px 1px 0px 0px;margin-bottom:30px; }
+.explanlist td{border:1px solid #ccc;border-width:0px 0px 1px 1px;text-align:center;height:50px;line-height:50px;}
+.explanlist .tr td{background:#f5f5f5;font-size:16px;color:#333;}
+.explanlist .ptd td{height:220px;line-height:20px !important;}
+.explanlist .ptd .price{font-family:"georgia";font-size:40px;}
+.explanlist .bigclass{width:20px;font-size:16px;margin:0 auto;line-height:25px;}
+.explanlist .rtd{border-left:1px solid #c00;}
+.explanlist .tr .rtd{background:#c00}
+.explanlist .tr .nortd{background:#ddd}
+.explanlist .rtd .rfont{position:absolute;top:-10px;left:52px\9;left:531px;text-align:center;width:217px;background:#c00;font-size:16px;line-height:58px;color:#fff;}
+.tableBuy .brtd{border-bottom:1px solid #c00}
+.tableBuy td{text-align:center;height:60px}
+.tableBuy a{color:#fff;background:#c00;height:35px;line-height:35px;width:95px;display:block;margin:0 auto;cursor:pointer}
+.tableBuy a:hover{background:#f00;color:#fff;}
+
+#floatTitle{width:1180px;overflow:hidden;zoom:1;margin-left:1px;display:none}
+#floatTitle li{float:left;width:215px;background:#f5f5f5;font-size:16px;color:#333;display:block;height:50px;line-height:50px;text-align:center;border-right:1px solid #e5e5e5}
+#floatTitle li.first{width:314px;}
+#floatTitle li.last{border-right:0;width:217px;}
+
+#floatBuy{width:1180px;overflow:hidden;zoom:1;margin-left:1px;display:none}
+#floatBuy li{float:left;width:215px;background:#f5f5f5;font-size:16px;color:#333;display:block;height:50px;line-height:50px;text-align:center;border-right:1px solid #e5e5e5}
+#floatBuy li.first{width:314px;}
+#floatBuy li.last{border-right:0;width:217px;}
+#floatBuy a.mainButton{background:#c00;color:#fff;padding:5px 10px;font-size:14px;cursor:pointer;}
+#floatBuy a.mainButton:hover{background:#f00}
+#floatBuy{border-top:1px solid #e5e5e5}
+.sbanner_text  .t{margin-top:44px;}
+a.Add_cart{background:none !important;padding-left:0 !important;}
+.dSelect select{width: 85%;border: 1px solid #ccc;height: 30px;line-height: 29px;text-indent: 5px;color: #333;cursor:pointer;margin: 20px 0 12px 0;}
+.aBg{margin-bottom:10px;}
+.aBg a{width: 181px;height: 30px;border-bottom: none;line-height: 30px;border: 1px solid #ccc;background: none;color: #333;}
+.aBg a:hover{border:1px solid #c00;background:#f00;}
+.aBg2 a{background:#c00;border: 1px solid #c00;color:#fff;}
+.price_div{margin-top:25px;}
+</style>
+<link href="_files/css/popbox.css" rel="stylesheet" type="text/css">
+<div id="content" style="position:relative;background:#fff;" class="yahei">
+<table cellspacing="0" cellpadding="0" border="1" width="100%" class="explanlist" style="">
+<tr class="tr">
+	<td colspan="2" >建站助手</td>
+	<td width="156"><p class="rfont">全能版</p></td>
+	<td width="156">尊享版</td>
+	<td width="156">商城版</td>
+	<td width="156">餐饮版</td>
+		<td width="156">商城分销版</td>
+	
+	</tr>
+	<tr>
+	<td rowspan="11" width="80" align="center"><p class="bigclass">基本配置</p></td>
+	<td>图片库容量(助手自带)</td>
+
+<td>200M</td>
+<td>500M</td>
+<td>1000M</td>
+<td>1000M</td>
+<td>2000M</td>
+ 	
+	<tr><td>栏目数量</td>
+
+<td>1000</td>
+<td>2000</td>
+<td>不限</td>
+<td>不限</td>
+<td>不限</td>
+ </tr>	<tr><td>文章数量</td>
+
+<td>10000</td>
+<td>20000</td>
+<td>不限</td>
+<td>不限</td>
+<td>不限</td>
+ </tr> 
+	<tr><td>产品数量</td>
+
+<td>10000</td>
+<td>20000</td>
+<td>不限</td>
+<td>不限</td>
+<td>不限</td>
+ </tr>	<tr><td>多语言管理</td>
+
+<td>多种(中、英、日等)</td>
+<td>多种(中、英、日等)</td>
+<td>多种(中、英、日等)</td>
+<td>多种(中、英、日等)</td>
+<td>多种(中、英、日等)</td>
+ </tr>			<tr><td>PC网站</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>手机网站</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微网站 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>网站APP下载</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>自定义模版样式</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>模块样式设置 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>
+	</tr>
+
+
+	<tr><!--$fx 是有默认值的所以默认都没有填写值的--->
+	<td rowspan="9" width="80" align="center"><p class="bigclass">商城分销配置</p></td>
+	<td>佣金设置 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+    	<tr><td>提现管理 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>分享设置 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>分销商折扣 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>一键开店 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>分销商管理 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>子会员管理  <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>二维码生成 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>店铺管理 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>  
+	</tr>
+
+	<tr>
+	<td rowspan="14" width="80" align="center"><p class="bigclass">微信基本配置</p></td>
+	<td>绑定公众号</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+    	<tr><td>自动回复</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>LBS定位设置 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>群发消息 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>自定义菜单 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>图文管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>消息管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微会员管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>模板消息</td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微收款</td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微信墙</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微相册</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微投票</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>微留言</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+
+	<tr>
+	<td rowspan="7" width="80" align="center"><p class="bigclass">营销活动</p></td>
+	<td>积分活动 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+    	<tr><td>优惠券 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>满赠促销 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>满减促销 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>单品促销 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>团购秒杀 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>套餐促销(优惠套餐) <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td> -</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>			</tr>
+
+	<!--<tr>
+	<td rowspan="1" width="80" align="center"><p class="bigclass">&nbsp;</p></td>
+		</tr>-->
+
+
+
+	<tr>
+	<td rowspan="5" width="80" align="center"><p class="bigclass">模板管理</p></td>
+	<td>初始化安装</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	<tr><td>更换模板</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	   	<tr><td>开场动画设置</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>网站ico图标设置</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>网站背景设置</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>     </tr>
+	<tr>
+	<td rowspan="4" width="80" align="center"><p class="bigclass">网站编辑</p></td>
+	<td>网站栏目管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	<tr><td>网站模块管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>模块自由拖动</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>多语言管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	</tr>
+     <tr>
+    <td rowspan="5" width="80" align="center"><p class="bigclass">文章管理系统</p></td>
+	<td>文章发布</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+    	<tr><td>文章分类管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>文章管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>文章评论管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>新闻查看权限</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>
+   	</tr>
+
+	<tr>
+    <td rowspan="8" width="80" align="center"><p class="bigclass">产品管理系统</p></td>
+	<td>添加产品</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+    	<tr><td>产品分类管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>产品管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>产品留言管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>产品评论管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>淘宝产品导入 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr><!--商城-->
+	<tr><td>产品详情页 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td>-</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>自定义产品规格 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td>-</td>
+<td> -</td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>
+   </tr>
+	<tr>
+    <td rowspan="14" width="80" align="center"><p class="bigclass">在线购物系统</p></td>
+	<td>开启关闭购物系统</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	
+   	<tr><td>订单系统</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>会员充值</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>开启关闭支付方式</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>支付宝支付</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>手机支付</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>微信支付 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>快钱支付</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>网银在线支付</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>财付通支付</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>环迅支付</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>余额支付 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	   	   	<tr><td>运费设置 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>包装设置</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   		</tr>
+	<tr>
+    <td rowspan="3" width="80" align="center"><p class="bigclass">会员系统</p></td>
+	<td>会员注册</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	
+   	<tr><td>会员体系 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>   	<tr><td>会员消息</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+    <td rowspan="2" width="80" align="center"><p class="bigclass">管理员管理</p></td>
+	<td>多用户管理</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	<tr><td>管理员权限 <img src='_files/picture/new.jpg' border='0'/></td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+    <td rowspan="6" width="80" align="center"><p class="bigclass">更多系统功能</p></td>
+	<td>备份/恢复</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	<tr><td>广告系统</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>投票系统</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>计数器设置</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>访问统计</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>表单系统</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	</tr>
+	<tr>
+    <td rowspan="5" width="80" align="center"><p class="bigclass">网站推广和优化</p></td>
+	<td>网站关键字和描述</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ 	
+	<tr><td>SEO优化</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>	<tr><td>搜索引擎</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>		<tr><td>网站地图</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>		<tr><td>35BA推广</td>
+
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+<td><img src="_files/picture/right.jpg"></td>
+ </tr>			</tr>
+	
+</table>
+
+
+</div>
+
+</div>
+
+		<div class="hide"><script type="text/javascript" src="_files/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="_files/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript">
+$(function() { 
+	$('.showWrap .myshow').lightBox();
+});   
+</script>
+
+<script>
+$(function(){
+	$("#select option").each(function(i){
+		$(this).attr("value","#"+i);
+	})
+	$(".showWrap h3").each(function(i){
+		$(this).attr("id",i);
+	})
+})
+</script>
+
+<div class="tBar" id="templateNum">截至2016年04月, 总共有 370,652 个网站使用建站助手制作! </div>
+
+
+<div id="border" class="Template-case">
+	<div class='template-name'>NCBOBO韩国亲子服饰品牌 <span class="template-link"><a ="http://www.ncbaby.cn" target="_blank">http://www.ncbaby.cn</a></span></div>
+	<div class="tbox" style="">
+		<ul>
+			<li class="template-n"><div style="height:200px;overflow:hidden;zoom:1"><img src="_files/picture/ncbobo_big.jpg"></div><div>Nicebox</div></li>
+			<li class="template-n template-n-m"><img src="_files/picture/ncbobo.jpg"><div>Nicebox</div></li>
+			<li style="template-s">
+				<div class="sm">扫描访问手机站 &nbsp; &nbsp; &nbsp; &nbsp; 扫描收听微信 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 扫描下载APP &nbsp;</div>
+				<img src="_files/picture/tm5.gif">
+				<div class="template-app">APP仅支持安卓系统, <a ="demo/demo5.apk">按此下载到电脑</a></div>
+			</li>
+		</UL>
+	</div>
+<br/>
+	<div class='template-name'>心语茶室 <span class="template-link"><a ="http://www.xinyuchashi.com" target="_blank">http://www.xinyuchashi.com</a></span></div>
+	<div class="tbox" style="">
+		<ul>
+			<li  class="template-n"><div style="height:200px;overflow:hidden;zoom:1"><img src="_files/picture/xinyuchashi_big.jpg"></div><div>Nicebox</div></li>
+			<li  class="template-n template-n-m"><img src="_files/picture/xinyuchashi.jpg"><div>Nicebox</div></li>
+			<li style="template-s">
+				<div class="sm">扫描访问手机站 &nbsp; &nbsp; &nbsp; &nbsp; 扫描收听微信 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 扫描下载APP &nbsp;</div>
+				<img src="_files/picture/tm6.gif">
+				<div class="template-app">APP仅支持安卓系统, <a ="demo/demo6.apk">按此下载到电脑</a></div>
+			</li>
+		</UL>
+	</div>
+</div>
+
+<div class="show" style="width:1180px;margin-top:30px;">
+	    <ul id="showCase">
+	
+        <!-- These are our grid blocks -->
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://test1438158260co87.s114.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/59239_s.png"/></a>
+		<p><a ="http://test1438158260co87.s114.pc51.com" target="_blank" class="show_case_link">宝贝商城-重庆零到一科技有限公司</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://xtf365com70.s111.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/5744_s.gif"/></a>
+		<p><a ="http://xtf365com70.s111.pc51.com" target="_blank" class="show_case_link">珠海夏天风律师网站</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://shanlinnetcn39.s108.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/55076_s.png"/></a>
+		<p><a ="http://shanlinnetcn39.s108.pc51.com" target="_blank" class="show_case_link">山林净菜园</a></p>
+        </div>
+		</li>
+		        <li class="rli">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://cheetahlatexcn3640.hk818.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/42713_s.png"/></a>
+		<p><a ="http://cheetahlatexcn3640.hk818.pc51.com" target="_blank" class="show_case_link">泰国乳胶枕头</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://f2475-kanghui.s116.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/42705_s.png"/></a>
+		<p><a ="http://f2475-kanghui.s116.pc51.com" target="_blank" class="show_case_link">案例网站</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://f2457-iruizhong.s116.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/42151_s.png"/></a>
+		<p><a ="http://f2457-iruizhong.s116.pc51.com" target="_blank" class="show_case_link">长沙瑞众智能科技有限公司</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://dh2014.ks01.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/42030_s.gif"/></a>
+		<p><a ="http://dh2014.ks01.pc51.com" target="_blank" class="show_case_link">银川鼎红夜场KTV招聘网</a></p>
+        </div>
+		</li>
+		        <li class="rli">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://f2447-jiuzhenweiye3.hk818.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/42003_s.gif"/></a>
+		<p><a ="http://f2447-jiuzhenweiye3.hk818.pc51.com" target="_blank" class="show_case_link">阜阳九珍食品有限公司</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://f2445-dzxmingche.s116.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/41858_s.png"/></a>
+		<p><a ="http://f2445-dzxmingche.s116.pc51.com" target="_blank" class="show_case_link">德芝星汽车维修服务有限公司</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://wwwhmqy8088com8039.ks02.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/41692_s.gif"/></a>
+		<p><a ="http://wwwhmqy8088com8039.ks02.pc51.com" target="_blank" class="show_case_link">华盟企业管理有限公司</a></p>
+        </div>
+		</li>
+		        <li class="">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://f1312-nxhongpin.as053.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/41627_s.gif"/></a>
+		<p><a ="http://f1312-nxhongpin.as053.pc51.com" target="_blank" class="show_case_link">宁夏红品枸杞产业有限公司</a></p>
+        </div>
+		</li>
+		        <li class="rli">
+         <div class="nicebox_case">
+		<!--/js/t.gif-->
+		<a ="http://f2445-szshente.s116.pc51.com" class="myshow" target="_blank"><img title="点击查看大图" src="_files/picture/41617_s.gif"/></a>
+		<p><a ="http://f2445-szshente.s116.pc51.com" target="_blank" class="show_case_link">深圳市申特智能科技有限公司</a></p>
+        </div>
+		</li>
+				
+		
+      </ul>
+</div>
+
+<center>
+	<a ="boxshow.php" class="btn btn1" style="padding:10px 50px;margin-top:10px;border-bottom:0px;">更多案例展示</a>
+</center></div>
+			</div>
+</div>
+
+<script type="text/javascript">
+function gettpllist(page){
+	
+	var color = $("#color").val();
+	var grade = $(".cataList #grade").val();
+	var cat = $("#cat").val();
+	console.log(color);
+	console.log(cat);
+	$(".tpllist").html('<div style="padding:10px 0px 10px 0px;text-align:center"><img src="_files/picture/loading.gif" align="absmiddle"/> 正在加载请等待...</div>');
+	if(!page)var page=1;
+	
+	$.ajax({
+		type: "POST",
+		url: "siteTab.php",
+		data: "page="+page+"&color="+color+"&grade="+grade+"&cat="+cat,
+		success: function(html){
+			$(".tpllist").html(html);
+		}
+	
+	});
+}
+
+//setTimeout(function(){gettpllist();},100);
+</script>
+
+<script>
+$(function(){
+	$(".nicetab").tabs({ event:'click' });
+	$(".nicetab .tab_menu li").click(function(){
+		$(".redTab div").height($(".explanTab").height()-60);
+	})
+})
+</script>
+<style>
+.category span{height:auto !important; }
+</style></div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+[#include "inc_footer.html"/]
+
+</body>
+</html>
+[/#escape]
