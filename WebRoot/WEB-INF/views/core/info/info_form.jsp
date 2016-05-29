@@ -374,44 +374,45 @@ function confirmDelete() {
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
 			<tbody>
 			<tr>
-				<td colspan="3">
-		      <div style="margin-top:2px;">
-		    		<f:text name="imagesText" value="" style="width:90%;"/>
-		      </div>
-		  	</td>
-		  </tr>
-			<tr>
-				<td width="45%">
+				<td>
 		  		<div style="margin-top:2px;">
-		  			<f:text id="imagesImage{0}" name="imagesImage" value="" onchange="fn_imagesImage{0}(this.value);" style="width:180px;"/>
-		  			<input type="button" value="<s:message code='choose'/>" disabled="disabled"/>
+		  		  <input type="hidden" name="imagesName"/>
+            &lt;textarea id="imagesText{0}" name="imagesText" style="width:98%;height:45px;"&gt;{2}&lt;/textarea&gt;
+          </div>
+          <div style="margin-top:2px;">
+		  			<f:text id="imagesImage{0}" name="imagesImage" value="{1}" onchange="fn_imagesImage{0}(this.value);" style="width:98%;"/>
 		  		</div>
-		      <div style="margin-top:2px;"><input type="file" id="f_imagesImage{0}" name="f_imagesImage" size="23" style="width:235px;"/></div>
-		      <div style="margin-top:2px;">
-		      	<s:message code="width"/>: <f:text id="w_imagesImage{0}" value="${field.customs['imageWidth']}" default="100" style="width:60px;"/> &nbsp;
-		      	<s:message code="height"/>: <f:text id="h_imagesImage{0}" value="${field.customs['imageHeight']}" default="100" style="width:60px;"/>
-		      	<input type="button" onclick="uploadImg('imagesImage{0}',this);" value="<s:message code='upload'/>"/>
-		      	<f:hidden name="imagesName" value=""/>
-		      	<f:hidden id="s_imagesImage{0}" value="${(!empty field.customs['imageScale'] && field.customs['imageScale']=='true') ? 'true' : 'false'}"/>
-		      	<f:hidden id="wm_imagesImage{0}" value="${(!empty field.customs['imageWatermark'] && field.customs['imageWatermark']=='true') ? 'true' : 'false'}"/>
-		      	<f:hidden id="t_imagesImage{0}" value="${(!empty field.customs['thumbnail'] && field.customs['thumbnail']=='true') ? 'true' : 'false'}"/>
-		      	<f:hidden id="tw_imagesImage{0}" value="${(!empty field.customs['thumbnailWidth']) ? field.customs['thumbnailWidth'] : '116'}"/>
-		      	<f:hidden id="th_imagesImage{0}" value="${(!empty field.customs['thumbnailHeight']) ? field.customs['thumbnailHeight'] : '86'}"/>
-		      </div>
+          <div style="margin-top:2px;">
+            <s:message code="width"/>: <f:text id="w_imagesImage{0}" value="${field.customs['imageWidth']}" default="1500" style="width:70px;"/> &nbsp;
+            <s:message code="height"/>: <f:text id="h_imagesImage{0}" value="${field.customs['imageHeight']}" default="" style="width:70px;"/> &nbsp;
+            <input type="button" onclick="imgCrop('imagesImage{0}');" value="<s:message code='crop'/>"/> &nbsp;
+            <input id="imagesImage{0}Button" type="button" value="<s:message code='choose'/>"/>
+            <script type="text/javascript">
+            $(function() {
+              Cms.f7.uploads("imagesImage{0}","imagesText{0}",{
+                settings: {"title": "<s:message code="webFile.chooseUploads"/>"},
+                callbacks: {"ok": function(src){
+                	fn_imagesImage{0}(src);
+                }}
+              });
+            });
+            </script>
+          </div>
 		    </td>
-		    <td width="45%" align="center" valign="middle">
+		    <td width="210" align="center" valign="middle">
 					<img id="img_imagesImage{0}" style="display:none;"/>
 				  <script type="text/javascript">
 				    function fn_imagesImage{0}(src) {
-				    	Cms.scaleImg("img_imagesImage{0}",300,100,src);
+				    	Cms.scaleImg("img_imagesImage{0}",200,100,src);
 				    };
-				    fn_imagesImage{0}("");
+				    fn_imagesImage{0}("{1}");
 				  </script>
 				</td>
-				<td width="10%" align="center">
+				<td width="80" align="center">
 					<div><input type="button" value="<s:message code='delete'/>" onclick="imagesRemove(this);"></div>
 					<div><input type="button" value="<s:message code='moveUp'/>" onclick="imagesMoveUp(this);"></div>
 					<div><input type="button" value="<s:message code='moveDown'/>" onclick="imagesMoveDown(this);"></div>
+          <div><input type="button" value="<s:message code='addRow'/>" onclick="addImageRow('','',this);"/></div>
 				</td>
 			</tr>
 			</tbody>
@@ -419,19 +420,18 @@ function confirmDelete() {
 		</textarea>
 		<script type="text/javascript">
 		var imageRowIndex = 0;
-		<c:if test="${!empty bean && fn:length(bean.images) gt 0}">
-		imageRowIndex = ${fn:length(bean.images)};
-		</c:if>
 		var imageRowTemplate = $.format($("#imagesTemplateArea").val());
-		function addImageRow() {
-			$(imageRowTemplate(imageRowIndex++)).appendTo("#imagesContainer");
+		function addImageRow(image,text,button) {
+			if(button) {
+				$(imageRowTemplate(imageRowIndex++,image,text)).insertAfter($(button).parent().parent().parent().parent().parent());
+			} else {
+				$(imageRowTemplate(imageRowIndex++,image,text)).appendTo("#imagesContainer");
+			}
 		}
 		$(function() {
-			if(imageRowIndex==0) {
-				<c:if test="${oprt=='create'}">
-				addImageRow(imageRowIndex);
-				</c:if>
-			}
+	    <c:forEach var="item" items="${bean.images}" varStatus="status">
+        addImageRow("${fnx:escapeEcmaScript(item.image)}","${fnx:escapeEcmaScript(item.text)}");
+	    </c:forEach>
 		});
 		function imagesRemove(button) {
 			var toMove = $(button).parent().parent().parent().parent().parent();
@@ -446,56 +446,28 @@ function confirmDelete() {
 			toMove.next().after(toMove);
 		}
 		</script>
-		<input type="button" value="<s:message code='addRow'/>" onclick="addImageRow();"/>
-		<div id="imagesContainer">
-		<c:forEach var="item" items="${bean.images}" varStatus="status">
-			<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:5px 0;border-top:1px solid #ccc;">
-				<tbody>
-				<tr>
-					<td colspan="3">
-			      <div style="margin-top:2px;">
-			    		<f:text name="imagesText" value="${item.text}" style="width:90%;"/>
-			      </div>
-			  	</td>
-			  </tr>
-				<tr>
-					<td width="45%">
-			  		<div style="margin-top:2px;">
-			  			<f:text id="imagesImage${status.index}" name="imagesImage" value="${item.image}" onchange="fn_imagesImage${status.index}(this.value);" style="width:180px;"/>
-			  			<input type="button" value="<s:message code='choose'/>" disabled="disabled"/>
-			  		</div>
-			      <div style="margin-top:2px;"><input type="file" id="f_imagesImage${status.index}" name="f_imagesImage" size="23" style="width:235px;"/></div>
-			      <div style="margin-top:2px;">
-			      	<s:message code="width"/>: <f:text id="w_imagesImage${status.index}" value="${field.customs['imageWidth']}" default="100" style="width:60px;"/> &nbsp;
-			      	<s:message code="height"/>: <f:text id="h_imagesImage${status.index}" value="${field.customs['imageHeight']}" default="100" style="width:60px;"/>
-			      	<input type="button" onclick="uploadImg('imagesImage${status.index}',this);" value="<s:message code='upload'/>"/>
-			      	<f:hidden name="imagesName" value="${item.name}"/>
-			      	<f:hidden id="s_imagesImage${status.index}" value="${(!empty field.customs['imageScale'] && field.customs['imageScale']=='true') ? 'true' : 'false'}"/>
-			      	<f:hidden id="wm_imagesImage${status.index}" value="${(!empty field.customs['imageWatermark'] && field.customs['imageWatermark']=='true') ? 'true' : 'false'}"/>
-			      	<f:hidden id="t_imagesImage${status.index}" value="${(!empty field.customs['thumbnail'] && field.customs['thumbnail']=='true') ? 'true' : 'false'}"/>
-			      	<f:hidden id="tw_imagesImage${status.index}" value="${(!empty field.customs['thumbnailWidth']) ? field.customs['thumbnailWidth'] : '116'}"/>
-			      	<f:hidden id="th_imagesImage${status.index}" value="${(!empty field.customs['thumbnailHeight']) ? field.customs['thumbnailHeight'] : '86'}"/>
-			      </div>
-			    </td>
-			    <td width="45%" align="center" valign="middle">
-						<img id="img_imagesImage${status.index}" style="display:none;"/>
-					  <script type="text/javascript">
-					    function fn_imagesImage${status.index}(src) {
-					    	Cms.scaleImg("img_imagesImage${status.index}",300,100,src);
-					    };
-					    fn_imagesImage${status.index}("${item.image}");
-					  </script>
-					</td>
-					<td width="10%" align="center">
-						<div><input type="button" value="<s:message code='delete'/>" onclick="imagesRemove(this);"></div>
-						<div><input type="button" value="<s:message code='moveUp'/>" onclick="imagesMoveUp(this);"></div>
-						<div><input type="button" value="<s:message code='moveDown'/>" onclick="imagesMoveDown(this);"></div>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-		</c:forEach>
-		</div>
+		<div>
+      <span id="imagesSwfButton"></span><input type="button" value="<s:message code="upload"/>" class="swfbutton"/>
+      <input id="imagesSwfCancel" type="button" value="<s:message code="cancel"/>" onclick="imagesSwfUpload.cancelQueue();" disabled="disabled"/>
+      <input type="button" value="<s:message code='addRow'/>" onclick="addImageRow('','');"/>
+      <script type="text/javascript">
+      var imagesSwfUpload = Cms.swfUploadImages("images",{
+        jsessionid: "<%=request.getSession().getId()%>",
+        file_size_limit: "${GLOBAL.upload.imageLimit}",
+        file_types: "${GLOBAL.upload.imageTypes}"
+      }, addImageRow);
+      </script>
+			<s:message code="width"/>: <f:text id="w_images" value="${field.customs['imageWidth']}" default="1500" style="width:70px;"/> &nbsp;
+	    <s:message code="height"/>: <f:text id="h_images" value="${field.customs['imageHeight']}" default="" style="width:70px;"/> &nbsp;
+	    <label><input type="checkbox" id="s_images"<c:if test="${empty field.customs['imageScale'] || field.customs['imageScale']=='true'}"> checked="checked"</c:if>/><s:message code="scale"/></label>
+	    <label><input type="checkbox" id="e_images"<c:if test="${!empty field.customs['imageExact'] && field.customs['imageExact']=='true'}"> checked="checked"</c:if>/><s:message code="exact"/></label>
+	    <label><input type="checkbox" id="wm_images"<c:if test="${empty field.customs['imageWatermark'] || field.customs['imageWatermark']=='true'}"> checked="checked"</c:if>/><s:message code="watermark"/></label>&nbsp;
+	    <f:hidden id="t_images" value="${(!empty field.customs['thumbnail']) ? field.customs['thumbnail'] : 'true'}"/>
+	    <f:hidden id="tw_images" value="${(!empty field.customs['thumbnailWidth']) ? field.customs['thumbnailWidth'] : '116'}"/>
+	    <f:hidden id="th_images" value="${(!empty field.customs['thumbnailHeight']) ? field.customs['thumbnailHeight'] : '77'}"/>
+    </div>
+    <div id="imagesSwfProgress"></div>
+		<div id="imagesContainer"></div>
   </c:when>
   <c:when test="${field.name eq 'text'}">
     <f:textarea id="clobs_text" name="clobs_text" value="${bean.text}"/>
