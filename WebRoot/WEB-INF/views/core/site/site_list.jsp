@@ -45,6 +45,18 @@ function optDelete(form) {
 	form.submit();
 	return true;
 }
+function optForceDelete(form) {
+	if(Cms.checkeds("ids")==0) {
+		alert("<s:message code='pleaseSelectRecord'/>");
+		return false;
+	}
+	if(!confirmDelete()) {
+		return false;
+	}
+	form.action='forcedelete.do';
+	form.submit();
+	return true;
+}
 </script>
 </head>
 <body class="c-body">
@@ -75,6 +87,9 @@ function optDelete(form) {
 	</shiro:hasPermission>
 	<shiro:hasPermission name="core:site:delete">
 	<div class="ls-btn"><input type="button" value="<s:message code="delete"/>" onclick="return optDelete(this.form);"/></div>
+	</shiro:hasPermission>
+	<shiro:hasPermission name="core:site:delete">
+	<div class="ls-btn"><input type="button" value="强力删除" onclick="return optForceDelete(this.form);"/></div>
 	</shiro:hasPermission>
 	<div style="clear:both"></div>
 </div>

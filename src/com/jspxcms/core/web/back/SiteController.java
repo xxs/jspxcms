@@ -216,6 +216,17 @@ public class SiteController {
 		ra.addFlashAttribute("message", "deleteSuccess");
 		return "redirect:list.do";
 	}
+	@RequiresRoles({ "super" })
+	@RequiresPermissions({ "core:site:delete" })
+	@RequestMapping({ "forcedelete.do" })
+	public String forcedelete(Integer[] ids, RedirectAttributes ra) {
+		Site[] beans = this.service.forcedelete(ids);
+		for (Site bean : beans) {
+			logger.info("delete Site, name={}.", bean.getName());
+		}
+		ra.addFlashAttribute("message", "deleteSuccess");
+		return "redirect:list.do";
+	}
 
 	@RequestMapping({ "check_number.do" })
 	public void checkUsername(String number, String original,

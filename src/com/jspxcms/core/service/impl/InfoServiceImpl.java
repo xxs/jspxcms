@@ -2,16 +2,27 @@ package com.jspxcms.core.service.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jspxcms.common.orm.Limitable;
+import com.jspxcms.common.orm.SearchFilter;
+import com.jspxcms.common.util.RowSide;
 import com.jspxcms.core.domain.Brand;
 import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.InfoBuffer;
@@ -56,6 +67,31 @@ import com.jspxcms.core.support.DeleteException;
 @Transactional
 public class InfoServiceImpl implements InfoService, SiteDeleteListener,
 		OrgDeleteListener, NodeDeleteListener, UserDeleteListener {
+	
+	@SuppressWarnings("static-access")
+	public List<Info> findAllInfo(Integer siteId) {
+		Limitable limit = new RowSide<Info>().limitable(0,new Sort("id"));
+		return dao.findAll(spec(siteId,null), limit);
+	}
+	
+	private Specification<Info> spec(final Integer siteId,
+			Map<String, String[]> params) {
+		Collection<SearchFilter> filters = SearchFilter.parse(params).values();
+		final Specification<Info> fsp = SearchFilter.spec(filters, Info.class);
+		Specification<Info> sp = new Specification<Info>() {
+			public Predicate toPredicate(Root<Info> root,
+					CriteriaQuery<?> query, CriteriaBuilder cb) {
+				Predicate pred = fsp.toPredicate(root, query, cb);
+				if (siteId != null) {
+					pred = cb.and(pred, cb.equal(root.get("site")
+							.<Integer> get("id"), siteId));
+				}
+				return pred;
+			}
+		};
+		return sp;
+	}
+	
 	public Info save(Info bean, InfoDetail detail, Integer[] nodeIds,
 			Integer[] specialIds, Integer[] viewGroupIds, Integer[] viewOrgIds,
 			Map<String, String> customs, Map<String, String> clobs,

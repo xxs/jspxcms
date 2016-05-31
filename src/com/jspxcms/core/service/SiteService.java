@@ -49,4 +49,6 @@ public interface SiteService {
 	public Site delete(Integer id);
 
 	public Site[] delete(Integer[] ids);
+	
+	public Site[] forcedelete(Integer[] ids);
 }

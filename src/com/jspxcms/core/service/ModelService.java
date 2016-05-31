@@ -48,4 +48,5 @@ public interface ModelService {
 	public Model delete(Integer id);
 
 	public Model[] delete(Integer[] ids);
+	
 }

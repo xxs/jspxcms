@@ -22,7 +22,7 @@ public interface InfoDao extends Repository<Info, Integer>, InfoDaoPlus {
 	public Page<Info> findAll(Specification<Info> spec, Pageable pageable);
 
 	public List<Info> findAll(Specification<Info> spec, Limitable limitable);
-
+	
 	public List<Info> findAll(Iterable<Integer> ids);
 
 	public Info findOne(Integer id);

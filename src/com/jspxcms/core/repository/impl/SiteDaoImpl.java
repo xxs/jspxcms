@@ -33,6 +33,14 @@ public class SiteDaoImpl implements SiteDaoPlus {
 			return null;
 		}
 	}
+	public void forcedelete(Site bean) {
+//		JpqlBuilder jqpl = new JpqlBuilder("from Site bean where 1=1");
+//		jqpl.append(" order by bean.def desc, bean.treeNumber asc");
+//		TypedQuery<Site> query = jqpl.createQuery(em, Site.class);
+//		query.setMaxResults(1);
+//		query.setHint(QueryHints.HINT_CACHEABLE, true);
+//		List<Site> list = query.getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Site> findByStatus(Integer[] status) {

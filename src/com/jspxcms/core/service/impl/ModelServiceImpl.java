@@ -192,7 +192,7 @@ public class ModelServiceImpl implements ModelService, SiteDeleteListener {
 		bean = dao.save(bean);
 		return bean;
 	}
-
+	@Transactional
 	private Model doDelete(Integer id) {
 		Model entity = dao.findOne(id);
 		if (entity != null) {

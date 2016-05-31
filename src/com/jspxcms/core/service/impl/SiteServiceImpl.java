@@ -23,7 +23,9 @@ import com.jspxcms.common.orm.SearchFilter;
 import com.jspxcms.common.util.RowSide;
 import com.jspxcms.common.web.PathResolver;
 import com.jspxcms.core.domain.Global;
+import com.jspxcms.core.domain.Info;
 import com.jspxcms.core.domain.Model;
+import com.jspxcms.core.domain.Node;
 import com.jspxcms.core.domain.Role;
 import com.jspxcms.core.domain.Site;
 import com.jspxcms.core.domain.User;
@@ -31,7 +33,11 @@ import com.jspxcms.core.listener.OrgDeleteListener;
 import com.jspxcms.core.listener.SiteDeleteListener;
 import com.jspxcms.core.repository.SiteDao;
 import com.jspxcms.core.service.GlobalService;
+import com.jspxcms.core.service.InfoQueryService;
+import com.jspxcms.core.service.InfoService;
 import com.jspxcms.core.service.ModelService;
+import com.jspxcms.core.service.NodeQueryService;
+import com.jspxcms.core.service.NodeService;
 import com.jspxcms.core.service.OrgService;
 import com.jspxcms.core.service.RoleService;
 import com.jspxcms.core.service.SiteService;
@@ -40,7 +46,6 @@ import com.jspxcms.core.service.UserService;
 import com.jspxcms.core.support.Configurable;
 import com.jspxcms.core.support.DeleteException;
 import com.jspxcms.core.support.ForeContext;
-import com.jspxcms.core.support.Theme;
 
 /**
  * SiteServiceImpl
@@ -317,6 +322,30 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 		}
 		return beans;
 	}
+	@Transactional
+	public Site[] forcedelete(Integer[] ids) {
+		//firePreDelete(ids);
+		Site[] beans = new Site[ids.length];
+		for (int i = 0, len = ids.length; i < len; i++) {
+			//删除文档
+			List<Info> listInfo = infoService.findAllInfo(ids[i]);
+			for (int j = 0; j < listInfo.size(); j++) {
+				infoService.delete(listInfo.get(i).getId());
+			}
+			//删除栏目
+			List<Node> listNode = nodeQueryService.findList(ids[i]);
+			for (int j = 0; j < listNode.size(); j++) {
+				nodeService.delete(listNode.get(j).getId());
+			}
+			//删除模型
+			List<Model> list = modelService.findAllModelBySiteId(ids[i]);
+			for (int j = 0; j < list.size(); j++) {
+				modelService.delete(list.get(j).getId());
+			}
+			beans[i] = doDelete(ids[i]);
+		}
+		return beans;
+	}
 
 	public void preOrgDelete(Integer[] ids) {
 		if (ArrayUtils.isNotEmpty(ids)) {
@@ -343,6 +372,10 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 
 	private PathResolver pathResolver;
 	private ModelService modelService;
+	private NodeQueryService nodeQueryService;
+	private InfoQueryService infoQueryService;
+	private NodeService nodeService;
+	private InfoService infoService;
 	private UserRoleService userRoleService;
 	private RoleService roleService;
 	private UserService userService;
@@ -357,6 +390,22 @@ public class SiteServiceImpl implements SiteService, OrgDeleteListener {
 	@Autowired
 	public void setModelService(ModelService modelService) {
 		this.modelService = modelService;
+	}
+	@Autowired
+	public void setNodeQueryService(NodeQueryService nodeQueryService) {
+		this.nodeQueryService = nodeQueryService;
+	}
+	@Autowired
+	public void setInfoQueryService(InfoQueryService infoQueryService) {
+		this.infoQueryService = infoQueryService;
+	}
+	@Autowired
+	public void setNodeService(NodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+	@Autowired
+	public void setInfoService(InfoService infoService) {
+		this.infoService = infoService;
 	}
 
 //	private NodeService nodeService;

@@ -36,6 +36,8 @@ public interface InfoService {
 			boolean rejectEnd);
 
 	public Info delete(Integer id);
+	
+	public List<Info> findAllInfo(Integer siteId);
 
 	public List<Info> delete(Integer[] ids);
 }
