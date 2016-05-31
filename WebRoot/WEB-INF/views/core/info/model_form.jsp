@@ -79,8 +79,8 @@ function confirmDelete() {
 	    <f:text id="customs_template" name="customs_template" value="${bean.customs['template']}" class="required" style="width:160px;"/><input id="customs_templateButton" type="button" value="<s:message code='choose'/>"/>
 	    <script type="text/javascript">
 	    $(function(){
-	    	Cms.f7.webFile("${ctx}","customs_template",{
-	    		settings: {"title": "select"}
+	    	Cms.f7.template("customs_template",{
+	    		settings: {"title": "<s:message code="webFile.chooseTemplate"/>"}
 	    	});
 	    });
 	    </script>

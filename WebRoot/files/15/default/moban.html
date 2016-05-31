@@ -243,7 +243,7 @@ window.onscroll = function(){
 		  
 <ul >
 	[#list pagedList.content as info]
-	<li [#if info_index % 3 == 0]style="margin-right:0;"[/#if] >
+	<li [#if (info_index+1) % 4 == 0]style="margin-right:0;"[/#if] >
 		<div class="showModel">
 					<div class="showImg">
 					<div id="PC_show"><!----电脑版----->

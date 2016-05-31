@@ -123,13 +123,13 @@ public class Constants {
 	 * 如：file:d:\\jspxcms\\template 或 file:/home/mysite/template。
 	 * 因模版内含有图片，该路径应能通过同一域名访问，通常单独作为一个应用部署。
 	 */
-	public static String TEMPLATE_STORE_PATH = "/template";
+	public static String TEMPLATE_STORE_PATH = "/files";
 	/**
 	 * 模版显示路径。
 	 * 
 	 * 如果模版在应用内，则应与模版存储路径一致。如果模版在应用外，作为独立应用部署，则与部署上下文路径相关。
 	 */
-	public static String TEMPLATE_DISPLAY_PATH = "/template";
+	public static String TEMPLATE_DISPLAY_PATH = "/files";
 	/**
 	 * 全局模版路径。作为模版目录的子目录，与模版路径结合后通常为/template/global。
 	 * 

@@ -166,7 +166,7 @@ function confirmDelete() {
     <f:text id="nodeIdNameDisplay" value="${node.displayName}" readonly="readonly" style="width:160px;"/><input id="nodeIdButton" type="button" value="<s:message code='choose'/>"/>
     <script type="text/javascript">
     $(function(){
-    	Cms.f7.nodeInfoPerms("${ctx}","nodeId",{
+    	Cms.f7.nodeInfoPerms("nodeId","nodeIdName",{
     		settings: {"title": "<s:message code='info.pleaseSelectNode'/>"},
     		params: {"isRealNode": true}
     	});
@@ -193,7 +193,7 @@ function confirmDelete() {
     <f:text id="nodeIdsNameDisplay" value="" readonly="readonly" style="width:160px;"/><input id="nodeIdsButton" type="button" value="<s:message code='choose'/>"/>
     <script type="text/javascript">
     $(function(){
-    	Cms.f7.nodeMultiInfoPerms("${ctx}","nodeIds",{
+    	Cms.f7.nodeMultiInfoPerms("nodeIds",{
     		settings: {"title": "<s:message code='info.pleaseSelectNodes'/>"},
     		params: {"isRealNode": true}
     	});
@@ -219,7 +219,7 @@ function confirmDelete() {
     <f:text id="specialIdsNameDisplay" value="" readonly="readonly" style="width:160px;"/><input id="specialIdsButton" type="button" value="<s:message code='choose'/>"/>
     <script type="text/javascript">
     $(function(){
-    	Cms.f7.specialMulti("${ctx}","specialIds",{
+    	Cms.f7.specialMulti("specialIds",{
     		settings: {"title": "<s:message code='info.pleaseSelectSpecials'/>"}
     	});
     });
@@ -276,8 +276,8 @@ function confirmDelete() {
     <f:text id="infoTemplate" name="infoTemplate" value="${bean.infoTemplate}" maxlength="255" style="width:160px;"/><input id="infoTemplateButton" type="button" value="<s:message code='choose'/>"/>
     <script type="text/javascript">
     $(function(){
-    	Cms.f7.webFile("${ctx}","infoTemplate",{
-    		settings: {"title": "select"}
+    	Cms.f7.template("infoTemplate",{
+    		settings: {"title": "<s:message code="webFile.chooseTemplate"/>"}
     	});
     });
     </script>
@@ -319,7 +319,7 @@ function confirmDelete() {
     <f:text id="viewOrgIdsNameDisplay" value="" readonly="readonly" style="width:160px;"/><input id="viewOrgIdsButton" type="button" value="<s:message code='choose'/>"/>
     <script type="text/javascript">
     $(function(){
-    	Cms.f7.orgMulti("${ctx}","viewOrgIds",{
+    	Cms.f7.orgMulti("viewOrgIds",{
     		settings: {"title": "<s:message code='org.f7.selectOrg'/>"},
     		params: {"treeNumber": "${orgTreeNumber}"}
     	});
@@ -469,19 +469,26 @@ function confirmDelete() {
     <div id="imagesSwfProgress"></div>
 		<div id="imagesContainer"></div>
   </c:when>
-  <c:when test="${field.name eq 'text'}">
-    <f:textarea id="clobs_text" name="clobs_text" value="${bean.text}"/>
-    <script type="text/javascript">
-			CKEDITOR.replace("clobs_text",{
-				<c:if test="${!empty field.customs['width']}">width: ${field.customs['width']},</c:if>
-				<c:if test="${!empty field.customs['height']}">height: ${field.customs['height']},</c:if>
-				toolbar: "${(!empty field.customs['toolbar']) ? (field.customs['toolbar']) : 'Cms'}Page",        
-				filebrowserUploadUrl: "../upload_file.do",
-				filebrowserImageUploadUrl: "../upload_image.do",
-				filebrowserFlashUploadUrl: "../upload_flash.do"
-			});
-    </script>
-  </c:when>
+  <c:when test="${field.name eq 'text'}">	
+	  <f:textarea id="clobs_text" name="clobs_text" value="${bean.text}"/>
+	  <script type="text/javascript">
+	  $(function() {
+	    var editor_clobs_text = UE.getEditor('clobs_text',{
+	    	<c:if test="${!empty field.customs['toolbar']}">toolbars: window.UEDITOR_CONFIG.toolbars_${field.customs['toolbar']}Page,</c:if>
+        <c:if test="${!empty field.customs['width']}">initialFrameWidth:${field.customs['width']},</c:if>
+        <c:if test="${!empty field.customs['height']}">initialFrameHeight:${field.customs['height']},</c:if>
+	      imageUrl:"${ctx}${cmscp}/core/upload_image.do?ueditor=true",
+	      wordImageUrl:"${ctx}${cmscp}/core/upload_image.do?ueditor=true",
+	      fileUrl:"${ctx}${cmscp}/core/upload_file.do;jsessionid=<%=request.getSession().getId()%>?ueditor=true",
+	      videoUrl:"${ctx}${cmscp}/core/upload_video.do;jsessionid=<%=request.getSession().getId()%>?ueditor=true",
+	      catcherUrl:"${ctx}${cmscp}/core/get_remote_image.do?ueditor=true",
+	      imageManagerUrl:"${ctx}${cmscp}/core/image_manager.do",
+	      getMovieUrl:"${ctx}${cmscp}/core/get_movie.do",
+	    	localDomain:['${!empty GLOBAL.uploadsDomain ? GLOBAL.uploadsDomain : ""}']
+	    });
+	  });
+	  </script>
+	</c:when>
   <c:otherwise>
     System field not found: '${field.name}'
   </c:otherwise>
