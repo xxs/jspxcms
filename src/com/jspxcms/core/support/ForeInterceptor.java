@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jspxcms.common.util.UserAgentUtils;
 import com.jspxcms.core.domain.Global;
 import com.jspxcms.core.domain.MemberGroup;
 import com.jspxcms.core.domain.Site;
@@ -63,10 +64,20 @@ public class ForeInterceptor implements HandlerInterceptor {
 		}
 		return true;
 	}
-
-	public void postHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler,
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, 
 			ModelAndView modelAndView) throws Exception {
+		System.out.println("执行了浏览器检测");
+		if (modelAndView != null){
+			// 如果是手机或平板访问的话，则跳转到手机视图页面。
+			if(UserAgentUtils.isMobileOrTablet(request) && !org.apache.commons.lang3.StringUtils.startsWithIgnoreCase(modelAndView.getViewName(), "redirect:")){
+				System.out.println("移动浏览器");
+				modelAndView.setViewName("mobile" + modelAndView.getViewName());
+				System.out.println("viewName+"+modelAndView.getViewName());
+			}else{
+				System.out.println("pc浏览器");
+			}
+		}
 	}
 
 	public void afterCompletion(HttpServletRequest request,
