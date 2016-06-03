@@ -70,6 +70,7 @@ public class ForeInterceptor implements HandlerInterceptor {
 		System.out.println("执行了浏览器检测");
 		if (modelAndView != null){
 			// 如果是手机或平板访问的话，则跳转到手机视图页面。
+			System.out.println("modelAndView.getViewName():"+modelAndView.getViewName());
 			if(UserAgentUtils.isMobileOrTablet(request) && !org.apache.commons.lang3.StringUtils.startsWithIgnoreCase(modelAndView.getViewName(), "redirect:")){
 				System.out.println("移动浏览器");
 				modelAndView.setViewName("mobile" + modelAndView.getViewName());
