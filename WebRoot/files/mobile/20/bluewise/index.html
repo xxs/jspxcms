@@ -17,53 +17,8 @@
 </head>  
 <body>  
 <div id="main">    
-<div id="top">
-<div id="box0d30143b0ac1a28b5f02dc4ed74e6062" class="block block_mini_menu  fakeabsolute  add  mini_menu" style="width:320px;height:55px;top:0px;left:0px;z-index:110;"><table width="100%" border="0" cellspacing="0" cellpadding="0" id="showmini">
-	<tr>
-		<td class="back">
-			<a href="javascript:history.go(-1);">返回</a>
-		</td>
-		<td>
-			<div class="mini_btitle"><span class="i">
-			</span>网站首页</div>
-		</td>
-		<td class="r">
-			<div id="mini_menu_fa42c2df2fc8063cd98aa32937c4bdd4" class="menu_ul"><p class="mini_title">点我</p></div>
-			<div style="display:none" id="showmenuli">
-				<p class="tarr"></p>
-				<ul>
-					[@NodeList;list]
-			        	<li><a href='${ctx}/'>网站首页</a></li>  
-						[#list list as node]
-			 		 		<li><a href="${node.url}">${node.name}</a></li>
-						[/#list]
-					[/@NodeList]
-				</ul>
-			</div>
-		</td>
-	</tr>
-</table>
-<script>
-  (function(){
-    var mini_menu = $('#mini_menu_fa42c2df2fc8063cd98aa32937c4bdd4');
-    mini_menu.click(function(event) {
-      mini_menu.next().toggle();
-      $('body').one('click', function(event) {
-        //console.log('test');
-        mini_menu.next().hide();
-      });
-      return false;
-    });
-  })();
-</script></div><div class="placeholder" data-fid="151021" style="width:320px;height:55px;float:;"></div>
-<div id="box6ecd032ef5f4131216a8415d51bcd302" class="block block_logo  fakeabsolute " style="width:320px;height:129px;top:55px;left:0px; overflow:hidden;">
-<div id="logo">
-<table style="width:100%"><tr><td><a href='index.html'>
-<img src='_files/mobile/picture/mobile_logo.png'  border=0 align=absmiddle></a>
-</td></tr></table></div></div><div class="placeholder" data-fid="151059" style="width:320px;height:129px;float:;"></div></div>    
-<div id="mainmenu"><div id="boxaeee49efcaf6f6f3417bbc920f8a2579" class="block block_prodsearch  fakeabsolute  add " style="width:320px;height:52px;top:0px;left:0px; overflow:hidden;z-index:110;">
-
-</div><div class="placeholder" data-fid="151052" style="width:320px;height:52px;float:;"></div><div id="box8aedd999e7043368b5981de9d497024f" class="block block_homelink  fakeabsolute  add " style="width:320px;height:30px;top:52px;left:0px; overflow:hidden;z-index:110;"><span class="homelink">当前位置  -> <a href="index.html">首页</a></span></div><div class="placeholder" data-fid="151061" style="width:320px;height:30px;float:;"></div></div>    <div id="container"><div id="box260991cef440e26880274013a4a231c9" class="block block_menu  fakeabsolute " style="width:300px;height:50px;top:0px;left:0px;"><div id="submenu" class=""><ul></ul></div></div><div class="placeholder" data-fid="151028" style="width:300px;height:50px;float:;"></div><div id="box78cad3c3681252a9111299f112f9e35d" class="block block_picture  fakeabsolute " style="width:300px;height:95px;top:0px;left:0px; overflow:hidden;z-index:110;"><table width="100%" height="100%" cellpadding="0" cellspacing="0"><tr><td align=""><img border="0" src="_files/mobile/picture/banner.jpg"  width="100%"  style=""  /></td></tr></table>
+  [#include "inc_header.html"/]
+  <div id="container"><div id="box260991cef440e26880274013a4a231c9" class="block block_menu  fakeabsolute " style="width:300px;height:50px;top:0px;left:0px;"><div id="submenu" class=""><ul></ul></div></div><div class="placeholder" data-fid="151028" style="width:300px;height:50px;float:;"></div><div id="box78cad3c3681252a9111299f112f9e35d" class="block block_picture  fakeabsolute " style="width:300px;height:95px;top:0px;left:0px; overflow:hidden;z-index:110;"><table width="100%" height="100%" cellpadding="0" cellspacing="0"><tr><td align=""><img border="0" src="_files/mobile/picture/banner.jpg"  width="100%"  style=""  /></td></tr></table>
 </div><div class="placeholder" data-fid="151066" style="width:300px;height:95px;float:;"></div><div id="boxac100b4636e85f13272f50e660532fc4" class="block block_text  fakeabsolute " style="width:300px;height:380px;top:95px;left:0px; overflow:hidden;"><div class="bx1" >
 	<h3 class="bx1_t bx_t"><span class="l bx1_t1"><font>公司简介</font></span><span class="r bx1_t2"><font></font></span></h3>
 	<div class="bx1_c bx_c">
@@ -73,19 +28,18 @@
         	 	[#noescape]${i.text}[/#noescape]
         	[/#if]
 		[/@Node]
-<p><img src="picture/icon02.jpg" alt="" border="0" /></p>
+<p><img src="_files/mobile/picture/icon02.jpg" alt="" border="0" /></p>
 		</div>
-		<div class="more2"><span><a href="#">More</a></span></div>
+		<div class="more2"><span><a href="${ctx}/node/273.jspx">More</a></span></div>
 	</div>
 	<div class="bx1_b bx_b"><span class="r bx1_b2"></span></div>
 </div></div><div class="placeholder" data-fid="151073" style="width:300px;height:380px;float:;"></div><div id="box99d73923f7e68c7ae7e2df020715adb3" class="block block_product  fakeabsolute " style="width:300px;height:1073px;top:475px;left:0px; overflow:hidden;z-index:110;"><div class="bx2" >
 	<h3 class="bx2_t bx_t"><span class="l bx2_t1"><font>产品列表</font></span><span class="r bx2_t2"><font></font></span></h3>
 	<div class="bx2_c bx_c">
 		<div class="content">
-<!-- product start -->
-<table width='100%' class='showstyle0' >
-
-		[@InfoList attr='hot' limit=4;list]
+	<!-- product start -->
+	<table width='100%' class='showstyle0' >
+	[@InfoList attr='hot' limit=4;list]
 		 	  [#list list as info]
 			
 			<tr>
@@ -109,14 +63,21 @@
 			</tr>
 		      [/#list]
 	      [/@InfoList]
-	
 	</table>
+	<!-- product end --><script>
+		function addcart(pid){
+			$.getScript('http://box6js.nicebox.cn/exusers/u_cart.php?idweb=15450&pid='+pid+'&act=add&lang=0&ismobile=1&cd=cd_add_cart');
+		}
+		function cd_add_cart(obj){
+			location = 'control-0.html#u_cart';
+		}
+		</script>
 		</div>
-		<div class="more2"><span><a href="410958-410958.html">More</a></span></div>
+		<div class="more2"><span><a href="${ctx}/node/275.jspx">More</a></span></div>
 	</div>
 	<div class="bx2_b bx_b"><span class="r bx2_b2"></span></div>
 </div>
-</div>
+</div><div class="placeholder" data-fid="151074" style="width:300px;height:1073px;float:;"></div></div>
 [#include "inc_footer.html"/]
 </body>  
 </html>
