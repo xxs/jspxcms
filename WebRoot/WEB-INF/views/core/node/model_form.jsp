@@ -79,8 +79,8 @@ function confirmDelete() {
     	<f:text id="customs_coverTemplate" name="customs_coverTemplate" value="${bean.customs['coverTemplate']}" class="required" maxlength="255" style="width:160px;"/><input id="customs_coverTemplateButton" type="button" value="<s:message code='choose'/>"/>
 	    <script type="text/javascript">
 	    $(function(){
-	    	Cms.f7.webFile("${ctx}","customs_coverTemplate",{
-	    		settings: {"title": "select"}
+	    	Cms.f7.template("customs_template",{
+	    		settings: {"title": "<s:message code="webFile.chooseTemplate"/>"}
 	    	});
 	    });
 	    </script>
@@ -90,8 +90,8 @@ function confirmDelete() {
     	<f:text id="customs_listTemplate" name="customs_listTemplate" value="${bean.customs['listTemplate']}" maxlength="255" style="width:160px;"/><input id="customs_listTemplateButton" type="button" value="<s:message code='choose'/>"/>
 	    <script type="text/javascript">
 	    $(function(){
-	    	Cms.f7.webFile("${ctx}","customs_listTemplate",{
-	    		settings: {"title": "select"}
+	    	Cms.f7.template("customs_template",{
+	    		settings: {"title": "<s:message code="webFile.chooseTemplate"/>"}
 	    	});
 	    });
 	    </script>

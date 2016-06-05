@@ -76,18 +76,22 @@
 <div class="tab tab1 divs_1 bs151046" style="height:px">
 	<ul class="tab_menu">
 		<li class="current"><span><a href="#">公司新闻</a></span></li>
-<li class=""><span><a href="#">行业展示</a></span></li>
-
+		<!-- 
+		 <li class=""><span><a href="#">行业展示</a></span></li>
+		 -->
 	</ul>
 	<div class="tab_box">
 	
 		<div class="tab_content">
 		<div id="box8132fa61867f27b3ffc5b60e497f393c" class="block block_news  add" style=" overflow:hidden;">
 		<!-- newslist start --><ul id='boxNewsList'>
-		<li class='showtype0'><a href='#' target='_blank' style=''>网站建设的关键字技巧</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>网站如何留住你的用户</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>用建站宝盒免费设计一个网站</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>企业建站不用发愁，建站宝盒省钱好用解您忧！</a></li><li class='showtype0'><a href='bbx/news-1131598.html' target='_blank' style=''>推荐一款用鼠标拖拽免费建网站的工具</a></li>
+		     	  [@InfoList nodeId=278 limit=6;list] 
+		     	  [#list list as info]
+		        	<li class='showtype0'>
+		  	 			<a href='${info.url }' target='_blank' style=''>${info.title }</a>
+		            </li>
+		          [/#list]
+		          [/@InfoList]
 		</ul><!-- newslist end -->
 		</div>
 		</div>
@@ -97,11 +101,13 @@
 		
 		<!-- newslist start --><ul id='boxNewsList'>
 		
-		<li class='showtype0'><a href='#' target='_blank' style=''>网站建设的关键字技巧</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>网站如何留住你的用户</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>用建站宝盒免费设计一个网站</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>企业建站不用发愁，建站宝盒省钱好用解您忧！</a></li>
-		<li class='showtype0'><a href='#' target='_blank' style=''>推荐一款用鼠标拖拽免费建网站的工具</a></li>
+				[@InfoList nodeId=279 limit=6;list] 
+		     	  [#list list as info]
+		        	<li class='showtype0'>
+		  	 			<a href='${info.url }' target='_blank' style=''>${info.title }</a>
+		            </li>
+		          [/#list]
+		        [/@InfoList]
 		</ul><!-- newslist end -->
 		</div>
 		</div>

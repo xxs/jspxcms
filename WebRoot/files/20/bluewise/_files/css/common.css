@@ -25,6 +25,11 @@ strong {font-weight:700!important;}
 .bx_b {overflow:hidden;width:100%;height:0} /*for ie: give a default size*/
 /*#boxNewsList li {vertical-align:middle;} /*fix for ie*/
 
+.bx2 {
+    border-top: 1px solid #c7d6e8;
+    height: 265px;
+    border: 1px solid #c7d6e8;
+}
 /* global */
 .left  {float:left}
 .right {float:right}
